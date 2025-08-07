@@ -1,0 +1,414 @@
+INFO 2025-08-07 10:34:28,054 autoreload 3020 14100 Watching for file changes with StatReloader
+ERROR 2025-08-07 10:34:39,462 log 3020 8680 Internal Server Error: /
+Traceback (most recent call last):
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\db\backends\sqlite3\base.py", line 328, in execute
+    return super().execute(query, params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+sqlite3.OperationalError: no such table: parks_nationalpark
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\projects\Tourism\project\core\views.py", line 30, in home
+    'total_parks': NationalPark.objects.filter(is_active=True).count(),
+                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\db\models\query.py", line 608, in count
+    return self.query.get_count(using=self.db)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\db\models\sql\query.py", line 568, in get_count
+    return obj.get_aggregation(using, {"__count": Count("*")})["__count"]
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\db\models\sql\query.py", line 554, in get_aggregation
+    result = compiler.execute_sql(SINGLE)
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\db\models\sql\compiler.py", line 1562, in execute_sql
+    cursor.execute(sql, params)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\db\backends\utils.py", line 102, in execute
+    return super().execute(sql, params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\db\backends\utils.py", line 67, in execute
+    return self._execute_with_wrappers(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        sql, params, many=False, executor=self._execute
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\db\backends\utils.py", line 80, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\db\backends\utils.py", line 84, in _execute
+    with self.db.wrap_database_errors:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\db\backends\sqlite3\base.py", line 328, in execute
+    return super().execute(query, params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+django.db.utils.OperationalError: no such table: parks_nationalpark
+ERROR 2025-08-07 10:34:39,484 basehttp 3020 8680 "GET / HTTP/1.1" 500 137937
+WARNING 2025-08-07 10:34:39,880 log 3020 8680 Not Found: /favicon.ico
+WARNING 2025-08-07 10:34:39,881 basehttp 3020 8680 "GET /favicon.ico HTTP/1.1" 404 5288
+INFO 2025-08-07 10:36:46,104 autoreload 14216 6832 Watching for file changes with StatReloader
+ERROR 2025-08-07 10:36:58,040 log 14216 13928 Internal Server Error: /
+Traceback (most recent call last):
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\db\backends\sqlite3\base.py", line 328, in execute
+    return super().execute(query, params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+sqlite3.OperationalError: no such table: tours_tourpackage
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\projects\Tourism\project\core\views.py", line 31, in home
+    'total_tours': TourPackage.objects.filter(is_active=True).count(),
+                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\db\models\query.py", line 608, in count
+    return self.query.get_count(using=self.db)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\db\models\sql\query.py", line 568, in get_count
+    return obj.get_aggregation(using, {"__count": Count("*")})["__count"]
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\db\models\sql\query.py", line 554, in get_aggregation
+    result = compiler.execute_sql(SINGLE)
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\db\models\sql\compiler.py", line 1562, in execute_sql
+    cursor.execute(sql, params)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\db\backends\utils.py", line 102, in execute
+    return super().execute(sql, params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\db\backends\utils.py", line 67, in execute
+    return self._execute_with_wrappers(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        sql, params, many=False, executor=self._execute
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\db\backends\utils.py", line 80, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\db\backends\utils.py", line 84, in _execute
+    with self.db.wrap_database_errors:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\db\backends\sqlite3\base.py", line 328, in execute
+    return super().execute(query, params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+django.db.utils.OperationalError: no such table: tours_tourpackage
+ERROR 2025-08-07 10:36:58,082 basehttp 14216 13928 "GET / HTTP/1.1" 500 137971
+INFO 2025-08-07 10:37:47,441 autoreload 7248 2060 Watching for file changes with StatReloader
+ERROR 2025-08-07 10:37:51,658 log 7248 14272 Internal Server Error: /
+Traceback (most recent call last):
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\db\backends\sqlite3\base.py", line 328, in execute
+    return super().execute(query, params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+sqlite3.OperationalError: no such table: tours_tourpackage
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\projects\Tourism\project\core\views.py", line 31, in home
+    'total_tours': TourPackage.objects.filter(is_active=True).count(),
+                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\db\models\query.py", line 608, in count
+    return self.query.get_count(using=self.db)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\db\models\sql\query.py", line 568, in get_count
+    return obj.get_aggregation(using, {"__count": Count("*")})["__count"]
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\db\models\sql\query.py", line 554, in get_aggregation
+    result = compiler.execute_sql(SINGLE)
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\db\models\sql\compiler.py", line 1562, in execute_sql
+    cursor.execute(sql, params)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\db\backends\utils.py", line 102, in execute
+    return super().execute(sql, params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\db\backends\utils.py", line 67, in execute
+    return self._execute_with_wrappers(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        sql, params, many=False, executor=self._execute
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\db\backends\utils.py", line 80, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\db\backends\utils.py", line 84, in _execute
+    with self.db.wrap_database_errors:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\db\backends\sqlite3\base.py", line 328, in execute
+    return super().execute(query, params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+django.db.utils.OperationalError: no such table: tours_tourpackage
+ERROR 2025-08-07 10:37:51,691 basehttp 7248 14272 "GET / HTTP/1.1" 500 137971
+INFO 2025-08-07 10:41:50,354 autoreload 13864 11212 Watching for file changes with StatReloader
+ERROR 2025-08-07 10:42:00,293 log 13864 13440 Internal Server Error: /
+Traceback (most recent call last):
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\db\backends\sqlite3\base.py", line 328, in execute
+    return super().execute(query, params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+sqlite3.OperationalError: no such table: accounts_customuser
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\projects\Tourism\project\core\views.py", line 44, in home
+    return render(request, 'core/home.html', context)
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\backends\django.py", line 61, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\base.py", line 175, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\test\utils.py", line 112, in instrumented_test_render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\loader_tags.py", line 157, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\test\utils.py", line 112, in instrumented_test_render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\loader_tags.py", line 63, in render
+    result = block.nodelist.render(context)
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\defaulttags.py", line 194, in render
+    len_values = len(values)
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\db\models\query.py", line 380, in __len__
+    self._fetch_all()
+    ~~~~~~~~~~~~~~~^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\db\models\query.py", line 1881, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\db\models\query.py", line 91, in __iter__
+    results = compiler.execute_sql(
+        chunked_fetch=self.chunked_fetch, chunk_size=self.chunk_size
+    )
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\db\models\sql\compiler.py", line 1562, in execute_sql
+    cursor.execute(sql, params)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\db\backends\utils.py", line 102, in execute
+    return super().execute(sql, params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\db\backends\utils.py", line 67, in execute
+    return self._execute_with_wrappers(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        sql, params, many=False, executor=self._execute
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\db\backends\utils.py", line 80, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\db\backends\utils.py", line 84, in _execute
+    with self.db.wrap_database_errors:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\db\backends\sqlite3\base.py", line 328, in execute
+    return super().execute(query, params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+django.db.utils.OperationalError: no such table: accounts_customuser
+ERROR 2025-08-07 10:42:00,328 basehttp 13864 13440 "GET / HTTP/1.1" 500 275103
+INFO 2025-08-07 10:46:59,396 autoreload 13144 7308 Watching for file changes with StatReloader
+INFO 2025-08-07 10:50:17,980 autoreload 10912 10672 Watching for file changes with StatReloader
+INFO 2025-08-07 10:51:52,230 autoreload 6416 10668 Watching for file changes with StatReloader
+INFO 2025-08-07 10:51:57,841 basehttp 6416 12956 "GET / HTTP/1.1" 200 19666
+INFO 2025-08-07 10:52:34,043 basehttp 6416 12956 "GET / HTTP/1.1" 200 19666
+ERROR 2025-08-07 10:52:35,324 log 6416 12956 Internal Server Error: /parks/
+Traceback (most recent call last):
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\projects\Tourism\project\parks\views.py", line 43, in park_list
+    return render(request, 'parks/park_list.html', context)
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: parks/park_list.html
+ERROR 2025-08-07 10:52:35,330 basehttp 6416 12956 "GET /parks/ HTTP/1.1" 500 93087
+ERROR 2025-08-07 10:53:04,725 log 6416 12956 Internal Server Error: /tours/
+Traceback (most recent call last):
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\projects\Tourism\project\tours\views.py", line 74, in tour_list
+    return render(request, 'tours/tour_list.html', context)
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: tours/tour_list.html
+ERROR 2025-08-07 10:53:04,731 basehttp 6416 12956 "GET /tours/ HTTP/1.1" 500 93861
+ERROR 2025-08-07 10:53:17,270 log 6416 12956 Internal Server Error: /reviews/
+Traceback (most recent call last):
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\core\handlers\base.py", line 220, in _get_response
+    response = response.render()
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\response.py", line 114, in render
+    self.content = self.rendered_content
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\response.py", line 90, in rendered_content
+    template = self.resolve_template(self.template_name)
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\response.py", line 72, in resolve_template
+    return select_template(template, using=self.using)
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\loader.py", line 47, in select_template
+    raise TemplateDoesNotExist(", ".join(template_name_list), chain=chain)
+django.template.exceptions.TemplateDoesNotExist: reviews/review_list.html, reviews/review_list.html
+ERROR 2025-08-07 10:53:17,276 basehttp 6416 12956 "GET /reviews/ HTTP/1.1" 500 93955
+ERROR 2025-08-07 10:53:31,691 log 6416 12956 Internal Server Error: /about/
+Traceback (most recent call last):
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\projects\Tourism\project\core\views.py", line 48, in about
+    return render(request, 'core/about.html')
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: core/about.html
+ERROR 2025-08-07 10:53:31,700 basehttp 6416 12956 "GET /about/ HTTP/1.1" 500 90812
+ERROR 2025-08-07 10:54:11,546 log 6416 12956 Internal Server Error: /parks/
+Traceback (most recent call last):
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\projects\Tourism\project\parks\views.py", line 43, in park_list
+    return render(request, 'parks/park_list.html', context)
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: parks/park_list.html
+ERROR 2025-08-07 10:54:11,551 basehttp 6416 12956 "GET /parks/ HTTP/1.1" 500 93087
+ERROR 2025-08-07 10:54:18,612 log 6416 12956 Internal Server Error: /search/
+Traceback (most recent call last):
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\projects\Tourism\project\core\views.py", line 68, in search
+    return render(request, 'core/search.html', {
+        'query': query,
+    ...<2 lines>...
+        'total_results': 0,
+    })
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: core/search.html
+ERROR 2025-08-07 10:54:18,620 basehttp 6416 12956 "GET /search/?q= HTTP/1.1" 500 91469
+ERROR 2025-08-07 10:54:27,464 log 6416 12956 Internal Server Error: /accounts/login/
+Traceback (most recent call last):
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\projects\Tourism\project\accounts\views.py", line 87, in user_login
+    return render(request, 'accounts/login.html', {'form': form})
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: accounts/login.html
+ERROR 2025-08-07 10:54:27,469 basehttp 6416 12956 "GET /accounts/login/ HTTP/1.1" 500 91583
+ERROR 2025-08-07 10:54:45,052 log 6416 12956 Internal Server Error: /accounts/register/
+Traceback (most recent call last):
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\core\handlers\base.py", line 220, in _get_response
+    response = response.render()
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\response.py", line 114, in render
+    self.content = self.rendered_content
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\response.py", line 90, in rendered_content
+    template = self.resolve_template(self.template_name)
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\response.py", line 72, in resolve_template
+    return select_template(template, using=self.using)
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\loader.py", line 47, in select_template
+    raise TemplateDoesNotExist(", ".join(template_name_list), chain=chain)
+django.template.exceptions.TemplateDoesNotExist: accounts/register.html
+ERROR 2025-08-07 10:54:45,060 basehttp 6416 12956 "GET /accounts/register/ HTTP/1.1" 500 90673
+WARNING 2025-08-07 10:55:13,050 log 6416 12956 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-07 10:55:13,052 basehttp 6416 12956 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 5399

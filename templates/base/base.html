@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{{ site_settings.site_name|default:"Tanzania Safari Adventures" }}{% endblock %}</title>
+    
+    <!-- Meta Tags -->
+    <meta name="description" content="{% block meta_description %}{{ site_settings.site_description|default:'Discover the beauty of Tanzania\'s national parks and wildlife with our expert-guided safari tours.' }}{% endblock %}">
+    <meta name="keywords" content="{% block meta_keywords %}Tanzania, Safari, National Parks, Wildlife, Tours, Serengeti, Ngorongoro, Kilimanjaro{% endblock %}">
+    <meta name="author" content="Tanzania Safari Adventures">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="{% block og_title %}{{ site_settings.site_name|default:'Tanzania Safari Adventures' }}{% endblock %}">
+    <meta property="og:description" content="{% block og_description %}{{ site_settings.site_description|default:'Discover Tanzania\'s wildlife' }}{% endblock %}">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{{ request.build_absolute_uri }}">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <style>
+        :root {
+            --primary-color: #d4a574;
+            --secondary-color: #8b4513;
+            --accent-color: #ff6b35;
+            --success-color: #28a745;
+            --warning-color: #ffc107;
+            --danger-color: #dc3545;
+            --dark-color: #2c3e50;
+            --light-color: #f8f9fa;
+            --text-dark: #2c3e50;
+            --text-muted: #6c757d;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+        }
+        
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: var(--primary-color) !important;
+        }
+        
+        .btn-primary {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+            font-weight: 500;
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--secondary-color);
+            border-color: var(--secondary-color);
+        }
+        
+        .btn-outline-primary {
+            color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+        
+        .btn-outline-primary:hover {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+        
+        .text-primary {
+            color: var(--primary-color) !important;
+        }
+        
+        .bg-primary {
+            background-color: var(--primary-color) !important;
+        }
+        
+        .hero-section {
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.pexels.com/photos/631317/pexels-photo-631317.jpeg');
+            background-size: cover;
+            background-position: center;
+            min-height: 70vh;
+            display: flex;
+            align-items: center;
+            color: white;
+        }
+        
+        .card {
+            border: none;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+        }
+        
+        .footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 3rem 0 1rem;
+        }
+        
+        .footer a {
+            color: #adb5bd;
+            text-decoration: none;
+        }
+        
+        .footer a:hover {
+            color: var(--primary-color);
+        }
+        
+        .star-rating {
+            color: #ffc107;
+        }
+        
+        .price-tag {
+            background-color: var(--accent-color);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            font-weight: 600;
+        }
+        
+        .badge-custom {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .section-title {
+            position: relative;
+            margin-bottom: 3rem;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background-color: var(--primary-color);
+        }
+        
+        .navbar-nav .nav-link {
+            font-weight: 500;
+            margin: 0 0.5rem;
+            transition: color 0.3s ease;
+        }
+        
+        .navbar-nav .nav-link:hover {
+            color: var(--primary-color) !important;
+        }
+        
+        .form-control:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 0.2rem rgba(212, 165, 116, 0.25);
+        }
+        
+        .alert-success {
+            background-color: #d4edda;
+            border-color: #c3e6cb;
+            color: #155724;
+        }
+        
+        .alert-danger {
+            background-color: #f8d7da;
+            border-color: #f5c6cb;
+            color: #721c24;
+        }
+        
+        .alert-warning {
+            background-color: #fff3cd;
+            border-color: #ffeaa7;
+            color: #856404;
+        }
+        
+        .alert-info {
+            background-color: #d1ecf1;
+            border-color: #bee5eb;
+            color: #0c5460;
+        }
+        
+        @media (max-width: 768px) {
+            .hero-section {
+                min-height: 50vh;
+                text-align: center;
+            }
+            
+            .hero-section h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+    
+    {% block extra_css %}{% endblock %}
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="{% url 'core:home' %}">
+                <i class="fas fa-mountain text-primary me-2"></i>
+                Tanzania Safari
+            </a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'core:home' %}">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'parks:park_list' %}">National Parks</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'tours:tour_list' %}">Safari Tours</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'reviews:review_list' %}">Reviews</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'core:about' %}">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'core:contact' %}">Contact</a>
+                    </li>
+                </ul>
+                
+                <!-- Search Form -->
+                <form class="d-flex me-3" method="GET" action="{% url 'core:search' %}">
+                    <input class="form-control me-2" type="search" name="q" placeholder="Search tours, parks..." value="{{ request.GET.q }}">
+                    <button class="btn btn-outline-primary" type="submit">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </form>
+                
+                <!-- User Menu -->
+                <ul class="navbar-nav">
+                    {% if user.is_authenticated %}
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown">
+                                <i class="fas fa-user me-1"></i>
+                                {{ user.get_display_name }}
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="{% url 'accounts:dashboard' %}">
+                                    <i class="fas fa-tachometer-alt me-2"></i>Dashboard
+                                </a></li>
+                                <li><a class="dropdown-item" href="{% url 'bookings:booking_list' %}">
+                                    <i class="fas fa-calendar-check me-2"></i>My Bookings
+                                </a></li>
+                                <li><a class="dropdown-item" href="{% url 'accounts:profile_update' %}">
+                                    <i class="fas fa-user-edit me-2"></i>Profile
+                                </a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="{% url 'accounts:logout' %}">
+                                    <i class="fas fa-sign-out-alt me-2"></i>Logout
+                                </a></li>
+                            </ul>
+                        </li>
+                    {% else %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'accounts:login' %}">Login</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="btn btn-primary ms-2" href="{% url 'accounts:register' %}">Sign Up</a>
+                        </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Messages -->
+    {% if messages %}
+        <div class="container mt-3">
+            {% for message in messages %}
+                <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                    {{ message }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+
+    <!-- Main Content -->
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <h5 class="text-primary mb-3">Tanzania Safari Adventures</h5>
+                    <p class="mb-3">Experience the magic of Tanzania's wildlife and landscapes with our expert-guided safari tours. From the Serengeti to Kilimanjaro, we make your African dreams come true.</p>
+                    <div class="social-links">
+                        <a href="#" class="me-3"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="me-3"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="me-3"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="me-3"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <h6 class="text-primary mb-3">Quick Links</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="{% url 'core:home' %}">Home</a></li>
+                        <li><a href="{% url 'parks:park_list' %}">National Parks</a></li>
+                        <li><a href="{% url 'tours:tour_list' %}">Safari Tours</a></li>
+                        <li><a href="{% url 'core:about' %}">About Us</a></li>
+                        <li><a href="{% url 'core:contact' %}">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <h6 class="text-primary mb-3">Destinations</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="#">Serengeti</a></li>
+                        <li><a href="#">Ngorongoro</a></li>
+                        <li><a href="#">Kilimanjaro</a></li>
+                        <li><a href="#">Zanzibar</a></li>
+                        <li><a href="#">Tarangire</a></li>
+                    </ul>
+                </div>
+                
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <h6 class="text-primary mb-3">Support</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="{% url 'core:faq' %}">FAQ</a></li>
+                        <li><a href="{% url 'core:privacy_policy' %}">Privacy Policy</a></li>
+                        <li><a href="{% url 'core:terms_of_service' %}">Terms of Service</a></li>
+                        <li><a href="#">Travel Insurance</a></li>
+                        <li><a href="#">Visa Information</a></li>
+                    </ul>
+                </div>
+                
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <h6 class="text-primary mb-3">Contact Info</h6>
+                    <ul class="list-unstyled">
+                        <li><i class="fas fa-phone me-2"></i>+255 123 456 789</li>
+                        <li><i class="fas fa-envelope me-2"></i>info@tanzaniasafari.com</li>
+                        <li><i class="fas fa-map-marker-alt me-2"></i>Arusha, Tanzania</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <hr class="my-4">
+            
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <p class="mb-0">&copy; 2024 Tanzania Safari Adventures. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <p class="mb-0">Made with <i class="fas fa-heart text-danger"></i> in Tanzania</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Custom JavaScript -->
+    <script>
+        // Newsletter signup
+        function subscribeNewsletter() {
+            const email = document.getElementById('newsletter-email').value;
+            if (!email) {
+                alert('Please enter your email address');
+                return;
+            }
+            
+            fetch('{% url "core:newsletter_signup" %}', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                    'X-CSRFToken': '{{ csrf_token }}'
+                },
+                body: 'email=' + encodeURIComponent(email)
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    alert(data.message);
+                    document.getElementById('newsletter-email').value = '';
+                } else {
+                    alert(data.message);
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('An error occurred. Please try again.');
+            });
+        }
+        
+        // Auto-hide alerts after 5 seconds
+        setTimeout(function() {
+            const alerts = document.querySelectorAll('.alert');
+            alerts.forEach(function(alert) {
+                const bsAlert = new bootstrap.Alert(alert);
+                bsAlert.close();
+            });
+        }, 5000);
+    </script>
+    
+    {% block extra_js %}{% endblock %}
+</body>
+</html>
