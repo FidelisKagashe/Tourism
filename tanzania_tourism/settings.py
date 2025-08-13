@@ -167,16 +167,14 @@ REST_FRAMEWORK = {
 }
 
 # Email Configuration
-# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'  # Development
-# if not DEBUG:
-#     EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-#     EMAIL_HOST = config('EMAIL_HOST')
-#     EMAIL_PORT = config('EMAIL_PORT', cast=int)
-#     EMAIL_USE_TLS = config('EMAIL_USE_TLS', cast=bool)
-#     EMAIL_HOST_USER = config('EMAIL_HOST_USER')
-#     EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'hazinayavitabu@gmail.com'  # Replace with actual email
+EMAIL_HOST_PASSWORD = 'ntdq dsqp jwti niks'  # Replace with actual password or app-specific password
+SITE_URL = "http://localhost:8000"  # Update this to your site URL
 
-# DEFAULT_FROM_EMAIL = config('DEFAULT_FROM_EMAIL', default='noreply@tanzaniasafari.com')
 
 # Celery Configuration
 CELERY_BROKER_URL = config('CELERY_BROKER_URL', default='redis://localhost:6379/0')
