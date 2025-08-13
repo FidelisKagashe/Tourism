@@ -1,0 +1,158 @@
+{% extends 'base/base.html' %}
+{% load i18n %}
+{% load crispy_forms_tags %}
+
+{% block title %}{% trans "Contact Us" %} - Tanzania Safari Adventures{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="hero-section" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.pexels.com/photos/1170986/pexels-photo-1170986.jpeg');">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+                <h1 class="display-4 fw-bold mb-4">{% trans "Contact Us" %}</h1>
+                <p class="lead">{% trans "Get in touch with our safari experts" %}</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Contact Content -->
+<section class="py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 mb-5">
+                <div class="card border-0 shadow">
+                    <div class="card-body p-5">
+                        <h3 class="mb-4">{% trans "Send us a Message" %}</h3>
+                        {% crispy form %}
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-4">
+                <div class="card border-0 shadow mb-4">
+                    <div class="card-body p-4">
+                        <h5 class="mb-4">{% trans "Contact Information" %}</h5>
+                        
+                        <div class="d-flex mb-3">
+                            <i class="fas fa-map-marker-alt text-primary me-3 mt-1"></i>
+                            <div>
+                                <h6>{% trans "Address" %}</h6>
+                                <p class="text-muted mb-0">Arusha, Tanzania<br>East Africa</p>
+                            </div>
+                        </div>
+                        
+                        <div class="d-flex mb-3">
+                            <i class="fas fa-phone text-primary me-3 mt-1"></i>
+                            <div>
+                                <h6>{% trans "Phone" %}</h6>
+                                <p class="text-muted mb-0">+255 123 456 789</p>
+                            </div>
+                        </div>
+                        
+                        <div class="d-flex mb-3">
+                            <i class="fas fa-envelope text-primary me-3 mt-1"></i>
+                            <div>
+                                <h6>{% trans "Email" %}</h6>
+                                <p class="text-muted mb-0">info@tanzaniasafari.com</p>
+                            </div>
+                        </div>
+                        
+                        <div class="d-flex">
+                            <i class="fas fa-clock text-primary me-3 mt-1"></i>
+                            <div>
+                                <h6>{% trans "Business Hours" %}</h6>
+                                <p class="text-muted mb-0">
+                                    {% trans "Mon - Fri: 8:00 AM - 6:00 PM" %}<br>
+                                    {% trans "Sat: 9:00 AM - 4:00 PM" %}<br>
+                                    {% trans "Sun: Closed" %}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card border-0 shadow">
+                    <div class="card-body p-4">
+                        <h5 class="mb-4">{% trans "Emergency Contact" %}</h5>
+                        <div class="alert alert-warning">
+                            <i class="fas fa-exclamation-triangle me-2"></i>
+                            <strong>{% trans "24/7 Emergency Line" %}</strong><br>
+                            +255 987 654 321
+                        </div>
+                        <p class="text-muted small">{% trans "For emergencies during your safari, please call our 24/7 emergency line." %}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FAQ Section -->
+<section class="py-5 bg-light">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="section-title">{% trans "Frequently Asked Questions" %}</h2>
+        </div>
+        
+        <div class="row">
+            <div class="col-lg-8 mx-auto">
+                <div class="accordion" id="faqAccordion">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="faq1">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse1">
+                                {% trans "What is the best time to visit Tanzania?" %}
+                            </button>
+                        </h2>
+                        <div id="collapse1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                {% trans "The best time to visit Tanzania depends on what you want to see. For the Great Migration, visit from June to October. For fewer crowds and green landscapes, visit during the short rains (November-December) or long rains (March-May)." %}
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="faq2">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse2">
+                                {% trans "Do I need a visa to visit Tanzania?" %}
+                            </button>
+                        </h2>
+                        <div id="collapse2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                {% trans "Most visitors need a visa to enter Tanzania. You can obtain a visa on arrival at the airport or apply online in advance. US citizens pay $100, while most other nationalities pay $50." %}
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="faq3">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse3">
+                                {% trans "What vaccinations do I need?" %}
+                            </button>
+                        </h2>
+                        <div id="collapse3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                {% trans "Yellow fever vaccination is required if coming from a yellow fever endemic area. We recommend consulting with a travel medicine specialist for malaria prophylaxis and other recommended vaccinations." %}
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="faq4">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse4">
+                                {% trans "What should I pack for a safari?" %}
+                            </button>
+                        </h2>
+                        <div id="collapse4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                {% trans "Pack neutral-colored clothing, a hat, sunglasses, sunscreen, insect repellent, comfortable walking shoes, and a good camera with extra batteries. We'll provide a detailed packing list upon booking." %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

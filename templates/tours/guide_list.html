@@ -1,0 +1,154 @@
+{% extends 'base/base.html' %}
+{% load i18n %}
+
+{% block title %}{% trans "Tour Guides" %} - Tanzania Safari Adventures{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="hero-section" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.pexels.com/photos/1170986/pexels-photo-1170986.jpeg');">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+                <h1 class="display-4 fw-bold mb-4">{% trans "Professional Tour Guides" %}</h1>
+                <p class="lead">{% trans "Meet our certified and experienced safari guides" %}</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Filters -->
+<section class="py-4 bg-light">
+    <div class="container">
+        <form method="GET" class="row g-3 align-items-end">
+            <div class="col-md-3">
+                <label class="form-label">{% trans "Certification" %}</label>
+                <select name="certification" class="form-select">
+                    <option value="">{% trans "All Levels" %}</option>
+                    <option value="basic" {% if current_certification == 'basic' %}selected{% endif %}>{% trans "Basic Certified" %}</option>
+                    <option value="advanced" {% if current_certification == 'advanced' %}selected{% endif %}>{% trans "Advanced Certified" %}</option>
+                    <option value="specialist" {% if current_certification == 'specialist' %}selected{% endif %}>{% trans "Specialist" %}</option>
+                    <option value="master" {% if current_certification == 'master' %}selected{% endif %}>{% trans "Master Guide" %}</option>
+                </select>
+            </div>
+            <div class="col-md-3">
+                <label class="form-label">{% trans "Specialization" %}</label>
+                <input type="text" name="specialization" class="form-control" placeholder="{% trans 'e.g., Wildlife, Culture' %}" value="{{ current_specialization }}">
+            </div>
+            <div class="col-md-2">
+                <label class="form-label">{% trans "Sort by" %}</label>
+                <select name="sort" class="form-select">
+                    <option value="rating" {% if current_sort == 'rating' %}selected{% endif %}>{% trans "Rating" %}</option>
+                    <option value="experience" {% if current_sort == 'experience' %}selected{% endif %}>{% trans "Experience" %}</option>
+                    <option value="price_low" {% if current_sort == 'price_low' %}selected{% endif %}>{% trans "Price: Low to High" %}</option>
+                    <option value="price_high" {% if current_sort == 'price_high' %}selected{% endif %}>{% trans "Price: High to Low" %}</option>
+                </select>
+            </div>
+            <div class="col-md-2">
+                <button type="submit" class="btn btn-primary w-100">{% trans "Filter" %}</button>
+            </div>
+            <div class="col-md-2">
+                <input type="text" name="search" class="form-control" placeholder="{% trans 'Search guides...' %}" value="{{ search_query }}">
+            </div>
+        </form>
+    </div>
+</section>
+
+<!-- Guides Grid -->
+<section class="py-5">
+    <div class="container">
+        {% if page_obj %}
+            <div class="row">
+                {% for guide in page_obj %}
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="card h-100">
+                            <div class="card-body text-center">
+                                {% if guide.profile_photo %}
+                                    <img src="{{ guide.profile_photo.url }}" class="rounded-circle mb-3" 
+                                         style="width: 100px; height: 100px; object-fit: cover;" alt="{{ guide.get_full_name }}">
+                                {% else %}
+                                    <div class="bg-primary rounded-circle mx-auto mb-3 d-flex align-items-center justify-content-center" 
+                                         style="width: 100px; height: 100px;">
+                                        <i class="fas fa-user fa-3x text-white"></i>
+                                    </div>
+                                {% endif %}
+                                
+                                <h5 class="card-title">{{ guide.get_full_name }}</h5>
+                                <p class="text-primary mb-2">{{ guide.get_certification_level_display }}</p>
+                                <p class="text-muted mb-3">{{ guide.years_of_experience }} {% trans "years experience" %}</p>
+                                
+                                <div class="star-rating mb-3">
+                                    {% for i in "12345" %}
+                                        {% if forloop.counter <= guide.average_rating %}
+                                            <i class="fas fa-star"></i>
+                                        {% else %}
+                                            <i class="far fa-star"></i>
+                                        {% endif %}
+                                    {% endfor %}
+                                    <small class="text-muted ms-1">({{ guide.total_reviews }})</small>
+                                </div>
+                                
+                                <p class="card-text">{{ guide.bio|truncatewords:15 }}</p>
+                                
+                                <div class="mb-3">
+                                    <small class="text-muted">{% trans "Specializations:" %}</small><br>
+                                    <span class="badge bg-secondary">{{ guide.specializations|truncatewords:3 }}</span>
+                                </div>
+                                
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="price-tag">
+                                        ${{ guide.daily_rate_usd|floatformat:0 }}/{% trans "day" %}
+                                    </div>
+                                    <a href="{% url 'tours:guide_detail' guide.pk %}" class="btn btn-primary btn-sm">
+                                        {% trans "View Profile" %}
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+            
+            <!-- Pagination -->
+            {% if page_obj.has_other_pages %}
+                <nav aria-label="Guides pagination" class="mt-5">
+                    <ul class="pagination justify-content-center">
+                        {% if page_obj.has_previous %}
+                            <li class="page-item">
+                                <a class="page-link" href="?page={{ page_obj.previous_page_number }}{% if current_certification %}&certification={{ current_certification }}{% endif %}{% if current_specialization %}&specialization={{ current_specialization }}{% endif %}{% if current_sort %}&sort={{ current_sort }}{% endif %}{% if search_query %}&search={{ search_query }}{% endif %}">
+                                    {% trans "Previous" %}
+                                </a>
+                            </li>
+                        {% endif %}
+                        
+                        {% for num in page_obj.paginator.page_range %}
+                            {% if page_obj.number == num %}
+                                <li class="page-item active">
+                                    <span class="page-link">{{ num }}</span>
+                                </li>
+                            {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+                                <li class="page-item">
+                                    <a class="page-link" href="?page={{ num }}{% if current_certification %}&certification={{ current_certification }}{% endif %}{% if current_specialization %}&specialization={{ current_specialization }}{% endif %}{% if current_sort %}&sort={{ current_sort }}{% endif %}{% if search_query %}&search={{ search_query }}{% endif %}">{{ num }}</a>
+                                </li>
+                            {% endif %}
+                        {% endfor %}
+                        
+                        {% if page_obj.has_next %}
+                            <li class="page-item">
+                                <a class="page-link" href="?page={{ page_obj.next_page_number }}{% if current_certification %}&certification={{ current_certification }}{% endif %}{% if current_specialization %}&specialization={{ current_specialization }}{% endif %}{% if current_sort %}&sort={{ current_sort }}{% endif %}{% if search_query %}&search={{ search_query }}{% endif %}">
+                                    {% trans "Next" %}
+                                </a>
+                            </li>
+                        {% endif %}
+                    </ul>
+                </nav>
+            {% endif %}
+        {% else %}
+            <div class="text-center py-5">
+                <i class="fas fa-user-tie fa-4x text-muted mb-4"></i>
+                <h3>{% trans "No guides found" %}</h3>
+                <p class="text-muted">{% trans "Try adjusting your search criteria" %}</p>
+            </div>
+        {% endif %}
+    </div>
+</section>
+{% endblock %}

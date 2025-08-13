@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -26,9 +27,9 @@
     <!-- Custom CSS -->
     <style>
         :root {
-            --primary-color: #d4a574;
-            --secondary-color: #8b4513;
-            --accent-color: #ff6b35;
+            --primary-color: #C18D45;
+            --secondary-color: #715F3C;
+            --accent-color: #237D26;
             --success-color: #28a745;
             --warning-color: #ffc107;
             --danger-color: #dc3545;
@@ -197,6 +198,18 @@
                 font-size: 2rem;
             }
         }
+        .site-logo {
+            height: 70px;
+            width: auto;
+            object-fit: contain;
+            }
+
+            /* mobile — change breakpoint if you prefer (576px = Bootstrap sm) */
+            @media (max-width: 576px) {
+            .site-logo {
+                height: 50px;
+            }
+        }
     </style>
     
     {% block extra_css %}{% endblock %}
@@ -204,10 +217,12 @@
 <body>
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top">
-        <div class="container">
-            <a class="navbar-brand" href="{% url 'core:home' %}">
-                <i class="fas fa-mountain text-primary me-2"></i>
-                Tanzania Safari
+        <div class="container-fluid">
+            <a class="navbar-brand d-flex align-items-center" href="{% url 'core:home' %}">
+                <img src="{% static 'images/logo.png' %}" alt="logo" class="me-2 site-logo">
+                <span class="brand-name">
+                    <span style="font-size:0.85rem; font-weight:700;">SAFARI&nbsp;&amp;&nbsp;BUSH RETREATS</span>
+                </span>
             </a>
             
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -227,6 +242,50 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'reviews:review_list' %}">Reviews</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="destinationsDropdown" role="button" data-bs-toggle="dropdown">
+                            Destinations
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="{% url 'parks:destination_list' %}">
+                                <i class="fas fa-map-marker-alt me-2"></i>All Destinations
+                            </a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><h6 class="dropdown-header">By Category</h6></li>
+                            <li><a class="dropdown-item" href="{% url 'parks:destination_list' %}?type=wildlife_area">
+                                <i class="fas fa-paw me-2"></i>Wildlife Areas
+                            </a></li>
+                            <li><a class="dropdown-item" href="{% url 'parks:destination_list' %}?type=viewpoint">
+                                <i class="fas fa-mountain me-2"></i>Viewpoints
+                            </a></li>
+                            <li><a class="dropdown-item" href="{% url 'parks:destination_list' %}?type=waterfall">
+                                <i class="fas fa-tint me-2"></i>Waterfalls
+                            </a></li>
+                            <li><a class="dropdown-item" href="{% url 'parks:destination_list' %}?type=lake">
+                                <i class="fas fa-water me-2"></i>Lakes
+                            </a></li>
+                            <li><a class="dropdown-item" href="{% url 'parks:destination_list' %}?type=beach">
+                                <i class="fas fa-umbrella-beach me-2"></i>Beaches
+                            </a></li>
+                            <li><a class="dropdown-item" href="{% url 'parks:destination_list' %}?type=cultural_site">
+                                <i class="fas fa-users me-2"></i>Cultural Sites
+                            </a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><h6 class="dropdown-header">Special Collections</h6></li>
+                            <li><a class="dropdown-item" href="{% url 'parks:wildlife_list' %}">
+                                <i class="fas fa-binoculars me-2"></i>Wildlife Species
+                            </a></li>
+                            <li><a class="dropdown-item" href="{% url 'parks:wildlife_list' %}?big_five=true">
+                                <i class="fas fa-crown me-2"></i>Big Five
+                            </a></li>
+                            <li><a class="dropdown-item" href="{% url 'core:historical_sites_list' %}">
+                                <i class="fas fa-landmark me-2"></i>Historical Sites
+                            </a></li>
+                            <li><a class="dropdown-item" href="{% url 'tours:guide_list' %}">
+                                <i class="fas fa-user-tie me-2"></i>Tour Guides
+                            </a></li>
+                        </ul>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'core:about' %}">About</a>
@@ -306,10 +365,10 @@
                     <h5 class="text-primary mb-3">Tanzania Safari Adventures</h5>
                     <p class="mb-3">Experience the magic of Tanzania's wildlife and landscapes with our expert-guided safari tours. From the Serengeti to Kilimanjaro, we make your African dreams come true.</p>
                     <div class="social-links">
-                        <a href="#" class="me-3"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" class="me-3"><i class="fab fa-twitter"></i></a>
-                        <a href="#" class="me-3"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="me-3"><i class="fab fa-youtube"></i></a>
+                        {% if site_settings.facebook_url %}<a href="{{ site_settings.facebook_url }}" class="me-3"><i class="fab fa-facebook-f"></i></a>{% endif %}
+                        {% if site_settings.twitter_url %}<a href="{{ site_settings.twitter_url }}" class="me-3"><i class="fab fa-twitter"></i></a>{% endif %}
+                        {% if site_settings.instagram_url %}<a href="{{ site_settings.instagram_url }}" class="me-3"><i class="fab fa-instagram"></i></a>{% endif %}
+                        {% if site_settings.youtube_url %}<a href="{{ site_settings.youtube_url }}" class="me-3"><i class="fab fa-youtube"></i></a>{% endif %}
                     </div>
                 </div>
                 
@@ -327,11 +386,10 @@
                 <div class="col-lg-2 col-md-6 mb-4">
                     <h6 class="text-primary mb-3">Destinations</h6>
                     <ul class="list-unstyled">
-                        <li><a href="#">Serengeti</a></li>
-                        <li><a href="#">Ngorongoro</a></li>
-                        <li><a href="#">Kilimanjaro</a></li>
-                        <li><a href="#">Zanzibar</a></li>
-                        <li><a href="#">Tarangire</a></li>
+                        <li><a href="{% url 'parks:destination_list' %}">All Destinations</a></li>
+                        <li><a href="{% url 'parks:wildlife_list' %}">Wildlife</a></li>
+                        <li><a href="{% url 'core:historical_sites_list' %}">Historical Sites</a></li>
+                        <li><a href="{% url 'parks:park_list' %}">National Parks</a></li>
                     </ul>
                 </div>
                 
@@ -349,9 +407,9 @@
                 <div class="col-lg-2 col-md-6 mb-4">
                     <h6 class="text-primary mb-3">Contact Info</h6>
                     <ul class="list-unstyled">
-                        <li><i class="fas fa-phone me-2"></i>+255 123 456 789</li>
-                        <li><i class="fas fa-envelope me-2"></i>info@tanzaniasafari.com</li>
-                        <li><i class="fas fa-map-marker-alt me-2"></i>Arusha, Tanzania</li>
+                        <li><i class="fas fa-phone me-2"></i>{{ site_settings.contact_phone|default:"+255 123 456 789" }}</li>
+                        <li><i class="fas fa-envelope me-2"></i>{{ site_settings.contact_email|default:"info@tanzaniasafari.com" }}</li>
+                        <li><i class="fas fa-map-marker-alt me-2"></i>{{ site_settings.address|default:"Arusha, Tanzania" }}</li>
                     </ul>
                 </div>
             </div>
@@ -360,7 +418,7 @@
             
             <div class="row align-items-center">
                 <div class="col-md-6">
-                    <p class="mb-0">&copy; 2024 Tanzania Safari Adventures. All rights reserved.</p>
+                    <p class="mb-0">&copy; 2024 {{ site_settings.site_name|default:"Tanzania Safari Adventures" }}. All rights reserved.</p>
                 </div>
                 <div class="col-md-6 text-md-end">
                     <p class="mb-0">Made with <i class="fas fa-heart text-danger"></i> in Tanzania</p>

@@ -1,0 +1,34 @@
+{% extends 'base/base.html' %}
+{% load i18n %}
+
+{% block title %}{% trans "Terms of Service" %} - Tanzania Safari Adventures{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row">
+        <div class="col-lg-8 mx-auto">
+            <h1 class="mb-4">{% trans "Terms of Service" %}</h1>
+            <p class="text-muted mb-4">{% trans "Last updated: January 2024" %}</p>
+            
+            <div class="card border-0 shadow">
+                <div class="card-body p-5">
+                    <h3>{% trans "Acceptance of Terms" %}</h3>
+                    <p>{% trans "By accessing and using this website, you accept and agree to be bound by the terms and provision of this agreement." %}</p>
+                    
+                    <h3>{% trans "Booking Terms" %}</h3>
+                    <p>{% trans "All bookings are subject to availability and confirmation. Payment is required to secure your booking." %}</p>
+                    
+                    <h3>{% trans "Cancellation Policy" %}</h3>
+                    <p>{% trans "Cancellations made 30 days or more before departure: Full refund minus processing fee. Cancellations made 15-29 days before departure: 50% refund. Cancellations made less than 15 days before departure: No refund." %}</p>
+                    
+                    <h3>{% trans "Liability" %}</h3>
+                    <p>{% trans "Tanzania Safari Adventures acts as an agent for tour operators and is not liable for any loss, damage, or injury during tours." %}</p>
+                    
+                    <h3>{% trans "Changes to Terms" %}</h3>
+                    <p>{% trans "We reserve the right to modify these terms at any time. Changes will be effective immediately upon posting." %}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

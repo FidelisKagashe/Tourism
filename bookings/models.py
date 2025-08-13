@@ -118,7 +118,8 @@ class BookingPayment(models.Model):
         ('bank_transfer', 'Bank Transfer'),
         ('paypal', 'PayPal'),
         ('mpesa', 'M-Pesa'),
-        ('cash', 'Cash'),
+        ('cash', 'Cash Payment'),
+        ('cash_on_arrival', 'Cash on Arrival'),
     ]
     
     PAYMENT_STATUS = [

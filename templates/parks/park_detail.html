@@ -1,0 +1,306 @@
+{% extends 'base/base.html' %}
+{% load i18n %}
+
+{% block title %}{{ park.name }} - {% trans "National Park" %} - Tanzania Safari Adventures{% endblock %}
+
+{% block meta_description %}{{ park.short_description }}{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="hero-section" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('{% if park.main_image %}{{ park.main_image.url }}{% else %}https://images.pexels.com/photos/631317/pexels-photo-631317.jpeg{% endif %}');">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="d-flex align-items-center mb-3">
+                    <span class="badge badge-custom me-3">{{ park.get_park_type_display }}</span>
+                    {% if park.featured %}
+                        <span class="badge bg-warning text-dark">
+                            <i class="fas fa-star me-1"></i>{% trans "Featured" %}
+                        </span>
+                    {% endif %}
+                </div>
+                <h1 class="display-4 fw-bold mb-4">{{ park.name }}</h1>
+                <p class="lead mb-4">
+                    <i class="fas fa-map-marker-alt me-2"></i>{{ park.location }}, {{ park.region }}
+                </p>
+                <div class="d-flex flex-wrap gap-3">
+                    <a href="#tours" class="btn btn-primary btn-lg">
+                        <i class="fas fa-binoculars me-2"></i>{% trans "View Tours" %}
+                    </a>
+                    {% if user.is_authenticated %}
+                        <a href="{% url 'reviews:create_park_review' park.slug %}" class="btn btn-outline-light btn-lg">
+                            <i class="fas fa-star me-2"></i>{% trans "Write Review" %}
+                        </a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Park Info -->
+<section class="py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 mb-5">
+                <!-- Description -->
+                <div class="mb-5">
+                    <h2 class="mb-4">{% trans "About" %} {{ park.name }}</h2>
+                    <p class="lead">{{ park.short_description }}</p>
+                    <div class="mt-4">
+                        {{ park.description|linebreaks }}
+                    </div>
+                </div>
+                
+                <!-- Main Attractions -->
+                <div class="mb-5">
+                    <h3 class="mb-4">{% trans "Main Attractions" %}</h3>
+                    <div class="bg-light p-4 rounded">
+                        {{ park.main_attractions|linebreaks }}
+                    </div>
+                </div>
+                
+                <!-- Wildlife -->
+                {% if wildlife %}
+                    <div class="mb-5">
+                        <h3 class="mb-4">{% trans "Wildlife" %}</h3>
+                        <div class="row">
+                            {% for animal in wildlife %}
+                                <div class="col-md-6 col-lg-4 mb-3">
+                                    <div class="card h-100 border-0 bg-light">
+                                        <div class="card-body text-center">
+                                            {% if animal.main_image %}
+                                                <img src="{{ animal.main_image.url }}" class="rounded-circle mb-3" 
+                                                     style="width: 60px; height: 60px; object-fit: cover;" alt="{{ animal.common_name }}">
+                                            {% else %}
+                                                <div class="bg-primary rounded-circle mx-auto mb-3 d-flex align-items-center justify-content-center" 
+                                                     style="width: 60px; height: 60px;">
+                                                    <i class="fas fa-paw text-white"></i>
+                                                </div>
+                                            {% endif %}
+                                            <h6>{{ animal.common_name }}</h6>
+                                            {% if animal.is_big_five %}
+                                                <span class="badge bg-warning text-dark">{% trans "Big Five" %}</span>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                {% endif %}
+                
+                <!-- Destinations -->
+                {% if destinations %}
+                    <div class="mb-5">
+                        <h3 class="mb-4">{% trans "Key Destinations" %}</h3>
+                        <div class="row">
+                            {% for destination in destinations %}
+                                <div class="col-md-6 mb-4">
+                                    <div class="card h-100">
+                                        <img src="{% if destination.main_image %}{{ destination.main_image.url }}{% else %}https://images.pexels.com/photos/1170986/pexels-photo-1170986.jpeg{% endif %}" 
+                                             class="card-img-top" style="height: 200px; object-fit: cover;" alt="{{ destination.name }}">
+                                        <div class="card-body">
+                                            <h5 class="card-title">{{ destination.name }}</h5>
+                                            <p class="text-muted mb-2">{{ destination.get_destination_type_display }}</p>
+                                            <p class="card-text">{{ destination.short_description|truncatewords:20 }}</p>
+                                            <a href="{% url 'parks:destination_detail' destination.slug %}" class="btn btn-outline-primary btn-sm">
+                                                {% trans "Learn More" %}
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                {% endif %}
+            </div>
+            
+            <!-- Sidebar -->
+            <div class="col-lg-4">
+                <!-- Quick Info -->
+                <div class="card border-0 shadow mb-4">
+                    <div class="card-body">
+                        <h5 class="card-title mb-4">{% trans "Quick Info" %}</h5>
+                        
+                        <div class="d-flex justify-content-between mb-3">
+                            <span class="text-muted">{% trans "Area" %}:</span>
+                            <strong>{{ park.area_km2|floatformat:0 }} km²</strong>
+                        </div>
+                        
+                        <div class="d-flex justify-content-between mb-3">
+                            <span class="text-muted">{% trans "Established" %}:</span>
+                            <strong>{{ park.established_year }}</strong>
+                        </div>
+                        
+                        <div class="d-flex justify-content-between mb-3">
+                            <span class="text-muted">{% trans "Entry Fee" %}:</span>
+                            <strong>${{ park.entry_fee_non_resident|floatformat:0 }}</strong>
+                        </div>
+                        
+                        {% if park.elevation_min and park.elevation_max %}
+                            <div class="d-flex justify-content-between mb-3">
+                                <span class="text-muted">{% trans "Elevation" %}:</span>
+                                <strong>{{ park.elevation_min }}-{{ park.elevation_max }}m</strong>
+                            </div>
+                        {% endif %}
+                        
+                        <div class="d-flex justify-content-between">
+                            <span class="text-muted">{% trans "Difficulty" %}:</span>
+                            <span class="badge bg-secondary">{{ park.get_difficulty_level_display }}</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Best Time to Visit -->
+                <div class="card border-0 shadow mb-4">
+                    <div class="card-body">
+                        <h5 class="card-title mb-3">{% trans "Best Time to Visit" %}</h5>
+                        <p class="mb-0">{{ park.best_time_to_visit }}</p>
+                    </div>
+                </div>
+                
+                <!-- Facilities -->
+                {% if facilities %}
+                    <div class="card border-0 shadow mb-4">
+                        <div class="card-body">
+                            <h5 class="card-title mb-3">{% trans "Facilities" %}</h5>
+                            {% for facility in facilities %}
+                                <div class="d-flex align-items-center mb-2">
+                                    <i class="fas fa-check-circle text-success me-2"></i>
+                                    <span>{{ facility.name }}</span>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                {% endif %}
+                
+                <!-- Contact Info -->
+                <div class="card border-0 shadow">
+                    <div class="card-body">
+                        <h5 class="card-title mb-3">{% trans "Need Help?" %}</h5>
+                        <p class="text-muted mb-3">{% trans "Contact our safari experts for personalized recommendations" %}</p>
+                        <a href="{% url 'core:contact' %}" class="btn btn-primary w-100">
+                            <i class="fas fa-phone me-2"></i>{% trans "Contact Us" %}
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Available Tours -->
+{% if tour_packages %}
+    <section id="tours" class="py-5 bg-light">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title">{% trans "Available Tours" %}</h2>
+                <p class="lead text-muted">{% trans "Explore our safari packages for" %} {{ park.name }}</p>
+            </div>
+            
+            <div class="row">
+                {% for tour in tour_packages %}
+                    <div class="col-lg-6 mb-4">
+                        <div class="card h-100">
+                            <div class="row g-0">
+                                <div class="col-md-4">
+                                    <img src="{% if tour.main_image %}{{ tour.main_image.url }}{% else %}https://images.pexels.com/photos/1170986/pexels-photo-1170986.jpeg{% endif %}" 
+                                         class="img-fluid rounded-start h-100" alt="{{ tour.title }}" style="object-fit: cover;">
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="card-body d-flex flex-column h-100">
+                                        <div class="d-flex justify-content-between align-items-start mb-2">
+                                            <span class="badge bg-secondary">{{ tour.get_category_display }}</span>
+                                            <div class="price-tag">
+                                                {% trans "From" %} ${{ tour.price_budget|default:tour.price_standard|floatformat:0 }}
+                                            </div>
+                                        </div>
+                                        <h5 class="card-title">{{ tour.title }}</h5>
+                                        <p class="text-muted mb-2">
+                                            <i class="fas fa-clock me-1"></i>{{ tour.get_duration_display }}
+                                        </p>
+                                        <p class="card-text flex-grow-1">{{ tour.short_description|truncatewords:15 }}</p>
+                                        <div class="d-flex justify-content-between align-items-center mt-auto">
+                                            <div class="star-rating">
+                                                {% for i in "12345" %}
+                                                    {% if forloop.counter <= tour.average_rating %}
+                                                        <i class="fas fa-star"></i>
+                                                    {% else %}
+                                                        <i class="far fa-star"></i>
+                                                    {% endif %}
+                                                {% endfor %}
+                                                <small class="text-muted ms-1">({{ tour.total_reviews }})</small>
+                                            </div>
+                                            <a href="{% url 'tours:tour_detail' tour.slug %}" class="btn btn-primary btn-sm">
+                                                {% trans "View Tour" %}
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+            
+            <div class="text-center mt-4">
+                <a href="{% url 'tours:tour_list' %}?park={{ park.id }}" class="btn btn-outline-primary">
+                    {% trans "View All Tours" %} <i class="fas fa-arrow-right ms-2"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+{% endif %}
+
+<!-- Reviews -->
+{% if reviews %}
+    <section class="py-5">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title">{% trans "Visitor Reviews" %}</h2>
+            </div>
+            
+            <div class="row">
+                {% for review in reviews %}
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="card h-100">
+                            <div class="card-body">
+                                <div class="d-flex align-items-center mb-3">
+                                    <div class="flex-shrink-0">
+                                        <div class="bg-primary rounded-circle d-flex align-items-center justify-content-center" 
+                                             style="width: 50px; height: 50px;">
+                                            <i class="fas fa-user text-white"></i>
+                                        </div>
+                                    </div>
+                                    <div class="flex-grow-1 ms-3">
+                                        <h6 class="mb-0">{{ review.user.get_display_name }}</h6>
+                                        <div class="star-rating">
+                                            {% for i in "12345" %}
+                                                {% if forloop.counter <= review.rating %}
+                                                    <i class="fas fa-star"></i>
+                                                {% else %}
+                                                    <i class="far fa-star"></i>
+                                                {% endif %}
+                                            {% endfor %}
+                                        </div>
+                                    </div>
+                                </div>
+                                <h6 class="card-title">{{ review.title }}</h6>
+                                <p class="card-text">{{ review.content|truncatewords:20 }}</p>
+                                <small class="text-muted">{{ review.created_at|date:"M d, Y" }}</small>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+            
+            <div class="text-center mt-4">
+                <a href="{% url 'reviews:review_list' %}?park={{ park.id }}" class="btn btn-outline-primary">
+                    {% trans "Read All Reviews" %} <i class="fas fa-arrow-right ms-2"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+{% endif %}
+{% endblock %}

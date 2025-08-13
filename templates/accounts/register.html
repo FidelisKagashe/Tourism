@@ -1,0 +1,270 @@
+{% extends 'base/base.html' %}
+{% load i18n %}
+{% load crispy_forms_tags %}
+
+{% block title %}{% trans "Register" %} - Tanzania Safari Adventures{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8 col-lg-7">
+      <div class="card border-0 shadow-sm">
+        <div class="card-body p-4">
+          <div class="text-center mb-3">
+            <i class="fas fa-user-plus fa-3x text-primary mb-2"></i>
+            <h3 class="mb-0">{% trans "Create an account" %}</h3>
+            <p class="text-muted small">{% trans "Join Tanzania Safari Adventures" %}</p>
+          </div>
+
+          {# show non-field errors e.g. "username already exists" #}
+          {% if form.non_field_errors %}
+            <div class="alert alert-danger">
+              {{ form.non_field_errors }}
+            </div>
+          {% endif %}
+
+          <form id="registration-form" method="post" action="{% url 'accounts:register' %}" novalidate>
+            {% csrf_token %}
+
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="{{ form.first_name.id_for_label }}">{% trans "First name" %}</label>
+                {{ form.first_name }}
+                {% if form.first_name.errors %}
+                  <div class="invalid-feedback d-block">{{ form.first_name.errors|striptags }}</div>
+                {% endif %}
+              </div>
+              <div class="form-group col-md-6">
+                <label for="{{ form.last_name.id_for_label }}">{% trans "Last name" %}</label>
+                {{ form.last_name }}
+                {% if form.last_name.errors %}
+                  <div class="invalid-feedback d-block">{{ form.last_name.errors|striptags }}</div>
+                {% endif %}
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="{{ form.username.id_for_label }}">{% trans "Username" %}</label>
+                {{ form.username }}
+                {% if form.username.errors %}
+                  <div class="invalid-feedback d-block">{{ form.username.errors|striptags }}</div>
+                {% endif %}
+              </div>
+              <div class="form-group col-md-6">
+                <label for="{{ form.email.id_for_label }}">{% trans "Email" %}</label>
+                {{ form.email }}
+                {% if form.email.errors %}
+                  <div class="invalid-feedback d-block">{{ form.email.errors|striptags }}</div>
+                {% endif %}
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="id_phone_input">{% trans "Phone" %}</label>
+
+                {# Render form.phone_number if your form sets id and attrs; otherwise fallback to a plain input #}
+                {% if form.phone_number %}
+                  {{ form.phone_number }}
+                {% else %}
+                  <input id="id_phone_input" name="phone_number" class="form-control" placeholder="{% trans 'Phone number' %}" autocomplete="tel" />
+                {% endif %}
+
+                <small id="phoneHelp" class="form-text text-muted">{% trans "Pick your country flag and type the local number. We'll convert it to the international format." %}</small>
+                <div id="phone-invalid" class="invalid-feedback d-none">{% trans "Enter a valid phone number." %}</div>
+                {% if form.phone_number.errors %}
+                  <div class="invalid-feedback d-block">{{ form.phone_number.errors|striptags }}</div>
+                {% endif %}
+              </div>
+
+              <div class="form-group col-md-6">
+                <label for="{{ form.nationality.id_for_label }}">{% trans "Nationality" %}</label>
+                {{ form.nationality }}
+                {% if form.nationality.errors %}
+                  <div class="invalid-feedback d-block">{{ form.nationality.errors|striptags }}</div>
+                {% endif %}
+                <small class="form-text text-muted">{% trans "Will be preselected when you choose the phone country." %}</small>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="{{ form.password1.id_for_label }}">{% trans "Password" %}</label>
+                {{ form.password1 }}
+                {% if form.password1.errors %}
+                  <div class="invalid-feedback d-block">{{ form.password1.errors|striptags }}</div>
+                {% endif %}
+                <small class="form-text text-muted">{% trans "At least 8 characters; mix letters and numbers for better security." %}</small>
+              </div>
+
+              <div class="form-group col-md-6">
+                <label for="{{ form.password2.id_for_label }}">{% trans "Confirm password" %}</label>
+                {{ form.password2 }}
+                {% if form.password2.errors %}
+                  <div class="invalid-feedback d-block">{{ form.password2.errors|striptags }}</div>
+                {% endif %}
+
+                <div id="pw-match" class="mt-2"></div>
+                <div class="progress mt-2" style="height:6px;">
+                  <div id="pw-strength" class="progress-bar" role="progressbar" style="width:0%"></div>
+                </div>
+              </div>
+            </div>
+
+            <button id="submit-btn" type="submit" class="btn btn-primary btn-lg btn-block mt-3">
+              {% trans "Register" %}
+            </button>
+
+            <div class="text-center mt-3">
+              <small class="text-muted">{% trans "Already have an account?" %} <a href="{% url 'accounts:login' %}">{% trans "Sign in" %}</a></small>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{# Load intl-tel-input (deferred) and a tiny script to init and validate #}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css"/>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js"></script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  // Element lookups with fallbacks
+  const form = document.querySelector('#registration-form');
+  if (!form) return;
+
+  const phoneInput = document.querySelector('#id_phone_input') || document.querySelector('input[name="phone_number"]');
+  const nationalitySelect = document.querySelector('#id_nationality') || document.querySelector('select[name="nationality"]');
+
+  // Init intl-tel-input if phone element exists
+  let iti = null;
+  if (phoneInput && window.intlTelInput) {
+    // ensure element has id for label
+    if (!phoneInput.id) phoneInput.id = 'id_phone_input';
+
+    iti = window.intlTelInput(phoneInput, {
+      initialCountry: 'tz',
+      separateDialCode: true,
+      preferredCountries: ['tz','us','gb'],
+      utilsScript: 'https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js'
+    });
+
+    // When country changes, try to set nationality select to the selected iso2 (upper-case)
+    phoneInput.addEventListener('countrychange', function () {
+      const d = iti.getSelectedCountryData();
+      if (d && d.iso2 && nationalitySelect) {
+        // Try to find matching option (case-insensitive)
+        const val = d.iso2.toUpperCase();
+        let found = false;
+        for (const opt of nationalitySelect.options) {
+          if (opt.value.toUpperCase() === val) {
+            nationalitySelect.value = opt.value;
+            found = true;
+            break;
+          }
+        }
+        // If not found, leave user's selection alone.
+      }
+    });
+  }
+
+  // Password strength & match helpers
+  const pw1 = document.querySelector('input[name="password1"]');
+  const pw2 = document.querySelector('input[name="password2"]');
+  const pwStrengthBar = document.getElementById('pw-strength');
+  const pwMatchDiv = document.getElementById('pw-match');
+
+  function evaluateStrength(pw) {
+    if (!pw) return 0;
+    let score = 0;
+    if (pw.length >= 8) score += 40;
+    if (/[0-9]/.test(pw)) score += 20;
+    if (/[A-Z]/.test(pw)) score += 20;
+    if (/[^A-Za-z0-9]/.test(pw)) score += 20;
+    return Math.min(score, 100);
+  }
+
+  function updatePwUI() {
+    const a = pw1 ? pw1.value : '';
+    const b = pw2 ? pw2.value : '';
+    const s = evaluateStrength(a);
+    if (pwStrengthBar) {
+      pwStrengthBar.style.width = s + '%';
+      // change color classes using inline style for simplicity
+      if (s < 40) {
+        pwStrengthBar.className = 'progress-bar bg-danger';
+      } else if (s < 75) {
+        pwStrengthBar.className = 'progress-bar bg-warning';
+      } else {
+        pwStrengthBar.className = 'progress-bar bg-success';
+      }
+    }
+    if (pwMatchDiv) {
+      if (!b) {
+        pwMatchDiv.innerHTML = '';
+      } else if (a === b) {
+        pwMatchDiv.innerHTML = '<small class="text-success">Passwords match</small>';
+      } else {
+        pwMatchDiv.innerHTML = '<small class="text-danger">Passwords do not match</small>';
+      }
+    }
+  }
+
+  if (pw1) pw1.addEventListener('input', updatePwUI);
+  if (pw2) pw2.addEventListener('input', updatePwUI);
+
+  // Submit handler: convert phone to E.164 and client-validate
+  form.addEventListener('submit', function (e) {
+    // Clear previous validation UI
+    if (phoneInput) {
+      phoneInput.classList.remove('is-invalid');
+      document.getElementById('phone-invalid')?.classList.add('d-none');
+    }
+
+    // 1) Phone validation
+    if (iti && phoneInput) {
+      try {
+        if (!iti.isValidNumber()) {
+          e.preventDefault();
+          phoneInput.classList.add('is-invalid');
+          document.getElementById('phone-invalid')?.classList.remove('d-none');
+          phoneInput.focus();
+          return false;
+        }
+        // convert to E.164 for server
+        const e164 = iti.getNumber();
+        if (e164) phoneInput.value = e164;
+      } catch (err) {
+        // If intl-tel-input thrown, allow submit but console-log
+        console.warn('iti validate error', err);
+      }
+    }
+
+    // 2) Password checks (match + length)
+    const v1 = pw1 ? pw1.value : '';
+    const v2 = pw2 ? pw2.value : '';
+    if (v1 || v2) {
+      if (v1.length < 8) {
+        e.preventDefault();
+        alert('{% trans "Password must be at least 8 characters long." %}');
+        pw1?.focus();
+        return false;
+      }
+      if (v1 !== v2) {
+        e.preventDefault();
+        alert('{% trans "Passwords do not match." %}');
+        pw2?.focus();
+        return false;
+      }
+    }
+
+    // allow submit to continue (server will still do authoritative validation)
+    return true;
+  });
+});
+</script>
+{% endblock %}

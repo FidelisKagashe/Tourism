@@ -7,6 +7,8 @@ from django.urls import reverse_lazy
 from django.views.generic import CreateView, UpdateView, TemplateView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import JsonResponse
+from django.db import transaction
+import logging
 from django.core.mail import send_mail
 from django.conf import settings
 from .models import CustomUser, UserProfile, UserActivityLog
@@ -14,49 +16,67 @@ from .forms import CustomUserRegistrationForm, CustomAuthenticationForm, UserPro
 from bookings.models import Booking
 from reviews.models import Review
 
+logger = logging.getLogger(__name__)
+
 class UserRegistrationView(CreateView):
-    """User registration view."""
+    """User registration view with post-save side effects (logging, email, auto-login)."""
     model = CustomUser
     form_class = CustomUserRegistrationForm
     template_name = 'accounts/register.html'
     success_url = reverse_lazy('core:home')
-    
+
+    @transaction.atomic
     def form_valid(self, form):
-        response = super().form_valid(form)
+        # Save the user using the form's save() (will hash the password)
         user = form.save()
-        
-        # Log registration
-        UserActivityLog.objects.create(
-            user=user,
-            action_type='register',
-            description='New user registration',
-            ip_address=self.get_client_ip(),
-            user_agent=self.request.META.get('HTTP_USER_AGENT', '')
-        )
-        
-        # Send welcome email
-        if user.email:
-            send_mail(
-                subject='Welcome to Tanzania Safari Adventures!',
-                message=f'Hello {user.first_name},\n\nWelcome to Tanzania Safari Adventures! We\'re excited to help you plan your dream safari experience.',
-                from_email=settings.DEFAULT_FROM_EMAIL,
-                recipient_list=[user.email],
-                fail_silently=True,
+
+        # IMPORTANT: set self.object so get_success_url() can use it safely
+        self.object = user
+
+        # Try to log the activity; keep failure non-fatal but log it
+        try:
+            UserActivityLog.objects.create(
+                user=user,
+                action_type='register',
+                description='New user registration',
+                ip_address=self.get_client_ip(),
+                user_agent=self.request.META.get('HTTP_USER_AGENT', '')[:512],
             )
-        
-        # Login the user
+        except Exception as exc:
+            logger.exception("Failed to create UserActivityLog for user %s: %s", getattr(user, 'pk', 'unknown'), exc)
+
+        # Send welcome email (fail_silently True to avoid breaking registration)
+        if user.email:
+            try:
+                send_mail(
+                    subject='Welcome to Tanzania Safari Adventures!',
+                    message=(
+                        f'Hello {user.first_name or user.username},\n\n'
+                        "Welcome to Tanzania Safari Adventures! We're excited to help you "
+                        "plan your dream safari experience."
+                    ),
+                    from_email=getattr(settings, 'DEFAULT_FROM_EMAIL', None),
+                    recipient_list=[user.email],
+                    fail_silently=True,
+                )
+            except Exception as exc:
+                logger.exception("Failed to send welcome email to %s: %s", user.email, exc)
+
+        # Log the user in (creates session)
         login(self.request, user)
+
         messages.success(self.request, 'Registration successful! Welcome to Tanzania Safari Adventures!')
-        
-        return response
-    
+
+        # Redirect to the success URL — safe now because self.object is set
+        return redirect(self.get_success_url())
+
     def get_client_ip(self):
-        """Get client IP address."""
+        """Get the IP address of the client (handles proxies)."""
         x_forwarded_for = self.request.META.get('HTTP_X_FORWARDED_FOR')
         if x_forwarded_for:
-            ip = x_forwarded_for.split(',')[0]
+            ip = x_forwarded_for.split(',')[0].strip()
         else:
-            ip = self.request.META.get('REMOTE_ADDR')
+            ip = self.request.META.get('REMOTE_ADDR', '')
         return ip
 
 def user_login(request):
@@ -113,7 +133,7 @@ class UserDashboardView(LoginRequiredMixin, TemplateView):
         
         # Statistics
         total_bookings = Booking.objects.filter(user=user).count()
-        completed_tours = Booking.objects.filter(user=user, status='completed').count()
+        completed_tours = Booking.objects.filter(user=user, booking_status='completed').count()
         total_reviews = Review.objects.filter(user=user).count()
         
         context.update({

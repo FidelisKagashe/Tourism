@@ -1,0 +1,130 @@
+{% extends 'base/base.html' %}
+{% load i18n %}
+
+{% block title %}{% trans "My Bookings" %} - Tanzania Safari Adventures{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row">
+        <div class="col-12">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <div>
+                    <h1>{% trans "My Bookings" %}</h1>
+                    <p class="text-muted">{% trans "Manage your safari bookings" %}</p>
+                </div>
+                <div>
+                    <a href="{% url 'tours:tour_list' %}" class="btn btn-primary">
+                        <i class="fas fa-plus me-2"></i>{% trans "Book New Tour" %}
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    {% if bookings %}
+        <div class="row">
+            {% for booking in bookings %}
+                <div class="col-lg-6 mb-4">
+                    <div class="card h-100">
+                        <div class="card-header d-flex justify-content-between align-items-center">
+                            <h6 class="mb-0">{{ booking.booking_reference }}</h6>
+                            <span class="badge 
+                                {% if booking.booking_status == 'confirmed' %}bg-success
+                                {% elif booking.booking_status == 'pending' %}bg-warning
+                                {% elif booking.booking_status == 'cancelled' %}bg-danger
+                                {% else %}bg-secondary{% endif %}">
+                                {{ booking.get_booking_status_display }}
+                            </span>
+                        </div>
+                        <div class="card-body">
+                            <div class="d-flex mb-3">
+                                <img src="{% if booking.tour_package.main_image %}{{ booking.tour_package.main_image.url }}{% else %}https://images.pexels.com/photos/1170986/pexels-photo-1170986.jpeg{% endif %}" 
+                                     class="rounded me-3" style="width: 80px; height: 80px; object-fit: cover;" alt="{{ booking.tour_package.title }}">
+                                <div class="flex-grow-1">
+                                    <h6 class="mb-1">{{ booking.tour_package.title }}</h6>
+                                    <p class="text-muted mb-1">
+                                        <i class="fas fa-users me-1"></i>{{ booking.number_of_participants }} {% trans "participants" %}
+                                    </p>
+                                    <p class="text-muted mb-0">
+                                        <i class="fas fa-calendar me-1"></i>{{ booking.created_at|date:"M d, Y" }}
+                                    </p>
+                                </div>
+                            </div>
+                            
+                            <div class="row mb-3">
+                                <div class="col-6">
+                                    <small class="text-muted">{% trans "Total Price" %}</small>
+                                    <div class="h5 text-primary">${{ booking.total_price|floatformat:2 }}</div>
+                                </div>
+                                <div class="col-6">
+                                    <small class="text-muted">{% trans "Payment Status" %}</small>
+                                    <div>
+                                        <span class="badge 
+                                            {% if booking.payment_status == 'paid' %}bg-success
+                                            {% elif booking.payment_status == 'pending' %}bg-warning
+                                            {% elif booking.payment_status == 'failed' %}bg-danger
+                                            {% else %}bg-secondary{% endif %}">
+                                            {{ booking.get_payment_status_display }}
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="d-grid gap-2">
+                                <a href="{% url 'bookings:booking_detail' booking.booking_reference %}" class="btn btn-primary btn-sm">
+                                    {% trans "View Details" %}
+                                </a>
+                                {% if booking.booking_status == 'pending' and booking.payment_status == 'pending' %}
+                                    <a href="{% url 'bookings:booking_payment' booking.booking_reference %}" class="btn btn-success btn-sm">
+                                        {% trans "Complete Payment" %}
+                                    </a>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        
+        <!-- Pagination -->
+        {% if bookings.has_other_pages %}
+            <nav aria-label="Bookings pagination" class="mt-5">
+                <ul class="pagination justify-content-center">
+                    {% if bookings.has_previous %}
+                        <li class="page-item">
+                            <a class="page-link" href="?page={{ bookings.previous_page_number }}">{% trans "Previous" %}</a>
+                        </li>
+                    {% endif %}
+                    
+                    {% for num in bookings.paginator.page_range %}
+                        {% if bookings.number == num %}
+                            <li class="page-item active">
+                                <span class="page-link">{{ num }}</span>
+                            </li>
+                        {% elif num > bookings.number|add:'-3' and num < bookings.number|add:'3' %}
+                            <li class="page-item">
+                                <a class="page-link" href="?page={{ num }}">{{ num }}</a>
+                            </li>
+                        {% endif %}
+                    {% endfor %}
+                    
+                    {% if bookings.has_next %}
+                        <li class="page-item">
+                            <a class="page-link" href="?page={{ bookings.next_page_number }}">{% trans "Next" %}</a>
+                        </li>
+                    {% endif %}
+                </ul>
+            </nav>
+        {% endif %}
+    {% else %}
+        <div class="text-center py-5">
+            <i class="fas fa-calendar-times fa-4x text-muted mb-4"></i>
+            <h3>{% trans "No bookings yet" %}</h3>
+            <p class="text-muted">{% trans "Start planning your next adventure!" %}</p>
+            <a href="{% url 'tours:tour_list' %}" class="btn btn-primary btn-lg">
+                <i class="fas fa-binoculars me-2"></i>{% trans "Browse Tours" %}
+            </a>
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

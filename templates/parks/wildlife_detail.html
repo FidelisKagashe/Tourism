@@ -1,0 +1,202 @@
+{% extends 'base/base.html' %}
+{% load i18n %}
+
+{% block title %}{{ wildlife.common_name }} - {% trans "Wildlife" %} - Tanzania Safari Adventures{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="hero-section" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('{% if wildlife.main_image %}{{ wildlife.main_image.url }}{% else %}https://images.pexels.com/photos/631317/pexels-photo-631317.jpeg{% endif %}');">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="d-flex align-items-center mb-3">
+                    <span class="badge badge-custom me-3">{{ wildlife.get_category_display }}</span>
+                    {% if wildlife.is_big_five %}
+                        <span class="badge bg-warning text-dark me-3">
+                            <i class="fas fa-crown me-1"></i>{% trans "Big Five" %}
+                        </span>
+                    {% endif %}
+                    <span class="badge 
+                        {% if wildlife.conservation_status == 'LC' %}bg-success
+                        {% elif wildlife.conservation_status == 'VU' %}bg-warning
+                        {% elif wildlife.conservation_status == 'EN' %}bg-danger
+                        {% else %}bg-secondary{% endif %}">
+                        {{ wildlife.get_conservation_status_display }}
+                    </span>
+                </div>
+                <h1 class="display-4 fw-bold mb-4">{{ wildlife.common_name }}</h1>
+                {% if wildlife.scientific_name %}
+                    <p class="lead fst-italic mb-4">{{ wildlife.scientific_name }}</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Wildlife Info -->
+<section class="py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 mb-5">
+                <div class="mb-5">
+                    <h2 class="mb-4">{% trans "About" %} {{ wildlife.common_name }}</h2>
+                    <div class="mt-4">
+                        {{ wildlife.description|linebreaks }}
+                    </div>
+                </div>
+                
+                {% if wildlife.physical_characteristics %}
+                    <div class="mb-5">
+                        <h3 class="mb-4">{% trans "Physical Characteristics" %}</h3>
+                        <div class="bg-light p-4 rounded">
+                            {{ wildlife.physical_characteristics|linebreaks }}
+                        </div>
+                    </div>
+                {% endif %}
+                
+                {% if wildlife.habitat %}
+                    <div class="mb-5">
+                        <h3 class="mb-4">{% trans "Habitat" %}</h3>
+                        <div class="alert alert-info">
+                            {{ wildlife.habitat|linebreaks }}
+                        </div>
+                    </div>
+                {% endif %}
+                
+                {% if wildlife.diet %}
+                    <div class="mb-5">
+                        <h3 class="mb-4">{% trans "Diet" %}</h3>
+                        <p>{{ wildlife.diet }}</p>
+                    </div>
+                {% endif %}
+                
+                {% if wildlife.behavior %}
+                    <div class="mb-5">
+                        <h3 class="mb-4">{% trans "Behavior" %}</h3>
+                        <p>{{ wildlife.behavior }}</p>
+                    </div>
+                {% endif %}
+            </div>
+            
+            <!-- Sidebar -->
+            <div class="col-lg-4">
+                <div class="card border-0 shadow mb-4">
+                    <div class="card-body">
+                        <h5 class="card-title mb-4">{% trans "Quick Facts" %}</h5>
+                        
+                        <div class="d-flex justify-content-between mb-3">
+                            <span class="text-muted">{% trans "Category" %}:</span>
+                            <strong>{{ wildlife.get_category_display }}</strong>
+                        </div>
+                        
+                        <div class="d-flex justify-content-between mb-3">
+                            <span class="text-muted">{% trans "Conservation Status" %}:</span>
+                            <span class="badge 
+                                {% if wildlife.conservation_status == 'LC' %}bg-success
+                                {% elif wildlife.conservation_status == 'VU' %}bg-warning
+                                {% elif wildlife.conservation_status == 'EN' %}bg-danger
+                                {% else %}bg-secondary{% endif %}">
+                                {{ wildlife.get_conservation_status_display }}
+                            </span>
+                        </div>
+                        
+                        {% if wildlife.is_big_five %}
+                            <div class="d-flex justify-content-between mb-3">
+                                <span class="text-muted">{% trans "Big Five" %}:</span>
+                                <span class="badge bg-warning text-dark">
+                                    <i class="fas fa-crown me-1"></i>{% trans "Yes" %}
+                                </span>
+                            </div>
+                        {% endif %}
+                        
+                        {% if wildlife.is_endemic %}
+                            <div class="d-flex justify-content-between">
+                                <span class="text-muted">{% trans "Endemic" %}:</span>
+                                <span class="badge bg-info">{% trans "Yes" %}</span>
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+                
+                {% if wildlife.best_viewing_times %}
+                    <div class="card border-0 shadow mb-4">
+                        <div class="card-body">
+                            <h5 class="card-title mb-3">{% trans "Best Viewing Times" %}</h5>
+                            <p class="mb-0">{{ wildlife.best_viewing_times }}</p>
+                        </div>
+                    </div>
+                {% endif %}
+                
+                {% if wildlife.best_viewing_locations %}
+                    <div class="card border-0 shadow">
+                        <div class="card-body">
+                            <h5 class="card-title mb-3">{% trans "Best Viewing Locations" %}</h5>
+                            <p class="mb-0">{{ wildlife.best_viewing_locations }}</p>
+                        </div>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Where to Find -->
+{% if parks %}
+    <section class="py-5 bg-light">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title">{% trans "Where to Find" %} {{ wildlife.common_name }}</h2>
+            </div>
+            
+            <div class="row">
+                {% for park in parks %}
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="card h-100">
+                            <img src="{% if park.main_image %}{{ park.main_image.url }}{% else %}https://images.pexels.com/photos/631317/pexels-photo-631317.jpeg{% endif %}" 
+                                 class="card-img-top" style="height: 200px; object-fit: cover;" alt="{{ park.name }}">
+                            <div class="card-body d-flex flex-column">
+                                <h6 class="card-title">{{ park.name }}</h6>
+                                <p class="text-muted mb-2">{{ park.location }}, {{ park.region }}</p>
+                                <p class="card-text flex-grow-1">{{ park.short_description|truncatewords:15 }}</p>
+                                <a href="{% url 'parks:park_detail' park.slug %}" class="btn btn-primary btn-sm">
+                                    {% trans "Visit Park" %}
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+{% endif %}
+
+<!-- Related Wildlife -->
+{% if related_wildlife %}
+    <section class="py-5">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title">{% trans "Related Wildlife" %}</h2>
+            </div>
+            
+            <div class="row">
+                {% for related in related_wildlife %}
+                    <div class="col-lg-3 col-md-6 mb-4">
+                        <div class="card h-100">
+                            <img src="{% if related.main_image %}{{ related.main_image.url }}{% else %}https://images.pexels.com/photos/631317/pexels-photo-631317.jpeg{% endif %}" 
+                                 class="card-img-top" style="height: 200px; object-fit: cover;" alt="{{ related.common_name }}">
+                            <div class="card-body d-flex flex-column">
+                                <h6 class="card-title">{{ related.common_name }}</h6>
+                                <p class="text-muted mb-2">{{ related.get_category_display }}</p>
+                                <p class="card-text flex-grow-1">{{ related.description|truncatewords:10 }}</p>
+                                <a href="{% url 'parks:wildlife_detail' related.pk %}" class="btn btn-primary btn-sm">
+                                    {% trans "Learn More" %}
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+{% endif %}
+{% endblock %}

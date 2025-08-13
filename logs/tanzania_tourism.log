@@ -412,3 +412,1878 @@ django.template.exceptions.TemplateDoesNotExist: accounts/register.html
 ERROR 2025-08-07 10:54:45,060 basehttp 6416 12956 "GET /accounts/register/ HTTP/1.1" 500 90673
 WARNING 2025-08-07 10:55:13,050 log 6416 12956 Not Found: /.well-known/appspecific/com.chrome.devtools.json
 WARNING 2025-08-07 10:55:13,052 basehttp 6416 12956 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 5399
+INFO 2025-08-11 09:10:02,082 autoreload 2716 11104 Watching for file changes with StatReloader
+INFO 2025-08-11 09:10:07,061 basehttp 2716 10144 "GET / HTTP/1.1" 200 19666
+WARNING 2025-08-11 09:10:07,665 log 2716 10144 Not Found: /favicon.ico
+WARNING 2025-08-11 09:10:07,666 basehttp 2716 10144 "GET /favicon.ico HTTP/1.1" 404 5288
+INFO 2025-08-11 09:13:16,280 basehttp 2716 3040 "GET /about/ HTTP/1.1" 200 23131
+INFO 2025-08-11 09:14:56,154 basehttp 2716 3040 "GET /about/ HTTP/1.1" 200 23131
+INFO 2025-08-11 09:15:15,121 basehttp 2716 3040 "GET /about/ HTTP/1.1" 200 23131
+INFO 2025-08-11 09:15:43,951 basehttp 2716 3040 "GET /about/ HTTP/1.1" 200 23131
+INFO 2025-08-11 09:16:11,988 basehttp 2716 3040 "GET /about/ HTTP/1.1" 200 23131
+INFO 2025-08-11 09:17:02,379 basehttp 2716 3040 "GET /about/ HTTP/1.1" 200 23131
+INFO 2025-08-11 09:18:07,496 basehttp 2716 3040 "GET /about/ HTTP/1.1" 200 23131
+INFO 2025-08-11 09:18:46,101 basehttp 2716 3040 "GET /about/ HTTP/1.1" 200 23131
+INFO 2025-08-11 09:19:46,879 basehttp 2716 3040 "GET /about/ HTTP/1.1" 200 23131
+INFO 2025-08-11 09:26:03,381 basehttp 2716 8676 "GET /about/ HTTP/1.1" 200 23131
+INFO 2025-08-11 09:26:14,221 basehttp 2716 8676 "GET /about/ HTTP/1.1" 200 23131
+INFO 2025-08-11 09:26:16,318 basehttp 2716 8676 "GET /contact/ HTTP/1.1" 200 22986
+INFO 2025-08-11 09:26:35,629 basehttp 2716 8676 "GET / HTTP/1.1" 200 19666
+INFO 2025-08-11 09:26:43,455 basehttp 2716 8676 "GET /parks/ HTTP/1.1" 200 0
+INFO 2025-08-11 09:29:55,637 basehttp 2716 8676 "GET /parks/ HTTP/1.1" 200 16119
+INFO 2025-08-11 09:30:08,297 basehttp 2716 8676 "GET /parks/?type=national_park&region=&search=None HTTP/1.1" 200 16174
+WARNING 2025-08-11 09:30:25,740 log 2716 8676 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-11 09:30:25,745 basehttp 2716 8676 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 5399
+INFO 2025-08-11 09:30:37,248 basehttp 2716 8676 "GET /accounts/login/ HTTP/1.1" 200 16100
+INFO 2025-08-11 09:30:47,556 basehttp 2716 8676 "GET /accounts/register/ HTTP/1.1" 200 18588
+INFO 2025-08-11 09:30:57,100 basehttp 2716 8676 "GET / HTTP/1.1" 200 19666
+INFO 2025-08-11 09:31:00,826 basehttp 2716 8676 "GET /parks/ HTTP/1.1" 200 16119
+INFO 2025-08-11 09:31:05,430 basehttp 2716 8676 "GET / HTTP/1.1" 200 19666
+ERROR 2025-08-11 09:31:24,335 log 2716 8676 Internal Server Error: /reviews/
+Traceback (most recent call last):
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\core\handlers\base.py", line 220, in _get_response
+    response = response.render()
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\response.py", line 114, in render
+    self.content = self.rendered_content
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\response.py", line 90, in rendered_content
+    template = self.resolve_template(self.template_name)
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\response.py", line 72, in resolve_template
+    return select_template(template, using=self.using)
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\loader.py", line 47, in select_template
+    raise TemplateDoesNotExist(", ".join(template_name_list), chain=chain)
+django.template.exceptions.TemplateDoesNotExist: reviews/review_list.html, reviews/review_list.html
+ERROR 2025-08-11 09:31:24,342 basehttp 2716 8676 "GET /reviews/ HTTP/1.1" 500 95025
+WARNING 2025-08-11 09:32:28,965 log 2716 8676 Not Found: /create_booking.html
+WARNING 2025-08-11 09:32:28,967 basehttp 2716 8676 "GET /create_booking.html HTTP/1.1" 404 5312
+INFO 2025-08-11 09:32:38,516 basehttp 2716 8676 "GET /accounts/login/ HTTP/1.1" 200 16100
+INFO 2025-08-11 09:32:41,144 basehttp 2716 8676 "GET /accounts/register/ HTTP/1.1" 200 18588
+INFO 2025-08-11 09:33:31,861 basehttp 2716 8676 "POST /accounts/register/ HTTP/1.1" 200 18982
+INFO 2025-08-11 09:34:05,399 basehttp 2716 8676 "POST /accounts/register/ HTTP/1.1" 200 18849
+INFO 2025-08-11 09:35:13,372 basehttp 2716 8676 "POST /accounts/register/ HTTP/1.1" 200 18854
+INFO 2025-08-11 09:42:58,720 autoreload 2716 11104 C:\projects\Tourism\project\accounts\forms.py changed, reloading.
+INFO 2025-08-11 09:43:03,803 autoreload 6080 5196 Watching for file changes with StatReloader
+INFO 2025-08-11 09:43:30,636 autoreload 6080 5196 C:\projects\Tourism\project\accounts\forms.py changed, reloading.
+INFO 2025-08-11 09:43:33,013 autoreload 5936 1220 Watching for file changes with StatReloader
+INFO 2025-08-11 09:44:38,342 autoreload 10504 9244 Watching for file changes with StatReloader
+INFO 2025-08-11 09:46:00,171 autoreload 6524 7872 Watching for file changes with StatReloader
+INFO 2025-08-11 09:46:18,312 autoreload 6524 7872 C:\projects\Tourism\project\accounts\models.py changed, reloading.
+INFO 2025-08-11 09:46:21,839 autoreload 10572 9432 Watching for file changes with StatReloader
+INFO 2025-08-11 09:48:16,273 autoreload 10572 9432 C:\projects\Tourism\project\accounts\models.py changed, reloading.
+INFO 2025-08-11 09:48:18,736 autoreload 12576 1152 Watching for file changes with StatReloader
+INFO 2025-08-11 09:49:12,702 autoreload 12576 1152 C:\projects\Tourism\project\accounts\models.py changed, reloading.
+INFO 2025-08-11 09:49:16,869 autoreload 7612 1604 Watching for file changes with StatReloader
+INFO 2025-08-11 09:49:20,541 autoreload 7612 1604 C:\projects\Tourism\project\accounts\models.py changed, reloading.
+INFO 2025-08-11 09:49:23,536 autoreload 1412 9420 Watching for file changes with StatReloader
+INFO 2025-08-11 09:50:07,290 autoreload 1412 9420 C:\projects\Tourism\project\accounts\models.py changed, reloading.
+INFO 2025-08-11 09:50:10,542 autoreload 3692 13244 Watching for file changes with StatReloader
+INFO 2025-08-11 09:50:59,300 autoreload 3692 13244 C:\projects\Tourism\project\accounts\models.py changed, reloading.
+INFO 2025-08-11 09:51:02,388 autoreload 7044 12368 Watching for file changes with StatReloader
+INFO 2025-08-11 09:51:12,339 autoreload 7044 12368 C:\projects\Tourism\project\accounts\models.py changed, reloading.
+INFO 2025-08-11 09:51:14,916 autoreload 964 8676 Watching for file changes with StatReloader
+INFO 2025-08-11 09:51:39,879 autoreload 964 8676 C:\projects\Tourism\project\accounts\models.py changed, reloading.
+INFO 2025-08-11 09:51:43,187 autoreload 10920 12568 Watching for file changes with StatReloader
+INFO 2025-08-11 09:54:02,099 autoreload 10920 12568 C:\projects\Tourism\project\accounts\models.py changed, reloading.
+INFO 2025-08-11 09:54:06,177 autoreload 1088 10912 Watching for file changes with StatReloader
+INFO 2025-08-11 09:54:25,783 autoreload 1088 10912 C:\projects\Tourism\project\accounts\models.py changed, reloading.
+INFO 2025-08-11 09:54:28,280 autoreload 12884 7776 Watching for file changes with StatReloader
+INFO 2025-08-11 09:54:47,255 autoreload 12884 7776 C:\projects\Tourism\project\accounts\models.py changed, reloading.
+INFO 2025-08-11 09:54:49,916 autoreload 2496 4420 Watching for file changes with StatReloader
+INFO 2025-08-11 09:55:05,226 autoreload 2496 4420 C:\projects\Tourism\project\accounts\models.py changed, reloading.
+INFO 2025-08-11 09:55:07,938 autoreload 12792 10152 Watching for file changes with StatReloader
+INFO 2025-08-11 09:55:23,706 basehttp 12792 3120 "POST /accounts/register/ HTTP/1.1" 200 29691
+WARNING 2025-08-11 09:55:23,772 basehttp 12792 3120 "GET /static/flags/tanzanian.gif HTTP/1.1" 404 1917
+INFO 2025-08-11 09:55:30,911 basehttp 12792 5888 "GET / HTTP/1.1" 200 19666
+INFO 2025-08-11 09:55:32,401 basehttp 12792 5888 "GET /accounts/register/ HTTP/1.1" 200 29439
+INFO 2025-08-11 09:55:32,703 basehttp 12792 5888 "GET /static/flags/__.gif HTTP/1.1" 200 53
+INFO 2025-08-11 09:56:19,523 autoreload 12792 10152 C:\projects\Tourism\project\accounts\views.py changed, reloading.
+INFO 2025-08-11 09:56:23,673 autoreload 11336 7320 Watching for file changes with StatReloader
+INFO 2025-08-11 09:56:58,165 autoreload 11336 7320 C:\projects\Tourism\project\accounts\views.py changed, reloading.
+INFO 2025-08-11 09:57:02,161 autoreload 11952 9492 Watching for file changes with StatReloader
+INFO 2025-08-11 09:57:22,592 autoreload 11952 9492 C:\projects\Tourism\project\accounts\views.py changed, reloading.
+INFO 2025-08-11 09:57:28,442 autoreload 8336 1864 Watching for file changes with StatReloader
+INFO 2025-08-11 09:57:35,727 basehttp 8336 6268 "GET /accounts/register/ HTTP/1.1" 200 29439
+INFO 2025-08-11 10:02:46,311 autoreload 9160 8016 Watching for file changes with StatReloader
+INFO 2025-08-11 10:02:50,449 basehttp 9160 9188 "GET /accounts/register/ HTTP/1.1" 200 21120
+INFO 2025-08-11 10:05:30,783 basehttp 9160 9188 "GET /accounts/register/ HTTP/1.1" 200 4055
+INFO 2025-08-11 10:19:27,646 autoreload 11948 13020 Watching for file changes with StatReloader
+INFO 2025-08-11 10:19:31,729 basehttp 11948 11804 "GET /accounts/register/ HTTP/1.1" 200 4432
+INFO 2025-08-11 10:20:51,752 basehttp 11948 11804 "GET /accounts/register/ HTTP/1.1" 200 4429
+INFO 2025-08-11 10:20:53,051 basehttp 11948 11804 "GET /accounts/register/ HTTP/1.1" 200 4429
+INFO 2025-08-11 10:20:59,823 basehttp 11948 11804 "GET /accounts/register/ HTTP/1.1" 200 4429
+INFO 2025-08-11 10:22:10,341 basehttp 11948 11804 "GET /accounts/register/ HTTP/1.1" 200 18164
+INFO 2025-08-11 10:24:59,056 basehttp 11948 11804 "GET /accounts/register/ HTTP/1.1" 200 4394
+INFO 2025-08-11 10:25:37,428 basehttp 11948 11804 "GET /accounts/register/ HTTP/1.1" 200 4596
+INFO 2025-08-11 10:33:53,750 basehttp 11948 2760 "GET /accounts/register/ HTTP/1.1" 200 4055
+INFO 2025-08-11 10:37:50,292 basehttp 11948 11292 "GET /admin HTTP/1.1" 301 0
+INFO 2025-08-11 10:37:50,350 basehttp 11948 7456 "GET /admin/ HTTP/1.1" 302 0
+INFO 2025-08-11 10:37:50,459 basehttp 11948 7456 "GET /admin/login/?next=/admin/ HTTP/1.1" 200 4182
+INFO 2025-08-11 10:37:50,845 basehttp 11948 12056 "GET /static/admin/css/dark_mode.css HTTP/1.1" 200 2929
+INFO 2025-08-11 10:37:50,891 basehttp 11948 9804 "GET /static/admin/css/nav_sidebar.css HTTP/1.1" 200 2694
+INFO 2025-08-11 10:37:50,894 basehttp 11948 12056 "GET /static/admin/js/nav_sidebar.js HTTP/1.1" 200 3063
+INFO 2025-08-11 10:37:50,901 basehttp 11948 7456 "GET /static/admin/css/base.css HTTP/1.1" 200 21207
+INFO 2025-08-11 10:37:50,913 basehttp 11948 6408 "GET /static/admin/css/responsive.css HTTP/1.1" 200 18533
+INFO 2025-08-11 10:37:50,921 basehttp 11948 11532 "GET /static/admin/css/login.css HTTP/1.1" 200 958
+INFO 2025-08-11 10:37:50,978 basehttp 11948 5096 "GET /static/admin/js/theme.js HTTP/1.1" 200 1943
+INFO 2025-08-11 10:38:06,016 basehttp 11948 8420 "POST /admin/login/?next=/admin/ HTTP/1.1" 200 4343
+INFO 2025-08-11 10:44:15,310 autoreload 9176 8432 Watching for file changes with StatReloader
+INFO 2025-08-11 10:44:17,156 basehttp 9176 6140 "GET / HTTP/1.1" 200 19666
+INFO 2025-08-11 10:44:20,370 basehttp 9176 6140 "GET /accounts/register/ HTTP/1.1" 200 14599
+INFO 2025-08-11 10:46:20,581 basehttp 9176 6140 "POST /accounts/register/ HTTP/1.1" 200 14685
+INFO 2025-08-11 10:46:20,787 basehttp 9176 6140 "GET /static/flags/tz.gif HTTP/1.1" 200 358
+INFO 2025-08-11 10:46:32,355 basehttp 9176 6140 "POST /accounts/register/ HTTP/1.1" 200 14685
+INFO 2025-08-11 10:50:10,747 autoreload 9176 8432 C:\projects\Tourism\project\accounts\signals.py changed, reloading.
+INFO 2025-08-11 10:50:13,505 autoreload 8456 11876 Watching for file changes with StatReloader
+INFO 2025-08-11 11:05:41,872 basehttp 8456 7568 "GET / HTTP/1.1" 200 19666
+WARNING 2025-08-11 11:05:44,547 log 8456 7568 Not Found: /favicon.ico
+WARNING 2025-08-11 11:05:44,548 basehttp 8456 7568 "GET /favicon.ico HTTP/1.1" 404 5288
+INFO 2025-08-11 11:05:46,488 basehttp 8456 7568 "GET /accounts/register/ HTTP/1.1" 200 33653
+INFO 2025-08-11 11:05:46,753 basehttp 8456 7568 "GET /static/flags/__.gif HTTP/1.1" 200 53
+ERROR 2025-08-11 11:07:30,803 log 8456 7564 Internal Server Error: /accounts/register/
+Traceback (most recent call last):
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\views\generic\base.py", line 143, in dispatch
+    return handler(request, *args, **kwargs)
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\views\generic\edit.py", line 184, in post
+    return super().post(request, *args, **kwargs)
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\views\generic\edit.py", line 153, in post
+    return self.form_valid(form)
+           ~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Python313\Lib\contextlib.py", line 85, in inner
+    return func(*args, **kwds)
+  File "C:\projects\Tourism\project\accounts\views.py", line 66, in form_valid
+    return redirect(self.get_success_url())
+                    ~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\views\generic\edit.py", line 122, in get_success_url
+    url = self.success_url.format(**self.object.__dict__)
+                                    ^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute '__dict__'. Did you mean: '__dir__'?
+ERROR 2025-08-11 11:07:30,812 basehttp 8456 7564 "POST /accounts/register/ HTTP/1.1" 500 104782
+INFO 2025-08-11 11:15:37,232 autoreload 8456 11876 C:\projects\Tourism\project\accounts\views.py changed, reloading.
+INFO 2025-08-11 11:15:41,092 autoreload 8012 6800 Watching for file changes with StatReloader
+INFO 2025-08-11 11:15:55,626 autoreload 8012 6800 C:\projects\Tourism\project\accounts\views.py changed, reloading.
+INFO 2025-08-11 11:15:59,299 autoreload 4584 892 Watching for file changes with StatReloader
+INFO 2025-08-11 11:16:11,980 autoreload 4584 892 C:\projects\Tourism\project\accounts\views.py changed, reloading.
+INFO 2025-08-11 11:16:15,266 autoreload 2240 12860 Watching for file changes with StatReloader
+WARNING 2025-08-11 11:16:21,818 log 2240 1856 Forbidden (CSRF token from POST incorrect.): /accounts/register/
+WARNING 2025-08-11 11:16:21,824 basehttp 2240 1856 "POST /accounts/register/ HTTP/1.1" 403 2518
+WARNING 2025-08-11 11:16:27,984 log 2240 1856 Forbidden (CSRF token from POST incorrect.): /accounts/register/
+WARNING 2025-08-11 11:16:27,986 basehttp 2240 1856 "POST /accounts/register/ HTTP/1.1" 403 2518
+INFO 2025-08-11 11:16:29,440 basehttp 2240 1856 "GET /accounts/register/ HTTP/1.1" 200 34028
+INFO 2025-08-11 11:16:50,420 basehttp 2240 1856 "POST /accounts/register/ HTTP/1.1" 302 0
+INFO 2025-08-11 11:16:50,475 basehttp 2240 1856 "GET / HTTP/1.1" 200 21077
+ERROR 2025-08-11 11:17:02,051 log 2240 1856 Internal Server Error: /bookings/
+Traceback (most recent call last):
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\core\handlers\base.py", line 220, in _get_response
+    response = response.render()
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\response.py", line 114, in render
+    self.content = self.rendered_content
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\response.py", line 90, in rendered_content
+    template = self.resolve_template(self.template_name)
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\response.py", line 72, in resolve_template
+    return select_template(template, using=self.using)
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\loader.py", line 47, in select_template
+    raise TemplateDoesNotExist(", ".join(template_name_list), chain=chain)
+django.template.exceptions.TemplateDoesNotExist: bookings/booking_list.html, bookings/booking_list.html
+ERROR 2025-08-11 11:17:02,062 basehttp 2240 1856 "GET /bookings/ HTTP/1.1" 500 95341
+ERROR 2025-08-11 11:17:14,360 log 2240 1856 Internal Server Error: /accounts/profile/
+Traceback (most recent call last):
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\core\handlers\base.py", line 220, in _get_response
+    response = response.render()
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\response.py", line 114, in render
+    self.content = self.rendered_content
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\response.py", line 90, in rendered_content
+    template = self.resolve_template(self.template_name)
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\response.py", line 72, in resolve_template
+    return select_template(template, using=self.using)
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\loader.py", line 47, in select_template
+    raise TemplateDoesNotExist(", ".join(template_name_list), chain=chain)
+django.template.exceptions.TemplateDoesNotExist: accounts/profile_update.html
+ERROR 2025-08-11 11:17:14,367 basehttp 2240 1856 "GET /accounts/profile/ HTTP/1.1" 500 92086
+ERROR 2025-08-11 11:17:20,998 log 2240 1856 Internal Server Error: /accounts/dashboard/
+Traceback (most recent call last):
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\contrib\auth\mixins.py", line 73, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\views\generic\base.py", line 143, in dispatch
+    return handler(request, *args, **kwargs)
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\views\generic\base.py", line 226, in get
+    context = self.get_context_data(**kwargs)
+  File "C:\projects\Tourism\project\accounts\views.py", line 136, in get_context_data
+    completed_tours = Booking.objects.filter(user=user, status='completed').count()
+                      ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\db\models\query.py", line 1436, in filter
+    return self._filter_or_exclude(False, args, kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\db\models\query.py", line 1454, in _filter_or_exclude
+    clone._filter_or_exclude_inplace(negate, args, kwargs)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\db\models\query.py", line 1461, in _filter_or_exclude_inplace
+    self._query.add_q(Q(*args, **kwargs))
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\db\models\sql\query.py", line 1545, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+                ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\db\models\sql\query.py", line 1576, in _add_q
+    child_clause, needed_inner = self.build_filter(
+                                 ~~~~~~~~~~~~~~~~~^
+        child,
+        ^^^^^^
+    ...<6 lines>...
+        summarize=summarize,
+        ^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\db\models\sql\query.py", line 1426, in build_filter
+    lookups, parts, reffed_expression = self.solve_lookup_type(arg, summarize)
+                                        ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\db\models\sql\query.py", line 1236, in solve_lookup_type
+    _, field, _, lookup_parts = self.names_to_path(lookup_splitted, self.get_meta())
+                                ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\db\models\sql\query.py", line 1724, in names_to_path
+    raise FieldError(
+    ...<2 lines>...
+    )
+django.core.exceptions.FieldError: Cannot resolve keyword 'status' into field. Choices are: accommodation_type, base_price, booking_reference, booking_status, confirmed_at, contact_email, contact_name, contact_phone, created_at, currency, dietary_requirements, extras, id, number_of_participants, participants, payment_status, payments, special_requirements, total_price, tour_availability, tour_availability_id, tour_package, tour_package_id, transactions, updated_at, user, user_id
+ERROR 2025-08-11 11:17:21,028 basehttp 2240 1856 "GET /accounts/dashboard/ HTTP/1.1" 500 142444
+INFO 2025-08-11 11:17:29,620 basehttp 2240 1856 "GET /parks/ HTTP/1.1" 200 17155
+INFO 2025-08-11 11:17:34,779 basehttp 2240 1856 "GET /tours/ HTTP/1.1" 200 19070
+INFO 2025-08-11 11:18:38,543 autoreload 2396 11856 Watching for file changes with StatReloader
+INFO 2025-08-11 11:18:44,253 basehttp 2396 4516 "GET /admin HTTP/1.1" 301 0
+INFO 2025-08-11 11:18:44,382 basehttp 2396 3820 "GET /admin/ HTTP/1.1" 302 0
+INFO 2025-08-11 11:18:44,463 basehttp 2396 3820 "GET /admin/login/?next=/admin/ HTTP/1.1" 200 3701
+INFO 2025-08-11 11:18:44,939 basehttp 2396 2780 "GET /static/admin/css/nav_sidebar.css HTTP/1.1" 200 2694
+INFO 2025-08-11 11:18:44,940 basehttp 2396 7728 "GET /static/admin/css/login.css HTTP/1.1" 200 958
+INFO 2025-08-11 11:18:44,944 basehttp 2396 1324 "GET /static/admin/css/responsive.css HTTP/1.1" 200 18533
+INFO 2025-08-11 11:18:44,948 basehttp 2396 11312 "GET /static/admin/css/dark_mode.css HTTP/1.1" 200 2929
+INFO 2025-08-11 11:18:44,983 basehttp 2396 11312 "GET /static/admin/js/nav_sidebar.js HTTP/1.1" 200 3063
+INFO 2025-08-11 11:18:44,990 basehttp 2396 3820 "GET /static/admin/css/base.css HTTP/1.1" 200 21207
+INFO 2025-08-11 11:18:45,011 basehttp 2396 5204 "GET /static/admin/js/theme.js HTTP/1.1" 200 1943
+INFO 2025-08-11 11:18:56,322 basehttp 2396 5204 "POST /admin/login/?next=/admin/ HTTP/1.1" 302 0
+INFO 2025-08-11 11:18:56,398 basehttp 2396 5204 "GET /admin/ HTTP/1.1" 200 15105
+INFO 2025-08-11 11:18:56,436 basehttp 2396 5204 "GET /static/admin/css/dashboard.css HTTP/1.1" 200 441
+INFO 2025-08-11 11:18:56,470 basehttp 2396 11312 "GET /static/admin/img/icon-viewlink.svg HTTP/1.1" 200 581
+INFO 2025-08-11 11:18:56,471 basehttp 2396 5204 "GET /static/admin/img/icon-addlink.svg HTTP/1.1" 200 331
+INFO 2025-08-11 11:18:56,472 basehttp 2396 3820 "GET /static/admin/img/icon-changelink.svg HTTP/1.1" 200 380
+INFO 2025-08-11 11:19:07,723 basehttp 2396 3820 "GET /admin/accounts/traveldocument/ HTTP/1.1" 200 16240
+INFO 2025-08-11 11:19:07,770 basehttp 2396 3820 "GET /static/admin/css/changelists.css HTTP/1.1" 200 6566
+INFO 2025-08-11 11:19:07,819 basehttp 2396 5204 "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+INFO 2025-08-11 11:19:07,847 basehttp 2396 1324 "GET /static/admin/js/jquery.init.js HTTP/1.1" 200 347
+INFO 2025-08-11 11:19:07,858 basehttp 2396 7728 "GET /static/admin/js/core.js HTTP/1.1" 200 5682
+INFO 2025-08-11 11:19:07,859 basehttp 2396 2780 "GET /static/admin/js/admin/RelatedObjectLookups.js HTTP/1.1" 200 8943
+INFO 2025-08-11 11:19:07,864 basehttp 2396 3820 "GET /static/admin/js/actions.js HTTP/1.1" 200 7872
+INFO 2025-08-11 11:19:07,971 basehttp 2396 11312 "GET /static/admin/js/vendor/jquery/jquery.js HTTP/1.1" 200 292458
+INFO 2025-08-11 11:19:07,976 basehttp 2396 5204 "GET /static/admin/js/urlify.js HTTP/1.1" 200 7887
+INFO 2025-08-11 11:19:08,049 basehttp 2396 5204 "GET /static/admin/img/search.svg HTTP/1.1" 200 458
+INFO 2025-08-11 11:19:08,058 basehttp 2396 1324 "GET /static/admin/js/prepopulate.js HTTP/1.1" 200 1531
+INFO 2025-08-11 11:19:08,123 basehttp 2396 1324 "GET /static/admin/js/filters.js HTTP/1.1" 200 978
+INFO 2025-08-11 11:19:08,188 basehttp 2396 7728 "GET /static/admin/js/vendor/xregexp/xregexp.js HTTP/1.1" 200 232381
+INFO 2025-08-11 11:19:08,236 basehttp 2396 7728 "GET /static/admin/img/tooltag-add.svg HTTP/1.1" 200 331
+INFO 2025-08-11 11:19:10,099 basehttp 2396 7728 "GET /admin/accounts/traveldocument/add/ HTTP/1.1" 200 19678
+INFO 2025-08-11 11:19:10,131 basehttp 2396 7728 "GET /static/admin/css/forms.css HTTP/1.1" 200 9047
+INFO 2025-08-11 11:19:10,152 basehttp 2396 11312 "GET /static/admin/css/widgets.css HTTP/1.1" 200 11900
+INFO 2025-08-11 11:19:10,160 basehttp 2396 5204 "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+INFO 2025-08-11 11:19:10,192 basehttp 2396 7728 "GET /static/admin/js/calendar.js HTTP/1.1" 200 8466
+INFO 2025-08-11 11:19:10,209 basehttp 2396 1324 "GET /static/admin/js/admin/DateTimeShortcuts.js HTTP/1.1" 200 19319
+INFO 2025-08-11 11:19:10,247 basehttp 2396 11312 "GET /static/admin/js/prepopulate_init.js HTTP/1.1" 200 586
+INFO 2025-08-11 11:19:10,319 basehttp 2396 1324 "GET /static/admin/js/change_form.js HTTP/1.1" 200 606
+INFO 2025-08-11 11:19:10,413 basehttp 2396 1324 "GET /static/admin/img/icon-calendar.svg HTTP/1.1" 200 1086
+INFO 2025-08-11 11:19:22,113 basehttp 2396 1324 "GET /admin/accounts/useractivitylog/ HTTP/1.1" 200 18920
+INFO 2025-08-11 11:19:22,162 basehttp 2396 1324 "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+INFO 2025-08-11 11:19:22,221 basehttp 2396 1324 "GET /static/admin/img/sorting-icons.svg HTTP/1.1" 200 1097
+INFO 2025-08-11 11:19:27,936 basehttp 2396 1324 "GET /admin/accounts/userprofile/ HTTP/1.1" 200 18416
+INFO 2025-08-11 11:19:27,988 basehttp 2396 11312 "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+INFO 2025-08-11 11:19:27,999 basehttp 2396 1324 "GET /static/admin/img/icon-no.svg HTTP/1.1" 200 560
+INFO 2025-08-11 11:19:35,480 basehttp 2396 1324 "GET /admin/accounts/userprofile/add/ HTTP/1.1" 200 34973
+INFO 2025-08-11 11:19:35,532 basehttp 2396 1324 "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+INFO 2025-08-11 11:19:46,536 basehttp 2396 1324 "GET /admin/bookings/bookingextra/ HTTP/1.1" 200 14367
+INFO 2025-08-11 11:19:46,593 basehttp 2396 1324 "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+INFO 2025-08-11 11:19:48,669 basehttp 2396 1324 "GET /admin/bookings/bookingextra/add/ HTTP/1.1" 200 18977
+INFO 2025-08-11 11:19:48,721 basehttp 2396 1324 "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+INFO 2025-08-11 11:20:01,890 basehttp 2396 1324 "GET /admin/bookings/booking/ HTTP/1.1" 200 16820
+INFO 2025-08-11 11:20:01,943 basehttp 2396 1324 "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+INFO 2025-08-11 11:20:09,427 basehttp 2396 1324 "GET /admin/bookings/booking/add/ HTTP/1.1" 200 28938
+INFO 2025-08-11 11:20:09,475 basehttp 2396 1324 "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+INFO 2025-08-11 11:20:09,628 basehttp 2396 1324 "GET /static/admin/img/icon-clock.svg HTTP/1.1" 200 677
+INFO 2025-08-11 11:21:36,798 basehttp 2396 1324 "GET /admin/sites/site/ HTTP/1.1" 200 15875
+INFO 2025-08-11 11:21:36,853 basehttp 2396 1324 "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+INFO 2025-08-11 11:21:46,492 basehttp 2396 1324 "GET /admin/reviews/reviewhelpful/ HTTP/1.1" 200 15600
+INFO 2025-08-11 11:21:46,555 basehttp 2396 1324 "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+INFO 2025-08-11 11:21:48,162 basehttp 2396 1324 "GET /admin/reviews/reviewhelpful/add/ HTTP/1.1" 200 18092
+INFO 2025-08-11 11:21:48,216 basehttp 2396 1324 "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+INFO 2025-08-11 11:22:00,234 basehttp 2396 1324 "GET /admin/payments/currencyexchangerate/ HTTP/1.1" 200 14930
+INFO 2025-08-11 11:22:00,280 basehttp 2396 1324 "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+INFO 2025-08-11 11:22:01,822 basehttp 2396 1324 "GET /admin/payments/currencyexchangerate/add/ HTTP/1.1" 200 16216
+INFO 2025-08-11 11:22:01,868 basehttp 2396 1324 "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+INFO 2025-08-11 11:22:15,075 basehttp 2396 1324 "GET /admin/payments/paymentmethod/ HTTP/1.1" 200 15593
+INFO 2025-08-11 11:22:15,120 basehttp 2396 1324 "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+INFO 2025-08-11 11:22:16,558 basehttp 2396 1324 "GET /admin/payments/paymentmethod/add/ HTTP/1.1" 200 21083
+INFO 2025-08-11 11:22:16,612 basehttp 2396 1324 "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+INFO 2025-08-11 11:22:32,052 basehttp 2396 1324 "GET /admin/payments/paymentgateway/ HTTP/1.1" 200 15665
+INFO 2025-08-11 11:22:32,102 basehttp 2396 1324 "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+INFO 2025-08-11 11:22:33,397 basehttp 2396 1324 "GET /admin/payments/paymentgateway/add/ HTTP/1.1" 200 20937
+INFO 2025-08-11 11:22:33,443 basehttp 2396 1324 "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+INFO 2025-08-11 11:23:00,431 basehttp 2396 1324 "GET /admin/core/newsletter/ HTTP/1.1" 200 15628
+INFO 2025-08-11 11:23:00,481 basehttp 2396 1324 "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+INFO 2025-08-11 11:23:01,766 basehttp 2396 1324 "GET /admin/core/newsletter/add/ HTTP/1.1" 200 16509
+INFO 2025-08-11 11:23:01,823 basehttp 2396 1324 "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+INFO 2025-08-11 11:23:10,775 basehttp 2396 1324 "GET / HTTP/1.1" 200 20704
+ERROR 2025-08-11 11:23:20,523 log 2396 1324 Internal Server Error: /reviews/
+Traceback (most recent call last):
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\core\handlers\base.py", line 220, in _get_response
+    response = response.render()
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\response.py", line 114, in render
+    self.content = self.rendered_content
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\response.py", line 90, in rendered_content
+    template = self.resolve_template(self.template_name)
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\response.py", line 72, in resolve_template
+    return select_template(template, using=self.using)
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\loader.py", line 47, in select_template
+    raise TemplateDoesNotExist(", ".join(template_name_list), chain=chain)
+django.template.exceptions.TemplateDoesNotExist: reviews/review_list.html, reviews/review_list.html
+ERROR 2025-08-11 11:23:20,533 basehttp 2396 1324 "GET /reviews/ HTTP/1.1" 500 95236
+INFO 2025-08-11 11:23:23,127 basehttp 2396 1324 "GET /tours/ HTTP/1.1" 200 19072
+INFO 2025-08-11 11:24:00,060 basehttp 2396 1324 "GET /accounts/logout/ HTTP/1.1" 302 0
+INFO 2025-08-11 11:24:00,109 basehttp 2396 1324 "GET / HTTP/1.1" 200 20016
+INFO 2025-08-11 11:24:06,588 basehttp 2396 1324 "GET /accounts/register/ HTTP/1.1" 200 33653
+INFO 2025-08-11 11:24:14,890 basehttp 2396 1324 "GET / HTTP/1.1" 200 19666
+WARNING 2025-08-11 11:24:34,663 log 2396 1324 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-11 11:24:34,673 basehttp 2396 1324 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 5399
+INFO 2025-08-11 11:25:35,581 basehttp 2396 1324 "GET /admin/ HTTP/1.1" 302 0
+INFO 2025-08-11 11:25:35,604 basehttp 2396 1324 "GET /admin/login/?next=/admin/ HTTP/1.1" 200 4182
+INFO 2025-08-11 11:25:46,019 basehttp 2396 1324 "POST /admin/login/?next=/admin/ HTTP/1.1" 302 0
+INFO 2025-08-11 11:25:46,051 basehttp 2396 1324 "GET /admin/ HTTP/1.1" 200 15104
+INFO 2025-08-11 11:25:48,139 basehttp 2396 1324 "GET /admin/accounts/customuser/ HTTP/1.1" 200 37645
+INFO 2025-08-11 11:25:48,198 basehttp 2396 1324 "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+INFO 2025-08-11 11:25:48,225 basehttp 2396 8292 "GET /static/admin/img/icon-yes.svg HTTP/1.1" 200 436
+INFO 2025-08-11 11:26:07,510 basehttp 2396 8292 "GET /admin/payments/paymentgateway/ HTTP/1.1" 200 15664
+INFO 2025-08-11 11:26:07,557 basehttp 2396 8292 "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+INFO 2025-08-11 11:26:09,047 basehttp 2396 8292 "GET /admin/payments/paymentgateway/add/ HTTP/1.1" 200 20936
+INFO 2025-08-11 11:26:09,093 basehttp 2396 8292 "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+INFO 2025-08-11 11:28:01,137 basehttp 2396 8292 "GET / HTTP/1.1" 200 20703
+INFO 2025-08-11 11:28:38,534 basehttp 2396 8292 "GET /parks/ HTTP/1.1" 200 17156
+INFO 2025-08-11 11:28:49,993 basehttp 2396 8292 "GET /admin/ HTTP/1.1" 200 15104
+INFO 2025-08-11 11:29:00,046 basehttp 2396 8292 "GET /admin/core/sitesettings/ HTTP/1.1" 200 13991
+INFO 2025-08-11 11:29:01,458 basehttp 2396 8292 "GET /admin/core/sitesettings/add/ HTTP/1.1" 200 21481
+INFO 2025-08-11 11:29:01,522 basehttp 2396 8292 "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+INFO 2025-08-11 11:29:35,299 basehttp 2396 8292 "GET /admin/core/newsletter/ HTTP/1.1" 200 15627
+INFO 2025-08-11 11:29:35,357 basehttp 2396 8292 "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+INFO 2025-08-11 11:29:40,942 basehttp 2396 8292 "GET /admin/core/contactmessage/ HTTP/1.1" 200 15557
+INFO 2025-08-11 11:29:41,003 basehttp 2396 8292 "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+INFO 2025-08-11 11:29:42,561 basehttp 2396 8292 "GET /admin/core/contactmessage/add/ HTTP/1.1" 200 18368
+INFO 2025-08-11 11:29:42,616 basehttp 2396 8292 "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+INFO 2025-08-11 11:29:51,314 basehttp 2396 8292 "GET / HTTP/1.1" 200 20703
+INFO 2025-08-11 11:30:33,119 basehttp 2396 8292 "GET /admin/ HTTP/1.1" 200 15104
+INFO 2025-08-11 11:30:46,602 basehttp 2396 8292 "GET /admin/reviews/reviewhelpful/ HTTP/1.1" 200 15599
+INFO 2025-08-11 11:30:46,662 basehttp 2396 8292 "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+INFO 2025-08-11 11:30:48,041 basehttp 2396 8292 "GET /admin/reviews/reviewhelpful/add/ HTTP/1.1" 200 18091
+INFO 2025-08-11 11:30:48,091 basehttp 2396 8292 "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+INFO 2025-08-11 11:31:00,410 basehttp 2396 8292 "GET /admin/core/sitesettings/ HTTP/1.1" 200 13991
+INFO 2025-08-11 11:31:02,684 basehttp 2396 8292 "GET /admin/core/sitesettings/add/ HTTP/1.1" 200 21481
+INFO 2025-08-11 11:31:02,730 basehttp 2396 8292 "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+INFO 2025-08-11 11:31:14,185 basehttp 2396 8292 "GET / HTTP/1.1" 200 20703
+WARNING 2025-08-11 11:31:27,667 log 2396 8292 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-11 11:31:27,670 basehttp 2396 8292 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 5399
+INFO 2025-08-11 11:31:37,086 basehttp 2396 8292 "GET / HTTP/1.1" 200 20703
+INFO 2025-08-11 11:31:39,037 basehttp 2396 8292 "GET /parks/ HTTP/1.1" 200 17156
+INFO 2025-08-11 11:31:46,236 basehttp 2396 8292 "GET /parks/ HTTP/1.1" 200 17156
+ERROR 2025-08-11 11:31:56,354 log 2396 8292 Internal Server Error: /privacy-policy/
+Traceback (most recent call last):
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\projects\Tourism\project\core\views.py", line 143, in privacy_policy
+    return render(request, 'core/privacy_policy.html')
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: core/privacy_policy.html
+ERROR 2025-08-11 11:31:56,361 basehttp 2396 8292 "GET /privacy-policy/ HTTP/1.1" 500 92545
+INFO 2025-08-11 11:32:21,927 basehttp 2396 8292 "GET /admin/core/sitesettings/add/ HTTP/1.1" 200 21481
+INFO 2025-08-11 11:32:35,139 basehttp 2396 8292 "GET / HTTP/1.1" 200 20703
+INFO 2025-08-11 11:34:04,307 basehttp 2396 8292 "GET /admin/core/sitesettings/add/ HTTP/1.1" 200 21481
+INFO 2025-08-11 11:34:10,927 basehttp 2396 8292 "POST /admin/core/sitesettings/add/ HTTP/1.1" 302 0
+INFO 2025-08-11 11:34:10,963 basehttp 2396 8292 "GET /admin/core/sitesettings/ HTTP/1.1" 200 14402
+INFO 2025-08-11 11:34:14,658 basehttp 2396 8292 "GET /admin/core/sitesettings/1/change/ HTTP/1.1" 200 21696
+INFO 2025-08-11 11:34:14,708 basehttp 2396 8292 "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+INFO 2025-08-11 11:34:17,549 basehttp 2396 8292 "POST /admin/core/sitesettings/1/change/ HTTP/1.1" 302 0
+INFO 2025-08-11 11:34:17,590 basehttp 2396 8292 "GET /admin/core/sitesettings/ HTTP/1.1" 200 14404
+INFO 2025-08-11 11:34:21,079 basehttp 2396 8292 "GET / HTTP/1.1" 200 20681
+INFO 2025-08-11 11:34:41,856 basehttp 2396 8292 "GET /admin/core/sitesettings/ HTTP/1.1" 200 14173
+INFO 2025-08-11 11:34:44,147 basehttp 2396 8292 "GET /admin/core/sitesettings/1/change/ HTTP/1.1" 200 21696
+INFO 2025-08-11 11:34:44,200 basehttp 2396 8292 "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+INFO 2025-08-11 11:34:51,019 basehttp 2396 8292 "GET / HTTP/1.1" 200 20681
+INFO 2025-08-11 11:34:56,009 basehttp 2396 8292 "GET /admin/core/sitesettings/1/change/ HTTP/1.1" 200 21696
+INFO 2025-08-11 11:35:21,604 basehttp 2396 8292 "POST /admin/core/sitesettings/1/change/ HTTP/1.1" 302 0
+INFO 2025-08-11 11:35:21,652 basehttp 2396 8292 "GET /admin/core/sitesettings/ HTTP/1.1" 200 14404
+INFO 2025-08-11 11:35:23,669 basehttp 2396 8292 "GET / HTTP/1.1" 200 20681
+INFO 2025-08-11 11:35:33,162 basehttp 2396 8292 "GET / HTTP/1.1" 200 20681
+INFO 2025-08-11 11:35:44,194 basehttp 2396 8292 "GET /accounts/logout/ HTTP/1.1" 302 0
+INFO 2025-08-11 11:35:44,234 basehttp 2396 8292 "GET / HTTP/1.1" 200 19994
+INFO 2025-08-11 11:35:53,281 basehttp 2396 8292 "GET /contact/ HTTP/1.1" 200 22964
+INFO 2025-08-11 11:36:08,495 basehttp 2396 5344 "GET /about/ HTTP/1.1" 200 23109
+INFO 2025-08-11 11:37:47,026 basehttp 2396 5344 "GET /accounts/register/ HTTP/1.1" 200 33631
+INFO 2025-08-11 11:37:48,953 basehttp 2396 5344 "GET /accounts/login/ HTTP/1.1" 200 16078
+INFO 2025-08-11 11:38:23,196 basehttp 2396 5344 "POST /accounts/login/ HTTP/1.1" 302 0
+INFO 2025-08-11 11:38:23,226 basehttp 2396 5344 "GET / HTTP/1.1" 200 21009
+INFO 2025-08-11 11:38:54,334 basehttp 2396 5344 "POST /newsletter/signup/ HTTP/1.1" 200 76
+INFO 2025-08-11 11:39:08,308 basehttp 2396 5344 "GET /admin/ HTTP/1.1" 200 15042
+INFO 2025-08-11 11:39:18,241 basehttp 2396 5344 "GET /admin/core/newsletter/ HTTP/1.1" 200 17618
+INFO 2025-08-11 11:39:18,302 basehttp 2396 5344 "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+INFO 2025-08-11 11:39:27,635 basehttp 2396 5344 "GET /admin/core/contactmessage/ HTTP/1.1" 200 15495
+INFO 2025-08-11 11:39:27,683 basehttp 2396 5344 "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+INFO 2025-08-11 11:39:29,144 basehttp 2396 5344 "GET /admin/core/contactmessage/add/ HTTP/1.1" 200 18306
+INFO 2025-08-11 11:39:29,197 basehttp 2396 5344 "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+INFO 2025-08-11 11:39:39,325 basehttp 2396 5344 "GET / HTTP/1.1" 200 20682
+INFO 2025-08-11 11:39:43,451 basehttp 2396 5344 "GET /contact/ HTTP/1.1" 200 24002
+INFO 2025-08-11 11:40:05,483 basehttp 2396 5344 "POST /contact/ HTTP/1.1" 302 0
+INFO 2025-08-11 11:40:05,515 basehttp 2396 5344 "GET /contact/ HTTP/1.1" 200 24371
+INFO 2025-08-11 11:40:18,641 basehttp 2396 5344 "GET /admin/ HTTP/1.1" 200 15042
+INFO 2025-08-11 11:40:23,577 basehttp 2396 5344 "GET /admin/core/contactmessage/ HTTP/1.1" 200 17796
+INFO 2025-08-11 11:40:23,636 basehttp 2396 5344 "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+INFO 2025-08-11 11:40:27,912 basehttp 2396 5344 "GET /admin/core/contactmessage/1/change/ HTTP/1.1" 200 18657
+INFO 2025-08-11 11:40:27,975 basehttp 2396 5344 "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+INFO 2025-08-11 11:40:39,214 basehttp 2396 5344 "GET /admin/core/contactmessage/ HTTP/1.1" 200 17796
+INFO 2025-08-11 11:40:48,414 basehttp 2396 5344 "GET / HTTP/1.1" 200 20682
+INFO 2025-08-11 11:40:50,420 basehttp 2396 5344 "GET /accounts/logout/ HTTP/1.1" 302 0
+INFO 2025-08-11 11:40:50,458 basehttp 2396 5344 "GET / HTTP/1.1" 200 19994
+INFO 2025-08-11 11:40:54,144 basehttp 2396 5344 "GET /contact/ HTTP/1.1" 200 22964
+INFO 2025-08-11 11:41:21,551 basehttp 2396 5344 "POST /contact/ HTTP/1.1" 302 0
+INFO 2025-08-11 11:41:21,587 basehttp 2396 5344 "GET /contact/ HTTP/1.1" 200 23333
+INFO 2025-08-11 11:41:35,528 basehttp 2396 5344 "GET /admin/ HTTP/1.1" 302 0
+INFO 2025-08-11 11:41:35,560 basehttp 2396 5344 "GET /admin/login/?next=/admin/ HTTP/1.1" 200 4182
+INFO 2025-08-11 11:41:55,307 basehttp 2396 5344 "POST /admin/login/?next=/admin/ HTTP/1.1" 302 0
+INFO 2025-08-11 11:41:55,342 basehttp 2396 5344 "GET /admin/ HTTP/1.1" 200 15042
+INFO 2025-08-11 11:41:58,540 basehttp 2396 5344 "GET /admin/core/contactmessage/ HTTP/1.1" 200 18240
+INFO 2025-08-11 11:41:58,603 basehttp 2396 5344 "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+INFO 2025-08-11 11:42:02,127 basehttp 2396 5344 "GET /admin/core/contactmessage/2/change/ HTTP/1.1" 200 18634
+INFO 2025-08-11 11:42:02,185 basehttp 2396 5344 "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+INFO 2025-08-11 11:42:07,746 basehttp 2396 5344 "POST /admin/core/contactmessage/2/change/ HTTP/1.1" 302 0
+INFO 2025-08-11 11:42:07,784 basehttp 2396 5344 "GET /admin/core/contactmessage/ HTTP/1.1" 200 18467
+INFO 2025-08-11 11:42:07,843 basehttp 2396 5344 "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+INFO 2025-08-11 11:42:09,076 basehttp 2396 5344 "GET /admin/core/contactmessage/1/change/ HTTP/1.1" 200 18657
+INFO 2025-08-11 11:42:09,125 basehttp 2396 5344 "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+INFO 2025-08-11 11:42:11,851 basehttp 2396 5344 "POST /admin/core/contactmessage/1/change/ HTTP/1.1" 302 0
+INFO 2025-08-11 11:42:11,914 basehttp 2396 5344 "GET /admin/core/contactmessage/ HTTP/1.1" 200 18471
+INFO 2025-08-11 11:42:11,978 basehttp 2396 5344 "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+INFO 2025-08-12 12:57:31,996 autoreload 12732 14736 Watching for file changes with StatReloader
+INFO 2025-08-12 12:57:49,842 basehttp 12732 12820 "GET / HTTP/1.1" 200 20195
+WARNING 2025-08-12 12:57:51,124 log 12732 12820 Not Found: /favicon.ico
+WARNING 2025-08-12 12:57:51,130 basehttp 12732 12820 "GET /favicon.ico HTTP/1.1" 404 5789
+WARNING 2025-08-12 12:58:01,268 log 12732 12820 Not Found: /parks/destinations/
+WARNING 2025-08-12 12:58:01,285 basehttp 12732 12820 "GET /parks/destinations/ HTTP/1.1" 404 5456
+WARNING 2025-08-12 12:58:15,924 log 12732 12820 Not Found: /parks/wildlife/
+WARNING 2025-08-12 12:58:15,926 basehttp 12732 12820 "GET /parks/wildlife/ HTTP/1.1" 404 5444
+INFO 2025-08-12 12:58:27,464 basehttp 12732 12820 "GET /historical-sites/ HTTP/1.1" 200 16656
+INFO 2025-08-12 12:59:02,166 basehttp 12732 12820 "GET / HTTP/1.1" 200 20195
+INFO 2025-08-12 12:59:08,592 basehttp 12732 12820 "GET /parks/ HTTP/1.1" 200 16648
+INFO 2025-08-12 12:59:14,608 basehttp 12732 12820 "GET /parks/?type=national_park&region=&search=None HTTP/1.1" 200 16703
+INFO 2025-08-12 12:59:19,237 basehttp 12732 12820 "GET /tours/ HTTP/1.1" 200 18563
+INFO 2025-08-12 12:59:49,562 basehttp 12732 12820 "GET /accounts/login/ HTTP/1.1" 200 16629
+INFO 2025-08-12 13:00:02,344 basehttp 12732 12820 "POST /accounts/login/ HTTP/1.1" 302 0
+INFO 2025-08-12 13:00:02,399 basehttp 12732 12820 "GET / HTTP/1.1" 200 21559
+ERROR 2025-08-12 13:00:10,467 log 12732 12820 Internal Server Error: /accounts/dashboard/
+Traceback (most recent call last):
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\contrib\auth\mixins.py", line 73, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\views\generic\base.py", line 143, in dispatch
+    return handler(request, *args, **kwargs)
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\views\generic\base.py", line 226, in get
+    context = self.get_context_data(**kwargs)
+  File "C:\projects\Tourism\project\accounts\views.py", line 136, in get_context_data
+    completed_tours = Booking.objects.filter(user=user, status='completed').count()
+                      ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\db\models\query.py", line 1436, in filter
+    return self._filter_or_exclude(False, args, kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\db\models\query.py", line 1454, in _filter_or_exclude
+    clone._filter_or_exclude_inplace(negate, args, kwargs)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\db\models\query.py", line 1461, in _filter_or_exclude_inplace
+    self._query.add_q(Q(*args, **kwargs))
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\db\models\sql\query.py", line 1545, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+                ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\db\models\sql\query.py", line 1576, in _add_q
+    child_clause, needed_inner = self.build_filter(
+                                 ~~~~~~~~~~~~~~~~~^
+        child,
+        ^^^^^^
+    ...<6 lines>...
+        summarize=summarize,
+        ^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\db\models\sql\query.py", line 1426, in build_filter
+    lookups, parts, reffed_expression = self.solve_lookup_type(arg, summarize)
+                                        ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\db\models\sql\query.py", line 1236, in solve_lookup_type
+    _, field, _, lookup_parts = self.names_to_path(lookup_splitted, self.get_meta())
+                                ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\db\models\sql\query.py", line 1724, in names_to_path
+    raise FieldError(
+    ...<2 lines>...
+    )
+django.core.exceptions.FieldError: Cannot resolve keyword 'status' into field. Choices are: accommodation_type, base_price, booking_reference, booking_status, confirmed_at, contact_email, contact_name, contact_phone, created_at, currency, dietary_requirements, extras, id, number_of_participants, participants, payment_status, payments, special_requirements, total_price, tour_availability, tour_availability_id, tour_package, tour_package_id, transactions, updated_at, user, user_id
+ERROR 2025-08-12 13:00:10,513 basehttp 12732 12820 "GET /accounts/dashboard/ HTTP/1.1" 500 142563
+INFO 2025-08-12 13:00:43,814 basehttp 12732 12820 "GET /bookings/ HTTP/1.1" 200 16317
+INFO 2025-08-12 13:00:46,877 basehttp 12732 12820 "GET /tours/ HTTP/1.1" 200 19600
+INFO 2025-08-12 13:00:57,745 basehttp 12732 12820 "GET /accounts/profile/ HTTP/1.1" 200 31291
+INFO 2025-08-12 13:03:23,410 basehttp 12732 12820 "POST /accounts/profile/ HTTP/1.1" 200 31559
+INFO 2025-08-12 13:03:34,980 basehttp 12732 12820 "POST /accounts/profile/ HTTP/1.1" 200 31561
+INFO 2025-08-12 13:03:43,669 basehttp 12732 12820 "POST /accounts/profile/ HTTP/1.1" 302 0
+ERROR 2025-08-12 13:03:43,787 log 12732 12820 Internal Server Error: /accounts/dashboard/
+Traceback (most recent call last):
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\contrib\auth\mixins.py", line 73, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\views\generic\base.py", line 143, in dispatch
+    return handler(request, *args, **kwargs)
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\views\generic\base.py", line 226, in get
+    context = self.get_context_data(**kwargs)
+  File "C:\projects\Tourism\project\accounts\views.py", line 136, in get_context_data
+    completed_tours = Booking.objects.filter(user=user, status='completed').count()
+                      ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\db\models\query.py", line 1436, in filter
+    return self._filter_or_exclude(False, args, kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\db\models\query.py", line 1454, in _filter_or_exclude
+    clone._filter_or_exclude_inplace(negate, args, kwargs)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\db\models\query.py", line 1461, in _filter_or_exclude_inplace
+    self._query.add_q(Q(*args, **kwargs))
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\db\models\sql\query.py", line 1545, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+                ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\db\models\sql\query.py", line 1576, in _add_q
+    child_clause, needed_inner = self.build_filter(
+                                 ~~~~~~~~~~~~~~~~~^
+        child,
+        ^^^^^^
+    ...<6 lines>...
+        summarize=summarize,
+        ^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\db\models\sql\query.py", line 1426, in build_filter
+    lookups, parts, reffed_expression = self.solve_lookup_type(arg, summarize)
+                                        ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\db\models\sql\query.py", line 1236, in solve_lookup_type
+    _, field, _, lookup_parts = self.names_to_path(lookup_splitted, self.get_meta())
+                                ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\db\models\sql\query.py", line 1724, in names_to_path
+    raise FieldError(
+    ...<2 lines>...
+    )
+django.core.exceptions.FieldError: Cannot resolve keyword 'status' into field. Choices are: accommodation_type, base_price, booking_reference, booking_status, confirmed_at, contact_email, contact_name, contact_phone, created_at, currency, dietary_requirements, extras, id, number_of_participants, participants, payment_status, payments, special_requirements, total_price, tour_availability, tour_availability_id, tour_package, tour_package_id, transactions, updated_at, user, user_id
+ERROR 2025-08-12 13:03:43,821 basehttp 12732 12820 "GET /accounts/dashboard/ HTTP/1.1" 500 143156
+INFO 2025-08-12 13:05:45,817 autoreload 12732 14736 C:\projects\Tourism\project\accounts\views.py changed, reloading.
+INFO 2025-08-12 13:06:05,746 autoreload 10680 13056 Watching for file changes with StatReloader
+INFO 2025-08-12 13:06:21,846 basehttp 10680 14792 "GET /accounts/dashboard/ HTTP/1.1" 200 21166
+INFO 2025-08-12 13:06:51,654 basehttp 10680 14792 "GET /bookings/ HTTP/1.1" 200 16319
+INFO 2025-08-12 13:06:54,556 basehttp 10680 14792 "GET /tours/ HTTP/1.1" 200 19602
+INFO 2025-08-12 13:07:06,588 basehttp 10680 14792 "GET /bookings/ HTTP/1.1" 200 16319
+INFO 2025-08-12 13:07:08,910 basehttp 10680 14792 "GET /accounts/dashboard/ HTTP/1.1" 200 20825
+INFO 2025-08-12 13:07:20,863 basehttp 10680 14792 "GET /parks/ HTTP/1.1" 200 17687
+INFO 2025-08-12 13:07:31,910 basehttp 10680 14792 "GET /admin/ HTTP/1.1" 200 16482
+INFO 2025-08-12 13:07:31,988 basehttp 10680 3632 "GET /static/admin/css/base.css HTTP/1.1" 304 0
+INFO 2025-08-12 13:07:32,082 basehttp 10680 3632 "GET /static/admin/js/nav_sidebar.js HTTP/1.1" 304 0
+INFO 2025-08-12 13:07:32,135 basehttp 10680 16552 "GET /static/admin/css/dark_mode.css HTTP/1.1" 304 0
+INFO 2025-08-12 13:07:32,203 basehttp 10680 6228 "GET /static/admin/css/nav_sidebar.css HTTP/1.1" 304 0
+INFO 2025-08-12 13:07:32,302 basehttp 10680 4500 "GET /static/admin/css/responsive.css HTTP/1.1" 304 0
+INFO 2025-08-12 13:07:32,480 basehttp 10680 14792 "GET /static/admin/css/dashboard.css HTTP/1.1" 200 441
+INFO 2025-08-12 13:07:32,483 basehttp 10680 5492 "GET /static/admin/js/theme.js HTTP/1.1" 304 0
+INFO 2025-08-12 13:07:32,798 basehttp 10680 5492 "GET /static/admin/img/icon-changelink.svg HTTP/1.1" 200 380
+INFO 2025-08-12 13:07:32,798 basehttp 10680 14792 "GET /static/admin/img/icon-addlink.svg HTTP/1.1" 200 331
+INFO 2025-08-12 13:07:32,809 basehttp 10680 4500 "GET /static/admin/img/icon-viewlink.svg HTTP/1.1" 200 581
+INFO 2025-08-12 13:07:52,205 basehttp 10680 4500 "GET /admin/core/historicalsite/ HTTP/1.1" 200 16930
+INFO 2025-08-12 13:07:52,247 basehttp 10680 4500 "GET /static/admin/css/changelists.css HTTP/1.1" 200 6566
+INFO 2025-08-12 13:07:52,281 basehttp 10680 5492 "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+INFO 2025-08-12 13:07:52,315 basehttp 10680 6228 "GET /static/admin/js/jquery.init.js HTTP/1.1" 200 347
+INFO 2025-08-12 13:07:52,350 basehttp 10680 4500 "GET /static/admin/js/actions.js HTTP/1.1" 200 7872
+INFO 2025-08-12 13:07:52,357 basehttp 10680 3632 "GET /static/admin/js/admin/RelatedObjectLookups.js HTTP/1.1" 200 8943
+INFO 2025-08-12 13:07:52,359 basehttp 10680 16552 "GET /static/admin/js/core.js HTTP/1.1" 200 5682
+INFO 2025-08-12 13:07:52,423 basehttp 10680 5492 "GET /static/admin/js/urlify.js HTTP/1.1" 200 7887
+INFO 2025-08-12 13:07:52,431 basehttp 10680 6228 "GET /static/admin/js/prepopulate.js HTTP/1.1" 200 1531
+INFO 2025-08-12 13:07:52,473 basehttp 10680 16552 "GET /static/admin/img/search.svg HTTP/1.1" 200 458
+INFO 2025-08-12 13:07:52,508 basehttp 10680 14792 "GET /static/admin/js/vendor/jquery/jquery.js HTTP/1.1" 200 292458
+INFO 2025-08-12 13:07:52,601 basehttp 10680 14792 "GET /static/admin/js/filters.js HTTP/1.1" 200 978
+INFO 2025-08-12 13:07:52,615 basehttp 10680 4500 "GET /static/admin/js/vendor/xregexp/xregexp.js HTTP/1.1" 200 232381
+INFO 2025-08-12 13:07:52,673 basehttp 10680 4500 "GET /static/admin/img/tooltag-add.svg HTTP/1.1" 200 331
+INFO 2025-08-12 13:07:54,676 basehttp 10680 4500 "GET /admin/core/historicalsite/add/ HTTP/1.1" 200 26707
+INFO 2025-08-12 13:07:54,732 basehttp 10680 4500 "GET /static/admin/css/forms.css HTTP/1.1" 200 9047
+INFO 2025-08-12 13:07:54,752 basehttp 10680 16552 "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+INFO 2025-08-12 13:07:54,762 basehttp 10680 14792 "GET /static/admin/js/prepopulate_init.js HTTP/1.1" 200 586
+INFO 2025-08-12 13:07:54,779 basehttp 10680 14792 "GET /static/admin/css/widgets.css HTTP/1.1" 200 11900
+INFO 2025-08-12 13:07:54,813 basehttp 10680 16552 "GET /static/admin/js/change_form.js HTTP/1.1" 200 606
+INFO 2025-08-12 13:10:04,070 basehttp 10680 16552 "GET / HTTP/1.1" 200 21234
+INFO 2025-08-12 13:10:11,436 basehttp 10680 16552 "GET /tours/ HTTP/1.1" 200 19602
+INFO 2025-08-12 13:10:24,679 basehttp 10680 16552 "GET /historical-sites/ HTTP/1.1" 200 17695
+INFO 2025-08-12 13:10:49,438 basehttp 10680 16552 "GET / HTTP/1.1" 200 21234
+INFO 2025-08-12 13:12:10,641 basehttp 10680 16552 "GET /admin/ HTTP/1.1" 200 16482
+INFO 2025-08-12 13:12:20,995 basehttp 10680 16552 "GET /admin/sites/site/ HTTP/1.1" 200 16132
+INFO 2025-08-12 13:12:21,051 basehttp 10680 16552 "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+INFO 2025-08-12 13:12:21,114 basehttp 10680 16552 "GET /static/admin/img/sorting-icons.svg HTTP/1.1" 200 1097
+INFO 2025-08-12 13:12:33,676 basehttp 10680 16552 "GET /admin/core/sitesettings/ HTTP/1.1" 200 14494
+INFO 2025-08-12 13:12:36,028 basehttp 10680 16552 "GET /admin/core/sitesettings/1/change/ HTTP/1.1" 200 22017
+INFO 2025-08-12 13:12:36,085 basehttp 10680 16552 "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+INFO 2025-08-12 13:12:45,129 basehttp 10680 16552 "GET /admin/core/historicalsite/ HTTP/1.1" 200 16930
+INFO 2025-08-12 13:12:45,189 basehttp 10680 16552 "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+INFO 2025-08-12 13:12:46,840 basehttp 10680 16552 "GET /admin/core/historicalsite/add/ HTTP/1.1" 200 26707
+INFO 2025-08-12 13:12:46,992 basehttp 10680 16552 "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+INFO 2025-08-12 13:16:34,051 basehttp 10680 16552 "POST /admin/core/historicalsite/add/ HTTP/1.1" 302 0
+INFO 2025-08-12 13:16:34,104 basehttp 10680 16552 "GET /admin/core/historicalsite/ HTTP/1.1" 200 19878
+INFO 2025-08-12 13:16:34,165 basehttp 10680 4108 "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+INFO 2025-08-12 13:16:34,178 basehttp 10680 16552 "GET /static/admin/img/icon-no.svg HTTP/1.1" 200 560
+INFO 2025-08-12 13:16:34,186 basehttp 10680 10868 "GET /static/admin/img/icon-yes.svg HTTP/1.1" 200 436
+INFO 2025-08-12 13:16:37,925 basehttp 10680 10868 "GET /admin/core/historicalsite/1/change/ HTTP/1.1" 200 27921
+INFO 2025-08-12 13:16:37,979 basehttp 10680 10868 "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+INFO 2025-08-12 13:16:38,047 basehttp 10680 10868 "GET /static/admin/img/tooltag-arrowright.svg HTTP/1.1" 200 280
+INFO 2025-08-12 13:16:44,327 basehttp 10680 10868 "POST /admin/core/historicalsite/1/change/ HTTP/1.1" 302 0
+INFO 2025-08-12 13:16:44,381 basehttp 10680 10868 "GET /admin/core/historicalsite/ HTTP/1.1" 200 19880
+INFO 2025-08-12 13:16:44,436 basehttp 10680 10868 "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+INFO 2025-08-12 13:16:47,525 basehttp 10680 10868 "GET / HTTP/1.1" 200 21234
+INFO 2025-08-12 13:16:52,603 basehttp 10680 10868 "GET / HTTP/1.1" 200 21234
+INFO 2025-08-12 13:16:55,230 basehttp 10680 10868 "GET /historical-sites/ HTTP/1.1" 200 19958
+INFO 2025-08-12 13:16:55,294 basehttp 10680 10868 "GET /media/historical_sites/iStock_TZ_LandscapeOlduvaiGorge2.jpg HTTP/1.1" 200 262102
+ERROR 2025-08-12 13:17:06,555 log 10680 10868 Internal Server Error: /historical-sites/olduvai-gorge/
+Traceback (most recent call last):
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\projects\Tourism\project\core\views.py", line 194, in historical_site_detail
+    site = get_object_or_404(HistoricalSite, slug=slug, is_active=True)
+           ^^^^^^^^^^^^^^^^^
+NameError: name 'get_object_or_404' is not defined
+ERROR 2025-08-12 13:17:06,559 basehttp 10680 10868 "GET /historical-sites/olduvai-gorge/ HTTP/1.1" 500 76415
+INFO 2025-08-12 13:18:36,229 autoreload 10680 13056 C:\projects\Tourism\project\core\views.py changed, reloading.
+INFO 2025-08-12 13:18:47,419 autoreload 13632 11920 Watching for file changes with StatReloader
+INFO 2025-08-12 13:18:51,867 basehttp 13632 11448 "GET /historical-sites/olduvai-gorge/ HTTP/1.1" 200 19728
+INFO 2025-08-12 13:18:52,200 basehttp 13632 11448 "GET /media/historical_sites/iStock_TZ_LandscapeOlduvaiGorge2.jpg HTTP/1.1" 304 0
+INFO 2025-08-12 13:18:58,024 basehttp 13632 11052 "GET /historical-sites/ HTTP/1.1" 200 19958
+INFO 2025-08-12 13:19:16,477 basehttp 13632 11052 "GET /historical-sites/olduvai-gorge/ HTTP/1.1" 200 19728
+INFO 2025-08-12 13:19:16,670 basehttp 13632 11052 "GET /media/historical_sites/iStock_TZ_LandscapeOlduvaiGorge2.jpg HTTP/1.1" 304 0
+INFO 2025-08-12 13:19:41,671 basehttp 13632 11052 "GET /contact/ HTTP/1.1" 200 24554
+INFO 2025-08-12 13:19:46,697 basehttp 13632 11052 "GET /historical-sites/ HTTP/1.1" 200 19958
+INFO 2025-08-12 13:19:46,743 basehttp 13632 11052 "GET /media/historical_sites/iStock_TZ_LandscapeOlduvaiGorge2.jpg HTTP/1.1" 304 0
+WARNING 2025-08-12 13:20:07,851 log 13632 11052 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-12 13:20:07,859 basehttp 13632 11052 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 5900
+INFO 2025-08-12 13:20:22,408 basehttp 13632 11052 "GET /historical-sites/olduvai-gorge/ HTTP/1.1" 200 19728
+WARNING 2025-08-12 13:20:22,597 log 13632 11052 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+INFO 2025-08-12 13:20:22,652 basehttp 13632 3608 "GET /media/historical_sites/iStock_TZ_LandscapeOlduvaiGorge2.jpg HTTP/1.1" 304 0
+WARNING 2025-08-12 13:20:22,656 basehttp 13632 11052 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 5900
+INFO 2025-08-12 13:21:20,784 basehttp 13632 11052 "GET /historical-sites/ HTTP/1.1" 200 19958
+INFO 2025-08-12 13:21:20,840 basehttp 13632 11052 "GET /media/historical_sites/iStock_TZ_LandscapeOlduvaiGorge2.jpg HTTP/1.1" 304 0
+INFO 2025-08-12 13:21:33,605 basehttp 13632 11052 "GET /admin/ HTTP/1.1" 200 17097
+INFO 2025-08-12 13:22:35,711 basehttp 13632 11052 "GET /admin/core/historicalsite/ HTTP/1.1" 200 19658
+INFO 2025-08-12 13:22:35,783 basehttp 13632 11052 "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+INFO 2025-08-12 13:22:37,598 basehttp 13632 11052 "GET /admin/core/historicalsite/add/ HTTP/1.1" 200 26707
+INFO 2025-08-12 13:22:37,660 basehttp 13632 11052 "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+INFO 2025-08-12 13:26:00,752 basehttp 13632 11052 "POST /admin/core/historicalsite/add/ HTTP/1.1" 302 0
+INFO 2025-08-12 13:26:00,818 basehttp 13632 11052 "GET /admin/core/historicalsite/ HTTP/1.1" 200 20529
+INFO 2025-08-12 13:26:00,872 basehttp 13632 11052 "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+INFO 2025-08-12 13:26:04,021 basehttp 13632 11052 "GET / HTTP/1.1" 200 21234
+INFO 2025-08-12 13:26:12,115 basehttp 13632 11052 "GET /historical-sites/ HTTP/1.1" 200 22354
+INFO 2025-08-12 13:26:12,179 basehttp 13632 17184 "GET /media/historical_sites/iStock_TZ_LandscapeOlduvaiGorge2.jpg HTTP/1.1" 304 0
+INFO 2025-08-12 13:26:12,432 basehttp 13632 11052 "GET /media/historical_sites/Experience-Bagamoyo-Historical-City.webp HTTP/1.1" 200 54902
+INFO 2025-08-12 13:26:26,621 basehttp 13632 11052 "GET /historical-sites/?type=colonial&region=&search=None HTTP/1.1" 200 17913
+INFO 2025-08-12 13:26:38,823 basehttp 13632 11052 "GET /historical-sites/?type=colonial&region=Pwani&search=None HTTP/1.1" 200 17926
+INFO 2025-08-12 13:26:45,321 basehttp 13632 11052 "GET /historical-sites/?type=colonial&region=&search=None HTTP/1.1" 200 17913
+INFO 2025-08-12 13:26:52,443 basehttp 13632 11052 "GET /historical-sites/?type=&region=&search=None HTTP/1.1" 200 17897
+INFO 2025-08-12 13:26:54,977 basehttp 13632 11052 "GET /historical-sites/?type=&region=&search=None HTTP/1.1" 200 17897
+INFO 2025-08-12 13:26:55,900 basehttp 13632 11052 "GET /historical-sites/?type=&region=&search=None HTTP/1.1" 200 17897
+INFO 2025-08-12 13:26:59,071 basehttp 13632 11052 "GET /historical-sites/ HTTP/1.1" 200 22354
+INFO 2025-08-12 13:26:59,110 basehttp 13632 11052 "GET /media/historical_sites/Experience-Bagamoyo-Historical-City.webp HTTP/1.1" 304 0
+INFO 2025-08-12 13:27:22,453 basehttp 13632 11052 "GET /historical-sites/bagamoyo-historic-town/ HTTP/1.1" 200 19680
+INFO 2025-08-12 13:27:22,511 basehttp 13632 11052 "GET /media/historical_sites/Experience-Bagamoyo-Historical-City.webp HTTP/1.1" 304 0
+INFO 2025-08-12 13:28:14,997 basehttp 13632 11052 "GET / HTTP/1.1" 200 21234
+INFO 2025-08-12 13:28:58,372 basehttp 13632 11052 "GET /about/ HTTP/1.1" 200 24699
+INFO 2025-08-12 13:29:10,828 basehttp 13632 11052 "GET /contact/ HTTP/1.1" 200 24554
+INFO 2025-08-12 13:29:26,742 basehttp 13632 11052 "GET /historical-sites/ HTTP/1.1" 200 22354
+INFO 2025-08-12 13:29:26,790 basehttp 13632 11052 "GET /media/historical_sites/Experience-Bagamoyo-Historical-City.webp HTTP/1.1" 304 0
+INFO 2025-08-12 13:29:26,801 basehttp 13632 11052 "GET /media/historical_sites/iStock_TZ_LandscapeOlduvaiGorge2.jpg HTTP/1.1" 304 0
+INFO 2025-08-12 13:30:05,110 basehttp 13632 11052 "GET /admin/core/historicalsite/ HTTP/1.1" 200 20300
+INFO 2025-08-12 13:30:07,410 basehttp 13632 11052 "GET /admin/core/historicalsite/add/ HTTP/1.1" 200 26707
+INFO 2025-08-12 13:30:07,476 basehttp 13632 11052 "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+INFO 2025-08-12 13:32:52,065 basehttp 13632 11052 "POST /admin/core/historicalsite/add/ HTTP/1.1" 302 0
+INFO 2025-08-12 13:32:52,208 basehttp 13632 11052 "GET /admin/core/historicalsite/ HTTP/1.1" 200 21165
+INFO 2025-08-12 13:32:52,256 basehttp 13632 11052 "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+INFO 2025-08-12 13:32:57,096 basehttp 13632 11052 "GET /admin/core/historicalsite/add/ HTTP/1.1" 200 26707
+INFO 2025-08-12 13:32:57,153 basehttp 13632 11052 "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+INFO 2025-08-12 13:35:59,290 basehttp 13632 11052 "POST /admin/core/historicalsite/add/ HTTP/1.1" 302 0
+INFO 2025-08-12 13:35:59,360 basehttp 13632 11052 "GET /admin/core/historicalsite/ HTTP/1.1" 200 21752
+INFO 2025-08-12 13:35:59,413 basehttp 13632 11052 "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+INFO 2025-08-12 13:36:23,142 basehttp 13632 11052 "GET / HTTP/1.1" 200 21234
+INFO 2025-08-12 13:36:26,486 basehttp 13632 11052 "GET /historical-sites/ HTTP/1.1" 200 27100
+INFO 2025-08-12 13:36:26,563 basehttp 13632 14560 "GET /media/historical_sites/1-panorama07-cr-800x477-800x477.jpg HTTP/1.1" 200 109123
+INFO 2025-08-12 13:36:26,568 basehttp 13632 11052 "GET /media/historical_sites/Old_Fort_Gereza_12_Kilwa_Kisiwani.jpg HTTP/1.1" 200 471845
+INFO 2025-08-12 13:36:26,616 basehttp 13632 17220 "GET /media/historical_sites/Experience-Bagamoyo-Historical-City.webp HTTP/1.1" 304 0
+INFO 2025-08-12 13:36:26,704 basehttp 13632 2116 "GET /media/historical_sites/iStock_TZ_LandscapeOlduvaiGorge2.jpg HTTP/1.1" 304 0
+INFO 2025-08-12 13:36:33,847 basehttp 13632 11052 "GET /historical-sites/ruins-of-songo-mnara/ HTTP/1.1" 200 20900
+INFO 2025-08-12 13:36:33,902 basehttp 13632 11052 "GET /media/historical_sites/1-panorama07-cr-800x477-800x477.jpg HTTP/1.1" 304 0
+INFO 2025-08-12 13:36:52,124 basehttp 13632 11052 "GET /historical-sites/kilwa-kisiwani/ HTTP/1.1" 200 20906
+INFO 2025-08-12 13:36:52,173 basehttp 13632 11052 "GET /media/historical_sites/1-panorama07-cr-800x477-800x477.jpg HTTP/1.1" 304 0
+INFO 2025-08-12 13:36:52,174 basehttp 13632 2116 "GET /media/historical_sites/Old_Fort_Gereza_12_Kilwa_Kisiwani.jpg HTTP/1.1" 304 0
+INFO 2025-08-12 13:40:26,008 basehttp 13632 2116 "GET /accounts/dashboard/ HTTP/1.1" 200 20825
+INFO 2025-08-12 13:40:28,348 basehttp 13632 2116 "GET /tours/ HTTP/1.1" 200 19602
+INFO 2025-08-12 13:40:44,198 basehttp 13632 2116 "GET /tours/ HTTP/1.1" 200 19602
+INFO 2025-08-12 13:41:33,104 basehttp 13632 2116 "GET /tours/?category=cultural&difficulty=&duration=&price=&sort=featured HTTP/1.1" 200 19687
+INFO 2025-08-13 10:46:35,455 autoreload 10372 8036 Watching for file changes with StatReloader
+INFO 2025-08-13 10:46:40,484 basehttp 10372 13264 "GET / HTTP/1.1" 200 22515
+WARNING 2025-08-13 10:46:41,542 log 10372 13264 Not Found: /favicon.ico
+WARNING 2025-08-13 10:46:41,546 basehttp 10372 13264 "GET /favicon.ico HTTP/1.1" 404 5789
+WARNING 2025-08-13 10:46:53,809 log 10372 13264 Not Found: /parks/destinations/
+WARNING 2025-08-13 10:46:53,810 basehttp 10372 13264 "GET /parks/destinations/ HTTP/1.1" 404 5456
+WARNING 2025-08-13 10:47:03,479 log 10372 13264 Not Found: /parks/destinations/
+WARNING 2025-08-13 10:47:03,480 basehttp 10372 13264 "GET /parks/destinations/?type=wildlife_area HTTP/1.1" 404 5475
+WARNING 2025-08-13 10:47:10,561 log 10372 13264 Not Found: /parks/destinations/
+WARNING 2025-08-13 10:47:10,562 basehttp 10372 13264 "GET /parks/destinations/?type=beach HTTP/1.1" 404 5467
+INFO 2025-08-13 10:47:15,459 basehttp 10372 13264 "GET /historical-sites/ HTTP/1.1" 200 28381
+INFO 2025-08-13 10:47:15,520 basehttp 10372 5472 "GET /media/historical_sites/iStock_TZ_LandscapeOlduvaiGorge2.jpg HTTP/1.1" 304 0
+INFO 2025-08-13 10:47:15,521 basehttp 10372 13264 "GET /media/historical_sites/1-panorama07-cr-800x477-800x477.jpg HTTP/1.1" 304 0
+INFO 2025-08-13 10:47:15,531 basehttp 10372 6856 "GET /media/historical_sites/Experience-Bagamoyo-Historical-City.webp HTTP/1.1" 304 0
+INFO 2025-08-13 10:47:15,550 basehttp 10372 11444 "GET /media/historical_sites/Old_Fort_Gereza_12_Kilwa_Kisiwani.jpg HTTP/1.1" 304 0
+INFO 2025-08-13 10:47:24,545 basehttp 10372 11444 "GET /historical-sites/?type=cultural&region=&search=None HTTP/1.1" 200 19360
+WARNING 2025-08-13 10:47:30,192 log 10372 11444 Not Found: /tours/guides/
+WARNING 2025-08-13 10:47:30,196 basehttp 10372 11444 "GET /tours/guides/ HTTP/1.1" 404 5590
+INFO 2025-08-13 10:47:33,866 basehttp 10372 11444 "GET / HTTP/1.1" 200 22515
+INFO 2025-08-13 10:47:36,001 basehttp 10372 11444 "GET /parks/ HTTP/1.1" 200 18968
+INFO 2025-08-13 10:47:45,088 basehttp 10372 11444 "GET /parks/?type=national_park&region=&search=None HTTP/1.1" 200 19023
+INFO 2025-08-13 10:47:50,014 basehttp 10372 11444 "GET /parks/?type=national_park&region=&search=None HTTP/1.1" 200 19023
+INFO 2025-08-13 10:47:53,374 basehttp 10372 11444 "GET /contact/ HTTP/1.1" 200 25835
+INFO 2025-08-13 10:48:04,997 basehttp 10372 11444 "GET /contact/ HTTP/1.1" 200 25835
+INFO 2025-08-13 10:48:06,949 basehttp 10372 11444 "GET /about/ HTTP/1.1" 200 25980
+WARNING 2025-08-13 10:48:13,083 log 10372 11444 Not Found: /parks/wildlife/
+WARNING 2025-08-13 10:48:13,084 basehttp 10372 11444 "GET /parks/wildlife/ HTTP/1.1" 404 5444
+WARNING 2025-08-13 10:48:20,321 log 10372 11444 Not Found: /parks/destinations/
+WARNING 2025-08-13 10:48:20,322 basehttp 10372 11444 "GET /parks/destinations/?type=waterfall HTTP/1.1" 404 5471
+INFO 2025-08-13 10:48:25,747 basehttp 10372 11444 "GET /about/ HTTP/1.1" 200 25980
+INFO 2025-08-13 10:48:30,481 basehttp 10372 11444 "GET /tours/ HTTP/1.1" 200 20883
+INFO 2025-08-13 10:48:35,346 basehttp 10372 11444 "GET /tours/ HTTP/1.1" 200 20883
+INFO 2025-08-13 10:48:44,001 basehttp 10372 11444 "GET / HTTP/1.1" 200 22515
+INFO 2025-08-13 10:48:52,728 basehttp 10372 11444 "GET /admin/ HTTP/1.1" 302 0
+INFO 2025-08-13 10:48:52,976 basehttp 10372 11444 "GET /admin/login/?next=/admin/ HTTP/1.1" 200 4182
+INFO 2025-08-13 10:48:53,005 basehttp 10372 6856 "GET /static/admin/css/dark_mode.css HTTP/1.1" 304 0
+INFO 2025-08-13 10:48:53,006 basehttp 10372 11444 "GET /static/admin/css/base.css HTTP/1.1" 304 0
+INFO 2025-08-13 10:48:53,010 basehttp 10372 13264 "GET /static/admin/css/nav_sidebar.css HTTP/1.1" 304 0
+INFO 2025-08-13 10:48:53,033 basehttp 10372 6856 "GET /static/admin/css/responsive.css HTTP/1.1" 304 0
+INFO 2025-08-13 10:48:53,033 basehttp 10372 11444 "GET /static/admin/js/theme.js HTTP/1.1" 304 0
+INFO 2025-08-13 10:48:53,034 basehttp 10372 13264 "GET /static/admin/css/login.css HTTP/1.1" 304 0
+INFO 2025-08-13 10:48:53,054 basehttp 10372 13264 "GET /static/admin/js/nav_sidebar.js HTTP/1.1" 304 0
+INFO 2025-08-13 10:49:04,907 basehttp 10372 13264 "POST /admin/login/?next=/admin/ HTTP/1.1" 302 0
+INFO 2025-08-13 10:49:05,013 basehttp 10372 13264 "GET /admin/ HTTP/1.1" 200 22498
+INFO 2025-08-13 10:49:05,058 basehttp 10372 13264 "GET /static/admin/css/dashboard.css HTTP/1.1" 304 0
+INFO 2025-08-13 10:49:05,081 basehttp 10372 13264 "GET /static/admin/img/icon-addlink.svg HTTP/1.1" 304 0
+INFO 2025-08-13 10:49:05,082 basehttp 10372 11444 "GET /static/admin/img/icon-changelink.svg HTTP/1.1" 304 0
+INFO 2025-08-13 10:49:05,084 basehttp 10372 6856 "GET /static/admin/img/icon-viewlink.svg HTTP/1.1" 304 0
+INFO 2025-08-13 10:49:14,604 basehttp 10372 6856 "GET /admin/tours/touravailability/ HTTP/1.1" 200 18922
+INFO 2025-08-13 10:49:14,674 basehttp 10372 6856 "GET /static/admin/css/changelists.css HTTP/1.1" 304 0
+INFO 2025-08-13 10:49:14,675 basehttp 10372 13264 "GET /static/admin/js/vendor/jquery/jquery.js HTTP/1.1" 304 0
+INFO 2025-08-13 10:49:14,677 basehttp 10372 5472 "GET /static/admin/js/jquery.init.js HTTP/1.1" 304 0
+INFO 2025-08-13 10:49:14,691 basehttp 10372 6856 "GET /static/admin/js/actions.js HTTP/1.1" 304 0
+INFO 2025-08-13 10:49:14,696 basehttp 10372 13264 "GET /static/admin/js/urlify.js HTTP/1.1" 304 0
+INFO 2025-08-13 10:49:14,697 basehttp 10372 5472 "GET /static/admin/js/prepopulate.js HTTP/1.1" 304 0
+INFO 2025-08-13 10:49:14,697 basehttp 10372 11444 "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+INFO 2025-08-13 10:49:14,698 basehttp 10372 3524 "GET /static/admin/js/core.js HTTP/1.1" 304 0
+INFO 2025-08-13 10:49:14,699 basehttp 10372 9008 "GET /static/admin/js/admin/RelatedObjectLookups.js HTTP/1.1" 304 0
+INFO 2025-08-13 10:49:14,703 basehttp 10372 6856 "GET /static/admin/js/vendor/xregexp/xregexp.js HTTP/1.1" 304 0
+INFO 2025-08-13 10:49:14,723 basehttp 10372 11444 "GET /static/admin/img/search.svg HTTP/1.1" 304 0
+INFO 2025-08-13 10:49:14,749 basehttp 10372 11444 "GET /static/admin/js/filters.js HTTP/1.1" 304 0
+INFO 2025-08-13 10:49:14,788 basehttp 10372 11444 "GET /static/admin/img/tooltag-add.svg HTTP/1.1" 304 0
+ERROR 2025-08-13 10:49:17,019 log 10372 11444 Internal Server Error: /admin/tours/touravailability/add/
+Traceback (most recent call last):
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\db\models\options.py", line 681, in get_field
+    return self.fields_map[field_name]
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^
+KeyError: 'available_spots'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\contrib\admin\utils.py", line 272, in lookup_field
+    f = _get_non_gfk_field(opts, name)
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\contrib\admin\utils.py", line 303, in _get_non_gfk_field
+    field = opts.get_field(name)
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\db\models\options.py", line 683, in get_field
+    raise FieldDoesNotExist(
+        "%s has no field named '%s'" % (self.object_name, field_name)
+    )
+django.core.exceptions.FieldDoesNotExist: TourAvailability has no field named 'available_spots'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\core\handlers\base.py", line 220, in _get_response
+    response = response.render()
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\response.py", line 114, in render
+    self.content = self.rendered_content
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\response.py", line 92, in rendered_content
+    return template.render(context, self._request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\backends\django.py", line 61, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\base.py", line 175, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\test\utils.py", line 112, in instrumented_test_render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\loader_tags.py", line 157, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\test\utils.py", line 112, in instrumented_test_render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\loader_tags.py", line 157, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\test\utils.py", line 112, in instrumented_test_render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\loader_tags.py", line 63, in render
+    result = block.nodelist.render(context)
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\loader_tags.py", line 63, in render
+    result = block.nodelist.render(context)
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\defaulttags.py", line 238, in render
+    nodelist.append(node.render_annotated(context))
+                    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\loader_tags.py", line 208, in render
+    return template.render(context)
+           ~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\base.py", line 177, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\test\utils.py", line 112, in instrumented_test_render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\defaulttags.py", line 238, in render
+    nodelist.append(node.render_annotated(context))
+                    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\defaulttags.py", line 238, in render
+    nodelist.append(node.render_annotated(context))
+                    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\defaulttags.py", line 321, in render
+    return nodelist.render(context)
+           ~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\defaulttags.py", line 321, in render
+    return nodelist.render(context)
+           ~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\base.py", line 1064, in render
+    output = self.filter_expression.resolve(context)
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\base.py", line 715, in resolve
+    obj = self.var.resolve(context)
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\base.py", line 847, in resolve
+    value = self._resolve_lookup(context)
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\base.py", line 914, in _resolve_lookup
+    current = current()
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\contrib\admin\helpers.py", line 273, in contents
+    f, attr, value = lookup_field(field, obj, model_admin)
+                     ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\contrib\admin\utils.py", line 281, in lookup_field
+    value = attr(obj)
+  File "C:\projects\Tourism\project\tours\admin.py", line 150, in available_spots
+    return obj.available_spots
+           ^^^^^^^^^^^^^^^^^^^
+  File "C:\projects\Tourism\project\tours\models.py", line 318, in available_spots
+    return max(0, self.max_participants - self.booked_participants)
+                  ~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~
+TypeError: unsupported operand type(s) for -: 'NoneType' and 'int'
+ERROR 2025-08-13 10:49:17,129 basehttp 10372 11444 "GET /admin/tours/touravailability/add/ HTTP/1.1" 500 604710
+INFO 2025-08-13 10:49:28,375 basehttp 10372 11444 "GET /admin/tours/touravailability/ HTTP/1.1" 200 18922
+INFO 2025-08-13 10:49:31,787 basehttp 10372 11444 "GET /admin/tours/tourguide/ HTTP/1.1" 200 18998
+INFO 2025-08-13 10:49:31,845 basehttp 10372 11444 "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+INFO 2025-08-13 10:49:33,292 basehttp 10372 11444 "GET /admin/tours/tourguide/add/ HTTP/1.1" 200 32503
+INFO 2025-08-13 10:49:33,357 basehttp 10372 5472 "GET /static/admin/js/prepopulate_init.js HTTP/1.1" 304 0
+INFO 2025-08-13 10:49:33,364 basehttp 10372 9008 "GET /static/admin/css/forms.css HTTP/1.1" 304 0
+INFO 2025-08-13 10:49:33,369 basehttp 10372 3524 "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+INFO 2025-08-13 10:49:33,429 basehttp 10372 3524 "GET /static/admin/css/widgets.css HTTP/1.1" 304 0
+INFO 2025-08-13 10:49:33,663 basehttp 10372 11444 "GET /static/admin/js/SelectBox.js HTTP/1.1" 200 4530
+INFO 2025-08-13 10:49:33,663 basehttp 10372 6856 "GET /static/admin/js/SelectFilter2.js HTTP/1.1" 200 15292
+INFO 2025-08-13 10:49:33,671 basehttp 10372 11444 "GET /static/admin/js/change_form.js HTTP/1.1" 304 0
+INFO 2025-08-13 10:49:33,804 basehttp 10372 11444 "GET /static/admin/img/icon-unknown.svg HTTP/1.1" 200 655
+INFO 2025-08-13 10:49:33,806 basehttp 10372 3524 "GET /static/admin/img/icon-unknown-alt.svg HTTP/1.1" 200 655
+INFO 2025-08-13 10:49:33,813 basehttp 10372 6856 "GET /static/admin/img/selector-icons.svg HTTP/1.1" 200 3291
+INFO 2025-08-13 10:50:12,217 basehttp 10372 6856 "GET /admin/accounts/traveldocument/ HTTP/1.1" 200 19752
+INFO 2025-08-13 10:50:12,279 basehttp 10372 6856 "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+INFO 2025-08-13 10:50:14,176 basehttp 10372 6856 "GET /admin/accounts/traveldocument/add/ HTTP/1.1" 200 23202
+INFO 2025-08-13 10:50:14,229 basehttp 10372 6856 "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+INFO 2025-08-13 10:50:14,278 basehttp 10372 3524 "GET /static/admin/js/calendar.js HTTP/1.1" 200 8466
+INFO 2025-08-13 10:50:14,285 basehttp 10372 11444 "GET /static/admin/js/admin/DateTimeShortcuts.js HTTP/1.1" 200 19319
+INFO 2025-08-13 10:50:14,392 basehttp 10372 11444 "GET /static/admin/img/icon-calendar.svg HTTP/1.1" 200 1086
+INFO 2025-08-13 10:50:29,029 basehttp 10372 11444 "GET /admin/accounts/useractivitylog/ HTTP/1.1" 200 26067
+INFO 2025-08-13 10:50:29,094 basehttp 10372 11444 "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+INFO 2025-08-13 10:50:29,123 basehttp 10372 11444 "GET /static/admin/img/sorting-icons.svg HTTP/1.1" 304 0
+INFO 2025-08-13 10:50:41,856 basehttp 10372 11444 "GET /admin/core/sitesettings/ HTTP/1.1" 200 17749
+INFO 2025-08-13 10:50:50,208 basehttp 10372 11444 "GET /admin/bookings/bookingextra/ HTTP/1.1" 200 17879
+INFO 2025-08-13 10:50:50,262 basehttp 10372 11444 "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+INFO 2025-08-13 10:50:52,504 basehttp 10372 11444 "GET /admin/bookings/bookingparticipant/ HTTP/1.1" 200 19009
+INFO 2025-08-13 10:50:52,569 basehttp 10372 11444 "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+INFO 2025-08-13 10:50:55,969 basehttp 10372 11444 "GET /admin/bookings/bookingextra/ HTTP/1.1" 200 17879
+INFO 2025-08-13 10:50:56,035 basehttp 10372 11444 "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+INFO 2025-08-13 10:50:57,435 basehttp 10372 11444 "GET /admin/bookings/bookingextra/add/ HTTP/1.1" 200 22489
+INFO 2025-08-13 10:50:57,496 basehttp 10372 11444 "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+INFO 2025-08-13 10:51:02,872 basehttp 10372 11444 "GET /admin/bookings/booking/ HTTP/1.1" 200 20332
+INFO 2025-08-13 10:51:02,930 basehttp 10372 11444 "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+INFO 2025-08-13 10:51:04,455 basehttp 10372 11444 "GET /admin/bookings/booking/add/ HTTP/1.1" 200 34277
+INFO 2025-08-13 10:51:04,513 basehttp 10372 11444 "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+INFO 2025-08-13 10:51:04,638 basehttp 10372 11444 "GET /static/admin/img/icon-clock.svg HTTP/1.1" 200 677
+INFO 2025-08-13 10:51:20,692 basehttp 10372 11444 "GET /admin/tours/touravailability/ HTTP/1.1" 200 18922
+INFO 2025-08-13 10:51:20,745 basehttp 10372 11444 "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+ERROR 2025-08-13 10:51:22,308 log 10372 11444 Internal Server Error: /admin/tours/touravailability/add/
+Traceback (most recent call last):
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\db\models\options.py", line 681, in get_field
+    return self.fields_map[field_name]
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^
+KeyError: 'available_spots'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\contrib\admin\utils.py", line 272, in lookup_field
+    f = _get_non_gfk_field(opts, name)
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\contrib\admin\utils.py", line 303, in _get_non_gfk_field
+    field = opts.get_field(name)
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\db\models\options.py", line 683, in get_field
+    raise FieldDoesNotExist(
+        "%s has no field named '%s'" % (self.object_name, field_name)
+    )
+django.core.exceptions.FieldDoesNotExist: TourAvailability has no field named 'available_spots'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\core\handlers\base.py", line 220, in _get_response
+    response = response.render()
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\response.py", line 114, in render
+    self.content = self.rendered_content
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\response.py", line 92, in rendered_content
+    return template.render(context, self._request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\backends\django.py", line 61, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\base.py", line 175, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\test\utils.py", line 112, in instrumented_test_render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\loader_tags.py", line 157, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\test\utils.py", line 112, in instrumented_test_render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\loader_tags.py", line 157, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\test\utils.py", line 112, in instrumented_test_render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\loader_tags.py", line 63, in render
+    result = block.nodelist.render(context)
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\loader_tags.py", line 63, in render
+    result = block.nodelist.render(context)
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\defaulttags.py", line 238, in render
+    nodelist.append(node.render_annotated(context))
+                    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\loader_tags.py", line 208, in render
+    return template.render(context)
+           ~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\base.py", line 177, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\test\utils.py", line 112, in instrumented_test_render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\defaulttags.py", line 238, in render
+    nodelist.append(node.render_annotated(context))
+                    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\defaulttags.py", line 238, in render
+    nodelist.append(node.render_annotated(context))
+                    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\defaulttags.py", line 321, in render
+    return nodelist.render(context)
+           ~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\defaulttags.py", line 321, in render
+    return nodelist.render(context)
+           ~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\base.py", line 1064, in render
+    output = self.filter_expression.resolve(context)
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\base.py", line 715, in resolve
+    obj = self.var.resolve(context)
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\base.py", line 847, in resolve
+    value = self._resolve_lookup(context)
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\base.py", line 914, in _resolve_lookup
+    current = current()
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\contrib\admin\helpers.py", line 273, in contents
+    f, attr, value = lookup_field(field, obj, model_admin)
+                     ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\contrib\admin\utils.py", line 281, in lookup_field
+    value = attr(obj)
+  File "C:\projects\Tourism\project\tours\admin.py", line 150, in available_spots
+    return obj.available_spots
+           ^^^^^^^^^^^^^^^^^^^
+  File "C:\projects\Tourism\project\tours\models.py", line 318, in available_spots
+    return max(0, self.max_participants - self.booked_participants)
+                  ~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~
+TypeError: unsupported operand type(s) for -: 'NoneType' and 'int'
+ERROR 2025-08-13 10:51:22,396 basehttp 10372 11444 "GET /admin/tours/touravailability/add/ HTTP/1.1" 500 604710
+INFO 2025-08-13 10:51:46,751 basehttp 10372 11444 "GET /admin/tours/touravailability/ HTTP/1.1" 200 18922
+INFO 2025-08-13 10:51:50,693 basehttp 10372 11444 "GET /admin/tours/tourpackage/ HTTP/1.1" 200 21011
+INFO 2025-08-13 10:51:50,751 basehttp 10372 11444 "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+INFO 2025-08-13 10:51:52,399 basehttp 10372 11444 "GET /admin/tours/tourpackage/add/ HTTP/1.1" 200 71304
+INFO 2025-08-13 10:51:52,478 basehttp 10372 6856 "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+INFO 2025-08-13 10:51:52,491 basehttp 10372 3524 "GET /static/admin/img/icon-deletelink.svg HTTP/1.1" 200 392
+INFO 2025-08-13 10:51:52,532 basehttp 10372 11444 "GET /static/admin/js/inlines.js HTTP/1.1" 200 15526
+INFO 2025-08-13 10:51:52,724 basehttp 10372 11444 "GET /static/admin/img/inline-delete.svg HTTP/1.1" 200 560
+INFO 2025-08-13 10:53:02,952 basehttp 10372 11444 "GET / HTTP/1.1" 200 23554
+INFO 2025-08-13 10:53:07,591 basehttp 10372 11444 "GET /parks/ HTTP/1.1" 200 20007
+INFO 2025-08-13 10:53:16,689 basehttp 10372 11444 "GET /admin/ HTTP/1.1" 200 22498
+INFO 2025-08-13 10:54:00,884 basehttp 10372 11444 "GET /admin/core/historicalsite/ HTTP/1.1" 200 24780
+INFO 2025-08-13 10:54:01,001 basehttp 10372 11444 "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+INFO 2025-08-13 10:54:01,023 basehttp 10372 3524 "GET /static/admin/img/icon-yes.svg HTTP/1.1" 304 0
+INFO 2025-08-13 10:54:15,472 basehttp 10372 3524 "GET /admin/parks/nationalpark/ HTTP/1.1" 200 19835
+INFO 2025-08-13 10:54:15,550 basehttp 10372 3524 "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+INFO 2025-08-13 10:54:24,078 basehttp 10372 3524 "GET /admin/parks/destination/ HTTP/1.1" 200 20219
+INFO 2025-08-13 10:54:24,144 basehttp 10372 3524 "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+INFO 2025-08-13 10:54:25,561 basehttp 10372 3524 "GET /admin/parks/destination/add/ HTTP/1.1" 200 31154
+INFO 2025-08-13 10:54:25,630 basehttp 10372 3524 "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+INFO 2025-08-13 10:54:36,820 basehttp 10372 3524 "GET /admin/parks/parkimage/ HTTP/1.1" 200 19487
+INFO 2025-08-13 10:54:36,888 basehttp 10372 3524 "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+INFO 2025-08-13 10:54:38,446 basehttp 10372 3524 "GET /admin/parks/parkimage/add/ HTTP/1.1" 200 22288
+INFO 2025-08-13 10:54:38,502 basehttp 10372 3524 "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+INFO 2025-08-13 10:54:48,390 basehttp 10372 3524 "GET /admin/parks/wildlife/ HTTP/1.1" 200 20296
+INFO 2025-08-13 10:54:48,456 basehttp 10372 3524 "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+INFO 2025-08-13 10:54:50,082 basehttp 10372 3524 "GET /admin/parks/wildlife/add/ HTTP/1.1" 200 29480
+INFO 2025-08-13 10:54:50,141 basehttp 10372 3524 "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+INFO 2025-08-13 10:55:10,931 basehttp 10372 3524 "GET /admin/parks/parkimage/ HTTP/1.1" 200 19487
+INFO 2025-08-13 10:55:11,000 basehttp 10372 3524 "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+INFO 2025-08-13 10:55:12,395 basehttp 10372 3524 "GET /admin/parks/parkimage/add/ HTTP/1.1" 200 22288
+INFO 2025-08-13 10:55:12,465 basehttp 10372 3524 "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+INFO 2025-08-13 10:55:19,928 basehttp 10372 3524 "GET /admin/parks/nationalpark/ HTTP/1.1" 200 19835
+INFO 2025-08-13 10:55:19,993 basehttp 10372 3524 "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+INFO 2025-08-13 10:55:21,254 basehttp 10372 3524 "GET /admin/parks/nationalpark/add/ HTTP/1.1" 200 38517
+INFO 2025-08-13 10:55:21,322 basehttp 10372 3524 "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+INFO 2025-08-13 10:58:10,372 basehttp 10372 3524 "GET /admin/parks/destination/ HTTP/1.1" 200 20219
+INFO 2025-08-13 10:58:10,431 basehttp 10372 3524 "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+INFO 2025-08-13 10:58:11,769 basehttp 10372 3524 "GET /admin/parks/destination/add/ HTTP/1.1" 200 31154
+INFO 2025-08-13 10:58:11,825 basehttp 10372 3524 "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+INFO 2025-08-13 10:58:38,218 basehttp 10372 3524 "GET /admin/parks/nationalpark/ HTTP/1.1" 200 19835
+INFO 2025-08-13 10:58:38,283 basehttp 10372 3524 "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+INFO 2025-08-13 10:58:39,759 basehttp 10372 3524 "GET /admin/parks/nationalpark/add/ HTTP/1.1" 200 38517
+INFO 2025-08-13 10:58:39,834 basehttp 10372 3524 "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+INFO 2025-08-13 11:20:44,966 basehttp 10372 11608 "POST /admin/parks/nationalpark/add/ HTTP/1.1" 302 0
+INFO 2025-08-13 11:20:45,001 basehttp 10372 11608 "GET /admin/parks/nationalpark/ HTTP/1.1" 200 23104
+INFO 2025-08-13 11:20:45,038 basehttp 10372 2920 "GET /static/admin/img/icon-no.svg HTTP/1.1" 304 0
+INFO 2025-08-13 11:20:45,049 basehttp 10372 11608 "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+INFO 2025-08-13 11:20:50,217 basehttp 10372 11608 "GET /admin/parks/nationalpark/1/change/ HTTP/1.1" 200 40589
+INFO 2025-08-13 11:20:50,256 basehttp 10372 11608 "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+INFO 2025-08-13 11:20:50,290 basehttp 10372 11608 "GET /static/admin/img/tooltag-arrowright.svg HTTP/1.1" 304 0
+INFO 2025-08-13 11:20:54,617 basehttp 10372 11608 "POST /admin/parks/nationalpark/1/change/ HTTP/1.1" 302 0
+INFO 2025-08-13 11:20:54,655 basehttp 10372 11608 "GET /admin/parks/nationalpark/ HTTP/1.1" 200 23106
+INFO 2025-08-13 11:20:54,692 basehttp 10372 11608 "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+INFO 2025-08-13 11:20:56,869 basehttp 10372 11608 "GET / HTTP/1.1" 200 25087
+INFO 2025-08-13 11:20:56,950 basehttp 10372 11608 "GET /media/parks/main/ChatGPT_Image_Aug_13_2025_11_20_29_AM.png HTTP/1.1" 200 2634226
+INFO 2025-08-13 11:21:09,661 basehttp 10372 11608 "GET /parks/ HTTP/1.1" 200 22936
+INFO 2025-08-13 11:21:09,693 basehttp 10372 11608 "GET /media/parks/main/ChatGPT_Image_Aug_13_2025_11_20_29_AM.png HTTP/1.1" 304 0
+INFO 2025-08-13 11:21:16,217 basehttp 10372 11608 "GET /parks/?type=national_park&region=&search=None HTTP/1.1" 200 20195
+INFO 2025-08-13 11:21:20,527 basehttp 10372 11608 "GET / HTTP/1.1" 200 25087
+INFO 2025-08-13 11:21:20,564 basehttp 10372 11608 "GET /media/parks/main/ChatGPT_Image_Aug_13_2025_11_20_29_AM.png HTTP/1.1" 304 0
+INFO 2025-08-13 11:21:51,300 basehttp 10372 11608 "GET /admin/parks/nationalpark/ HTTP/1.1" 200 22877
+INFO 2025-08-13 11:22:06,751 basehttp 10372 11608 "GET /admin/tours/touravailability/ HTTP/1.1" 200 18922
+INFO 2025-08-13 11:22:06,791 basehttp 10372 11608 "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+ERROR 2025-08-13 11:22:08,386 log 10372 11608 Internal Server Error: /admin/tours/touravailability/add/
+Traceback (most recent call last):
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\db\models\options.py", line 681, in get_field
+    return self.fields_map[field_name]
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^
+KeyError: 'available_spots'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\contrib\admin\utils.py", line 272, in lookup_field
+    f = _get_non_gfk_field(opts, name)
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\contrib\admin\utils.py", line 303, in _get_non_gfk_field
+    field = opts.get_field(name)
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\db\models\options.py", line 683, in get_field
+    raise FieldDoesNotExist(
+        "%s has no field named '%s'" % (self.object_name, field_name)
+    )
+django.core.exceptions.FieldDoesNotExist: TourAvailability has no field named 'available_spots'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\core\handlers\base.py", line 220, in _get_response
+    response = response.render()
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\response.py", line 114, in render
+    self.content = self.rendered_content
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\response.py", line 92, in rendered_content
+    return template.render(context, self._request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\backends\django.py", line 61, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\base.py", line 175, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\test\utils.py", line 112, in instrumented_test_render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\loader_tags.py", line 157, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\test\utils.py", line 112, in instrumented_test_render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\loader_tags.py", line 157, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\test\utils.py", line 112, in instrumented_test_render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\loader_tags.py", line 63, in render
+    result = block.nodelist.render(context)
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\loader_tags.py", line 63, in render
+    result = block.nodelist.render(context)
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\defaulttags.py", line 238, in render
+    nodelist.append(node.render_annotated(context))
+                    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\loader_tags.py", line 208, in render
+    return template.render(context)
+           ~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\base.py", line 177, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\test\utils.py", line 112, in instrumented_test_render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\defaulttags.py", line 238, in render
+    nodelist.append(node.render_annotated(context))
+                    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\defaulttags.py", line 238, in render
+    nodelist.append(node.render_annotated(context))
+                    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\defaulttags.py", line 321, in render
+    return nodelist.render(context)
+           ~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\defaulttags.py", line 321, in render
+    return nodelist.render(context)
+           ~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\base.py", line 1064, in render
+    output = self.filter_expression.resolve(context)
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\base.py", line 715, in resolve
+    obj = self.var.resolve(context)
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\base.py", line 847, in resolve
+    value = self._resolve_lookup(context)
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\base.py", line 914, in _resolve_lookup
+    current = current()
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\contrib\admin\helpers.py", line 273, in contents
+    f, attr, value = lookup_field(field, obj, model_admin)
+                     ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\contrib\admin\utils.py", line 281, in lookup_field
+    value = attr(obj)
+  File "C:\projects\Tourism\project\tours\admin.py", line 150, in available_spots
+    return obj.available_spots
+           ^^^^^^^^^^^^^^^^^^^
+  File "C:\projects\Tourism\project\tours\models.py", line 318, in available_spots
+    return max(0, self.max_participants - self.booked_participants)
+                  ~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~
+TypeError: unsupported operand type(s) for -: 'NoneType' and 'int'
+ERROR 2025-08-13 11:22:08,430 basehttp 10372 11608 "GET /admin/tours/touravailability/add/ HTTP/1.1" 500 604710
+INFO 2025-08-13 11:22:13,633 basehttp 10372 11608 "GET /admin/tours/touravailability/ HTTP/1.1" 200 18922
+INFO 2025-08-13 11:22:18,540 basehttp 10372 11608 "GET /admin/tours/touritineraryday/ HTTP/1.1" 200 17900
+INFO 2025-08-13 11:22:18,576 basehttp 10372 11608 "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+INFO 2025-08-13 11:22:19,910 basehttp 10372 11608 "GET /admin/tours/touritineraryday/add/ HTTP/1.1" 200 26157
+INFO 2025-08-13 11:22:19,946 basehttp 10372 11608 "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+INFO 2025-08-13 11:22:25,267 basehttp 10372 11608 "GET /admin/tours/tourpackage/ HTTP/1.1" 200 21011
+INFO 2025-08-13 11:22:25,311 basehttp 10372 11608 "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+INFO 2025-08-13 11:22:26,802 basehttp 10372 11608 "GET /admin/tours/tourpackage/add/ HTTP/1.1" 200 71358
+INFO 2025-08-13 11:22:26,844 basehttp 10372 11608 "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+INFO 2025-08-13 11:22:57,540 basehttp 10372 11608 "GET / HTTP/1.1" 200 25087
+INFO 2025-08-13 11:22:57,572 basehttp 10372 11608 "GET /media/parks/main/ChatGPT_Image_Aug_13_2025_11_20_29_AM.png HTTP/1.1" 304 0
+INFO 2025-08-13 11:22:59,664 basehttp 10372 11608 "GET /parks/ HTTP/1.1" 200 22936
+INFO 2025-08-13 11:23:12,937 basehttp 10372 11608 "GET /admin/ HTTP/1.1" 200 23127
+INFO 2025-08-13 11:23:23,839 basehttp 10372 11608 "GET /admin/tours/touravailability/ HTTP/1.1" 200 18922
+INFO 2025-08-13 11:23:23,894 basehttp 10372 11608 "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+ERROR 2025-08-13 11:23:25,474 log 10372 11608 Internal Server Error: /admin/tours/touravailability/add/
+Traceback (most recent call last):
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\db\models\options.py", line 681, in get_field
+    return self.fields_map[field_name]
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^
+KeyError: 'available_spots'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\contrib\admin\utils.py", line 272, in lookup_field
+    f = _get_non_gfk_field(opts, name)
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\contrib\admin\utils.py", line 303, in _get_non_gfk_field
+    field = opts.get_field(name)
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\db\models\options.py", line 683, in get_field
+    raise FieldDoesNotExist(
+        "%s has no field named '%s'" % (self.object_name, field_name)
+    )
+django.core.exceptions.FieldDoesNotExist: TourAvailability has no field named 'available_spots'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\core\handlers\base.py", line 220, in _get_response
+    response = response.render()
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\response.py", line 114, in render
+    self.content = self.rendered_content
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\response.py", line 92, in rendered_content
+    return template.render(context, self._request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\backends\django.py", line 61, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\base.py", line 175, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\test\utils.py", line 112, in instrumented_test_render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\loader_tags.py", line 157, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\test\utils.py", line 112, in instrumented_test_render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\loader_tags.py", line 157, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\test\utils.py", line 112, in instrumented_test_render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\loader_tags.py", line 63, in render
+    result = block.nodelist.render(context)
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\loader_tags.py", line 63, in render
+    result = block.nodelist.render(context)
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\defaulttags.py", line 238, in render
+    nodelist.append(node.render_annotated(context))
+                    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\loader_tags.py", line 208, in render
+    return template.render(context)
+           ~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\base.py", line 177, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\test\utils.py", line 112, in instrumented_test_render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\defaulttags.py", line 238, in render
+    nodelist.append(node.render_annotated(context))
+                    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\defaulttags.py", line 238, in render
+    nodelist.append(node.render_annotated(context))
+                    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\defaulttags.py", line 321, in render
+    return nodelist.render(context)
+           ~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\defaulttags.py", line 321, in render
+    return nodelist.render(context)
+           ~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\base.py", line 1064, in render
+    output = self.filter_expression.resolve(context)
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\base.py", line 715, in resolve
+    obj = self.var.resolve(context)
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\base.py", line 847, in resolve
+    value = self._resolve_lookup(context)
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\base.py", line 914, in _resolve_lookup
+    current = current()
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\contrib\admin\helpers.py", line 273, in contents
+    f, attr, value = lookup_field(field, obj, model_admin)
+                     ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\contrib\admin\utils.py", line 281, in lookup_field
+    value = attr(obj)
+  File "C:\projects\Tourism\project\tours\admin.py", line 150, in available_spots
+    return obj.available_spots
+           ^^^^^^^^^^^^^^^^^^^
+  File "C:\projects\Tourism\project\tours\models.py", line 318, in available_spots
+    return max(0, self.max_participants - self.booked_participants)
+                  ~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~
+TypeError: unsupported operand type(s) for -: 'NoneType' and 'int'
+ERROR 2025-08-13 11:23:25,513 basehttp 10372 11608 "GET /admin/tours/touravailability/add/ HTTP/1.1" 500 604710
+INFO 2025-08-13 11:26:26,950 autoreload 10372 8036 C:\projects\Tourism\project\tours\models.py changed, reloading.
+INFO 2025-08-13 11:26:32,437 autoreload 8544 10756 Watching for file changes with StatReloader
+INFO 2025-08-13 11:26:46,652 autoreload 8544 10756 C:\projects\Tourism\project\tours\models.py changed, reloading.
+INFO 2025-08-13 11:26:50,658 autoreload 14140 5504 Watching for file changes with StatReloader
+INFO 2025-08-13 11:27:28,716 autoreload 14140 5504 C:\projects\Tourism\project\tours\admin.py changed, reloading.
+INFO 2025-08-13 11:27:32,994 autoreload 12076 11148 Watching for file changes with StatReloader
+INFO 2025-08-13 11:27:36,975 autoreload 12076 11148 C:\projects\Tourism\project\tours\admin.py changed, reloading.
+INFO 2025-08-13 11:27:40,242 autoreload 5252 10312 Watching for file changes with StatReloader
+INFO 2025-08-13 11:27:42,710 basehttp 5252 4216 "GET /admin/tours/touravailability/add/ HTTP/1.1" 200 29016
+INFO 2025-08-13 11:27:42,763 basehttp 5252 4216 "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+INFO 2025-08-13 11:27:52,022 basehttp 5252 4216 "GET /admin/tours/tourpackage/ HTTP/1.1" 200 21011
+INFO 2025-08-13 11:27:52,074 basehttp 5252 4216 "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+INFO 2025-08-13 11:27:53,827 basehttp 5252 4216 "GET /admin/tours/tourpackage/add/ HTTP/1.1" 200 71358
+INFO 2025-08-13 11:27:53,880 basehttp 5252 4216 "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+INFO 2025-08-13 11:40:14,564 basehttp 5252 13416 "POST /admin/tours/tourpackage/add/ HTTP/1.1" 200 83251
+INFO 2025-08-13 11:40:14,629 basehttp 5252 13416 "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+INFO 2025-08-13 11:43:29,359 basehttp 5252 13416 "POST /admin/tours/tourpackage/add/ HTTP/1.1" 200 83122
+INFO 2025-08-13 11:43:29,411 basehttp 5252 13416 "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+INFO 2025-08-13 11:44:43,795 basehttp 5252 13416 "POST /admin/tours/tourpackage/add/ HTTP/1.1" 200 83363
+INFO 2025-08-13 11:44:43,848 basehttp 5252 13416 "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+INFO 2025-08-13 11:45:19,515 basehttp 5252 13416 "POST /admin/tours/tourpackage/add/ HTTP/1.1" 302 0
+INFO 2025-08-13 11:45:19,574 basehttp 5252 13416 "GET /admin/tours/tourpackage/ HTTP/1.1" 200 24725
+INFO 2025-08-13 11:45:19,629 basehttp 5252 13416 "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+INFO 2025-08-13 11:45:24,796 basehttp 5252 13416 "GET / HTTP/1.1" 200 28318
+INFO 2025-08-13 11:45:24,844 basehttp 5252 13416 "GET /media/parks/main/ChatGPT_Image_Aug_13_2025_11_20_29_AM.png HTTP/1.1" 304 0
+ERROR 2025-08-13 11:45:38,057 log 5252 13416 Internal Server Error: /tours/classic-serengeti-ngorongoro-7-day-safari/
+Traceback (most recent call last):
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\projects\Tourism\project\tours\views.py", line 87, in tour_detail
+    availability = tour.availability.filter(
+                   ~~~~~~~~~~~~~~~~~~~~~~~~^
+        is_available=True,
+        ^^^^^^^^^^^^^^^^^^
+        available_spots__gt=0
+        ^^^^^^^^^^^^^^^^^^^^^
+    ).order_by('start_date')[:10]
+    ^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\db\models\query.py", line 1436, in filter
+    return self._filter_or_exclude(False, args, kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\db\models\query.py", line 1454, in _filter_or_exclude
+    clone._filter_or_exclude_inplace(negate, args, kwargs)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\db\models\query.py", line 1461, in _filter_or_exclude_inplace
+    self._query.add_q(Q(*args, **kwargs))
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\db\models\sql\query.py", line 1545, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+                ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\db\models\sql\query.py", line 1576, in _add_q
+    child_clause, needed_inner = self.build_filter(
+                                 ~~~~~~~~~~~~~~~~~^
+        child,
+        ^^^^^^
+    ...<6 lines>...
+        summarize=summarize,
+        ^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\db\models\sql\query.py", line 1426, in build_filter
+    lookups, parts, reffed_expression = self.solve_lookup_type(arg, summarize)
+                                        ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\db\models\sql\query.py", line 1236, in solve_lookup_type
+    _, field, _, lookup_parts = self.names_to_path(lookup_splitted, self.get_meta())
+                                ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\db\models\sql\query.py", line 1724, in names_to_path
+    raise FieldError(
+    ...<2 lines>...
+    )
+django.core.exceptions.FieldError: Cannot resolve keyword 'available_spots' into field. Choices are: assigned_guide, assigned_guide_id, booked_participants, bookings, created_at, end_date, id, is_available, max_participants, notes, price_modifier_budget, price_modifier_luxury, price_modifier_standard, start_date, tour_package, tour_package_id, updated_at
+ERROR 2025-08-13 11:45:38,089 basehttp 5252 13416 "GET /tours/classic-serengeti-ngorongoro-7-day-safari/ HTTP/1.1" 500 122509
+ERROR 2025-08-13 11:46:08,455 log 5252 13416 Internal Server Error: /tours/classic-serengeti-ngorongoro-7-day-safari/
+Traceback (most recent call last):
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\projects\Tourism\project\tours\views.py", line 87, in tour_detail
+    availability = tour.availability.filter(
+                   ~~~~~~~~~~~~~~~~~~~~~~~~^
+        is_available=True,
+        ^^^^^^^^^^^^^^^^^^
+        available_spots__gt=0
+        ^^^^^^^^^^^^^^^^^^^^^
+    ).order_by('start_date')[:10]
+    ^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\db\models\query.py", line 1436, in filter
+    return self._filter_or_exclude(False, args, kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\db\models\query.py", line 1454, in _filter_or_exclude
+    clone._filter_or_exclude_inplace(negate, args, kwargs)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\db\models\query.py", line 1461, in _filter_or_exclude_inplace
+    self._query.add_q(Q(*args, **kwargs))
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\db\models\sql\query.py", line 1545, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+                ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\db\models\sql\query.py", line 1576, in _add_q
+    child_clause, needed_inner = self.build_filter(
+                                 ~~~~~~~~~~~~~~~~~^
+        child,
+        ^^^^^^
+    ...<6 lines>...
+        summarize=summarize,
+        ^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\db\models\sql\query.py", line 1426, in build_filter
+    lookups, parts, reffed_expression = self.solve_lookup_type(arg, summarize)
+                                        ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\db\models\sql\query.py", line 1236, in solve_lookup_type
+    _, field, _, lookup_parts = self.names_to_path(lookup_splitted, self.get_meta())
+                                ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\db\models\sql\query.py", line 1724, in names_to_path
+    raise FieldError(
+    ...<2 lines>...
+    )
+django.core.exceptions.FieldError: Cannot resolve keyword 'available_spots' into field. Choices are: assigned_guide, assigned_guide_id, booked_participants, bookings, created_at, end_date, id, is_available, max_participants, notes, price_modifier_budget, price_modifier_luxury, price_modifier_standard, start_date, tour_package, tour_package_id, updated_at
+ERROR 2025-08-13 11:46:08,472 basehttp 5252 13416 "GET /tours/classic-serengeti-ngorongoro-7-day-safari/ HTTP/1.1" 500 122509
+INFO 2025-08-13 11:48:03,152 autoreload 5252 10312 C:\projects\Tourism\project\tours\views.py changed, reloading.
+INFO 2025-08-13 11:48:07,870 autoreload 2796 5768 Watching for file changes with StatReloader
+INFO 2025-08-13 11:48:26,536 autoreload 2796 5768 C:\projects\Tourism\project\tours\views.py changed, reloading.
+INFO 2025-08-13 11:48:29,832 autoreload 11680 5304 Watching for file changes with StatReloader
+ERROR 2025-08-13 11:48:56,808 log 11680 11424 Internal Server Error: /tours/classic-serengeti-ngorongoro-7-day-safari/
+Traceback (most recent call last):
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\projects\Tourism\project\tours\views.py", line 116, in tour_detail
+    return render(request, 'tours/tour_detail.html', context)
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\backends\django.py", line 61, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\base.py", line 175, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\test\utils.py", line 112, in instrumented_test_render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\loader_tags.py", line 157, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\test\utils.py", line 112, in instrumented_test_render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\loader_tags.py", line 63, in render
+    result = block.nodelist.render(context)
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\defaulttags.py", line 320, in render
+    if match:
+       ^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\db\models\query.py", line 412, in __bool__
+    self._fetch_all()
+    ~~~~~~~~~~~~~~~^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\db\models\query.py", line 1881, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\db\models\query.py", line 129, in __iter__
+    setattr(obj, attr_name, row[col_pos])
+    ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: property 'available_spots' of 'TourAvailability' object has no setter
+ERROR 2025-08-13 11:48:56,845 basehttp 11680 11424 "GET /tours/classic-serengeti-ngorongoro-7-day-safari/ HTTP/1.1" 500 189462
+INFO 2025-08-13 11:50:36,674 autoreload 11680 5304 C:\projects\Tourism\project\tours\views.py changed, reloading.
+INFO 2025-08-13 11:50:39,496 autoreload 3112 7648 Watching for file changes with StatReloader
+INFO 2025-08-13 11:50:46,723 autoreload 3112 7648 C:\projects\Tourism\project\tours\views.py changed, reloading.
+INFO 2025-08-13 11:50:50,423 autoreload 13116 4056 Watching for file changes with StatReloader
+INFO 2025-08-13 11:50:58,542 basehttp 13116 10136 "GET /tours/classic-serengeti-ngorongoro-7-day-safari/ HTTP/1.1" 200 37729
+INFO 2025-08-13 11:50:58,575 basehttp 13116 10136 "GET /media/parks/main/ChatGPT_Image_Aug_13_2025_11_20_29_AM.png HTTP/1.1" 304 0
+WARNING 2025-08-13 11:52:12,014 log 13116 10136 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-13 11:52:12,015 basehttp 13116 10136 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 5900
+INFO 2025-08-13 11:52:40,661 basehttp 13116 10136 "GET /bookings/create/classic-serengeti-ngorongoro-7-day-safari/ HTTP/1.1" 200 34808
+INFO 2025-08-13 11:54:40,124 basehttp 13116 10136 "GET /bookings/create/classic-serengeti-ngorongoro-7-day-safari/ HTTP/1.1" 200 34808
+INFO 2025-08-13 11:56:45,474 basehttp 13116 10136 "GET /bookings/ HTTP/1.1" 200 18639
+INFO 2025-08-13 11:56:47,717 basehttp 13116 10136 "GET /tours/ HTTP/1.1" 200 26879
+INFO 2025-08-13 11:56:56,520 basehttp 13116 10136 "GET /tours/classic-serengeti-ngorongoro-7-day-safari/ HTTP/1.1" 200 37729
+INFO 2025-08-13 11:56:56,560 basehttp 13116 10136 "GET /media/parks/main/ChatGPT_Image_Aug_13_2025_11_20_29_AM.png HTTP/1.1" 304 0
+ERROR 2025-08-13 11:57:13,084 log 13116 10136 Internal Server Error: /parks/serengeti-national-park/
+Traceback (most recent call last):
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\projects\Tourism\project\parks\views.py", line 51, in park_detail
+    wildlife = park.wildlife_species.filter(is_active=True)[:8]
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'str' object has no attribute 'filter'
+ERROR 2025-08-13 11:57:13,089 basehttp 13116 10136 "GET /parks/serengeti-national-park/ HTTP/1.1" 500 76894
+INFO 2025-08-13 11:59:42,431 autoreload 13116 4056 C:\projects\Tourism\project\parks\views.py changed, reloading.
+INFO 2025-08-13 11:59:46,627 autoreload 2104 8212 Watching for file changes with StatReloader
+INFO 2025-08-13 12:00:00,558 basehttp 2104 7508 "GET /parks/serengeti-national-park/ HTTP/1.1" 200 28061
+INFO 2025-08-13 12:00:19,688 basehttp 2104 7508 "GET / HTTP/1.1" 200 28318
+INFO 2025-08-13 12:00:37,487 basehttp 2104 7508 "GET /accounts/profile/ HTTP/1.1" 200 33748
+INFO 2025-08-13 12:01:09,705 basehttp 2104 7508 "GET /accounts/dashboard/ HTTP/1.1" 200 23145
+INFO 2025-08-13 12:01:14,890 basehttp 2104 7508 "GET /tours/ HTTP/1.1" 200 26879
+INFO 2025-08-13 12:01:20,439 basehttp 2104 7508 "GET /bookings/ HTTP/1.1" 200 18639
+INFO 2025-08-13 12:01:25,048 basehttp 2104 7508 "GET /accounts/logout/ HTTP/1.1" 302 0
+INFO 2025-08-13 12:01:25,082 basehttp 2104 7508 "GET / HTTP/1.1" 200 27629
+INFO 2025-08-13 12:01:25,124 basehttp 2104 7508 "GET /media/parks/main/ChatGPT_Image_Aug_13_2025_11_20_29_AM.png HTTP/1.1" 304 0
+INFO 2025-08-13 12:01:28,344 basehttp 2104 7508 "GET /accounts/register/ HTTP/1.1" 200 36502
+INFO 2025-08-13 12:01:28,375 basehttp 2104 7508 "GET /static/flags/__.gif HTTP/1.1" 304 0
+INFO 2025-08-13 12:01:43,597 basehttp 2104 7508 "GET / HTTP/1.1" 200 27279
+INFO 2025-08-13 12:01:44,247 basehttp 2104 7508 "GET / HTTP/1.1" 200 27279
+INFO 2025-08-13 12:01:46,193 basehttp 2104 7508 "GET /parks/ HTTP/1.1" 200 21897
+INFO 2025-08-13 12:01:49,555 basehttp 2104 7508 "GET /tours/ HTTP/1.1" 200 25840
+INFO 2025-08-13 12:01:53,417 basehttp 2104 7508 "GET /reviews/ HTTP/1.1" 200 19264
+INFO 2025-08-13 12:02:00,625 basehttp 2104 7508 "GET /about/ HTTP/1.1" 200 25980
+INFO 2025-08-13 12:02:05,960 basehttp 2104 7508 "GET /contact/ HTTP/1.1" 200 25835
+INFO 2025-08-13 12:10:15,143 basehttp 2104 14164 "GET /contact/ HTTP/1.1" 200 25842
+INFO 2025-08-13 12:13:43,984 basehttp 2104 14164 "GET /contact/ HTTP/1.1" 200 26085
+INFO 2025-08-13 12:13:44,222 basehttp 2104 14164 "GET /static/images/logo.png HTTP/1.1" 200 98216
+INFO 2025-08-13 12:14:13,521 basehttp 2104 14164 "GET /contact/ HTTP/1.1" 200 26091
+INFO 2025-08-13 12:14:19,502 basehttp 2104 14164 "GET / HTTP/1.1" 200 27535
+INFO 2025-08-13 12:14:19,551 basehttp 2104 14164 "GET /media/parks/main/ChatGPT_Image_Aug_13_2025_11_20_29_AM.png HTTP/1.1" 304 0
+WARNING 2025-08-13 12:14:38,310 log 2104 14164 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-13 12:14:38,313 basehttp 2104 14164 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 5900
+INFO 2025-08-13 12:15:06,401 basehttp 2104 14164 "GET / HTTP/1.1" 200 27544
+WARNING 2025-08-13 12:15:06,488 basehttp 2104 4256 "GET /static/images/logo%402x.png HTTP/1.1" 404 1914
+WARNING 2025-08-13 12:15:06,505 log 2104 14164 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-13 12:15:06,526 basehttp 2104 14164 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 5900
+INFO 2025-08-13 12:15:22,007 basehttp 2104 14164 "GET / HTTP/1.1" 200 27535
+WARNING 2025-08-13 12:15:22,101 basehttp 2104 14164 "GET /static/images/logo%402x.png HTTP/1.1" 404 1914
+WARNING 2025-08-13 12:15:22,110 log 2104 3196 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-13 12:15:22,112 basehttp 2104 3196 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 5900
+INFO 2025-08-13 12:15:23,658 basehttp 2104 3196 "GET / HTTP/1.1" 200 27535
+WARNING 2025-08-13 12:15:23,746 basehttp 2104 3196 "GET /static/images/logo%402x.png HTTP/1.1" 404 1914
+WARNING 2025-08-13 12:15:23,775 log 2104 9808 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-13 12:15:23,793 basehttp 2104 9808 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 5900
+INFO 2025-08-13 12:15:38,534 basehttp 2104 9808 "GET / HTTP/1.1" 200 27529
+INFO 2025-08-13 12:15:53,174 basehttp 2104 9808 "GET / HTTP/1.1" 200 27535
+INFO 2025-08-13 12:15:54,649 basehttp 2104 9808 "GET / HTTP/1.1" 200 27535
+INFO 2025-08-13 12:18:06,825 basehttp 2104 9808 "GET / HTTP/1.1" 200 27544
+INFO 2025-08-13 12:18:08,282 basehttp 2104 9808 "GET / HTTP/1.1" 200 27544
+INFO 2025-08-13 12:18:49,690 basehttp 2104 9808 "GET / HTTP/1.1" 200 27523
+WARNING 2025-08-13 12:18:59,979 log 2104 9808 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-13 12:18:59,982 basehttp 2104 9808 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 5900
+INFO 2025-08-13 12:21:39,502 basehttp 2104 9808 "GET / HTTP/1.1" 200 27523
+INFO 2025-08-13 12:21:39,557 basehttp 2104 9808 "GET /media/parks/main/ChatGPT_Image_Aug_13_2025_11_20_29_AM.png HTTP/1.1" 304 0
+INFO 2025-08-13 12:21:51,221 basehttp 2104 9808 "GET / HTTP/1.1" 200 27523
+INFO 2025-08-13 12:21:53,039 basehttp 2104 9808 "GET / HTTP/1.1" 200 27523
+INFO 2025-08-13 12:22:07,510 basehttp 2104 9808 "GET / HTTP/1.1" 200 27523
+WARNING 2025-08-13 12:22:19,384 log 2104 9808 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-13 12:22:19,387 basehttp 2104 9808 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 5900
+INFO 2025-08-13 12:26:25,279 basehttp 2104 9808 "GET / HTTP/1.1" 200 27803
+WARNING 2025-08-13 12:26:25,380 log 2104 9808 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-13 12:26:25,415 basehttp 2104 9808 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 5900
+INFO 2025-08-13 12:27:03,877 basehttp 2104 9808 "GET /admin/ HTTP/1.1" 302 0
+INFO 2025-08-13 12:27:03,932 basehttp 2104 9808 "GET /admin/login/?next=/admin/ HTTP/1.1" 200 4182
+INFO 2025-08-13 12:27:15,066 basehttp 2104 9808 "POST /admin/login/?next=/admin/ HTTP/1.1" 302 0
+INFO 2025-08-13 12:27:15,126 basehttp 2104 9808 "GET /admin/ HTTP/1.1" 200 23147

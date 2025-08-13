@@ -1,0 +1,138 @@
+{% extends 'base/base.html' %}
+{% load i18n %}
+
+{% block title %}{{ destination.name }} - {% trans "Destination" %} - Tanzania Safari Adventures{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="hero-section" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('{% if destination.main_image %}{{ destination.main_image.url }}{% else %}https://images.pexels.com/photos/1170986/pexels-photo-1170986.jpeg{% endif %}');">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="d-flex align-items-center mb-3">
+                    <span class="badge badge-custom me-3">{{ destination.get_destination_type_display }}</span>
+                    {% if destination.featured %}
+                        <span class="badge bg-warning text-dark">
+                            <i class="fas fa-star me-1"></i>{% trans "Featured" %}
+                        </span>
+                    {% endif %}
+                </div>
+                <h1 class="display-4 fw-bold mb-4">{{ destination.name }}</h1>
+                {% if destination.park %}
+                    <p class="lead mb-4">
+                        <i class="fas fa-map-marker-alt me-2"></i>{{ destination.park.name }}
+                    </p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Destination Info -->
+<section class="py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 mb-5">
+                <div class="mb-5">
+                    <h2 class="mb-4">{% trans "About" %} {{ destination.name }}</h2>
+                    <p class="lead">{{ destination.short_description }}</p>
+                    <div class="mt-4">
+                        {{ destination.description|linebreaks }}
+                    </div>
+                </div>
+                
+                {% if destination.activities %}
+                    <div class="mb-5">
+                        <h3 class="mb-4">{% trans "Activities" %}</h3>
+                        <div class="bg-light p-4 rounded">
+                            {{ destination.activities|linebreaks }}
+                        </div>
+                    </div>
+                {% endif %}
+                
+                {% if destination.best_time_to_visit %}
+                    <div class="mb-5">
+                        <h3 class="mb-4">{% trans "Best Time to Visit" %}</h3>
+                        <div class="alert alert-info">
+                            <i class="fas fa-calendar me-2"></i>
+                            {{ destination.best_time_to_visit }}
+                        </div>
+                    </div>
+                {% endif %}
+            </div>
+            
+            <!-- Sidebar -->
+            <div class="col-lg-4">
+                <div class="card border-0 shadow mb-4">
+                    <div class="card-body">
+                        <h5 class="card-title mb-4">{% trans "Quick Info" %}</h5>
+                        
+                        <div class="d-flex justify-content-between mb-3">
+                            <span class="text-muted">{% trans "Type" %}:</span>
+                            <strong>{{ destination.get_destination_type_display }}</strong>
+                        </div>
+                        
+                        {% if destination.park %}
+                            <div class="d-flex justify-content-between mb-3">
+                                <span class="text-muted">{% trans "Park" %}:</span>
+                                <strong>{{ destination.park.name }}</strong>
+                            </div>
+                        {% endif %}
+                        
+                        {% if destination.elevation %}
+                            <div class="d-flex justify-content-between mb-3">
+                                <span class="text-muted">{% trans "Elevation" %}:</span>
+                                <strong>{{ destination.elevation }}m</strong>
+                            </div>
+                        {% endif %}
+                        
+                        <div class="d-flex justify-content-between">
+                            <span class="text-muted">{% trans "Difficulty" %}:</span>
+                            <span class="badge bg-secondary">{{ destination.get_difficulty_level_display }}</span>
+                        </div>
+                    </div>
+                </div>
+                
+                {% if destination.accessibility %}
+                    <div class="card border-0 shadow mb-4">
+                        <div class="card-body">
+                            <h5 class="card-title mb-3">{% trans "Access Information" %}</h5>
+                            <p class="mb-0">{{ destination.accessibility }}</p>
+                        </div>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Related Destinations -->
+{% if related_destinations %}
+    <section class="py-5 bg-light">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title">{% trans "Related Destinations" %}</h2>
+            </div>
+            
+            <div class="row">
+                {% for related in related_destinations %}
+                    <div class="col-lg-3 col-md-6 mb-4">
+                        <div class="card h-100">
+                            <img src="{% if related.main_image %}{{ related.main_image.url }}{% else %}https://images.pexels.com/photos/1170986/pexels-photo-1170986.jpeg{% endif %}" 
+                                 class="card-img-top" style="height: 200px; object-fit: cover;" alt="{{ related.name }}">
+                            <div class="card-body d-flex flex-column">
+                                <h6 class="card-title">{{ related.name }}</h6>
+                                <p class="text-muted mb-2">{{ related.get_destination_type_display }}</p>
+                                <p class="card-text flex-grow-1">{{ related.short_description|truncatewords:10 }}</p>
+                                <a href="{% url 'parks:destination_detail' related.slug %}" class="btn btn-primary btn-sm">
+                                    {% trans "Explore" %}
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+{% endif %}
+{% endblock %}

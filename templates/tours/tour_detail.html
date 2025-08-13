@@ -1,0 +1,478 @@
+{% extends 'base/base.html' %}
+{% load i18n %}
+
+{% block title %}{{ tour.title }} - {% trans "Safari Tour" %} - Tanzania Safari Adventures{% endblock %}
+
+{% block meta_description %}{{ tour.short_description }}{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="hero-section" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('{% if tour.main_image %}{{ tour.main_image.url }}{% else %}https://images.pexels.com/photos/1170986/pexels-photo-1170986.jpeg{% endif %}');">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="d-flex align-items-center mb-3">
+                    <span class="badge badge-custom me-3">{{ tour.get_category_display }}</span>
+                    {% if tour.is_featured %}
+                        <span class="badge bg-warning text-dark me-3">
+                            <i class="fas fa-star me-1"></i>{% trans "Featured" %}
+                        </span>
+                    {% endif %}
+                    <span class="badge bg-secondary">{{ tour.get_difficulty_level_display }}</span>
+                </div>
+                <h1 class="display-4 fw-bold mb-4">{{ tour.title }}</h1>
+                <p class="lead mb-4">{{ tour.subtitle|default:tour.short_description }}</p>
+                <div class="d-flex flex-wrap gap-3 mb-4">
+                    <div class="text-white">
+                        <i class="fas fa-clock me-2"></i>{{ tour.get_duration_display }}
+                    </div>
+                    <div class="text-white">
+                        <i class="fas fa-users me-2"></i>{{ tour.min_participants }}-{{ tour.max_participants }} {% trans "people" %}
+                    </div>
+                    <div class="text-white">
+                        <i class="fas fa-star me-2"></i>{{ tour.average_rating|floatformat:1 }} ({{ tour.total_reviews }} {% trans "reviews" %})
+                    </div>
+                </div>
+                <div class="d-flex flex-wrap gap-3">
+                    {% if user.is_authenticated %}
+                        <a href="{% url 'bookings:create_booking' tour.slug %}" class="btn btn-primary btn-lg">
+                            <i class="fas fa-calendar-check me-2"></i>{% trans "Book Now" %}
+                        </a>
+                    {% else %}
+                        <a href="{% url 'accounts:login' %}?next={% url 'bookings:create_booking' tour.slug %}" class="btn btn-primary btn-lg">
+                            <i class="fas fa-calendar-check me-2"></i>{% trans "Book Now" %}
+                        </a>
+                    {% endif %}
+                    <a href="#availability" class="btn btn-outline-light btn-lg">
+                        <i class="fas fa-calendar me-2"></i>{% trans "Check Availability" %}
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Tour Info -->
+<section class="py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 mb-5">
+                <!-- Description -->
+                <div class="mb-5">
+                    <h2 class="mb-4">{% trans "Tour Overview" %}</h2>
+                    <p class="lead">{{ tour.short_description }}</p>
+                    <div class="mt-4">
+                        {{ tour.description|linebreaks }}
+                    </div>
+                </div>
+                
+                <!-- Highlights -->
+                {% if tour.highlights %}
+                    <div class="mb-5">
+                        <h3 class="mb-4">{% trans "Tour Highlights" %}</h3>
+                        <div class="row">
+                            {% for highlight in tour.highlights %}
+                                <div class="col-md-6 mb-3">
+                                    <div class="d-flex">
+                                        <i class="fas fa-check-circle text-primary me-3 mt-1"></i>
+                                        <span>{{ highlight }}</span>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                {% endif %}
+                
+                <!-- Parks Visited -->
+                {% if tour.parks_visited.all %}
+                    <div class="mb-5">
+                        <h3 class="mb-4">{% trans "Parks & Destinations" %}</h3>
+                        <div class="row">
+                            {% for park in tour.parks_visited.all %}
+                                <div class="col-md-6 mb-4">
+                                    <div class="card h-100">
+                                        <img src="{% if park.main_image %}{{ park.main_image.url }}{% else %}https://images.pexels.com/photos/631317/pexels-photo-631317.jpeg{% endif %}" 
+                                             class="card-img-top" style="height: 200px; object-fit: cover;" alt="{{ park.name }}">
+                                        <div class="card-body">
+                                            <h5 class="card-title">{{ park.name }}</h5>
+                                            <p class="text-muted mb-2">{{ park.location }}, {{ park.region }}</p>
+                                            <p class="card-text">{{ park.short_description|truncatewords:20 }}</p>
+                                            <a href="{% url 'parks:park_detail' park.slug %}" class="btn btn-outline-primary btn-sm">
+                                                {% trans "Learn More" %}
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                {% endif %}
+                
+                <!-- Itinerary -->
+                {% if tour.itinerary_days.all %}
+                    <div class="mb-5">
+                        <h3 class="mb-4">{% trans "Detailed Itinerary" %}</h3>
+                        <div class="accordion" id="itineraryAccordion">
+                            {% for day in tour.itinerary_days.all %}
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="day{{ day.day_number }}">
+                                        <button class="accordion-button {% if not forloop.first %}collapsed{% endif %}" type="button" 
+                                                data-bs-toggle="collapse" data-bs-target="#collapseDay{{ day.day_number }}">
+                                            {% trans "Day" %} {{ day.day_number }}: {{ day.title }}
+                                        </button>
+                                    </h2>
+                                    <div id="collapseDay{{ day.day_number }}" class="accordion-collapse collapse {% if forloop.first %}show{% endif %}" 
+                                         data-bs-parent="#itineraryAccordion">
+                                        <div class="accordion-body">
+                                            <div class="row">
+                                                {% if day.day_image %}
+                                                    <div class="col-md-4 mb-3">
+                                                        <img src="{{ day.day_image.url }}" class="img-fluid rounded" alt="{{ day.title }}">
+                                                    </div>
+                                                {% endif %}
+                                                <div class="{% if day.day_image %}col-md-8{% else %}col-12{% endif %}">
+                                                    <p>{{ day.description|linebreaks }}</p>
+                                                    
+                                                    {% if day.activities %}
+                                                        <h6>{% trans "Activities:" %}</h6>
+                                                        <ul>
+                                                            {% for activity in day.activities %}
+                                                                <li>{{ activity }}</li>
+                                                            {% endfor %}
+                                                        </ul>
+                                                    {% endif %}
+                                                    
+                                                    {% if day.overnight_location %}
+                                                        <p><strong>{% trans "Overnight:" %}</strong> {{ day.overnight_location }}</p>
+                                                    {% endif %}
+                                                    
+                                                    {% if day.meals_included %}
+                                                        <p><strong>{% trans "Meals:" %}</strong> 
+                                                            {% for meal in day.meals_included %}
+                                                                {{ meal }}{% if not forloop.last %}, {% endif %}
+                                                            {% endfor %}
+                                                        </p>
+                                                    {% endif %}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                {% endif %}
+                
+                <!-- Inclusions & Exclusions -->
+                <div class="row mb-5">
+                    {% if tour.inclusions %}
+                        <div class="col-md-6 mb-4">
+                            <div class="card h-100 border-success">
+                                <div class="card-header bg-success text-white">
+                                    <h5 class="mb-0">
+                                        <i class="fas fa-check me-2"></i>{% trans "Included" %}
+                                    </h5>
+                                </div>
+                                <div class="card-body">
+                                    <ul class="list-unstyled mb-0">
+                                        {% for inclusion in tour.inclusions %}
+                                            <li class="mb-2">
+                                                <i class="fas fa-check text-success me-2"></i>{{ inclusion }}
+                                            </li>
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    {% endif %}
+                    
+                    {% if tour.exclusions %}
+                        <div class="col-md-6 mb-4">
+                            <div class="card h-100 border-danger">
+                                <div class="card-header bg-danger text-white">
+                                    <h5 class="mb-0">
+                                        <i class="fas fa-times me-2"></i>{% trans "Not Included" %}
+                                    </h5>
+                                </div>
+                                <div class="card-body">
+                                    <ul class="list-unstyled mb-0">
+                                        {% for exclusion in tour.exclusions %}
+                                            <li class="mb-2">
+                                                <i class="fas fa-times text-danger me-2"></i>{{ exclusion }}
+                                            </li>
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+            
+            <!-- Sidebar -->
+            <div class="col-lg-4">
+                <!-- Pricing -->
+                <div class="card border-0 shadow mb-4">
+                    <div class="card-body">
+                        <h5 class="card-title mb-4">{% trans "Pricing" %}</h5>
+                        
+                        {% if tour.price_budget %}
+                            <div class="d-flex justify-content-between mb-3 p-3 bg-light rounded">
+                                <div>
+                                    <h6 class="mb-1">{% trans "Budget" %}</h6>
+                                    <small class="text-muted">{% trans "Basic accommodation" %}</small>
+                                </div>
+                                <div class="text-end">
+                                    <strong class="h5 text-primary">${{ tour.price_budget|floatformat:0 }}</strong>
+                                    <div><small class="text-muted">{% trans "per person" %}</small></div>
+                                </div>
+                            </div>
+                        {% endif %}
+                        
+                        {% if tour.price_standard %}
+                            <div class="d-flex justify-content-between mb-3 p-3 bg-light rounded">
+                                <div>
+                                    <h6 class="mb-1">{% trans "Standard" %}</h6>
+                                    <small class="text-muted">{% trans "Comfortable lodges" %}</small>
+                                </div>
+                                <div class="text-end">
+                                    <strong class="h5 text-primary">${{ tour.price_standard|floatformat:0 }}</strong>
+                                    <div><small class="text-muted">{% trans "per person" %}</small></div>
+                                </div>
+                            </div>
+                        {% endif %}
+                        
+                        {% if tour.price_luxury %}
+                            <div class="d-flex justify-content-between mb-3 p-3 bg-light rounded">
+                                <div>
+                                    <h6 class="mb-1">{% trans "Luxury" %}</h6>
+                                    <small class="text-muted">{% trans "Premium lodges" %}</small>
+                                </div>
+                                <div class="text-end">
+                                    <strong class="h5 text-primary">${{ tour.price_luxury|floatformat:0 }}</strong>
+                                    <div><small class="text-muted">{% trans "per person" %}</small></div>
+                                </div>
+                            </div>
+                        {% endif %}
+                        
+                        <div class="text-center mt-4">
+                            {% if user.is_authenticated %}
+                                <a href="{% url 'bookings:create_booking' tour.slug %}" class="btn btn-primary w-100 btn-lg">
+                                    <i class="fas fa-calendar-check me-2"></i>{% trans "Book This Tour" %}
+                                </a>
+                            {% else %}
+                                <a href="{% url 'accounts:login' %}?next={% url 'bookings:create_booking' tour.slug %}" class="btn btn-primary w-100 btn-lg">
+                                    <i class="fas fa-calendar-check me-2"></i>{% trans "Book This Tour" %}
+                                </a>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Quick Info -->
+                <div class="card border-0 shadow mb-4">
+                    <div class="card-body">
+                        <h5 class="card-title mb-4">{% trans "Quick Info" %}</h5>
+                        
+                        <div class="d-flex justify-content-between mb-3">
+                            <span class="text-muted">{% trans "Duration" %}:</span>
+                            <strong>{{ tour.get_duration_display }}</strong>
+                        </div>
+                        
+                        <div class="d-flex justify-content-between mb-3">
+                            <span class="text-muted">{% trans "Group Size" %}:</span>
+                            <strong>{{ tour.min_participants }}-{{ tour.max_participants }} {% trans "people" %}</strong>
+                        </div>
+                        
+                        <div class="d-flex justify-content-between mb-3">
+                            <span class="text-muted">{% trans "Difficulty" %}:</span>
+                            <span class="badge bg-secondary">{{ tour.get_difficulty_level_display }}</span>
+                        </div>
+                        
+                        {% if tour.min_age %}
+                            <div class="d-flex justify-content-between mb-3">
+                                <span class="text-muted">{% trans "Min Age" %}:</span>
+                                <strong>{{ tour.min_age }} {% trans "years" %}</strong>
+                            </div>
+                        {% endif %}
+                        
+                        <div class="d-flex justify-content-between">
+                            <span class="text-muted">{% trans "Accommodation" %}:</span>
+                            <strong>{{ tour.get_accommodation_type_display }}</strong>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Contact -->
+                <div class="card border-0 shadow">
+                    <div class="card-body">
+                        <h5 class="card-title mb-3">{% trans "Need Help?" %}</h5>
+                        <p class="text-muted mb-3">{% trans "Have questions about this tour? Our experts are here to help!" %}</p>
+                        <a href="{% url 'core:contact' %}" class="btn btn-outline-primary w-100">
+                            <i class="fas fa-phone me-2"></i>{% trans "Contact Us" %}
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Availability -->
+{% if availability %}
+    <section id="availability" class="py-5 bg-light">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title">{% trans "Available Dates" %}</h2>
+                <p class="lead text-muted">{% trans "Choose your preferred departure date" %}</p>
+            </div>
+            
+            <div class="row">
+                {% for avail in availability %}
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="card h-100">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between align-items-start mb-3">
+                                    <div>
+                                        <h6 class="mb-1">{{ avail.start_date|date:"M d, Y" }}</h6>
+                                        <small class="text-muted">{% trans "to" %} {{ avail.end_date|date:"M d, Y" }}</small>
+                                    </div>
+                                    <span class="badge bg-success">{{ avail.available_spots }} {% trans "spots left" %}</span>
+                                </div>
+                                
+                                {% if avail.assigned_guide %}
+                                    <p class="text-muted mb-2">
+                                        <i class="fas fa-user me-1"></i>{% trans "Guide:" %} {{ avail.assigned_guide.user.get_full_name }}
+                                    </p>
+                                {% endif %}
+                                
+                                <div class="text-center mt-3">
+                                    {% if user.is_authenticated %}
+                                        <a href="{% url 'bookings:create_booking' tour.slug %}?availability={{ avail.id }}" class="btn btn-primary btn-sm">
+                                            {% trans "Select Date" %}
+                                        </a>
+                                    {% else %}
+                                        <a href="{% url 'accounts:login' %}?next={% url 'bookings:create_booking' tour.slug %}" class="btn btn-primary btn-sm">
+                                            {% trans "Select Date" %}
+                                        </a>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+{% endif %}
+
+<!-- Reviews -->
+{% if reviews %}
+    <section class="py-5">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title">{% trans "Traveler Reviews" %}</h2>
+                <div class="d-flex justify-content-center align-items-center mb-3">
+                    <div class="star-rating me-3">
+                        {% for i in "12345" %}
+                            {% if forloop.counter <= tour.average_rating %}
+                                <i class="fas fa-star fa-lg"></i>
+                            {% else %}
+                                <i class="far fa-star fa-lg"></i>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                    <span class="h5 mb-0">{{ tour.average_rating|floatformat:1 }}</span>
+                    <span class="text-muted ms-2">({{ tour.total_reviews }} {% trans "reviews" %})</span>
+                </div>
+            </div>
+            
+            <div class="row">
+                {% for review in reviews %}
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="card h-100">
+                            <div class="card-body">
+                                <div class="d-flex align-items-center mb-3">
+                                    <div class="flex-shrink-0">
+                                        <div class="bg-primary rounded-circle d-flex align-items-center justify-content-center" 
+                                             style="width: 50px; height: 50px;">
+                                            <i class="fas fa-user text-white"></i>
+                                        </div>
+                                    </div>
+                                    <div class="flex-grow-1 ms-3">
+                                        <h6 class="mb-0">{{ review.user.get_display_name }}</h6>
+                                        <div class="star-rating">
+                                            {% for i in "12345" %}
+                                                {% if forloop.counter <= review.rating %}
+                                                    <i class="fas fa-star"></i>
+                                                {% else %}
+                                                    <i class="far fa-star"></i>
+                                                {% endif %}
+                                            {% endfor %}
+                                        </div>
+                                        <small class="text-muted">{{ review.created_at|date:"M d, Y" }}</small>
+                                    </div>
+                                </div>
+                                <h6 class="card-title">{{ review.title }}</h6>
+                                <p class="card-text">{{ review.content|truncatewords:25 }}</p>
+                                {% if review.travel_type %}
+                                    <small class="text-muted">{{ review.get_travel_type_display }}</small>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+            
+            <div class="text-center mt-4">
+                {% if user.is_authenticated %}
+                    <a href="{% url 'reviews:create_tour_review' tour.slug %}" class="btn btn-outline-primary me-3">
+                        <i class="fas fa-star me-2"></i>{% trans "Write a Review" %}
+                    </a>
+                {% endif %}
+                <a href="{% url 'reviews:review_list' %}?tour={{ tour.id }}" class="btn btn-outline-primary">
+                    {% trans "Read All Reviews" %} <i class="fas fa-arrow-right ms-2"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+{% endif %}
+
+<!-- Related Tours -->
+{% if related_tours %}
+    <section class="py-5 bg-light">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title">{% trans "Similar Tours" %}</h2>
+                <p class="lead text-muted">{% trans "You might also like these adventures" %}</p>
+            </div>
+            
+            <div class="row">
+                {% for related_tour in related_tours %}
+                    <div class="col-lg-3 col-md-6 mb-4">
+                        <div class="card h-100">
+                            <img src="{% if related_tour.main_image %}{{ related_tour.main_image.url }}{% else %}https://images.pexels.com/photos/1170986/pexels-photo-1170986.jpeg{% endif %}" 
+                                 class="card-img-top" style="height: 200px; object-fit: cover;" alt="{{ related_tour.title }}">
+                            <div class="card-body d-flex flex-column">
+                                <h6 class="card-title">{{ related_tour.title }}</h6>
+                                <p class="text-muted mb-2">
+                                    <i class="fas fa-clock me-1"></i>{{ related_tour.get_duration_display }}
+                                </p>
+                                <p class="card-text flex-grow-1">{{ related_tour.short_description|truncatewords:10 }}</p>
+                                <div class="d-flex justify-content-between align-items-center mt-auto">
+                                    <div class="price-tag">
+                                        {% trans "From" %} ${{ related_tour.price_budget|default:related_tour.price_standard|floatformat:0 }}
+                                    </div>
+                                    <a href="{% url 'tours:tour_detail' related_tour.slug %}" class="btn btn-primary btn-sm">
+                                        {% trans "View" %}
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+{% endif %}
+{% endblock %}

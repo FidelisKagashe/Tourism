@@ -1,5 +1,9 @@
 from django.contrib import admin
-from .models import ContactMessage, Newsletter, SiteSettings
+from .models import ContactMessage, Newsletter, SiteSettings, HistoricalSite
+from parks.models import NationalPark, Destination, Wildlife
+from tours.models import TourPackage, TourGuide
+from reviews.models import Review
+from bookings.models import Booking
 
 @admin.register(ContactMessage)
 class ContactMessageAdmin(admin.ModelAdmin):
@@ -35,3 +39,59 @@ class SiteSettingsAdmin(admin.ModelAdmin):
     
     def has_delete_permission(self, request, obj=None):
         return False
+
+@admin.register(HistoricalSite)
+class HistoricalSiteAdmin(admin.ModelAdmin):
+    """Admin for HistoricalSite model."""
+    
+    list_display = ['name', 'site_type', 'location', 'region', 'featured', 'is_active', 'created_at']
+    list_filter = ['site_type', 'region', 'featured', 'is_active', 'created_at']
+    search_fields = ['name', 'location', 'description']
+    prepopulated_fields = {'slug': ('name',)}
+    readonly_fields = ['created_at', 'updated_at']
+    
+    fieldsets = (
+        ('Basic Information', {
+            'fields': ('name', 'slug', 'site_type', 'location', 'region')
+        }),
+        ('Content', {
+            'fields': ('description', 'short_description', 'historical_significance')
+        }),
+        ('Geographic Information', {
+            'fields': ('latitude', 'longitude')
+        }),
+        ('Visitor Information', {
+            'fields': ('visiting_hours', 'entry_fee', 'best_time_to_visit')
+        }),
+        ('Media', {
+            'fields': ('main_image',)
+        }),
+        ('Status', {
+            'fields': ('is_active', 'featured')
+        }),
+        ('Timestamps', {
+            'fields': ('created_at', 'updated_at')
+        }),
+    )
+
+# Enhanced admin for better content management
+class NationalParkInline(admin.TabularInline):
+    model = NationalPark
+    extra = 0
+    fields = ['name', 'region', 'is_active', 'featured']
+    readonly_fields = ['name']
+
+class TourPackageInline(admin.TabularInline):
+    model = TourPackage
+    extra = 0
+    fields = ['title', 'category', 'is_active', 'is_featured']
+    readonly_fields = ['title']
+
+# Register additional models for homepage content management
+#admin.site.register(NationalPark)
+# admin.site.register(Destination)
+# admin.site.register(Wildlife)
+# admin.site.register(TourPackage)
+# admin.site.register(TourGuide)
+# admin.site.register(Review)
+# admin.site.register(Booking)

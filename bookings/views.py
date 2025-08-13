@@ -112,8 +112,26 @@ def booking_payment(request, booking_reference):
             payment.currency = booking.currency
             payment.save()
             
-            # Simulate payment processing
-            if simulate_payment_processing(payment):
+            # For cash payments, mark as pending for manual verification
+            if payment.payment_method in ['cash', 'cash_on_arrival']:
+                payment.status = 'pending'
+                payment.save()
+                
+                booking.payment_status = 'pending'
+                booking.booking_status = 'confirmed'  # Still confirm booking
+                booking.save()
+                
+                # Update tour availability
+                availability = booking.tour_availability
+                availability.booked_participants += booking.number_of_participants
+                availability.save()
+                
+                # Send confirmation
+                send_cash_payment_confirmation_email(booking, payment)
+                
+                messages.success(request, 'Booking confirmed! Please bring cash payment on arrival.')
+                return redirect('bookings:booking_detail', booking_reference=booking.booking_reference)
+            elif simulate_payment_processing(payment):
                 payment.status = 'completed'
                 payment.save()
                 
@@ -168,6 +186,23 @@ def send_payment_confirmation_email(booking, payment):
     """Send payment confirmation email."""
     subject = f'Payment Confirmation - {booking.booking_reference}'
     html_message = render_to_string('emails/payment_confirmation.html', {
+        'booking': booking,
+        'payment': payment
+    })
+    
+    send_mail(
+        subject=subject,
+        message='',
+        html_message=html_message,
+        from_email=settings.DEFAULT_FROM_EMAIL,
+        recipient_list=[booking.contact_email],
+        fail_silently=True,
+    )
+
+def send_cash_payment_confirmation_email(booking, payment):
+    """Send cash payment confirmation email."""
+    subject = f'Booking Confirmed - Cash Payment - {booking.booking_reference}'
+    html_message = render_to_string('emails/cash_payment_confirmation.html', {
         'booking': booking,
         'payment': payment
     })

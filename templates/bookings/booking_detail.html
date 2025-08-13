@@ -1,0 +1,257 @@
+{% extends 'base/base.html' %}
+{% load i18n %}
+
+{% block title %}{% trans "Booking" %} {{ booking.booking_reference }} - Tanzania Safari Adventures{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row">
+        <div class="col-12">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <div>
+                    <h1>{% trans "Booking Details" %}</h1>
+                    <p class="text-muted">{% trans "Reference:" %} {{ booking.booking_reference }}</p>
+                </div>
+                <div>
+                    <span class="badge badge-lg 
+                        {% if booking.booking_status == 'confirmed' %}bg-success
+                        {% elif booking.booking_status == 'pending' %}bg-warning
+                        {% elif booking.booking_status == 'cancelled' %}bg-danger
+                        {% else %}bg-secondary{% endif %}">
+                        {{ booking.get_booking_status_display }}
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-lg-8 mb-5">
+            <!-- Tour Information -->
+            <div class="card border-0 shadow mb-4">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="mb-0">
+                        <i class="fas fa-route me-2"></i>{% trans "Tour Information" %}
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <img src="{% if booking.tour_package.main_image %}{{ booking.tour_package.main_image.url }}{% else %}https://images.pexels.com/photos/1170986/pexels-photo-1170986.jpeg{% endif %}" 
+                                 class="img-fluid rounded" alt="{{ booking.tour_package.title }}">
+                        </div>
+                        <div class="col-md-8">
+                            <h4>{{ booking.tour_package.title }}</h4>
+                            <p class="text-muted mb-3">{{ booking.tour_package.short_description }}</p>
+                            
+                            <div class="row">
+                                <div class="col-sm-6 mb-2">
+                                    <strong>{% trans "Duration:" %}</strong> {{ booking.tour_package.get_duration_display }}
+                                </div>
+                                <div class="col-sm-6 mb-2">
+                                    <strong>{% trans "Difficulty:" %}</strong> {{ booking.tour_package.get_difficulty_level_display }}
+                                </div>
+                                <div class="col-sm-6 mb-2">
+                                    <strong>{% trans "Category:" %}</strong> {{ booking.tour_package.get_category_display }}
+                                </div>
+                                <div class="col-sm-6 mb-2">
+                                    <strong>{% trans "Accommodation:" %}</strong> {{ booking.get_accommodation_type_display }}
+                                </div>
+                            </div>
+                            
+                            {% if booking.tour_availability %}
+                                <div class="mt-3">
+                                    <strong>{% trans "Tour Dates:" %}</strong>
+                                    {{ booking.tour_availability.start_date|date:"M d, Y" }} - 
+                                    {{ booking.tour_availability.end_date|date:"M d, Y" }}
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Participants -->
+            {% if booking.participants.all %}
+                <div class="card border-0 shadow mb-4">
+                    <div class="card-header bg-info text-white">
+                        <h5 class="mb-0">
+                            <i class="fas fa-users me-2"></i>{% trans "Participants" %}
+                        </h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            {% for participant in booking.participants.all %}
+                                <div class="col-md-6 mb-3">
+                                    <div class="border rounded p-3">
+                                        <h6>{{ participant.get_full_name }}</h6>
+                                        <p class="text-muted mb-1">
+                                            <i class="fas fa-birthday-cake me-1"></i>
+                                            {{ participant.date_of_birth|date:"M d, Y" }}
+                                        </p>
+                                        <p class="text-muted mb-1">
+                                            <i class="fas fa-flag me-1"></i>
+                                            {{ participant.nationality }}
+                                        </p>
+                                        {% if participant.passport_number %}
+                                            <p class="text-muted mb-1">
+                                                <i class="fas fa-passport me-1"></i>
+                                                {{ participant.passport_number }}
+                                            </p>
+                                        {% endif %}
+                                        {% if participant.dietary_requirements %}
+                                            <p class="text-muted mb-0">
+                                                <i class="fas fa-utensils me-1"></i>
+                                                {{ participant.dietary_requirements }}
+                                            </p>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+            
+            <!-- Special Requirements -->
+            {% if booking.special_requirements or booking.dietary_requirements %}
+                <div class="card border-0 shadow mb-4">
+                    <div class="card-header bg-warning text-dark">
+                        <h5 class="mb-0">
+                            <i class="fas fa-exclamation-triangle me-2"></i>{% trans "Special Requirements" %}
+                        </h5>
+                    </div>
+                    <div class="card-body">
+                        {% if booking.special_requirements %}
+                            <div class="mb-3">
+                                <h6>{% trans "Special Requirements:" %}</h6>
+                                <p>{{ booking.special_requirements }}</p>
+                            </div>
+                        {% endif %}
+                        {% if booking.dietary_requirements %}
+                            <div>
+                                <h6>{% trans "Dietary Requirements:" %}</h6>
+                                <p>{{ booking.dietary_requirements }}</p>
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+            {% endif %}
+            
+            <!-- Payment History -->
+            {% if booking.payments.all %}
+                <div class="card border-0 shadow">
+                    <div class="card-header bg-success text-white">
+                        <h5 class="mb-0">
+                            <i class="fas fa-credit-card me-2"></i>{% trans "Payment History" %}
+                        </h5>
+                    </div>
+                    <div class="card-body">
+                        {% for payment in booking.payments.all %}
+                            <div class="d-flex justify-content-between align-items-center mb-3 {% if not forloop.last %}border-bottom pb-3{% endif %}">
+                                <div>
+                                    <h6 class="mb-1">{{ payment.payment_reference }}</h6>
+                                    <p class="text-muted mb-0">
+                                        {{ payment.get_payment_method_display }} - 
+                                        {{ payment.created_at|date:"M d, Y H:i" }}
+                                    </p>
+                                </div>
+                                <div class="text-end">
+                                    <div class="h5 mb-1">${{ payment.amount|floatformat:2 }}</div>
+                                    <span class="badge 
+                                        {% if payment.status == 'completed' %}bg-success
+                                        {% elif payment.status == 'pending' %}bg-warning
+                                        {% elif payment.status == 'failed' %}bg-danger
+                                        {% else %}bg-secondary{% endif %}">
+                                        {{ payment.get_status_display }}
+                                    </span>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+        
+        <!-- Sidebar -->
+        <div class="col-lg-4">
+            <!-- Booking Summary -->
+            <div class="card border-0 shadow mb-4">
+                <div class="card-header bg-light">
+                    <h5 class="mb-0">{% trans "Booking Summary" %}</h5>
+                </div>
+                <div class="card-body">
+                    <div class="d-flex justify-content-between mb-2">
+                        <span>{% trans "Participants:" %}</span>
+                        <strong>{{ booking.number_of_participants }}</strong>
+                    </div>
+                    <div class="d-flex justify-content-between mb-2">
+                        <span>{% trans "Base Price:" %}</span>
+                        <span>${{ booking.base_price|floatformat:2 }}</span>
+                    </div>
+                    <div class="d-flex justify-content-between mb-2">
+                        <span>{% trans "Accommodation:" %}</span>
+                        <span>{{ booking.get_accommodation_type_display }}</span>
+                    </div>
+                    
+                    <hr>
+                    
+                    <div class="d-flex justify-content-between">
+                        <strong>{% trans "Total Price:" %}</strong>
+                        <strong class="text-primary h5">${{ booking.total_price|floatformat:2 }}</strong>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Contact Information -->
+            <div class="card border-0 shadow mb-4">
+                <div class="card-header bg-light">
+                    <h5 class="mb-0">{% trans "Contact Information" %}</h5>
+                </div>
+                <div class="card-body">
+                    <p class="mb-2">
+                        <i class="fas fa-user me-2"></i>{{ booking.contact_name }}
+                    </p>
+                    <p class="mb-2">
+                        <i class="fas fa-envelope me-2"></i>{{ booking.contact_email }}
+                    </p>
+                    {% if booking.contact_phone %}
+                        <p class="mb-0">
+                            <i class="fas fa-phone me-2"></i>{{ booking.contact_phone }}
+                        </p>
+                    {% endif %}
+                </div>
+            </div>
+            
+            <!-- Actions -->
+            <div class="card border-0 shadow">
+                <div class="card-body">
+                    <div class="d-grid gap-2">
+                        {% if booking.booking_status == 'pending' and booking.payment_status == 'pending' %}
+                            <a href="{% url 'bookings:booking_payment' booking.booking_reference %}" class="btn btn-success">
+                                <i class="fas fa-credit-card me-2"></i>{% trans "Make Payment" %}
+                            </a>
+                        {% endif %}
+                        
+                        {% if booking.booking_status in 'pending,confirmed' %}
+                            <a href="{% url 'bookings:cancel_booking' booking.booking_reference %}" class="btn btn-outline-danger">
+                                <i class="fas fa-times me-2"></i>{% trans "Cancel Booking" %}
+                            </a>
+                        {% endif %}
+                        
+                        {% if booking.booking_status == 'completed' and not booking.reviews.exists %}
+                            <a href="{% url 'reviews:create_tour_review' booking.tour_package.slug %}" class="btn btn-outline-primary">
+                                <i class="fas fa-star me-2"></i>{% trans "Write Review" %}
+                            </a>
+                        {% endif %}
+                        
+                        <a href="{% url 'core:contact' %}" class="btn btn-outline-info">
+                            <i class="fas fa-phone me-2"></i>{% trans "Contact Support" %}
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

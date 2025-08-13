@@ -7,7 +7,7 @@ from .models import CustomUser, UserProfile, UserActivityLog
 def create_user_profile(sender, instance, created, **kwargs):
     """Create UserProfile when CustomUser is created."""
     if created:
-        UserProfile.objects.create(user=instance)
+        UserProfile.objects.get_or_create(user=instance)
 
 @receiver(post_save, sender=CustomUser)
 def save_user_profile(sender, instance, **kwargs):

@@ -1,0 +1,222 @@
+{% extends 'base/base.html' %}
+{% load i18n %}
+{% load crispy_forms_tags %}
+
+{% block title %}{% trans "Book" %} {{ tour_package.title }} - Tanzania Safari Adventures{% endblock %}
+
+{% block extra_css %}
+<style>
+    .booking-progress {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 2rem;
+    }
+    .progress-step {
+        flex: 1;
+        text-align: center;
+        position: relative;
+    }
+    .progress-step:not(:last-child)::after {
+        content: '';
+        position: absolute;
+        top: 20px;
+        right: -50%;
+        width: 100%;
+        height: 2px;
+        background-color: #dee2e6;
+        z-index: -1;
+    }
+    .progress-step.active::after {
+        background-color: var(--primary-color);
+    }
+    .progress-step .step-circle {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background-color: #dee2e6;
+        color: #6c757d;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 0.5rem;
+        font-weight: bold;
+    }
+    .progress-step.active .step-circle {
+        background-color: var(--primary-color);
+        color: white;
+    }
+    .progress-step.completed .step-circle {
+        background-color: var(--success-color);
+        color: white;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <!-- Progress Indicator -->
+    <div class="booking-progress">
+        <div class="progress-step active">
+            <div class="step-circle">1</div>
+            <div>{% trans "Tour Details" %}</div>
+        </div>
+        <div class="progress-step">
+            <div class="step-circle">2</div>
+            <div>{% trans "Participants" %}</div>
+        </div>
+        <div class="progress-step">
+            <div class="step-circle">3</div>
+            <div>{% trans "Payment" %}</div>
+        </div>
+        <div class="progress-step">
+            <div class="step-circle">4</div>
+            <div>{% trans "Confirmation" %}</div>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-lg-8 mb-5">
+            <div class="card border-0 shadow">
+                <div class="card-header bg-primary text-white">
+                    <h4 class="mb-0">
+                        <i class="fas fa-calendar-check me-2"></i>{% trans "Book Your Safari" %}
+                    </h4>
+                </div>
+                <div class="card-body p-4">
+                    <form method="post" id="bookingForm">
+                        {% csrf_token %}
+                        
+                        <!-- Tour Selection -->
+                        <div class="mb-4">
+                            <h5>{% trans "Tour Selection" %}</h5>
+                            {% crispy form %}
+                        </div>
+                        
+                        <!-- Participants -->
+                        <div class="mb-4">
+                            <h5>{% trans "Participant Information" %}</h5>
+                            <div id="participant-forms">
+                                {{ participant_formset.management_form }}
+                                {% for form in participant_formset %}
+                                    <div class="participant-form border rounded p-3 mb-3">
+                                        <h6>{% trans "Participant" %} {{ forloop.counter }}</h6>
+                                        {% crispy form %}
+                                    </div>
+                                {% endfor %}
+                            </div>
+                            <button type="button" class="btn btn-outline-primary" id="add-participant">
+                                <i class="fas fa-plus me-2"></i>{% trans "Add Participant" %}
+                            </button>
+                        </div>
+                        
+                        <div class="text-end">
+                            <button type="submit" class="btn btn-primary btn-lg">
+                                <i class="fas fa-arrow-right me-2"></i>{% trans "Continue to Payment" %}
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Booking Summary -->
+        <div class="col-lg-4">
+            <div class="card border-0 shadow sticky-top" style="top: 2rem;">
+                <div class="card-header bg-light">
+                    <h5 class="mb-0">{% trans "Booking Summary" %}</h5>
+                </div>
+                <div class="card-body">
+                    <!-- Tour Info -->
+                    <div class="d-flex mb-3">
+                        <img src="{% if tour_package.main_image %}{{ tour_package.main_image.url }}{% else %}https://images.pexels.com/photos/1170986/pexels-photo-1170986.jpeg{% endif %}" 
+                             class="rounded me-3" style="width: 60px; height: 60px; object-fit: cover;" alt="{{ tour_package.title }}">
+                        <div>
+                            <h6 class="mb-1">{{ tour_package.title }}</h6>
+                            <small class="text-muted">{{ tour_package.get_duration_display }}</small>
+                        </div>
+                    </div>
+                    
+                    <hr>
+                    
+                    <!-- Pricing -->
+                    <div class="mb-3">
+                        <div class="d-flex justify-content-between mb-2">
+                            <span>{% trans "Base Price" %}:</span>
+                            <span id="base-price">$0</span>
+                        </div>
+                        <div class="d-flex justify-content-between mb-2">
+                            <span>{% trans "Participants" %}:</span>
+                            <span id="participant-count">1</span>
+                        </div>
+                        <div class="d-flex justify-content-between mb-2">
+                            <span>{% trans "Accommodation" %}:</span>
+                            <span id="accommodation-type">{% trans "Standard" %}</span>
+                        </div>
+                    </div>
+                    
+                    <hr>
+                    
+                    <div class="d-flex justify-content-between">
+                        <strong>{% trans "Total Price" %}:</strong>
+                        <strong class="text-primary" id="total-price">$0</strong>
+                    </div>
+                    
+                    <div class="mt-4">
+                        <div class="alert alert-info">
+                            <i class="fas fa-info-circle me-2"></i>
+                            <small>{% trans "Final price will be calculated based on your selections" %}</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const form = document.getElementById('bookingForm');
+    const participantCountEl = document.getElementById('participant-count');
+    const accommodationTypeEl = document.getElementById('accommodation-type');
+    const basePriceEl = document.getElementById('base-price');
+    const totalPriceEl = document.getElementById('total-price');
+    
+    // Tour pricing data
+    const tourPricing = {
+        budget: {{ tour_package.price_budget|default:0 }},
+        standard: {{ tour_package.price_standard|default:0 }},
+        luxury: {{ tour_package.price_luxury|default:0 }}
+    };
+    
+    function updatePricing() {
+        const participants = document.getElementById('id_number_of_participants').value || 1;
+        const accommodation = document.getElementById('id_accommodation_type').value || 'standard';
+        
+        const basePrice = tourPricing[accommodation] || tourPricing.standard;
+        const totalPrice = basePrice * participants;
+        
+        participantCountEl.textContent = participants;
+        accommodationTypeEl.textContent = accommodation.charAt(0).toUpperCase() + accommodation.slice(1);
+        basePriceEl.textContent = '$' + basePrice.toLocaleString();
+        totalPriceEl.textContent = '$' + totalPrice.toLocaleString();
+    }
+    
+    // Update pricing when form changes
+    form.addEventListener('change', updatePricing);
+    
+    // Initialize pricing
+    updatePricing();
+    
+    // Add participant functionality
+    let participantCount = {{ participant_formset.total_form_count }};
+    
+    document.getElementById('add-participant').addEventListener('click', function() {
+        // This would need more complex JavaScript to dynamically add formset forms
+        // For now, we'll show an alert
+        alert('{% trans "Please specify the number of participants in the form above" %}');
+    });
+});
+</script>
+{% endblock %}

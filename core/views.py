@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 from django.db.models import Q, Count, Avg
 from django.core.paginator import Paginator
@@ -6,7 +6,7 @@ from django.http import JsonResponse
 from parks.models import NationalPark
 from tours.models import TourPackage
 from reviews.models import Review
-from .models import ContactMessage, Newsletter
+from .models import ContactMessage, Newsletter, HistoricalSite
 from .forms import ContactForm, NewsletterForm
 
 def home(request):
@@ -149,3 +149,66 @@ def terms_of_service(request):
 def faq(request):
     """FAQ page."""
     return render(request, 'core/faq.html')
+
+def historical_sites_list(request):
+    """Historical sites list view."""
+    sites = HistoricalSite.objects.filter(is_active=True).order_by('name')
+    
+    # Filtering
+    site_type = request.GET.get('type')
+    region = request.GET.get('region')
+    search = request.GET.get('search')
+    
+    if site_type:
+        sites = sites.filter(site_type=site_type)
+    
+    if region:
+        sites = sites.filter(region__icontains=region)
+    
+    if search:
+        sites = sites.filter(
+            Q(name__icontains=search) |
+            Q(description__icontains=search) |
+            Q(location__icontains=search)
+        )
+    
+    # Pagination
+    paginator = Paginator(sites, 12)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+    
+    # Get unique regions for filter
+    regions = HistoricalSite.objects.filter(is_active=True).values_list('region', flat=True).distinct()
+    
+    context = {
+        'page_obj': page_obj,
+        'regions': regions,
+        'current_type': site_type,
+        'current_region': region,
+        'search_query': search,
+    }
+    return render(request, 'core/historical_sites_list.html', context)
+
+def historical_site_detail(request, slug):
+    """Historical site detail view."""
+    site = get_object_or_404(HistoricalSite, slug=slug, is_active=True)
+    
+    # Get related sites
+    related_sites = HistoricalSite.objects.filter(
+        region=site.region,
+        is_active=True
+    ).exclude(id=site.id)[:4]
+    
+    context = {
+        'site': site,
+        'related_sites': related_sites,
+    }
+    return render(request, 'core/historical_site_detail.html', context)
+
+def privacy_policy(request):
+    """Privacy policy page."""
+    return render(request, 'core/privacy_policy.html')
+
+def terms_of_service(request):
+    """Terms of service page."""
+    return render(request, 'core/terms_of_service.html')

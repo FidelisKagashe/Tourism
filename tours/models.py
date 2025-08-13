@@ -3,6 +3,7 @@ from django.urls import reverse
 from django.core.validators import MinValueValidator, MaxValueValidator
 from django.contrib.auth import get_user_model
 from parks.models import NationalPark
+from typing import Optional
 
 User = get_user_model()
 
@@ -79,6 +80,9 @@ class TourGuide(models.Model):
     
     def get_full_name(self):
         return self.user.get_full_name()
+    
+    def get_absolute_url(self):
+        return reverse('tours:guide_detail', kwargs={'pk': self.pk})
 
 class TourPackage(models.Model):
     """Tour packages offered by the company."""
@@ -310,14 +314,35 @@ class TourAvailability(models.Model):
         return f"{self.tour_package.title} - {self.start_date}"
     
     @property
-    def available_spots(self):
-        """Return number of available spots."""
-        return max(0, self.max_participants - self.booked_participants)
-    
+    def available_spots(self) -> Optional[int]:
+        """
+        Return number of available spots as an int, or None if it cannot be computed yet.
+        - If max_participants is None we return None (admin will show blank).
+        - If booked_participants is None we treat it as 0.
+        """
+        max_p = self.max_participants
+        if max_p is None:
+            return None
+
+        booked = self.booked_participants or 0
+
+        try:
+            available = int(max_p) - int(booked)
+        except (TypeError, ValueError):
+            return None
+
+        return max(0, available)
+
     @property
-    def is_fully_booked(self):
-        """Check if tour is fully booked."""
-        return self.booked_participants >= self.max_participants
+    def is_fully_booked(self) -> bool:
+        """
+        Return True if booked_participants >= max_participants.
+        If max_participants is not set, consider it NOT fully booked.
+        """
+        max_p = self.max_participants
+        if max_p is None:
+            return False
+        return (self.booked_participants or 0) >= int(max_p)
 
 class TourPackageExtra(models.Model):
     """Optional extras that can be added to tour packages."""

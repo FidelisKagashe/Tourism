@@ -3,6 +3,8 @@ from django.core.paginator import Paginator
 from django.db.models import Q, Avg, Count
 from django.contrib.auth.decorators import login_required
 from .models import TourPackage, TourGuide, TourAvailability
+from django.db.models import F, ExpressionWrapper, IntegerField
+from django.db.models.functions import Coalesce
 
 def tour_list(request):
     """List all tour packages."""
@@ -84,10 +86,17 @@ def tour_detail(request, slug):
     )
     
     # Get availability
-    availability = tour.availability.filter(
-        is_available=True,
-        available_spots__gt=0
-    ).order_by('start_date')[:10]
+    availability = (
+        tour.availability
+        .annotate(
+            _available_spots=ExpressionWrapper(
+                Coalesce(F('max_participants'), 0) - Coalesce(F('booked_participants'), 0),
+                output_field=IntegerField()
+            )
+        )
+        .filter(is_available=True, _available_spots__gt=0)
+        .order_by('start_date')[:10]
+    )
     
     # Get reviews
     reviews = tour.reviews.filter(is_approved=True).select_related('user')[:10]

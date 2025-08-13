@@ -1,0 +1,271 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-01-01 12:00+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: sw\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+# Navigation
+msgid "Home"
+msgstr "Nyumbani"
+
+msgid "National Parks"
+msgstr "Hifadhi za Taifa"
+
+msgid "Safari Tours"
+msgstr "Safari za Utalii"
+
+msgid "Reviews"
+msgstr "Maoni"
+
+msgid "About"
+msgstr "Kuhusu"
+
+msgid "Contact"
+msgstr "Mawasiliano"
+
+msgid "Login"
+msgstr "Ingia"
+
+msgid "Sign Up"
+msgstr "Jisajili"
+
+msgid "Logout"
+msgstr "Toka"
+
+msgid "Dashboard"
+msgstr "Dashibodi"
+
+msgid "My Bookings"
+msgstr "Mahifadhi Yangu"
+
+msgid "Profile"
+msgstr "Wasifu"
+
+# Homepage
+msgid "Discover the Magic of Tanzania"
+msgstr "Gundua Uchawi wa Tanzania"
+
+msgid "Experience breathtaking wildlife, stunning landscapes, and rich culture"
+msgstr "Furahia wanyamapori wa kupendeza, mazingira mazuri, na utamaduni tajiri"
+
+msgid "Explore Tours"
+msgstr "Chunguza Safari"
+
+msgid "Featured National Parks"
+msgstr "Hifadhi za Taifa Maarufu"
+
+msgid "Featured Safari Tours"
+msgstr "Safari Maarufu za Utalii"
+
+msgid "What Our Travelers Say"
+msgstr "Wasafiri Wetu Wanasema Nini"
+
+msgid "Stay Updated with Our Adventures"
+msgstr "Pata Habari za Safari Zetu"
+
+# Booking
+msgid "Book Now"
+msgstr "Hifadhi Sasa"
+
+msgid "Check Availability"
+msgstr "Angalia Upatikanaji"
+
+msgid "Select Date"
+msgstr "Chagua Tarehe"
+
+msgid "Number of Participants"
+msgstr "Idadi ya Washiriki"
+
+msgid "Accommodation Type"
+msgstr "Aina ya Malazi"
+
+msgid "Budget"
+msgstr "Bajeti"
+
+msgid "Standard"
+msgstr "Kawaida"
+
+msgid "Luxury"
+msgstr "Anasa"
+
+msgid "Total Price"
+msgstr "Jumla ya Bei"
+
+msgid "Confirm Booking"
+msgstr "Thibitisha Uhifadhi"
+
+# Common
+msgid "Search"
+msgstr "Tafuta"
+
+msgid "Filter"
+msgstr "Chuja"
+
+msgid "Sort by"
+msgstr "Panga kwa"
+
+msgid "Price"
+msgstr "Bei"
+
+msgid "Duration"
+msgstr "Muda"
+
+msgid "Rating"
+msgstr "Kiwango"
+
+msgid "Difficulty"
+msgstr "Ugumu"
+
+msgid "Easy"
+msgstr "Rahisi"
+
+msgid "Moderate"
+msgstr "Wastani"
+
+msgid "Challenging"
+msgstr "Changamoto"
+
+msgid "Extreme"
+msgstr "Kali"
+
+msgid "View Details"
+msgstr "Ona Maelezo"
+
+msgid "Read More"
+msgstr "Soma Zaidi"
+
+msgid "Submit"
+msgstr "Wasilisha"
+
+msgid "Cancel"
+msgstr "Ghairi"
+
+msgid "Save"
+msgstr "Hifadhi"
+
+msgid "Edit"
+msgstr "Hariri"
+
+msgid "Delete"
+msgstr "Futa"
+
+# Parks
+msgid "Area"
+msgstr "Eneo"
+
+msgid "Established"
+msgstr "Ilianzishwa"
+
+msgid "Best Time to Visit"
+msgstr "Wakati Bora wa Kutembelea"
+
+msgid "Entry Fee"
+msgstr "Ada ya Kuingia"
+
+msgid "Wildlife"
+msgstr "Wanyamapori"
+
+msgid "Activities"
+msgstr "Shughuli"
+
+msgid "Facilities"
+msgstr "Vifaa"
+
+# Reviews
+msgid "Write a Review"
+msgstr "Andika Maoni"
+
+msgid "Your Rating"
+msgstr "Kiwango Chako"
+
+msgid "Your Review"
+msgstr "Maoni Yako"
+
+msgid "Helpful"
+msgstr "Yanafaa"
+
+msgid "Not Helpful"
+msgstr "Hayafai"
+
+# User Account
+msgid "First Name"
+msgstr "Jina la Kwanza"
+
+msgid "Last Name"
+msgstr "Jina la Mwisho"
+
+msgid "Email"
+msgstr "Barua Pepe"
+
+msgid "Phone Number"
+msgstr "Nambari ya Simu"
+
+msgid "Date of Birth"
+msgstr "Tarehe ya Kuzaliwa"
+
+msgid "Nationality"
+msgstr "Uraia"
+
+msgid "Password"
+msgstr "Nenosiri"
+
+msgid "Confirm Password"
+msgstr "Thibitisha Nenosiri"
+
+msgid "Register"
+msgstr "Jisajili"
+
+msgid "Update Profile"
+msgstr "Sasisha Wasifu"
+
+# Messages
+msgid "Welcome back"
+msgstr "Karibu tena"
+
+msgid "Registration successful"
+msgstr "Usajili umefanikiwa"
+
+msgid "Booking confirmed"
+msgstr "Uhifadhi umethibitishwa"
+
+msgid "Payment successful"
+msgstr "Malipo yamefanikiwa"
+
+msgid "Thank you for your review"
+msgstr "Asante kwa maoni yako"
+
+msgid "Profile updated successfully"
+msgstr "Wasifu umesasishwa kwa ufanisi"
+
+# Footer
+msgid "Quick Links"
+msgstr "Viungo vya Haraka"
+
+msgid "Destinations"
+msgstr "Maeneo ya Utalii"
+
+msgid "Support"
+msgstr "Msaada"
+
+msgid "Contact Info"
+msgstr "Maelezo ya Mawasiliano"
+
+msgid "All rights reserved"
+msgstr "Haki zote zimehifadhiwa"
+
+msgid "Made with love in Tanzania"
+msgstr "Imetengenezwa kwa upendo Tanzania"

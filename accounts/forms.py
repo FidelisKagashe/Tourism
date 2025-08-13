@@ -4,38 +4,47 @@ from django.contrib.auth import authenticate
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Layout, Row, Column, Submit, HTML
 from .models import CustomUser, UserProfile
+from django_countries import countries
+from phonenumber_field.formfields import PhoneNumberField as PhoneFormField
+from phonenumber_field.widgets import PhoneNumberPrefixWidget
+from django_countries.widgets import CountrySelectWidget
+from django.db import transaction
 
 class CustomUserRegistrationForm(UserCreationForm):
-    """Custom user registration form."""
-    
-    first_name = forms.CharField(
-        max_length=30,
-        widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'First Name'})
-    )
-    last_name = forms.CharField(
-        max_length=30,
-        widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Last Name'})
-    )
-    email = forms.EmailField(
-        widget=forms.EmailInput(attrs={'class': 'form-control', 'placeholder': 'Email Address'})
-    )
+    """
+    Registration form that works with intl-tel-input JS.
+    The visible phone input has id="id_phone_input" so the JS can initialize it.
+    On submit JS will convert the shown phone to E.164 and set the input value before sending.
+    """
+    first_name = forms.CharField(max_length=30, widget=forms.TextInput(attrs={'placeholder': 'First Name'}))
+    last_name = forms.CharField(max_length=30, widget=forms.TextInput(attrs={'placeholder': 'Last Name'}))
+    email = forms.EmailField(widget=forms.EmailInput(attrs={'placeholder': 'Email Address'}))
+
+    # Plain text input for JS widget. id must be id_phone_input.
     phone_number = forms.CharField(
-        max_length=20,
         required=False,
-        widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Phone Number'})
+        widget=forms.TextInput(attrs={
+            'id': 'id_phone_input',
+            'placeholder': 'Phone Number',  # displayed while user types local number
+            'autocomplete': 'tel'
+        })
     )
-    nationality = forms.CharField(
-        max_length=50,
+
+    # Explicitly define nationality to ensure choices populate
+    nationality = forms.ChoiceField(
+        choices=countries,
         required=False,
-        widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Nationality'})
+        widget=CountrySelectWidget(attrs={'id': 'id_nationality', 'class': 'form-control'})
     )
-    
+
     class Meta:
         model = CustomUser
         fields = ('username', 'first_name', 'last_name', 'email', 'phone_number', 'nationality', 'password1', 'password2')
-    
+
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
+
+        # Crispy helper (keeps your layout)
         self.helper = FormHelper()
         self.helper.layout = Layout(
             Row(
@@ -60,10 +69,35 @@ class CustomUserRegistrationForm(UserCreationForm):
             ),
             Submit('submit', 'Register', css_class='btn btn-primary btn-lg w-100')
         )
-        
-        # Add Bootstrap classes to form fields
-        for field_name, field in self.fields.items():
-            field.widget.attrs['class'] = 'form-control'
+
+        # Add bootstrap classes to widgets except the phone which already has attrs
+        for name, field in self.fields.items():
+            existing = field.widget.attrs.get('class', '')
+            if 'form-control' not in existing:
+                field.widget.attrs['class'] = (existing + ' form-control').strip()
+
+    @transaction.atomic
+    def save(self, commit=True):
+        user = super().save(commit=False)
+
+        phone = self.cleaned_data.get('phone_number')
+        nationality = self.cleaned_data.get('nationality')
+
+        if phone:
+            # phone should be E.164 string from JS (e.g. "+255712345678")
+            user.phone_number = phone
+        if nationality:
+            user.nationality = nationality
+
+        if commit:
+            user.save()
+            # create profile if you use it
+            try:
+                UserProfile.objects.get_or_create(user=user)
+            except Exception:
+                pass
+
+        return user
 
 class CustomAuthenticationForm(AuthenticationForm):
     """Custom login form."""

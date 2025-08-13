@@ -1,0 +1,132 @@
+{% extends 'base/base.html' %}
+{% load i18n %}
+
+{% block title %}{% trans "Destinations" %} - Tanzania Safari Adventures{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="hero-section" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.pexels.com/photos/1170986/pexels-photo-1170986.jpeg');">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+                <h1 class="display-4 fw-bold mb-4">{% trans "Tanzania Destinations" %}</h1>
+                <p class="lead">{% trans "Discover amazing destinations across Tanzania" %}</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Filters -->
+<section class="py-4 bg-light">
+    <div class="container">
+        <form method="GET" class="row g-3 align-items-end">
+            <div class="col-md-3">
+                <label class="form-label">{% trans "Type" %}</label>
+                <select name="type" class="form-select">
+                    <option value="">{% trans "All Types" %}</option>
+                    <option value="wildlife_area" {% if current_type == 'wildlife_area' %}selected{% endif %}>{% trans "Wildlife Area" %}</option>
+                    <option value="historical_site" {% if current_type == 'historical_site' %}selected{% endif %}>{% trans "Historical Site" %}</option>
+                    <option value="cultural_site" {% if current_type == 'cultural_site' %}selected{% endif %}>{% trans "Cultural Site" %}</option>
+                    <option value="beach" {% if current_type == 'beach' %}selected{% endif %}>{% trans "Beach" %}</option>
+                    <option value="mountain" {% if current_type == 'mountain' %}selected{% endif %}>{% trans "Mountain" %}</option>
+                </select>
+            </div>
+            <div class="col-md-3">
+                <label class="form-label">{% trans "Park" %}</label>
+                <select name="park" class="form-select">
+                    <option value="">{% trans "All Parks" %}</option>
+                    {% for park in parks %}
+                        <option value="{{ park.id }}" {% if current_park == park.id|stringformat:"s" %}selected{% endif %}>{{ park.name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="col-md-4">
+                <label class="form-label">{% trans "Search" %}</label>
+                <input type="text" name="search" class="form-control" placeholder="{% trans 'Search destinations...' %}" value="{{ search_query }}">
+            </div>
+            <div class="col-md-2">
+                <button type="submit" class="btn btn-primary w-100">{% trans "Filter" %}</button>
+            </div>
+        </form>
+    </div>
+</section>
+
+<!-- Destinations Grid -->
+<section class="py-5">
+    <div class="container">
+        {% if page_obj %}
+            <div class="row">
+                {% for destination in page_obj %}
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="card h-100">
+                            <img src="{% if destination.main_image %}{{ destination.main_image.url }}{% else %}https://images.pexels.com/photos/1170986/pexels-photo-1170986.jpeg{% endif %}" 
+                                 class="card-img-top" style="height: 250px; object-fit: cover;" alt="{{ destination.name }}">
+                            <div class="card-body d-flex flex-column">
+                                <div class="d-flex justify-content-between align-items-start mb-2">
+                                    <span class="badge badge-custom">{{ destination.get_destination_type_display }}</span>
+                                    {% if destination.featured %}
+                                        <span class="badge bg-warning text-dark">
+                                            <i class="fas fa-star me-1"></i>{% trans "Featured" %}
+                                        </span>
+                                    {% endif %}
+                                </div>
+                                <h5 class="card-title">{{ destination.name }}</h5>
+                                {% if destination.park %}
+                                    <p class="text-muted mb-2">
+                                        <i class="fas fa-map-marker-alt me-1"></i>{{ destination.park.name }}
+                                    </p>
+                                {% endif %}
+                                <p class="card-text flex-grow-1">{{ destination.short_description }}</p>
+                                <a href="{% url 'parks:destination_detail' destination.slug %}" class="btn btn-primary">
+                                    {% trans "Explore" %}
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+            
+            <!-- Pagination -->
+            {% if page_obj.has_other_pages %}
+                <nav aria-label="Destinations pagination" class="mt-5">
+                    <ul class="pagination justify-content-center">
+                        {% if page_obj.has_previous %}
+                            <li class="page-item">
+                                <a class="page-link" href="?page={{ page_obj.previous_page_number }}{% if current_type %}&type={{ current_type }}{% endif %}{% if current_park %}&park={{ current_park }}{% endif %}{% if search_query %}&search={{ search_query }}{% endif %}">
+                                    {% trans "Previous" %}
+                                </a>
+                            </li>
+                        {% endif %}
+                        
+                        {% for num in page_obj.paginator.page_range %}
+                            {% if page_obj.number == num %}
+                                <li class="page-item active">
+                                    <span class="page-link">{{ num }}</span>
+                                </li>
+                            {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+                                <li class="page-item">
+                                    <a class="page-link" href="?page={{ num }}{% if current_type %}&type={{ current_type }}{% endif %}{% if current_park %}&park={{ current_park }}{% endif %}{% if search_query %}&search={{ search_query }}{% endif %}">{{ num }}</a>
+                                </li>
+                            {% endif %}
+                        {% endfor %}
+                        
+                        {% if page_obj.has_next %}
+                            <li class="page-item">
+                                <a class="page-link" href="?page={{ page_obj.next_page_number }}{% if current_type %}&type={{ current_type }}{% endif %}{% if current_park %}&park={{ current_park }}{% endif %}{% if search_query %}&search={{ search_query }}{% endif %}">
+                                    {% trans "Next" %}
+                                </a>
+                            </li>
+                        {% endif %}
+                    </ul>
+                </nav>
+            {% endif %}
+        {% else %}
+            <div class="text-center py-5">
+                <i class="fas fa-map-marker-alt fa-4x text-muted mb-4"></i>
+                <h3>{% trans "No destinations found" %}</h3>
+                <p class="text-muted">{% trans "Try adjusting your search criteria" %}</p>
+            </div>
+        {% endif %}
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,143 @@
+{% extends 'base/base.html' %}
+{% load i18n %}
+
+{% block title %}{% trans "Wildlife" %} - Tanzania Safari Adventures{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="hero-section" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.pexels.com/photos/631317/pexels-photo-631317.jpeg');">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+                <h1 class="display-4 fw-bold mb-4">{% trans "Tanzania Wildlife" %}</h1>
+                <p class="lead">{% trans "Discover the incredible wildlife of Tanzania" %}</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Filters -->
+<section class="py-4 bg-light">
+    <div class="container">
+        <form method="GET" class="row g-3 align-items-end">
+            <div class="col-md-2">
+                <label class="form-label">{% trans "Category" %}</label>
+                <select name="category" class="form-select">
+                    <option value="">{% trans "All Categories" %}</option>
+                    <option value="mammal" {% if current_category == 'mammal' %}selected{% endif %}>{% trans "Mammals" %}</option>
+                    <option value="bird" {% if current_category == 'bird' %}selected{% endif %}>{% trans "Birds" %}</option>
+                    <option value="reptile" {% if current_category == 'reptile' %}selected{% endif %}>{% trans "Reptiles" %}</option>
+                </select>
+            </div>
+            <div class="col-md-2">
+                <label class="form-label">{% trans "Status" %}</label>
+                <select name="status" class="form-select">
+                    <option value="">{% trans "All Status" %}</option>
+                    <option value="LC" {% if current_status == 'LC' %}selected{% endif %}>{% trans "Least Concern" %}</option>
+                    <option value="VU" {% if current_status == 'VU' %}selected{% endif %}>{% trans "Vulnerable" %}</option>
+                    <option value="EN" {% if current_status == 'EN' %}selected{% endif %}>{% trans "Endangered" %}</option>
+                </select>
+            </div>
+            <div class="col-md-2">
+                <div class="form-check mt-4">
+                    <input class="form-check-input" type="checkbox" name="big_five" value="true" {% if big_five_filter == 'true' %}checked{% endif %}>
+                    <label class="form-check-label">{% trans "Big Five Only" %}</label>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <label class="form-label">{% trans "Search" %}</label>
+                <input type="text" name="search" class="form-control" placeholder="{% trans 'Search wildlife...' %}" value="{{ search_query }}">
+            </div>
+            <div class="col-md-2">
+                <button type="submit" class="btn btn-primary w-100">{% trans "Filter" %}</button>
+            </div>
+        </form>
+    </div>
+</section>
+
+<!-- Wildlife Grid -->
+<section class="py-5">
+    <div class="container">
+        {% if page_obj %}
+            <div class="row">
+                {% for animal in page_obj %}
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="card h-100">
+                            <img src="{% if animal.main_image %}{{ animal.main_image.url }}{% else %}https://images.pexels.com/photos/631317/pexels-photo-631317.jpeg{% endif %}" 
+                                 class="card-img-top" style="height: 250px; object-fit: cover;" alt="{{ animal.common_name }}">
+                            <div class="card-body d-flex flex-column">
+                                <div class="d-flex justify-content-between align-items-start mb-2">
+                                    <span class="badge badge-custom">{{ animal.get_category_display }}</span>
+                                    {% if animal.is_big_five %}
+                                        <span class="badge bg-warning text-dark">
+                                            <i class="fas fa-crown me-1"></i>{% trans "Big Five" %}
+                                        </span>
+                                    {% endif %}
+                                </div>
+                                <h5 class="card-title">{{ animal.common_name }}</h5>
+                                {% if animal.scientific_name %}
+                                    <p class="text-muted fst-italic mb-2">{{ animal.scientific_name }}</p>
+                                {% endif %}
+                                <p class="card-text flex-grow-1">{{ animal.description|truncatewords:20 }}</p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <span class="badge 
+                                        {% if animal.conservation_status == 'LC' %}bg-success
+                                        {% elif animal.conservation_status == 'VU' %}bg-warning
+                                        {% elif animal.conservation_status == 'EN' %}bg-danger
+                                        {% else %}bg-secondary{% endif %}">
+                                        {{ animal.get_conservation_status_display }}
+                                    </span>
+                                    <a href="{% url 'parks:wildlife_detail' animal.pk %}" class="btn btn-primary btn-sm">
+                                        {% trans "Learn More" %}
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+            
+            <!-- Pagination -->
+            {% if page_obj.has_other_pages %}
+                <nav aria-label="Wildlife pagination" class="mt-5">
+                    <ul class="pagination justify-content-center">
+                        {% if page_obj.has_previous %}
+                            <li class="page-item">
+                                <a class="page-link" href="?page={{ page_obj.previous_page_number }}{% if current_category %}&category={{ current_category }}{% endif %}{% if current_status %}&status={{ current_status }}{% endif %}{% if big_five_filter %}&big_five={{ big_five_filter }}{% endif %}{% if search_query %}&search={{ search_query }}{% endif %}">
+                                    {% trans "Previous" %}
+                                </a>
+                            </li>
+                        {% endif %}
+                        
+                        {% for num in page_obj.paginator.page_range %}
+                            {% if page_obj.number == num %}
+                                <li class="page-item active">
+                                    <span class="page-link">{{ num }}</span>
+                                </li>
+                            {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+                                <li class="page-item">
+                                    <a class="page-link" href="?page={{ num }}{% if current_category %}&category={{ current_category }}{% endif %}{% if current_status %}&status={{ current_status }}{% endif %}{% if big_five_filter %}&big_five={{ big_five_filter }}{% endif %}{% if search_query %}&search={{ search_query }}{% endif %}">{{ num }}</a>
+                                </li>
+                            {% endif %}
+                        {% endfor %}
+                        
+                        {% if page_obj.has_next %}
+                            <li class="page-item">
+                                <a class="page-link" href="?page={{ page_obj.next_page_number }}{% if current_category %}&category={{ current_category }}{% endif %}{% if current_status %}&status={{ current_status }}{% endif %}{% if big_five_filter %}&big_five={{ big_five_filter }}{% endif %}{% if search_query %}&search={{ search_query }}{% endif %}">
+                                    {% trans "Next" %}
+                                </a>
+                            </li>
+                        {% endif %}
+                    </ul>
+                </nav>
+            {% endif %}
+        {% else %}
+            <div class="text-center py-5">
+                <i class="fas fa-paw fa-4x text-muted mb-4"></i>
+                <h3>{% trans "No wildlife found" %}</h3>
+                <p class="text-muted">{% trans "Try adjusting your search criteria" %}</p>
+            </div>
+        {% endif %}
+    </div>
+</section>
+{% endblock %}
