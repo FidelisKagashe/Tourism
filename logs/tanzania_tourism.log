@@ -5762,3 +5762,58 @@ INFO 2025-08-18 19:23:24,223 basehttp 3320 10176 "GET /reviews/my-reviews/ HTTP/
 INFO 2025-08-18 19:24:03,102 basehttp 3320 10176 "GET /reviews/my-reviews/ HTTP/1.1" 200 54182
 INFO 2025-08-18 19:26:54,305 basehttp 3320 10176 "GET /reviews/my-reviews/ HTTP/1.1" 200 54585
 INFO 2025-08-18 19:27:40,374 autoreload 3320 12112 C:\projects\Tourism\project\tanzania_tourism\settings.py changed, reloading.
+INFO 2025-08-18 20:07:22,221 autoreload 3436 9480 Watching for file changes with StatReloader
+INFO 2025-08-18 20:07:26,204 basehttp 3436 3028 code 400, message Bad request version ('\x9b;ÕÏ*JÄUXbÜ\x9c¸Ë%+\x10dÆú\x8c!¬x%Iª')
+ERROR 2025-08-18 20:07:26,205 basehttp 3436 3028 You're accessing the development server over HTTPS, but it only supports HTTP.
+INFO 2025-08-18 20:07:26,229 basehttp 3436 5080 code 400, message Bad request version ('\x00\x12\x00\x10\x04\x03\x08\x04\x04\x01\x05\x03\x08\x05\x05\x01\x08\x06\x06\x01\x00')
+ERROR 2025-08-18 20:07:26,234 basehttp 3436 5080 You're accessing the development server over HTTPS, but it only supports HTTP.
+INFO 2025-08-18 20:07:43,721 autoreload 3436 9480 C:\projects\Tourism\project\tanzania_tourism\settings.py changed, reloading.
+INFO 2025-08-18 20:07:47,550 autoreload 8968 2832 Watching for file changes with StatReloader
+INFO 2025-08-18 20:07:51,292 basehttp 8968 8640 code 400, message Bad request version ('Ò½\x86ô\x1aj¦L\x8ahÞÖ¯-tM')
+ERROR 2025-08-18 20:07:51,294 basehttp 8968 8640 You're accessing the development server over HTTPS, but it only supports HTTP.
+INFO 2025-08-18 20:07:51,297 basehttp 8968 5856 code 400, message Bad request version ('\x00\x02\x01\x00\x00\x12\x00\x00\x00-\x00\x02\x01\x01\x00')
+ERROR 2025-08-18 20:07:51,298 basehttp 8968 5856 You're accessing the development server over HTTPS, but it only supports HTTP.
+INFO 2025-08-18 20:08:19,154 basehttp 8968 10040 code 400, message Bad request version ('ü=iBñ\x14ø÷©r3)N')
+ERROR 2025-08-18 20:08:19,162 basehttp 8968 10040 You're accessing the development server over HTTPS, but it only supports HTTP.
+INFO 2025-08-18 20:08:19,217 basehttp 8968 1648 code 400, message Bad request version ('\x00\x02\x01\x00\x00')
+ERROR 2025-08-18 20:08:19,227 basehttp 8968 1648 You're accessing the development server over HTTPS, but it only supports HTTP.
+INFO 2025-08-18 20:08:21,479 basehttp 8968 11252 code 400, message Bad request version ('zz\x13\x01\x13\x02\x13\x03À+À/À,À0Ì©Ì¨À\x13À\x14\x00\x9c\x00\x9d\x00/\x005\x01\x00\x06sZZ\x00\x00\x00+\x00\x07\x06')
+ERROR 2025-08-18 20:08:21,481 basehttp 8968 11252 You're accessing the development server over HTTPS, but it only supports HTTP.
+INFO 2025-08-18 20:08:21,482 basehttp 8968 364 code 400, message Bad request version ('§\x07T\x8f3½%yHr#}Ò\x95b&\x86\x1b\x88\x92\x9f´Ê}ÿ¨ÈX¬\x15Í¢K\x10ca\x97Ì\x88÷,X¼@EøzÀÉ\x97Ä\x9eñ¦a\x17\x9c¢Õ\x99àk2õ"²(ü^ÚQj¤@+\x1bå\x94x')
+ERROR 2025-08-18 20:08:21,485 basehttp 8968 364 You're accessing the development server over HTTPS, but it only supports HTTP.
+INFO 2025-08-18 20:08:21,485 basehttp 8968 12932 code 400, message Bad request version ('¡e\x00°b\x05Ç\x99mÚïÔ\x107¨7kÖ¦m\x92$«`ÖÙ\xad\x90ð#Tã8.(J~A\\')
+ERROR 2025-08-18 20:08:21,498 basehttp 8968 12932 You're accessing the development server over HTTPS, but it only supports HTTP.
+INFO 2025-08-18 20:08:21,500 basehttp 8968 6820 code 400, message Bad request version ('ÚÚ\x13\x01\x13\x02\x13\x03À+À/À,À0Ì©Ì¨À\x13À\x14\x00\x9c\x00\x9d\x00/\x005\x01\x00\x06\x93ZZ\x00\x00\x00')
+ERROR 2025-08-18 20:08:21,502 basehttp 8968 6820 You're accessing the development server over HTTPS, but it only supports HTTP.
+INFO 2025-08-18 20:08:41,043 basehttp 8968 8564 code 400, message Bad request version ('êê\x13\x01\x13\x02\x13\x03À+À/À,À0Ì©Ì¨À\x13À\x14\x00\x9c\x00\x9d\x00/\x005\x01\x00\x06Sêê\x00\x00\x00\x12\x00\x00\x00')
+ERROR 2025-08-18 20:08:41,053 basehttp 8968 8564 You're accessing the development server over HTTPS, but it only supports HTTP.
+INFO 2025-08-18 20:08:41,099 basehttp 8968 13836 code 400, message Bad request version ('\x00\x12\x00\x10\x04\x03\x08\x04\x04\x01\x05\x03\x08\x05\x05\x01\x08\x06\x06\x01\x00\x1b\x00\x03\x02\x00\x02\x00')
+ERROR 2025-08-18 20:08:41,110 basehttp 8968 13836 You're accessing the development server over HTTPS, but it only supports HTTP.
+INFO 2025-08-18 20:08:43,073 basehttp 8968 408 code 400, message Bad request version ('wS\x89¹\x86')
+ERROR 2025-08-18 20:08:43,163 basehttp 8968 408 You're accessing the development server over HTTPS, but it only supports HTTP.
+INFO 2025-08-18 20:08:43,171 basehttp 8968 5656 code 400, message Bad request version ('\x02h2\x08http/1.1\x00#\x00\x00ÿ\x01\x00\x01\x00\x00\x17\x00\x00\x003\x04ï\x04í\x1a\x1a\x00\x01\x00\x11ì\x04ÀiµÇÿ\x93-\x8e@\x95\x89ù\x12ÌëuYÉ:Ù9Kà\x17µ$Ë8Fò')
+INFO 2025-08-18 20:08:43,356 basehttp 8968 6412 code 400, message Bad request version ('\x02h2\x08http/1.1\x00+\x00\x07\x06')
+ERROR 2025-08-18 20:08:43,357 basehttp 8968 5656 You're accessing the development server over HTTPS, but it only supports HTTP.
+ERROR 2025-08-18 20:08:43,372 basehttp 8968 6412 You're accessing the development server over HTTPS, but it only supports HTTP.
+INFO 2025-08-18 20:08:43,490 basehttp 8968 5488 code 400, message Bad request version ('\x88\x00')
+ERROR 2025-08-18 20:08:43,554 basehttp 8968 5488 You're accessing the development server over HTTPS, but it only supports HTTP.
+INFO 2025-08-18 20:09:13,303 basehttp 8968 4608 "GET /reviews/my-reviews/ HTTP/1.1" 200 53922
+INFO 2025-08-18 20:09:15,922 basehttp 8968 4608 "GET / HTTP/1.1" 200 81413
+INFO 2025-08-18 20:09:16,243 basehttp 8968 4608 "GET /media/parks/main/Gibbs-Farm-game-Drive-750x450.jpg HTTP/1.1" 304 0
+INFO 2025-08-18 20:09:16,244 basehttp 8968 13160 "GET /media/parks/main/kili-1.jpg.webp HTTP/1.1" 304 0
+INFO 2025-08-18 20:09:16,245 basehttp 8968 13844 "GET /media/parks/main/Serengeti-National-Park-Africa-Kenya-Safaris2.jpg.webp HTTP/1.1" 304 0
+INFO 2025-08-18 20:09:17,994 basehttp 8968 13844 "GET /media/tours/main/4-Days-Ngorongoro-Serengeti-Safari-2-750x325-1.jpg HTTP/1.1" 304 0
+INFO 2025-08-18 20:09:26,736 basehttp 8968 13844 "GET / HTTP/1.1" 200 81413
+WARNING 2025-08-18 20:09:32,920 log 8968 13844 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-18 20:09:32,922 basehttp 8968 13844 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 5900
+INFO 2025-08-18 20:10:11,822 basehttp 8968 5280 code 400, message Bad request version ('®\\\x19z\x04Fi1ÃÞÛ\x87')
+ERROR 2025-08-18 20:10:11,886 basehttp 8968 5280 You're accessing the development server over HTTPS, but it only supports HTTP.
+INFO 2025-08-18 20:10:11,886 basehttp 8968 13960 code 400, message Bad request version ('**\x13\x01\x13\x02\x13\x03À+À/À,À0Ì©Ì¨À\x13À\x14\x00\x9c\x00\x9d\x00/\x005\x01\x00\x06sZZ\x00\x00\x00')
+ERROR 2025-08-18 20:10:11,888 basehttp 8968 13960 You're accessing the development server over HTTPS, but it only supports HTTP.
+INFO 2025-08-18 20:10:11,894 basehttp 8968 6692 code 400, message Bad request version ('zz\x13\x01\x13\x02\x13\x03À+À/À,À0Ì©Ì¨À\x13À\x14\x00\x9c\x00\x9d\x00/\x005\x01\x00\x063úú\x00\x00\x00')
+ERROR 2025-08-18 20:10:11,895 basehttp 8968 6692 You're accessing the development server over HTTPS, but it only supports HTTP.
+INFO 2025-08-18 20:10:12,002 basehttp 8968 11660 code 400, message Bad request version ('2`\x14e»Mí¼z\x98cb[Q"M¥qö\x89h·qÆ@KCêdv\'ô¦&¼)\x9c')
+ERROR 2025-08-18 20:10:12,010 basehttp 8968 11660 You're accessing the development server over HTTPS, but it only supports HTTP.
+INFO 2025-08-18 20:10:18,352 basehttp 8968 13844 "GET / HTTP/1.1" 200 82076
+WARNING 2025-08-18 20:10:18,460 log 8968 13844 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-18 20:10:18,571 basehttp 8968 13844 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 5900
