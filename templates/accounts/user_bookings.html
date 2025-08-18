@@ -1,0 +1,94 @@
+{% extends 'base/base.html' %}
+{% load i18n %}
+
+{% block title %}{% trans "My Bookings" %} - Tanzania Safari Adventures{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row">
+        <div class="col-12">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <div>
+                    <h1>{% trans "My Bookings" %}</h1>
+                    <p class="text-muted">{% trans "All your safari bookings" %}</p>
+                </div>
+                <div>
+                    <a href="{% url 'accounts:dashboard' %}" class="btn btn-outline-primary">
+                        <i class="fas fa-arrow-left me-2"></i>{% trans "Back to Dashboard" %}
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    {% if bookings %}
+        <div class="row">
+            {% for booking in bookings %}
+                <div class="col-lg-6 mb-4">
+                    <div class="card h-100">
+                        <div class="card-header d-flex justify-content-between align-items-center">
+                            <h6 class="mb-0">{{ booking.booking_reference }}</h6>
+                            <span class="badge 
+                                {% if booking.booking_status == 'confirmed' %}bg-success
+                                {% elif booking.booking_status == 'pending' %}bg-warning
+                                {% elif booking.booking_status == 'cancelled' %}bg-danger
+                                {% else %}bg-secondary{% endif %}">
+                                {{ booking.get_booking_status_display }}
+                            </span>
+                        </div>
+                        <div class="card-body">
+                            <div class="d-flex mb-3">
+                                <img src="{% if booking.tour_package.main_image %}{{ booking.tour_package.main_image.url }}{% else %}https://images.pexels.com/photos/1170986/pexels-photo-1170986.jpeg{% endif %}" 
+                                     class="rounded me-3" style="width: 80px; height: 80px; object-fit: cover;" alt="{{ booking.tour_package.title }}">
+                                <div class="flex-grow-1">
+                                    <h6 class="mb-1">{{ booking.tour_package.title }}</h6>
+                                    <p class="text-muted mb-1">
+                                        <i class="fas fa-users me-1"></i>{{ booking.number_of_participants }} {% trans "participants" %}
+                                    </p>
+                                    <p class="text-muted mb-0">
+                                        <i class="fas fa-calendar me-1"></i>{{ booking.created_at|date:"M d, Y" }}
+                                    </p>
+                                </div>
+                            </div>
+                            
+                            <div class="row mb-3">
+                                <div class="col-6">
+                                    <small class="text-muted">{% trans "Accommodation" %}</small>
+                                    <div class="fw-bold">{{ booking.get_accommodation_type_display }}</div>
+                                </div>
+                                <div class="col-6">
+                                    <small class="text-muted">{% trans "Status" %}</small>
+                                    <div>
+                                        <span class="badge 
+                                            {% if booking.booking_status == 'confirmed' %}bg-success
+                                            {% elif booking.booking_status == 'pending' %}bg-warning
+                                            {% elif booking.booking_status == 'cancelled' %}bg-danger
+                                            {% else %}bg-secondary{% endif %}">
+                                            {{ booking.get_booking_status_display }}
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="d-grid">
+                                <a href="{% url 'bookings:booking_detail' booking.booking_reference %}" class="btn btn-primary btn-sm">
+                                    {% trans "View Details" %}
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <div class="text-center py-5">
+            <i class="fas fa-calendar-times fa-4x text-muted mb-4"></i>
+            <h3>{% trans "No bookings yet" %}</h3>
+            <p class="text-muted">{% trans "Start planning your next adventure!" %}</p>
+            <a href="{% url 'tours:tour_list' %}" class="btn btn-primary btn-lg">
+                <i class="fas fa-binoculars me-2"></i>{% trans "Browse Tours" %}
+            </a>
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

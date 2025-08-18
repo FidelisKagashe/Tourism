@@ -1,21 +1,303 @@
 {% extends 'base/base.html' %}
 
-{% block title %}Welcome to Safari&nbsp;&amp;&nbsp;Bush Retreats - Discover Wildlife & National Parks{% endblock %}
+{% block title %}Welcome to Tanzania Safari Adventures - Discover Wildlife & National Parks{% endblock %}
+
+{% block extra_css %}
+<style>
+    /* (kept your custom CSS for hero, cards, animations, etc.) */
+    :root {
+        --primary-color: #c18d45;
+        --secondary-color: #715f3c;
+        --card-bg: #ffffff;
+        --bg-body: #f8fafc;
+        --light-color: #ffffff;
+        --text-white: #ffffff;
+        --accent-color: #ffd89b;
+        --border-color: rgba(0,0,0,0.06);
+    }
+
+    /* Enhanced Hero Section */
+    .hero-section {
+        background: linear-gradient(135deg, rgba(0,0,0,0.5), rgba(193,141,69,0.3)), url('https://images.pexels.com/photos/631317/pexels-photo-631317.jpeg');
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+        min-height: 80vh;
+        display: flex;
+        align-items: center;
+        color: white;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .hero-section::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(45deg, rgba(193,141,69,0.1), rgba(113,95,60,0.1));
+        animation: heroOverlay 20s ease-in-out infinite;
+    }
+
+    @keyframes heroOverlay {
+        0%, 100% { opacity: 0.3; }
+        50% { opacity: 0.6; }
+    }
+
+    .hero-section .container {
+        position: relative;
+        z-index: 2;
+    }
+
+    .hero-section h1 {
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        animation: fadeInUp 1s ease-out;
+    }
+
+    .hero-section p {
+        text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        animation: fadeInUp 1s ease-out 0.3s both;
+    }
+
+    .hero-section .btn {
+        animation: fadeInUp 1s ease-out 0.6s both;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        transition: all 0.3s ease;
+    }
+
+    .hero-section .btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+    }
+
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    /* Enhanced Stats Section */
+    .stats-section {
+        background: linear-gradient(135deg, var(--bg-body), var(--light-color));
+        position: relative;
+    }
+
+    .stats-card {
+        background: var(--card-bg);
+        border: 1px solid var(--border-color);
+        border-radius: 15px;
+        padding: 2rem;
+        text-align: center;
+        transition: all 0.4s ease;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .stats-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(193,141,69,0.1), transparent);
+        transition: left 0.6s ease;
+    }
+
+    .stats-card:hover::before {
+        left: 100%;
+    }
+
+    .stats-card:hover {
+        transform: translateY(-10px) scale(1.02);
+        box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+        border-color: var(--primary-color);
+    }
+
+    .stats-card i {
+        transition: all 0.3s ease;
+    }
+
+    .stats-card:hover i {
+        transform: scale(1.2) rotate(5deg);
+        color: var(--primary-color);
+    }
+
+    .stats-card h3 {
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: var(--primary-color);
+        margin: 1rem 0 0.5rem;
+        transition: all 0.3s ease;
+    }
+
+    .stats-card:hover h3 {
+        transform: scale(1.1);
+    }
+
+    /* Enhanced Card Designs (kept) */
+    .feature-card {
+        border: none;
+        border-radius: 20px;
+        overflow: hidden;
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        background: var(--card-bg);
+        box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        position: relative;
+    }
+
+    .feature-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+        transform: scaleX(0);
+        transition: transform 0.3s ease;
+    }
+
+    .feature-card:hover::before {
+        transform: scaleX(1);
+    }
+
+    .feature-card:hover {
+        transform: translateY(-15px);
+        box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+    }
+
+    .feature-card .card-img-top {
+        transition: all 0.4s ease;
+        position: relative;
+    }
+
+    .feature-card:hover .card-img-top {
+        transform: scale(1.05);
+    }
+
+    .feature-card .badge {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        background: rgba(193,141,69,0.9);
+        backdrop-filter: blur(10px);
+        border: none;
+        padding: 0.5rem 1rem;
+        border-radius: 25px;
+        font-weight: 500;
+    }
+
+    /* Tour, review, newsletter styles kept (unchanged) */
+    .tour-card {
+        border: none;
+        border-radius: 20px;
+        overflow: hidden;
+        background: var(--card-bg);
+        box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        transition: all 0.4s ease;
+        position: relative;
+    }
+
+    .tour-card::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(135deg, rgba(193,141,69,0.05), rgba(113,95,60,0.05));
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        pointer-events: none;
+    }
+
+    .tour-card:hover::after { opacity: 1; }
+    .tour-card:hover { transform: translateY(-8px); box-shadow: 0 15px 40px rgba(0,0,0,0.15); }
+    .tour-card img { transition: all 0.4s ease; height: 300px; object-fit: cover; }
+    .tour-card:hover img { transform: scale(1.03); }
+
+    .review-card { border: none; border-radius: 15px; background: var(--card-bg); box-shadow: 0 5px 20px rgba(0,0,0,0.08); transition: all 0.3s ease; position: relative; overflow: hidden; }
+    .review-card::before { content: '"'; position: absolute; top: -10px; left: 20px; font-size: 4rem; color: var(--primary-color); opacity: 0.1; font-family: serif; }
+    .review-card:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0,0,0,0.12); }
+    .review-avatar { width: 60px; height: 60px; background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem; transition: all 0.3s ease; }
+    .review-card:hover .review-avatar { transform: scale(1.1) rotate(5deg); }
+
+    .newsletter-section { background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); position: relative; overflow: hidden; }
+    .newsletter-section::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="white" opacity="0.1"/><circle cx="75" cy="75" r="1" fill="white" opacity="0.1"/><circle cx="50" cy="10" r="1" fill="white" opacity="0.1"/><circle cx="10" cy="90" r="1" fill="white" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>'); opacity: 0.3; }
+    .newsletter-section .container { position: relative; z-index: 2; }
+    .newsletter-input-group { max-width: 500px; margin: 0 auto; position: relative; }
+    .newsletter-input-group .form-control { border: none; border-radius: 50px; padding: 1rem 1.5rem; font-size: 1.1rem; box-shadow: 0 5px 20px rgba(0,0,0,0.1); background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); }
+    .newsletter-input-group .btn { border-radius: 50px; padding: 1rem 2rem; font-weight: 600; background: var(--text-white); color: var(--primary-color); border: none; transition: all 0.3s ease; }
+    .newsletter-input-group .btn:hover { transform: translateX(-3px); box-shadow: 0 5px 15px rgba(0,0,0,0.2); background: var(--light-color); }
+
+    /* Section Titles Enhancement */
+    .section-title { position: relative; display: inline-block; margin-bottom: 3rem; font-weight: 700; color: var(--text-primary); }
+    .section-title::after { content: ''; position: absolute; bottom: -15px; left: 50%; transform: translateX(-50%); width: 80px; height: 4px; background: linear-gradient(90deg, var(--primary-color), var(--secondary-color)); border-radius: 2px; }
+    .section-title::before { content: ''; position: absolute; bottom: -10px; left: 50%; transform: translateX(-50%); width: 40px; height: 4px; background: var(--accent-color); border-radius: 2px; }
+
+    /* Enhanced Buttons */
+    .btn-enhanced { position: relative; overflow: hidden; transition: all 0.3s ease; }
+    .btn-enhanced::before { content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent); transition: left 0.5s ease; }
+    .btn-enhanced:hover::before { left: 100%; }
+
+    /* Responsive Enhancements */
+    @media (max-width: 768px) {
+        .hero-section { min-height: 60vh; background-attachment: scroll; }
+        .hero-section h1 { font-size: 2.5rem; }
+        .stats-card { padding: 1.5rem; margin-bottom: 2rem; }
+        .tour-card .row { flex-direction: column; }
+        .tour-card img { height: 200px; }
+        .newsletter-input-group { flex-direction: column; gap: 1rem; }
+        .newsletter-input-group .btn { width: 100%; }
+    }
+
+    /* Loading Animation */
+    .fade-in { opacity: 0; transform: translateY(30px); transition: all 0.6s ease; }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+    /* Enhanced Star Rating */
+    .star-rating { color: #ffc107; font-size: 1.1rem; }
+    .star-rating i { transition: all 0.2s ease; }
+    .star-rating:hover i { transform: scale(1.1); }
+
+    /* Price Tag Enhancement */
+    .price-tag {
+        background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+        color: white;
+        padding: 0.5rem 1.2rem;
+        border-radius: 25px;
+        font-weight: 600;
+        font-size: 1.1rem;
+        box-shadow: 0 3px 10px rgba(193,141,69,0.3);
+        transition: all 0.3s ease;
+    }
+    .price-tag:hover { transform: scale(1.05); box-shadow: 0 5px 15px rgba(193,141,69,0.4); }
+    
+</style>
+{% endblock %}
 
 {% block content %}
-<!-- Hero Section -->
+<!-- Enhanced Hero Section -->
 <section class="hero-section">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8">
-                <h1 class="display-4 fw-bold mb-4">Discover the Magic of Tanzania</h1>
-                <p class="lead mb-4">Experience breathtaking wildlife, stunning landscapes, and rich culture with our expertly guided safari tours across Tanzania's most spectacular national parks.</p>
-                <div class="d-flex flex-wrap gap-3">
-                    <a href="{% url 'tours:tour_list' %}" class="btn btn-primary btn-lg">
-                        <i class="fas fa-binoculars me-2"></i>Explore Tours
+    <div class="container max-w-7xl mx-auto px-4">
+        <div class="flex items-center">
+            <div class="w-full lg:w-2/3">
+                <h1 class="text-3xl md:text-5xl font-extrabold leading-tight mb-4">Discover the Magic of Tanzania</h1>
+                <p class="text-lg md:text-xl text-gray-100 mb-6">Experience breathtaking wildlife, stunning landscapes, and rich culture with our expertly guided safari tours across Tanzania's most spectacular national parks.</p>
+                <div class="flex flex-wrap gap-3">
+                    <a href="{% url 'tours:tour_list' %}" class="inline-flex items-center px-6 py-3 rounded-full bg-amber-600 text-white font-semibold btn-enhanced shadow hover:shadow-lg transition">
+                        <i class="fas fa-binoculars mr-2"></i>Explore Tours
                     </a>
-                    <a href="{% url 'parks:park_list' %}" class="btn btn-outline-light btn-lg">
-                        <i class="fas fa-mountain me-2"></i>National Parks
+                    <a href="{% url 'parks:park_list' %}" class="inline-flex items-center px-6 py-3 rounded-full bg-white/20 text-white font-semibold border border-white/30 btn-enhanced hover:bg-white/30 transition">
+                        <i class="fas fa-mountain mr-2"></i>National Parks
                     </a>
                 </div>
             </div>
@@ -23,244 +305,355 @@
     </div>
 </section>
 
-<!-- Quick Stats -->
-<section class="py-5 bg-light">
-    <div class="container">
-        <div class="row text-center">
-            <div class="col-md-3 mb-4">
-                <div class="card h-100 border-0 bg-transparent">
-                    <div class="card-body">
-                        <i class="fas fa-mountain fa-3x text-primary mb-3"></i>
-                        <h3 class="fw-bold">{{ stats.total_parks }}+</h3>
-                        <p class="text-muted">National Parks</p>
-                    </div>
-                </div>
+<!-- Enhanced Quick Stats -->
+<section class="py-12 stats-section">
+    <div class="container max-w-7xl mx-auto px-4">
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 text-center">
+            <div class="stats-card fade-in">
+                <i class="fas fa-mountain text-4xl text-amber-600 mb-3"></i>
+                <h3 class="text-3xl font-bold">{{ stats.total_parks }}+</h3>
+                <p class="text-sm text-gray-500">National Parks</p>
             </div>
-            <div class="col-md-3 mb-4">
-                <div class="card h-100 border-0 bg-transparent">
-                    <div class="card-body">
-                        <i class="fas fa-route fa-3x text-primary mb-3"></i>
-                        <h3 class="fw-bold">{{ stats.total_tours }}+</h3>
-                        <p class="text-muted">Safari Tours</p>
-                    </div>
-                </div>
+
+            <div class="stats-card fade-in">
+                <i class="fas fa-route text-4xl text-amber-600 mb-3"></i>
+                <h3 class="text-3xl font-bold">{{ stats.total_tours }}+</h3>
+                <p class="text-sm text-gray-500">Safari Tours</p>
             </div>
-            <div class="col-md-3 mb-4">
-                <div class="card h-100 border-0 bg-transparent">
-                    <div class="card-body">
-                        <i class="fas fa-users fa-3x text-primary mb-3"></i>
-                        <h3 class="fw-bold">5000+</h3>
-                        <p class="text-muted">Happy Travelers</p>
-                    </div>
-                </div>
+
+            <div class="stats-card fade-in">
+                <i class="fas fa-users text-4xl text-amber-600 mb-3"></i>
+                <h3 class="text-3xl font-bold">5000+</h3>
+                <p class="text-sm text-gray-500">Happy Travelers</p>
             </div>
-            <div class="col-md-3 mb-4">
-                <div class="card h-100 border-0 bg-transparent">
-                    <div class="card-body">
-                        <i class="fas fa-star fa-3x text-primary mb-3"></i>
-                        <h3 class="fw-bold">{{ stats.average_rating|floatformat:1 }}</h3>
-                        <p class="text-muted">Average Rating</p>
-                    </div>
-                </div>
+
+            <div class="stats-card fade-in">
+                <i class="fas fa-star text-4xl text-amber-600 mb-3"></i>
+                <h3 class="text-3xl font-bold">{{ stats.average_rating|floatformat:1 }}</h3>
+                <p class="text-sm text-gray-500">Average Rating</p>
             </div>
         </div>
     </div>
 </section>
 
-<!-- Featured National Parks -->
-<section class="py-5">
-    <div class="container">
-        <div class="text-center mb-5">
-            <h2 class="section-title">Featured National Parks</h2>
-            <p class="lead text-muted">Explore Tanzania's most iconic wildlife destinations</p>
+<!-- Enhanced Featured National Parks -->
+<section class="py-12">
+    <div class="container max-w-7xl mx-auto px-4">
+        <div class="text-center mb-10">
+            <h2 class="section-title text-2xl md:text-3xl">Featured National Parks</h2>
+            <p class="text-gray-500">Explore Tanzania's most iconic wildlife destinations</p>
         </div>
-        
-        <div class="row">
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {% for park in featured_parks %}
-            <div class="col-lg-4 col-md-6 mb-4">
-                <div class="card h-100">
-                    <div class="position-relative">
-                        <img src="{% if park.main_image %}{{ park.main_image.url }}{% else %}https://images.pexels.com/photos/631317/pexels-photo-631317.jpeg{% endif %}" 
-                             class="card-img-top" alt="{{ park.name }}" style="height: 250px; object-fit: cover;">
-                        <div class="position-absolute top-0 end-0 m-3">
-                            <span class="badge badge-custom">{{ park.get_park_type_display }}</span>
-                        </div>
+            <div class="feature-card fade-in">
+                <div class="relative">
+                    <img src="{% if park.main_image %}{{ park.main_image.url }}{% else %}https://images.pexels.com/photos/631317/pexels-photo-631317.jpeg{% endif %}" loading="lazy"
+                         alt="{{ park.name }}" class="w-full h-64 object-cover">
+                    <span class="absolute top-4 right-4 inline-block bg-amber-600 text-white text-sm font-medium px-3 py-1 rounded-full">
+                        {{ park.get_park_type_display }}
+                    </span>
+                </div>
+                <div class="p-6 flex flex-col h-full">
+                    <h5 class="text-lg font-bold">{{ park.name }}</h5>
+                    <p class="text-sm text-gray-500 mt-2">
+                        <i class="fas fa-map-marker-alt mr-1"></i>{{ park.location }}, {{ park.region }}
+                    </p>
+                    <p class="text-gray-700 mt-3 flex-grow">{{ park.short_description }}</p>
+                    <div class="flex items-center justify-between mt-4">
+                        <small class="text-sm text-gray-500 font-semibold">{{ park.area_km2|floatformat:0 }} km²</small>
+                        <a href="{% url 'parks:park_detail' park.slug %}" class="inline-flex items-center px-4 py-2 rounded-full bg-amber-600 text-white text-sm font-medium btn-enhanced">
+                            Explore Park
+                        </a>
                     </div>
-                    <div class="card-body d-flex flex-column">
-                        <h5 class="card-title">{{ park.name }}</h5>
-                        <p class="text-muted mb-2">
-                            <i class="fas fa-map-marker-alt me-1"></i>{{ park.location }}, {{ park.region }}
+                </div>
+            </div>
+            {% empty %}
+            <div class="col-span-3 text-center">
+                <div class="p-6 bg-blue-50 rounded-md">
+                    <i class="fas fa-info-circle mr-2"></i>No featured parks available at the moment.
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+        <div class="text-center mt-8">
+            <a href="{% url 'parks:park_list' %}" class="inline-flex items-center px-6 py-3 rounded-full border border-amber-600 text-amber-600 btn-enhanced">
+                View All Parks <i class="fas fa-arrow-right ml-2"></i>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- Enhanced Featured Tours -->
+<section class="py-12 stats-section">
+    <div class="container max-w-7xl mx-auto px-4">
+        <div class="text-center mb-10">
+            <h2 class="section-title text-2xl md:text-3xl">Featured Safari Tours</h2>
+            <p class="text-gray-500">Handpicked adventures for unforgettable experiences</p>
+        </div>
+
+        <div class="space-y-6">
+            {% for tour in featured_tours %}
+            <article class="tour-card fade-in overflow-hidden">
+                <div class="md:flex md:items-stretch">
+                    <div class="md:w-1/2">
+                        <img src="{% if tour.main_image %}{{ tour.main_image.url }}{% else %}https://images.pexels.com/photos/1170986/pexels-photo-1170986.jpeg{% endif %}" loading="lazy"
+                             alt="{{ tour.title }}" class="w-full h-64 md:h-full object-cover">
+                    </div>
+                    <div class="md:w-1/2 p-6 flex flex-col">
+                        <div class="flex justify-between items-start mb-3">
+                            <span class="inline-block bg-gray-200 text-gray-700 px-3 py-1 rounded-full text-sm">{{ tour.get_category_display }}</span>
+                            <span class="inline-block bg-amber-600 text-white px-3 py-1 rounded-full text-sm">{{ tour.get_difficulty_level_display }}</span>
+                        </div>
+
+                        <h3 class="text-xl font-bold mb-2">{{ tour.title }}</h3>
+
+                        <p class="text-sm text-gray-500 mb-3">
+                            <i class="fas fa-clock mr-2"></i>{{ tour.get_duration_display }}
+                            <span class="ml-4"><i class="fas fa-users mr-2"></i>{{ tour.min_participants }}-{{ tour.max_participants }} people</span>
                         </p>
-                        <p class="card-text flex-grow-1">{{ park.short_description }}</p>
-                        <div class="d-flex justify-content-between align-items-center mt-3">
-                            <small class="text-muted">{{ park.area_km2|floatformat:0 }} km²</small>
-                            <a href="{% url 'parks:park_detail' park.slug %}" class="btn btn-primary btn-sm">
-                                Explore Park
+
+                        <p class="text-gray-700 flex-grow mb-4">{{ tour.short_description|truncatewords:15 }}</p>
+
+                        <div class="flex items-center justify-between mt-auto">
+                            <div class="star-rating flex items-center">
+                                {% with rating=tour.average_rating|floatformat:0 %}
+                                    {% for i in "12345" %}
+                                        {% if forloop.counter <= rating %}
+                                            <i class="fas fa-star mr-1"></i>
+                                        {% else %}
+                                            <i class="far fa-star mr-1"></i>
+                                        {% endif %}
+                                    {% endfor %}
+                                {% endwith %}
+                                <small class="text-gray-500 ml-2">({{ tour.total_reviews }} reviews)</small>
+                            </div>
+
+                            <a href="{% url 'tours:tour_detail' tour.slug %}" class="inline-flex items-center px-4 py-2 rounded-full bg-amber-600 text-white btn-enhanced">
+                                View Details <i class="fas fa-arrow-right ml-2"></i>
                             </a>
                         </div>
                     </div>
                 </div>
-            </div>
+            </article>
             {% empty %}
-            <div class="col-12 text-center">
-                <p class="text-muted">No featured parks available at the moment.</p>
-            </div>
-            {% endfor %}
-        </div>
-        
-        <div class="text-center mt-4">
-            <a href="{% url 'parks:park_list' %}" class="btn btn-outline-primary">
-                View All Parks <i class="fas fa-arrow-right ms-2"></i>
-            </a>
-        </div>
-    </div>
-</section>
-
-<!-- Featured Tours -->
-<section class="py-5 bg-light">
-    <div class="container">
-        <div class="text-center mb-5">
-            <h2 class="section-title">Featured Safari Tours</h2>
-            <p class="lead text-muted">Handpicked adventures for unforgettable experiences</p>
-        </div>
-        
-        <div class="row">
-            {% for tour in featured_tours %}
-            <div class="col-lg-6 mb-4">
-                <div class="card h-100">
-                    <div class="row g-0">
-                        <div class="col-md-4">
-                            <img src="{% if tour.main_image %}{{ tour.main_image.url }}{% else %}https://images.pexels.com/photos/1170986/pexels-photo-1170986.jpeg{% endif %}" 
-                                 class="img-fluid rounded-start h-100" alt="{{ tour.title }}" style="object-fit: cover;">
-                        </div>
-                        <div class="col-md-8">
-                            <div class="card-body d-flex flex-column h-100">
-                                <div class="d-flex justify-content-between align-items-start mb-2">
-                                    <span class="badge bg-secondary">{{ tour.get_category_display }}</span>
-                                    <div class="price-tag">
-                                        From ${{ tour.price_budget|default:tour.price_standard|floatformat:0 }}
-                                    </div>
-                                </div>
-                                <h5 class="card-title">{{ tour.title }}</h5>
-                                <p class="text-muted mb-2">
-                                    <i class="fas fa-clock me-1"></i>{{ tour.get_duration_display }}
-                                    <span class="ms-3">
-                                        <i class="fas fa-signal me-1"></i>{{ tour.get_difficulty_level_display }}
-                                    </span>
-                                </p>
-                                <p class="card-text flex-grow-1">{{ tour.short_description|truncatewords:15 }}</p>
-                                <div class="d-flex justify-content-between align-items-center mt-auto">
-                                    <div class="star-rating">
-                                        {% for i in "12345" %}
-                                            {% if forloop.counter <= tour.average_rating %}
-                                                <i class="fas fa-star"></i>
-                                            {% else %}
-                                                <i class="far fa-star"></i>
-                                            {% endif %}
-                                        {% endfor %}
-                                        <small class="text-muted ms-1">({{ tour.total_reviews }})</small>
-                                    </div>
-                                    <a href="{% url 'tours:tour_detail' tour.slug %}" class="btn btn-primary btn-sm">
-                                        View Details
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+            <div class="text-center">
+                <div class="p-6 bg-blue-50 rounded-md">
+                    <i class="fas fa-info-circle mr-2"></i>No featured tours available at the moment.
                 </div>
             </div>
-            {% empty %}
-            <div class="col-12 text-center">
-                <p class="text-muted">No featured tours available at the moment.</p>
-            </div>
             {% endfor %}
         </div>
-        
-        <div class="text-center mt-4">
-            <a href="{% url 'tours:tour_list' %}" class="btn btn-outline-primary">
-                View All Tours <i class="fas fa-arrow-right ms-2"></i>
+
+        <div class="text-center mt-8">
+            <a href="{% url 'tours:tour_list' %}" class="inline-flex items-center px-6 py-3 rounded-full border border-amber-600 text-amber-600 btn-enhanced">
+                View All Tours <i class="fas fa-arrow-right ml-2"></i>
             </a>
         </div>
     </div>
 </section>
 
-<!-- Recent Reviews -->
-<section class="py-5">
-    <div class="container">
-        <div class="text-center mb-5">
-            <h2 class="section-title">What Our Travelers Say</h2>
-            <p class="lead text-muted">Real experiences from real adventurers</p>
+<!-- Enhanced Recent Reviews -->
+<section class="py-12">
+    <div class="container max-w-7xl mx-auto px-4">
+        <div class="text-center mb-10">
+            <h2 class="section-title text-2xl md:text-3xl">What Our Travelers Say</h2>
+            <p class="text-gray-500">Real experiences from real adventurers</p>
         </div>
-        
-        <div class="row">
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {% for review in recent_reviews %}
-            <div class="col-lg-4 col-md-6 mb-4">
-                <div class="card h-100">
-                    <div class="card-body">
-                        <div class="d-flex align-items-center mb-3">
-                            <div class="flex-shrink-0">
-                                <div class="bg-primary rounded-circle d-flex align-items-center justify-content-center" 
-                                     style="width: 50px; height: 50px;">
-                                    <i class="fas fa-user text-white"></i>
-                                </div>
-                            </div>
-                            <div class="flex-grow-1 ms-3">
-                                <h6 class="mb-0">{{ review.user.get_display_name }}</h6>
-                                <div class="star-rating">
-                                    {% for i in "12345" %}
-                                        {% if forloop.counter <= review.rating %}
-                                            <i class="fas fa-star"></i>
-                                        {% else %}
-                                            <i class="far fa-star"></i>
-                                        {% endif %}
-                                    {% endfor %}
-                                </div>
-                            </div>
-                        </div>
-                        <h6 class="card-title">{{ review.title }}</h6>
-                        <p class="card-text">{{ review.content|truncatewords:20 }}</p>
-                        <small class="text-muted">
-                            {% if review.tour_package %}
-                                {{ review.tour_package.title }}
-                            {% elif review.national_park %}
-                                {{ review.national_park.name }}
-                            {% endif %}
-                        </small>
+            <div class="review-card fade-in p-6 flex flex-col">
+                <div class="flex items-center mb-4">
+                    <div class="review-avatar flex-shrink-0">
+                        <i class="fas fa-user"></i>
                     </div>
+                    <div class="flex-1 ml-3">
+                        <h6 class="font-bold">{{ review.user.get_display_name }}</h6>
+                        <div class="star-rating">
+                            {% for i in "12345" %}
+                                {% if forloop.counter <= review.rating %}
+                                    <i class="fas fa-star mr-1"></i>
+                                {% else %}
+                                    <i class="far fa-star mr-1"></i>
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+
+                <h6 class="font-semibold mb-3">{{ review.title }}</h6>
+                <p class="text-gray-700 mb-4">{{ review.content|truncatewords:20 }}</p>
+
+                <div class="mt-auto">
+                    <small class="text-gray-500 font-semibold">
+                        <i class="fas fa-map-marker-alt mr-1"></i>
+                        {% if review.tour_package %}
+                            {{ review.tour_package.title }}
+                        {% elif review.national_park %}
+                            {{ review.national_park.name }}
+                        {% endif %}
+                    </small>
                 </div>
             </div>
             {% empty %}
-            <div class="col-12 text-center">
-                <p class="text-muted">No reviews available yet.</p>
+            <div class="col-span-3 text-center">
+                <div class="p-6 bg-blue-50 rounded-md">
+                    <i class="fas fa-info-circle mr-2"></i>No reviews available yet. Be the first to share your experience!
+                </div>
             </div>
             {% endfor %}
         </div>
-        
-        <div class="text-center mt-4">
-            <a href="{% url 'reviews:review_list' %}" class="btn btn-outline-primary">
-                Read All Reviews <i class="fas fa-arrow-right ms-2"></i>
+
+        <div class="text-center mt-8">
+            <a href="{% url 'reviews:review_list' %}" class="inline-flex items-center px-6 py-3 rounded-full border border-amber-600 text-amber-600 btn-enhanced">
+                Read All Reviews <i class="fas fa-arrow-right ml-2"></i>
             </a>
         </div>
     </div>
 </section>
 
-<!-- Newsletter Signup -->
-<section class="py-5 bg-primary text-white">
-    <div class="container">
-        <div class="row align-items-center">
-            <div class="col-lg-6 mb-4 mb-lg-0">
-                <h3 class="fw-bold mb-2">Stay Updated with Our Adventures</h3>
-                <p class="mb-0">Get the latest safari deals, travel tips, and wildlife updates delivered to your inbox.</p>
+<!-- Enhanced Newsletter Signup -->
+<section class="py-12 newsletter-section text-white">
+    <div class="container max-w-7xl mx-auto px-4">
+        <div class="md:flex md:items-center md:justify-between">
+            <div class="md:w-1/2 mb-6 md:mb-0 text-center md:text-left">
+                <h3 class="font-extrabold text-2xl md:text-3xl mb-2">Stay Updated with Our Adventures</h3>
+                <p class="text-sm md:text-base mb-0">Get the latest safari deals, travel tips, and wildlife updates delivered to your inbox.</p>
             </div>
-            <div class="col-lg-6">
-                <div class="input-group">
-                    <input type="email" class="form-control" id="newsletter-email" placeholder="Enter your email address">
-                    <button class="btn btn-light" type="button" onclick="subscribeNewsletter()">
-                        <i class="fas fa-paper-plane me-2"></i>Subscribe
+
+            <div class="md:w-1/2">
+                <div class="newsletter-input-group flex items-center justify-center md:justify-end gap-3">
+                    <input type="email" id="newsletter-email" class="form-control rounded-full px-4 py-3 w-full md:w-80" placeholder="Enter your email address" aria-label="Email address" />
+                    <button id="newsletter-submit" class="inline-flex items-center rounded-full px-5 py-3 font-semibold shadow btn-enhanced" type="button" onclick="subscribeNewsletter()">
+                        <i class="fas fa-paper-plane mr-2"></i>Subscribe
                     </button>
                 </div>
+
+                <!-- screen-reader live status for announcements -->
+                <div id="newsletter-status" class="sr-only" role="status" aria-live="polite"></div>
             </div>
         </div>
     </div>
 </section>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Intersection Observer for fade-in animations
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+    const observer = new IntersectionObserver(function(entries) {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) entry.target.classList.add('visible');
+        });
+    }, observerOptions);
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+    // Helper to get cookie (for CSRF)
+    function getCookie(name) {
+        let cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+            document.cookie.split(';').forEach(c => {
+                const cookie = c.trim();
+                if (cookie.startsWith(name + '=')) cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+            });
+        }
+        return cookieValue;
+    }
+
+    // Improved newsletter subscription function
+    window.subscribeNewsletter = function() {
+        const emailInput = document.getElementById('newsletter-email');
+        const button = document.getElementById('newsletter-submit');
+        const statusEl = document.getElementById('newsletter-status');
+        const email = emailInput.value.trim();
+
+        // reset status for screen readers
+        statusEl.textContent = '';
+
+        if (!email) {
+            emailInput.classList.add('is-invalid');
+            emailInput.setAttribute('aria-invalid', 'true');
+            emailInput.focus();
+            statusEl.textContent = 'Please enter your email address.';
+            return;
+        }
+
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email)) {
+            emailInput.classList.add('is-invalid');
+            emailInput.setAttribute('aria-invalid', 'true');
+            emailInput.focus();
+            statusEl.textContent = 'Please enter a valid email address.';
+            return;
+        }
+
+        emailInput.classList.remove('is-invalid');
+        emailInput.removeAttribute('aria-invalid');
+
+        const originalText = button.innerHTML;
+        button.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Subscribing...';
+        button.disabled = true;
+
+        const csrftoken = getCookie('csrftoken');
+
+        fetch('{% url "core:newsletter_signup" %}', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+                'X-CSRFToken': csrftoken
+            },
+            body: new URLSearchParams({ email })
+        })
+        .then(response => {
+            if (!response.ok) return response.json().then(j => { throw j; });
+            return response.json();
+        })
+        .then(data => {
+            if (data.success) {
+                emailInput.value = '';
+                emailInput.classList.add('is-valid');
+                statusEl.textContent = 'Subscribed successfully!';
+                button.innerHTML = '<i class="fas fa-check mr-2"></i>Subscribed!';
+                button.classList.add('bg-green-500', 'text-white');
+                setTimeout(() => {
+                    button.innerHTML = originalText;
+                    button.classList.remove('bg-green-500', 'text-white');
+                    button.disabled = false;
+                    emailInput.classList.remove('is-valid');
+                    statusEl.textContent = '';
+                }, 3000);
+            } else {
+                throw new Error(data.message || 'Subscription failed');
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            statusEl.textContent = error.message || 'Subscription failed. Please try again.';
+            button.innerHTML = '<i class="fas fa-exclamation-triangle mr-2"></i>Try Again';
+            button.classList.add('bg-yellow-400');
+            setTimeout(() => {
+                button.innerHTML = originalText;
+                button.classList.remove('bg-yellow-400');
+                button.disabled = false;
+                statusEl.textContent = '';
+            }, 3000);
+        });
+    };
+
+    // keyboard submit
+    const newsletterInput = document.getElementById('newsletter-email');
+    if (newsletterInput) {
+        newsletterInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') subscribeNewsletter();
+        });
+        newsletterInput.addEventListener('input', function() {
+            this.classList.remove('is-invalid', 'is-valid');
+        });
+    }
+});
+</script>
 {% endblock %}

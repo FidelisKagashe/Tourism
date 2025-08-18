@@ -3,7 +3,6 @@ from django.urls import reverse
 from django.core.validators import MinValueValidator, MaxValueValidator
 from django.contrib.auth import get_user_model
 from parks.models import NationalPark
-from typing import Optional
 
 User = get_user_model()
 
@@ -145,16 +144,6 @@ class TourPackage(models.Model):
     inclusions = models.JSONField(default=list, help_text="What's included in the tour")
     exclusions = models.JSONField(default=list, help_text="What's not included")
     
-    # Pricing (Base prices in USD)
-    price_budget = models.DecimalField(max_digits=10, decimal_places=2, blank=True, null=True)
-    price_standard = models.DecimalField(max_digits=10, decimal_places=2, blank=True, null=True)
-    price_luxury = models.DecimalField(max_digits=10, decimal_places=2, blank=True, null=True)
-    
-    # Single supplement charges
-    single_supplement_budget = models.DecimalField(max_digits=10, decimal_places=2, default=0)
-    single_supplement_standard = models.DecimalField(max_digits=10, decimal_places=2, default=0)
-    single_supplement_luxury = models.DecimalField(max_digits=10, decimal_places=2, default=0)
-    
     # Parks and Locations
     parks_visited = models.ManyToManyField(NationalPark, related_name='tour_packages')
     
@@ -205,26 +194,13 @@ class TourPackage(models.Model):
         return self.title
     
     def get_absolute_url(self):
-        return reverse('tours:package_detail', kwargs={'slug': self.slug})
+        return reverse('tours:tour_detail', kwargs={'slug': self.slug})
     
     def get_duration_display(self):
         """Return formatted duration."""
         if self.duration_nights > 0:
             return f"{self.duration_days} days, {self.duration_nights} nights"
         return f"{self.duration_days} day{'s' if self.duration_days > 1 else ''}"
-    
-    def get_price_range(self):
-        """Return price range for display."""
-        prices = [p for p in [self.price_budget, self.price_standard, self.price_luxury] if p is not None]
-        if not prices:
-            return "Price on request"
-        
-        min_price = min(prices)
-        max_price = max(prices)
-        
-        if min_price == max_price:
-            return f"${min_price:,.0f}"
-        return f"${min_price:,.0f} - ${max_price:,.0f}"
 
 class TourItineraryDay(models.Model):
     """Detailed daily itinerary for tour packages."""
@@ -314,35 +290,14 @@ class TourAvailability(models.Model):
         return f"{self.tour_package.title} - {self.start_date}"
     
     @property
-    def available_spots(self) -> Optional[int]:
-        """
-        Return number of available spots as an int, or None if it cannot be computed yet.
-        - If max_participants is None we return None (admin will show blank).
-        - If booked_participants is None we treat it as 0.
-        """
-        max_p = self.max_participants
-        if max_p is None:
-            return None
-
-        booked = self.booked_participants or 0
-
-        try:
-            available = int(max_p) - int(booked)
-        except (TypeError, ValueError):
-            return None
-
-        return max(0, available)
-
+    def available_spots(self):
+        """Return number of available spots."""
+        return max(0, self.max_participants - self.booked_participants)
+    
     @property
-    def is_fully_booked(self) -> bool:
-        """
-        Return True if booked_participants >= max_participants.
-        If max_participants is not set, consider it NOT fully booked.
-        """
-        max_p = self.max_participants
-        if max_p is None:
-            return False
-        return (self.booked_participants or 0) >= int(max_p)
+    def is_fully_booked(self):
+        """Check if tour is fully booked."""
+        return self.booked_participants >= self.max_participants
 
 class TourPackageExtra(models.Model):
     """Optional extras that can be added to tour packages."""

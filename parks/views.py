@@ -99,7 +99,7 @@ def park_detail(request, slug):
 
     # Use the safe fetch wrapper for all related sets
     destinations = _safe_fetch(park.destinations, {'is_active': True}, limit=6)
-    wildlife = _safe_fetch(park.wildlife_species, {'is_active': True}, limit=8)
+    wildlife = _safe_fetch(park.wildlife, {'is_active': True}, limit=8)
     facilities = _safe_fetch(park.facilities, {'is_operational': True})
     tour_packages = _safe_fetch(park.tour_packages, {'is_active': True}, limit=4)
     reviews = _safe_fetch(park.reviews, {'is_approved': True}, limit=5)

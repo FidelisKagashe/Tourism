@@ -1,28 +1,26 @@
 {% extends 'base/base.html' %}
 {% load i18n %}
 
-{% block title %}{% trans "National Parks" %} - Safari&nbsp;&amp;&nbsp;Bush Retreats{% endblock %}
+{% block title %}{% trans "National Parks" %} - Tanzania Safari Adventures{% endblock %}
 
 {% block content %}
 <!-- Hero Section -->
-<section class="hero-section" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.pexels.com/photos/631317/pexels-photo-631317.jpeg');">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8">
-                <h1 class="display-4 fw-bold mb-4">{% trans "Tanzania National Parks" %}</h1>
-                <p class="lead">{% trans "Discover the incredible biodiversity of Tanzania's protected areas" %}</p>
-            </div>
+<section class="relative bg-cover bg-center" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.pexels.com/photos/631317/pexels-photo-631317.jpeg'); min-height: 60vh;">
+    <div class="container mx-auto px-4 py-24 relative z-10">
+        <div class="max-w-3xl">
+            <h1 class="text-4xl md:text-5xl font-bold text-white mb-6">{% trans "Tanzania National Parks" %}</h1>
+            <p class="text-xl text-white opacity-90">{% trans "Discover the incredible biodiversity of Tanzania's protected areas" %}</p>
         </div>
     </div>
 </section>
 
 <!-- Filters Section -->
-<section class="py-4 bg-light">
-    <div class="container">
-        <form method="GET" class="row g-3 align-items-end">
-            <div class="col-md-3">
-                <label class="form-label">{% trans "Park Type" %}</label>
-                <select name="type" class="form-select">
+<section class="py-8 bg-gray-50">
+    <div class="container mx-auto px-4">
+        <form method="GET" class="grid grid-cols-1 md:grid-cols-12 gap-4 items-end">
+            <div class="md:col-span-3">
+                <label class="block text-gray-700 mb-2">{% trans "Park Type" %}</label>
+                <select name="type" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-[#C18D45]">
                     <option value="">{% trans "All Types" %}</option>
                     <option value="national_park" {% if current_type == 'national_park' %}selected{% endif %}>{% trans "National Park" %}</option>
                     <option value="game_reserve" {% if current_type == 'game_reserve' %}selected{% endif %}>{% trans "Game Reserve" %}</option>
@@ -30,74 +28,72 @@
                     <option value="marine_park" {% if current_type == 'marine_park' %}selected{% endif %}>{% trans "Marine Park" %}</option>
                 </select>
             </div>
-            <div class="col-md-3">
-                <label class="form-label">{% trans "Region" %}</label>
-                <select name="region" class="form-select">
+            <div class="md:col-span-3">
+                <label class="block text-gray-700 mb-2">{% trans "Region" %}</label>
+                <select name="region" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-[#C18D45]">
                     <option value="">{% trans "All Regions" %}</option>
                     {% for region in regions %}
                         <option value="{{ region }}" {% if current_region == region %}selected{% endif %}>{{ region }}</option>
                     {% endfor %}
                 </select>
             </div>
-            <div class="col-md-4">
-                <label class="form-label">{% trans "Search" %}</label>
-                <input type="text" name="search" class="form-control" placeholder="{% trans 'Search parks...' %}" value="{{ search_query }}">
+            <div class="md:col-span-4">
+                <label class="block text-gray-700 mb-2">{% trans "Search" %}</label>
+                <input type="text" name="search" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-[#C18D45]" placeholder="{% trans 'Search parks...' %}" value="{{ search_query }}">
             </div>
-            <div class="col-md-2">
-                <button type="submit" class="btn btn-primary w-100">{% trans "Filter" %}</button>
+            <div class="md:col-span-2">
+                <button type="submit" class="w-full bg-[#C18D45] hover:bg-[#a97a3a] text-white font-medium py-2 px-4 rounded-md transition duration-300">{% trans "Filter" %}</button>
             </div>
         </form>
     </div>
 </section>
 
 <!-- Parks Grid -->
-<section class="py-5">
-    <div class="container">
+<section class="py-12">
+    <div class="container mx-auto px-4">
         {% if page_obj %}
-            <div class="row">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {% for park in page_obj %}
-                    <div class="col-lg-4 col-md-6 mb-4">
-                        <div class="card h-100">
-                            <div class="position-relative">
-                                <img src="{% if park.main_image %}{{ park.main_image.url }}{% else %}https://images.pexels.com/photos/631317/pexels-photo-631317.jpeg{% endif %}" 
-                                     class="card-img-top" alt="{{ park.name }}" style="height: 250px; object-fit: cover;">
-                                <div class="position-absolute top-0 end-0 m-3">
-                                    <span class="badge badge-custom">{{ park.get_park_type_display }}</span>
-                                </div>
-                                {% if park.featured %}
-                                    <div class="position-absolute top-0 start-0 m-3">
-                                        <span class="badge bg-warning text-dark">
-                                            <i class="fas fa-star me-1"></i>{% trans "Featured" %}
-                                        </span>
-                                    </div>
-                                {% endif %}
+                    <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 flex flex-col h-full">
+                        <div class="relative">
+                            <img src="{% if park.main_image %}{{ park.main_image.url }}{% else %}https://images.pexels.com/photos/631317/pexels-photo-631317.jpeg{% endif %}" 
+                                 class="w-full h-64 object-cover" alt="{{ park.name }}">
+                            <div class="absolute top-3 right-3">
+                                <span class="bg-green-600 text-white text-xs font-semibold px-3 py-1 rounded-full">{{ park.get_park_type_display }}</span>
                             </div>
-                            <div class="card-body d-flex flex-column">
-                                <h5 class="card-title">{{ park.name }}</h5>
-                                <p class="text-muted mb-2">
-                                    <i class="fas fa-map-marker-alt me-1"></i>{{ park.location }}, {{ park.region }}
-                                </p>
-                                <p class="card-text flex-grow-1">{{ park.short_description }}</p>
-                                
-                                <div class="row text-center mb-3">
-                                    <div class="col-4">
-                                        <small class="text-muted d-block">{% trans "Area" %}</small>
-                                        <strong>{{ park.area_km2|floatformat:0 }} km²</strong>
-                                    </div>
-                                    <div class="col-4">
-                                        <small class="text-muted d-block">{% trans "Established" %}</small>
-                                        <strong>{{ park.established_year }}</strong>
-                                    </div>
-                                    <div class="col-4">
-                                        <small class="text-muted d-block">{% trans "Entry Fee" %}</small>
-                                        <strong>${{ park.entry_fee_non_resident|floatformat:0 }}</strong>
-                                    </div>
+                            {% if park.featured %}
+                                <div class="absolute top-3 left-3">
+                                    <span class="bg-yellow-400 text-gray-900 text-xs font-semibold px-3 py-1 rounded-full flex items-center">
+                                        <i class="fas fa-star mr-1"></i>{% trans "Featured" %}
+                                    </span>
                                 </div>
-                                
-                                <a href="{% url 'parks:park_detail' park.slug %}" class="btn btn-primary">
-                                    {% trans "Explore Park" %}
-                                </a>
+                            {% endif %}
+                        </div>
+                        <div class="p-6 flex flex-col flex-grow">
+                            <h5 class="text-xl font-bold text-gray-900 mb-2">{{ park.name }}</h5>
+                            <p class="text-gray-600 mb-4 flex items-center">
+                                <i class="fas fa-map-marker-alt mr-2 text-[#C18D45]"></i>{{ park.location }}, {{ park.region }}
+                            </p>
+                            <p class="text-gray-700 mb-6 flex-grow">{{ park.short_description }}</p>
+                            
+                            <div class="grid grid-cols-3 gap-2 text-center mb-6">
+                                <div>
+                                    <p class="text-xs text-gray-500">{% trans "Area" %}</p>
+                                    <p class="font-semibold">{{ park.area_km2|floatformat:0 }} km²</p>
+                                </div>
+                                <div>
+                                    <p class="text-xs text-gray-500">{% trans "Established" %}</p>
+                                    <p class="font-semibold">{{ park.established_year }}</p>
+                                </div>
+                                <div>
+                                    <p class="text-xs text-gray-500">{% trans "Type" %}</p>
+                                    <p class="font-semibold">{{ park.get_park_type_display }}</p>
+                                </div>
                             </div>
+                            
+                            <a href="{% url 'parks:park_detail' park.slug %}" class="mt-auto bg-[#C18D45] hover:bg-[#a97a3a] text-white font-medium py-2 px-4 rounded-md text-center transition duration-300">
+                                {% trans "Explore Park" %}
+                            </a>
                         </div>
                     </div>
                 {% endfor %}
@@ -105,11 +101,12 @@
             
             <!-- Pagination -->
             {% if page_obj.has_other_pages %}
-                <nav aria-label="Parks pagination" class="mt-5">
-                    <ul class="pagination justify-content-center">
+                <nav class="mt-12 flex justify-center">
+                    <ul class="flex items-center space-x-2">
                         {% if page_obj.has_previous %}
-                            <li class="page-item">
-                                <a class="page-link" href="?page={{ page_obj.previous_page_number }}{% if current_type %}&type={{ current_type }}{% endif %}{% if current_region %}&region={{ current_region }}{% endif %}{% if search_query %}&search={{ search_query }}{% endif %}">
+                            <li>
+                                <a href="?page={{ page_obj.previous_page_number }}{% if current_type %}&type={{ current_type }}{% endif %}{% if current_region %}&region={{ current_region }}{% endif %}{% if search_query %}&search={{ search_query }}{% endif %}" 
+                                   class="px-4 py-2 border rounded-md text-[#C18D45] hover:bg-[#f5e9d8] transition duration-300">
                                     {% trans "Previous" %}
                                 </a>
                             </li>
@@ -117,19 +114,23 @@
                         
                         {% for num in page_obj.paginator.page_range %}
                             {% if page_obj.number == num %}
-                                <li class="page-item active">
-                                    <span class="page-link">{{ num }}</span>
+                                <li>
+                                    <span class="px-4 py-2 bg-[#C18D45] text-white rounded-md">{{ num }}</span>
                                 </li>
                             {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
-                                <li class="page-item">
-                                    <a class="page-link" href="?page={{ num }}{% if current_type %}&type={{ current_type }}{% endif %}{% if current_region %}&region={{ current_region }}{% endif %}{% if search_query %}&search={{ search_query }}{% endif %}">{{ num }}</a>
+                                <li>
+                                    <a href="?page={{ num }}{% if current_type %}&type={{ current_type }}{% endif %}{% if current_region %}&region={{ current_region }}{% endif %}{% if search_query %}&search={{ search_query }}{% endif %}" 
+                                       class="px-4 py-2 border rounded-md text-gray-700 hover:bg-gray-50 transition duration-300">
+                                        {{ num }}
+                                    </a>
                                 </li>
                             {% endif %}
                         {% endfor %}
                         
                         {% if page_obj.has_next %}
-                            <li class="page-item">
-                                <a class="page-link" href="?page={{ page_obj.next_page_number }}{% if current_type %}&type={{ current_type }}{% endif %}{% if current_region %}&region={{ current_region }}{% endif %}{% if search_query %}&search={{ search_query }}{% endif %}">
+                            <li>
+                                <a href="?page={{ page_obj.next_page_number }}{% if current_type %}&type={{ current_type }}{% endif %}{% if current_region %}&region={{ current_region }}{% endif %}{% if search_query %}&search={{ search_query }}{% endif %}" 
+                                   class="px-4 py-2 border rounded-md text-[#C18D45] hover:bg-[#f5e9d8] transition duration-300">
                                     {% trans "Next" %}
                                 </a>
                             </li>
@@ -138,11 +139,13 @@
                 </nav>
             {% endif %}
         {% else %}
-            <div class="text-center py-5">
-                <i class="fas fa-mountain fa-4x text-muted mb-4"></i>
-                <h3>{% trans "No parks found" %}</h3>
-                <p class="text-muted">{% trans "Try adjusting your search criteria" %}</p>
-                <a href="{% url 'parks:park_list' %}" class="btn btn-primary">{% trans "View All Parks" %}</a>
+            <div class="text-center py-16">
+                <i class="fas fa-mountain text-gray-300 text-6xl mb-6"></i>
+                <h3 class="text-2xl font-bold text-gray-800 mb-3">{% trans "No parks found" %}</h3>
+                <p class="text-gray-600 mb-8">{% trans "Try adjusting your search criteria" %}</p>
+                <a href="{% url 'parks:park_list' %}" class="inline-block bg-[#C18D45] hover:bg-[#a97a3a] text-white font-medium py-2 px-6 rounded-md transition duration-300">
+                    {% trans "View All Parks" %}
+                </a>
             </div>
         {% endif %}
     </div>

@@ -18,14 +18,6 @@ class Booking(models.Model):
         ('refunded', 'Refunded'),
     ]
     
-    PAYMENT_STATUS = [
-        ('pending', 'Payment Pending'),
-        ('partial', 'Partially Paid'),
-        ('paid', 'Fully Paid'),
-        ('refunded', 'Refunded'),
-        ('failed', 'Payment Failed'),
-    ]
-    
     # Basic Information
     booking_reference = models.CharField(max_length=20, unique=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='bookings')
@@ -44,14 +36,8 @@ class Booking(models.Model):
         default='standard'
     )
     
-    # Pricing
-    base_price = models.DecimalField(max_digits=10, decimal_places=2)
-    total_price = models.DecimalField(max_digits=10, decimal_places=2)
-    currency = models.CharField(max_length=3, default='USD')
-    
     # Status
     booking_status = models.CharField(max_length=15, choices=BOOKING_STATUS, default='pending')
-    payment_status = models.CharField(max_length=15, choices=PAYMENT_STATUS, default='pending')
     
     # Special Requirements
     special_requirements = models.TextField(blank=True)

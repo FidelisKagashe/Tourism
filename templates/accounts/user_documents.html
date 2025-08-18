@@ -1,0 +1,99 @@
+{% extends 'base/base.html' %}
+{% load i18n %}
+
+{% block title %}{% trans "My Documents" %} - Tanzania Safari Adventures{% endblock %}
+
+{% block content %}
+<div class="container mx-auto px-4 py-8">
+    <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-8">
+        <div class="mb-4 md:mb-0">
+            <h1 class="text-3xl font-bold text-gray-800">{% trans "Travel Documents" %}</h1>
+            <p class="text-gray-600 mt-2">{% trans "Manage your travel documents" %}</p>
+        </div>
+        <div>
+            <a href="{% url 'accounts:dashboard' %}" class="flex items-center border border-[#C18D45] text-[#C18D45] hover:bg-[#C18D45] hover:text-white px-4 py-2 rounded-md transition-colors">
+                <i class="fas fa-arrow-left mr-2"></i>{% trans "Back to Dashboard" %}
+            </a>
+        </div>
+    </div>
+    
+    {% if documents %}
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {% for document in documents %}
+                <div class="bg-white rounded-lg shadow-md overflow-hidden border border-gray-200 hover:shadow-lg transition-shadow">
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-4">
+                            <div>
+                                <div class="w-12 h-12 rounded-full bg-[#f5e9d7] flex items-center justify-center mb-3">
+                                    <i class="fas fa-file-alt text-xl text-[#C18D45]"></i>
+                                </div>
+                                <h3 class="text-lg font-semibold text-gray-800">{{ document.document_name }}</h3>
+                                <p class="text-gray-500 text-sm">{{ document.get_document_type_display }}</p>
+                            </div>
+                            {% if document.verified %}
+                                <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-green-100 text-green-800">
+                                    <i class="fas fa-check mr-1"></i>{% trans "Verified" %}
+                                </span>
+                            {% else %}
+                                <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-yellow-100 text-yellow-800">
+                                    <i class="fas fa-clock mr-1"></i>{% trans "Pending" %}
+                                </span>
+                            {% endif %}
+                        </div>
+                        
+                        {% if document.expiry_date %}
+                            <p class="text-gray-600 mb-4 flex items-center">
+                                <i class="fas fa-calendar mr-2 text-[#C18D45]"></i>
+                                <span class="font-medium">{% trans "Expires:" %}</span>
+                                <span class="ml-1">{{ document.expiry_date|date:"M d, Y" }}</span>
+                            </p>
+                        {% endif %}
+                        
+                        <div>
+                            <a href="{{ document.document_file.url }}" target="_blank" class="w-full flex items-center justify-center border border-[#C18D45] text-[#C18D45] hover:bg-[#C18D45] hover:text-white px-4 py-2 rounded-md transition-colors">
+                                <i class="fas fa-download mr-2"></i>{% trans "Download" %}
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <div class="text-center py-12">
+            <div class="w-24 h-24 mx-auto bg-[#f5e9d7] rounded-full flex items-center justify-center mb-6">
+                <i class="fas fa-file-upload text-4xl text-[#C18D45]"></i>
+            </div>
+            <h3 class="text-2xl font-bold text-gray-800 mb-2">{% trans "No documents uploaded" %}</h3>
+            <p class="text-gray-600 mb-8 max-w-lg mx-auto">{% trans "Upload your travel documents for faster booking process" %}</p>
+            
+            <div class="bg-blue-50 border border-blue-100 rounded-lg p-6 max-w-2xl mx-auto">
+                <h4 class="font-semibold text-lg text-blue-800 mb-4">{% trans "Recommended Documents:" %}</h4>
+                <ul class="space-y-3 text-left">
+                    <li class="flex items-center">
+                        <i class="fas fa-passport text-blue-500 mr-3 text-lg"></i>
+                        <span class="text-gray-700">{% trans "Passport (main page and visa pages)" %}</span>
+                    </li>
+                    <li class="flex items-center">
+                        <i class="fas fa-certificate text-blue-500 mr-3 text-lg"></i>
+                        <span class="text-gray-700">{% trans "Vaccination Certificate (yellow fever, COVID-19)" %}</span>
+                    </li>
+                    <li class="flex items-center">
+                        <i class="fas fa-shield-alt text-blue-500 mr-3 text-lg"></i>
+                        <span class="text-gray-700">{% trans "Travel Insurance (policy document)" %}</span>
+                    </li>
+                    <li class="flex items-center">
+                        <i class="fas fa-id-card text-blue-500 mr-3 text-lg"></i>
+                        <span class="text-gray-700">{% trans "Driver's License (if renting a vehicle)" %}</span>
+                    </li>
+                </ul>
+                <div class="mt-6">
+                    <a href="#" class="inline-flex items-center bg-[#C18D45] hover:bg-[#a6783a] text-white px-5 py-2 rounded-md transition-colors">
+                        <i class="fas fa-cloud-upload-alt mr-2"></i>
+                        {% trans "Upload Documents" %}
+                    </a>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

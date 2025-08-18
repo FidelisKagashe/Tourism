@@ -5,20 +5,31 @@
 {% block title %}{% trans "Extended Profile" %} - Safari&nbsp;&amp;&nbsp;Bush Retreats{% endblock %}
 
 {% block content %}
-<div class="container py-5">
-    <div class="row">
-        <div class="col-lg-8 mx-auto">
-            <div class="card border-0 shadow">
-                <div class="card-header bg-info text-white">
-                    <h4 class="mb-0">
-                        <i class="fas fa-user-plus me-2"></i>{% trans "Extended Profile Information" %}
-                    </h4>
+<div class="min-h-screen py-12 bg-gray-50">
+    <div class="max-w-4xl mx-auto px-4">
+        <div class="bg-white rounded-2xl shadow-xl overflow-hidden">
+            <!-- Card Header -->
+            <div class="bg-[#C18D45] text-white p-6 md:p-8">
+                <div class="flex items-center">
+                    <i class="fas fa-user-plus text-2xl mr-3"></i>
+                    <h2 class="text-2xl md:text-3xl font-bold">{% trans "Extended Profile Information" %}</h2>
                 </div>
-                <div class="card-body p-5">
-                    <div class="alert alert-info">
-                        <i class="fas fa-info-circle me-2"></i>
-                        {% trans "This information helps us provide better service and ensure your safety during tours." %}
+            </div>
+            
+            <!-- Card Body -->
+            <div class="p-6 md:p-8">
+                <!-- Information Alert -->
+                <div class="bg-[#f5e9d8] border-l-4 border-[#C18D45] text-[#a97a3a] p-4 mb-8 rounded-r">
+                    <div class="flex items-start">
+                        <i class="fas fa-info-circle mt-1 mr-3"></i>
+                        <div>
+                            {% trans "This information helps us provide better service and ensure your safety during tours." %}
+                        </div>
                     </div>
+                </div>
+                
+                <!-- Crispy Form -->
+                <div class="space-y-6">
                     {% crispy form %}
                 </div>
             </div>

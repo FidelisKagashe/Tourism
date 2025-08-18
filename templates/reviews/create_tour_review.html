@@ -1,0 +1,37 @@
+{% extends 'base/base.html' %}
+{% load i18n %}
+{% load crispy_forms_tags %}
+
+{% block title %}{% trans "Write Review for" %} {{ tour_package.title }} - Tanzania Safari Adventures{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row">
+        <div class="col-lg-8 mx-auto">
+            <div class="card border-0 shadow">
+                <div class="card-header bg-primary text-white">
+                    <h4 class="mb-0">
+                        <i class="fas fa-star me-2"></i>{% trans "Write a Review" %}
+                    </h4>
+                </div>
+                <div class="card-body p-5">
+                    <!-- Tour Info -->
+                    <div class="alert alert-info mb-4">
+                        <div class="d-flex">
+                            <img src="{% if tour_package.main_image %}{{ tour_package.main_image.url }}{% else %}https://images.pexels.com/photos/1170986/pexels-photo-1170986.jpeg{% endif %}" 
+                                 class="rounded me-3" style="width: 80px; height: 80px; object-fit: cover;" alt="{{ tour_package.title }}">
+                            <div>
+                                <h5 class="mb-1">{{ tour_package.title }}</h5>
+                                <p class="mb-1">{{ tour_package.get_duration_display }} • {{ tour_package.get_category_display }}</p>
+                                <small class="text-muted">{{ tour_package.short_description|truncatewords:15 }}</small>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    {% crispy form %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

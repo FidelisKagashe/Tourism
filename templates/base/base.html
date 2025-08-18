@@ -1,141 +1,96 @@
-{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}{{ site_settings.site_name|default:"Safari&nbsp;&amp;&nbsp;Bush Retreats" }}{% endblock %}</title>
+    <title>{% block title %}{{ site_settings.site_name|default:"Tanzania Safari Adventures" }}{% endblock %}</title>
     
     <!-- Meta Tags -->
     <meta name="description" content="{% block meta_description %}{{ site_settings.site_description|default:'Discover the beauty of Tanzania\'s national parks and wildlife with our expert-guided safari tours.' }}{% endblock %}">
     <meta name="keywords" content="{% block meta_keywords %}Tanzania, Safari, National Parks, Wildlife, Tours, Serengeti, Ngorongoro, Kilimanjaro{% endblock %}">
-    <meta name="author" content="Safari&nbsp;&amp;&nbsp;Bush Retreats">
+    <meta name="author" content="Tanzania Safari Adventures">
     
     <!-- Open Graph -->
-    <meta property="og:title" content="{% block og_title %}{{ site_settings.site_name|default:'Safari&nbsp;&amp;&nbsp;Bush Retreats' }}{% endblock %}">
+    <meta property="og:title" content="{% block og_title %}{{ site_settings.site_name|default:'Tanzania Safari Adventures' }}{% endblock %}">
     <meta property="og:description" content="{% block og_description %}{{ site_settings.site_description|default:'Discover Tanzania\'s wildlife' }}{% endblock %}">
     <meta property="og:type" content="website">
     <meta property="og:url" content="{{ request.build_absolute_uri }}">
     
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
     <!-- Font Awesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
-    <!-- Custom CSS -->
+    <!-- Tailwind Configuration and Custom Styles -->
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            DEFAULT: '#C18D45',
+                            dark: '#E4B366'
+                        },
+                        secondary: {
+                            DEFAULT: '#715F3C',
+                            dark: '#B8986F'
+                        },
+                        accent: {
+                            DEFAULT: '#237D26',
+                            dark: '#4CAF50'
+                        }
+                    },
+                    fontFamily: {
+                        'poppins': ['Poppins', 'sans-serif']
+                    },
+                    transitionDuration: {
+                        '300': '300ms'
+                    }
+                }
+            }
+        }
+    </script>
+    
     <style>
-        :root {
-            --primary-color: #C18D45;
-            --secondary-color: #715F3C;
-            --accent-color: #237D26;
-            --success-color: #28a745;
-            --warning-color: #ffc107;
-            --danger-color: #dc3545;
-            --dark-color: #2c3e50;
-            --light-color: #f8f9fa;
-            --text-dark: #2c3e50;
-            --text-muted: #6c757d;
+        /* Custom styles for complex animations and effects */
+        .nav-link-underline::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background-color: #C18D45;
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
         }
         
-        body {
-            font-family: 'Poppins', sans-serif;
-            line-height: 1.6;
-            color: var(--text-dark);
+        .nav-link-underline:hover::after {
+            width: 80%;
         }
         
-        .navbar-brand {
-            font-weight: 700;
-            font-size: 1.5rem;
-            color: var(--primary-color) !important;
+        .dark .nav-link-underline::after {
+            background-color: #E4B366;
         }
         
-        .btn-primary {
-            background-color: var(--primary-color);
-            border-color: var(--primary-color);
-            font-weight: 500;
-        }
-        
-        .btn-primary:hover {
-            background-color: var(--secondary-color);
-            border-color: var(--secondary-color);
-        }
-        
-        .btn-outline-primary {
-            color: var(--primary-color);
-            border-color: var(--primary-color);
-        }
-        
-        .btn-outline-primary:hover {
-            background-color: var(--primary-color);
-            border-color: var(--primary-color);
-        }
-        
-        .text-primary {
-            color: var(--primary-color) !important;
-        }
-        
-        .bg-primary {
-            background-color: var(--primary-color) !important;
-        }
-        
-        .hero-section {
+        .hero-bg {
             background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.pexels.com/photos/631317/pexels-photo-631317.jpeg');
             background-size: cover;
             background-position: center;
-            min-height: 70vh;
-            display: flex;
-            align-items: center;
-            color: white;
         }
         
-        .card {
-            border: none;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 15px rgba(0,0,0,0.2);
-        }
-        
-        .footer {
-            background-color: var(--dark-color);
-            color: white;
-            padding: 3rem 0 1rem;
-        }
-        
-        .footer a {
-            color: #adb5bd;
-            text-decoration: none;
-        }
-        
-        .footer a:hover {
-            color: var(--primary-color);
-        }
-        
-        .star-rating {
-            color: #ffc107;
-        }
-        
-        .price-tag {
-            background-color: var(--accent-color);
-            color: white;
-            padding: 0.5rem 1rem;
-            border-radius: 25px;
-            font-weight: 600;
-        }
-        
-        .badge-custom {
-            background-color: var(--primary-color);
-            color: white;
-        }
-        
-        .section-title {
-            position: relative;
-            margin-bottom: 3rem;
+        .hero-bg::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(193, 141, 69, 0.1), rgba(113, 95, 60, 0.1));
+            transition: background 0.3s ease;
         }
         
         .section-title::after {
@@ -144,209 +99,473 @@
             bottom: -10px;
             left: 50%;
             transform: translateX(-50%);
-            width: 60px;
-            height: 3px;
-            background-color: var(--primary-color);
+            width: 80px;
+            height: 4px;
+            background-color: #C18D45;
+            border-radius: 2px;
         }
         
-        .navbar-nav .nav-link {
-            font-weight: 500;
-            margin: 0 0.5rem;
-            transition: color 0.3s ease;
+        .dark .section-title::after {
+            background-color: #E4B366;
         }
         
-        .navbar-nav .nav-link:hover {
-            color: var(--primary-color) !important;
+        .card-hover-effect {
+            transition: all 0.3s ease;
         }
         
-        .form-control:focus {
-            border-color: var(--primary-color);
-            box-shadow: 0 0 0 0.2rem rgba(212, 165, 116, 0.25);
+        .card-hover-effect:hover {
+            transform: translateY(-5px);
         }
         
-        .alert-success {
-            background-color: #d4edda;
-            border-color: #c3e6cb;
-            color: #155724;
+        .card-hover-effect:hover .card-image {
+            transform: scale(1.05);
         }
         
-        .alert-danger {
-            background-color: #f8d7da;
-            border-color: #f5c6cb;
-            color: #721c24;
+        .card-image {
+            transition: transform 0.3s ease;
         }
         
-        .alert-warning {
-            background-color: #fff3cd;
-            border-color: #ffeaa7;
-            color: #856404;
+        .social-link {
+            transition: all 0.3s ease;
         }
         
-        .alert-info {
-            background-color: #d1ecf1;
-            border-color: #bee5eb;
-            color: #0c5460;
+        .social-link:hover {
+            transform: translateY(-3px);
         }
         
-        @media (max-width: 768px) {
-            .hero-section {
-                min-height: 50vh;
-                text-align: center;
+        .header-scrolled .secondary-row {
+            transform: translateY(-100%);
+            opacity: 0;
+        }
+        
+        .secondary-row {
+            transition: all 0.3s ease;
+        }
+        
+        /* Custom focus styles */
+        .focus-primary:focus {
+            outline: 2px solid #C18D45;
+            outline-offset: 2px;
+        }
+        
+        .dark .focus-primary:focus {
+            outline-color: #E4B366;
+        }
+        
+        /* Alert animations */
+        .alert-enter {
+            animation: slideInDown 0.3s ease-out;
+        }
+        
+        .alert-exit {
+            animation: slideOutUp 0.3s ease-in;
+        }
+        
+        @keyframes slideInDown {
+            from {
+                transform: translateY(-100%);
+                opacity: 0;
             }
-            
-            .hero-section h1 {
-                font-size: 2rem;
+            to {
+                transform: translateY(0);
+                opacity: 1;
             }
         }
-        .site-logo {
-            height: 70px;
-            width: auto;
-            object-fit: contain;
+        
+        @keyframes slideOutUp {
+            from {
+                transform: translateY(0);
+                opacity: 1;
             }
-
-            /* mobile — change breakpoint if you prefer (576px = Bootstrap sm) */
-            @media (max-width: 576px) {
-            .site-logo {
-                height: 50px;
+            to {
+                transform: translateY(-100%);
+                opacity: 0;
             }
+        }
+        
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        /* Mobile menu animation */
+        .mobile-menu {
+            transition: all 0.3s ease;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+        
+        /* Mobile Dropdown Styles */
+        .mobile-dropdown-menu {
+            max-height: 0;
+            opacity: 0;
+            transform: translateY(-10px);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .mobile-dropdown-menu.show {
+            max-height: 600px;
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .mobile-dropdown-icon {
+            transition: transform 0.3s ease;
+        }
+        
+        .mobile-dropdown-toggle[aria-expanded="true"] .mobile-dropdown-icon {
+            transform: rotate(180deg);
+        }
+        
+        /* Touch-friendly mobile dropdown items */
+        .mobile-dropdown-item {
+            -webkit-tap-highlight-color: transparent;
+            user-select: none;
+        }
+        
+        .mobile-dropdown-item:active {
+            transform: scale(0.98);
+        }
+        
+        /* Active state styling for current page */
+        .mobile-dropdown-item.active {
+            background-color: rgba(193, 141, 69, 0.1);
+            color: #C18D45;
+            font-weight: 600;
+        }
+        
+        .dark .mobile-dropdown-item.active {
+            background-color: rgba(228, 179, 102, 0.1);
+            color: #E4B366;
+        }
+        
+        /* Smooth animation for dropdown toggle */
+        .mobile-dropdown-toggle:active {
+            transform: scale(0.98);
+        }
+        
+        /* Enhanced focus states for accessibility */
+        .mobile-dropdown-toggle:focus,
+        .mobile-dropdown-item:focus {
+            outline: 2px solid #C18D45;
+            outline-offset: 2px;
+        }
+        
+        .dark .mobile-dropdown-toggle:focus,
+        .dark .mobile-dropdown-item:focus {
+            outline-color: #E4B366;
         }
     </style>
     
     {% block extra_css %}{% endblock %}
 </head>
-<body>
-    <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top">
-        <div class="container-fluid">
-            <a class="navbar-brand d-flex align-items-center" href="{% url 'core:home' %}">
-                <img src="{% static 'images/logo.png' %}" alt="logo" class="me-2 site-logo">
-                <span class="brand-name">
-                    <span style="font-size:0.85rem; font-weight:700;">Safari&nbsp;&amp;&nbsp;Bush Retreats</span>
-                </span>
-            </a>
-            
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav me-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'core:home' %}">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'parks:park_list' %}">National Parks</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'tours:tour_list' %}">Safari Tours</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'reviews:review_list' %}">Reviews</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="destinationsDropdown" role="button" data-bs-toggle="dropdown">
-                            Destinations
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="{% url 'parks:destination_list' %}">
-                                <i class="fas fa-map-marker-alt me-2"></i>All Destinations
-                            </a></li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li><h6 class="dropdown-header">By Category</h6></li>
-                            <li><a class="dropdown-item" href="{% url 'parks:destination_list' %}?type=wildlife_area">
-                                <i class="fas fa-paw me-2"></i>Wildlife Areas
-                            </a></li>
-                            <li><a class="dropdown-item" href="{% url 'parks:destination_list' %}?type=viewpoint">
-                                <i class="fas fa-mountain me-2"></i>Viewpoints
-                            </a></li>
-                            <li><a class="dropdown-item" href="{% url 'parks:destination_list' %}?type=waterfall">
-                                <i class="fas fa-tint me-2"></i>Waterfalls
-                            </a></li>
-                            <li><a class="dropdown-item" href="{% url 'parks:destination_list' %}?type=lake">
-                                <i class="fas fa-water me-2"></i>Lakes
-                            </a></li>
-                            <li><a class="dropdown-item" href="{% url 'parks:destination_list' %}?type=beach">
-                                <i class="fas fa-umbrella-beach me-2"></i>Beaches
-                            </a></li>
-                            <li><a class="dropdown-item" href="{% url 'parks:destination_list' %}?type=cultural_site">
-                                <i class="fas fa-users me-2"></i>Cultural Sites
-                            </a></li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li><h6 class="dropdown-header">Special Collections</h6></li>
-                            <li><a class="dropdown-item" href="{% url 'parks:wildlife_list' %}">
-                                <i class="fas fa-binoculars me-2"></i>Wildlife Species
-                            </a></li>
-                            <li><a class="dropdown-item" href="{% url 'parks:wildlife_list' %}?big_five=true">
-                                <i class="fas fa-crown me-2"></i>Big Five
-                            </a></li>
-                            <li><a class="dropdown-item" href="{% url 'core:historical_sites_list' %}">
-                                <i class="fas fa-landmark me-2"></i>Historical Sites
-                            </a></li>
-                            <li><a class="dropdown-item" href="{% url 'tours:guide_list' %}">
-                                <i class="fas fa-user-tie me-2"></i>Tour Guides
-                            </a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'core:about' %}">About</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'core:contact' %}">Contact</a>
-                    </li>
-                </ul>
-                
-                <!-- Search Form -->
-                <form class="d-flex me-3" method="GET" action="{% url 'core:search' %}">
-                    <input class="form-control me-2" type="search" name="q" placeholder="Search tours, parks..." value="{{ request.GET.q }}">
-                    <button class="btn btn-outline-primary" type="submit">
-                        <i class="fas fa-search"></i>
+<body class="font-poppins leading-relaxed text-gray-800 bg-white dark:text-gray-200 dark:bg-gray-900 transition-all duration-300">
+    <!-- Header with two rows -->
+    <header class="header sticky top-0 z-50 transition-all duration-300">
+        <!-- Primary Row: Logo, Brand, Links -->
+        <nav class="bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 primary-row">
+            <div class="container mx-auto px-4">
+                <div class="flex items-center justify-between h-16">
+                    <a class="flex items-center text-xl font-bold text-primary dark:text-primary-dark hover:text-secondary dark:hover:text-secondary-dark transition-colors duration-300" href="{% url 'core:home' %}">
+                        <i class="fas fa-mountain text-primary dark:text-primary-dark mr-2"></i>
+                        Tanzania Safari
+                    </a>
+                    
+                    <!-- Mobile menu button -->
+                    <button class="lg:hidden p-2 rounded-lg border border-gray-200 dark:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-primary dark:focus:ring-primary-dark transition-colors duration-300" type="button" id="mobile-menu-toggle" aria-label="Toggle navigation">
+                        <span class="block w-6 h-0.5 bg-gray-600 dark:bg-gray-300 mb-1 transition-all duration-300"></span>
+                        <span class="block w-6 h-0.5 bg-gray-600 dark:bg-gray-300 mb-1 transition-all duration-300"></span>
+                        <span class="block w-6 h-0.5 bg-gray-600 dark:bg-gray-300 transition-all duration-300"></span>
                     </button>
-                </form>
-                
-                <!-- User Menu -->
-                <ul class="navbar-nav">
-                    {% if user.is_authenticated %}
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown">
-                                <i class="fas fa-user me-1"></i>
-                                {{ user.get_display_name }}
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="{% url 'accounts:dashboard' %}">
-                                    <i class="fas fa-tachometer-alt me-2"></i>Dashboard
-                                </a></li>
-                                <li><a class="dropdown-item" href="{% url 'bookings:booking_list' %}">
-                                    <i class="fas fa-calendar-check me-2"></i>My Bookings
-                                </a></li>
-                                <li><a class="dropdown-item" href="{% url 'accounts:profile_update' %}">
-                                    <i class="fas fa-user-edit me-2"></i>Profile
-                                </a></li>
-                                <li><hr class="dropdown-divider"></li>
-                                <li><a class="dropdown-item" href="{% url 'accounts:logout' %}">
-                                    <i class="fas fa-sign-out-alt me-2"></i>Logout
-                                </a></li>
-                            </ul>
+                    
+                    <!-- Desktop Navigation -->
+                    <div class="hidden lg:flex items-center space-x-8">
+                        <ul class="flex items-center space-x-6">
+                            <li>
+                                <a class="nav-link-underline relative font-medium text-gray-800 dark:text-gray-200 hover:text-primary dark:hover:text-primary-dark transition-all duration-300 hover:-translate-y-0.5" href="{% url 'core:home' %}">Home</a>
+                            </li>
+                            <li>
+                                <a class="nav-link-underline relative font-medium text-gray-800 dark:text-gray-200 hover:text-primary dark:hover:text-primary-dark transition-all duration-300 hover:-translate-y-0.5" href="{% url 'parks:park_list' %}">National Parks</a>
+                            </li>
+                            <li>
+                                <a class="nav-link-underline relative font-medium text-gray-800 dark:text-gray-200 hover:text-primary dark:hover:text-primary-dark transition-all duration-300 hover:-translate-y-0.5" href="{% url 'tours:tour_list' %}">Safari Tours</a>
+                            </li>
+                            <li>
+                                <a class="nav-link-underline relative font-medium text-gray-800 dark:text-gray-200 hover:text-primary dark:hover:text-primary-dark transition-all duration-300 hover:-translate-y-0.5" href="{% url 'reviews:review_list' %}">Reviews</a>
+                            </li>
+                            <li class="relative group">
+                                <button class="nav-link-underline relative font-medium text-gray-800 dark:text-gray-200 hover:text-primary dark:hover:text-primary-dark transition-all duration-300 hover:-translate-y-0.5 flex items-center" id="destinationsDropdown" aria-expanded="false">
+                                    Destinations
+                                    <i class="fas fa-chevron-down ml-1 text-xs group-hover:rotate-180 transition-transform duration-300"></i>
+                                </button>
+                                <div class="absolute top-full left-0 mt-2 w-80 bg-white dark:bg-gray-700 border border-gray-200 dark:border-gray-600 rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50">
+                                    <div class="p-2">
+                                        <a class="flex items-center px-4 py-2 text-gray-800 dark:text-gray-200 hover:bg-primary hover:text-white dark:hover:bg-primary-dark rounded-md transition-all duration-300 hover:translate-x-1" href="{% url 'parks:destination_list' %}">
+                                            <i class="fas fa-map-marker-alt mr-3 w-4"></i>All Destinations
+                                        </a>
+                                        <hr class="my-2 border-gray-200 dark:border-gray-600">
+                                        <h6 class="px-4 py-2 text-primary dark:text-primary-dark font-semibold text-sm">By Category</h6>
+                                        <a class="flex items-center px-4 py-2 text-gray-800 dark:text-gray-200 hover:bg-primary hover:text-white dark:hover:bg-primary-dark rounded-md transition-all duration-300 hover:translate-x-1" href="{% url 'parks:destination_list' %}?type=wildlife_area">
+                                            <i class="fas fa-paw mr-3 w-4"></i>Wildlife Areas
+                                        </a>
+                                        <a class="flex items-center px-4 py-2 text-gray-800 dark:text-gray-200 hover:bg-primary hover:text-white dark:hover:bg-primary-dark rounded-md transition-all duration-300 hover:translate-x-1" href="{% url 'parks:destination_list' %}?type=viewpoint">
+                                            <i class="fas fa-mountain mr-3 w-4"></i>Viewpoints
+                                        </a>
+                                        <a class="flex items-center px-4 py-2 text-gray-800 dark:text-gray-200 hover:bg-primary hover:text-white dark:hover:bg-primary-dark rounded-md transition-all duration-300 hover:translate-x-1" href="{% url 'parks:destination_list' %}?type=waterfall">
+                                            <i class="fas fa-tint mr-3 w-4"></i>Waterfalls
+                                        </a>
+                                        <a class="flex items-center px-4 py-2 text-gray-800 dark:text-gray-200 hover:bg-primary hover:text-white dark:hover:bg-primary-dark rounded-md transition-all duration-300 hover:translate-x-1" href="{% url 'parks:destination_list' %}?type=lake">
+                                            <i class="fas fa-water mr-3 w-4"></i>Lakes
+                                        </a>
+                                        <a class="flex items-center px-4 py-2 text-gray-800 dark:text-gray-200 hover:bg-primary hover:text-white dark:hover:bg-primary-dark rounded-md transition-all duration-300 hover:translate-x-1" href="{% url 'parks:destination_list' %}?type=beach">
+                                            <i class="fas fa-umbrella-beach mr-3 w-4"></i>Beaches
+                                        </a>
+                                        <a class="flex items-center px-4 py-2 text-gray-800 dark:text-gray-200 hover:bg-primary hover:text-white dark:hover:bg-primary-dark rounded-md transition-all duration-300 hover:translate-x-1" href="{% url 'parks:destination_list' %}?type=cultural_site">
+                                            <i class="fas fa-users mr-3 w-4"></i>Cultural Sites
+                                        </a>
+                                        <hr class="my-2 border-gray-200 dark:border-gray-600">
+                                        <h6 class="px-4 py-2 text-primary dark:text-primary-dark font-semibold text-sm">Special Collections</h6>
+                                        <a class="flex items-center px-4 py-2 text-gray-800 dark:text-gray-200 hover:bg-primary hover:text-white dark:hover:bg-primary-dark rounded-md transition-all duration-300 hover:translate-x-1" href="{% url 'parks:wildlife_list' %}">
+                                            <i class="fas fa-binoculars mr-3 w-4"></i>Wildlife Species
+                                        </a>
+                                        <a class="flex items-center px-4 py-2 text-gray-800 dark:text-gray-200 hover:bg-primary hover:text-white dark:hover:bg-primary-dark rounded-md transition-all duration-300 hover:translate-x-1" href="{% url 'parks:wildlife_list' %}?big_five=true">
+                                            <i class="fas fa-crown mr-3 w-4"></i>Big Five
+                                        </a>
+                                        <a class="flex items-center px-4 py-2 text-gray-800 dark:text-gray-200 hover:bg-primary hover:text-white dark:hover:bg-primary-dark rounded-md transition-all duration-300 hover:translate-x-1" href="{% url 'core:historical_sites_list' %}">
+                                            <i class="fas fa-landmark mr-3 w-4"></i>Historical Sites
+                                        </a>
+                                        <a class="flex items-center px-4 py-2 text-gray-800 dark:text-gray-200 hover:bg-primary hover:text-white dark:hover:bg-primary-dark rounded-md transition-all duration-300 hover:translate-x-1" href="{% url 'tours:guide_list' %}">
+                                            <i class="fas fa-user-tie mr-3 w-4"></i>Tour Guides
+                                        </a>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <a class="nav-link-underline relative font-medium text-gray-800 dark:text-gray-200 hover:text-primary dark:hover:text-primary-dark transition-all duration-300 hover:-translate-y-0.5" href="{% url 'core:about' %}">About</a>
+                            </li>
+                            <li>
+                                <a class="nav-link-underline relative font-medium text-gray-800 dark:text-gray-200 hover:text-primary dark:hover:text-primary-dark transition-all duration-300 hover:-translate-y-0.5" href="{% url 'core:contact' %}">Contact</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Mobile Navigation Menu -->
+                <div class="lg:hidden mobile-menu hidden bg-white dark:bg-gray-700 rounded-lg mt-4 p-4 shadow-lg border border-gray-200 dark:border-gray-600" id="mobile-menu">
+                    <ul class="space-y-2">
+                        <li><a class="block px-4 py-2 text-gray-800 dark:text-gray-200 hover:bg-primary hover:text-white dark:hover:bg-primary-dark rounded-md transition-colors duration-300" href="{% url 'core:home' %}">Home</a></li>
+                        <li><a class="block px-4 py-2 text-gray-800 dark:text-gray-200 hover:bg-primary hover:text-white dark:hover:bg-primary-dark rounded-md transition-colors duration-300" href="{% url 'parks:park_list' %}">National Parks</a></li>
+                        <li><a class="block px-4 py-2 text-gray-800 dark:text-gray-200 hover:bg-primary hover:text-white dark:hover:bg-primary-dark rounded-md transition-colors duration-300" href="{% url 'tours:tour_list' %}">Safari Tours</a></li>
+                        <li><a class="block px-4 py-2 text-gray-800 dark:text-gray-200 hover:bg-primary hover:text-white dark:hover:bg-primary-dark rounded-md transition-colors duration-300" href="{% url 'reviews:review_list' %}">Reviews</a></li>
+                        <!-- Mobile Destinations Dropdown -->
+                        <li class="mobile-dropdown-container">
+                            <button class="mobile-dropdown-toggle w-full flex items-center justify-between px-4 py-2 text-gray-800 dark:text-gray-200 hover:bg-primary hover:text-white dark:hover:bg-primary-dark rounded-md transition-all duration-300 touch-manipulation min-h-[48px]" 
+                                    id="mobile-destinations-toggle" 
+                                    aria-expanded="false" 
+                                    aria-controls="mobile-destinations-menu">
+                                <span class="font-medium">Destinations</span>
+                                <i class="fas fa-chevron-down mobile-dropdown-icon transition-transform duration-300 text-sm"></i>
+                            </button>
+                            
+                            <!-- Mobile Destinations Submenu -->
+                            <div class="mobile-dropdown-menu hidden mt-2 ml-4 space-y-1 overflow-hidden transition-all duration-300" id="mobile-destinations-menu">
+                                <a class="mobile-dropdown-item flex items-center px-4 py-3 text-gray-700 dark:text-gray-300 hover:bg-primary hover:text-white dark:hover:bg-primary-dark rounded-md transition-all duration-300 touch-manipulation min-h-[48px] {% if request.resolver_match.url_name == 'destination_list' and not request.GET.type %}bg-primary/10 dark:bg-primary-dark/10 text-primary dark:text-primary-dark font-semibold{% endif %}" 
+                                   href="{% url 'parks:destination_list' %}">
+                                    <i class="fas fa-map-marker-alt mr-3 w-4 text-center"></i>
+                                    <span>All Destinations</span>
+                                    {% if request.resolver_match.url_name == 'destination_list' and not request.GET.type %}
+                                        <i class="fas fa-check ml-auto text-primary dark:text-primary-dark"></i>
+                                    {% endif %}
+                                </a>
+                                
+                                <!-- Category Divider -->
+                                <div class="px-4 py-2">
+                                    <hr class="border-gray-300 dark:border-gray-600">
+                                    <h6 class="text-primary dark:text-primary-dark font-semibold text-sm mt-2 mb-1">By Category</h6>
+                                </div>
+                                
+                                <a class="mobile-dropdown-item flex items-center px-4 py-3 text-gray-700 dark:text-gray-300 hover:bg-primary hover:text-white dark:hover:bg-primary-dark rounded-md transition-all duration-300 touch-manipulation min-h-[48px] {% if request.GET.type == 'wildlife_area' %}bg-primary/10 dark:bg-primary-dark/10 text-primary dark:text-primary-dark font-semibold{% endif %}" 
+                                   href="{% url 'parks:destination_list' %}?type=wildlife_area">
+                                    <i class="fas fa-paw mr-3 w-4 text-center"></i>
+                                    <span>Wildlife Areas</span>
+                                    {% if request.GET.type == 'wildlife_area' %}
+                                        <i class="fas fa-check ml-auto text-primary dark:text-primary-dark"></i>
+                                    {% endif %}
+                                </a>
+                                
+                                <a class="mobile-dropdown-item flex items-center px-4 py-3 text-gray-700 dark:text-gray-300 hover:bg-primary hover:text-white dark:hover:bg-primary-dark rounded-md transition-all duration-300 touch-manipulation min-h-[48px] {% if request.GET.type == 'viewpoint' %}bg-primary/10 dark:bg-primary-dark/10 text-primary dark:text-primary-dark font-semibold{% endif %}" 
+                                   href="{% url 'parks:destination_list' %}?type=viewpoint">
+                                    <i class="fas fa-mountain mr-3 w-4 text-center"></i>
+                                    <span>Viewpoints</span>
+                                    {% if request.GET.type == 'viewpoint' %}
+                                        <i class="fas fa-check ml-auto text-primary dark:text-primary-dark"></i>
+                                    {% endif %}
+                                </a>
+                                
+                                <a class="mobile-dropdown-item flex items-center px-4 py-3 text-gray-700 dark:text-gray-300 hover:bg-primary hover:text-white dark:hover:bg-primary-dark rounded-md transition-all duration-300 touch-manipulation min-h-[48px] {% if request.GET.type == 'waterfall' %}bg-primary/10 dark:bg-primary-dark/10 text-primary dark:text-primary-dark font-semibold{% endif %}" 
+                                   href="{% url 'parks:destination_list' %}?type=waterfall">
+                                    <i class="fas fa-tint mr-3 w-4 text-center"></i>
+                                    <span>Waterfalls</span>
+                                    {% if request.GET.type == 'waterfall' %}
+                                        <i class="fas fa-check ml-auto text-primary dark:text-primary-dark"></i>
+                                    {% endif %}
+                                </a>
+                                
+                                <a class="mobile-dropdown-item flex items-center px-4 py-3 text-gray-700 dark:text-gray-300 hover:bg-primary hover:text-white dark:hover:bg-primary-dark rounded-md transition-all duration-300 touch-manipulation min-h-[48px] {% if request.GET.type == 'lake' %}bg-primary/10 dark:bg-primary-dark/10 text-primary dark:text-primary-dark font-semibold{% endif %}" 
+                                   href="{% url 'parks:destination_list' %}?type=lake">
+                                    <i class="fas fa-water mr-3 w-4 text-center"></i>
+                                    <span>Lakes</span>
+                                    {% if request.GET.type == 'lake' %}
+                                        <i class="fas fa-check ml-auto text-primary dark:text-primary-dark"></i>
+                                    {% endif %}
+                                </a>
+                                
+                                <a class="mobile-dropdown-item flex items-center px-4 py-3 text-gray-700 dark:text-gray-300 hover:bg-primary hover:text-white dark:hover:bg-primary-dark rounded-md transition-all duration-300 touch-manipulation min-h-[48px] {% if request.GET.type == 'beach' %}bg-primary/10 dark:bg-primary-dark/10 text-primary dark:text-primary-dark font-semibold{% endif %}" 
+                                   href="{% url 'parks:destination_list' %}?type=beach">
+                                    <i class="fas fa-umbrella-beach mr-3 w-4 text-center"></i>
+                                    <span>Beaches</span>
+                                    {% if request.GET.type == 'beach' %}
+                                        <i class="fas fa-check ml-auto text-primary dark:text-primary-dark"></i>
+                                    {% endif %}
+                                </a>
+                                
+                                <a class="mobile-dropdown-item flex items-center px-4 py-3 text-gray-700 dark:text-gray-300 hover:bg-primary hover:text-white dark:hover:bg-primary-dark rounded-md transition-all duration-300 touch-manipulation min-h-[48px] {% if request.GET.type == 'cultural_site' %}bg-primary/10 dark:bg-primary-dark/10 text-primary dark:text-primary-dark font-semibold{% endif %}" 
+                                   href="{% url 'parks:destination_list' %}?type=cultural_site">
+                                    <i class="fas fa-users mr-3 w-4 text-center"></i>
+                                    <span>Cultural Sites</span>
+                                    {% if request.GET.type == 'cultural_site' %}
+                                        <i class="fas fa-check ml-auto text-primary dark:text-primary-dark"></i>
+                                    {% endif %}
+                                </a>
+                                
+                                <!-- Special Collections Divider -->
+                                <div class="px-4 py-2">
+                                    <hr class="border-gray-300 dark:border-gray-600">
+                                    <h6 class="text-primary dark:text-primary-dark font-semibold text-sm mt-2 mb-1">Special Collections</h6>
+                                </div>
+                                
+                                <a class="mobile-dropdown-item flex items-center px-4 py-3 text-gray-700 dark:text-gray-300 hover:bg-primary hover:text-white dark:hover:bg-primary-dark rounded-md transition-all duration-300 touch-manipulation min-h-[48px] {% if request.resolver_match.url_name == 'wildlife_list' and not request.GET.big_five %}bg-primary/10 dark:bg-primary-dark/10 text-primary dark:text-primary-dark font-semibold{% endif %}" 
+                                   href="{% url 'parks:wildlife_list' %}">
+                                    <i class="fas fa-binoculars mr-3 w-4 text-center"></i>
+                                    <span>Wildlife Species</span>
+                                    {% if request.resolver_match.url_name == 'wildlife_list' and not request.GET.big_five %}
+                                        <i class="fas fa-check ml-auto text-primary dark:text-primary-dark"></i>
+                                    {% endif %}
+                                </a>
+                                
+                                <a class="mobile-dropdown-item flex items-center px-4 py-3 text-gray-700 dark:text-gray-300 hover:bg-primary hover:text-white dark:hover:bg-primary-dark rounded-md transition-all duration-300 touch-manipulation min-h-[48px] {% if request.GET.big_five == 'true' %}bg-primary/10 dark:bg-primary-dark/10 text-primary dark:text-primary-dark font-semibold{% endif %}" 
+                                   href="{% url 'parks:wildlife_list' %}?big_five=true">
+                                    <i class="fas fa-crown mr-3 w-4 text-center"></i>
+                                    <span>Big Five</span>
+                                    {% if request.GET.big_five == 'true' %}
+                                        <i class="fas fa-check ml-auto text-primary dark:text-primary-dark"></i>
+                                    {% endif %}
+                                </a>
+                                
+                                <a class="mobile-dropdown-item flex items-center px-4 py-3 text-gray-700 dark:text-gray-300 hover:bg-primary hover:text-white dark:hover:bg-primary-dark rounded-md transition-all duration-300 touch-manipulation min-h-[48px] {% if request.resolver_match.url_name == 'historical_sites_list' %}bg-primary/10 dark:bg-primary-dark/10 text-primary dark:text-primary-dark font-semibold{% endif %}" 
+                                   href="{% url 'core:historical_sites_list' %}">
+                                    <i class="fas fa-landmark mr-3 w-4 text-center"></i>
+                                    <span>Historical Sites</span>
+                                    {% if request.resolver_match.url_name == 'historical_sites_list' %}
+                                        <i class="fas fa-check ml-auto text-primary dark:text-primary-dark"></i>
+                                    {% endif %}
+                                </a>
+                                
+                                <a class="mobile-dropdown-item flex items-center px-4 py-3 text-gray-700 dark:text-gray-300 hover:bg-primary hover:text-white dark:hover:bg-primary-dark rounded-md transition-all duration-300 touch-manipulation min-h-[48px] {% if request.resolver_match.url_name == 'guide_list' %}bg-primary/10 dark:bg-primary-dark/10 text-primary dark:text-primary-dark font-semibold{% endif %}" 
+                                   href="{% url 'tours:guide_list' %}">
+                                    <i class="fas fa-user-tie mr-3 w-4 text-center"></i>
+                                    <span>Tour Guides</span>
+                                    {% if request.resolver_match.url_name == 'guide_list' %}
+                                        <i class="fas fa-check ml-auto text-primary dark:text-primary-dark"></i>
+                                    {% endif %}
+                                </a>
+                            </div>
                         </li>
-                    {% else %}
-                        <li class="nav-item">
-                            <a class="nav-link" href="{% url 'accounts:login' %}">Login</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="btn btn-primary ms-2" href="{% url 'accounts:register' %}">Sign Up</a>
-                        </li>
-                    {% endif %}
-                </ul>
+                        <li><a class="block px-4 py-2 text-gray-800 dark:text-gray-200 hover:bg-primary hover:text-white dark:hover:bg-primary-dark rounded-md transition-colors duration-300" href="{% url 'core:about' %}">About</a></li>
+                        <li><a class="block px-4 py-2 text-gray-800 dark:text-gray-200 hover:bg-primary hover:text-white dark:hover:bg-primary-dark rounded-md transition-colors duration-300" href="{% url 'core:contact' %}">Contact</a></li>
+                    </ul>
+                </div>
             </div>
-        </div>
-    </nav>
+        </nav>
+
+        <!-- Secondary Row: Search, User Menu, Dark/Light Mode -->
+        <nav class="bg-white dark:bg-gray-800 secondary-row py-1">
+            <div class="container mx-auto px-4">
+                <div class="flex justify-between items-center w-full flex-col md:flex-row gap-4 md:gap-0">
+                    <!-- Search Form -->
+                    <form class="flex flex-1 max-w-lg min-w-0 w-full md:w-auto" method="GET" action="{% url 'core:search' %}">
+                        <div class="flex w-full">
+                            <input class="flex-1 px-4 py-2 bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-l-lg text-gray-800 dark:text-gray-200 placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary dark:focus:ring-primary-dark focus:border-transparent transition-all duration-300" type="search" name="q" placeholder="Search tours, parks..." value="{{ request.GET.q }}" aria-label="Search">
+                            <button class="px-4 py-2 bg-primary dark:bg-primary-dark text-white border border-primary dark:border-primary-dark rounded-r-lg hover:bg-secondary dark:hover:bg-secondary-dark focus:outline-none focus:ring-2 focus:ring-primary dark:focus:ring-primary-dark transition-all duration-300 hover:-translate-y-0.5" type="submit" aria-label="Search button">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </div>
+                    </form>
+                    
+                    <!-- User Menu and Theme Toggle -->
+                    <ul class="flex items-center space-x-4 w-full md:w-auto justify-center md:justify-end">
+                        {% if user.is_authenticated %}
+                            <li class="relative group">
+                                <button class="flex items-center text-gray-800 dark:text-gray-200 hover:text-primary dark:hover:text-primary-dark transition-colors duration-300 focus-primary" id="userDropdown" aria-expanded="false">
+                                    <i class="fas fa-user mr-2"></i>
+                                    <span class="hidden md:inline">{{ user.get_display_name }}</span>
+                                    <i class="fas fa-chevron-down ml-1 text-xs group-hover:rotate-180 transition-transform duration-300"></i>
+                                </button>
+                                <div class="absolute top-full right-0 mt-2 w-48 bg-white dark:bg-gray-700 border border-gray-200 dark:border-gray-600 rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50">
+                                    <div class="p-2">
+                                        <a class="flex items-center px-4 py-2 text-gray-800 dark:text-gray-200 hover:bg-primary hover:text-white dark:hover:bg-primary-dark rounded-md transition-all duration-300 hover:translate-x-1" href="{% url 'accounts:dashboard' %}">
+                                            <i class="fas fa-tachometer-alt mr-3 w-4"></i>Dashboard
+                                        </a>
+                                        <a class="flex items-center px-4 py-2 text-gray-800 dark:text-gray-200 hover:bg-primary hover:text-white dark:hover:bg-primary-dark rounded-md transition-all duration-300 hover:translate-x-1" href="{% url 'bookings:booking_list' %}">
+                                            <i class="fas fa-calendar-check mr-3 w-4"></i>My Bookings
+                                        </a>
+                                        <a class="flex items-center px-4 py-2 text-gray-800 dark:text-gray-200 hover:bg-primary hover:text-white dark:hover:bg-primary-dark rounded-md transition-all duration-300 hover:translate-x-1" href="{% url 'accounts:profile_update' %}">
+                                            <i class="fas fa-user-edit mr-3 w-4"></i>Profile
+                                        </a>
+                                        <hr class="my-2 border-gray-200 dark:border-gray-600">
+                                        <a class="flex items-center px-4 py-2 text-gray-800 dark:text-gray-200 hover:bg-primary hover:text-white dark:hover:bg-primary-dark rounded-md transition-all duration-300 hover:translate-x-1" href="{% url 'accounts:logout' %}">
+                                            <i class="fas fa-sign-out-alt mr-3 w-4"></i>Logout
+                                        </a>
+                                    </div>
+                                </div>
+                            </li>
+                        {% else %}
+                            <li>
+                                <a class="text-gray-800 dark:text-gray-200 hover:text-primary dark:hover:text-primary-dark transition-colors duration-300 focus-primary" href="{% url 'accounts:login' %}">
+                                    <i class="fas fa-sign-in-alt mr-1 md:hidden"></i>
+                                    <span class="hidden md:inline">Login</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="inline-flex items-center px-4 py-2 bg-primary dark:bg-primary-dark text-white rounded-lg hover:bg-secondary dark:hover:bg-secondary-dark focus:outline-none focus:ring-2 focus:ring-primary dark:focus:ring-primary-dark transition-all duration-300 hover:-translate-y-0.5 text-sm font-medium" href="{% url 'accounts:register' %}">
+                                    <i class="fas fa-user-plus mr-1 md:hidden"></i>
+                                    <span class="hidden md:inline">Sign Up</span>
+                                </a>
+                            </li>
+                        {% endif %}
+                        
+                        <!-- Dark/Light Mode Toggle -->
+                        <li>
+                            <button id="theme-toggle" class="w-10 h-10 bg-white dark:bg-gray-700 text-gray-800 dark:text-gray-200 border border-gray-200 dark:border-gray-600 rounded-lg hover:text-primary hover:bg-primary hover:text-white dark:hover:bg-primary-dark focus:outline-none focus:ring-2 focus:ring-primary dark:focus:ring-primary-dark transition-all duration-300 hover:scale-110 shadow-sm hover:shadow-md flex items-center justify-center" title="Toggle Theme" aria-label="Toggle dark/light mode">
+                                <i class="fas fa-moon text-lg" id="theme-icon"></i>
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
 
     <!-- Messages -->
     {% if messages %}
-        <div class="container mt-3">
+        <div class="container mx-auto px-4 mt-6">
             {% for message in messages %}
-                <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
-                    {{ message }}
-                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                <div class="alert-enter flex items-center p-4 mb-4 rounded-lg border-l-4 {% if message.tags == 'success' %}bg-green-50 dark:bg-green-900/20 border-green-500 text-green-700 dark:text-green-400{% elif message.tags == 'error' or message.tags == 'danger' %}bg-red-50 dark:bg-red-900/20 border-red-500 text-red-700 dark:text-red-400{% elif message.tags == 'warning' %}bg-yellow-50 dark:bg-yellow-900/20 border-yellow-500 text-yellow-700 dark:text-yellow-400{% else %}bg-blue-50 dark:bg-blue-900/20 border-blue-500 text-blue-700 dark:text-blue-400{% endif %} transition-all duration-300" role="alert">
+                    <i class="fas fa-info-circle mr-3"></i>
+                    <span class="flex-1">{{ message }}</span>
+                    <button type="button" class="ml-4 text-current hover:text-opacity-75 focus:outline-none focus:text-opacity-75 transition-colors duration-300" onclick="this.parentElement.remove()" aria-label="Close">
+                        <i class="fas fa-times"></i>
+                    </button>
                 </div>
             {% endfor %}
         </div>
@@ -354,85 +573,441 @@
 
     <!-- Main Content -->
     <main>
-        {% block content %}{% endblock %}
+        {% block content %}
+        <!-- Demo Hero Section -->
+        <section class="hero-bg relative min-h-[70vh] flex items-center text-white">
+            <div class="container mx-auto px-4 relative z-10">
+                <div class="max-w-4xl mx-auto text-center">
+                    <h1 class="text-4xl md:text-6xl font-bold mb-6" style="text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);">Discover Tanzania's Wildlife</h1>
+                    <p class="text-xl md:text-2xl mb-8 leading-relaxed" style="text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);">Experience the magic of Tanzania's national parks and wildlife with our expert-guided safari tours.</p>
+                    <div class="flex gap-4 justify-center flex-wrap">
+                        <a href="#" class="inline-flex items-center px-8 py-4 bg-primary dark:bg-primary-dark text-white rounded-lg hover:bg-secondary dark:hover:bg-secondary-dark focus:outline-none focus:ring-2 focus:ring-primary dark:focus:ring-primary-dark transition-all duration-300 hover:-translate-y-1 hover:shadow-lg text-lg font-medium">
+                            <i class="fas fa-binoculars mr-3"></i>Explore Tours
+                        </a>
+                        <a href="#" class="inline-flex items-center px-8 py-4 bg-transparent border-2 border-white text-white rounded-lg hover:bg-white hover:text-gray-800 focus:outline-none focus:ring-2 focus:ring-white transition-all duration-300 hover:-translate-y-1 hover:shadow-lg text-lg font-medium">
+                            <i class="fas fa-play-circle mr-3"></i>Watch Video
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Demo Content Section -->
+        <section class="py-20 bg-gray-50 dark:bg-gray-800">
+            <div class="container mx-auto px-4">
+                <h2 class="section-title relative text-4xl font-semibold text-gray-800 dark:text-gray-200 text-center mb-12">Featured Safari Tours</h2>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="card-hover-effect bg-white dark:bg-gray-700 rounded-xl shadow-sm hover:shadow-xl border border-gray-200 dark:border-gray-600 overflow-hidden">
+                        <div class="overflow-hidden">
+                            <img src="https://images.pexels.com/photos/133435/pexels-photo-133435.jpeg" class="card-image w-full h-48 object-cover" alt="Serengeti Safari" loading="lazy">
+                        </div>
+                        <div class="p-6">
+                            <h5 class="text-xl font-semibold text-gray-800 dark:text-gray-200 mb-3 group-hover:text-primary dark:group-hover:text-primary-dark transition-colors duration-300">Serengeti Adventure</h5>
+                            <p class="text-gray-600 dark:text-gray-400 mb-4">Experience the Great Migration and witness millions of wildebeest crossing the plains.</p>
+                            <div class="flex justify-between items-center">
+                                <span class="inline-block bg-primary dark:bg-primary-dark text-white px-4 py-2 rounded-full font-semibold">$1,299</span>
+                                <div class="text-yellow-400">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-hover-effect bg-white dark:bg-gray-700 rounded-xl shadow-sm hover:shadow-xl border border-gray-200 dark:border-gray-600 overflow-hidden">
+                        <div class="overflow-hidden">
+                            <img src="https://images.pexels.com/photos/1619317/pexels-photo-1619317.jpeg" class="card-image w-full h-48 object-cover" alt="Ngorongoro Crater" loading="lazy">
+                        </div>
+                        <div class="p-6">
+                            <h5 class="text-xl font-semibold text-gray-800 dark:text-gray-200 mb-3 group-hover:text-primary dark:group-hover:text-primary-dark transition-colors duration-300">Ngorongoro Crater</h5>
+                            <p class="text-gray-600 dark:text-gray-400 mb-4">Explore the world's largest inactive volcanic caldera and its incredible wildlife.</p>
+                            <div class="flex justify-between items-center">
+                                <span class="inline-block bg-primary dark:bg-primary-dark text-white px-4 py-2 rounded-full font-semibold">$899</span>
+                                <div class="text-yellow-400">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="far fa-star"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-hover-effect bg-white dark:bg-gray-700 rounded-xl shadow-sm hover:shadow-xl border border-gray-200 dark:border-gray-600 overflow-hidden">
+                        <div class="overflow-hidden">
+                            <img src="https://images.pexels.com/photos/1661179/pexels-photo-1661179.jpeg" class="card-image w-full h-48 object-cover" alt="Kilimanjaro Trek" loading="lazy">
+                        </div>
+                        <div class="p-6">
+                            <h5 class="text-xl font-semibold text-gray-800 dark:text-gray-200 mb-3 group-hover:text-primary dark:group-hover:text-primary-dark transition-colors duration-300">Kilimanjaro Trek</h5>
+                            <p class="text-gray-600 dark:text-gray-400 mb-4">Conquer Africa's highest peak and enjoy breathtaking views from the summit.</p>
+                            <div class="flex justify-between items-center">
+                                <span class="inline-block bg-primary dark:bg-primary-dark text-white px-4 py-2 rounded-full font-semibold">$2,199</span>
+                                <div class="text-yellow-400">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        {% endblock %}
     </main>
 
     <!-- Footer -->
-    <footer class="footer mt-5">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-4 mb-4">
-                    <h5 class="text-primary mb-3">Safari&nbsp;&amp;&nbsp;Bush Retreats</h5>
-                    <p class="mb-3">Experience the magic of Tanzania's wildlife and landscapes with our expert-guided safari tours. From the Serengeti to Kilimanjaro, we make your African dreams come true.</p>
-                    <div class="social-links">
-                        {% if site_settings.facebook_url %}<a href="{{ site_settings.facebook_url }}" class="me-3"><i class="fab fa-facebook-f"></i></a>{% endif %}
-                        {% if site_settings.twitter_url %}<a href="{{ site_settings.twitter_url }}" class="me-3"><i class="fab fa-twitter"></i></a>{% endif %}
-                        {% if site_settings.instagram_url %}<a href="{{ site_settings.instagram_url }}" class="me-3"><i class="fab fa-instagram"></i></a>{% endif %}
-                        {% if site_settings.youtube_url %}<a href="{{ site_settings.youtube_url }}" class="me-3"><i class="fab fa-youtube"></i></a>{% endif %}
+    <footer class="bg-gray-800 dark:bg-gray-900 text-gray-200 dark:text-gray-300 pt-12 pb-4 mt-20">
+        <div class="container mx-auto px-4">
+            <div class="grid lg:grid-cols-5 md:grid-cols-2 gap-8">
+                <div class="lg:col-span-2">
+                    <h5 class="text-primary dark:text-primary-dark text-xl font-semibold mb-4">Tanzania Safari Adventures</h5>
+                    <p class="mb-6 text-gray-400 dark:text-gray-500 leading-relaxed">Experience the magic of Tanzania's wildlife and landscapes with our expert-guided safari tours. From the Serengeti to Kilimanjaro, we make your African dreams come true.</p>
+                    <div class="flex space-x-3">
+                        {% if site_settings.facebook_url %}<a href="{{ site_settings.facebook_url }}" target="_blank" rel="noopener noreferrer" class="social-link w-10 h-10 bg-primary dark:bg-primary-dark text-white rounded-full flex items-center justify-center hover:bg-secondary dark:hover:bg-secondary-dark hover:shadow-lg transition-all duration-300"><i class="fab fa-facebook-f"></i></a>{% endif %}
+                        {% if site_settings.twitter_url %}<a href="{{ site_settings.twitter_url }}" target="_blank" rel="noopener noreferrer" class="social-link w-10 h-10 bg-primary dark:bg-primary-dark text-white rounded-full flex items-center justify-center hover:bg-secondary dark:hover:bg-secondary-dark hover:shadow-lg transition-all duration-300"><i class="fab fa-twitter"></i></a>{% endif %}
+                        {% if site_settings.instagram_url %}<a href="{{ site_settings.instagram_url }}" target="_blank" rel="noopener noreferrer" class="social-link w-10 h-10 bg-primary dark:bg-primary-dark text-white rounded-full flex items-center justify-center hover:bg-secondary dark:hover:bg-secondary-dark hover:shadow-lg transition-all duration-300"><i class="fab fa-instagram"></i></a>{% endif %}
+                        {% if site_settings.youtube_url %}<a href="{{ site_settings.youtube_url }}" target="_blank" rel="noopener noreferrer" class="social-link w-10 h-10 bg-primary dark:bg-primary-dark text-white rounded-full flex items-center justify-center hover:bg-secondary dark:hover:bg-secondary-dark hover:shadow-lg transition-all duration-300"><i class="fab fa-youtube"></i></a>{% endif %}
                     </div>
                 </div>
                 
-                <div class="col-lg-2 col-md-6 mb-4">
-                    <h6 class="text-primary mb-3">Quick Links</h6>
-                    <ul class="list-unstyled">
-                        <li><a href="{% url 'core:home' %}">Home</a></li>
-                        <li><a href="{% url 'parks:park_list' %}">National Parks</a></li>
-                        <li><a href="{% url 'tours:tour_list' %}">Safari Tours</a></li>
-                        <li><a href="{% url 'core:about' %}">About Us</a></li>
-                        <li><a href="{% url 'core:contact' %}">Contact</a></li>
+                <div>
+                    <h6 class="text-primary dark:text-primary-dark font-semibold mb-4">Quick Links</h6>
+                    <ul class="space-y-3">
+                        <li><a href="{% url 'core:home' %}" class="text-gray-400 dark:text-gray-500 hover:text-primary dark:hover:text-primary-dark transition-all duration-300 hover:translate-x-1 inline-block">Home</a></li>
+                        <li><a href="{% url 'parks:park_list' %}" class="text-gray-400 dark:text-gray-500 hover:text-primary dark:hover:text-primary-dark transition-all duration-300 hover:translate-x-1 inline-block">National Parks</a></li>
+                        <li><a href="{% url 'tours:tour_list' %}" class="text-gray-400 dark:text-gray-500 hover:text-primary dark:hover:text-primary-dark transition-all duration-300 hover:translate-x-1 inline-block">Safari Tours</a></li>
+                        <li><a href="{% url 'core:about' %}" class="text-gray-400 dark:text-gray-500 hover:text-primary dark:hover:text-primary-dark transition-all duration-300 hover:translate-x-1 inline-block">About Us</a></li>
+                        <li><a href="{% url 'core:contact' %}" class="text-gray-400 dark:text-gray-500 hover:text-primary dark:hover:text-primary-dark transition-all duration-300 hover:translate-x-1 inline-block">Contact</a></li>
                     </ul>
                 </div>
                 
-                <div class="col-lg-2 col-md-6 mb-4">
-                    <h6 class="text-primary mb-3">Destinations</h6>
-                    <ul class="list-unstyled">
-                        <li><a href="{% url 'parks:destination_list' %}">All Destinations</a></li>
-                        <li><a href="{% url 'parks:wildlife_list' %}">Wildlife</a></li>
-                        <li><a href="{% url 'core:historical_sites_list' %}">Historical Sites</a></li>
-                        <li><a href="{% url 'parks:park_list' %}">National Parks</a></li>
+                <div>
+                    <h6 class="text-primary dark:text-primary-dark font-semibold mb-4">Destinations</h6>
+                    <ul class="space-y-3">
+                        <li><a href="{% url 'parks:destination_list' %}" class="text-gray-400 dark:text-gray-500 hover:text-primary dark:hover:text-primary-dark transition-all duration-300 hover:translate-x-1 inline-block">All Destinations</a></li>
+                        <li><a href="{% url 'parks:wildlife_list' %}" class="text-gray-400 dark:text-gray-500 hover:text-primary dark:hover:text-primary-dark transition-all duration-300 hover:translate-x-1 inline-block">Wildlife</a></li>
+                        <li><a href="{% url 'core:historical_sites_list' %}" class="text-gray-400 dark:text-gray-500 hover:text-primary dark:hover:text-primary-dark transition-all duration-300 hover:translate-x-1 inline-block">Historical Sites</a></li>
+                        <li><a href="{% url 'parks:park_list' %}" class="text-gray-400 dark:text-gray-500 hover:text-primary dark:hover:text-primary-dark transition-all duration-300 hover:translate-x-1 inline-block">National Parks</a></li>
                     </ul>
                 </div>
                 
-                <div class="col-lg-2 col-md-6 mb-4">
-                    <h6 class="text-primary mb-3">Support</h6>
-                    <ul class="list-unstyled">
-                        <li><a href="{% url 'core:faq' %}">FAQ</a></li>
-                        <li><a href="{% url 'core:privacy_policy' %}">Privacy Policy</a></li>
-                        <li><a href="{% url 'core:terms_of_service' %}">Terms of Service</a></li>
-                        <li><a href="#">Travel Insurance</a></li>
-                        <li><a href="#">Visa Information</a></li>
-                    </ul>
-                </div>
-                
-                <div class="col-lg-2 col-md-6 mb-4">
-                    <h6 class="text-primary mb-3">Contact Info</h6>
-                    <ul class="list-unstyled">
-                        <li><i class="fas fa-phone me-2"></i>{{ site_settings.contact_phone|default:"+255 123 456 789" }}</li>
-                        <li><i class="fas fa-envelope me-2"></i>{{ site_settings.contact_email|default:"info@tanzaniasafari.com" }}</li>
-                        <li><i class="fas fa-map-marker-alt me-2"></i>{{ site_settings.address|default:"Arusha, Tanzania" }}</li>
+                <div>
+                    <h6 class="text-primary dark:text-primary-dark font-semibold mb-4">Support</h6>
+                    <ul class="space-y-3">
+                        <li><a href="{% url 'core:faq' %}" class="text-gray-400 dark:text-gray-500 hover:text-primary dark:hover:text-primary-dark transition-all duration-300 hover:translate-x-1 inline-block">FAQ</a></li>
+                        <li><a href="{% url 'core:privacy_policy' %}" class="text-gray-400 dark:text-gray-500 hover:text-primary dark:hover:text-primary-dark transition-all duration-300 hover:translate-x-1 inline-block">Privacy Policy</a></li>
+                        <li><a href="{% url 'core:terms_of_service' %}" class="text-gray-400 dark:text-gray-500 hover:text-primary dark:hover:text-primary-dark transition-all duration-300 hover:translate-x-1 inline-block">Terms of Service</a></li>
+                        <li><a href="#" class="text-gray-400 dark:text-gray-500 hover:text-primary dark:hover:text-primary-dark transition-all duration-300 hover:translate-x-1 inline-block">Travel Insurance</a></li>
+                        <li><a href="#" class="text-gray-400 dark:text-gray-500 hover:text-primary dark:hover:text-primary-dark transition-all duration-300 hover:translate-x-1 inline-block">Visa Information</a></li>
                     </ul>
                 </div>
             </div>
             
-            <hr class="my-4">
-            
-            <div class="row align-items-center">
-                <div class="col-md-6">
-                    <p class="mb-0">&copy; 2024 {{ site_settings.site_name|default:"Safari&nbsp;&amp;&nbsp;Bush Retreats" }}. All rights reserved.</p>
-                </div>
-                <div class="col-md-6 text-md-end">
-                    <p class="mb-0">Made with <i class="fas fa-heart text-danger"></i> in Tanzania</p>
+            <div class="border-t border-gray-700 dark:border-gray-600 mt-8 pt-8">
+                <div class="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+                    <p class="text-gray-400 dark:text-gray-500 text-center md:text-left">
+                        &copy; 2025 {{ site_settings.site_name|default:"Tanzania Safari Adventures" }}. All rights reserved.
+                    </p>
+                    <p class="text-gray-400 dark:text-gray-500 text-center md:text-right">
+                        Developed by
+                        <a href="https://nexivo.io" target="_blank" rel="noopener noreferrer" class="text-primary dark:text-primary-dark hover:text-secondary dark:hover:text-secondary-dark transition-colors duration-300">
+                            Nexivo
+                        </a>
+                        — find us at
+                        <a href="https://nexivo.io" target="_blank" rel="noopener noreferrer" class="text-primary dark:text-primary-dark hover:text-secondary dark:hover:text-secondary-dark transition-colors duration-300">
+                            Nexivo.io
+                        </a>
+                    </p>
                 </div>
             </div>
         </div>
     </footer>
 
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    
-    <!-- Custom JavaScript -->
+    <!-- Enhanced Custom JavaScript -->
     <script>
-        // Newsletter signup
+        // Theme Management System
+        class ThemeManager {
+            constructor() {
+                this.themeToggle = document.getElementById('theme-toggle');
+                this.themeIcon = document.getElementById('theme-icon');
+                this.currentTheme = localStorage.getItem('theme') || 'light';
+                
+                this.init();
+            }
+
+            init() {
+                // Set initial theme
+                this.setTheme(this.currentTheme);
+                
+                // Add event listener
+                this.themeToggle.addEventListener('click', () => this.toggleTheme());
+                
+                // Listen for system theme changes
+                window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+                    if (!localStorage.getItem('theme')) {
+                        this.setTheme(e.matches ? 'dark' : 'light');
+                    }
+                });
+            }
+
+            setTheme(theme) {
+                this.currentTheme = theme;
+                if (theme === 'dark') {
+                    document.documentElement.classList.add('dark');
+                } else {
+                    document.documentElement.classList.remove('dark');
+                }
+                localStorage.setItem('theme', theme);
+                this.updateThemeIcon();
+            }
+
+            toggleTheme() {
+                const newTheme = this.currentTheme === 'light' ? 'dark' : 'light';
+                this.setTheme(newTheme);
+                
+                // Add click animation
+                this.themeToggle.style.transform = 'scale(0.9)';
+                setTimeout(() => {
+                    this.themeToggle.style.transform = 'scale(1)';
+                }, 150);
+            }
+
+            updateThemeIcon() {
+                const icon = this.currentTheme === 'light' ? 'fa-moon' : 'fa-sun';
+                this.themeIcon.className = `fas ${icon}`;
+                
+                // Update tooltip
+                this.themeToggle.title = this.currentTheme === 'light' ? 'Switch to dark mode' : 'Switch to light mode';
+            }
+        }
+
+        // Header Scroll Behavior
+        class HeaderManager {
+            constructor() {
+                this.header = document.querySelector('.header');
+                this.lastScrollTop = 0;
+                this.scrollThreshold = 100;
+                
+                this.init();
+            }
+
+            init() {
+                window.addEventListener('scroll', () => this.handleScroll(), { passive: true });
+            }
+
+            handleScroll() {
+                const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                
+                if (scrollTop > this.scrollThreshold) {
+                    if (scrollTop > this.lastScrollTop) {
+                        // Scrolling down
+                        this.header.classList.add('header-scrolled');
+                    } else {
+                        // Scrolling up
+                        this.header.classList.remove('header-scrolled');
+                    }
+                } else {
+                    // At top of page
+                    this.header.classList.remove('header-scrolled');
+                }
+                
+                this.lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+            }
+        }
+
+        // Mobile Menu Manager
+        class MobileMenuManager {
+            constructor() {
+                this.menuToggle = document.getElementById('mobile-menu-toggle');
+                this.mobileMenu = document.getElementById('mobile-menu');
+                this.destinationsToggle = document.getElementById('mobile-destinations-toggle');
+                this.destinationsMenu = document.getElementById('mobile-destinations-menu');
+                this.isOpen = false;
+                this.isDestinationsOpen = false;
+                
+                this.init();
+            }
+
+            init() {
+                this.menuToggle.addEventListener('click', () => this.toggleMenu());
+                
+                // Initialize destinations dropdown
+                if (this.destinationsToggle && this.destinationsMenu) {
+                    this.destinationsToggle.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        this.toggleDestinations();
+                    });
+                }
+                
+                // Close menu when clicking outside
+                document.addEventListener('click', (e) => {
+                    if (this.isOpen && 
+                        !this.menuToggle.contains(e.target) && 
+                        !this.mobileMenu.contains(e.target)) {
+                        this.closeMenu();
+                    }
+                });
+                
+                // Handle touch events for better mobile experience
+                this.setupTouchEvents();
+            }
+
+            toggleMenu() {
+                if (this.isOpen) {
+                    this.closeMenu();
+                } else {
+                    this.openMenu();
+                }
+            }
+
+            openMenu() {
+                this.mobileMenu.classList.remove('hidden');
+                this.isOpen = true;
+                this.animateToggler(true);
+                
+                // Add body scroll lock for mobile
+                document.body.style.overflow = 'hidden';
+            }
+
+            closeMenu() {
+                this.mobileMenu.classList.add('hidden');
+                this.isOpen = false;
+                this.animateToggler(false);
+                
+                // Close destinations dropdown if open
+                if (this.isDestinationsOpen) {
+                    this.closeDestinations();
+                }
+                
+                // Remove body scroll lock
+                document.body.style.overflow = '';
+            }
+
+            animateToggler(isOpen) {
+                const spans = this.menuToggle.querySelectorAll('span');
+                if (isOpen) {
+                    spans[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
+                    spans[1].style.opacity = '0';
+                    spans[2].style.transform = 'rotate(-45deg) translate(7px, -6px)';
+                } else {
+                    spans[0].style.transform = 'none';
+                    spans[1].style.opacity = '1';
+                    spans[2].style.transform = 'none';
+                }
+            }
+            
+            toggleDestinations() {
+                if (this.isDestinationsOpen) {
+                    this.closeDestinations();
+                } else {
+                    this.openDestinations();
+                }
+            }
+            
+            openDestinations() {
+                this.destinationsMenu.classList.remove('hidden');
+                this.destinationsMenu.classList.add('show');
+                this.destinationsToggle.setAttribute('aria-expanded', 'true');
+                this.isDestinationsOpen = true;
+                
+                // Add haptic feedback on supported devices
+                if (navigator.vibrate) {
+                    navigator.vibrate(10);
+                }
+            }
+            
+            closeDestinations() {
+                this.destinationsMenu.classList.remove('show');
+                this.destinationsToggle.setAttribute('aria-expanded', 'false');
+                this.isDestinationsOpen = false;
+                
+                // Hide after animation completes
+                setTimeout(() => {
+                    if (!this.isDestinationsOpen) {
+                        this.destinationsMenu.classList.add('hidden');
+                    }
+                }, 300);
+            }
+            
+            setupTouchEvents() {
+                // Add touch feedback for dropdown items
+                const dropdownItems = document.querySelectorAll('.mobile-dropdown-item');
+                
+                dropdownItems.forEach(item => {
+                    let touchStartTime;
+                    
+                    item.addEventListener('touchstart', (e) => {
+                        touchStartTime = Date.now();
+                        item.style.backgroundColor = 'rgba(193, 141, 69, 0.1)';
+                    }, { passive: true });
+                    
+                    item.addEventListener('touchend', (e) => {
+                        const touchDuration = Date.now() - touchStartTime;
+                        
+                        // Reset background after a short delay
+                        setTimeout(() => {
+                            item.style.backgroundColor = '';
+                        }, 150);
+                        
+                        // If it was a quick tap (not a scroll), navigate
+                        if (touchDuration < 200) {
+                            const href = item.getAttribute('href');
+                            if (href && href !== '#') {
+                                // Add small delay for visual feedback
+                                setTimeout(() => {
+                                    window.location.href = href;
+                                }, 100);
+                            }
+                        }
+                    }, { passive: true });
+                    
+                    item.addEventListener('touchcancel', () => {
+                        item.style.backgroundColor = '';
+                    }, { passive: true });
+                });
+                
+                // Add touch feedback for main toggle
+                this.destinationsToggle.addEventListener('touchstart', () => {
+                    this.destinationsToggle.style.backgroundColor = 'rgba(193, 141, 69, 0.1)';
+                }, { passive: true });
+                
+                this.destinationsToggle.addEventListener('touchend', () => {
+                    setTimeout(() => {
+                        this.destinationsToggle.style.backgroundColor = '';
+                    }, 150);
+                }, { passive: true });
+            }
+        }
+
+        // Alert Management
+        class AlertManager {
+            constructor() {
+                this.init();
+            }
+
+            init() {
+                // Auto-hide alerts after 5 seconds
+                this.autoHideAlerts();
+            }
+
+            autoHideAlerts() {
+                setTimeout(() => {
+                    const alerts = document.querySelectorAll('.alert-enter:not(.alert-permanent)');
+                    alerts.forEach(alert => {
+                        alert.classList.add('alert-exit');
+                        setTimeout(() => alert.remove(), 300);
+                    });
+                }, 5000);
+            }
+        }
+
+        // Newsletter Functionality (keeping your original function)
         function subscribeNewsletter() {
             const email = document.getElementById('newsletter-email').value;
             if (!email) {
@@ -462,15 +1037,60 @@
                 alert('An error occurred. Please try again.');
             });
         }
-        
-        // Auto-hide alerts after 5 seconds
-        setTimeout(function() {
-            const alerts = document.querySelectorAll('.alert');
-            alerts.forEach(function(alert) {
-                const bsAlert = new bootstrap.Alert(alert);
-                bsAlert.close();
+
+        // Search Enhancement
+        class SearchManager {
+            constructor() {
+                this.searchInput = document.querySelector('input[name="q"]');
+                this.init();
+            }
+
+            init() {
+                if (this.searchInput) {
+                    this.searchInput.addEventListener('keypress', (e) => {
+                        if (e.key === 'Enter') {
+                            this.searchInput.closest('form').submit();
+                        }
+                    });
+                }
+            }
+        }
+
+        // Initialize all managers when DOM is loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            new ThemeManager();
+            new HeaderManager();
+            new MobileMenuManager();
+            new AlertManager();
+            new SearchManager();
+
+            // Smooth scroll for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
             });
-        }, 5000);
+        });
+
+        // Performance optimization: Throttle scroll events
+        function throttle(func, wait) {
+            let timeout;
+            return function executedFunction(...args) {
+                const later = () => {
+                    clearTimeout(timeout);
+                    func(...args);
+                };
+                clearTimeout(timeout);
+                timeout = setTimeout(later, wait);
+            };
+        }
     </script>
     
     {% block extra_js %}{% endblock %}

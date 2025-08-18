@@ -1,82 +1,85 @@
 {% extends 'base/base.html' %}
 {% load i18n %}
 
-{% block title %}{{ tour.title }} - {% trans "Safari Tour" %} - Safari&nbsp;&amp;&nbsp;Bush Retreats{% endblock %}
+{% block title %}{{ tour.title }} - {% trans "Safari Tour" %} - Tanzania Safari Adventures{% endblock %}
 
 {% block meta_description %}{{ tour.short_description }}{% endblock %}
 
 {% block content %}
 <!-- Hero Section -->
-<section class="hero-section" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('{% if tour.main_image %}{{ tour.main_image.url }}{% else %}https://images.pexels.com/photos/1170986/pexels-photo-1170986.jpeg{% endif %}');">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8">
-                <div class="d-flex align-items-center mb-3">
-                    <span class="badge badge-custom me-3">{{ tour.get_category_display }}</span>
-                    {% if tour.is_featured %}
-                        <span class="badge bg-warning text-dark me-3">
-                            <i class="fas fa-star me-1"></i>{% trans "Featured" %}
-                        </span>
-                    {% endif %}
-                    <span class="badge bg-secondary">{{ tour.get_difficulty_level_display }}</span>
+<section class="relative bg-cover bg-center" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('{% if tour.main_image %}{{ tour.main_image.url }}{% else %}https://images.pexels.com/photos/1170986/pexels-photo-1170986.jpeg{% endif %}'); min-height: 80vh;">
+    <div class="container mx-auto px-4 py-24 relative z-10">
+        <div class="max-w-3xl">
+            <div class="flex flex-wrap gap-3 mb-4">
+                <span class="bg-[#C18D45] text-white text-sm font-semibold px-3 py-1 rounded-full">
+                    {{ tour.get_category_display }}
+                </span>
+                {% if tour.is_featured %}
+                    <span class="bg-yellow-400 text-gray-900 text-sm font-semibold px-3 py-1 rounded-full flex items-center">
+                        <i class="fas fa-star mr-1"></i>{% trans "Featured" %}
+                    </span>
+                {% endif %}
+                <span class="bg-gray-200 text-gray-800 text-sm font-semibold px-3 py-1 rounded-full">
+                    {{ tour.get_difficulty_level_display }}
+                </span>
+            </div>
+            <h1 class="text-4xl md:text-5xl font-bold text-white mb-6">{{ tour.title }}</h1>
+            <p class="text-xl text-white mb-8">{{ tour.subtitle|default:tour.short_description }}</p>
+            
+            <div class="flex flex-wrap gap-6 mb-8">
+                <div class="text-white flex items-center">
+                    <i class="fas fa-clock mr-2 text-[#C18D45]"></i>{{ tour.get_duration_display }}
                 </div>
-                <h1 class="display-4 fw-bold mb-4">{{ tour.title }}</h1>
-                <p class="lead mb-4">{{ tour.subtitle|default:tour.short_description }}</p>
-                <div class="d-flex flex-wrap gap-3 mb-4">
-                    <div class="text-white">
-                        <i class="fas fa-clock me-2"></i>{{ tour.get_duration_display }}
-                    </div>
-                    <div class="text-white">
-                        <i class="fas fa-users me-2"></i>{{ tour.min_participants }}-{{ tour.max_participants }} {% trans "people" %}
-                    </div>
-                    <div class="text-white">
-                        <i class="fas fa-star me-2"></i>{{ tour.average_rating|floatformat:1 }} ({{ tour.total_reviews }} {% trans "reviews" %})
-                    </div>
+                <div class="text-white flex items-center">
+                    <i class="fas fa-users mr-2 text-[#C18D45]"></i>{{ tour.min_participants }}-{{ tour.max_participants }} {% trans "people" %}
                 </div>
-                <div class="d-flex flex-wrap gap-3">
-                    {% if user.is_authenticated %}
-                        <a href="{% url 'bookings:create_booking' tour.slug %}" class="btn btn-primary btn-lg">
-                            <i class="fas fa-calendar-check me-2"></i>{% trans "Book Now" %}
-                        </a>
-                    {% else %}
-                        <a href="{% url 'accounts:login' %}?next={% url 'bookings:create_booking' tour.slug %}" class="btn btn-primary btn-lg">
-                            <i class="fas fa-calendar-check me-2"></i>{% trans "Book Now" %}
-                        </a>
-                    {% endif %}
-                    <a href="#availability" class="btn btn-outline-light btn-lg">
-                        <i class="fas fa-calendar me-2"></i>{% trans "Check Availability" %}
+                <div class="text-white flex items-center">
+                    <i class="fas fa-star mr-2 text-[#C18D45]"></i>{{ tour.average_rating|floatformat:1 }} ({{ tour.total_reviews }} {% trans "reviews" %})
+                </div>
+            </div>
+            
+            <div class="flex flex-wrap gap-4">
+                {% if user.is_authenticated %}
+                    <a href="{% url 'bookings:create_booking' tour.slug %}" class="bg-[#C18D45] hover:bg-[#a97a3a] text-white font-medium py-3 px-6 rounded-md transition duration-300 flex items-center">
+                        <i class="fas fa-calendar-check mr-2"></i>{% trans "Book Now" %}
                     </a>
-                </div>
+                {% else %}
+                    <a href="{% url 'accounts:login' %}?next={% url 'bookings:create_booking' tour.slug %}" class="bg-[#C18D45] hover:bg-[#a97a3a] text-white font-medium py-3 px-6 rounded-md transition duration-300 flex items-center">
+                        <i class="fas fa-calendar-check mr-2"></i>{% trans "Book Now" %}
+                    </a>
+                {% endif %}
+                <a href="#availability" class="bg-white hover:bg-gray-100 text-gray-800 font-medium py-3 px-6 rounded-md border border-gray-300 transition duration-300 flex items-center">
+                    <i class="fas fa-calendar mr-2"></i>{% trans "Check Availability" %}
+                </a>
             </div>
         </div>
     </div>
 </section>
 
 <!-- Tour Info -->
-<section class="py-5">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8 mb-5">
+<section class="py-12">
+    <div class="container mx-auto px-4">
+        <div class="flex flex-col lg:flex-row gap-8">
+            <!-- Main Content -->
+            <div class="lg:w-2/3">
                 <!-- Description -->
-                <div class="mb-5">
-                    <h2 class="mb-4">{% trans "Tour Overview" %}</h2>
-                    <p class="lead">{{ tour.short_description }}</p>
-                    <div class="mt-4">
+                <div class="mb-10">
+                    <h2 class="text-3xl font-bold mb-6 pb-2 border-b-2 border-[#C18D45]">{% trans "Tour Overview" %}</h2>
+                    <p class="text-xl text-gray-700 mb-6">{{ tour.short_description }}</p>
+                    <div class="prose max-w-none">
                         {{ tour.description|linebreaks }}
                     </div>
                 </div>
                 
                 <!-- Highlights -->
                 {% if tour.highlights %}
-                    <div class="mb-5">
-                        <h3 class="mb-4">{% trans "Tour Highlights" %}</h3>
-                        <div class="row">
+                    <div class="mb-10">
+                        <h3 class="text-2xl font-bold mb-6 pb-2 border-b-2 border-[#C18D45]">{% trans "Tour Highlights" %}</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                             {% for highlight in tour.highlights %}
-                                <div class="col-md-6 mb-3">
-                                    <div class="d-flex">
-                                        <i class="fas fa-check-circle text-primary me-3 mt-1"></i>
-                                        <span>{{ highlight }}</span>
-                                    </div>
+                                <div class="flex items-start">
+                                    <i class="fas fa-check-circle text-[#C18D45] mt-1 mr-3"></i>
+                                    <span class="text-gray-700">{{ highlight }}</span>
                                 </div>
                             {% endfor %}
                         </div>
@@ -85,22 +88,20 @@
                 
                 <!-- Parks Visited -->
                 {% if tour.parks_visited.all %}
-                    <div class="mb-5">
-                        <h3 class="mb-4">{% trans "Parks & Destinations" %}</h3>
-                        <div class="row">
+                    <div class="mb-10">
+                        <h3 class="text-2xl font-bold mb-6 pb-2 border-b-2 border-[#C18D45]">{% trans "Parks & Destinations" %}</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                             {% for park in tour.parks_visited.all %}
-                                <div class="col-md-6 mb-4">
-                                    <div class="card h-100">
-                                        <img src="{% if park.main_image %}{{ park.main_image.url }}{% else %}https://images.pexels.com/photos/631317/pexels-photo-631317.jpeg{% endif %}" 
-                                             class="card-img-top" style="height: 200px; object-fit: cover;" alt="{{ park.name }}">
-                                        <div class="card-body">
-                                            <h5 class="card-title">{{ park.name }}</h5>
-                                            <p class="text-muted mb-2">{{ park.location }}, {{ park.region }}</p>
-                                            <p class="card-text">{{ park.short_description|truncatewords:20 }}</p>
-                                            <a href="{% url 'parks:park_detail' park.slug %}" class="btn btn-outline-primary btn-sm">
-                                                {% trans "Learn More" %}
-                                            </a>
-                                        </div>
+                                <div class="bg-white rounded-xl shadow-md overflow-hidden">
+                                    <img src="{% if park.main_image %}{{ park.main_image.url }}{% else %}https://images.pexels.com/photos/631317/pexels-photo-631317.jpeg{% endif %}" 
+                                         class="w-full h-48 object-cover" alt="{{ park.name }}">
+                                    <div class="p-4">
+                                        <h5 class="text-xl font-bold mb-2">{{ park.name }}</h5>
+                                        <p class="text-gray-600 mb-3">{{ park.location }}, {{ park.region }}</p>
+                                        <p class="text-gray-700 mb-4">{{ park.short_description|truncatewords:20 }}</p>
+                                        <a href="{% url 'parks:park_detail' park.slug %}" class="inline-block bg-[#C18D45] hover:bg-[#a97a3a] text-white font-medium py-2 px-4 rounded-md transition duration-300 text-sm">
+                                            {% trans "Learn More" %}
+                                        </a>
                                     </div>
                                 </div>
                             {% endfor %}
@@ -110,50 +111,50 @@
                 
                 <!-- Itinerary -->
                 {% if tour.itinerary_days.all %}
-                    <div class="mb-5">
-                        <h3 class="mb-4">{% trans "Detailed Itinerary" %}</h3>
-                        <div class="accordion" id="itineraryAccordion">
+                    <div class="mb-10">
+                        <h3 class="text-2xl font-bold mb-6 pb-2 border-b-2 border-[#C18D45]">{% trans "Detailed Itinerary" %}</h3>
+                        <div class="space-y-4">
                             {% for day in tour.itinerary_days.all %}
-                                <div class="accordion-item">
-                                    <h2 class="accordion-header" id="day{{ day.day_number }}">
-                                        <button class="accordion-button {% if not forloop.first %}collapsed{% endif %}" type="button" 
-                                                data-bs-toggle="collapse" data-bs-target="#collapseDay{{ day.day_number }}">
-                                            {% trans "Day" %} {{ day.day_number }}: {{ day.title }}
-                                        </button>
-                                    </h2>
-                                    <div id="collapseDay{{ day.day_number }}" class="accordion-collapse collapse {% if forloop.first %}show{% endif %}" 
-                                         data-bs-parent="#itineraryAccordion">
-                                        <div class="accordion-body">
-                                            <div class="row">
-                                                {% if day.day_image %}
-                                                    <div class="col-md-4 mb-3">
-                                                        <img src="{{ day.day_image.url }}" class="img-fluid rounded" alt="{{ day.title }}">
-                                                    </div>
-                                                {% endif %}
-                                                <div class="{% if day.day_image %}col-md-8{% else %}col-12{% endif %}">
-                                                    <p>{{ day.description|linebreaks }}</p>
-                                                    
-                                                    {% if day.activities %}
-                                                        <h6>{% trans "Activities:" %}</h6>
-                                                        <ul>
-                                                            {% for activity in day.activities %}
-                                                                <li>{{ activity }}</li>
-                                                            {% endfor %}
-                                                        </ul>
-                                                    {% endif %}
-                                                    
-                                                    {% if day.overnight_location %}
-                                                        <p><strong>{% trans "Overnight:" %}</strong> {{ day.overnight_location }}</p>
-                                                    {% endif %}
-                                                    
-                                                    {% if day.meals_included %}
-                                                        <p><strong>{% trans "Meals:" %}</strong> 
-                                                            {% for meal in day.meals_included %}
-                                                                {{ meal }}{% if not forloop.last %}, {% endif %}
-                                                            {% endfor %}
-                                                        </p>
-                                                    {% endif %}
+                                <div class="border border-gray-200 rounded-xl overflow-hidden">
+                                    <button class="w-full p-4 bg-gray-50 text-left flex justify-between items-center focus:outline-none" 
+                                            aria-expanded="{% if forloop.first %}true{% else %}false{% endif %}" 
+                                            aria-controls="itinerary-{{ forloop.counter }}">
+                                        <h4 class="font-bold text-lg">{% trans "Day" %} {{ day.day_number }}: {{ day.title }}</h4>
+                                        <i class="fas fa-chevron-down transform transition-transform duration-300"></i>
+                                    </button>
+                                    <div id="itinerary-{{ forloop.counter }}" 
+                                         class="p-4 {% if not forloop.first %}hidden{% endif %}">
+                                        <div class="flex flex-col md:flex-row gap-4">
+                                            {% if day.day_image %}
+                                                <div class="md:w-1/3">
+                                                    <img src="{{ day.day_image.url }}" class="w-full h-48 object-cover rounded-lg" alt="{{ day.title }}">
                                                 </div>
+                                            {% endif %}
+                                            <div class="{% if day.day_image %}md:w-2/3{% else %}w-full{% endif %}">
+                                                <div class="prose max-w-none">
+                                                    {{ day.description|linebreaks }}
+                                                </div>
+                                                
+                                                {% if day.activities %}
+                                                    <h5 class="font-bold mt-4 mb-2">{% trans "Activities:" %}</h5>
+                                                    <ul class="list-disc pl-5 space-y-1">
+                                                        {% for activity in day.activities %}
+                                                            <li>{{ activity }}</li>
+                                                        {% endfor %}
+                                                    </ul>
+                                                {% endif %}
+                                                
+                                                {% if day.overnight_location %}
+                                                    <p class="mt-3"><strong>{% trans "Overnight:" %}</strong> {{ day.overnight_location }}</p>
+                                                {% endif %}
+                                                
+                                                {% if day.meals_included %}
+                                                    <p class="mt-2"><strong>{% trans "Meals:" %}</strong> 
+                                                        {% for meal in day.meals_included %}
+                                                            {{ meal }}{% if not forloop.last %}, {% endif %}
+                                                        {% endfor %}
+                                                    </p>
+                                                {% endif %}
                                             </div>
                                         </div>
                                     </div>
@@ -164,45 +165,43 @@
                 {% endif %}
                 
                 <!-- Inclusions & Exclusions -->
-                <div class="row mb-5">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
                     {% if tour.inclusions %}
-                        <div class="col-md-6 mb-4">
-                            <div class="card h-100 border-success">
-                                <div class="card-header bg-success text-white">
-                                    <h5 class="mb-0">
-                                        <i class="fas fa-check me-2"></i>{% trans "Included" %}
-                                    </h5>
-                                </div>
-                                <div class="card-body">
-                                    <ul class="list-unstyled mb-0">
-                                        {% for inclusion in tour.inclusions %}
-                                            <li class="mb-2">
-                                                <i class="fas fa-check text-success me-2"></i>{{ inclusion }}
-                                            </li>
-                                        {% endfor %}
-                                    </ul>
-                                </div>
+                        <div class="bg-white rounded-xl shadow-md border border-green-500">
+                            <div class="bg-green-500 text-white px-6 py-4 rounded-t-lg">
+                                <h5 class="font-bold text-lg flex items-center">
+                                    <i class="fas fa-check mr-2"></i>{% trans "Included" %}
+                                </h5>
+                            </div>
+                            <div class="p-6">
+                                <ul class="space-y-2">
+                                    {% for inclusion in tour.inclusions %}
+                                        <li class="flex items-start">
+                                            <i class="fas fa-check text-green-500 mt-1 mr-3"></i>
+                                            <span>{{ inclusion }}</span>
+                                        </li>
+                                    {% endfor %}
+                                </ul>
                             </div>
                         </div>
                     {% endif %}
                     
                     {% if tour.exclusions %}
-                        <div class="col-md-6 mb-4">
-                            <div class="card h-100 border-danger">
-                                <div class="card-header bg-danger text-white">
-                                    <h5 class="mb-0">
-                                        <i class="fas fa-times me-2"></i>{% trans "Not Included" %}
-                                    </h5>
-                                </div>
-                                <div class="card-body">
-                                    <ul class="list-unstyled mb-0">
-                                        {% for exclusion in tour.exclusions %}
-                                            <li class="mb-2">
-                                                <i class="fas fa-times text-danger me-2"></i>{{ exclusion }}
-                                            </li>
-                                        {% endfor %}
-                                    </ul>
-                                </div>
+                        <div class="bg-white rounded-xl shadow-md border border-red-500">
+                            <div class="bg-red-500 text-white px-6 py-4 rounded-t-lg">
+                                <h5 class="font-bold text-lg flex items-center">
+                                    <i class="fas fa-times mr-2"></i>{% trans "Not Included" %}
+                                </h5>
+                            </div>
+                            <div class="p-6">
+                                <ul class="space-y-2">
+                                    {% for exclusion in tour.exclusions %}
+                                        <li class="flex items-start">
+                                            <i class="fas fa-times text-red-500 mt-1 mr-3"></i>
+                                            <span>{{ exclusion }}</span>
+                                        </li>
+                                    {% endfor %}
+                                </ul>
                             </div>
                         </div>
                     {% endif %}
@@ -210,108 +209,76 @@
             </div>
             
             <!-- Sidebar -->
-            <div class="col-lg-4">
-                <!-- Pricing -->
-                <div class="card border-0 shadow mb-4">
-                    <div class="card-body">
-                        <h5 class="card-title mb-4">{% trans "Pricing" %}</h5>
-                        
-                        {% if tour.price_budget %}
-                            <div class="d-flex justify-content-between mb-3 p-3 bg-light rounded">
-                                <div>
-                                    <h6 class="mb-1">{% trans "Budget" %}</h6>
-                                    <small class="text-muted">{% trans "Basic accommodation" %}</small>
-                                </div>
-                                <div class="text-end">
-                                    <strong class="h5 text-primary">${{ tour.price_budget|floatformat:0 }}</strong>
-                                    <div><small class="text-muted">{% trans "per person" %}</small></div>
-                                </div>
+            <div class="lg:w-1/3">
+                <!-- Booking -->
+                <div class="bg-white rounded-xl shadow-md p-6 mb-6">
+                    <h5 class="text-xl font-bold mb-4 pb-2 border-b-2 border-[#C18D45]">{% trans "Book This Tour" %}</h5>
+                    
+                    <div class="bg-[#f5e9d8] border-l-4 border-[#C18D45] text-[#a97a3a] p-4 mb-6 rounded-r">
+                        <div class="flex items-start">
+                            <i class="fas fa-info-circle mt-1 mr-3"></i>
+                            <div>
+                                <small>{% trans "Contact us for pricing and availability. We offer competitive rates for all accommodation types." %}</small>
                             </div>
-                        {% endif %}
-                        
-                        {% if tour.price_standard %}
-                            <div class="d-flex justify-content-between mb-3 p-3 bg-light rounded">
-                                <div>
-                                    <h6 class="mb-1">{% trans "Standard" %}</h6>
-                                    <small class="text-muted">{% trans "Comfortable lodges" %}</small>
-                                </div>
-                                <div class="text-end">
-                                    <strong class="h5 text-primary">${{ tour.price_standard|floatformat:0 }}</strong>
-                                    <div><small class="text-muted">{% trans "per person" %}</small></div>
-                                </div>
-                            </div>
-                        {% endif %}
-                        
-                        {% if tour.price_luxury %}
-                            <div class="d-flex justify-content-between mb-3 p-3 bg-light rounded">
-                                <div>
-                                    <h6 class="mb-1">{% trans "Luxury" %}</h6>
-                                    <small class="text-muted">{% trans "Premium lodges" %}</small>
-                                </div>
-                                <div class="text-end">
-                                    <strong class="h5 text-primary">${{ tour.price_luxury|floatformat:0 }}</strong>
-                                    <div><small class="text-muted">{% trans "per person" %}</small></div>
-                                </div>
-                            </div>
-                        {% endif %}
-                        
-                        <div class="text-center mt-4">
-                            {% if user.is_authenticated %}
-                                <a href="{% url 'bookings:create_booking' tour.slug %}" class="btn btn-primary w-100 btn-lg">
-                                    <i class="fas fa-calendar-check me-2"></i>{% trans "Book This Tour" %}
-                                </a>
-                            {% else %}
-                                <a href="{% url 'accounts:login' %}?next={% url 'bookings:create_booking' tour.slug %}" class="btn btn-primary w-100 btn-lg">
-                                    <i class="fas fa-calendar-check me-2"></i>{% trans "Book This Tour" %}
-                                </a>
-                            {% endif %}
                         </div>
+                    </div>
+                    
+                    <div>
+                        {% if user.is_authenticated %}
+                            <a href="{% url 'bookings:create_booking' tour.slug %}" class="block w-full bg-[#C18D45] hover:bg-[#a97a3a] text-white font-medium py-3 px-6 rounded-md text-center transition duration-300 flex items-center justify-center">
+                                <i class="fas fa-paper-plane mr-2"></i>{% trans "Request Booking" %}
+                            </a>
+                        {% else %}
+                            <a href="{% url 'accounts:login' %}?next={% url 'bookings:create_booking' tour.slug %}" class="block w-full bg-[#C18D45] hover:bg-[#a97a3a] text-white font-medium py-3 px-6 rounded-md text-center transition duration-300 flex items-center justify-center">
+                                <i class="fas fa-paper-plane mr-2"></i>{% trans "Request Booking" %}
+                            </a>
+                        {% endif %}
                     </div>
                 </div>
                 
                 <!-- Quick Info -->
-                <div class="card border-0 shadow mb-4">
-                    <div class="card-body">
-                        <h5 class="card-title mb-4">{% trans "Quick Info" %}</h5>
-                        
-                        <div class="d-flex justify-content-between mb-3">
-                            <span class="text-muted">{% trans "Duration" %}:</span>
+                <div class="bg-white rounded-xl shadow-md p-6 mb-6">
+                    <h5 class="text-xl font-bold mb-4 pb-2 border-b-2 border-[#C18D45]">{% trans "Quick Info" %}</h5>
+                    
+                    <div class="space-y-3">
+                        <div class="flex justify-between pb-2 border-b border-gray-200">
+                            <span class="text-gray-600">{% trans "Duration" %}:</span>
                             <strong>{{ tour.get_duration_display }}</strong>
                         </div>
                         
-                        <div class="d-flex justify-content-between mb-3">
-                            <span class="text-muted">{% trans "Group Size" %}:</span>
+                        <div class="flex justify-between pb-2 border-b border-gray-200">
+                            <span class="text-gray-600">{% trans "Group Size" %}:</span>
                             <strong>{{ tour.min_participants }}-{{ tour.max_participants }} {% trans "people" %}</strong>
                         </div>
                         
-                        <div class="d-flex justify-content-between mb-3">
-                            <span class="text-muted">{% trans "Difficulty" %}:</span>
-                            <span class="badge bg-secondary">{{ tour.get_difficulty_level_display }}</span>
+                        <div class="flex justify-between pb-2 border-b border-gray-200">
+                            <span class="text-gray-600">{% trans "Difficulty" %}:</span>
+                            <span class="bg-gray-200 text-gray-800 text-sm font-semibold px-3 py-1 rounded-full">
+                                {{ tour.get_difficulty_level_display }}
+                            </span>
                         </div>
                         
                         {% if tour.min_age %}
-                            <div class="d-flex justify-content-between mb-3">
-                                <span class="text-muted">{% trans "Min Age" %}:</span>
+                            <div class="flex justify-between pb-2 border-b border-gray-200">
+                                <span class="text-gray-600">{% trans "Min Age" %}:</span>
                                 <strong>{{ tour.min_age }} {% trans "years" %}</strong>
                             </div>
                         {% endif %}
                         
-                        <div class="d-flex justify-content-between">
-                            <span class="text-muted">{% trans "Accommodation" %}:</span>
+                        <div class="flex justify-between">
+                            <span class="text-gray-600">{% trans "Accommodation" %}:</span>
                             <strong>{{ tour.get_accommodation_type_display }}</strong>
                         </div>
                     </div>
                 </div>
                 
                 <!-- Contact -->
-                <div class="card border-0 shadow">
-                    <div class="card-body">
-                        <h5 class="card-title mb-3">{% trans "Need Help?" %}</h5>
-                        <p class="text-muted mb-3">{% trans "Have questions about this tour? Our experts are here to help!" %}</p>
-                        <a href="{% url 'core:contact' %}" class="btn btn-outline-primary w-100">
-                            <i class="fas fa-phone me-2"></i>{% trans "Contact Us" %}
-                        </a>
-                    </div>
+                <div class="bg-white rounded-xl shadow-md p-6">
+                    <h5 class="text-xl font-bold mb-3">{% trans "Need Help?" %}</h5>
+                    <p class="text-gray-600 mb-4">{% trans "Have questions about this tour? Our experts are here to help!" %}</p>
+                    <a href="{% url 'core:contact' %}" class="block w-full bg-[#C18D45] hover:bg-[#a97a3a] text-white font-medium py-3 px-6 rounded-md text-center transition duration-300">
+                        <i class="fas fa-phone mr-2"></i>{% trans "Contact Us" %}
+                    </a>
                 </div>
             </div>
         </div>
@@ -320,44 +287,42 @@
 
 <!-- Availability -->
 {% if availability %}
-    <section id="availability" class="py-5 bg-light">
-        <div class="container">
-            <div class="text-center mb-5">
-                <h2 class="section-title">{% trans "Available Dates" %}</h2>
-                <p class="lead text-muted">{% trans "Choose your preferred departure date" %}</p>
+    <section id="availability" class="py-12 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-10">
+                <h2 class="text-3xl font-bold mb-4">{% trans "Available Dates" %}</h2>
+                <p class="text-xl text-gray-600">{% trans "Choose your preferred departure date" %}</p>
             </div>
             
-            <div class="row">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {% for avail in availability %}
-                    <div class="col-lg-4 col-md-6 mb-4">
-                        <div class="card h-100">
-                            <div class="card-body">
-                                <div class="d-flex justify-content-between align-items-start mb-3">
-                                    <div>
-                                        <h6 class="mb-1">{{ avail.start_date|date:"M d, Y" }}</h6>
-                                        <small class="text-muted">{% trans "to" %} {{ avail.end_date|date:"M d, Y" }}</small>
-                                    </div>
-                                    <span class="badge bg-success">{{ avail.available_spots }} {% trans "spots left" %}</span>
-                                </div>
-                                
-                                {% if avail.assigned_guide %}
-                                    <p class="text-muted mb-2">
-                                        <i class="fas fa-user me-1"></i>{% trans "Guide:" %} {{ avail.assigned_guide.user.get_full_name }}
-                                    </p>
-                                {% endif %}
-                                
-                                <div class="text-center mt-3">
-                                    {% if user.is_authenticated %}
-                                        <a href="{% url 'bookings:create_booking' tour.slug %}?availability={{ avail.id }}" class="btn btn-primary btn-sm">
-                                            {% trans "Select Date" %}
-                                        </a>
-                                    {% else %}
-                                        <a href="{% url 'accounts:login' %}?next={% url 'bookings:create_booking' tour.slug %}" class="btn btn-primary btn-sm">
-                                            {% trans "Select Date" %}
-                                        </a>
-                                    {% endif %}
-                                </div>
+                    <div class="bg-white rounded-xl shadow-md p-6">
+                        <div class="flex justify-between items-start mb-4">
+                            <div>
+                                <h6 class="font-bold">{{ avail.start_date|date:"M d, Y" }}</h6>
+                                <p class="text-gray-600">{% trans "to" %} {{ avail.end_date|date:"M d, Y" }}</p>
                             </div>
+                            <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium">
+                                {{ avail.available_spots }} {% trans "spots left" %}
+                            </span>
+                        </div>
+                        
+                        {% if avail.assigned_guide %}
+                            <p class="text-gray-600 mb-4 flex items-center">
+                                <i class="fas fa-user mr-2 text-[#C18D45]"></i>{% trans "Guide:" %} {{ avail.assigned_guide.user.get_full_name }}
+                            </p>
+                        {% endif %}
+                        
+                        <div class="text-center">
+                            {% if user.is_authenticated %}
+                                <a href="{% url 'bookings:create_booking' tour.slug %}?availability={{ avail.id }}" class="inline-block bg-[#C18D45] hover:bg-[#a97a3a] text-white font-medium py-2 px-6 rounded-md transition duration-300">
+                                    {% trans "Select Date" %}
+                                </a>
+                            {% else %}
+                                <a href="{% url 'accounts:login' %}?next={% url 'bookings:create_booking' tour.slug %}" class="inline-block bg-[#C18D45] hover:bg-[#a97a3a] text-white font-medium py-2 px-6 rounded-md transition duration-300">
+                                    {% trans "Select Date" %}
+                                </a>
+                            {% endif %}
                         </div>
                     </div>
                 {% endfor %}
@@ -368,70 +333,65 @@
 
 <!-- Reviews -->
 {% if reviews %}
-    <section class="py-5">
-        <div class="container">
-            <div class="text-center mb-5">
-                <h2 class="section-title">{% trans "Traveler Reviews" %}</h2>
-                <div class="d-flex justify-content-center align-items-center mb-3">
-                    <div class="star-rating me-3">
+    <section class="py-12">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-10">
+                <h2 class="text-3xl font-bold mb-4">{% trans "Traveler Reviews" %}</h2>
+                <div class="flex flex-col items-center">
+                    <div class="flex items-center mb-3">
                         {% for i in "12345" %}
                             {% if forloop.counter <= tour.average_rating %}
-                                <i class="fas fa-star fa-lg"></i>
+                                <i class="fas fa-star text-yellow-400 text-2xl mr-1"></i>
                             {% else %}
-                                <i class="far fa-star fa-lg"></i>
+                                <i class="far fa-star text-yellow-400 text-2xl mr-1"></i>
                             {% endif %}
                         {% endfor %}
+                        <span class="text-2xl font-bold ml-2">{{ tour.average_rating|floatformat:1 }}</span>
                     </div>
-                    <span class="h5 mb-0">{{ tour.average_rating|floatformat:1 }}</span>
-                    <span class="text-muted ms-2">({{ tour.total_reviews }} {% trans "reviews" %})</span>
+                    <p class="text-gray-600">({{ tour.total_reviews }} {% trans "reviews" %})</p>
                 </div>
             </div>
             
-            <div class="row">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {% for review in reviews %}
-                    <div class="col-lg-4 col-md-6 mb-4">
-                        <div class="card h-100">
-                            <div class="card-body">
-                                <div class="d-flex align-items-center mb-3">
-                                    <div class="flex-shrink-0">
-                                        <div class="bg-primary rounded-circle d-flex align-items-center justify-content-center" 
-                                             style="width: 50px; height: 50px;">
-                                            <i class="fas fa-user text-white"></i>
-                                        </div>
-                                    </div>
-                                    <div class="flex-grow-1 ms-3">
-                                        <h6 class="mb-0">{{ review.user.get_display_name }}</h6>
-                                        <div class="star-rating">
-                                            {% for i in "12345" %}
-                                                {% if forloop.counter <= review.rating %}
-                                                    <i class="fas fa-star"></i>
-                                                {% else %}
-                                                    <i class="far fa-star"></i>
-                                                {% endif %}
-                                            {% endfor %}
-                                        </div>
-                                        <small class="text-muted">{{ review.created_at|date:"M d, Y" }}</small>
-                                    </div>
+                    <div class="bg-white rounded-xl shadow-md p-6">
+                        <div class="flex items-center mb-4">
+                            <div class="bg-[#C18D45] rounded-full w-12 h-12 flex items-center justify-center text-white mr-4">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <div>
+                                <h6 class="font-bold">{{ review.user.get_display_name }}</h6>
+                                <div class="flex items-center">
+                                    {% for i in "12345" %}
+                                        {% if forloop.counter <= review.rating %}
+                                            <i class="fas fa-star text-yellow-400 mr-1"></i>
+                                        {% else %}
+                                            <i class="far fa-star text-yellow-400 mr-1"></i>
+                                        {% endif %}
+                                    {% endfor %}
                                 </div>
-                                <h6 class="card-title">{{ review.title }}</h6>
-                                <p class="card-text">{{ review.content|truncatewords:25 }}</p>
-                                {% if review.travel_type %}
-                                    <small class="text-muted">{{ review.get_travel_type_display }}</small>
-                                {% endif %}
+                                <small class="text-gray-500">{{ review.created_at|date:"M d, Y" }}</small>
                             </div>
                         </div>
+                        <h6 class="font-bold text-lg mb-2">{{ review.title }}</h6>
+                        <p class="text-gray-700 mb-4">{{ review.content|truncatewords:30 }}</p>
+                        {% if review.travel_type %}
+                            <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm font-medium">
+                                {{ review.get_travel_type_display }}
+                            </span>
+                        {% endif %}
                     </div>
                 {% endfor %}
             </div>
             
-            <div class="text-center mt-4">
+            <div class="text-center mt-10">
                 {% if user.is_authenticated %}
-                    <a href="{% url 'reviews:create_tour_review' tour.slug %}" class="btn btn-outline-primary me-3">
-                        <i class="fas fa-star me-2"></i>{% trans "Write a Review" %}
+                    <a href="{% url 'reviews:create_tour_review' tour.slug %}" class="inline-block bg-[#C18D45] hover:bg-[#a97a3a] text-white font-medium py-3 px-6 rounded-md transition duration-300 mr-4">
+                        <i class="fas fa-star mr-2"></i>{% trans "Write a Review" %}
                     </a>
                 {% endif %}
-                <a href="{% url 'reviews:review_list' %}?tour={{ tour.id }}" class="btn btn-outline-primary">
-                    {% trans "Read All Reviews" %} <i class="fas fa-arrow-right ms-2"></i>
+                <a href="{% url 'reviews:review_list' %}?tour={{ tour.id }}" class="inline-block bg-white hover:bg-gray-100 text-gray-800 font-medium py-3 px-6 rounded-md border border-gray-300 transition duration-300">
+                    {% trans "Read All Reviews" %} <i class="fas fa-arrow-right ml-2"></i>
                 </a>
             </div>
         </div>
@@ -440,33 +400,28 @@
 
 <!-- Related Tours -->
 {% if related_tours %}
-    <section class="py-5 bg-light">
-        <div class="container">
-            <div class="text-center mb-5">
-                <h2 class="section-title">{% trans "Similar Tours" %}</h2>
-                <p class="lead text-muted">{% trans "You might also like these adventures" %}</p>
+    <section class="py-12 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-10">
+                <h2 class="text-3xl font-bold mb-4">{% trans "Similar Tours" %}</h2>
+                <p class="text-xl text-gray-600">{% trans "You might also like these adventures" %}</p>
             </div>
             
-            <div class="row">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                 {% for related_tour in related_tours %}
-                    <div class="col-lg-3 col-md-6 mb-4">
-                        <div class="card h-100">
-                            <img src="{% if related_tour.main_image %}{{ related_tour.main_image.url }}{% else %}https://images.pexels.com/photos/1170986/pexels-photo-1170986.jpeg{% endif %}" 
-                                 class="card-img-top" style="height: 200px; object-fit: cover;" alt="{{ related_tour.title }}">
-                            <div class="card-body d-flex flex-column">
-                                <h6 class="card-title">{{ related_tour.title }}</h6>
-                                <p class="text-muted mb-2">
-                                    <i class="fas fa-clock me-1"></i>{{ related_tour.get_duration_display }}
-                                </p>
-                                <p class="card-text flex-grow-1">{{ related_tour.short_description|truncatewords:10 }}</p>
-                                <div class="d-flex justify-content-between align-items-center mt-auto">
-                                    <div class="price-tag">
-                                        {% trans "From" %} ${{ related_tour.price_budget|default:related_tour.price_standard|floatformat:0 }}
-                                    </div>
-                                    <a href="{% url 'tours:tour_detail' related_tour.slug %}" class="btn btn-primary btn-sm">
-                                        {% trans "View" %}
-                                    </a>
-                                </div>
+                    <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
+                        <img src="{% if related_tour.main_image %}{{ related_tour.main_image.url }}{% else %}https://images.pexels.com/photos/1170986/pexels-photo-1170986.jpeg{% endif %}" 
+                             class="w-full h-48 object-cover" alt="{{ related_tour.title }}">
+                        <div class="p-4">
+                            <h6 class="font-bold text-lg mb-2">{{ related_tour.title }}</h6>
+                            <p class="text-gray-600 mb-3 flex items-center">
+                                <i class="fas fa-clock mr-2 text-[#C18D45]"></i>{{ related_tour.get_duration_display }}
+                            </p>
+                            <p class="text-gray-700 mb-4">{{ related_tour.short_description|truncatewords:10 }}</p>
+                            <div class="flex justify-between items-center">
+                                <a href="{% url 'tours:tour_detail' related_tour.slug %}" class="bg-[#C18D45] hover:bg-[#a97a3a] text-white font-medium py-2 px-4 rounded-md transition duration-300 text-sm">
+                                    {% trans "View Tour" %}
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -475,4 +430,33 @@
         </div>
     </section>
 {% endif %}
+
+<script>
+// Simple accordion functionality
+document.addEventListener('DOMContentLoaded', function() {
+    const accordionButtons = document.querySelectorAll('[aria-expanded]');
+    
+    accordionButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const expanded = this.getAttribute('aria-expanded') === 'true';
+            const targetId = this.getAttribute('aria-controls');
+            const target = document.getElementById(targetId);
+            const icon = this.querySelector('i');
+            
+            // Toggle visibility
+            if (expanded) {
+                this.setAttribute('aria-expanded', 'false');
+                target.classList.add('hidden');
+                icon.classList.remove('fa-chevron-up');
+                icon.classList.add('fa-chevron-down');
+            } else {
+                this.setAttribute('aria-expanded', 'true');
+                target.classList.remove('hidden');
+                icon.classList.remove('fa-chevron-down');
+                icon.classList.add('fa-chevron-up');
+            }
+        });
+    });
+});
+</script>
 {% endblock %}

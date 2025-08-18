@@ -52,11 +52,6 @@ class NationalPark(models.Model):
     difficulty_level = models.CharField(max_length=15, choices=DIFFICULTY_LEVELS, default='easy')
     accessibility_info = models.TextField(blank=True)
     
-    # Entry Fees (in USD)
-    entry_fee_citizen = models.DecimalField(max_digits=10, decimal_places=2, default=0)
-    entry_fee_resident = models.DecimalField(max_digits=10, decimal_places=2, default=0)
-    entry_fee_non_resident = models.DecimalField(max_digits=10, decimal_places=2, default=0)
-    
     # Park Facilities
     accommodation_available = models.BooleanField(default=False)
     camping_allowed = models.BooleanField(default=False)
@@ -209,7 +204,7 @@ class Wildlife(models.Model):
     behavior = models.TextField(blank=True)
     
     # Location Information
-    parks = models.ManyToManyField(NationalPark, related_name='wildlife_set')
+    parks = models.ManyToManyField(NationalPark, related_name='wildlife')
     best_viewing_times = models.TextField(blank=True)
     best_viewing_locations = models.TextField(blank=True)
     

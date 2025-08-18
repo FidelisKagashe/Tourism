@@ -21,7 +21,7 @@ urlpatterns = [
 urlpatterns += i18n_patterns(
     path('', include('core.urls')),
     path('accounts/', include('accounts.urls')),
-    path('parks/', include('parks.urls')),
+    path('parks/', include(('parks.urls', 'parks'), namespace='parks')),
     path('tours/', include('tours.urls')),
     path('bookings/', include('bookings.urls')),
     path('reviews/', include('reviews.urls')),

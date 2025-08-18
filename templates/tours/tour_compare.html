@@ -1,0 +1,118 @@
+{% extends 'base/base.html' %}
+{% load i18n %}
+
+{% block title %}{% trans "Compare Tours" %} - Tanzania Safari Adventures{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row">
+        <div class="col-12">
+            <h1 class="mb-4">{% trans "Compare Safari Tours" %}</h1>
+            
+            {% if tours %}
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <thead class="table-dark">
+                            <tr>
+                                <th>{% trans "Feature" %}</th>
+                                {% for tour in tours %}
+                                    <th class="text-center">{{ tour.title|truncatechars:20 }}</th>
+                                {% endfor %}
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>{% trans "Image" %}</strong></td>
+                                {% for tour in tours %}
+                                    <td class="text-center">
+                                        <img src="{% if tour.main_image %}{{ tour.main_image.url }}{% else %}https://images.pexels.com/photos/1170986/pexels-photo-1170986.jpeg{% endif %}" 
+                                             class="img-fluid rounded" style="height: 100px; width: 150px; object-fit: cover;" alt="{{ tour.title }}">
+                                    </td>
+                                {% endfor %}
+                            </tr>
+                            <tr>
+                                <td><strong>{% trans "Duration" %}</strong></td>
+                                {% for tour in tours %}
+                                    <td class="text-center">{{ tour.get_duration_display }}</td>
+                                {% endfor %}
+                            </tr>
+                            <tr>
+                                <td><strong>{% trans "Difficulty" %}</strong></td>
+                                {% for tour in tours %}
+                                    <td class="text-center">
+                                        <span class="badge bg-secondary">{{ tour.get_difficulty_level_display }}</span>
+                                    </td>
+                                {% endfor %}
+                            </tr>
+                            <tr>
+                                <td><strong>{% trans "Group Size" %}</strong></td>
+                                {% for tour in tours %}
+                                    <td class="text-center">{{ tour.min_participants }}-{{ tour.max_participants }} {% trans "people" %}</td>
+                                {% endfor %}
+                            </tr>
+                            <tr>
+                                <td><strong>{% trans "Category" %}</strong></td>
+                                {% for tour in tours %}
+                                    <td class="text-center">{{ tour.get_category_display }}</td>
+                                {% endfor %}
+                            </tr>
+                            <tr>
+                                <td><strong>{% trans "Accommodation" %}</strong></td>
+                                {% for tour in tours %}
+                                    <td class="text-center">{{ tour.get_accommodation_type_display }}</td>
+                                {% endfor %}
+                            </tr>
+                            <tr>
+                                <td><strong>{% trans "Rating" %}</strong></td>
+                                {% for tour in tours %}
+                                    <td class="text-center">
+                                        <div class="star-rating">
+                                            {% for i in "12345" %}
+                                                {% if forloop.counter <= tour.average_rating %}
+                                                    <i class="fas fa-star"></i>
+                                                {% else %}
+                                                    <i class="far fa-star"></i>
+                                                {% endif %}
+                                            {% endfor %}
+                                        </div>
+                                        <small>({{ tour.total_reviews }})</small>
+                                    </td>
+                                {% endfor %}
+                            </tr>
+                            <tr>
+                                <td><strong>{% trans "Parks Visited" %}</strong></td>
+                                {% for tour in tours %}
+                                    <td class="text-center">
+                                        {% for park in tour.parks_visited.all %}
+                                            <span class="badge bg-light text-dark mb-1">{{ park.name }}</span><br>
+                                        {% endfor %}
+                                    </td>
+                                {% endfor %}
+                            </tr>
+                            <tr>
+                                <td><strong>{% trans "Action" %}</strong></td>
+                                {% for tour in tours %}
+                                    <td class="text-center">
+                                        <a href="{% url 'tours:tour_detail' tour.slug %}" class="btn btn-primary btn-sm">
+                                            {% trans "View Details" %}
+                                        </a>
+                                    </td>
+                                {% endfor %}
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            {% else %}
+                <div class="text-center py-5">
+                    <i class="fas fa-balance-scale fa-4x text-muted mb-4"></i>
+                    <h3>{% trans "No tours to compare" %}</h3>
+                    <p class="text-muted">{% trans "Select tours from the tour list to compare them here" %}</p>
+                    <a href="{% url 'tours:tour_list' %}" class="btn btn-primary">
+                        {% trans "Browse Tours" %}
+                    </a>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -2,7 +2,7 @@
 {% load i18n %}
 {% load crispy_forms_tags %}
 
-{% block title %}{% trans "Book" %} {{ tour_package.title }} - Safari&nbsp;&amp;&nbsp;Bush Retreats{% endblock %}
+{% block title %}{% trans "Book" %} {{ tour_package.title }} - Tanzania Safari Adventures{% endblock %}
 
 {% block extra_css %}
 <style>
@@ -27,7 +27,7 @@
         z-index: -1;
     }
     .progress-step.active::after {
-        background-color: var(--primary-color);
+        background-color: #C18D45;
     }
     .progress-step .step-circle {
         width: 40px;
@@ -42,18 +42,18 @@
         font-weight: bold;
     }
     .progress-step.active .step-circle {
-        background-color: var(--primary-color);
+        background-color: #C18D45;
         color: white;
     }
     .progress-step.completed .step-circle {
-        background-color: var(--success-color);
+        background-color: #28a745;
         color: white;
     }
 </style>
 {% endblock %}
 
 {% block content %}
-<div class="container py-5">
+<div class="container mx-auto px-4 py-8">
     <!-- Progress Indicator -->
     <div class="booking-progress">
         <div class="progress-step active">
@@ -74,44 +74,55 @@
         </div>
     </div>
     
-    <div class="row">
-        <div class="col-lg-8 mb-5">
-            <div class="card border-0 shadow">
-                <div class="card-header bg-primary text-white">
-                    <h4 class="mb-0">
-                        <i class="fas fa-calendar-check me-2"></i>{% trans "Book Your Safari" %}
+    <div class="flex flex-col lg:flex-row gap-8">
+        <div class="lg:w-8/12">
+            <div class="bg-white rounded-xl shadow-md overflow-hidden">
+                <div class="bg-[#C18D45] px-6 py-4">
+                    <h4 class="text-xl font-bold text-white flex items-center">
+                        <i class="fas fa-calendar-check mr-3"></i>
+                        {% trans "Book Your Safari" %}
                     </h4>
                 </div>
-                <div class="card-body p-4">
+                <div class="p-6">
                     <form method="post" id="bookingForm">
                         {% csrf_token %}
                         
+                        <div class="bg-blue-50 border-l-4 border-blue-500 p-4 rounded mb-6">
+                            <div class="flex items-start">
+                                <i class="fas fa-info-circle text-blue-500 mt-1 mr-3"></i>
+                                <div>
+                                    <strong>{% trans "Booking Process:" %}</strong> 
+                                    {% trans "Submit your booking request and our team will contact you within 24 hours to confirm details and discuss payment options." %}
+                                </div>
+                            </div>
+                        </div>
+                        
                         <!-- Tour Selection -->
-                        <div class="mb-4">
-                            <h5>{% trans "Tour Selection" %}</h5>
+                        <div class="mb-6">
+                            <h5 class="text-lg font-bold text-gray-900 mb-4">{% trans "Tour Selection" %}</h5>
                             {% crispy form %}
                         </div>
                         
                         <!-- Participants -->
-                        <div class="mb-4">
-                            <h5>{% trans "Participant Information" %}</h5>
-                            <div id="participant-forms">
+                        <div class="mb-6">
+                            <h5 class="text-lg font-bold text-gray-900 mb-4">{% trans "Participant Information" %}</h5>
+                            <div id="participant-forms" class="space-y-4">
                                 {{ participant_formset.management_form }}
                                 {% for form in participant_formset %}
-                                    <div class="participant-form border rounded p-3 mb-3">
-                                        <h6>{% trans "Participant" %} {{ forloop.counter }}</h6>
+                                    <div class="participant-form border border-gray-200 rounded-lg p-4">
+                                        <h6 class="font-medium text-gray-900 mb-3">{% trans "Participant" %} {{ forloop.counter }}</h6>
                                         {% crispy form %}
                                     </div>
                                 {% endfor %}
                             </div>
-                            <button type="button" class="btn btn-outline-primary" id="add-participant">
-                                <i class="fas fa-plus me-2"></i>{% trans "Add Participant" %}
+                            <button type="button" class="mt-4 flex items-center px-4 py-2 border border-[#C18D45] text-[#C18D45] rounded-md hover:bg-[#f5f0e8]" id="add-participant">
+                                <i class="fas fa-plus mr-2"></i>{% trans "Add Participant" %}
                             </button>
                         </div>
                         
-                        <div class="text-end">
-                            <button type="submit" class="btn btn-primary btn-lg">
-                                <i class="fas fa-arrow-right me-2"></i>{% trans "Continue to Payment" %}
+                        <div class="text-right">
+                            <button type="submit" class="px-6 py-3 bg-[#C18D45] hover:bg-[#a6793a] text-white font-medium rounded-md">
+                                <i class="fas fa-paper-plane mr-2"></i>{% trans "Submit Booking Request" %}
                             </button>
                         </div>
                     </form>
@@ -120,51 +131,48 @@
         </div>
         
         <!-- Booking Summary -->
-        <div class="col-lg-4">
-            <div class="card border-0 shadow sticky-top" style="top: 2rem;">
-                <div class="card-header bg-light">
-                    <h5 class="mb-0">{% trans "Booking Summary" %}</h5>
+        <div class="lg:w-4/12">
+            <div class="bg-white rounded-xl shadow-md overflow-hidden sticky top-6">
+                <div class="bg-gray-50 px-6 py-4 border-b border-gray-200">
+                    <h5 class="font-bold text-gray-900">{% trans "Booking Summary" %}</h5>
                 </div>
-                <div class="card-body">
+                <div class="p-6">
                     <!-- Tour Info -->
-                    <div class="d-flex mb-3">
+                    <div class="flex mb-4">
                         <img src="{% if tour_package.main_image %}{{ tour_package.main_image.url }}{% else %}https://images.pexels.com/photos/1170986/pexels-photo-1170986.jpeg{% endif %}" 
-                             class="rounded me-3" style="width: 60px; height: 60px; object-fit: cover;" alt="{{ tour_package.title }}">
-                        <div>
-                            <h6 class="mb-1">{{ tour_package.title }}</h6>
-                            <small class="text-muted">{{ tour_package.get_duration_display }}</small>
+                             class="w-16 h-16 rounded object-cover" alt="{{ tour_package.title }}">
+                        <div class="ml-4">
+                            <h6 class="font-bold text-gray-900">{{ tour_package.title }}</h6>
+                            <p class="text-gray-600 text-sm">{{ tour_package.get_duration_display }}</p>
                         </div>
                     </div>
                     
-                    <hr>
+                    <div class="border-t border-gray-200 my-4"></div>
                     
-                    <!-- Pricing -->
-                    <div class="mb-3">
-                        <div class="d-flex justify-content-between mb-2">
-                            <span>{% trans "Base Price" %}:</span>
-                            <span id="base-price">$0</span>
+                    <!-- Booking Info -->
+                    <div class="space-y-3 mb-4">
+                        <div class="flex justify-between">
+                            <span class="text-gray-600">{% trans "Participants" %}:</span>
+                            <span id="participant-count" class="font-medium">1</span>
                         </div>
-                        <div class="d-flex justify-content-between mb-2">
-                            <span>{% trans "Participants" %}:</span>
-                            <span id="participant-count">1</span>
+                        <div class="flex justify-between">
+                            <span class="text-gray-600">{% trans "Accommodation" %}:</span>
+                            <span id="accommodation-type" class="font-medium">{% trans "Standard" %}</span>
                         </div>
-                        <div class="d-flex justify-content-between mb-2">
-                            <span>{% trans "Accommodation" %}:</span>
-                            <span id="accommodation-type">{% trans "Standard" %}</span>
+                        <div class="flex justify-between">
+                            <span class="text-gray-600">{% trans "Category" %}:</span>
+                            <span class="font-medium">{{ tour_package.get_category_display }}</span>
                         </div>
                     </div>
                     
-                    <hr>
-                    
-                    <div class="d-flex justify-content-between">
-                        <strong>{% trans "Total Price" %}:</strong>
-                        <strong class="text-primary" id="total-price">$0</strong>
-                    </div>
-                    
-                    <div class="mt-4">
-                        <div class="alert alert-info">
-                            <i class="fas fa-info-circle me-2"></i>
-                            <small>{% trans "Final price will be calculated based on your selections" %}</small>
+                    <div class="mt-6">
+                        <div class="bg-blue-50 border-l-4 border-blue-500 p-4 rounded">
+                            <div class="flex">
+                                <i class="fas fa-info-circle text-blue-500 mt-1 mr-3"></i>
+                                <p class="text-blue-800 text-sm">
+                                    {% trans "Our team will contact you with pricing details and payment options" %}
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -180,34 +188,20 @@ document.addEventListener('DOMContentLoaded', function() {
     const form = document.getElementById('bookingForm');
     const participantCountEl = document.getElementById('participant-count');
     const accommodationTypeEl = document.getElementById('accommodation-type');
-    const basePriceEl = document.getElementById('base-price');
-    const totalPriceEl = document.getElementById('total-price');
     
-    // Tour pricing data
-    const tourPricing = {
-        budget: {{ tour_package.price_budget|default:0 }},
-        standard: {{ tour_package.price_standard|default:0 }},
-        luxury: {{ tour_package.price_luxury|default:0 }}
-    };
-    
-    function updatePricing() {
+    function updateSummary() {
         const participants = document.getElementById('id_number_of_participants').value || 1;
         const accommodation = document.getElementById('id_accommodation_type').value || 'standard';
         
-        const basePrice = tourPricing[accommodation] || tourPricing.standard;
-        const totalPrice = basePrice * participants;
-        
         participantCountEl.textContent = participants;
         accommodationTypeEl.textContent = accommodation.charAt(0).toUpperCase() + accommodation.slice(1);
-        basePriceEl.textContent = '$' + basePrice.toLocaleString();
-        totalPriceEl.textContent = '$' + totalPrice.toLocaleString();
     }
     
-    // Update pricing when form changes
-    form.addEventListener('change', updatePricing);
+    // Update summary when form changes
+    form.addEventListener('change', updateSummary);
     
-    // Initialize pricing
-    updatePricing();
+    // Initialize summary
+    updateSummary();
     
     // Add participant functionality
     let participantCount = {{ participant_formset.total_form_count }};

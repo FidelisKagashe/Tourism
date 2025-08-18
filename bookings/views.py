@@ -8,8 +8,8 @@ from django.http import JsonResponse
 from django.core.mail import send_mail
 from django.conf import settings
 from django.template.loader import render_to_string
-from .models import Booking, BookingParticipant, BookingPayment
-from .forms import BookingForm, BookingParticipantFormSet, PaymentForm
+from .models import Booking, BookingParticipant
+from .forms import BookingForm, BookingParticipantFormSet
 from tours.models import TourPackage, TourAvailability
 import json
 from decimal import Decimal
@@ -56,30 +56,22 @@ def create_booking(request, tour_slug):
             booking.contact_name = request.user.get_full_name()
             booking.contact_email = request.user.email
             booking.contact_phone = request.user.phone_number or ''
-            
-            # Calculate pricing
-            accommodation_type = form.cleaned_data['accommodation_type']
-            participants = form.cleaned_data['number_of_participants']
-            
-            if accommodation_type == 'budget':
-                base_price = tour_package.price_budget or Decimal('0')
-            elif accommodation_type == 'luxury':
-                base_price = tour_package.price_luxury or Decimal('0')
-            else:
-                base_price = tour_package.price_standard or Decimal('0')
-            
-            booking.base_price = base_price
-            booking.total_price = base_price * participants
+            booking.booking_status = 'confirmed'
             booking.save()
             
             # Save participants
             participant_formset.instance = booking
             participant_formset.save()
             
+            # Update tour availability
+            availability = booking.tour_availability
+            availability.booked_participants += booking.number_of_participants
+            availability.save()
+            
             # Send confirmation email
             send_booking_confirmation_email(booking)
             
-            messages.success(request, f'Booking created successfully! Reference: {booking.booking_reference}')
+            messages.success(request, f'Booking request submitted successfully! Reference: {booking.booking_reference}. We will contact you soon to confirm details.')
             return redirect('bookings:booking_detail', booking_reference=booking.booking_reference)
     else:
         form = BookingForm()
@@ -92,85 +84,10 @@ def create_booking(request, tour_slug):
     }
     return render(request, 'bookings/create_booking.html', context)
 
-@login_required
-def booking_payment(request, booking_reference):
-    """Process booking payment."""
-    booking = get_object_or_404(
-        Booking, 
-        booking_reference=booking_reference, 
-        user=request.user,
-        booking_status='pending'
-    )
-    
-    if request.method == 'POST':
-        form = PaymentForm(request.POST)
-        if form.is_valid():
-            # Create payment record
-            payment = form.save(commit=False)
-            payment.booking = booking
-            payment.amount = booking.total_price
-            payment.currency = booking.currency
-            payment.save()
-            
-            # For cash payments, mark as pending for manual verification
-            if payment.payment_method in ['cash', 'cash_on_arrival']:
-                payment.status = 'pending'
-                payment.save()
-                
-                booking.payment_status = 'pending'
-                booking.booking_status = 'confirmed'  # Still confirm booking
-                booking.save()
-                
-                # Update tour availability
-                availability = booking.tour_availability
-                availability.booked_participants += booking.number_of_participants
-                availability.save()
-                
-                # Send confirmation
-                send_cash_payment_confirmation_email(booking, payment)
-                
-                messages.success(request, 'Booking confirmed! Please bring cash payment on arrival.')
-                return redirect('bookings:booking_detail', booking_reference=booking.booking_reference)
-            elif simulate_payment_processing(payment):
-                payment.status = 'completed'
-                payment.save()
-                
-                booking.payment_status = 'paid'
-                booking.booking_status = 'confirmed'
-                booking.save()
-                
-                # Update tour availability
-                availability = booking.tour_availability
-                availability.booked_participants += booking.number_of_participants
-                availability.save()
-                
-                # Send confirmation
-                send_payment_confirmation_email(booking, payment)
-                
-                messages.success(request, 'Payment successful! Your booking is confirmed.')
-                return redirect('bookings:booking_detail', booking_reference=booking.booking_reference)
-            else:
-                payment.status = 'failed'
-                payment.save()
-                messages.error(request, 'Payment failed. Please try again.')
-    else:
-        form = PaymentForm()
-    
-    context = {
-        'booking': booking,
-        'form': form,
-    }
-    return render(request, 'bookings/booking_payment.html', context)
-
-def simulate_payment_processing(payment):
-    """Simulate payment gateway processing."""
-    # In real implementation, this would integrate with actual payment gateway
-    import random
-    return random.choice([True, True, True, False])  # 75% success rate
 
 def send_booking_confirmation_email(booking):
     """Send booking confirmation email."""
-    subject = f'Booking Confirmation - {booking.booking_reference}'
+    subject = f'Booking Request Received - {booking.booking_reference}'
     html_message = render_to_string('emails/booking_confirmation.html', {'booking': booking})
     
     send_mail(

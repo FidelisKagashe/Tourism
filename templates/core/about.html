@@ -5,91 +5,112 @@
 
 {% block content %}
 <!-- Hero Section -->
-<section class="hero-section" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.pexels.com/photos/1170986/pexels-photo-1170986.jpeg');">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8">
-                <h1 class="display-4 fw-bold mb-4">{% trans "About Safari&nbsp;&amp;&nbsp;Bush Retreats" %}</h1>
-                <p class="lead">{% trans "Your trusted partner for authentic Tanzanian wildlife experiences" %}</p>
-            </div>
+<section class="relative bg-cover bg-center" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.pexels.com/photos/1170986/pexels-photo-1170986.jpeg'); min-height: 70vh;">
+    <div class="container mx-auto px-4 flex items-center h-full">
+        <div class="max-w-3xl py-20">
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
+                {% trans "About Safari&nbsp;&amp;&nbsp;Bush Retreats" %}
+            </h1>
+            <p class="text-xl text-white max-w-2xl">
+                {% trans "Your trusted partner for authentic Tanzanian wildlife experiences" %}
+            </p>
         </div>
     </div>
 </section>
 
 <!-- About Content -->
-<section class="py-5">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8 mx-auto">
-                <div class="text-center mb-5">
-                    <h2 class="section-title">{% trans "Our Story" %}</h2>
+<section class="py-16">
+    <div class="container mx-auto px-4 max-w-4xl">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl font-bold text-gray-900 mb-4">{% trans "Our Story" %}</h2>
+            <div class="w-24 h-1 bg-[#C18D45] mx-auto"></div>
+        </div>
+        
+        <div class="mb-16">
+            <p class="text-xl text-gray-700 mb-8 text-center">
+                {% trans "Founded in 2010, Safari&nbsp;&amp;&nbsp;Bush Retreats has been at the forefront of sustainable tourism in East Africa. We specialize in creating unforgettable experiences that showcase the incredible biodiversity and rich cultural heritage of Tanzania." %}
+            </p>
+            
+            <p class="text-gray-600 mb-10">
+                {% trans "Our team of experienced guides and travel experts are passionate about conservation and committed to providing authentic, responsible tourism experiences. From the vast plains of the Serengeti to the pristine beaches of Zanzibar, we help travelers discover the true magic of Tanzania." %}
+            </p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+                <!-- Vision Card -->
+                <div class="bg-gray-50 rounded-xl p-8 border border-gray-200 text-center">
+                    <div class="w-16 h-16 bg-[#C18D45] rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-eye text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">{% trans "Our Vision" %}</h3>
+                    <p class="text-gray-600">
+                        {% trans "To be the leading sustainable tourism company in East Africa, promoting conservation through responsible travel experiences." %}
+                    </p>
                 </div>
                 
-                <div class="mb-5">
-                    <p class="lead">{% trans "Founded in 2010, Safari&nbsp;&amp;&nbsp;Bush Retreats has been at the forefront of sustainable tourism in East Africa. We specialize in creating unforgettable experiences that showcase the incredible biodiversity and rich cultural heritage of Tanzania." %}</p>
+                <!-- Mission Card -->
+                <div class="bg-gray-50 rounded-xl p-8 border border-gray-200 text-center">
+                    <div class="w-16 h-16 bg-[#C18D45] rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-bullseye text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">{% trans "Our Mission" %}</h3>
+                    <p class="text-gray-600">
+                        {% trans "To provide exceptional safari experiences while supporting local communities and wildlife conservation efforts across Tanzania." %}
+                    </p>
+                </div>
+            </div>
+
+            <div class="mb-10">
+                <h3 class="text-2xl font-bold text-gray-900 mb-8 text-center">{% trans "Why Choose Us?" %}</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Expert Local Guides -->
+                    <div class="flex items-start">
+                        <div class="flex-shrink-0 mt-1">
+                            <div class="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center">
+                                <i class="fas fa-check-circle text-white text-sm"></i>
+                            </div>
+                        </div>
+                        <div class="ml-4">
+                            <h4 class="text-lg font-bold text-gray-900 mb-2">{% trans "Expert Local Guides" %}</h4>
+                            <p class="text-gray-600">{% trans "Our certified guides have extensive knowledge of Tanzania's wildlife and culture." %}</p>
+                        </div>
+                    </div>
                     
-                    <p>{% trans "Our team of experienced guides and travel experts are passionate about conservation and committed to providing authentic, responsible tourism experiences. From the vast plains of the Serengeti to the pristine beaches of Zanzibar, we help travelers discover the true magic of Tanzania." %}</p>
-                </div>
-
-                <div class="row mb-5">
-                    <div class="col-md-6 mb-4">
-                        <div class="card h-100 border-0 bg-light">
-                            <div class="card-body text-center">
-                                <i class="fas fa-eye fa-3x text-primary mb-3"></i>
-                                <h5>{% trans "Our Vision" %}</h5>
-                                <p>{% trans "To be the leading sustainable tourism company in East Africa, promoting conservation through responsible travel experiences." %}</p>
+                    <!-- Sustainable Tourism -->
+                    <div class="flex items-start">
+                        <div class="flex-shrink-0 mt-1">
+                            <div class="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center">
+                                <i class="fas fa-check-circle text-white text-sm"></i>
                             </div>
+                        </div>
+                        <div class="ml-4">
+                            <h4 class="text-lg font-bold text-gray-900 mb-2">{% trans "Sustainable Tourism" %}</h4>
+                            <p class="text-gray-600">{% trans "We're committed to responsible tourism that benefits local communities." %}</p>
                         </div>
                     </div>
-                    <div class="col-md-6 mb-4">
-                        <div class="card h-100 border-0 bg-light">
-                            <div class="card-body text-center">
-                                <i class="fas fa-bullseye fa-3x text-primary mb-3"></i>
-                                <h5>{% trans "Our Mission" %}</h5>
-                                <p>{% trans "To provide exceptional safari experiences while supporting local communities and wildlife conservation efforts across Tanzania." %}</p>
+                    
+                    <!-- Customized Experiences -->
+                    <div class="flex items-start">
+                        <div class="flex-shrink-0 mt-1">
+                            <div class="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center">
+                                <i class="fas fa-check-circle text-white text-sm"></i>
                             </div>
+                        </div>
+                        <div class="ml-4">
+                            <h4 class="text-lg font-bold text-gray-900 mb-2">{% trans "Customized Experiences" %}</h4>
+                            <p class="text-gray-600">{% trans "Every safari is tailored to your interests and preferences." %}</p>
                         </div>
                     </div>
-                </div>
-
-                <div class="mb-5">
-                    <h3 class="mb-4">{% trans "Why Choose Us?" %}</h3>
-                    <div class="row">
-                        <div class="col-md-6 mb-3">
-                            <div class="d-flex">
-                                <i class="fas fa-check-circle text-primary me-3 mt-1"></i>
-                                <div>
-                                    <h6>{% trans "Expert Local Guides" %}</h6>
-                                    <p class="text-muted">{% trans "Our certified guides have extensive knowledge of Tanzania's wildlife and culture." %}</p>
-                                </div>
+                    
+                    <!-- Safety First -->
+                    <div class="flex items-start">
+                        <div class="flex-shrink-0 mt-1">
+                            <div class="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center">
+                                <i class="fas fa-check-circle text-white text-sm"></i>
                             </div>
                         </div>
-                        <div class="col-md-6 mb-3">
-                            <div class="d-flex">
-                                <i class="fas fa-check-circle text-primary me-3 mt-1"></i>
-                                <div>
-                                    <h6>{% trans "Sustainable Tourism" %}</h6>
-                                    <p class="text-muted">{% trans "We're committed to responsible tourism that benefits local communities." %}</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 mb-3">
-                            <div class="d-flex">
-                                <i class="fas fa-check-circle text-primary me-3 mt-1"></i>
-                                <div>
-                                    <h6>{% trans "Customized Experiences" %}</h6>
-                                    <p class="text-muted">{% trans "Every safari is tailored to your interests and preferences." %}</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 mb-3">
-                            <div class="d-flex">
-                                <i class="fas fa-check-circle text-primary me-3 mt-1"></i>
-                                <div>
-                                    <h6>{% trans "Safety First" %}</h6>
-                                    <p class="text-muted">{% trans "Your safety and comfort are our top priorities on every adventure." %}</p>
-                                </div>
-                            </div>
+                        <div class="ml-4">
+                            <h4 class="text-lg font-bold text-gray-900 mb-2">{% trans "Safety First" %}</h4>
+                            <p class="text-gray-600">{% trans "Your safety and comfort are our top priorities on every adventure." %}</p>
                         </div>
                     </div>
                 </div>
@@ -99,93 +120,94 @@
 </section>
 
 <!-- Team Section -->
-<section class="py-5 bg-light">
-    <div class="container">
-        <div class="text-center mb-5">
-            <h2 class="section-title">{% trans "Meet Our Team" %}</h2>
-            <p class="lead text-muted">{% trans "Passionate professionals dedicated to your safari experience" %}</p>
+<section class="py-16 bg-gray-50">
+    <div class="container mx-auto px-4">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl font-bold text-gray-900 mb-4">{% trans "Meet Our Team" %}</h2>
+            <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+                {% trans "Passionate professionals dedicated to your safari experience" %}
+            </p>
+            <div class="w-24 h-1 bg-[#C18D45] mx-auto mt-4"></div>
         </div>
         
-        <div class="row">
-            <div class="col-lg-4 col-md-6 mb-4">
-                <div class="card h-100 border-0">
-                    <div class="card-body text-center">
-                        <div class="bg-primary rounded-circle mx-auto mb-3 d-flex align-items-center justify-content-center" style="width: 80px; height: 80px;">
-                            <i class="fas fa-user fa-2x text-white"></i>
-                        </div>
-                        <h5>John Mwangi</h5>
-                        <p class="text-primary">{% trans "Founder & CEO" %}</p>
-                        <p class="text-muted">{% trans "20+ years experience in Tanzania tourism industry" %}</p>
-                    </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Team Member 1 -->
+            <div class="bg-white rounded-xl shadow-md p-8 text-center">
+                <div class="w-20 h-20 bg-[#C18D45] rounded-full flex items-center justify-center mx-auto mb-6">
+                    <i class="fas fa-user text-white text-3xl"></i>
                 </div>
+                <h3 class="text-xl font-bold text-gray-900 mb-2">John Mwangi</h3>
+                <p class="text-[#C18D45] mb-4">{% trans "Founder & CEO" %}</p>
+                <p class="text-gray-600">
+                    {% trans "20+ years experience in Tanzania tourism industry" %}
+                </p>
             </div>
-            <div class="col-lg-4 col-md-6 mb-4">
-                <div class="card h-100 border-0">
-                    <div class="card-body text-center">
-                        <div class="bg-primary rounded-circle mx-auto mb-3 d-flex align-items-center justify-content-center" style="width: 80px; height: 80px;">
-                            <i class="fas fa-user fa-2x text-white"></i>
-                        </div>
-                        <h5>Sarah Kimani</h5>
-                        <p class="text-primary">{% trans "Head of Operations" %}</p>
-                        <p class="text-muted">{% trans "Expert in safari logistics and customer service" %}</p>
-                    </div>
+            
+            <!-- Team Member 2 -->
+            <div class="bg-white rounded-xl shadow-md p-8 text-center">
+                <div class="w-20 h-20 bg-[#C18D45] rounded-full flex items-center justify-center mx-auto mb-6">
+                    <i class="fas fa-user text-white text-3xl"></i>
                 </div>
+                <h3 class="text-xl font-bold text-gray-900 mb-2">Sarah Kimani</h3>
+                <p class="text-[#C18D45] mb-4">{% trans "Head of Operations" %}</p>
+                <p class="text-gray-600">
+                    {% trans "Expert in safari logistics and customer service" %}
+                </p>
             </div>
-            <div class="col-lg-4 col-md-6 mb-4">
-                <div class="card h-100 border-0">
-                    <div class="card-body text-center">
-                        <div class="bg-primary rounded-circle mx-auto mb-3 d-flex align-items-center justify-content-center" style="width: 80px; height: 80px;">
-                            <i class="fas fa-user fa-2x text-white"></i>
-                        </div>
-                        <h5>David Mollel</h5>
-                        <p class="text-primary">{% trans "Senior Safari Guide" %}</p>
-                        <p class="text-muted">{% trans "Wildlife expert and conservation advocate" %}</p>
-                    </div>
+            
+            <!-- Team Member 3 -->
+            <div class="bg-white rounded-xl shadow-md p-8 text-center">
+                <div class="w-20 h-20 bg-[#C18D45] rounded-full flex items-center justify-center mx-auto mb-6">
+                    <i class="fas fa-user text-white text-3xl"></i>
                 </div>
+                <h3 class="text-xl font-bold text-gray-900 mb-2">David Mollel</h3>
+                <p class="text-[#C18D45] mb-4">{% trans "Senior Safari Guide" %}</p>
+                <p class="text-gray-600">
+                    {% trans "Wildlife expert and conservation advocate" %}
+                </p>
             </div>
         </div>
     </div>
 </section>
 
 <!-- Statistics -->
-<section class="py-5">
-    <div class="container">
-        <div class="row text-center">
-            <div class="col-md-3 mb-4">
-                <div class="card h-100 border-0 bg-transparent">
-                    <div class="card-body">
-                        <i class="fas fa-users fa-3x text-primary mb-3"></i>
-                        <h3 class="fw-bold">5000+</h3>
-                        <p class="text-muted">{% trans "Happy Travelers" %}</p>
-                    </div>
+<section class="py-16">
+    <div class="container mx-auto px-4">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+            <!-- Happy Travelers -->
+            <div class="text-center">
+                <div class="w-16 h-16 bg-[#C18D45] rounded-full flex items-center justify-center mx-auto mb-6">
+                    <i class="fas fa-users text-white text-2xl"></i>
                 </div>
+                <h3 class="text-4xl font-bold text-gray-900 mb-2">5000+</h3>
+                <p class="text-gray-600">{% trans "Happy Travelers" %}</p>
             </div>
-            <div class="col-md-3 mb-4">
-                <div class="card h-100 border-0 bg-transparent">
-                    <div class="card-body">
-                        <i class="fas fa-calendar fa-3x text-primary mb-3"></i>
-                        <h3 class="fw-bold">14</h3>
-                        <p class="text-muted">{% trans "Years Experience" %}</p>
-                    </div>
+            
+            <!-- Years Experience -->
+            <div class="text-center">
+                <div class="w-16 h-16 bg-[#C18D45] rounded-full flex items-center justify-center mx-auto mb-6">
+                    <i class="fas fa-calendar text-white text-2xl"></i>
                 </div>
+                <h3 class="text-4xl font-bold text-gray-900 mb-2">14</h3>
+                <p class="text-gray-600">{% trans "Years Experience" %}</p>
             </div>
-            <div class="col-md-3 mb-4">
-                <div class="card h-100 border-0 bg-transparent">
-                    <div class="card-body">
-                        <i class="fas fa-award fa-3x text-primary mb-3"></i>
-                        <h3 class="fw-bold">25+</h3>
-                        <p class="text-muted">{% trans "Awards Won" %}</p>
-                    </div>
+            
+            <!-- Awards Won -->
+            <div class="text-center">
+                <div class="w-16 h-16 bg-[#C18D45] rounded-full flex items-center justify-center mx-auto mb-6">
+                    <i class="fas fa-award text-white text-2xl"></i>
                 </div>
+                <h3 class="text-4xl font-bold text-gray-900 mb-2">25+</h3>
+                <p class="text-gray-600">{% trans "Awards Won" %}</p>
             </div>
-            <div class="col-md-3 mb-4">
-                <div class="card h-100 border-0 bg-transparent">
-                    <div class="card-body">
-                        <i class="fas fa-globe fa-3x text-primary mb-3"></i>
-                        <h3 class="fw-bold">50+</h3>
-                        <p class="text-muted">{% trans "Countries Served" %}</p>
-                    </div>
+            
+            <!-- Countries Served -->
+            <div class="text-center">
+                <div class="w-16 h-16 bg-[#C18D45] rounded-full flex items-center justify-center mx-auto mb-6">
+                    <i class="fas fa-globe text-white text-2xl"></i>
                 </div>
+                <h3 class="text-4xl font-bold text-gray-900 mb-2">50+</h3>
+                <p class="text-gray-600">{% trans "Countries Served" %}</p>
             </div>
         </div>
     </div>
