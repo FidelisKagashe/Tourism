@@ -22,7 +22,8 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet"/>
+
     <!-- Tailwind Configuration and Custom Styles -->
     <link href="{% static 'css/system.css'%}" rel="stylesheet">
     <script>
@@ -485,7 +486,7 @@
                 {% endif %}
                 {% if site_settings.twitter_url %}
                     <a href="{{ site_settings.twitter_url }}" class="text-gray-400 hover:text-[#C18D45] transition">
-                    <i class="fab fa-twitter" aria-hidden="true"></i>
+                    <i class="fa-brands fa-x-twitter"></i>
                     <span class="sr-only">Twitter</span>
                     </a>
                 {% endif %}
@@ -545,15 +546,15 @@
                 <ul class="space-y-2 text-sm text-gray-400">
                     <li class="flex items-start">
                         <i class="fas fa-phone mr-2 mt-0.5" aria-hidden="true"></i>
-                        <span>{{ site_settings.contact_phone|default:"+255 123 456 789" }}</span>
+                        <span>{{ site_settings.contact_phone|default:"+255 768 373 033" }}</span>
                     </li>
                     <li class="flex items-start">
                         <i class="fas fa-envelope mr-2 mt-0.5" aria-hidden="true"></i>
-                        <span>{{ site_settings.contact_email|default:"info@tanzaniasafari.com" }}</span>
+                        <span>{{ site_settings.contact_email|default:"safariandbushretreats@gmail.com" }}</span>
                     </li>
                     <li class="flex items-start">
                         <i class="fas fa-map-marker-alt mr-2 mt-0.5" aria-hidden="true"></i>
-                        <span>{{ site_settings.address|default:"Arusha, Tanzania" }}</span>
+                        <span>{{ site_settings.address|default:"Iringa, Tanzania" }}</span>
                     </li>
                 </ul>
             </div>

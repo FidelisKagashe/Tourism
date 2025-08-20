@@ -175,7 +175,7 @@ EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER', 'hazinayavitabu@gmail.com')
 EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD', 'ntdq dsqp jwti niks')  # MUST be set in env in production
 
 # Sender address shown in emails
-DEFAULT_FROM_EMAIL = os.environ.get('DEFAULT_FROM_EMAIL', f'Your Site <{EMAIL_HOST_USER}>')
+DEFAULT_FROM_EMAIL = os.environ.get('DEFAULT_FROM_EMAIL', f'Safari & Bush Retreats <{EMAIL_HOST_USER}>')
 
 # Optional: a site URL you can use in templates/links
 SITE_URL = os.environ.get('SITE_URL', 'http://localhost:8000')

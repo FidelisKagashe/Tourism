@@ -7467,3 +7467,480 @@ INFO 2025-08-20 15:24:03,641 basehttp 6308 10288 "GET /static/admin/js/cancel.js
 INFO 2025-08-20 15:24:08,521 basehttp 6308 10288 "POST /admin/accounts/customuser/ HTTP/1.1" 302 0
 INFO 2025-08-20 15:24:08,600 basehttp 6308 10288 "GET /admin/accounts/customuser/ HTTP/1.1" 200 40755
 INFO 2025-08-20 15:24:08,650 basehttp 6308 10288 "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+INFO 2025-08-20 15:39:17,383 autoreload 2832 9612 Watching for file changes with StatReloader
+INFO 2025-08-20 15:39:29,983 basehttp 2832 8404 "GET / HTTP/1.1" 200 79685
+INFO 2025-08-20 15:39:30,194 basehttp 2832 8404 "GET /static/css/system.css HTTP/1.1" 200 7560
+INFO 2025-08-20 15:39:30,750 basehttp 2832 8404 "GET /static/images/logo.png HTTP/1.1" 200 98216
+INFO 2025-08-20 15:39:32,006 basehttp 2832 8404 "GET /media/parks/main/Gibbs-Farm-game-Drive-750x450.jpg HTTP/1.1" 200 67693
+INFO 2025-08-20 15:39:32,039 basehttp 2832 3440 "GET /media/parks/main/Serengeti-National-Park-Africa-Kenya-Safaris2.jpg.webp HTTP/1.1" 200 176712
+INFO 2025-08-20 15:39:32,070 basehttp 2832 4376 "GET /media/tours/main/4-Days-Ngorongoro-Serengeti-Safari-2-750x325-1.jpg HTTP/1.1" 200 53254
+INFO 2025-08-20 15:39:32,115 basehttp 2832 8880 "GET /media/parks/main/kili-1.jpg.webp HTTP/1.1" 200 36412
+INFO 2025-08-20 15:39:39,160 basehttp 2832 8880 "GET /admin HTTP/1.1" 301 0
+INFO 2025-08-20 15:39:39,223 basehttp 2832 4376 "GET /admin/ HTTP/1.1" 302 0
+INFO 2025-08-20 15:39:39,281 basehttp 2832 4376 "GET /admin/login/?next=/admin/ HTTP/1.1" 200 4182
+INFO 2025-08-20 15:39:39,346 basehttp 2832 4376 "GET /static/admin/css/base.css HTTP/1.1" 200 21207
+INFO 2025-08-20 15:39:39,347 basehttp 2832 8404 "GET /static/admin/css/nav_sidebar.css HTTP/1.1" 200 2694
+INFO 2025-08-20 15:39:39,358 basehttp 2832 3440 "GET /static/admin/css/dark_mode.css HTTP/1.1" 200 2929
+INFO 2025-08-20 15:39:39,360 basehttp 2832 9896 "GET /static/admin/css/login.css HTTP/1.1" 200 958
+INFO 2025-08-20 15:39:39,360 basehttp 2832 7044 "GET /static/admin/js/theme.js HTTP/1.1" 200 1943
+INFO 2025-08-20 15:39:39,371 basehttp 2832 3440 "GET /static/admin/js/nav_sidebar.js HTTP/1.1" 200 3063
+INFO 2025-08-20 15:39:39,392 basehttp 2832 5476 "GET /static/admin/css/responsive.css HTTP/1.1" 200 18533
+WARNING 2025-08-20 15:39:39,496 log 2832 5476 Not Found: /favicon.ico
+WARNING 2025-08-20 15:39:39,496 basehttp 2832 5476 "GET /favicon.ico HTTP/1.1" 404 5789
+INFO 2025-08-20 15:39:49,284 basehttp 2832 5476 "POST /admin/login/?next=/admin/ HTTP/1.1" 302 0
+INFO 2025-08-20 15:39:49,349 basehttp 2832 5476 "GET /admin/ HTTP/1.1" 200 23161
+INFO 2025-08-20 15:39:49,410 basehttp 2832 5476 "GET /static/admin/css/dashboard.css HTTP/1.1" 200 441
+INFO 2025-08-20 15:39:49,424 basehttp 2832 7044 "GET /static/admin/img/icon-deletelink.svg HTTP/1.1" 200 392
+INFO 2025-08-20 15:39:49,428 basehttp 2832 3440 "GET /static/admin/img/icon-changelink.svg HTTP/1.1" 200 380
+INFO 2025-08-20 15:39:49,438 basehttp 2832 5476 "GET /static/admin/img/icon-addlink.svg HTTP/1.1" 200 331
+INFO 2025-08-20 15:39:49,440 basehttp 2832 9896 "GET /static/admin/img/icon-viewlink.svg HTTP/1.1" 200 581
+INFO 2025-08-20 15:39:59,260 basehttp 2832 9896 "GET /admin/sites/site/ HTTP/1.1" 200 19387
+INFO 2025-08-20 15:39:59,314 basehttp 2832 9896 "GET /static/admin/css/changelists.css HTTP/1.1" 200 6566
+INFO 2025-08-20 15:39:59,316 basehttp 2832 7044 "GET /static/admin/js/jquery.init.js HTTP/1.1" 200 347
+INFO 2025-08-20 15:39:59,321 basehttp 2832 5476 "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+INFO 2025-08-20 15:39:59,321 basehttp 2832 4376 "GET /static/admin/js/core.js HTTP/1.1" 200 5682
+INFO 2025-08-20 15:39:59,349 basehttp 2832 9896 "GET /static/admin/js/urlify.js HTTP/1.1" 200 7887
+INFO 2025-08-20 15:39:59,363 basehttp 2832 8404 "GET /static/admin/js/admin/RelatedObjectLookups.js HTTP/1.1" 200 8943
+INFO 2025-08-20 15:39:59,459 basehttp 2832 5476 "GET /static/admin/js/prepopulate.js HTTP/1.1" 200 1531
+INFO 2025-08-20 15:39:59,482 basehttp 2832 7044 "GET /static/admin/js/actions.js HTTP/1.1" 200 7872
+INFO 2025-08-20 15:39:59,491 basehttp 2832 3440 "GET /static/admin/js/vendor/jquery/jquery.js HTTP/1.1" 200 292458
+INFO 2025-08-20 15:39:59,582 basehttp 2832 7044 "GET /static/admin/img/search.svg HTTP/1.1" 200 458
+INFO 2025-08-20 15:39:59,599 basehttp 2832 7044 "GET /static/admin/js/filters.js HTTP/1.1" 200 978
+INFO 2025-08-20 15:39:59,646 basehttp 2832 4376 "GET /static/admin/js/vendor/xregexp/xregexp.js HTTP/1.1" 200 232381
+INFO 2025-08-20 15:39:59,683 basehttp 2832 4376 "GET /static/admin/img/tooltag-add.svg HTTP/1.1" 200 331
+INFO 2025-08-20 15:39:59,688 basehttp 2832 7044 "GET /static/admin/img/sorting-icons.svg HTTP/1.1" 200 1097
+INFO 2025-08-20 15:40:01,452 basehttp 2832 7044 "GET /admin/sites/site/1/change/ HTTP/1.1" 200 19153
+INFO 2025-08-20 15:40:01,503 basehttp 2832 4376 "GET /static/admin/js/prepopulate_init.js HTTP/1.1" 200 586
+INFO 2025-08-20 15:40:01,509 basehttp 2832 3440 "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+INFO 2025-08-20 15:40:01,521 basehttp 2832 3440 "GET /static/admin/js/change_form.js HTTP/1.1" 200 606
+INFO 2025-08-20 15:40:01,522 basehttp 2832 7044 "GET /static/admin/css/forms.css HTTP/1.1" 200 9047
+INFO 2025-08-20 15:40:01,543 basehttp 2832 7044 "GET /static/admin/css/widgets.css HTTP/1.1" 200 11900
+INFO 2025-08-20 15:42:34,221 basehttp 2832 7044 "POST /admin/sites/site/1/change/ HTTP/1.1" 302 0
+INFO 2025-08-20 15:42:34,262 basehttp 2832 7044 "GET /admin/sites/site/ HTTP/1.1" 200 19623
+INFO 2025-08-20 15:42:34,323 basehttp 2832 7044 "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+INFO 2025-08-20 15:42:34,347 basehttp 2832 7044 "GET /static/admin/img/icon-yes.svg HTTP/1.1" 200 436
+INFO 2025-08-20 15:42:44,067 basehttp 2832 7044 "GET /admin/core/ HTTP/1.1" 200 6364
+INFO 2025-08-20 15:42:46,566 basehttp 2832 7044 "GET /admin/core/contactmessage/ HTTP/1.1" 200 21815
+INFO 2025-08-20 15:42:46,613 basehttp 2832 7044 "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+INFO 2025-08-20 15:42:57,610 basehttp 2832 7044 "GET /admin/core/contactmessage/2/change/ HTTP/1.1" 200 22217
+INFO 2025-08-20 15:42:57,656 basehttp 2832 7044 "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+INFO 2025-08-20 15:43:03,906 basehttp 2832 7044 "GET /admin/core/contactmessage/ HTTP/1.1" 200 21815
+INFO 2025-08-20 15:43:10,547 basehttp 2832 7044 "GET /admin/reviews/review/ HTTP/1.1" 200 20466
+INFO 2025-08-20 15:43:10,597 basehttp 2832 7044 "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+INFO 2025-08-20 15:43:16,576 basehttp 2832 7044 "GET /admin/reviews/reviewhelpful/ HTTP/1.1" 200 19112
+INFO 2025-08-20 15:43:16,622 basehttp 2832 7044 "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+INFO 2025-08-20 15:43:20,379 basehttp 2832 7044 "GET /admin/reviews/reviewimage/ HTTP/1.1" 200 18775
+INFO 2025-08-20 15:43:20,437 basehttp 2832 7044 "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+INFO 2025-08-20 15:43:25,750 basehttp 2832 7044 "GET /admin/tours/tourguide/ HTTP/1.1" 200 21626
+INFO 2025-08-20 15:43:25,804 basehttp 2832 7044 "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+INFO 2025-08-20 15:43:34,139 basehttp 2832 7044 "POST /admin/tours/tourguide/ HTTP/1.1" 200 18096
+INFO 2025-08-20 15:43:34,186 basehttp 2832 7044 "GET /static/admin/js/cancel.js HTTP/1.1" 200 884
+INFO 2025-08-20 15:43:35,713 basehttp 2832 7044 "POST /admin/tours/tourguide/ HTTP/1.1" 302 0
+INFO 2025-08-20 15:43:35,752 basehttp 2832 7044 "GET /admin/tours/tourguide/ HTTP/1.1" 200 19138
+INFO 2025-08-20 15:43:35,796 basehttp 2832 7044 "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+INFO 2025-08-20 15:43:43,450 basehttp 2832 7044 "GET /admin/core/sitesettings/ HTTP/1.1" 200 17749
+INFO 2025-08-20 15:43:45,092 basehttp 2832 7044 "GET /admin/core/sitesettings/1/change/ HTTP/1.1" 200 25273
+INFO 2025-08-20 15:43:45,148 basehttp 2832 7044 "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+INFO 2025-08-20 15:45:23,205 autoreload 2832 9612 C:\projects\Tourism\project\tanzania_tourism\settings.py changed, reloading.
+INFO 2025-08-20 15:45:26,510 autoreload 7500 3664 Watching for file changes with StatReloader
+INFO 2025-08-20 15:48:36,807 basehttp 7500 3104 "POST /admin/core/sitesettings/1/change/ HTTP/1.1" 302 0
+INFO 2025-08-20 15:48:36,918 basehttp 7500 3104 "GET /admin/core/sitesettings/ HTTP/1.1" 200 17980
+INFO 2025-08-20 15:48:39,292 basehttp 7500 3104 "GET /admin/core/sitesettings/1/change/ HTTP/1.1" 200 25710
+INFO 2025-08-20 15:48:39,341 basehttp 7500 3104 "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+INFO 2025-08-20 15:49:08,633 basehttp 7500 3104 "GET / HTTP/1.1" 200 81965
+INFO 2025-08-20 15:50:10,017 basehttp 7500 4004 "GET / HTTP/1.1" 200 81965
+INFO 2025-08-20 15:50:10,071 basehttp 7500 4004 "GET /static/css/system.css HTTP/1.1" 304 0
+INFO 2025-08-20 15:50:20,119 basehttp 7500 4004 "GET /contact/ HTTP/1.1" 200 64199
+INFO 2025-08-20 15:53:18,358 basehttp 7500 4004 "GET /contact/ HTTP/1.1" 200 64199
+INFO 2025-08-20 15:55:06,285 basehttp 7500 4004 "GET /admin/accounts/customuser/ HTTP/1.1" 200 40620
+INFO 2025-08-20 15:55:09,674 basehttp 7500 4004 "GET /admin/core/sitesettings/ HTTP/1.1" 200 17749
+INFO 2025-08-20 15:55:11,372 basehttp 7500 4004 "GET /admin/core/sitesettings/1/change/ HTTP/1.1" 200 25710
+INFO 2025-08-20 15:55:11,427 basehttp 7500 4004 "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+INFO 2025-08-20 15:55:23,274 basehttp 7500 4004 "POST /admin/core/sitesettings/1/change/ HTTP/1.1" 302 0
+INFO 2025-08-20 15:55:23,317 basehttp 7500 4004 "GET /admin/core/sitesettings/ HTTP/1.1" 200 17980
+INFO 2025-08-20 15:57:41,637 basehttp 7500 9524 "GET / HTTP/1.1" 200 81965
+INFO 2025-08-20 15:57:41,926 basehttp 7500 9524 "GET /static/css/system.css HTTP/1.1" 200 7560
+INFO 2025-08-20 15:57:41,930 basehttp 7500 9448 "GET /static/images/logo.png HTTP/1.1" 200 98216
+INFO 2025-08-20 15:57:43,232 basehttp 7500 9448 "GET /media/parks/main/kili-1.jpg.webp HTTP/1.1" 304 0
+INFO 2025-08-20 15:57:43,237 basehttp 7500 9524 "GET /media/parks/main/Gibbs-Farm-game-Drive-750x450.jpg HTTP/1.1" 304 0
+INFO 2025-08-20 15:57:43,243 basehttp 7500 9448 "GET /media/parks/main/Serengeti-National-Park-Africa-Kenya-Safaris2.jpg.webp HTTP/1.1" 304 0
+WARNING 2025-08-20 15:57:44,949 log 7500 9448 Not Found: /favicon.ico
+WARNING 2025-08-20 15:57:44,950 basehttp 7500 9448 "GET /favicon.ico HTTP/1.1" 404 5789
+INFO 2025-08-20 15:57:47,550 basehttp 7500 9448 "GET /media/tours/main/4-Days-Ngorongoro-Serengeti-Safari-2-750x325-1.jpg HTTP/1.1" 304 0
+INFO 2025-08-20 15:58:58,332 basehttp 7500 9448 "GET / HTTP/1.1" 200 81965
+INFO 2025-08-20 15:59:03,594 basehttp 7500 9448 "GET /admin/ HTTP/1.1" 200 23080
+INFO 2025-08-20 15:59:03,690 basehttp 7500 9448 "GET /static/admin/img/icon-deletelink.svg HTTP/1.1" 200 392
+INFO 2025-08-20 15:59:16,900 basehttp 7500 9448 "GET /admin/core/sitesettings/ HTTP/1.1" 200 17749
+INFO 2025-08-20 15:59:18,553 basehttp 7500 9448 "GET /admin/core/sitesettings/1/change/ HTTP/1.1" 200 25710
+INFO 2025-08-20 15:59:18,619 basehttp 7500 9448 "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+INFO 2025-08-20 16:00:06,874 basehttp 7500 9448 "POST /admin/core/sitesettings/1/change/ HTTP/1.1" 302 0
+INFO 2025-08-20 16:00:06,938 basehttp 7500 9448 "GET /admin/core/sitesettings/ HTTP/1.1" 200 17980
+INFO 2025-08-20 16:00:08,840 basehttp 7500 9448 "GET / HTTP/1.1" 200 81972
+INFO 2025-08-20 16:00:21,490 basehttp 7500 9448 "GET /contact/ HTTP/1.1" 200 64206
+INFO 2025-08-20 16:01:47,193 basehttp 7500 9448 "GET /admin/ HTTP/1.1" 200 23040
+INFO 2025-08-20 16:01:59,798 basehttp 7500 9448 "GET /admin/core/sitesettings/ HTTP/1.1" 200 17749
+INFO 2025-08-20 16:02:01,467 basehttp 7500 9448 "GET /admin/core/sitesettings/1/change/ HTTP/1.1" 200 25717
+INFO 2025-08-20 16:02:01,535 basehttp 7500 9448 "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+INFO 2025-08-20 16:03:33,437 basehttp 7500 9448 "GET /admin/core/sitesettings/1/change/ HTTP/1.1" 200 25717
+INFO 2025-08-20 16:03:33,530 basehttp 7500 9448 "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+INFO 2025-08-20 16:03:35,293 basehttp 7500 9448 "GET / HTTP/1.1" 200 81972
+INFO 2025-08-20 16:03:38,558 basehttp 7500 9448 "GET /contact/ HTTP/1.1" 200 64214
+INFO 2025-08-20 16:04:34,619 basehttp 7500 9448 "GET /contact/ HTTP/1.1" 200 64230
+INFO 2025-08-20 16:04:50,714 basehttp 7500 9448 "GET /contact/ HTTP/1.1" 200 64214
+INFO 2025-08-20 16:06:13,585 basehttp 7500 9448 "POST /admin/core/sitesettings/1/change/ HTTP/1.1" 302 0
+INFO 2025-08-20 16:06:13,699 basehttp 7500 9448 "GET /admin/core/sitesettings/ HTTP/1.1" 200 17980
+INFO 2025-08-20 16:06:44,051 basehttp 7500 9448 "GET /contact/ HTTP/1.1" 200 64214
+INFO 2025-08-20 16:07:14,093 basehttp 7500 9448 "GET /admin/core/sitesettings/1/change/ HTTP/1.1" 200 25717
+INFO 2025-08-20 16:07:14,164 basehttp 7500 9448 "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+INFO 2025-08-20 16:07:24,250 basehttp 7500 9448 "GET /admin/core/sitesettings/ HTTP/1.1" 200 17749
+INFO 2025-08-20 16:07:26,625 basehttp 7500 9448 "GET /admin/core/sitesettings/1/change/ HTTP/1.1" 200 25717
+INFO 2025-08-20 16:07:26,680 basehttp 7500 9448 "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+INFO 2025-08-20 16:07:32,688 basehttp 7500 9448 "POST /admin/core/sitesettings/1/change/ HTTP/1.1" 302 0
+INFO 2025-08-20 16:07:32,741 basehttp 7500 9448 "GET /admin/core/sitesettings/ HTTP/1.1" 200 17980
+INFO 2025-08-20 16:07:36,583 basehttp 7500 9448 "GET /contact/ HTTP/1.1" 200 64673
+INFO 2025-08-20 16:08:45,982 basehttp 7500 9448 "GET /admin/core/sitesettings/1/change/ HTTP/1.1" 200 26396
+INFO 2025-08-20 16:08:46,048 basehttp 7500 9448 "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+INFO 2025-08-20 16:09:15,411 basehttp 7500 9448 "POST /admin/core/sitesettings/1/change/ HTTP/1.1" 302 0
+INFO 2025-08-20 16:09:15,470 basehttp 7500 9448 "GET /admin/core/sitesettings/ HTTP/1.1" 200 17980
+INFO 2025-08-20 16:09:16,923 basehttp 7500 9448 "GET /admin/core/sitesettings/1/change/ HTTP/1.1" 200 25859
+INFO 2025-08-20 16:09:16,979 basehttp 7500 9448 "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+INFO 2025-08-20 16:18:06,033 basehttp 7500 2876 "GET / HTTP/1.1" 200 82252
+INFO 2025-08-20 16:18:06,140 basehttp 7500 2876 "GET /static/css/system.css HTTP/1.1" 304 0
+INFO 2025-08-20 16:18:14,179 basehttp 7500 2876 "GET / HTTP/1.1" 200 82252
+INFO 2025-08-20 16:19:19,402 basehttp 7500 2876 "GET /contact/ HTTP/1.1" 200 69530
+INFO 2025-08-20 16:21:50,929 basehttp 7500 2876 "GET /contact/ HTTP/1.1" 200 69450
+INFO 2025-08-20 16:23:29,852 basehttp 7500 2876 "GET /contact/ HTTP/1.1" 200 69480
+INFO 2025-08-20 17:12:59,117 basehttp 7500 1136 "GET /contact/ HTTP/1.1" 200 69187
+INFO 2025-08-20 17:12:59,188 basehttp 7500 1136 "GET /static/css/system.css HTTP/1.1" 304 0
+INFO 2025-08-20 17:14:09,062 basehttp 7500 1136 "GET /contact/ HTTP/1.1" 200 69532
+INFO 2025-08-20 17:15:06,577 basehttp 7500 1136 "GET /contact/ HTTP/1.1" 200 69187
+INFO 2025-08-20 17:15:18,383 basehttp 7500 1136 "GET /contact/ HTTP/1.1" 200 69480
+INFO 2025-08-20 17:18:31,059 basehttp 7500 1136 "GET /contact/ HTTP/1.1" 200 69269
+INFO 2025-08-20 17:18:54,472 basehttp 7500 1136 "GET /contact/ HTTP/1.1" 200 69260
+INFO 2025-08-20 17:19:19,765 basehttp 7500 1136 "GET /contact/ HTTP/1.1" 200 69269
+INFO 2025-08-20 17:19:41,678 basehttp 7500 1136 "GET /contact/ HTTP/1.1" 200 69271
+INFO 2025-08-20 17:19:52,274 basehttp 7500 1136 "GET /contact/ HTTP/1.1" 200 69272
+INFO 2025-08-20 17:20:05,486 basehttp 7500 1136 "GET /contact/ HTTP/1.1" 200 69272
+INFO 2025-08-20 17:20:16,445 basehttp 7500 1136 "GET /contact/ HTTP/1.1" 200 69272
+INFO 2025-08-20 17:21:50,952 basehttp 7500 1136 "GET /contact/ HTTP/1.1" 200 69207
+INFO 2025-08-20 17:22:58,943 basehttp 7500 1136 "GET /admin/ HTTP/1.1" 200 23019
+INFO 2025-08-20 17:23:07,489 basehttp 7500 1136 "GET /admin/core/sitesettings/ HTTP/1.1" 200 17749
+INFO 2025-08-20 17:23:09,314 basehttp 7500 1136 "GET /admin/core/sitesettings/1/change/ HTTP/1.1" 200 25859
+INFO 2025-08-20 17:23:09,379 basehttp 7500 1136 "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+INFO 2025-08-20 17:23:47,962 basehttp 7500 1136 "GET /contact/ HTTP/1.1" 200 69216
+INFO 2025-08-20 17:26:04,354 basehttp 7500 1136 "GET /contact/ HTTP/1.1" 200 69614
+INFO 2025-08-20 17:26:40,196 basehttp 7500 2880 "GET /contact/ HTTP/1.1" 200 69216
+ERROR 2025-08-20 17:30:05,353 log 7500 2880 Internal Server Error: /contact/
+Traceback (most recent call last):
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\base.py", line 505, in parse
+    compile_func = self.tags[command]
+                   ~~~~~~~~~^^^^^^^^^
+KeyError: 'static'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\projects\Tourism\project\core\views.py", line 61, in contact
+    return render(request, 'core/contact.html', {'form': form})
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\backends\django.py", line 33, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\engine.py", line 175, in get_template
+    template, origin = self.find_template(template_name)
+                       ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\engine.py", line 157, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+        contents,
+    ...<2 lines>...
+        self.engine,
+    )
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\base.py", line 200, in compile_nodelist
+    return parser.parse()
+           ~~~~~~~~~~~~^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\base.py", line 513, in parse
+    raise self.error(token, e)
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\loader_tags.py", line 293, in do_extends
+    nodelist = parser.parse()
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\base.py", line 513, in parse
+    raise self.error(token, e)
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\loader_tags.py", line 232, in do_block
+    nodelist = parser.parse(("endblock",))
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\base.py", line 507, in parse
+    self.invalid_block_tag(token, command, parse_until)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\base.py", line 558, in invalid_block_tag
+    raise self.error(
+    ...<8 lines>...
+    )
+django.template.exceptions.TemplateSyntaxError: Invalid block tag on line 130: 'static', expected 'endblock'. Did you forget to register or load this tag?
+ERROR 2025-08-20 17:30:05,377 basehttp 7500 2880 "GET /contact/ HTTP/1.1" 500 219226
+INFO 2025-08-20 17:30:40,020 basehttp 7500 2880 "GET /contact/ HTTP/1.1" 200 69179
+INFO 2025-08-20 17:30:40,104 basehttp 7500 2880 "GET /static/images/X_logo_2023_original.svg HTTP/1.1" 200 299
+INFO 2025-08-20 17:31:30,650 basehttp 7500 2880 "GET /contact/ HTTP/1.1" 200 68912
+INFO 2025-08-20 17:31:30,715 basehttp 7500 2880 "GET /static/images/X_logo_2023_original.svg HTTP/1.1" 304 0
+INFO 2025-08-20 17:32:35,606 basehttp 7500 2880 "GET /contact/ HTTP/1.1" 200 68850
+INFO 2025-08-20 17:32:35,673 basehttp 7500 2880 "GET /static/images/X_logo_2023_original.svg HTTP/1.1" 304 0
+INFO 2025-08-20 17:35:20,149 basehttp 7500 2880 "GET /contact/ HTTP/1.1" 200 68419
+INFO 2025-08-20 17:35:20,224 basehttp 7500 2880 "GET /static/images/X_logo_2023_original.svg HTTP/1.1" 304 0
+INFO 2025-08-20 17:35:28,866 basehttp 7500 2880 "GET /contact/ HTTP/1.1" 200 68419
+INFO 2025-08-20 17:35:46,543 basehttp 7500 2880 "GET /contact/ HTTP/1.1" 200 68419
+INFO 2025-08-20 17:36:58,562 basehttp 7500 2880 "GET /contact/ HTTP/1.1" 200 68375
+INFO 2025-08-20 17:36:58,626 basehttp 7500 13088 "GET /static/css/system.css HTTP/1.1" 304 0
+WARNING 2025-08-20 17:36:58,639 basehttp 7500 2880 "GET /static/WhatsApp.svg HTTP/1.1" 404 1896
+INFO 2025-08-20 17:36:58,642 basehttp 7500 12340 "GET /static/images/X_logo_2023_original.svg HTTP/1.1" 304 0
+INFO 2025-08-20 17:37:10,914 basehttp 7500 12340 "GET /contact/ HTTP/1.1" 200 68382
+INFO 2025-08-20 17:37:10,972 basehttp 7500 12340 "GET /static/images/WhatsApp.svg HTTP/1.1" 200 2501
+INFO 2025-08-20 17:40:20,567 basehttp 7500 12340 "GET /contact/ HTTP/1.1" 200 68879
+INFO 2025-08-20 17:40:20,646 basehttp 7500 12340 "GET /static/images/WhatsApp.svg HTTP/1.1" 304 0
+INFO 2025-08-20 17:40:20,646 basehttp 7500 13088 "GET /static/images/X_logo_2023_original.svg HTTP/1.1" 304 0
+WARNING 2025-08-20 17:40:20,711 basehttp 7500 13088 "GET /static/images/facebook.svg HTTP/1.1" 404 1917
+WARNING 2025-08-20 17:40:20,714 basehttp 7500 12340 "GET /static/images/instagram.svg HTTP/1.1" 404 1920
+WARNING 2025-08-20 17:40:20,747 basehttp 7500 3020 "GET /static/images/youtube.svg HTTP/1.1" 404 1914
+INFO 2025-08-20 17:44:49,627 basehttp 7500 12480 "GET /contact/ HTTP/1.1" 200 68902
+INFO 2025-08-20 17:44:49,697 basehttp 7500 12480 "GET /static/images/WhatsApp.svg HTTP/1.1" 304 0
+INFO 2025-08-20 17:44:49,704 basehttp 7500 12480 "GET /static/images/X_logo_2023_original.svg HTTP/1.1" 304 0
+WARNING 2025-08-20 17:44:49,720 basehttp 7500 7712 "GET /static/images/facebook.svg HTTP/1.1" 404 1917
+WARNING 2025-08-20 17:44:49,753 basehttp 7500 12480 "GET /static/images/instagram.svg HTTP/1.1" 404 1920
+WARNING 2025-08-20 17:44:49,783 basehttp 7500 13152 "GET /static/images/YouTube_full-color_icon_(2017).svg HTTP/1.1" 404 1983
+INFO 2025-08-20 17:45:44,698 basehttp 7500 11652 "GET /contact/ HTTP/1.1" 200 68879
+WARNING 2025-08-20 17:45:44,786 basehttp 7500 11652 "GET /static/images/facebook.svg HTTP/1.1" 404 1917
+WARNING 2025-08-20 17:45:44,809 basehttp 7500 8036 "GET /static/images/instagram.svg HTTP/1.1" 404 1920
+WARNING 2025-08-20 17:45:44,840 basehttp 7500 8444 "GET /static/images/YouTube.png HTTP/1.1" 404 1914
+INFO 2025-08-20 17:45:47,181 basehttp 7500 9896 "GET /contact/ HTTP/1.1" 200 68879
+WARNING 2025-08-20 17:45:47,289 basehttp 7500 9896 "GET /static/images/facebook.svg HTTP/1.1" 404 1917
+WARNING 2025-08-20 17:45:47,300 basehttp 7500 9336 "GET /static/images/instagram.svg HTTP/1.1" 404 1920
+WARNING 2025-08-20 17:45:47,322 basehttp 7500 12452 "GET /static/images/YouTube.png HTTP/1.1" 404 1914
+INFO 2025-08-20 17:45:53,501 basehttp 7500 8232 "GET /contact/ HTTP/1.1" 200 68879
+INFO 2025-08-20 17:45:53,539 basehttp 7500 8232 "GET /static/images/WhatsApp.svg HTTP/1.1" 304 0
+WARNING 2025-08-20 17:45:53,574 basehttp 7500 8232 "GET /static/images/facebook.svg HTTP/1.1" 404 1917
+WARNING 2025-08-20 17:45:53,614 basehttp 7500 8880 "GET /static/images/instagram.svg HTTP/1.1" 404 1920
+WARNING 2025-08-20 17:45:53,618 basehttp 7500 1672 "GET /static/images/YouTube.png HTTP/1.1" 404 1914
+INFO 2025-08-20 17:46:27,411 basehttp 7500 13052 "GET /contact/ HTTP/1.1" 200 68879
+WARNING 2025-08-20 17:46:27,486 basehttp 7500 13052 "GET /static/images/facebook.svg HTTP/1.1" 404 1917
+WARNING 2025-08-20 17:46:27,489 basehttp 7500 12920 "GET /static/images/instagram.svg HTTP/1.1" 404 1920
+INFO 2025-08-20 17:46:27,515 basehttp 7500 3744 "GET /static/images/YouTube.png HTTP/1.1" 200 22052
+INFO 2025-08-20 17:48:37,062 basehttp 7500 3744 "GET /contact/ HTTP/1.1" 200 68879
+INFO 2025-08-20 17:48:37,127 basehttp 7500 3744 "GET /static/images/WhatsApp.svg HTTP/1.1" 304 0
+INFO 2025-08-20 17:48:37,147 basehttp 7500 3744 "GET /static/images/X_logo_2023_original.svg HTTP/1.1" 304 0
+WARNING 2025-08-20 17:48:37,160 basehttp 7500 10968 "GET /static/images/facebook.svg HTTP/1.1" 404 1917
+INFO 2025-08-20 17:48:37,197 basehttp 7500 3744 "GET /static/images/Instagram.png HTTP/1.1" 200 154211
+INFO 2025-08-20 17:48:37,210 basehttp 7500 3744 "GET /static/images/YouTube.png HTTP/1.1" 304 0
+INFO 2025-08-20 17:49:05,904 basehttp 7500 3744 "GET /contact/ HTTP/1.1" 200 68891
+WARNING 2025-08-20 17:49:05,987 basehttp 7500 3744 "GET /static/images/facebook.svg HTTP/1.1" 404 1917
+INFO 2025-08-20 17:49:05,996 basehttp 7500 12000 "GET /static/images/Instagram.png HTTP/1.1" 304 0
+INFO 2025-08-20 17:49:06,002 basehttp 7500 12000 "GET /static/images/YouTube.png HTTP/1.1" 304 0
+INFO 2025-08-20 17:49:30,044 basehttp 7500 12000 "GET /contact/ HTTP/1.1" 200 68908
+INFO 2025-08-20 17:49:30,107 basehttp 7500 11908 "GET /static/images/Instagram.png HTTP/1.1" 304 0
+WARNING 2025-08-20 17:49:30,118 basehttp 7500 12000 "GET /static/images/facebook.svg HTTP/1.1" 404 1917
+INFO 2025-08-20 17:49:55,920 basehttp 7500 11908 "GET /contact/ HTTP/1.1" 200 68914
+WARNING 2025-08-20 17:49:55,974 basehttp 7500 11908 "GET /static/images/facebook.svg HTTP/1.1" 404 1917
+INFO 2025-08-20 17:49:55,980 basehttp 7500 5744 "GET /static/images/Instagram.png HTTP/1.1" 304 0
+INFO 2025-08-20 17:49:55,993 basehttp 7500 5588 "GET /static/images/YouTube.png HTTP/1.1" 304 0
+INFO 2025-08-20 17:50:08,732 basehttp 7500 5588 "GET /contact/ HTTP/1.1" 200 68908
+INFO 2025-08-20 17:50:08,789 basehttp 7500 5588 "GET /static/images/WhatsApp.svg HTTP/1.1" 304 0
+WARNING 2025-08-20 17:50:08,803 basehttp 7500 5744 "GET /static/images/facebook.svg HTTP/1.1" 404 1917
+INFO 2025-08-20 17:50:20,961 basehttp 7500 5588 "GET /contact/ HTTP/1.1" 200 68908
+INFO 2025-08-20 17:50:21,041 basehttp 7500 4376 "GET /static/images/Instagram.png HTTP/1.1" 304 0
+WARNING 2025-08-20 17:50:21,057 basehttp 7500 5588 "GET /static/images/facebook.svg HTTP/1.1" 404 1917
+INFO 2025-08-20 17:50:31,170 basehttp 7500 4376 "GET /contact/ HTTP/1.1" 200 68904
+WARNING 2025-08-20 17:50:31,237 basehttp 7500 4376 "GET /static/images/facebook.svg HTTP/1.1" 404 1917
+INFO 2025-08-20 17:50:59,058 basehttp 7500 9072 "GET /contact/ HTTP/1.1" 200 68890
+INFO 2025-08-20 17:50:59,088 basehttp 7500 9072 "GET /static/images/X_logo_2023_original.svg HTTP/1.1" 304 0
+WARNING 2025-08-20 17:50:59,111 basehttp 7500 12032 "GET /static/images/facebook.svg HTTP/1.1" 404 1917
+INFO 2025-08-20 17:50:59,122 basehttp 7500 9072 "GET /static/images/Instagram.png HTTP/1.1" 304 0
+INFO 2025-08-20 17:50:59,138 basehttp 7500 11256 "GET /static/images/YouTube.png HTTP/1.1" 304 0
+INFO 2025-08-20 17:51:21,726 basehttp 7500 11256 "GET /contact/ HTTP/1.1" 200 68879
+INFO 2025-08-20 17:51:21,821 basehttp 7500 9072 "GET /static/images/Instagram.png HTTP/1.1" 304 0
+WARNING 2025-08-20 17:51:21,837 basehttp 7500 11256 "GET /static/images/facebook.svg HTTP/1.1" 404 1917
+INFO 2025-08-20 17:53:01,272 basehttp 7500 9072 "GET /contact/ HTTP/1.1" 200 68902
+INFO 2025-08-20 17:53:01,364 basehttp 7500 9072 "GET /static/images/WhatsApp.svg HTTP/1.1" 304 0
+WARNING 2025-08-20 17:53:01,367 basehttp 7500 6360 "GET /static/images/facebook.svg HTTP/1.1" 404 1917
+WARNING 2025-08-20 17:53:01,401 basehttp 7500 1252 "GET /static/images/instagram.svg HTTP/1.1" 404 1920
+WARNING 2025-08-20 17:53:01,409 basehttp 7500 11972 "GET /static/images/YouTube_full-color_icon_(2017).svg HTTP/1.1" 404 1983
+INFO 2025-08-20 17:53:13,642 basehttp 7500 9072 "GET /contact/ HTTP/1.1" 200 68382
+INFO 2025-08-20 17:54:29,560 basehttp 7500 9072 "GET /contact/ HTTP/1.1" 200 68371
+INFO 2025-08-20 17:54:29,598 basehttp 7500 9072 "GET /static/images/X_logo_2023_original.svg HTTP/1.1" 304 0
+INFO 2025-08-20 17:55:21,133 basehttp 7500 9072 "GET /contact/ HTTP/1.1" 200 68482
+INFO 2025-08-20 17:55:21,201 basehttp 7500 9072 "GET /static/images/WhatsApp.svg HTTP/1.1" 304 0
+INFO 2025-08-20 17:57:46,885 basehttp 7500 4148 "GET /admin/core/sitesettings/ HTTP/1.1" 200 17749
+INFO 2025-08-20 17:57:49,768 basehttp 7500 4148 "GET / HTTP/1.1" 200 82347
+INFO 2025-08-20 17:57:57,371 basehttp 7500 4148 "GET /contact/ HTTP/1.1" 200 68477
+INFO 2025-08-20 17:57:57,431 basehttp 7500 4148 "GET /static/images/WhatsApp.svg HTTP/1.1" 304 0
+INFO 2025-08-20 17:57:57,431 basehttp 7500 13076 "GET /static/images/X_logo_2023_original.svg HTTP/1.1" 304 0
+INFO 2025-08-20 18:02:35,212 autoreload 7332 6828 Watching for file changes with StatReloader
+INFO 2025-08-20 18:02:39,150 basehttp 7332 5744 "GET /search/?q= HTTP/1.1" 200 52119
+INFO 2025-08-20 18:02:39,198 basehttp 7332 5744 "GET /static/css/system.css HTTP/1.1" 304 0
+INFO 2025-08-20 18:02:44,295 basehttp 7332 5744 "GET /search/?q=parks HTTP/1.1" 200 51742
+INFO 2025-08-20 18:02:49,120 basehttp 7332 5744 "GET /parks/ HTTP/1.1" 200 90873
+INFO 2025-08-20 18:02:49,172 basehttp 7332 5744 "GET /media/parks/main/arusha-welcome-1_GKeoGhz.jpg HTTP/1.1" 304 0
+INFO 2025-08-20 18:02:49,173 basehttp 7332 6464 "GET /media/parks/main/burigi-chato-national-park-galry-1-1.jpg HTTP/1.1" 304 0
+INFO 2025-08-20 18:02:49,178 basehttp 7332 9364 "GET /media/parks/main/gombe-4.webp HTTP/1.1" 304 0
+INFO 2025-08-20 18:02:49,187 basehttp 7332 1124 "GET /media/parks/main/katavi-Hippo-pool.jpg HTTP/1.1" 304 0
+INFO 2025-08-20 18:02:49,188 basehttp 7332 10640 "GET /media/parks/main/i4-p52nvzls707m1nj8ld4x5w2iue560urjvic0jkdmk4.jpg HTTP/1.1" 304 0
+INFO 2025-08-20 18:02:49,200 basehttp 7332 10924 "GET /media/parks/main/kubwafive-safaris.jpg HTTP/1.1" 304 0
+INFO 2025-08-20 18:02:49,222 basehttp 7332 10924 "GET /media/parks/main/Kitulo-National-park-1.jpg HTTP/1.1" 304 0
+INFO 2025-08-20 18:02:49,242 basehttp 7332 10924 "GET /media/parks/main/mahale.jpg HTTP/1.1" 304 0
+INFO 2025-08-20 18:02:49,243 basehttp 7332 9364 "GET /media/parks/main/thumb_16057243_cover_header_g1vgUNu.jpg HTTP/1.1" 304 0
+INFO 2025-08-20 18:02:49,244 basehttp 7332 1124 "GET /media/parks/main/lake-manyara-1.jpg HTTP/1.1" 304 0
+INFO 2025-08-20 18:02:49,244 basehttp 7332 10640 "GET /media/parks/main/247205355_10157876049375044_3456436950874094026_n-1024x683.jpg HTTP/1.1" 304 0
+INFO 2025-08-20 18:03:10,975 basehttp 7332 10640 "GET /search/?q=historical HTTP/1.1" 200 52634
+INFO 2025-08-20 18:03:11,031 basehttp 7332 10640 "GET /media/parks/main/rumanyika-.jpg HTTP/1.1" 304 0
+INFO 2025-08-20 18:03:27,846 basehttp 7332 10640 "GET /tours/ HTTP/1.1" 200 81088
+INFO 2025-08-20 18:03:27,906 basehttp 7332 10640 "GET /media/tours/main/kili-1.jpg.webp HTTP/1.1" 304 0
+WARNING 2025-08-20 18:03:27,971 log 7332 10924 Not Found: /media/tours/main/selous_5.jpg
+WARNING 2025-08-20 18:03:27,976 log 7332 9364 Not Found: /media/tours/main/udzungwa_3.jpg
+WARNING 2025-08-20 18:03:27,977 basehttp 7332 10924 "GET /media/tours/main/selous_5.jpg HTTP/1.1" 404 5813
+WARNING 2025-08-20 18:03:27,993 log 7332 1124 Not Found: /media/tours/main/saadani_4.jpg
+WARNING 2025-08-20 18:03:28,008 basehttp 7332 1124 "GET /media/tours/main/saadani_4.jpg HTTP/1.1" 404 5817
+WARNING 2025-08-20 18:03:28,000 basehttp 7332 9364 "GET /media/tours/main/udzungwa_3.jpg HTTP/1.1" 404 5821
+INFO 2025-08-20 18:03:32,921 basehttp 7332 1124 "GET /search/?q= HTTP/1.1" 200 52119
+ERROR 2025-08-20 18:03:37,466 log 7332 1124 Internal Server Error: /search/
+Traceback (most recent call last):
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\base.py", line 880, in _resolve_lookup
+    current = current[bit]
+              ~~~~~~~^^^^^
+TypeError: 'TourPackage' object is not subscriptable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\base.py", line 890, in _resolve_lookup
+    current = getattr(current, bit)
+AttributeError: 'TourPackage' object has no attribute 'price_standard'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\base.py", line 896, in _resolve_lookup
+    current = current[int(bit)]
+                      ~~~^^^^^
+ValueError: invalid literal for int() with base 10: 'price_standard'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\projects\Tourism\project\core\views.py", line 110, in search
+    return render(request, 'core/search.html', context)
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\backends\django.py", line 61, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\base.py", line 175, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\test\utils.py", line 112, in instrumented_test_render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\loader_tags.py", line 157, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\test\utils.py", line 112, in instrumented_test_render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\loader_tags.py", line 63, in render
+    result = block.nodelist.render(context)
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\defaulttags.py", line 321, in render
+    return nodelist.render(context)
+           ~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\defaulttags.py", line 321, in render
+    return nodelist.render(context)
+           ~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\defaulttags.py", line 238, in render
+    nodelist.append(node.render_annotated(context))
+                    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\base.py", line 1064, in render
+    output = self.filter_expression.resolve(context)
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\base.py", line 736, in resolve
+    arg_vals.append(arg.resolve(context))
+                    ~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\base.py", line 847, in resolve
+    value = self._resolve_lookup(context)
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\base.py", line 903, in _resolve_lookup
+    raise VariableDoesNotExist(
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+    )  # missing attribute
+    ^
+django.template.base.VariableDoesNotExist: Failed lookup for key [price_standard] in <TourPackage: Saadani Beach & Safari — 4 Days>
+ERROR 2025-08-20 18:03:37,515 basehttp 7332 1124 "GET /search/?q=saadani HTTP/1.1" 500 228947
+INFO 2025-08-20 18:04:27,849 basehttp 7332 1124 "GET /search/?q=saadani HTTP/1.1" 200 55666
+INFO 2025-08-20 18:04:27,931 basehttp 7332 1124 "GET /media/parks/main/Saadani_National_Park_Hippos_29.jpg HTTP/1.1" 304 0
+WARNING 2025-08-20 18:04:27,952 log 7332 9364 Not Found: /media/tours/main/saadani_4.jpg
+WARNING 2025-08-20 18:04:27,958 basehttp 7332 9364 "GET /media/tours/main/saadani_4.jpg HTTP/1.1" 404 5817
+INFO 2025-08-20 18:04:46,023 basehttp 7332 9364 "GET /search/?q=saadani HTTP/1.1" 200 55666
+WARNING 2025-08-20 18:04:46,093 log 7332 9364 Not Found: /media/tours/main/saadani_4.jpg
+WARNING 2025-08-20 18:04:46,094 basehttp 7332 9364 "GET /media/tours/main/saadani_4.jpg HTTP/1.1" 404 5817
+INFO 2025-08-20 18:04:52,870 basehttp 7332 9364 "GET /search/?q=parks HTTP/1.1" 200 51742
+INFO 2025-08-20 18:05:00,478 basehttp 7332 9364 "GET /search/?q=lion HTTP/1.1" 200 52627
+INFO 2025-08-20 18:05:12,142 basehttp 7332 9364 "GET /search/?q=big+five HTTP/1.1" 200 51751
+INFO 2025-08-20 18:05:20,985 basehttp 7332 9364 "GET /search/?q=five HTTP/1.1" 200 51739
+INFO 2025-08-20 18:05:26,822 basehttp 7332 9364 "GET /parks/ HTTP/1.1" 200 90873
+INFO 2025-08-20 18:05:32,884 basehttp 7332 9364 "GET /parks/?type=game_reserve&region=&search=None HTTP/1.1" 200 56527
+INFO 2025-08-20 18:05:39,181 basehttp 7332 9364 "GET / HTTP/1.1" 200 82347
+INFO 2025-08-20 18:05:45,042 basehttp 7332 9364 "GET /parks/ HTTP/1.1" 200 90873
+INFO 2025-08-20 18:05:52,222 basehttp 7332 9364 "GET /parks/arusha-national-park/ HTTP/1.1" 200 60679
+INFO 2025-08-20 18:05:52,283 basehttp 7332 9364 "GET /media/wildlife/colobus-monkey-2-e1656590896831.jpg HTTP/1.1" 304 0
+INFO 2025-08-20 18:05:52,285 basehttp 7332 1124 "GET /media/destinations/mount_meru.jpg HTTP/1.1" 304 0

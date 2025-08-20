@@ -1,7 +1,7 @@
 {% extends 'base/base.html' %}
 {% load i18n %}
 {% load crispy_forms_tags %}
-
+{% load static %}
 {% block title %}{% trans "Contact Us" %} - Safari&nbsp;&amp;&nbsp;Bush Retreats{% endblock %}
 
 {% block content %}
@@ -36,6 +36,7 @@
                     <h3 class="text-xl font-bold text-gray-900 dark:text-gray-100 mb-4">{% trans "Contact Information" %}</h3>
                     
                     <div class="space-y-4">
+                        <!-- Address -->
                         <div class="flex">
                             <div class="flex-shrink-0">
                                 <div class="w-10 h-10 bg-[#C18D45] rounded-full flex items-center justify-center">
@@ -44,10 +45,11 @@
                             </div>
                             <div class="ml-4">
                                 <h4 class="font-medium text-gray-900 dark:text-gray-100">{% trans "Address" %}</h4>
-                                <p class="text-gray-600 dark:text-gray-300">Arusha, Tanzania<br>East Africa</p>
+                                <p class="text-gray-600 dark:text-gray-300">{{ site_settings.address|default:"Iringa, Tanzania" }}<br>East Africa</p>
                             </div>
                         </div>
                         
+                        <!-- Phone -->
                         <div class="flex">
                             <div class="flex-shrink-0">
                                 <div class="w-10 h-10 bg-[#C18D45] rounded-full flex items-center justify-center">
@@ -56,10 +58,11 @@
                             </div>
                             <div class="ml-4">
                                 <h4 class="font-medium text-gray-900 dark:text-gray-100">{% trans "Phone" %}</h4>
-                                <p class="text-gray-600 dark:text-gray-300">+255 123 456 789</p>
+                                <p class="text-gray-600 dark:text-gray-300">{{ site_settings.contact_phone|default:"+255 768 373 033" }}</p>
                             </div>
                         </div>
                         
+                        <!-- Email -->
                         <div class="flex">
                             <div class="flex-shrink-0">
                                 <div class="w-10 h-10 bg-[#C18D45] rounded-full flex items-center justify-center">
@@ -68,10 +71,11 @@
                             </div>
                             <div class="ml-4">
                                 <h4 class="font-medium text-gray-900 dark:text-gray-100">{% trans "Email" %}</h4>
-                                <p class="text-gray-600 dark:text-gray-300">info@tanzaniasafari.com</p>
+                                <p class="text-gray-600 dark:text-gray-300">{{ site_settings.contact_email|default:"safariandbushretreats@gmail.com" }}</p>
                             </div>
                         </div>
                         
+                        <!-- Business Hours -->
                         <div class="flex">
                             <div class="flex-shrink-0">
                                 <div class="w-10 h-10 bg-[#C18D45] rounded-full flex items-center justify-center">
@@ -87,6 +91,58 @@
                                 </p>
                             </div>
                         </div>
+
+                        <!-- Social Links (vertical) -->
+                        <div class="mt-2">
+                            <h4 class="font-medium text-gray-900 dark:text-gray-100 mb-2">{% trans "Follow / Contact us" %}</h4>
+                            <div class="flex flex-col space-y-3">
+                                <!-- WhatsApp -->
+                                <a href="{{ site_settings.whatsapp_link|default:'https://wa.me/255768373033' }}"
+                                    target="_blank" rel="noopener noreferrer"
+                                    aria-label="WhatsApp"
+                                    class="flex items-center space-x-3 group">
+                                    <div class="w-10 h-10 rounded-full bg-[#25D366] flex items-center justify-center group-hover:scale-105 transition-transform">
+                                        <!-- remote SVG (example) -->
+                                        <img src="{% static 'images/WhatsApp.svg' %}"
+                                            alt="WhatsApp"
+                                            class="w-8 h-8 block"
+                                            aria-hidden="true" />
+                                    </div>
+                                    <span class="text-sm text-gray-600 dark:text-gray-300">
+                                        {{ site_settings.whatsapp_label|default:"+255 768 373 033 (WhatsApp)" }}
+                                    </span>
+                                </a>
+
+                                <!-- LinkedIn -->
+                                <a href="https://www.linkedin.com/in/ally-shebe-b8269223a/?originalSubdomain=tz" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" class="flex items-center space-x-3 group">
+                                    <div class="w-10 h-10 rounded-full bg-[#0077B5] flex items-center justify-center group-hover:scale-105 transition-transform">
+                                        <!-- LinkedIn SVG -->
+                                        <svg class="w-5 h-5 text-white" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                            <path d="M4.98 3.5C4.98 4.88 3.86 6 2.48 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.5 8h4v13h-4V8zM9 8h3.78v1.76h.05c.53-.9 1.82-1.85 3.75-1.85C20.9 7.91 22 9.78 22 12.62V21h-4v-7.08c0-1.69-.03-3.86-2.35-3.86-2.35 0-2.71 1.84-2.71 3.73V21H9V8z" fill="white"/>
+                                        </svg>
+                                    </div>
+                                    <span class="text-sm text-gray-600 dark:text-gray-300">{% trans "LinkedIn" %}</span>
+                                </a>
+
+                                <!-- X (Twitter) -->
+                                <a href="{{ site_settings.twitter_link|default:'http://x.com/BushRetreats' }}"
+                                    target="_blank" rel="noopener noreferrer"
+                                    aria-label="X (formerly Twitter)"
+                                    class="flex items-center space-x-3 group">
+                                    <div class="w-10 h-10 rounded-full bg-gray-300 flex items-center justify-center group-hover:scale-105 transition-transform">
+                                        <!-- use Wikimedia-hosted SVG -->
+                                        <img
+                                        src="{% static 'images/X_logo_2023_original.svg'%}"
+                                        alt="X logo"
+                                        class="w-5 h-5"
+                                        aria-hidden="true"
+                                        />
+                                    </div>
+
+                                    <span class="text-sm text-gray-600 dark:text-gray-300">X (Twitter)</span>
+                                </a>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 
@@ -100,7 +156,7 @@
                             </div>
                             <div class="ml-3">
                                 <p class="font-medium text-yellow-800 dark:text-yellow-200">{% trans "24/7 Emergency Line" %}</p>
-                                <p class="text-yellow-700 dark:text-yellow-300">+255 987 654 321</p>
+                                <p class="text-yellow-700 dark:text-yellow-300">{{ site_settings.contact_phone|default:"+255 768 373 033" }}</p>
                             </div>
                         </div>
                     </div>
@@ -150,7 +206,7 @@
                     </summary>
                     <div class="px-6 pb-4 pt-2 border-t border-gray-200 dark:border-gray-700">
                         <p class="text-gray-600 dark:text-gray-300">
-                            {% trans "Most visitors need a visa to enter Tanzania. You can obtain a visa on arrival at the airport or apply online in advance. US citizens pay $100, while most other nationalities pay $50." %}
+                            {% trans "Most visitors need a visa to enter Tanzania. You can obtain a visa on arrival at the airport or apply online in advance." %}
                         </p>
                     </div>
                 </details>
