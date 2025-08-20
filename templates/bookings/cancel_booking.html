@@ -1,0 +1,155 @@
+{% extends 'base/base.html' %}
+{% load i18n %}
+
+{% block title %}{% trans "Cancel Booking" %} - {{ booking.booking_reference }}{% endblock %}
+
+{% block content %}
+<!-- Scoped dark-mode overrides for this page ONLY when the global dark class is active -->
+<style>
+/* Only apply these overrides when the global theme is dark (document.documentElement.classList contains 'dark') */
+html.dark .local-dark-mode { background-color: #071028; color: #e6eef8; }
+
+/* Card / background overrides (only under html.dark) */
+html.dark .local-dark-mode .bg-white { background-color: #0f1724; color: #e6eef8; }
+html.dark .local-dark-mode .bg-gray-50 { background-color: #071026; color: #cbd5e1; }
+html.dark .local-dark-mode .bg-red-50 { background-color: rgba(139, 0, 0, 0.08); color: #ffdddd; }
+html.dark .local-dark-mode .bg-yellow-50 { background-color: rgba(120, 80, 0, 0.06); color: #f7e9c7; }
+html.dark .local-dark-mode .bg-green-50 { background-color: rgba(0, 80, 0, 0.06); color: #dff5e0; }
+html.dark .local-dark-mode .bg-blue-50 { background-color: rgba(10, 30, 60, 0.18); color: #cde7ff; }
+
+/* Text color overrides */
+html.dark .local-dark-mode .text-gray-600,
+html.dark .local-dark-mode .text-gray-700,
+html.dark .local-dark-mode .text-gray-500,
+html.dark .local-dark-mode .text-gray-900 {
+    color: #cbd5e1;
+}
+
+/* Muted / small text */
+html.dark .local-dark-mode .text-sm,
+html.dark .local-dark-mode .text-gray-500 {
+    color: #97a6b9;
+}
+
+/* Borders */
+html.dark .local-dark-mode .border-gray-200,
+html.dark .local-dark-mode .border-gray-100,
+html.dark .local-dark-mode .border-gray-300 {
+    border-color: rgba(255,255,255,0.06);
+}
+
+/* Links */
+html.dark .local-dark-mode a {
+    color: #C18D45; /* keep brand color for links */
+}
+html.dark .local-dark-mode a:hover { text-decoration: underline; }
+
+/* Buttons: keep brand colors but ensure contrast on dark bg */
+html.dark .local-dark-mode .bg-[#C18D45] { box-shadow: 0 2px 8px rgba(193,141,69,0.12); }
+html.dark .local-dark-mode .bg-[#a97a3a] { box-shadow: 0 2px 8px rgba(169,122,58,0.10); }
+
+/* Shadows and elevation slightly tuned for dark mode */
+html.dark .local-dark-mode .shadow-md,
+html.dark .local-dark-mode .shadow-sm,
+html.dark .local-dark-mode .shadow-lg {
+    box-shadow: 0 6px 18px rgba(2,6,23,0.6);
+}
+
+/* Adjust list bullets color */
+html.dark .local-dark-mode .list-disc li::marker { color: #9fb2c9; }
+
+/* Keep important status colors (red, green, yellow) readable but slightly muted */
+html.dark .local-dark-mode .bg-red-600 { background-color: #b63b3b; }
+html.dark .local-dark-mode .bg-red-700 { background-color: #9f2f2f; }
+</style>
+
+<div class="local-dark-mode">
+<div class="container mx-auto px-4 py-12">
+    <div class="max-w-3xl mx-auto">
+        <!-- Flash messages -->
+        {% if messages %}
+            <div class="space-y-2 mb-6">
+                {% for message in messages %}
+                    <div class="rounded-md px-4 py-3
+                        {% if message.tags %}{% if 'error' in message.tags %}bg-red-50 border-l-4 border-red-400 text-red-800{% elif 'warning' in message.tags %}bg-yellow-50 border-l-4 border-yellow-400 text-yellow-800{% elif 'success' in message.tags %}bg-green-50 border-l-4 border-green-400 text-green-800{% else %}bg-blue-50 border-l-4 border-blue-400 text-blue-800{% endif %}{% else %}bg-gray-50 border-l-4 border-gray-300 text-gray-800{% endif %}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+
+        <div class="bg-white rounded-xl shadow-md overflow-hidden">
+            <div class="px-6 py-6 border-b border-gray-100">
+                <h1 class="text-2xl font-bold">{% trans "Cancel Booking" %}</h1>
+                <p class="text-sm text-gray-500 mt-1">{% trans "Reference" %}: <strong>{{ booking.booking_reference }}</strong></p>
+            </div>
+
+            <div class="p-6">
+                <div class="mb-6">
+                    <h2 class="text-lg font-semibold mb-2">{% trans "Booking details" %}</h2>
+
+                    <dl class="grid grid-cols-1 gap-y-2">
+                        <div class="flex justify-between">
+                            <dt class="text-gray-600">{% trans "Tour" %}:</dt>
+                            <dd class="font-medium">{{ booking.tour_package.title }}</dd>
+                        </div>
+
+                        <div class="flex justify-between">
+                            <dt class="text-gray-600">{% trans "Departure" %}:</dt>
+                            <dd class="font-medium">
+                                {% if booking.tour_availability %}
+                                    {{ booking.tour_availability.start_date|date:"M d, Y" }} — {{ booking.tour_availability.end_date|date:"M d, Y" }}
+                                {% else %}
+                                    {% trans "Date not selected" %}
+                                {% endif %}
+                            </dd>
+                        </div>
+
+                        <div class="flex justify-between">
+                            <dt class="text-gray-600">{% trans "Participants" %}:</dt>
+                            <dd class="font-medium">{{ booking.number_of_participants }}</dd>
+                        </div>
+
+                        <div class="flex justify-between">
+                            <dt class="text-gray-600">{% trans "Status" %}:</dt>
+                            <dd class="font-medium">{{ booking.booking_status|capfirst }}</dd>
+                        </div>
+
+                        <div class="flex justify-between">
+                            <dt class="text-gray-600">{% trans "Created" %}:</dt>
+                            <dd class="font-medium">{{ booking.created_at|date:"M d, Y H:i" }}</dd>
+                        </div>
+                    </dl>
+                </div>
+
+                <div class="mb-6">
+                    <h3 class="font-semibold mb-2">{% trans "Please read before cancelling" %}</h3>
+                    <ul class="list-disc pl-5 text-sm text-gray-700 space-y-2">
+                        <li>{% trans "Cancellations may be subject to our cancellation policy and fees." %}</li>
+                        <li>{% trans "If the booking was already confirmed and paid, refunds (if any) will be handled according to our policy." %}</li>
+                        <li>{% trans "After you confirm cancellation below, our team will process and notify you by email." %}</li>
+                    </ul>
+                </div>
+
+                <form method="post" class="space-y-4">
+                    {% csrf_token %}
+                    <div class="flex gap-3">
+                        <button type="submit" class="inline-flex items-center justify-center px-5 py-2 rounded-md bg-red-600 hover:bg-red-700 text-white font-medium transition">
+                            {% trans "Yes — Cancel my booking" %}
+                        </button>
+
+                        <a href="{% url 'bookings:booking_detail' booking_reference=booking.booking_reference %}" class="inline-flex items-center justify-center px-5 py-2 rounded-md border border-gray-300 text-gray-700 hover:bg-gray-50 transition">
+                            {% trans "No — Keep my booking" %}
+                        </a>
+                    </div>
+                </form>
+
+                <div class="mt-6 text-sm text-gray-500">
+                    <p>{% trans "If you need assistance, contact us at" %} <a href="{% url 'core:contact' %}" class="text-[#C18D45] hover:underline">{% trans "Support" %}</a>.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div> {# end .local-dark-mode #}
+{% endblock %}

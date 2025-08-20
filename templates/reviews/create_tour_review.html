@@ -2,7 +2,7 @@
 {% load i18n %}
 {% load crispy_forms_tags %}
 
-{% block title %}{% trans "Write Review for" %} {{ tour_package.title }} - Tanzania Safari Adventures{% endblock %}
+{% block title %}{% trans "Write Review for" %} {{ tour_package.title }} - {{ site_settings.site_name|default:"Safari & Bush Retreats" }}{% endblock %}
 
 {% block content %}
 <div class="container py-5">

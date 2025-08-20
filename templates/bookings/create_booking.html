@@ -2,7 +2,7 @@
 {% load i18n %}
 {% load crispy_forms_tags %}
 
-{% block title %}{% trans "Book" %} {{ tour_package.title }} - Tanzania Safari Adventures{% endblock %}
+{% block title %}{% trans "Book" %} {{ tour_package.title }} - {{ site_settings.site_name|default:"Safari & Bush Retreats" }}{% endblock %}
 
 {% block extra_css %}
 <style>
@@ -49,10 +49,101 @@
         background-color: #28a745;
         color: white;
     }
+    .participant-form .remove-btn {
+        float: right;
+    }
+
+    /* ---------------------------
+       Scoped dark-mode overrides
+       Apply only when html has .dark and only inside .booking-local
+       --------------------------- */
+    html.dark .booking-local { background-color: #071026; color: #cbd5e1; }
+
+    /* Card / background overrides */
+    html.dark .booking-local .bg-white { background-color: #0f1724 !important; color: #e6eef8 !important; }
+    html.dark .booking-local .bg-gray-50 { background-color: #071026 !important; color: #cbd5e1 !important; }
+    html.dark .booking-local .bg-gray-200 { background-color: #111827 !important; color: #cbd5e1 !important; }
+    html.dark .booking-local .bg-blue-50 { background-color: #071a2a !important; color: #cfe6ff !important; }
+
+    /* Text color overrides */
+    html.dark .booking-local .text-gray-700,
+    html.dark .booking-local .text-gray-600,
+    html.dark .booking-local .text-gray-800,
+    html.dark .booking-local .text-gray-500,
+    html.dark .booking-local .text-gray-400 {
+        color: #cbd5e1 !important;
+    }
+    html.dark .booking-local h1,
+    html.dark .booking-local h2,
+    html.dark .booking-local h3,
+    html.dark .booking-local h4,
+    html.dark .booking-local h5,
+    html.dark .booking-local h6 {
+        color: #e6eef8 !important;
+    }
+
+    /* Form controls */
+    html.dark .booking-local input,
+    html.dark .booking-local select,
+    html.dark .booking-local textarea,
+    html.dark .booking-local .form-control,
+    html.dark .booking-local .crispy {
+        background-color: #0b1522 !important;
+        color: #e6eef8 !important;
+        border-color: rgba(255,255,255,0.06) !important;
+    }
+
+    /* Borders */
+    html.dark .booking-local .border,
+    html.dark .booking-local .border-gray-200,
+    html.dark .booking-local .border-gray-300 {
+        border-color: rgba(255,255,255,0.06) !important;
+    }
+
+    /* Prose and small text */
+    html.dark .booking-local p,
+    html.dark .booking-local .prose,
+    html.dark .booking-local .text-sm {
+        color: #cbd5e1 !important;
+    }
+
+    /* Make white buttons look right in dark mode */
+    html.dark .booking-local a.bg-white,
+    html.dark .booking-local button.bg-white {
+        background-color: #111827 !important;
+        color: #e6eef8 !important;
+        border-color: rgba(255,255,255,0.06) !important;
+    }
+
+    /* Brand accents — keep readable but slightly tuned for dark backgrounds */
+    html.dark .booking-local .bg-[#C18D45],
+    html.dark .booking-local .text-[#C18D45],
+    html.dark .booking-local .border-[#C18D45] {
+        background-color: #b7894a !important;
+        color: #111827 !important;
+        border-color: #b7894a !important;
+    }
+
+    /* Shadows */
+    html.dark .booking-local .shadow-md,
+    html.dark .booking-local .shadow-sm,
+    html.dark .booking-local .shadow-lg {
+        box-shadow: 0 6px 18px rgba(2,6,23,0.6) !important;
+    }
+
+    /* small helper for the progress-step line contrast */
+    html.dark .booking-local .progress-step:not(:last-child)::after { background-color: rgba(255,255,255,0.04); }
+    html.dark .booking-local .progress-step.active::after { background-color: #b7894a; }
+
+    /* Ensure sticky booking summary stands out */
+    html.dark .booking-local .sticky { background-color: transparent; }
+
 </style>
 {% endblock %}
 
 {% block content %}
+<div class="booking-local"><!-- wrapper for scoped dark-mode styles -->
+
 <div class="container mx-auto px-4 py-8">
     <!-- Progress Indicator -->
     <div class="booking-progress">
@@ -84,7 +175,7 @@
                     </h4>
                 </div>
                 <div class="p-6">
-                    <form method="post" id="bookingForm">
+                    <form method="post" id="bookingForm" novalidate>
                         {% csrf_token %}
                         
                         <div class="bg-blue-50 border-l-4 border-blue-500 p-4 rounded mb-6">
@@ -97,27 +188,53 @@
                             </div>
                         </div>
                         
-                        <!-- Tour Selection -->
+                        <!-- Tour Selection (minimal) -->
                         <div class="mb-6">
                             <h5 class="text-lg font-bold text-gray-900 mb-4">{% trans "Tour Selection" %}</h5>
                             {% crispy form %}
                         </div>
                         
-                        <!-- Participants -->
+                        <!-- Participants (optional, dynamic) -->
                         <div class="mb-6">
                             <h5 class="text-lg font-bold text-gray-900 mb-4">{% trans "Participant Information" %}</h5>
-                            <div id="participant-forms" class="space-y-4">
-                                {{ participant_formset.management_form }}
-                                {% for form in participant_formset %}
-                                    <div class="participant-form border border-gray-200 rounded-lg p-4">
-                                        <h6 class="font-medium text-gray-900 mb-3">{% trans "Participant" %} {{ forloop.counter }}</h6>
-                                        {% crispy form %}
-                                    </div>
-                                {% endfor %}
+
+                            <div class="mb-3">
+                                <button type="button" id="toggle-participants" class="flex items-center px-4 py-2 border border-[#C18D45] text-[#C18D45] rounded-md hover:bg-[#f5f0e8]">
+                                    <i class="fas fa-user-plus mr-2"></i>{% trans "Toggle Participant Names (optional)" %}
+                                </button>
+                                <p class="text-sm text-gray-600 mt-2">
+                                  {% trans "You can skip names for now — add them later or when you arrive." %}
+                                </p>
                             </div>
-                            <button type="button" class="mt-4 flex items-center px-4 py-2 border border-[#C18D45] text-[#C18D45] rounded-md hover:bg-[#f5f0e8]" id="add-participant">
-                                <i class="fas fa-plus mr-2"></i>{% trans "Add Participant" %}
-                            </button>
+
+                            <div id="participants-panel" style="display:none;">
+                                <!-- management form (required) -->
+                                {{ participant_formset.management_form }}
+                                
+                                <div id="participant-forms" class="space-y-4">
+                                    {% for form in participant_formset %}
+                                        <div class="participant-form border border-gray-200 rounded-lg p-4 relative" data-index="{{ forloop.counter0 }}">
+                                            <button type="button" class="remove-btn text-red-500 remove-participant" title="{% trans 'Remove' %}">&times;</button>
+                                            <h6 class="font-medium text-gray-900 mb-3">{% trans "Participant" %} {{ forloop.counter }}</h6>
+                                            {% crispy form %}
+                                        </div>
+                                    {% endfor %}
+                                </div>
+
+                                <div class="mt-3">
+                                    <button type="button" id="add-participant" class="flex items-center px-4 py-2 border border-[#C18D45] text-[#C18D45] rounded-md hover:bg-[#f5f0e8]">
+                                        <i class="fas fa-plus mr-2"></i>{% trans "Add Participant" %}
+                                    </button>
+                                </div>
+
+                                <!-- flag for backend to process formset -->
+                                <input type="hidden" name="include_participants" id="include_participants" value="0">
+
+                                <!-- empty form template for JS cloning -->
+                                <div id="empty-form-template" style="display:none;">
+                                    {{ participant_formset.empty_form|crispy }}
+                                </div>
+                            </div>
                         </div>
                         
                         <div class="text-right">
@@ -180,6 +297,8 @@
         </div>
     </div>
 </div>
+
+</div> {# end .booking-local #}
 {% endblock %}
 
 {% block extra_js %}
@@ -188,29 +307,102 @@ document.addEventListener('DOMContentLoaded', function() {
     const form = document.getElementById('bookingForm');
     const participantCountEl = document.getElementById('participant-count');
     const accommodationTypeEl = document.getElementById('accommodation-type');
-    
+    const toggleBtn = document.getElementById('toggle-participants');
+    const panel = document.getElementById('participants-panel');
+    const addBtn = document.getElementById('add-participant');
+    const formsContainer = document.getElementById('participant-forms');
+    const emptyTemplateEl = document.getElementById('empty-form-template');
+    const includeInput = document.getElementById('include_participants');
+
+    // update summary values
     function updateSummary() {
-        const participants = document.getElementById('id_number_of_participants').value || 1;
-        const accommodation = document.getElementById('id_accommodation_type').value || 'standard';
-        
+        const participantsInput = document.getElementById('id_number_of_participants');
+        const accommodationInput = document.getElementById('id_accommodation_type');
+        const participants = participantsInput ? participantsInput.value || 1 : 1;
+        const accommodation = accommodationInput ? accommodationInput.value || 'standard' : 'standard';
+
         participantCountEl.textContent = participants;
         accommodationTypeEl.textContent = accommodation.charAt(0).toUpperCase() + accommodation.slice(1);
     }
-    
-    // Update summary when form changes
-    form.addEventListener('change', updateSummary);
-    
-    // Initialize summary
+
+    // wire change events
+    if (form) form.addEventListener('change', updateSummary);
     updateSummary();
-    
-    // Add participant functionality
-    let participantCount = {{ participant_formset.total_form_count }};
-    
-    document.getElementById('add-participant').addEventListener('click', function() {
-        // This would need more complex JavaScript to dynamically add formset forms
-        // For now, we'll show an alert
-        alert('{% trans "Please specify the number of participants in the form above" %}');
-    });
+
+    // Toggle participants panel
+    if (toggleBtn) {
+        toggleBtn.addEventListener('click', function() {
+            if (panel.style.display === 'none' || panel.style.display === '') {
+                panel.style.display = 'block';
+                includeInput.value = '1';
+                toggleBtn.textContent = '{% trans "Hide Participant Names (optional)" %}';
+            } else {
+                panel.style.display = 'none';
+                includeInput.value = '0';
+                toggleBtn.textContent = '{% trans "Toggle Participant Names (optional)" %}';
+            }
+        });
+    }
+
+    // Helper: management form TOTAL_FORMS input (assumes default prefix 'form')
+    const totalFormsInput = document.querySelector('input[name="form-TOTAL_FORMS"]');
+    const maxFormsInput = document.querySelector('input[name="form-MAX_NUM_FORMS"]');
+    const minFormsInput = document.querySelector('input[name="form-MIN_NUM_FORMS"]');
+
+    // Add participant (clone empty_form)
+    if (addBtn && emptyTemplateEl) {
+        addBtn.addEventListener('click', function() {
+            if (!totalFormsInput) {
+                alert('{% trans "Formset management form missing. Cannot add participant." %}');
+                return;
+            }
+            let index = parseInt(totalFormsInput.value, 10);
+            // replace __prefix__ in template HTML
+            let templateHtml = emptyTemplateEl.innerHTML.replace(/__prefix__/g, index);
+            // create wrapper and append
+            const wrapper = document.createElement('div');
+            wrapper.className = 'participant-form border border-gray-200 rounded-lg p-4 relative';
+            wrapper.dataset.index = index;
+            wrapper.innerHTML = `
+                <button type="button" class="remove-btn text-red-500 remove-participant" title="{% trans 'Remove' %}">&times;</button>
+                <h6 class="font-medium text-gray-900 mb-3">{% trans "Participant" %} ${index + 1}</h6>
+                ${templateHtml}
+            `;
+            formsContainer.appendChild(wrapper);
+            totalFormsInput.value = index + 1;
+            includeInput.value = '1';
+        });
+    }
+
+    // Delegate remove participant clicks
+    if (formsContainer) {
+        formsContainer.addEventListener('click', function(e) {
+            if (e.target && e.target.matches('.remove-participant')) {
+                const parent = e.target.closest('.participant-form');
+                if (!parent) return;
+                parent.remove();
+                // reindex visible forms and update TOTAL_FORMS
+                if (totalFormsInput) {
+                    const remaining = formsContainer.querySelectorAll('.participant-form').length;
+                    totalFormsInput.value = remaining;
+                    Array.from(formsContainer.querySelectorAll('.participant-form')).forEach((el, idx) => {
+                        const heading = el.querySelector('h6');
+                        if (heading) heading.textContent = '{% trans "Participant" %} ' + (idx + 1);
+                    });
+                    if (remaining === 0) {
+                        includeInput.value = '0';
+                    }
+                }
+            }
+        });
+    }
+
+    // Basic client-side guard on submit: ensure participant count matches at least the number_of_participants (optional)
+    if (form) {
+        form.addEventListener('submit', function(e) {
+            updateSummary();
+        });
+    }
 });
 </script>
 {% endblock %}

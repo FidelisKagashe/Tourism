@@ -8,10 +8,10 @@
     <!-- Header Section -->
     <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-8">
         <div class="mb-4 sm:mb-0">
-            <h1 class="text-2xl sm:text-3xl font-bold text-gray-900">
+            <h1 class="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-gray-100">
                 {% trans "Welcome back" %}, {{ user.get_display_name }}!
             </h1>
-            <p class="text-gray-600 mt-1">
+            <p class="text-gray-600 mt-1 dark:text-gray-300">
                 {% trans "Manage your bookings and profile" %}
             </p>
         </div>
@@ -24,49 +24,49 @@
     <!-- Stats Cards -->
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
         <!-- Total Bookings -->
-        <div class="bg-white rounded-lg shadow-md p-6 text-center">
-            <div class="mx-auto bg-gray-100 w-16 h-16 rounded-full flex items-center justify-center mb-4">
+        <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 text-center">
+            <div class="mx-auto bg-gray-100 dark:bg-gray-700 w-16 h-16 rounded-full flex items-center justify-center mb-4">
                 <i class="fas fa-calendar-check text-[#C18D45] text-2xl"></i>
             </div>
-            <h3 class="text-3xl font-bold text-gray-900">{{ total_bookings }}</h3>
-            <p class="text-gray-600">{% trans "Total Bookings" %}</p>
+            <h3 class="text-3xl font-bold text-gray-900 dark:text-gray-100">{{ total_bookings }}</h3>
+            <p class="text-gray-600 dark:text-gray-300">{% trans "Total Bookings" %}</p>
         </div>
 
         <!-- Completed Tours -->
-        <div class="bg-white rounded-lg shadow-md p-6 text-center">
-            <div class="mx-auto bg-gray-100 w-16 h-16 rounded-full flex items-center justify-center mb-4">
+        <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 text-center">
+            <div class="mx-auto bg-gray-100 dark:bg-gray-700 w-16 h-16 rounded-full flex items-center justify-center mb-4">
                 <i class="fas fa-check-circle text-green-500 text-2xl"></i>
             </div>
-            <h3 class="text-3xl font-bold text-gray-900">{{ completed_tours }}</h3>
-            <p class="text-gray-600">{% trans "Completed Tours" %}</p>
+            <h3 class="text-3xl font-bold text-gray-900 dark:text-gray-100">{{ completed_tours }}</h3>
+            <p class="text-gray-600 dark:text-gray-300">{% trans "Completed Tours" %}</p>
         </div>
 
         <!-- Reviews Written -->
-        <div class="bg-white rounded-lg shadow-md p-6 text-center">
-            <div class="mx-auto bg-gray-100 w-16 h-16 rounded-full flex items-center justify-center mb-4">
+        <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 text-center">
+            <div class="mx-auto bg-gray-100 dark:bg-gray-700 w-16 h-16 rounded-full flex items-center justify-center mb-4">
                 <i class="fas fa-star text-yellow-500 text-2xl"></i>
             </div>
-            <h3 class="text-3xl font-bold text-gray-900">{{ total_reviews }}</h3>
-            <p class="text-gray-600">{% trans "Reviews Written" %}</p>
+            <h3 class="text-3xl font-bold text-gray-900 dark:text-gray-100">{{ total_reviews }}</h3>
+            <p class="text-gray-600 dark:text-gray-300">{% trans "Reviews Written" %}</p>
         </div>
 
         <!-- Account Type -->
-        <div class="bg-white rounded-lg shadow-md p-6 text-center">
-            <div class="mx-auto bg-gray-100 w-16 h-16 rounded-full flex items-center justify-center mb-4">
+        <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 text-center">
+            <div class="mx-auto bg-gray-100 dark:bg-gray-700 w-16 h-16 rounded-full flex items-center justify-center mb-4">
                 <i class="fas fa-user text-blue-500 text-2xl"></i>
             </div>
-            <h3 class="text-3xl font-bold text-gray-900">{{ user.get_role_display }}</h3>
-            <p class="text-gray-600">{% trans "Account Type" %}</p>
+            <h3 class="text-3xl font-bold text-gray-900 dark:text-gray-100">{{ user.get_role_display }}</h3>
+            <p class="text-gray-600 dark:text-gray-300">{% trans "Account Type" %}</p>
         </div>
     </div>
 
     <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
         <!-- Recent Bookings -->
         <div class="lg:col-span-2">
-            <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <div class="bg-white px-6 py-4 border-b border-gray-200">
+            <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden">
+                <div class="bg-white dark:bg-gray-800 px-6 py-4 border-b border-gray-200 dark:border-gray-700">
                     <div class="flex justify-between items-center">
-                        <h2 class="text-lg font-bold text-gray-900">{% trans "Recent Bookings" %}</h2>
+                        <h2 class="text-lg font-bold text-gray-900 dark:text-gray-100">{% trans "Recent Bookings" %}</h2>
                         <a href="{% url 'bookings:booking_list' %}" 
                            class="text-sm bg-[#C18D45] hover:bg-[#a6793a] text-white px-3 py-1 rounded transition duration-300">
                             {% trans "View All" %}
@@ -74,7 +74,7 @@
                     </div>
                 </div>
                 
-                <div class="divide-y divide-gray-200">
+                <div class="divide-y divide-gray-200 dark:divide-gray-700">
                     {% if bookings %}
                         {% for booking in bookings %}
                             <div class="p-6 flex items-start">
@@ -84,11 +84,11 @@
                                 </div>
                                 
                                 <div class="ml-4 flex-grow">
-                                    <h3 class="text-base font-medium text-gray-900">{{ booking.tour_package.title }}</h3>
-                                    <p class="text-sm text-gray-500 mt-1">
+                                    <h3 class="text-base font-medium text-gray-900 dark:text-gray-100">{{ booking.tour_package.title }}</h3>
+                                    <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">
                                         {% trans "Reference:" %} {{ booking.booking_reference }}
                                     </p>
-                                    <p class="text-xs text-gray-500 mt-1">
+                                    <p class="text-xs text-gray-500 dark:text-gray-400 mt-1">
                                         {{ booking.created_at|date:"M d, Y" }}
                                     </p>
                                 </div>
@@ -101,19 +101,19 @@
                                         {% else %}bg-gray-100 text-gray-800{% endif %}">
                                         {{ booking.get_booking_status_display }}
                                     </span>
-                                    <p class="mt-2 text-lg font-semibold text-gray-900">
+                                    {% comment %} <p class="mt-2 text-lg font-semibold text-gray-900 dark:text-gray-100">
                                         ${{ booking.total_price|floatformat:0 }}
-                                    </p>
+                                    </p> {% endcomment %}
                                 </div>
                             </div>
                         {% endfor %}
                     {% else %}
                         <div class="text-center py-8">
-                            <div class="mx-auto bg-gray-100 w-16 h-16 rounded-full flex items-center justify-center mb-4">
-                                <i class="fas fa-calendar-times text-gray-400 text-2xl"></i>
+                            <div class="mx-auto bg-gray-100 dark:bg-gray-700 w-16 h-16 rounded-full flex items-center justify-center mb-4">
+                                <i class="fas fa-calendar-times text-gray-400 dark:text-gray-300 text-2xl"></i>
                             </div>
-                            <h3 class="text-lg font-medium text-gray-900">{% trans "No bookings yet" %}</h3>
-                            <p class="text-gray-500 mt-1">{% trans "Start planning your next adventure!" %}</p>
+                            <h3 class="text-lg font-medium text-gray-900 dark:text-gray-100">{% trans "No bookings yet" %}</h3>
+                            <p class="text-gray-500 dark:text-gray-300 mt-1">{% trans "Start planning your next adventure!" %}</p>
                             <div class="mt-4">
                                 <a href="{% url 'tours:tour_list' %}" 
                                    class="inline-flex items-center px-4 py-2 bg-[#C18D45] hover:bg-[#a6793a] text-white rounded-md transition duration-300">
@@ -129,9 +129,9 @@
         <!-- Sidebar - Quick Actions & Recent Reviews -->
         <div class="space-y-6">
             <!-- Quick Actions -->
-            <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <div class="bg-white px-6 py-4 border-b border-gray-200">
-                    <h2 class="text-lg font-bold text-gray-900">{% trans "Quick Actions" %}</h2>
+            <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden">
+                <div class="bg-white dark:bg-gray-800 px-6 py-4 border-b border-gray-200 dark:border-gray-700">
+                    <h2 class="text-lg font-bold text-gray-900 dark:text-gray-100">{% trans "Quick Actions" %}</h2>
                 </div>
                 
                 <div class="p-6 space-y-4">
@@ -141,27 +141,27 @@
                     </a>
                     
                     <a href="{% url 'parks:park_list' %}" 
-                       class="block w-full text-center px-4 py-3 bg-white border border-[#C18D45] text-[#C18D45] hover:bg-[#f5f0e8] rounded-md transition duration-300">
+                       class="block w-full text-center px-4 py-3 bg-white dark:bg-gray-700 border border-[#C18D45] text-[#C18D45] hover:bg-[#f5f0e8] dark:hover:bg-gray-700 rounded-md transition duration-300">
                         <i class="fas fa-mountain mr-2"></i>{% trans "Explore Parks" %}
                     </a>
                     
                     <a href="{% url 'accounts:profile_update' %}" 
-                       class="block w-full text-center px-4 py-3 bg-white border border-gray-300 text-gray-700 hover:bg-gray-50 rounded-md transition duration-300">
+                       class="block w-full text-center px-4 py-3 bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-700 rounded-md transition duration-300">
                         <i class="fas fa-user-edit mr-2"></i>{% trans "Update Profile" %}
                     </a>
                     
                     <a href="{% url 'core:contact' %}" 
-                       class="block w-full text-center px-4 py-3 bg-white border border-blue-300 text-blue-700 hover:bg-blue-50 rounded-md transition duration-300">
+                       class="block w-full text-center px-4 py-3 bg-white dark:bg-gray-700 border border-blue-300 dark:border-blue-700 text-blue-700 dark:text-blue-300 hover:bg-blue-50 dark:hover:bg-gray-700 rounded-md transition duration-300">
                         <i class="fas fa-phone mr-2"></i>{% trans "Contact Support" %}
                     </a>
                 </div>
             </div>
             
             <!-- Recent Reviews -->
-            <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <div class="bg-white px-6 py-4 border-b border-gray-200">
+            <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden">
+                <div class="bg-white dark:bg-gray-800 px-6 py-4 border-b border-gray-200 dark:border-gray-700">
                     <div class="flex justify-between items-center">
-                        <h2 class="text-lg font-bold text-gray-900">{% trans "Your Reviews" %}</h2>
+                        <h2 class="text-lg font-bold text-gray-900 dark:text-gray-100">{% trans "Your Reviews" %}</h2>
                         <a href="{% url 'reviews:user_reviews' %}" 
                            class="text-sm bg-[#C18D45] hover:bg-[#a6793a] text-white px-3 py-1 rounded transition duration-300">
                             {% trans "View All" %}
@@ -169,12 +169,12 @@
                     </div>
                 </div>
                 
-                <div class="divide-y divide-gray-200">
+                <div class="divide-y divide-gray-200 dark:divide-gray-700">
                     {% if reviews %}
                         {% for review in reviews %}
                             <div class="p-6">
                                 <div class="flex justify-between items-start">
-                                    <h3 class="text-base font-medium text-gray-900 truncate max-w-xs">
+                                    <h3 class="text-base font-medium text-gray-900 dark:text-gray-100 truncate max-w-xs">
                                         {{ review.title|truncatechars:30 }}
                                     </h3>
                                     <div class="flex">
@@ -182,13 +182,13 @@
                                             {% if forloop.counter <= review.rating %}
                                                 <i class="fas fa-star text-yellow-400 ml-1"></i>
                                             {% else %}
-                                                <i class="far fa-star text-gray-300 ml-1"></i>
+                                                <i class="far fa-star text-gray-300 dark:text-gray-500 ml-1"></i>
                                             {% endif %}
                                         {% endfor %}
                                     </div>
                                 </div>
                                 
-                                <p class="text-sm text-gray-500 mt-1 truncate">
+                                <p class="text-sm text-gray-500 dark:text-gray-400 mt-1 truncate">
                                     {% if review.tour_package %}
                                         {{ review.tour_package.title }}
                                     {% elif review.national_park %}
@@ -196,17 +196,17 @@
                                     {% endif %}
                                 </p>
                                 
-                                <p class="text-xs text-gray-500 mt-2">
+                                <p class="text-xs text-gray-500 dark:text-gray-400 mt-2">
                                     {{ review.created_at|date:"M d, Y" }}
                                 </p>
                             </div>
                         {% endfor %}
                     {% else %}
                         <div class="text-center py-8">
-                            <div class="mx-auto bg-gray-100 w-16 h-16 rounded-full flex items-center justify-center mb-4">
-                                <i class="fas fa-star text-gray-400 text-2xl"></i>
+                            <div class="mx-auto bg-gray-100 dark:bg-gray-700 w-16 h-16 rounded-full flex items-center justify-center mb-4">
+                                <i class="fas fa-star text-gray-400 dark:text-gray-300 text-2xl"></i>
                             </div>
-                            <p class="text-gray-500">{% trans "No reviews yet" %}</p>
+                            <p class="text-gray-500 dark:text-gray-300">{% trans "No reviews yet" %}</p>
                         </div>
                     {% endif %}
                 </div>

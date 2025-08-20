@@ -5,27 +5,27 @@
 {% block title %}{% trans "Login" %} - Safari&nbsp;&amp;&nbsp;Bush Retreats{% endblock %}
 
 {% block content %}
-<div class="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
+<div class="min-h-screen flex items-center justify-center bg-gray-50 dark:bg-gray-900 py-12 px-4 sm:px-6 lg:px-8">
     <div class="max-w-md w-full space-y-8">
         <div class="text-center">
             <div class="mx-auto flex justify-center">
-                <div class="bg-gray-200 border-2 border-dashed rounded-xl w-16 h-16 flex items-center justify-center">
+                <div class="bg-gray-200 dark:bg-gray-700 border-2 border-dashed dark:border-gray-600 rounded-xl w-16 h-16 flex items-center justify-center">
                     <i class="fas fa-user-circle text-4xl text-[#C18D45]"></i>
                 </div>
             </div>
-            <h2 class="mt-6 text-3xl font-bold text-gray-900">
+            <h2 class="mt-6 text-3xl font-bold text-gray-900 dark:text-gray-100">
                 {% trans "Welcome Back" %}
             </h2>
-            <p class="mt-2 text-gray-600">
+            <p class="mt-2 text-gray-600 dark:text-gray-300">
                 {% trans "Sign in to your account" %}
             </p>
         </div>
 
-        <div class="bg-white py-8 px-4 shadow rounded-lg sm:px-10 border border-gray-200">
+        <div class="bg-white dark:bg-gray-800 py-8 px-4 shadow rounded-lg sm:px-10 border border-gray-200 dark:border-gray-700 dark:text-gray-200">
             {% crispy form %}
             
             <div class="mt-6 text-center">
-                <p class="text-gray-600">
+                <p class="text-gray-600 dark:text-gray-300">
                     {% trans "Don't have an account?" %}
                     <a href="{% url 'accounts:register' %}" class="font-medium text-[#C18D45] hover:text-[#a6793a]">
                         {% trans "Sign up here" %}
@@ -34,7 +34,7 @@
             </div>
             
             <div class="mt-4 text-center">
-                <a href="#" class="text-sm text-gray-500 hover:text-gray-700">
+                <a href="#" class="text-sm text-gray-500 dark:text-gray-300 hover:text-gray-700 dark:hover:text-gray-100">
                     {% trans "Forgot your password?" %}
                 </a>
             </div>

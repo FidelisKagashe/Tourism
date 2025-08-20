@@ -1,11 +1,98 @@
 {% extends 'base/base.html' %}
 {% load i18n %}
 
-{% block title %}{{ tour.title }} - {% trans "Safari Tour" %} - Tanzania Safari Adventures{% endblock %}
+{% block title %}{{ tour.title }} - {% trans "Safari Tour" %} - {{ site_settings.site_name|default:"Safari & Bush Retreats" }}{% endblock %}
 
 {% block meta_description %}{{ tour.short_description }}{% endblock %}
 
 {% block content %}
+<!-- Scoped dark-mode overrides for this page ONLY when the global dark class is active -->
+<style>
+/* Apply overrides only when html has class "dark" and inside the page wrapper .tour-local */
+html.dark .tour-local { background-color: #071026; color: #cbd5e1; }
+
+/* Card / background overrides (only under html.dark) */
+html.dark .tour-local .bg-white { background-color: #0f1724 !important; color: #e6eef8 !important; }
+html.dark .tour-local .bg-gray-50 { background-color: #071026 !important; color: #cbd5e1 !important; }
+html.dark .tour-local .bg-gray-200 { background-color: #111827 !important; color: #cbd5e1 !important; }
+
+/* Text color overrides */
+html.dark .tour-local .text-gray-700,
+html.dark .tour-local .text-gray-600,
+html.dark .tour-local .text-gray-800,
+html.dark .tour-local .text-gray-500,
+html.dark .tour-local .text-gray-400 {
+    color: #cbd5e1 !important;
+}
+
+/* Headings */
+html.dark .tour-local h1,
+html.dark .tour-local h2,
+html.dark .tour-local h3,
+html.dark .tour-local h4,
+html.dark .tour-local h5,
+html.dark .tour-local h6 {
+    color: #e6eef8 !important;
+}
+
+/* Form controls / small panels */
+html.dark .tour-local input,
+html.dark .tour-local select,
+html.dark .tour-local textarea,
+html.dark .tour-local .card,
+html.dark .tour-local .prose {
+    background-color: transparent;
+    color: #e6eef8 !important;
+}
+
+/* Borders */
+html.dark .tour-local .border,
+html.dark .tour-local .border-gray-200,
+html.dark .tour-local .border-gray-300 {
+    border-color: rgba(255,255,255,0.06) !important;
+}
+
+/* Prose and description text */
+html.dark .tour-local .prose,
+html.dark .tour-local p,
+html.dark .tour-local .prose p {
+    color: #cbd5e1 !important;
+}
+
+/* Pagination / small text */
+html.dark .tour-local .text-sm,
+html.dark .tour-local .text-xs {
+    color: #cbd5e1 !important;
+}
+
+/* Card shadows slightly darkened */
+html.dark .tour-local .shadow-md,
+html.dark .tour-local .shadow-sm,
+html.dark .tour-local .shadow-lg {
+    box-shadow: 0 6px 18px rgba(2,6,23,0.6) !important;
+}
+
+/* Keep brand accents readable (don't override brand orange #C18D45 completely) */
+html.dark .tour-local .text-[#C18D45],
+html.dark .tour-local .bg-[#C18D45],
+html.dark .tour-local .border-[#C18D45] {
+    /* slightly desaturate brand when in dark for contrast */
+    box-shadow: none;
+    border-color: #b7894a !important;
+    background-color: #b7894a !important;
+    color: #111827 !important;
+}
+
+/* Small tweak for alert panel background */
+html.dark .tour-local .bg-[#f5e9d8] { background-color: #16161a !important; color: #e6dcc6 !important; }
+
+/* Make sure white buttons become dark in dark mode when they were bg-white */
+html.dark .tour-local a.bg-white { background-color: #111827 !important; color: #e6eef8 !important; border-color: rgba(255,255,255,0.06) !important; }
+
+</style>
+
+<div class="tour-local"><!-- wrapper for scoped dark-mode styles -->
+
 <!-- Hero Section -->
 <section class="relative bg-cover bg-center" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('{% if tour.main_image %}{{ tour.main_image.url }}{% else %}https://images.pexels.com/photos/1170986/pexels-photo-1170986.jpeg{% endif %}'); min-height: 80vh;">
     <div class="container mx-auto px-4 py-24 relative z-10">
@@ -31,7 +118,12 @@
                     <i class="fas fa-clock mr-2 text-[#C18D45]"></i>{{ tour.get_duration_display }}
                 </div>
                 <div class="text-white flex items-center">
-                    <i class="fas fa-users mr-2 text-[#C18D45]"></i>{{ tour.min_participants }}-{{ tour.max_participants }} {% trans "people" %}
+                    <i class="fas fa-users mr-2 text-[#C18D45]"></i>
+                    {% if tour.max_participants %}
+                        {{ tour.min_participants }}–{{ tour.max_participants }} {% trans "people" %}
+                    {% else %}
+                        {{ tour.min_participants }}+ {% trans "people" %} <span class="ml-2 text-sm opacity-90">({% trans "Flexible group size — contact us for large groups" %})</span>
+                    {% endif %}
                 </div>
                 <div class="text-white flex items-center">
                     <i class="fas fa-star mr-2 text-[#C18D45]"></i>{{ tour.average_rating|floatformat:1 }} ({{ tour.total_reviews }} {% trans "reviews" %})
@@ -225,12 +317,18 @@
                     
                     <div>
                         {% if user.is_authenticated %}
-                            <a href="{% url 'bookings:create_booking' tour.slug %}" class="block w-full bg-[#C18D45] hover:bg-[#a97a3a] text-white font-medium py-3 px-6 rounded-md text-center transition duration-300 flex items-center justify-center">
-                                <i class="fas fa-paper-plane mr-2"></i>{% trans "Request Booking" %}
+                            <a href="{% url 'bookings:create_booking' tour.slug %}"
+                            role="button"
+                            class="w-full flex items-center justify-center bg-[#C18D45] hover:bg-[#a97a3a] text-white font-medium py-3 px-6 rounded-md transition duration-300">
+                            <i class="fas fa-paper-plane mr-2" aria-hidden="true"></i>
+                            {% trans "Request Booking" %}
                             </a>
                         {% else %}
-                            <a href="{% url 'accounts:login' %}?next={% url 'bookings:create_booking' tour.slug %}" class="block w-full bg-[#C18D45] hover:bg-[#a97a3a] text-white font-medium py-3 px-6 rounded-md text-center transition duration-300 flex items-center justify-center">
-                                <i class="fas fa-paper-plane mr-2"></i>{% trans "Request Booking" %}
+                            <a href="{% url 'accounts:login' %}?next={% url 'bookings:create_booking' tour.slug %}"
+                            role="button"
+                            class="w-full flex items-center justify-center bg-[#C18D45] hover:bg-[#a97a3a] text-white font-medium py-3 px-6 rounded-md transition duration-300">
+                            <i class="fas fa-paper-plane mr-2" aria-hidden="true"></i>
+                            {% trans "Request Booking" %}
                             </a>
                         {% endif %}
                     </div>
@@ -248,7 +346,13 @@
                         
                         <div class="flex justify-between pb-2 border-b border-gray-200">
                             <span class="text-gray-600">{% trans "Group Size" %}:</span>
-                            <strong>{{ tour.min_participants }}-{{ tour.max_participants }} {% trans "people" %}</strong>
+                            <strong>
+                                {% if tour.max_participants %}
+                                    {{ tour.min_participants }}–{{ tour.max_participants }} {% trans "people" %}
+                                {% else %}
+                                    {{ tour.min_participants }}+ {% trans "people" %} <span class="text-sm">({% trans "Flexible" %})</span>
+                                {% endif %}
+                            </strong>
                         </div>
                         
                         <div class="flex justify-between pb-2 border-b border-gray-200">
@@ -302,9 +406,21 @@
                                 <h6 class="font-bold">{{ avail.start_date|date:"M d, Y" }}</h6>
                                 <p class="text-gray-600">{% trans "to" %} {{ avail.end_date|date:"M d, Y" }}</p>
                             </div>
-                            <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium">
-                                {{ avail.available_spots }} {% trans "spots left" %}
-                            </span>
+
+                            {# show business-friendly capacity messages; don't expose raw NULL #}
+                            {% if avail.remaining is None %}
+                                <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">
+                                    {% trans "Open — capacity on request" %}
+                                </span>
+                            {% elif avail.remaining|default:0 <= 0 %}
+                                <span class="bg-red-100 text-red-800 px-3 py-1 rounded-full text-sm font-medium">
+                                    {% trans "Fully booked" %}
+                                </span>
+                            {% else %}
+                                <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium">
+                                    {{ avail.remaining }} {% trans "spots left" %}
+                                </span>
+                            {% endif %}
                         </div>
                         
                         {% if avail.assigned_guide %}
@@ -315,13 +431,25 @@
                         
                         <div class="text-center">
                             {% if user.is_authenticated %}
-                                <a href="{% url 'bookings:create_booking' tour.slug %}?availability={{ avail.id }}" class="inline-block bg-[#C18D45] hover:bg-[#a97a3a] text-white font-medium py-2 px-6 rounded-md transition duration-300">
-                                    {% trans "Select Date" %}
-                                </a>
+                                {% if avail.remaining is None or avail.remaining > 0 %}
+                                    <a href="{% url 'bookings:create_booking' tour.slug %}?availability={{ avail.id }}" class="inline-block bg-[#C18D45] hover:bg-[#a97a3a] text-white font-medium py-2 px-6 rounded-md transition duration-300">
+                                        {% trans "Select Date" %}
+                                    </a>
+                                {% else %}
+                                    <a href="{% url 'core:contact' %}?subject=Waitlist%20for%20{{ tour.slug }}&availability={{ avail.id }}" class="inline-block bg-gray-800 hover:bg-gray-700 text-white font-medium py-2 px-6 rounded-md transition duration-300">
+                                        {% trans "Fully booked — Contact to join waitlist" %}
+                                    </a>
+                                {% endif %}
                             {% else %}
-                                <a href="{% url 'accounts:login' %}?next={% url 'bookings:create_booking' tour.slug %}" class="inline-block bg-[#C18D45] hover:bg-[#a97a3a] text-white font-medium py-2 px-6 rounded-md transition duration-300">
-                                    {% trans "Select Date" %}
-                                </a>
+                                {% if avail.remaining is None or avail.remaining > 0 %}
+                                    <a href="{% url 'accounts:login' %}?next={% url 'bookings:create_booking' tour.slug %}?availability={{ avail.id }}" class="inline-block bg-[#C18D45] hover:bg-[#a97a3a] text-white font-medium py-2 px-6 rounded-md transition duration-300">
+                                        {% trans "Select Date" %}
+                                    </a>
+                                {% else %}
+                                    <a href="{% url 'accounts:login' %}?next={% url 'core:contact' %}?subject=Waitlist%20for%20{{ tour.slug }}" class="inline-block bg-gray-800 hover:bg-gray-700 text-white font-medium py-2 px-6 rounded-md transition duration-300">
+                                        {% trans "Fully booked — Login to contact" %}
+                                    </a>
+                                {% endif %}
                             {% endif %}
                         </div>
                     </div>
@@ -430,6 +558,8 @@
         </div>
     </section>
 {% endif %}
+
+</div> {# end .tour-local #}
 
 <script>
 // Simple accordion functionality

@@ -2,36 +2,88 @@
 {% load i18n %}
 {% load crispy_forms_tags %}
 
-{% block title %}{% trans "Write Review for" %} {{ park.name }} - Tanzania Safari Adventures{% endblock %}
+{% block title %}{% trans "Write Review for" %} {{ park.name }} - {{ site_settings.site_name|default:"Safari & Bush Retreats" }}{% endblock %}
 
 {% block content %}
-<div class="container py-5">
-    <div class="row">
-        <div class="col-lg-8 mx-auto">
-            <div class="card border-0 shadow">
-                <div class="card-header bg-success text-white">
-                    <h4 class="mb-0">
-                        <i class="fas fa-star me-2"></i>{% trans "Write a Review" %}
-                    </h4>
+<div class="min-h-screen flex items-center justify-center bg-gray-50 dark:bg-gray-900 py-12 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-md w-full space-y-8">
+        <div class="text-center">
+            <div class="mx-auto flex justify-center">
+                <div class="bg-gray-200 dark:bg-gray-700 border-2 border-dashed dark:border-gray-600 rounded-xl w-16 h-16 flex items-center justify-center">
+                    <i class="fas fa-star text-3xl text-[#C18D45]"></i>
                 </div>
-                <div class="card-body p-5">
-                    <!-- Park Info -->
-                    <div class="alert alert-success mb-4">
-                        <div class="d-flex">
-                            <img src="{% if park.main_image %}{{ park.main_image.url }}{% else %}https://images.pexels.com/photos/631317/pexels-photo-631317.jpeg{% endif %}" 
-                                 class="rounded me-3" style="width: 80px; height: 80px; object-fit: cover;" alt="{{ park.name }}">
-                            <div>
-                                <h5 class="mb-1">{{ park.name }}</h5>
-                                <p class="mb-1">{{ park.location }}, {{ park.region }} • {{ park.get_park_type_display }}</p>
-                                <small class="text-muted">{{ park.short_description|truncatewords:15 }}</small>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    {% crispy form %}
+            </div>
+            <h2 class="mt-6 text-3xl font-bold text-gray-900 dark:text-gray-100">
+                {% trans "Write a Review" %}
+            </h2>
+            <p class="mt-2 text-gray-600 dark:text-gray-300">
+                {% trans "Share your experience about" %} {{ park.name }}
+            </p>
+        </div>
+
+        <!-- Park Info Card -->
+        <div class="bg-white dark:bg-gray-800 py-6 px-6 shadow rounded-lg border border-gray-200 dark:border-gray-700">
+            <div class="flex items-start mb-4">
+                <img src="{% if park.main_image %}{{ park.main_image.url }}{% else %}https://images.pexels.com/photos/631317/pexels-photo-631317.jpeg{% endif %}" 
+                     class="rounded-lg mr-4 w-16 h-16 object-cover" alt="{{ park.name }}">
+                <div>
+                    <h5 class="text-lg font-semibold text-gray-900 dark:text-white mb-1">{{ park.name }}</h5>
+                    <p class="text-sm text-gray-600 dark:text-gray-300 mb-1">{{ park.location }}, {{ park.region }}</p>
+                    <p class="text-xs text-gray-500 dark:text-gray-400">{{ park.get_park_type_display }}</p>
                 </div>
+            </div>
+            <p class="text-sm text-gray-600 dark:text-gray-300 italic border-t border-gray-100 dark:border-gray-700 pt-3 mt-3">
+                "{{ park.short_description|truncatewords:20 }}"
+            </p>
+        </div>
+
+        <!-- Review Form Card -->
+        <div class="bg-white dark:bg-gray-800 py-8 px-6 shadow rounded-lg sm:px-10 border border-gray-200 dark:border-gray-700">
+            {% crispy form %}
+            
+            <div class="mt-6 text-center">
+                <p class="text-gray-600 dark:text-gray-300">
+                    {% trans "Changed your mind?" %}
+                    <a href="{% url 'parks:park_detail' park.slug %}" class="font-medium text-[#C18D45] hover:text-[#a6793a]">
+                        {% trans "Back to park details" %}
+                    </a>
+                </p>
             </div>
         </div>
     </div>
 </div>
+
+<style>
+    /* Custom styles for form elements to match the gold theme */
+    .form-control:focus {
+        border-color: #C18D45;
+        box-shadow: 0 0 0 0.2rem rgba(193, 141, 69, 0.25);
+    }
+    
+    .btn-primary {
+        background-color: #C18D45;
+        border-color: #C18D45;
+        color: white;
+    }
+    
+    .btn-primary:hover {
+        background-color: #A67C3C;
+        border-color: #A67C3C;
+        color: white;
+    }
+    
+    /* Dark mode adjustments */
+    @media (prefers-color-scheme: dark) {
+        .form-control {
+            background-color: #374151;
+            border-color: #4B5563;
+            color: #E5E7EB;
+        }
+        
+        .form-control:focus {
+            border-color: #C18D45;
+            box-shadow: 0 0 0 0.2rem rgba(193, 141, 69, 0.25);
+        }
+    }
+</style>
 {% endblock %}

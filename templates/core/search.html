@@ -4,212 +4,223 @@
 {% block title %}{% trans "Search Results" %} - Safari&nbsp;&amp;&nbsp;Bush Retreats{% endblock %}
 
 {% block content %}
-<div class="container py-5">
-    <div class="row">
-        <div class="col-12">
-            <h1 class="mb-4">
-                {% if query %}
-                    {% blocktrans with query=query %}Search Results for "{{ query }}"{% endblocktrans %}
-                {% else %}
-                    {% trans "Search" %}
-                {% endif %}
-            </h1>
-            
-            {% if query %}
-                <p class="text-muted mb-4">
-                    {% blocktrans count total=total_results %}
-                        Found {{ total }} result
-                    {% plural %}
-                        Found {{ total }} results
-                    {% endblocktrans %}
-                </p>
-            {% endif %}
-        </div>
-    </div>
-    
+<div class="container max-w-7xl mx-auto px-4 py-12">
+  <div class="mb-8">
+    <h1 class="text-2xl md:text-3xl font-bold text-gray-900 dark:text-gray-100 mb-3">
+      {% if query %}
+        {% blocktrans with query=query %}Search Results for "{{ query }}"{% endblocktrans %}
+      {% else %}
+        {% trans "Search" %}
+      {% endif %}
+    </h1>
+
     {% if query %}
-        <!-- National Parks Results -->
-        {% if parks %}
-            <div class="row mb-5">
-                <div class="col-12">
-                    <h3 class="mb-4">{% trans "National Parks" %}</h3>
-                    <div class="row">
-                        {% for park in parks %}
-                            <div class="col-lg-4 col-md-6 mb-4">
-                                <div class="card h-100">
-                                    <img src="{% if park.main_image %}{{ park.main_image.url }}{% else %}https://images.pexels.com/photos/631317/pexels-photo-631317.jpeg{% endif %}" 
-                                         class="card-img-top" alt="{{ park.name }}" style="height: 200px; object-fit: cover;">
-                                    <div class="card-body d-flex flex-column">
-                                        <h5 class="card-title">{{ park.name }}</h5>
-                                        <p class="text-muted mb-2">
-                                            <i class="fas fa-map-marker-alt me-1"></i>{{ park.location }}, {{ park.region }}
-                                        </p>
-                                        <p class="card-text flex-grow-1">{{ park.short_description|truncatewords:15 }}</p>
-                                        <div class="d-flex justify-content-between align-items-center mt-auto">
-                                            <small class="text-muted">{{ park.area_km2|floatformat:0 }} km²</small>
-                                            <a href="{% url 'parks:park_detail' park.slug %}" class="btn btn-primary btn-sm">
-                                                {% trans "View Details" %}
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        {% endfor %}
-                    </div>
-                    
-                    <!-- Parks Pagination -->
-                    {% if parks.has_other_pages %}
-                        <nav aria-label="Parks pagination">
-                            <ul class="pagination justify-content-center">
-                                {% if parks.has_previous %}
-                                    <li class="page-item">
-                                        <a class="page-link" href="?q={{ query }}&parks_page={{ parks.previous_page_number }}">{% trans "Previous" %}</a>
-                                    </li>
-                                {% endif %}
-                                
-                                {% for num in parks.paginator.page_range %}
-                                    {% if parks.number == num %}
-                                        <li class="page-item active">
-                                            <span class="page-link">{{ num }}</span>
-                                        </li>
-                                    {% else %}
-                                        <li class="page-item">
-                                            <a class="page-link" href="?q={{ query }}&parks_page={{ num }}">{{ num }}</a>
-                                        </li>
-                                    {% endif %}
-                                {% endfor %}
-                                
-                                {% if parks.has_next %}
-                                    <li class="page-item">
-                                        <a class="page-link" href="?q={{ query }}&parks_page={{ parks.next_page_number }}">{% trans "Next" %}</a>
-                                    </li>
-                                {% endif %}
-                            </ul>
-                        </nav>
-                    {% endif %}
-                </div>
-            </div>
-        {% endif %}
-        
-        <!-- Tours Results -->
-        {% if tours %}
-            <div class="row">
-                <div class="col-12">
-                    <h3 class="mb-4">{% trans "Safari Tours" %}</h3>
-                    <div class="row">
-                        {% for tour in tours %}
-                            <div class="col-lg-6 mb-4">
-                                <div class="card h-100">
-                                    <div class="row g-0">
-                                        <div class="col-md-4">
-                                            <img src="{% if tour.main_image %}{{ tour.main_image.url }}{% else %}https://images.pexels.com/photos/1170986/pexels-photo-1170986.jpeg{% endif %}" 
-                                                 class="img-fluid rounded-start h-100" alt="{{ tour.title }}" style="object-fit: cover;">
-                                        </div>
-                                        <div class="col-md-8">
-                                            <div class="card-body d-flex flex-column h-100">
-                                                <div class="d-flex justify-content-between align-items-start mb-2">
-                                                    <span class="badge bg-secondary">{{ tour.get_category_display }}</span>
-                                                    <div class="price-tag">
-                                                        {% trans "From" %} ${{ tour.price_budget|default:tour.price_standard|floatformat:0 }}
-                                                    </div>
-                                                </div>
-                                                <h5 class="card-title">{{ tour.title }}</h5>
-                                                <p class="text-muted mb-2">
-                                                    <i class="fas fa-clock me-1"></i>{{ tour.get_duration_display }}
-                                                </p>
-                                                <p class="card-text flex-grow-1">{{ tour.short_description|truncatewords:15 }}</p>
-                                                <div class="d-flex justify-content-between align-items-center mt-auto">
-                                                    <div class="star-rating">
-                                                        {% for i in "12345" %}
-                                                            {% if forloop.counter <= tour.average_rating %}
-                                                                <i class="fas fa-star"></i>
-                                                            {% else %}
-                                                                <i class="far fa-star"></i>
-                                                            {% endif %}
-                                                        {% endfor %}
-                                                        <small class="text-muted ms-1">({{ tour.total_reviews }})</small>
-                                                    </div>
-                                                    <a href="{% url 'tours:tour_detail' tour.slug %}" class="btn btn-primary btn-sm">
-                                                        {% trans "View Details" %}
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        {% endfor %}
-                    </div>
-                    
-                    <!-- Tours Pagination -->
-                    {% if tours.has_other_pages %}
-                        <nav aria-label="Tours pagination">
-                            <ul class="pagination justify-content-center">
-                                {% if tours.has_previous %}
-                                    <li class="page-item">
-                                        <a class="page-link" href="?q={{ query }}&tours_page={{ tours.previous_page_number }}">{% trans "Previous" %}</a>
-                                    </li>
-                                {% endif %}
-                                
-                                {% for num in tours.paginator.page_range %}
-                                    {% if tours.number == num %}
-                                        <li class="page-item active">
-                                            <span class="page-link">{{ num }}</span>
-                                        </li>
-                                    {% else %}
-                                        <li class="page-item">
-                                            <a class="page-link" href="?q={{ query }}&tours_page={{ num }}">{{ num }}</a>
-                                        </li>
-                                    {% endif %}
-                                {% endfor %}
-                                
-                                {% if tours.has_next %}
-                                    <li class="page-item">
-                                        <a class="page-link" href="?q={{ query }}&tours_page={{ tours.next_page_number }}">{% trans "Next" %}</a>
-                                    </li>
-                                {% endif %}
-                            </ul>
-                        </nav>
-                    {% endif %}
-                </div>
-            </div>
-        {% endif %}
-        
-        {% if not parks and not tours %}
-            <div class="row">
-                <div class="col-12 text-center py-5">
-                    <i class="fas fa-search fa-4x text-muted mb-4"></i>
-                    <h3>{% trans "No results found" %}</h3>
-                    <p class="text-muted">{% trans "Try adjusting your search terms or browse our featured content below." %}</p>
-                    <div class="mt-4">
-                        <a href="{% url 'parks:park_list' %}" class="btn btn-primary me-3">{% trans "Browse Parks" %}</a>
-                        <a href="{% url 'tours:tour_list' %}" class="btn btn-outline-primary">{% trans "Browse Tours" %}</a>
-                    </div>
-                </div>
-            </div>
-        {% endif %}
-    {% else %}
-        <!-- Search Form -->
-        <div class="row">
-            <div class="col-lg-6 mx-auto">
-                <div class="card border-0 shadow">
-                    <div class="card-body p-5 text-center">
-                        <i class="fas fa-search fa-4x text-primary mb-4"></i>
-                        <h3 class="mb-4">{% trans "Search Our Content" %}</h3>
-                        <form method="GET" action="{% url 'core:search' %}">
-                            <div class="input-group mb-3">
-                                <input type="text" class="form-control form-control-lg" name="q" 
-                                       placeholder="{% trans 'Search parks, tours, destinations...' %}" required>
-                                <button class="btn btn-primary btn-lg" type="submit">
-                                    <i class="fas fa-search"></i>
-                                </button>
-                            </div>
-                        </form>
-                        <p class="text-muted">{% trans "Search through our national parks, safari tours, and destinations" %}</p>
-                    </div>
-                </div>
-            </div>
-        </div>
+      <p class="text-sm text-gray-600 dark:text-gray-400">
+        {% blocktrans count total=total_results %}
+          Found {{ total }} result
+        {% plural %}
+          Found {{ total }} results
+        {% endblocktrans %}
+      </p>
     {% endif %}
+  </div>
+
+  {% if query %}
+    {# --- National Parks Results --- #}
+    {% if parks %}
+      <section class="mb-10">
+        <h2 class="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-4">{% trans "National Parks" %}</h2>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {% for park in parks %}
+            <article class="bg-white dark:bg-gray-800 rounded-xl shadow-md border border-transparent dark:border-gray-700 overflow-hidden">
+              <img
+                src="{% if park.main_image %}{{ park.main_image.url }}{% else %}https://images.pexels.com/photos/631317/pexels-photo-631317.jpeg{% endif %}"
+                alt="{{ park.name }}"
+                class="w-full h-48 object-cover"
+              />
+              <div class="p-5 flex flex-col h-56">
+                <h3 class="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-2">{{ park.name }}</h3>
+                <p class="text-sm text-gray-600 dark:text-gray-300 mb-3">
+                  <i class="fas fa-map-marker-alt mr-1"></i>{{ park.location }}, {{ park.region }}
+                </p>
+                <p class="text-gray-700 dark:text-gray-300 text-sm flex-grow">{{ park.short_description|truncatewords:15 }}</p>
+
+                <div class="mt-4 flex items-center justify-between">
+                  <small class="text-xs text-gray-500 dark:text-gray-400">{{ park.area_km2|floatformat:0 }} km²</small>
+                  <a href="{% url 'parks:park_detail' park.slug %}"
+                     class="inline-flex items-center px-3 py-2 bg-[#C18D45] hover:bg-[#a6793a] text-white text-sm font-medium rounded-md transition-colors">
+                    {% trans "View Details" %}
+                  </a>
+                </div>
+              </div>
+            </article>
+          {% endfor %}
+        </div>
+
+        {# Parks Pagination #}
+        {% if parks.has_other_pages %}
+          <nav class="mt-8 flex justify-center" aria-label="Parks pagination">
+            <ul class="inline-flex items-center space-x-2">
+              {% if parks.has_previous %}
+                <li>
+                  <a href="?q={{ query }}&parks_page={{ parks.previous_page_number }}"
+                     class="px-3 py-1.5 border rounded-md text-[#C18D45] hover:bg-[#f5e9d8] dark:hover:bg-gray-700 transition">
+                    {% trans "Previous" %}
+                  </a>
+                </li>
+              {% endif %}
+
+              {% for num in parks.paginator.page_range %}
+                {% if parks.number == num %}
+                  <li><span class="px-3 py-1.5 bg-[#C18D45] text-white rounded-md">{{ num }}</span></li>
+                {% else %}
+                  <li>
+                    <a href="?q={{ query }}&parks_page={{ num }}" class="px-3 py-1.5 border rounded-md text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-800 transition">
+                      {{ num }}
+                    </a>
+                  </li>
+                {% endif %}
+              {% endfor %}
+
+              {% if parks.has_next %}
+                <li>
+                  <a href="?q={{ query }}&parks_page={{ parks.next_page_number }}"
+                     class="px-3 py-1.5 border rounded-md text-[#C18D45] hover:bg-[#f5e9d8] dark:hover:bg-gray-700 transition">
+                    {% trans "Next" %}
+                  </a>
+                </li>
+              {% endif %}
+            </ul>
+          </nav>
+        {% endif %}
+      </section>
+    {% endif %}
+
+    {# --- Tours Results --- #}
+    {% if tours %}
+      <section class="mb-10">
+        <h2 class="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-4">{% trans "Safari Tours" %}</h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {% for tour in tours %}
+            <article class="bg-white dark:bg-gray-800 rounded-xl shadow-md overflow-hidden border border-transparent dark:border-gray-700">
+              <div class="md:flex h-full">
+                <div class="md:w-1/3">
+                  <img
+                    src="{% if tour.main_image %}{{ tour.main_image.url }}{% else %}https://images.pexels.com/photos/1170986/pexels-photo-1170986.jpeg{% endif %}"
+                    alt="{{ tour.title }}"
+                    class="w-full h-48 md:h-full object-cover"
+                  />
+                </div>
+
+                <div class="p-5 md:w-2/3 flex flex-col">
+                  <div class="flex items-start justify-between mb-2">
+                    <span class="inline-block bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200 px-2 py-1 rounded text-xs font-medium">
+                      {{ tour.get_category_display }}
+                    </span>
+                    <div class="text-sm text-gray-600 dark:text-gray-300">
+                      {% trans "From" %} ${{ tour.price_budget|default:tour.price_standard|floatformat:0 }}
+                    </div>
+                  </div>
+
+                  <h3 class="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-1">{{ tour.title }}</h3>
+                  <p class="text-sm text-gray-600 dark:text-gray-400 mb-3"><i class="fas fa-clock mr-1"></i>{{ tour.get_duration_display }}</p>
+                  <p class="text-gray-700 dark:text-gray-300 text-sm flex-grow">{{ tour.short_description|truncatewords:15 }}</p>
+
+                  <div class="mt-4 flex items-center justify-between">
+                    <div class="flex items-center text-sm text-gray-600 dark:text-gray-300">
+                      <div class="flex items-center mr-2" aria-hidden="true">
+                        {% for i in "12345" %}
+                          {% if forloop.counter <= tour.average_rating %}
+                            <i class="fas fa-star text-yellow-400 mr-1"></i>
+                          {% else %}
+                            <i class="far fa-star text-yellow-400/60 mr-1"></i>
+                          {% endif %}
+                        {% endfor %}
+                      </div>
+                      <small class="text-xs ml-1">({{ tour.total_reviews }})</small>
+                    </div>
+
+                    <a href="{% url 'tours:tour_detail' tour.slug %}" class="inline-flex items-center px-3 py-2 bg-[#C18D45] hover:bg-[#a6793a] text-white text-sm rounded-md transition">
+                      {% trans "View Details" %}
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </article>
+          {% endfor %}
+        </div>
+
+        {# Tours Pagination #}
+        {% if tours.has_other_pages %}
+          <nav class="mt-8 flex justify-center" aria-label="Tours pagination">
+            <ul class="inline-flex items-center space-x-2">
+              {% if tours.has_previous %}
+                <li>
+                  <a href="?q={{ query }}&tours_page={{ tours.previous_page_number }}" class="px-3 py-1.5 border rounded-md text-[#C18D45] hover:bg-[#f5e9d8] dark:hover:bg-gray-700 transition">
+                    {% trans "Previous" %}
+                  </a>
+                </li>
+              {% endif %}
+
+              {% for num in tours.paginator.page_range %}
+                {% if tours.number == num %}
+                  <li><span class="px-3 py-1.5 bg-[#C18D45] text-white rounded-md">{{ num }}</span></li>
+                {% else %}
+                  <li><a href="?q={{ query }}&tours_page={{ num }}" class="px-3 py-1.5 border rounded-md text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-800 transition">{{ num }}</a></li>
+                {% endif %}
+              {% endfor %}
+
+              {% if tours.has_next %}
+                <li>
+                  <a href="?q={{ query }}&tours_page={{ tours.next_page_number }}" class="px-3 py-1.5 border rounded-md text-[#C18D45] hover:bg-[#f5e9d8] dark:hover:bg-gray-700 transition">
+                    {% trans "Next" %}
+                  </a>
+                </li>
+              {% endif %}
+            </ul>
+          </nav>
+        {% endif %}
+      </section>
+    {% endif %}
+
+    {% if not parks and not tours %}
+      <div class="text-center py-16">
+        <i class="fas fa-search fa-4x text-gray-400 dark:text-gray-500 mb-4" aria-hidden="true"></i>
+        <h3 class="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-2">{% trans "No results found" %}</h3>
+        <p class="text-gray-600 dark:text-gray-300 mb-6">{% trans "Try adjusting your search terms or browse our featured content below." %}</p>
+
+        <div class="flex items-center justify-center gap-4">
+          <a href="{% url 'parks:park_list' %}" class="px-4 py-2 bg-[#C18D45] hover:bg-[#a6793a] text-white rounded-md transition">{% trans "Browse Parks" %}</a>
+          <a href="{% url 'tours:tour_list' %}" class="px-4 py-2 border border-[#C18D45] text-[#C18D45] rounded-md hover:bg-[#C18D45] hover:text-white transition">{% trans "Browse Tours" %}</a>
+        </div>
+      </div>
+    {% endif %}
+
+  {% else %}
+    {# --- Search Form (no query) --- #}
+    <div class="max-w-xl mx-auto">
+      <div class="bg-white dark:bg-gray-800 rounded-xl shadow-md overflow-hidden">
+        <div class="p-8 text-center">
+          <i class="fas fa-search fa-4x text-[#C18D45] mb-4" aria-hidden="true"></i>
+          <h3 class="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-4">{% trans "Search Our Content" %}</h3>
+
+          <form method="GET" action="{% url 'core:search' %}" class="space-y-4">
+            <div class="flex gap-3">
+              <input type="text" name="q" required
+                     class="flex-1 px-4 py-3 rounded-full border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-800 dark:text-gray-200 placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#C18D45]"
+                     placeholder="{% trans 'Search parks, tours, destinations...' %}" />
+              <button type="submit" class="inline-flex items-center px-5 py-3 rounded-full bg-[#C18D45] hover:bg-[#a6793a] text-white font-medium transition">
+                <i class="fas fa-search mr-2" aria-hidden="true"></i>{% trans "Search" %}
+              </button>
+            </div>
+          </form>
+
+          <p class="text-gray-600 dark:text-gray-300 mt-4">{% trans "Search through our national parks, safari tours, and destinations" %}</p>
+        </div>
+      </div>
+    </div>
+  {% endif %}
 </div>
 {% endblock %}

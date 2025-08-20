@@ -5817,3 +5817,1653 @@ ERROR 2025-08-18 20:10:12,010 basehttp 8968 11660 You're accessing the developme
 INFO 2025-08-18 20:10:18,352 basehttp 8968 13844 "GET / HTTP/1.1" 200 82076
 WARNING 2025-08-18 20:10:18,460 log 8968 13844 Not Found: /.well-known/appspecific/com.chrome.devtools.json
 WARNING 2025-08-18 20:10:18,571 basehttp 8968 13844 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 5900
+INFO 2025-08-19 14:35:52,858 autoreload 2784 10580 Watching for file changes with StatReloader
+INFO 2025-08-19 14:35:59,247 basehttp 2784 9468 "GET / HTTP/1.1" 301 0
+INFO 2025-08-19 14:35:59,261 basehttp 2784 6620 code 400, message Bad request version ('\x02h2\x08http/1.1\x00')
+ERROR 2025-08-19 14:35:59,263 basehttp 2784 6620 You're accessing the development server over HTTPS, but it only supports HTTP.
+INFO 2025-08-19 14:35:59,265 basehttp 2784 1860 code 400, message Bad request version ('ZZ\x13\x01\x13\x02\x13\x03À+À/À,À0Ì©Ì¨À\x13À\x14\x00\x9c\x00\x9d\x00/\x005\x01\x00\x06\x93ÊÊ\x00\x00\x003\x04ï\x04í')
+ERROR 2025-08-19 14:35:59,266 basehttp 2784 1860 You're accessing the development server over HTTPS, but it only supports HTTP.
+INFO 2025-08-19 14:36:22,576 autoreload 2784 10580 C:\projects\Tourism\project\tanzania_tourism\settings.py changed, reloading.
+INFO 2025-08-19 14:36:49,941 autoreload 7628 788 Watching for file changes with StatReloader
+INFO 2025-08-19 14:36:55,020 basehttp 7628 8236 code 400, message Bad request version ('ZZ\x13\x01\x13\x02\x13\x03À+À/À,À0Ì©Ì¨À\x13À\x14\x00\x9c\x00\x9d\x00/\x005\x01\x00\x06\x93úú\x00\x00\x00\x17\x00\x00\x00')
+ERROR 2025-08-19 14:36:55,024 basehttp 7628 8236 You're accessing the development server over HTTPS, but it only supports HTTP.
+INFO 2025-08-19 14:36:55,024 basehttp 7628 9912 code 400, message Bad request version ('\x00\x12\x00\x10\x04\x03\x08\x04\x04\x01\x05\x03\x08\x05\x05\x01\x08\x06\x06\x01\x00\x12\x00\x00ÿ\x01\x00\x01\x00\x00+\x00\x07\x06**\x03\x04\x03\x03\x003\x04ï\x04í\x8a\x8a\x00\x01\x00\x11ì\x04ÀÉR\x9edVAb@')
+ERROR 2025-08-19 14:36:55,027 basehttp 7628 9912 You're accessing the development server over HTTPS, but it only supports HTTP.
+INFO 2025-08-19 14:36:55,036 basehttp 7628 10892 code 400, message Bad request version ('\x02h2\x08http/1.1DÍ\x00\x05\x00\x03\x02h2\x00#\x00\x00ÿ\x01\x00\x01\x00\x00')
+ERROR 2025-08-19 14:36:55,038 basehttp 7628 10892 You're accessing the development server over HTTPS, but it only supports HTTP.
+INFO 2025-08-19 14:36:55,039 basehttp 7628 5532 code 400, message Bad request version ('#\x95±°|')
+ERROR 2025-08-19 14:36:55,041 basehttp 7628 5532 You're accessing the development server over HTTPS, but it only supports HTTP.
+INFO 2025-08-19 14:36:57,453 basehttp 7628 9836 code 400, message Bad request version ('ªª\x13\x01\x13\x02\x13\x03À+À/À,À0Ì©Ì¨À\x13À\x14\x00\x9c\x00\x9d\x00/\x005\x01\x00\x06\x93')
+ERROR 2025-08-19 14:36:57,454 basehttp 7628 9836 You're accessing the development server over HTTPS, but it only supports HTTP.
+INFO 2025-08-19 14:36:57,454 basehttp 7628 7032 code 400, message Bad request version ('\x00\x02\x01\x00ÿ\x01\x00\x01\x00\x003\x04ï\x04íÊÊ\x00\x01\x00\x11ì\x04ÀõS\x04±\x91$Ý\x9bbùf')
+ERROR 2025-08-19 14:36:57,456 basehttp 7628 7032 You're accessing the development server over HTTPS, but it only supports HTTP.
+INFO 2025-08-19 14:36:57,457 basehttp 7628 2492 code 400, message Bad request syntax ('\x16\x03\x01\x06À\x01\x00\x06¼\x03\x03_i\x11à\x8c\x1a\x86l×\x80ÐoL\x14S\x82@\x9em')
+ERROR 2025-08-19 14:36:57,458 basehttp 7628 2492 You're accessing the development server over HTTPS, but it only supports HTTP.
+INFO 2025-08-19 14:36:57,458 basehttp 7628 7548 code 400, message Bad request version (']ÎWV')
+ERROR 2025-08-19 14:36:57,460 basehttp 7628 7548 You're accessing the development server over HTTPS, but it only supports HTTP.
+INFO 2025-08-19 14:36:58,372 basehttp 7628 1608 code 400, message Bad request version ('À')
+ERROR 2025-08-19 14:36:58,373 basehttp 7628 1608 You're accessing the development server over HTTPS, but it only supports HTTP.
+INFO 2025-08-19 14:36:58,374 basehttp 7628 4768 code 400, message Bad request version ('\x019')
+ERROR 2025-08-19 14:36:58,376 basehttp 7628 4768 You're accessing the development server over HTTPS, but it only supports HTTP.
+INFO 2025-08-19 14:36:58,383 basehttp 7628 9632 code 400, message Bad request version ('\x00\x02\x01\x00DÍ\x00\x05\x00\x03\x02h2\x00\x17\x00\x00\x00#\x00\x00\x00\x05\x00\x05\x01\x00\x00\x00\x00\x00+\x00\x07\x06\x8a\x8a\x03\x04\x03\x03\x00')
+INFO 2025-08-19 14:36:58,384 basehttp 7628 4532 code 400, message Bad request version ('\x00\x12\x00\x10\x04\x03\x08\x04\x04\x01\x05\x03\x08\x05\x05\x01\x08\x06\x06\x01\x00')
+ERROR 2025-08-19 14:36:58,384 basehttp 7628 9632 You're accessing the development server over HTTPS, but it only supports HTTP.
+ERROR 2025-08-19 14:36:58,385 basehttp 7628 4532 You're accessing the development server over HTTPS, but it only supports HTTP.
+INFO 2025-08-19 14:37:19,867 basehttp 7628 4884 code 400, message Bad request syntax ('\x16\x03\x01\x06à\x01\x00\x06Ü\x03\x03\x0e\x0e`£\x90÷¼\x12\x88¦½\x83\x90')
+ERROR 2025-08-19 14:37:19,869 basehttp 7628 4884 You're accessing the development server over HTTPS, but it only supports HTTP.
+INFO 2025-08-19 14:37:19,870 basehttp 7628 6804 code 400, message Bad request version ('JHÆ\x81|Ö')
+ERROR 2025-08-19 14:37:19,871 basehttp 7628 6804 You're accessing the development server over HTTPS, but it only supports HTTP.
+INFO 2025-08-19 14:37:19,878 basehttp 7628 3704 code 400, message Bad request version ('h\x9bY\x17Ú²õØÿ¬_rék')
+ERROR 2025-08-19 14:37:19,880 basehttp 7628 3704 You're accessing the development server over HTTPS, but it only supports HTTP.
+INFO 2025-08-19 14:37:19,881 basehttp 7628 10508 code 400, message Bad request version ('ªª\x13\x01\x13\x02\x13\x03À+À/À,À0Ì©Ì¨À\x13À\x14\x00\x9c\x00\x9d\x00/\x005\x01\x00\x06sºº\x00\x00\x00\x12\x00\x00DÍ\x00\x05\x00\x03\x02h2\x00\x1b\x00\x03\x02\x00\x02\x00\x05\x00\x05\x01\x00\x00\x00\x00\x00')
+ERROR 2025-08-19 14:37:19,883 basehttp 7628 10508 You're accessing the development server over HTTPS, but it only supports HTTP.
+INFO 2025-08-19 14:37:22,596 basehttp 7628 7648 code 400, message Bad request version ('\x11ß0\x11')
+ERROR 2025-08-19 14:37:22,598 basehttp 7628 7648 You're accessing the development server over HTTPS, but it only supports HTTP.
+INFO 2025-08-19 14:37:22,602 basehttp 7628 10484 code 400, message Bad request version ('\x00\x02\x01\x00\x00')
+ERROR 2025-08-19 14:37:22,609 basehttp 7628 10484 You're accessing the development server over HTTPS, but it only supports HTTP.
+INFO 2025-08-19 14:37:22,614 basehttp 7628 1256 code 400, message Bad request version ('K7|\x95ÑÐ0Â\x9cðP]\x03\x00')
+ERROR 2025-08-19 14:37:22,617 basehttp 7628 1256 You're accessing the development server over HTTPS, but it only supports HTTP.
+INFO 2025-08-19 14:37:22,675 basehttp 7628 408 code 400, message Bad request version ("\x9a¼\x84\x05|\x97M'\x90~\x83u\x1bÏ\x95w{\x06ª\x87Ò\x87r\x82ùEÓºÎH\x08É<ù")
+ERROR 2025-08-19 14:37:22,681 basehttp 7628 408 You're accessing the development server over HTTPS, but it only supports HTTP.
+INFO 2025-08-19 14:42:08,823 autoreload 12456 13000 Watching for file changes with StatReloader
+INFO 2025-08-19 14:42:16,226 basehttp 12456 1360 code 400, message Bad request version ('¼¨ðQv\x14')
+ERROR 2025-08-19 14:42:16,230 basehttp 12456 1360 You're accessing the development server over HTTPS, but it only supports HTTP.
+INFO 2025-08-19 14:42:16,231 basehttp 12456 5384 code 400, message Bad request version ('/9À\x91\x16¦e\x0f¯\x96cÍa+t1¥\x93\\A¹æ)ÓÆ')
+ERROR 2025-08-19 14:42:16,238 basehttp 12456 5384 You're accessing the development server over HTTPS, but it only supports HTTP.
+INFO 2025-08-19 14:42:16,244 basehttp 12456 12180 code 400, message Bad request version ('w\x12bà\x044%P')
+ERROR 2025-08-19 14:42:16,257 basehttp 12456 12180 You're accessing the development server over HTTPS, but it only supports HTTP.
+INFO 2025-08-19 14:42:16,257 basehttp 12456 9784 code 400, message Bad request version ('úú\x13\x01\x13\x02\x13\x03À+À/À,À0Ì©Ì¨À\x13À\x14\x00\x9c\x00\x9d\x00/\x005\x01\x00\x06S')
+ERROR 2025-08-19 14:42:16,259 basehttp 12456 9784 You're accessing the development server over HTTPS, but it only supports HTTP.
+INFO 2025-08-19 14:42:18,690 basehttp 12456 8708 code 400, message Bad request version ('\x02h2\x08http/1.1\x00')
+ERROR 2025-08-19 14:42:18,694 basehttp 12456 8708 You're accessing the development server over HTTPS, but it only supports HTTP.
+INFO 2025-08-19 14:42:18,694 basehttp 12456 4668 code 400, message Bad request version ('<ª\x96F\x90\x17Áüõbõ,j¯\x00')
+ERROR 2025-08-19 14:42:18,696 basehttp 12456 4668 You're accessing the development server over HTTPS, but it only supports HTTP.
+INFO 2025-08-19 14:42:18,706 basehttp 12456 4980 code 400, message Bad request version ('é\x0f¤Øh\x00')
+ERROR 2025-08-19 14:42:18,706 basehttp 12456 4980 You're accessing the development server over HTTPS, but it only supports HTTP.
+INFO 2025-08-19 14:42:18,706 basehttp 12456 2200 code 400, message Bad request version ('£y\\³¬\x95D\x879\x92@»\x15\x16g)÷\x8eA')
+ERROR 2025-08-19 14:42:18,721 basehttp 12456 2200 You're accessing the development server over HTTPS, but it only supports HTTP.
+INFO 2025-08-19 14:42:23,252 basehttp 12456 4728 code 400, message Bad request version ('úú\x13\x01\x13\x02\x13\x03À+À/À,À0Ì©Ì¨À\x13À\x14\x00\x9c\x00\x9d\x00/\x005\x01\x00\x06\x93êê\x00\x00\x00+\x00\x07\x06ZZ\x03\x04\x03\x03\x00')
+INFO 2025-08-19 14:42:23,256 basehttp 12456 10996 code 400, message Bad request version ('H:')
+ERROR 2025-08-19 14:42:23,256 basehttp 12456 4728 You're accessing the development server over HTTPS, but it only supports HTTP.
+ERROR 2025-08-19 14:42:23,256 basehttp 12456 10996 You're accessing the development server over HTTPS, but it only supports HTTP.
+INFO 2025-08-19 14:42:23,263 basehttp 12456 7796 code 400, message Bad request syntax ('\x16\x03\x01\x07\x00\x01\x00\x06ü\x03\x03i\x00àH\x80¼ÿ}È-0Üìùî¿.°Õe¤IîÎ\x07n\x0e0<¼')
+ERROR 2025-08-19 14:42:23,266 basehttp 12456 7796 You're accessing the development server over HTTPS, but it only supports HTTP.
+INFO 2025-08-19 14:42:23,267 basehttp 12456 10580 code 400, message Bad request version ('s=9\x9eÈ\x86C\x1acO!<g\x14\x08IZð¢f\x8bý\x936½\x0fÛ\x17\x18T')
+ERROR 2025-08-19 14:42:23,268 basehttp 12456 10580 You're accessing the development server over HTTPS, but it only supports HTTP.
+INFO 2025-08-19 14:45:06,527 basehttp 12456 2284 code 400, message Bad request version ('YaÊ\\\x9e\x91\x04#\x02ÙÁ<G\x8aP¨\x19ÈÉíÜ\x9b\x7f')
+ERROR 2025-08-19 14:45:06,529 basehttp 12456 2284 You're accessing the development server over HTTPS, but it only supports HTTP.
+INFO 2025-08-19 14:45:06,532 basehttp 12456 11308 code 400, message Bad request version ('\x05/ú(Âíáq[r\x97ÐösÄ\x9f\x0e4®ê')
+ERROR 2025-08-19 14:45:06,536 basehttp 12456 11308 You're accessing the development server over HTTPS, but it only supports HTTP.
+INFO 2025-08-19 14:53:28,123 autoreload 12456 13000 C:\projects\Tourism\project\tanzania_tourism\settings.py changed, reloading.
+INFO 2025-08-19 14:53:32,833 autoreload 8324 5580 Watching for file changes with StatReloader
+INFO 2025-08-19 14:53:42,805 basehttp 8324 9144 code 400, message Bad HTTP/0.9 request type ('\x16\x03\x01\x06à\x01\x00\x06Ü\x03\x03X¡\x0f%mtÏn6¬{\x01¢ÄÙPÛ\x19¤S?6#£\x87|ïò0§*å')
+ERROR 2025-08-19 14:53:42,807 basehttp 8324 9144 You're accessing the development server over HTTPS, but it only supports HTTP.
+INFO 2025-08-19 14:53:42,810 basehttp 8324 7644 code 400, message Bad request version ('wbHÃ_\x9dK°Õ<·\x1breé\x97\x80\x19#\x8dñV[\x1aË1ý\x16Z×gd¯Fs«L@UuGÑ\x96wåÇX\x0f\x17O\x01Ð\x9a5aU\x94§\\ºi&ÛÌÈÙf³ÖêUÜWh\x89\x03Qzb\x05\x12\x14i\x11§¶\x13*\x03.ö¶c÷LÐ(')
+ERROR 2025-08-19 14:53:42,810 basehttp 8324 7644 You're accessing the development server over HTTPS, but it only supports HTTP.
+INFO 2025-08-19 14:53:42,825 basehttp 8324 12696 code 400, message Bad request version ('\x90)\x97`uãâ¿àP')
+ERROR 2025-08-19 14:53:42,837 basehttp 8324 12696 You're accessing the development server over HTTPS, but it only supports HTTP.
+INFO 2025-08-19 14:53:42,838 basehttp 8324 7852 code 400, message Bad request version ('ZZ\x13\x01\x13\x02\x13\x03À+À/À,À0Ì©Ì¨À\x13À\x14\x00\x9c\x00\x9d\x00/\x005\x01\x00\x06\x93')
+ERROR 2025-08-19 14:53:42,858 basehttp 8324 7852 You're accessing the development server over HTTPS, but it only supports HTTP.
+INFO 2025-08-19 14:53:44,338 basehttp 8324 2420 code 400, message Bad request version ('\x03©\x14Gc¤\x1aV\x8d\x81')
+ERROR 2025-08-19 14:53:44,340 basehttp 8324 2420 You're accessing the development server over HTTPS, but it only supports HTTP.
+INFO 2025-08-19 14:53:44,340 basehttp 8324 10044 code 400, message Bad request version ('\x00\x02\x01\x00\x00')
+ERROR 2025-08-19 14:53:44,347 basehttp 8324 10044 You're accessing the development server over HTTPS, but it only supports HTTP.
+INFO 2025-08-19 14:53:44,350 basehttp 8324 8060 code 400, message Bad request version ('\x00\x02\x01\x00\x00\x05\x00\x05\x01\x00\x00\x00\x00\x00')
+ERROR 2025-08-19 14:53:44,351 basehttp 8324 8060 You're accessing the development server over HTTPS, but it only supports HTTP.
+INFO 2025-08-19 14:53:44,354 basehttp 8324 12156 code 400, message Bad request version ('\x83\x11M\\:!ô\x1ak°¥\x195j\x07Å\x03ÑY\x92CC\x15\x06p')
+ERROR 2025-08-19 14:53:44,357 basehttp 8324 12156 You're accessing the development server over HTTPS, but it only supports HTTP.
+INFO 2025-08-19 14:53:45,086 basehttp 8324 10384 code 400, message Bad request version ('\x1a\x1a\x13\x01\x13\x02\x13\x03À+À/À,À0Ì©Ì¨À\x13À\x14\x00\x9c\x00\x9d\x00/\x005\x01\x00\x06\x93zz\x00\x00\x00#\x00\x00\x00\x1b\x00\x03\x02\x00\x02\x00')
+ERROR 2025-08-19 14:53:45,088 basehttp 8324 10384 You're accessing the development server over HTTPS, but it only supports HTTP.
+INFO 2025-08-19 14:53:45,089 basehttp 8324 6884 code 400, message Bad request version ('\x00\x02\x01\x00\x00')
+ERROR 2025-08-19 14:53:45,090 basehttp 8324 6884 You're accessing the development server over HTTPS, but it only supports HTTP.
+INFO 2025-08-19 14:53:45,091 basehttp 8324 12168 code 400, message Bad request version ('ÊÊ\x13\x01\x13\x02\x13\x03À+À/À,À0Ì©Ì¨À\x13À\x14\x00\x9c\x00\x9d\x00/\x005\x01\x00\x06\x93**\x00\x00\x00\x17\x00\x00\x00')
+ERROR 2025-08-19 14:53:45,100 basehttp 8324 12168 You're accessing the development server over HTTPS, but it only supports HTTP.
+INFO 2025-08-19 14:53:45,104 basehttp 8324 7172 code 400, message Bad request version ('ÂK\x90©')
+ERROR 2025-08-19 14:53:45,105 basehttp 8324 7172 You're accessing the development server over HTTPS, but it only supports HTTP.
+INFO 2025-08-19 14:53:45,932 basehttp 8324 11592 code 400, message Bad request version ('\x94Òz²T·Àñ°0')
+INFO 2025-08-19 14:53:45,933 basehttp 8324 228 code 400, message Bad request version ('p\xad}Eó')
+ERROR 2025-08-19 14:53:45,934 basehttp 8324 11592 You're accessing the development server over HTTPS, but it only supports HTTP.
+ERROR 2025-08-19 14:53:45,936 basehttp 8324 228 You're accessing the development server over HTTPS, but it only supports HTTP.
+INFO 2025-08-19 14:53:45,941 basehttp 8324 10364 code 400, message Bad request version ('ªª\x13\x01\x13\x02\x13\x03À+À/À,À0Ì©Ì¨À\x13À\x14\x00\x9c\x00\x9d\x00/\x005\x01\x00\x06\x93ÚÚ\x00\x00DÍ\x00\x05\x00\x03\x02h2\x00-\x00\x02\x01\x01\x00')
+INFO 2025-08-19 14:53:45,942 basehttp 8324 11628 code 400, message Bad request version ('Bâ{¥Ð%ÒX\x9c\x01C\x9c\x87b\x04iÔP\x87\x8b\x8adfS)û\x89\x82º|9ÉºÅ\x80G\x8cè\x08.\x13+Ë|\x19\x88fª0kÉ\x12B\x07UäOIb¸Þg\x884\x96c\x84qqyÁ\x86\x84')
+ERROR 2025-08-19 14:53:45,950 basehttp 8324 10364 You're accessing the development server over HTTPS, but it only supports HTTP.
+ERROR 2025-08-19 14:53:45,951 basehttp 8324 11628 You're accessing the development server over HTTPS, but it only supports HTTP.
+INFO 2025-08-19 14:53:46,985 basehttp 8324 4328 code 400, message Bad request version ('¯²')
+ERROR 2025-08-19 14:53:46,987 basehttp 8324 4328 You're accessing the development server over HTTPS, but it only supports HTTP.
+INFO 2025-08-19 14:53:46,999 basehttp 8324 12572 code 400, message Bad request version ('Ñp¢\x99:\x8cQ*\x96*DA|c\x1bc\x8aGY\x03<A«\x07ø\x1b\x0f\x18%\x99\x10±J;\x00')
+ERROR 2025-08-19 14:53:47,000 basehttp 8324 12572 You're accessing the development server over HTTPS, but it only supports HTTP.
+INFO 2025-08-19 14:53:47,002 basehttp 8324 9676 code 400, message Bad request version ('\x7fÕ\x0fÑå`Øì!w\x95Zå\x9a³\x81')
+ERROR 2025-08-19 14:53:47,004 basehttp 8324 9676 You're accessing the development server over HTTPS, but it only supports HTTP.
+INFO 2025-08-19 14:53:47,039 basehttp 8324 5084 code 400, message Bad request version ('\x00\x12\x00\x10\x04\x03\x08\x04\x04\x01\x05\x03\x08\x05\x05\x01\x08\x06\x06\x01\x00\x17\x00\x00\x00')
+ERROR 2025-08-19 14:53:47,054 basehttp 8324 5084 You're accessing the development server over HTTPS, but it only supports HTTP.
+INFO 2025-08-19 14:54:05,691 basehttp 8324 1276 code 400, message Bad request version ('\x00\x02\x01\x00\x00')
+ERROR 2025-08-19 14:54:05,694 basehttp 8324 1276 You're accessing the development server over HTTPS, but it only supports HTTP.
+INFO 2025-08-19 14:54:05,716 basehttp 8324 13264 code 400, message Bad request version ('\x99²p\x9bP³Y\x99ï%4{½Åiò\x89Ä')
+ERROR 2025-08-19 14:54:05,718 basehttp 8324 13264 You're accessing the development server over HTTPS, but it only supports HTTP.
+INFO 2025-08-19 14:54:20,855 autoreload 4292 8888 Watching for file changes with StatReloader
+INFO 2025-08-19 14:54:24,182 basehttp 4292 8816 code 400, message Bad request version ('0\x19ÍÒ')
+INFO 2025-08-19 14:54:24,183 basehttp 4292 13136 code 400, message Bad request syntax ('\x16\x03\x01\x06À\x01\x00\x06¼\x03\x03ïõ¦ß<ÓÀ²Ã\x06fæz\\M}jî\x91')
+ERROR 2025-08-19 14:54:24,186 basehttp 4292 8816 You're accessing the development server over HTTPS, but it only supports HTTP.
+ERROR 2025-08-19 14:54:24,187 basehttp 4292 13136 You're accessing the development server over HTTPS, but it only supports HTTP.
+INFO 2025-08-19 14:54:24,211 basehttp 4292 2936 code 400, message Bad request version ('\x02h2\x08http/1.1\x00')
+INFO 2025-08-19 14:54:24,212 basehttp 4292 11700 code 400, message Bad request version ('ZZ\x13\x01\x13\x02\x13\x03À+À/À,À0Ì©Ì¨À\x13À\x14\x00\x9c\x00\x9d\x00/\x005\x01\x00\x06S\x8a\x8a\x00\x00\x00')
+ERROR 2025-08-19 14:54:24,213 basehttp 4292 2936 You're accessing the development server over HTTPS, but it only supports HTTP.
+ERROR 2025-08-19 14:54:24,217 basehttp 4292 11700 You're accessing the development server over HTTPS, but it only supports HTTP.
+INFO 2025-08-19 14:57:14,179 autoreload 8724 12028 Watching for file changes with StatReloader
+INFO 2025-08-19 14:57:31,877 basehttp 8724 2488 code 400, message Bad request version ('ä\x86â\x025\x86j-B®?LàººI\x19\x00\x12\x00\x00\x00#\x00\x00\x00\x1b\x00\x03\x02\x00\x02\x00')
+ERROR 2025-08-19 14:57:31,881 basehttp 8724 2488 You're accessing the development server over HTTPS, but it only supports HTTP.
+INFO 2025-08-19 14:57:31,899 basehttp 8724 7516 code 400, message Bad request version ('\x920\x962{\x80,\x10÷hS¨øJu+}Õ\x84h·Ü)\x12wZ½')
+ERROR 2025-08-19 14:57:31,914 basehttp 8724 7516 You're accessing the development server over HTTPS, but it only supports HTTP.
+INFO 2025-08-19 14:57:58,902 basehttp 8724 9496 code 400, message Bad request version ('\x8a\x8a\x13\x01\x13\x02\x13\x03À+À/À,À0Ì©Ì¨À\x13À\x14\x00\x9c\x00\x9d\x00/\x005\x01\x00\x06S')
+ERROR 2025-08-19 14:57:58,904 basehttp 8724 9496 You're accessing the development server over HTTPS, but it only supports HTTP.
+INFO 2025-08-19 14:57:58,908 basehttp 8724 4668 code 400, message Bad request version ("c×æ¡\x13\x84U{4©ð4»¢\x07NÈÑQw£#\x086\x16wãvÚk¥\x0eL)úcP?Y\\¦ÅQ¦'ojë¤\x9fÑ\x0f*VuÒ\x14\x10\x06ç\xad")
+ERROR 2025-08-19 14:57:58,910 basehttp 8724 4668 You're accessing the development server over HTTPS, but it only supports HTTP.
+INFO 2025-08-19 14:58:52,757 autoreload 12876 4952 Watching for file changes with StatReloader
+INFO 2025-08-19 14:58:57,199 basehttp 12876 7200 code 400, message Bad request version ('\x9b5ja\xad@\x91E³&xÙÌF÷\x06£R×$\x9båâonÉI¡p±Õîf¡j\x95\x9a×2âÈÑ\x9ep\x1aö"{ú\x8ezÑ"À')
+ERROR 2025-08-19 14:58:57,199 basehttp 12876 7200 You're accessing the development server over HTTPS, but it only supports HTTP.
+INFO 2025-08-19 14:58:57,216 basehttp 12876 8652 code 400, message Bad request version ('j)æ\x83º}k\x8b}z¾H±Æ\x1b¼\x01\x89\x95vúd\x97\x10#?,8\x8c\x19W\x87¦ø\x97á·Îô\x02')
+ERROR 2025-08-19 14:58:57,217 basehttp 12876 8652 You're accessing the development server over HTTPS, but it only supports HTTP.
+INFO 2025-08-19 15:02:18,082 autoreload 12876 4952 C:\projects\Tourism\project\tanzania_tourism\settings.py changed, reloading.
+INFO 2025-08-19 15:02:21,422 autoreload 13292 12408 Watching for file changes with StatReloader
+INFO 2025-08-19 15:02:28,759 autoreload 13292 12408 C:\projects\Tourism\project\tanzania_tourism\settings.py changed, reloading.
+INFO 2025-08-19 15:02:32,212 autoreload 3440 6916 Watching for file changes with StatReloader
+INFO 2025-08-19 15:02:41,042 autoreload 3440 6916 C:\projects\Tourism\project\tanzania_tourism\settings.py changed, reloading.
+INFO 2025-08-19 15:02:46,591 autoreload 7688 7844 Watching for file changes with StatReloader
+INFO 2025-08-19 15:02:53,118 basehttp 7688 10432 code 400, message Bad request version ('\x06À\x97\x14¿G\x98\x90\x8b\x87')
+ERROR 2025-08-19 15:02:53,121 basehttp 7688 10432 You're accessing the development server over HTTPS, but it only supports HTTP.
+INFO 2025-08-19 15:02:53,153 basehttp 7688 1876 code 400, message Bad request version ('¢OgY]Ë\x13')
+ERROR 2025-08-19 15:02:53,154 basehttp 7688 1876 You're accessing the development server over HTTPS, but it only supports HTTP.
+INFO 2025-08-19 15:02:55,297 basehttp 7688 12912 code 400, message Bad HTTP/0.9 request type ('\x16\x03\x01\x07\x00\x01\x00\x06ü\x03\x03Ê\x06ã\x12ÏW\x9a]$I#')
+ERROR 2025-08-19 15:02:55,298 basehttp 7688 12912 You're accessing the development server over HTTPS, but it only supports HTTP.
+INFO 2025-08-19 15:02:55,303 basehttp 7688 12684 code 400, message Bad request syntax ('\x16\x03\x01\x06À\x01\x00\x06¼\x03\x03>\x91¡b£\x18¬C-ð\x7fSåÍ\x8f>[\x99')
+ERROR 2025-08-19 15:02:55,312 basehttp 7688 12684 You're accessing the development server over HTTPS, but it only supports HTTP.
+INFO 2025-08-19 15:02:55,315 basehttp 7688 7452 code 400, message Bad request version ('µ¬\x96\x05:¿¬')
+ERROR 2025-08-19 15:02:55,318 basehttp 7688 7452 You're accessing the development server over HTTPS, but it only supports HTTP.
+INFO 2025-08-19 15:02:55,318 basehttp 7688 13096 code 400, message Bad request version ('\x00\x12\x00\x10\x04\x03\x08\x04\x04\x01\x05\x03\x08\x05\x05\x01\x08\x06\x06\x01\x00\x05\x00\x05\x01\x00\x00\x00\x00\x00')
+ERROR 2025-08-19 15:02:55,331 basehttp 7688 13096 You're accessing the development server over HTTPS, but it only supports HTTP.
+INFO 2025-08-19 15:05:08,414 autoreload 7688 7844 C:\projects\Tourism\project\tanzania_tourism\settings.py changed, reloading.
+INFO 2025-08-19 15:05:11,608 autoreload 772 7560 Watching for file changes with StatReloader
+INFO 2025-08-19 15:05:21,737 basehttp 772 2368 code 400, message Bad request version ('\x02h2\x08http/1.1\x00')
+ERROR 2025-08-19 15:05:21,739 basehttp 772 2368 You're accessing the development server over HTTPS, but it only supports HTTP.
+INFO 2025-08-19 15:05:21,742 basehttp 772 7632 code 400, message Bad request version ('\x02h2\x08http/1.1DÍ\x00\x05\x00\x03\x02h2\x00')
+ERROR 2025-08-19 15:05:21,743 basehttp 772 7632 You're accessing the development server over HTTPS, but it only supports HTTP.
+INFO 2025-08-19 15:05:49,656 basehttp 772 2972 code 400, message Bad request version ('|p\x00ÐÉ¤Ê±/»fêÈ,Ö¦\x84â')
+ERROR 2025-08-19 15:05:49,659 basehttp 772 2972 You're accessing the development server over HTTPS, but it only supports HTTP.
+INFO 2025-08-19 15:05:49,708 basehttp 772 5172 code 400, message Bad request version ('\x83¢')
+ERROR 2025-08-19 15:05:49,743 basehttp 772 5172 You're accessing the development server over HTTPS, but it only supports HTTP.
+INFO 2025-08-19 15:06:52,707 autoreload 10052 5532 Watching for file changes with StatReloader
+INFO 2025-08-19 15:06:58,290 basehttp 10052 12896 code 400, message Bad request version ('·\x82~ÁG\x08ÛÑ{ÍÂ«£üH\x94©\x97\xad\x8a\x97')
+ERROR 2025-08-19 15:06:58,291 basehttp 10052 12896 You're accessing the development server over HTTPS, but it only supports HTTP.
+INFO 2025-08-19 15:06:58,294 basehttp 10052 10660 code 400, message Bad request version ('©')
+ERROR 2025-08-19 15:06:58,295 basehttp 10052 10660 You're accessing the development server over HTTPS, but it only supports HTTP.
+INFO 2025-08-19 15:08:36,910 autoreload 10052 5532 C:\projects\Tourism\project\tanzania_tourism\settings.py changed, reloading.
+INFO 2025-08-19 15:08:40,227 autoreload 5012 12636 Watching for file changes with StatReloader
+INFO 2025-08-19 15:09:57,511 autoreload 5012 12636 C:\projects\Tourism\project\tanzania_tourism\settings.py changed, reloading.
+INFO 2025-08-19 15:10:00,771 autoreload 6304 12560 Watching for file changes with StatReloader
+INFO 2025-08-19 15:10:54,175 autoreload 7360 2368 Watching for file changes with StatReloader
+INFO 2025-08-19 15:12:38,310 autoreload 7360 2368 C:\projects\Tourism\project\tanzania_tourism\settings.py changed, reloading.
+INFO 2025-08-19 15:12:41,542 autoreload 980 6988 Watching for file changes with StatReloader
+INFO 2025-08-19 15:12:51,608 basehttp 980 10532 code 400, message Bad request syntax ("\x16\x03\x01\x06à\x01\x00\x06Ü\x03\x03l!¦Ëf'\x8e~\x8f\x02ºÚ[\x83R\x05\x10vÐèG\x11\x83KP\x93\x1b°WÊR")
+ERROR 2025-08-19 15:12:51,609 basehttp 980 10532 You're accessing the development server over HTTPS, but it only supports HTTP.
+INFO 2025-08-19 15:12:51,611 basehttp 980 11808 code 400, message Bad request version ('\x9a\x9a\x13\x01\x13\x02\x13\x03À+À/À,À0Ì©Ì¨À\x13À\x14\x00\x9c\x00\x9d\x00/\x005\x01\x00\x06\x93\x9a\x9a\x00\x00\x00#\x00\x00\x00+\x00\x07\x06ÚÚ\x03\x04\x03\x03\x00-\x00\x02\x01\x01\x00')
+ERROR 2025-08-19 15:12:51,612 basehttp 980 11808 You're accessing the development server over HTTPS, but it only supports HTTP.
+INFO 2025-08-19 15:15:01,820 autoreload 980 6988 C:\projects\Tourism\project\tanzania_tourism\settings.py changed, reloading.
+INFO 2025-08-19 15:15:05,473 autoreload 10020 2256 Watching for file changes with StatReloader
+INFO 2025-08-19 15:15:09,862 basehttp 10020 1216 code 400, message Bad request version ('JJ\x13\x01\x13\x02\x13\x03À+À/À,À0Ì©Ì¨À\x13À\x14\x00\x9c\x00\x9d\x00/\x005\x01\x00\x06S')
+INFO 2025-08-19 15:15:09,863 basehttp 10020 8072 code 400, message Bad request version ('ÊÊ\x13\x01\x13\x02\x13\x03À+À/À,À0Ì©Ì¨À\x13À\x14\x00\x9c\x00\x9d\x00/\x005\x01\x00\x06\x93jj\x00\x00\x00#\x00\x00\x00')
+ERROR 2025-08-19 15:15:09,864 basehttp 10020 1216 You're accessing the development server over HTTPS, but it only supports HTTP.
+ERROR 2025-08-19 15:15:09,864 basehttp 10020 8072 You're accessing the development server over HTTPS, but it only supports HTTP.
+INFO 2025-08-19 15:15:09,867 basehttp 10020 12504 code 400, message Bad HTTP/0.9 request type ('\x16\x03\x01\x06À\x01\x00\x06¼\x03\x03¹Ö¶ü\xad\x95\x8cÁ´ôèx¼\x16\x87=¨\x02\x1aºðÀ:kU;ÐB¾\x12W~')
+ERROR 2025-08-19 15:15:09,871 basehttp 10020 12504 You're accessing the development server over HTTPS, but it only supports HTTP.
+INFO 2025-08-19 15:15:09,877 basehttp 10020 10100 code 400, message Bad request version ('\x00\x12\x00\x10\x04\x03\x08\x04\x04\x01\x05\x03\x08\x05\x05\x01\x08\x06\x06\x01\x00\x12\x00\x00\x00\x17\x00\x00\x00#\x00\x00\x00-\x00\x02\x01\x01\x00')
+ERROR 2025-08-19 15:15:09,878 basehttp 10020 10100 You're accessing the development server over HTTPS, but it only supports HTTP.
+INFO 2025-08-19 15:15:20,507 basehttp 10020 4596 code 400, message Bad request version ("F\x06!Üd\x0fÙÐo\x8fã]\x18£YdR\x16\x8d§\x0e\x9fAE\x03»¸\x02\x98)I¸ÎdðYEå\x16Ñ\x98']ì¬ìèH\x87\x91|¤YZ\x94&xoå¡Ñô\x87JkJ|ÀÈ\x18v(U[\x01V+3\x7fzm\x9eGP¨")
+ERROR 2025-08-19 15:15:20,509 basehttp 10020 4596 You're accessing the development server over HTTPS, but it only supports HTTP.
+INFO 2025-08-19 15:15:20,516 basehttp 10020 11364 code 400, message Bad request version ('JJ\x13\x01\x13\x02\x13\x03À+À/À,À0Ì©Ì¨À\x13À\x14\x00\x9c\x00\x9d\x00/\x005\x01\x00\x06\x93\x8a\x8a\x00\x00\x00\x17\x00\x00\x00')
+ERROR 2025-08-19 15:15:20,516 basehttp 10020 11364 You're accessing the development server over HTTPS, but it only supports HTTP.
+INFO 2025-08-19 15:15:51,707 autoreload 2836 11112 Watching for file changes with StatReloader
+INFO 2025-08-19 15:15:59,509 basehttp 2836 12292 code 400, message Bad request version ('\x8d\x9c+')
+ERROR 2025-08-19 15:15:59,510 basehttp 2836 12292 You're accessing the development server over HTTPS, but it only supports HTTP.
+INFO 2025-08-19 15:15:59,513 basehttp 2836 12988 code 400, message Bad request version ('ÚÚ\x13\x01\x13\x02\x13\x03À+À/À,À0Ì©Ì¨À\x13À\x14\x00\x9c\x00\x9d\x00/\x005\x01\x00\x06\x93êê\x00\x00\x003\x04ï\x04í')
+ERROR 2025-08-19 15:15:59,514 basehttp 2836 12988 You're accessing the development server over HTTPS, but it only supports HTTP.
+INFO 2025-08-19 15:16:33,120 basehttp 2836 1724 code 400, message Bad request version ('\xad\xad¯G\x13\x98\xadÇ6\x05\x88\x82\x81R\x13\x9b+\x84z#´?Ö')
+ERROR 2025-08-19 15:16:33,128 basehttp 2836 1724 You're accessing the development server over HTTPS, but it only supports HTTP.
+INFO 2025-08-19 15:16:33,139 basehttp 2836 10600 code 400, message Bad request version ('!\x08ÖÓJ>|\x15b\x93ØøU<k\x8d½\x13J\x9e\x86\x10P;\x90íÌÐÆ\x01G*')
+ERROR 2025-08-19 15:16:33,139 basehttp 2836 10600 You're accessing the development server over HTTPS, but it only supports HTTP.
+INFO 2025-08-19 15:17:23,153 basehttp 2836 11340 "GET / HTTP/1.1" 200 85096
+INFO 2025-08-19 15:17:27,398 basehttp 2836 12860 "GET /media/parks/main/Gibbs-Farm-game-Drive-750x450.jpg HTTP/1.1" 200 67693
+INFO 2025-08-19 15:17:27,424 basehttp 2836 11340 "GET /media/parks/main/Serengeti-National-Park-Africa-Kenya-Safaris2.jpg.webp HTTP/1.1" 200 176712
+INFO 2025-08-19 15:17:27,470 basehttp 2836 3036 "GET /media/tours/main/4-Days-Ngorongoro-Serengeti-Safari-2-750x325-1.jpg HTTP/1.1" 200 53254
+INFO 2025-08-19 15:17:27,494 basehttp 2836 700 "GET /media/parks/main/kili-1.jpg.webp HTTP/1.1" 200 36412
+WARNING 2025-08-19 15:17:29,097 log 2836 700 Not Found: /favicon.ico
+WARNING 2025-08-19 15:17:29,105 basehttp 2836 700 "GET /favicon.ico HTTP/1.1" 404 5789
+INFO 2025-08-19 15:18:19,400 basehttp 2836 700 "GET /parks/destinations/?type=wildlife_area HTTP/1.1" 200 71495
+INFO 2025-08-19 15:18:19,474 basehttp 2836 3036 "GET /media/destinations/kigosi.jpg HTTP/1.1" 200 103347
+INFO 2025-08-19 15:18:19,479 basehttp 2836 700 "GET /media/destinations/Katavi-National-Park-Tanzania-1.jpg HTTP/1.1" 200 461678
+INFO 2025-08-19 15:18:19,673 basehttp 2836 3036 "GET /media/destinations/Mkomazi2.jpg HTTP/1.1" 200 232427
+INFO 2025-08-19 15:18:19,678 basehttp 2836 700 "GET /media/destinations/mikumi.jpg HTTP/1.1" 200 598125
+INFO 2025-08-19 15:18:19,698 basehttp 2836 11340 "GET /media/destinations/boat-safaris-nyerere-national-park.jpg HTTP/1.1" 200 110480
+INFO 2025-08-19 15:18:19,714 basehttp 2836 12860 "GET /media/destinations/seronera-wildlife-lodge-view.jpg HTTP/1.1" 200 1270721
+INFO 2025-08-19 15:18:49,950 basehttp 2836 12860 "GET /reviews/ HTTP/1.1" 200 59578
+INFO 2025-08-19 15:18:52,364 basehttp 2836 12860 "GET /tours/ HTTP/1.1" 200 84173
+INFO 2025-08-19 15:18:52,403 basehttp 2836 12860 "GET /media/tours/main/kili-1.jpg.webp HTTP/1.1" 200 36412
+WARNING 2025-08-19 15:18:52,498 log 2836 12860 Not Found: /media/tours/main/udzungwa_3.jpg
+WARNING 2025-08-19 15:18:52,509 log 2836 700 Not Found: /media/tours/main/saadani_4.jpg
+WARNING 2025-08-19 15:18:52,510 basehttp 2836 12860 "GET /media/tours/main/udzungwa_3.jpg HTTP/1.1" 404 5821
+WARNING 2025-08-19 15:18:52,519 basehttp 2836 700 "GET /media/tours/main/saadani_4.jpg HTTP/1.1" 404 5817
+WARNING 2025-08-19 15:18:52,517 log 2836 3036 Not Found: /media/tours/main/selous_5.jpg
+WARNING 2025-08-19 15:18:52,526 basehttp 2836 3036 "GET /media/tours/main/selous_5.jpg HTTP/1.1" 404 5813
+INFO 2025-08-19 15:19:01,018 basehttp 2836 3036 "GET / HTTP/1.1" 200 85096
+INFO 2025-08-19 15:19:21,402 basehttp 2836 3036 "GET /parks/ HTTP/1.1" 200 92203
+INFO 2025-08-19 15:19:21,448 basehttp 2836 3036 "GET /media/parks/main/arusha-welcome-1_GKeoGhz.jpg HTTP/1.1" 200 342815
+INFO 2025-08-19 15:19:21,475 basehttp 2836 11340 "GET /media/parks/main/i4-p52nvzls707m1nj8ld4x5w2iue560urjvic0jkdmk4.jpg HTTP/1.1" 200 34844
+INFO 2025-08-19 15:19:21,477 basehttp 2836 700 "GET /media/parks/main/burigi-chato-national-park-galry-1-1.jpg HTTP/1.1" 200 176215
+INFO 2025-08-19 15:19:21,478 basehttp 2836 12860 "GET /media/parks/main/gombe-4.webp HTTP/1.1" 200 184924
+INFO 2025-08-19 15:19:21,488 basehttp 2836 3036 "GET /media/parks/main/Kitulo-National-park-1.jpg HTTP/1.1" 200 314403
+INFO 2025-08-19 15:19:21,499 basehttp 2836 8292 "GET /media/parks/main/kubwafive-safaris.jpg HTTP/1.1" 200 99356
+INFO 2025-08-19 15:19:21,500 basehttp 2836 6608 "GET /media/parks/main/katavi-Hippo-pool.jpg HTTP/1.1" 200 134197
+INFO 2025-08-19 15:19:21,535 basehttp 2836 11340 "GET /media/parks/main/mahale.jpg HTTP/1.1" 200 410183
+INFO 2025-08-19 15:19:21,553 basehttp 2836 700 "GET /media/parks/main/lake-manyara-1.jpg HTTP/1.1" 200 308496
+INFO 2025-08-19 15:19:21,578 basehttp 2836 12860 "GET /media/parks/main/247205355_10157876049375044_3456436950874094026_n-1024x683.jpg HTTP/1.1" 200 78131
+INFO 2025-08-19 15:19:21,594 basehttp 2836 3036 "GET /media/parks/main/thumb_16057243_cover_header_g1vgUNu.jpg HTTP/1.1" 200 266767
+INFO 2025-08-19 15:26:21,152 basehttp 2836 9004 "GET /parks/ HTTP/1.1" 200 92279
+INFO 2025-08-19 15:26:36,174 basehttp 2836 9004 "GET / HTTP/1.1" 200 85172
+INFO 2025-08-19 15:30:16,944 basehttp 2836 9004 "GET / HTTP/1.1" 200 85576
+INFO 2025-08-19 15:32:38,800 basehttp 2836 9004 "GET / HTTP/1.1" 200 85936
+WARNING 2025-08-19 15:32:51,148 log 2836 9004 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-19 15:32:51,155 basehttp 2836 9004 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 5900
+INFO 2025-08-19 15:36:21,368 basehttp 2836 9004 "GET / HTTP/1.1" 200 87932
+WARNING 2025-08-19 15:36:41,532 log 2836 9004 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-19 15:36:41,553 basehttp 2836 9004 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 5900
+INFO 2025-08-19 15:37:09,476 basehttp 2836 9004 "GET /parks/destinations/?type=waterfall HTTP/1.1" 200 65869
+INFO 2025-08-19 15:37:09,588 basehttp 2836 7516 "GET /parks/destinations/?type=waterfall HTTP/1.1" 200 65869
+WARNING 2025-08-19 15:37:09,678 log 2836 7516 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-19 15:37:09,682 basehttp 2836 7516 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 5900
+INFO 2025-08-19 15:37:09,700 basehttp 2836 7964 "GET /media/destinations/Udzungwa-NP-3-1.jpeg HTTP/1.1" 200 548483
+INFO 2025-08-19 15:38:18,963 basehttp 2836 7964 "GET /parks/ HTTP/1.1" 200 95039
+INFO 2025-08-19 15:41:56,687 basehttp 2836 7964 "GET /parks/ HTTP/1.1" 200 99314
+INFO 2025-08-19 15:42:15,170 basehttp 2836 7964 "GET /parks/?page=2 HTTP/1.1" 200 97091
+INFO 2025-08-19 15:42:15,221 basehttp 2836 7964 "GET /media/parks/main/IMG_0499-1024x731.jpg HTTP/1.1" 200 192614
+INFO 2025-08-19 15:42:15,231 basehttp 2836 5240 "GET /media/parks/main/Selous-Game-Reserve-3_46eYk7s.jpg HTTP/1.1" 200 224441
+INFO 2025-08-19 15:42:15,245 basehttp 2836 7964 "GET /media/parks/main/ruaha-elephants-2.jpg HTTP/1.1" 200 93119
+INFO 2025-08-19 15:42:15,268 basehttp 2836 7964 "GET /media/parks/main/rubondoislandcamp4-750x450_2j24TGn.jpg HTTP/1.1" 200 110709
+INFO 2025-08-19 15:42:15,283 basehttp 2836 7964 "GET /media/parks/main/rumanyika-.jpg HTTP/1.1" 200 120159
+INFO 2025-08-19 15:42:15,306 basehttp 2836 7964 "GET /media/parks/main/Saadani_National_Park_Hippos_29.jpg HTTP/1.1" 200 398942
+INFO 2025-08-19 15:42:15,317 basehttp 2836 5240 "GET /media/parks/main/Saanane-National-750x450_ZRGJGTs.jpg HTTP/1.1" 200 106969
+INFO 2025-08-19 15:42:15,420 basehttp 2836 5240 "GET /media/parks/main/elephants-tarangire.jpg HTTP/1.1" 200 174271
+INFO 2025-08-19 15:42:15,424 basehttp 2836 7964 "GET /media/parks/main/udzungwa-mountains-national.jpg HTTP/1.1" 200 465888
+INFO 2025-08-19 15:42:27,077 basehttp 2836 7964 "GET / HTTP/1.1" 200 87932
+INFO 2025-08-19 15:44:49,857 basehttp 2836 7964 "GET / HTTP/1.1" 200 90062
+INFO 2025-08-19 15:45:27,872 basehttp 2836 7964 "GET /parks/ HTTP/1.1" 200 99314
+INFO 2025-08-19 15:45:37,172 basehttp 2836 7964 "GET /parks/?page=2 HTTP/1.1" 200 97091
+INFO 2025-08-19 15:45:41,998 basehttp 2836 7964 "GET / HTTP/1.1" 200 90062
+INFO 2025-08-19 15:45:47,833 basehttp 2836 7964 "GET /parks/ HTTP/1.1" 200 99314
+INFO 2025-08-19 15:46:16,279 basehttp 2836 3044 "GET /tours/ HTTP/1.1" 200 87009
+WARNING 2025-08-19 15:46:16,365 log 2836 3044 Not Found: /media/tours/main/udzungwa_3.jpg
+WARNING 2025-08-19 15:46:16,371 basehttp 2836 3044 "GET /media/tours/main/udzungwa_3.jpg HTTP/1.1" 404 5821
+WARNING 2025-08-19 15:46:16,378 log 2836 12492 Not Found: /media/tours/main/saadani_4.jpg
+WARNING 2025-08-19 15:46:16,387 log 2836 4936 Not Found: /media/tours/main/selous_5.jpg
+WARNING 2025-08-19 15:46:16,434 basehttp 2836 12492 "GET /media/tours/main/saadani_4.jpg HTTP/1.1" 404 5817
+WARNING 2025-08-19 15:46:16,450 basehttp 2836 4936 "GET /media/tours/main/selous_5.jpg HTTP/1.1" 404 5813
+INFO 2025-08-19 15:47:08,556 basehttp 2836 4936 "GET /parks/ HTTP/1.1" 200 99314
+INFO 2025-08-19 15:47:22,325 basehttp 2836 4936 "GET /parks/mahale-mountains-national-park/ HTTP/1.1" 200 67833
+INFO 2025-08-19 15:47:22,374 basehttp 2836 4936 "GET /media/wildlife/leopard-515509.jpg HTTP/1.1" 200 184907
+INFO 2025-08-19 15:47:22,376 basehttp 2836 12492 "GET /media/destinations/mahale-Chimps-2-.jpg HTTP/1.1" 200 101286
+INFO 2025-08-19 15:47:33,682 basehttp 2836 4936 "GET /tours/ HTTP/1.1" 200 87009
+WARNING 2025-08-19 15:47:33,789 log 2836 4936 Not Found: /media/tours/main/udzungwa_3.jpg
+WARNING 2025-08-19 15:47:33,793 log 2836 3044 Not Found: /media/tours/main/selous_5.jpg
+WARNING 2025-08-19 15:47:33,794 basehttp 2836 4936 "GET /media/tours/main/udzungwa_3.jpg HTTP/1.1" 404 5821
+WARNING 2025-08-19 15:47:33,807 log 2836 12492 Not Found: /media/tours/main/saadani_4.jpg
+WARNING 2025-08-19 15:47:33,808 basehttp 2836 3044 "GET /media/tours/main/selous_5.jpg HTTP/1.1" 404 5813
+WARNING 2025-08-19 15:47:33,812 basehttp 2836 12492 "GET /media/tours/main/saadani_4.jpg HTTP/1.1" 404 5817
+INFO 2025-08-19 15:48:04,272 basehttp 2836 12492 "GET /tours/ HTTP/1.1" 200 89529
+WARNING 2025-08-19 15:48:04,337 log 2836 12492 Not Found: /media/tours/main/udzungwa_3.jpg
+WARNING 2025-08-19 15:48:04,344 basehttp 2836 12492 "GET /media/tours/main/udzungwa_3.jpg HTTP/1.1" 404 5821
+WARNING 2025-08-19 15:48:04,352 log 2836 3044 Not Found: /media/tours/main/saadani_4.jpg
+WARNING 2025-08-19 15:48:04,365 log 2836 4936 Not Found: /media/tours/main/selous_5.jpg
+WARNING 2025-08-19 15:48:04,366 basehttp 2836 3044 "GET /media/tours/main/saadani_4.jpg HTTP/1.1" 404 5817
+WARNING 2025-08-19 15:48:04,367 basehttp 2836 4936 "GET /media/tours/main/selous_5.jpg HTTP/1.1" 404 5813
+INFO 2025-08-19 15:48:41,994 basehttp 2836 4936 "GET /reviews/ HTTP/1.1" 200 62414
+INFO 2025-08-19 15:49:00,479 basehttp 2836 4936 "GET / HTTP/1.1" 200 90062
+INFO 2025-08-19 15:49:43,732 basehttp 2836 4936 "GET /accounts/dashboard/ HTTP/1.1" 200 66396
+INFO 2025-08-19 15:49:57,366 basehttp 2836 4936 "GET /bookings/ HTTP/1.1" 200 60363
+INFO 2025-08-19 15:50:05,631 basehttp 2836 4936 "GET /tours/ HTTP/1.1" 200 89529
+WARNING 2025-08-19 15:50:05,728 log 2836 4936 Not Found: /media/tours/main/udzungwa_3.jpg
+WARNING 2025-08-19 15:50:05,734 log 2836 12492 Not Found: /media/tours/main/selous_5.jpg
+WARNING 2025-08-19 15:50:05,737 log 2836 3044 Not Found: /media/tours/main/saadani_4.jpg
+WARNING 2025-08-19 15:50:05,738 basehttp 2836 4936 "GET /media/tours/main/udzungwa_3.jpg HTTP/1.1" 404 5821
+WARNING 2025-08-19 15:50:05,739 basehttp 2836 12492 "GET /media/tours/main/selous_5.jpg HTTP/1.1" 404 5813
+WARNING 2025-08-19 15:50:05,743 basehttp 2836 3044 "GET /media/tours/main/saadani_4.jpg HTTP/1.1" 404 5817
+INFO 2025-08-19 15:50:10,154 basehttp 2836 3044 "GET /tours/classic-northern-safari-7-days/ HTTP/1.1" 200 87900
+WARNING 2025-08-19 15:50:10,242 log 2836 4936 Not Found: /media/tours/itinerary/day2_serengeti.jpg
+WARNING 2025-08-19 15:50:10,248 log 2836 3044 Not Found: /media/tours/itinerary/day1_tarangire.jpg
+WARNING 2025-08-19 15:50:10,250 basehttp 2836 4936 "GET /media/tours/itinerary/day2_serengeti.jpg HTTP/1.1" 404 5857
+WARNING 2025-08-19 15:50:10,254 basehttp 2836 3044 "GET /media/tours/itinerary/day1_tarangire.jpg HTTP/1.1" 404 5857
+WARNING 2025-08-19 15:50:10,261 log 2836 12492 Not Found: /media/tours/main/selous_5.jpg
+WARNING 2025-08-19 15:50:10,268 basehttp 2836 12492 "GET /media/tours/main/selous_5.jpg HTTP/1.1" 404 5813
+INFO 2025-08-19 15:50:20,075 basehttp 2836 12492 "GET /bookings/create/classic-northern-safari-7-days/ HTTP/1.1" 200 80251
+INFO 2025-08-19 15:58:59,357 autoreload 2836 11112 C:\projects\Tourism\project\bookings\forms.py changed, reloading.
+INFO 2025-08-19 15:59:03,606 autoreload 11156 13124 Watching for file changes with StatReloader
+INFO 2025-08-19 15:59:48,569 autoreload 11156 13124 C:\projects\Tourism\project\bookings\views.py changed, reloading.
+INFO 2025-08-19 15:59:51,073 autoreload 12416 1724 Watching for file changes with StatReloader
+INFO 2025-08-19 16:00:59,674 autoreload 12416 1724 C:\projects\Tourism\project\bookings\urls.py changed, reloading.
+INFO 2025-08-19 16:01:02,690 autoreload 9628 4896 Watching for file changes with StatReloader
+INFO 2025-08-19 16:03:53,341 autoreload 9628 4896 C:\projects\Tourism\project\bookings\views.py changed, reloading.
+INFO 2025-08-19 16:03:56,446 autoreload 8484 2700 Watching for file changes with StatReloader
+INFO 2025-08-19 16:04:57,538 autoreload 8484 2700 C:\projects\Tourism\project\bookings\models.py changed, reloading.
+INFO 2025-08-19 16:05:01,081 autoreload 12476 5884 Watching for file changes with StatReloader
+INFO 2025-08-19 16:13:26,550 autoreload 11328 9440 Watching for file changes with StatReloader
+INFO 2025-08-19 16:13:34,735 basehttp 11328 12616 "GET / HTTP/1.1" 200 88397
+INFO 2025-08-19 16:13:36,969 basehttp 11328 12616 "GET /media/parks/main/Gibbs-Farm-game-Drive-750x450.jpg HTTP/1.1" 304 0
+INFO 2025-08-19 16:13:36,971 basehttp 11328 12668 "GET /media/parks/main/Serengeti-National-Park-Africa-Kenya-Safaris2.jpg.webp HTTP/1.1" 304 0
+INFO 2025-08-19 16:13:37,018 basehttp 11328 1768 "GET /media/parks/main/kili-1.jpg.webp HTTP/1.1" 304 0
+WARNING 2025-08-19 16:13:38,118 log 11328 1768 Not Found: /favicon.ico
+WARNING 2025-08-19 16:13:38,119 basehttp 11328 1768 "GET /favicon.ico HTTP/1.1" 404 5789
+INFO 2025-08-19 16:13:44,310 basehttp 11328 1768 "GET /accounts/login/ HTTP/1.1" 200 60286
+INFO 2025-08-19 16:13:59,295 basehttp 11328 1768 "POST /accounts/login/ HTTP/1.1" 302 0
+INFO 2025-08-19 16:13:59,337 basehttp 11328 1768 "GET / HTTP/1.1" 200 90832
+INFO 2025-08-19 16:14:03,942 basehttp 11328 1768 "GET /accounts/dashboard/ HTTP/1.1" 200 66396
+INFO 2025-08-19 16:14:09,662 basehttp 11328 1768 "GET /bookings/ HTTP/1.1" 200 60363
+INFO 2025-08-19 16:14:11,378 basehttp 11328 1768 "GET /tours/ HTTP/1.1" 200 89529
+INFO 2025-08-19 16:14:11,419 basehttp 11328 1768 "GET /media/tours/main/4-Days-Ngorongoro-Serengeti-Safari-2-750x325-1.jpg HTTP/1.1" 304 0
+INFO 2025-08-19 16:14:11,424 basehttp 11328 12668 "GET /media/tours/main/kili-1.jpg.webp HTTP/1.1" 304 0
+WARNING 2025-08-19 16:14:11,481 log 11328 1768 Not Found: /media/tours/main/saadani_4.jpg
+WARNING 2025-08-19 16:14:11,492 log 11328 12616 Not Found: /media/tours/main/selous_5.jpg
+WARNING 2025-08-19 16:14:11,497 basehttp 11328 1768 "GET /media/tours/main/saadani_4.jpg HTTP/1.1" 404 5817
+WARNING 2025-08-19 16:14:11,507 log 11328 12668 Not Found: /media/tours/main/udzungwa_3.jpg
+WARNING 2025-08-19 16:14:11,563 basehttp 11328 12616 "GET /media/tours/main/selous_5.jpg HTTP/1.1" 404 5813
+WARNING 2025-08-19 16:14:11,580 basehttp 11328 12668 "GET /media/tours/main/udzungwa_3.jpg HTTP/1.1" 404 5821
+INFO 2025-08-19 16:14:14,488 basehttp 11328 12668 "GET /tours/classic-northern-safari-7-days/ HTTP/1.1" 200 87900
+INFO 2025-08-19 16:14:14,527 basehttp 11328 12668 "GET /media/parks/main/elephants-tarangire.jpg HTTP/1.1" 304 0
+WARNING 2025-08-19 16:14:14,573 log 11328 12668 Not Found: /media/tours/itinerary/day1_tarangire.jpg
+WARNING 2025-08-19 16:14:14,575 basehttp 11328 12668 "GET /media/tours/itinerary/day1_tarangire.jpg HTTP/1.1" 404 5857
+WARNING 2025-08-19 16:14:14,582 log 11328 12616 Not Found: /media/tours/itinerary/day2_serengeti.jpg
+WARNING 2025-08-19 16:14:14,588 basehttp 11328 12616 "GET /media/tours/itinerary/day2_serengeti.jpg HTTP/1.1" 404 5857
+WARNING 2025-08-19 16:14:14,596 log 11328 1768 Not Found: /media/tours/main/selous_5.jpg
+WARNING 2025-08-19 16:14:14,597 basehttp 11328 1768 "GET /media/tours/main/selous_5.jpg HTTP/1.1" 404 5813
+ERROR 2025-08-19 16:14:17,586 log 11328 1768 Internal Server Error: /bookings/create/classic-northern-safari-7-days/
+Traceback (most recent call last):
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\contrib\auth\decorators.py", line 23, in _wrapper_view
+    return view_func(request, *args, **kwargs)
+  File "C:\projects\Tourism\project\bookings\views.py", line 110, in create_booking
+    return render(request, 'bookings/create_booking_quick.html', context)
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: bookings/create_booking_quick.html
+ERROR 2025-08-19 16:14:17,593 basehttp 11328 1768 "GET /bookings/create/classic-northern-safari-7-days/ HTTP/1.1" 500 100483
+INFO 2025-08-19 16:17:50,182 autoreload 11328 9440 C:\projects\Tourism\project\bookings\views.py changed, reloading.
+INFO 2025-08-19 16:17:54,601 autoreload 12944 8356 Watching for file changes with StatReloader
+INFO 2025-08-19 16:19:26,944 basehttp 12944 11352 "GET /bookings/create/classic-northern-safari-7-days/ HTTP/1.1" 200 77243
+INFO 2025-08-19 16:20:42,058 autoreload 12944 8356 C:\projects\Tourism\project\bookings\forms.py changed, reloading.
+INFO 2025-08-19 16:20:45,667 autoreload 10228 10584 Watching for file changes with StatReloader
+INFO 2025-08-19 16:20:49,707 basehttp 10228 7380 "GET /bookings/create/classic-northern-safari-7-days/ HTTP/1.1" 200 78603
+INFO 2025-08-19 16:21:11,804 basehttp 10228 7380 "POST /bookings/create/classic-northern-safari-7-days/ HTTP/1.1" 302 0
+INFO 2025-08-19 16:21:11,865 basehttp 10228 7380 "GET /bookings/TZ655D4118/ HTTP/1.1" 200 65619
+INFO 2025-08-19 16:22:18,618 basehttp 10228 12404 "GET /bookings/create/classic-northern-safari-7-days/ HTTP/1.1" 200 78603
+INFO 2025-08-19 16:25:16,476 basehttp 10228 12404 "GET /bookings/create/classic-northern-safari-7-days/ HTTP/1.1" 200 78603
+INFO 2025-08-19 16:25:36,141 basehttp 10228 12404 "POST /bookings/create/classic-northern-safari-7-days/ HTTP/1.1" 200 76791
+INFO 2025-08-19 16:25:51,726 basehttp 10228 12404 "POST /bookings/create/classic-northern-safari-7-days/ HTTP/1.1" 200 76791
+INFO 2025-08-19 16:26:16,734 basehttp 10228 12404 "POST /bookings/create/classic-northern-safari-7-days/ HTTP/1.1" 200 76791
+INFO 2025-08-19 16:26:48,618 basehttp 10228 12404 "POST /bookings/create/classic-northern-safari-7-days/ HTTP/1.1" 200 76791
+INFO 2025-08-19 16:27:53,659 basehttp 10228 12404 "GET /bookings/ HTTP/1.1" 200 60215
+INFO 2025-08-19 16:27:58,802 basehttp 10228 12404 "GET /tours/ HTTP/1.1" 200 89529
+WARNING 2025-08-19 16:27:58,937 log 10228 12404 Not Found: /media/tours/main/udzungwa_3.jpg
+WARNING 2025-08-19 16:27:58,952 log 10228 13272 Not Found: /media/tours/main/saadani_4.jpg
+WARNING 2025-08-19 16:27:58,954 basehttp 10228 12404 "GET /media/tours/main/udzungwa_3.jpg HTTP/1.1" 404 5821
+WARNING 2025-08-19 16:27:58,971 basehttp 10228 13272 "GET /media/tours/main/saadani_4.jpg HTTP/1.1" 404 5817
+WARNING 2025-08-19 16:27:59,003 log 10228 12404 Not Found: /media/tours/main/selous_5.jpg
+WARNING 2025-08-19 16:27:59,015 basehttp 10228 12404 "GET /media/tours/main/selous_5.jpg HTTP/1.1" 404 5813
+INFO 2025-08-19 16:28:04,734 basehttp 10228 12404 "GET /tours/kilimanjaro-summit-trek-8-days-machame/ HTTP/1.1" 200 82844
+WARNING 2025-08-19 16:28:04,809 log 10228 12404 Not Found: /media/tours/itinerary/kili_day1.jpg
+WARNING 2025-08-19 16:28:04,815 basehttp 10228 12404 "GET /media/tours/itinerary/kili_day1.jpg HTTP/1.1" 404 5837
+WARNING 2025-08-19 16:28:04,831 log 10228 13272 Not Found: /media/tours/itinerary/kili_summit.jpg
+WARNING 2025-08-19 16:28:04,832 basehttp 10228 13272 "GET /media/tours/itinerary/kili_summit.jpg HTTP/1.1" 404 5845
+INFO 2025-08-19 16:28:07,906 basehttp 10228 13272 "GET /bookings/create/kilimanjaro-summit-trek-8-days-machame/ HTTP/1.1" 200 78608
+INFO 2025-08-19 16:28:43,173 basehttp 10228 13272 "POST /bookings/create/kilimanjaro-summit-trek-8-days-machame/ HTTP/1.1" 200 76796
+INFO 2025-08-19 16:29:20,326 basehttp 10228 13272 "POST /bookings/create/kilimanjaro-summit-trek-8-days-machame/ HTTP/1.1" 302 0
+INFO 2025-08-19 16:29:20,403 basehttp 10228 13272 "GET /bookings/TZD4E50BA7/ HTTP/1.1" 200 64944
+INFO 2025-08-19 16:30:18,373 basehttp 10228 13272 "GET /admin/ HTTP/1.1" 200 20942
+INFO 2025-08-19 16:30:18,403 basehttp 10228 12404 "GET /static/admin/css/dark_mode.css HTTP/1.1" 304 0
+INFO 2025-08-19 16:30:18,404 basehttp 10228 13272 "GET /static/admin/css/base.css HTTP/1.1" 304 0
+INFO 2025-08-19 16:30:18,424 basehttp 10228 13272 "GET /static/admin/css/dashboard.css HTTP/1.1" 304 0
+INFO 2025-08-19 16:30:18,424 basehttp 10228 12404 "GET /static/admin/css/responsive.css HTTP/1.1" 304 0
+INFO 2025-08-19 16:30:18,425 basehttp 10228 11292 "GET /static/admin/css/nav_sidebar.css HTTP/1.1" 304 0
+INFO 2025-08-19 16:30:18,441 basehttp 10228 12404 "GET /static/admin/js/nav_sidebar.js HTTP/1.1" 304 0
+INFO 2025-08-19 16:30:18,441 basehttp 10228 11292 "GET /static/admin/js/theme.js HTTP/1.1" 304 0
+INFO 2025-08-19 16:30:18,479 basehttp 10228 11292 "GET /static/admin/img/icon-addlink.svg HTTP/1.1" 304 0
+INFO 2025-08-19 16:30:18,480 basehttp 10228 12404 "GET /static/admin/img/icon-changelink.svg HTTP/1.1" 304 0
+INFO 2025-08-19 16:30:18,480 basehttp 10228 13272 "GET /static/admin/img/icon-viewlink.svg HTTP/1.1" 304 0
+INFO 2025-08-19 16:30:23,562 basehttp 10228 13272 "GET /admin/bookings/booking/ HTTP/1.1" 200 23936
+INFO 2025-08-19 16:30:23,604 basehttp 10228 13272 "GET /static/admin/css/changelists.css HTTP/1.1" 304 0
+INFO 2025-08-19 16:30:23,625 basehttp 10228 12404 "GET /static/admin/js/vendor/jquery/jquery.js HTTP/1.1" 304 0
+INFO 2025-08-19 16:30:23,630 basehttp 10228 11292 "GET /static/admin/js/jquery.init.js HTTP/1.1" 304 0
+INFO 2025-08-19 16:30:23,642 basehttp 10228 12404 "GET /static/admin/js/urlify.js HTTP/1.1" 304 0
+INFO 2025-08-19 16:30:23,649 basehttp 10228 11292 "GET /static/admin/js/prepopulate.js HTTP/1.1" 304 0
+INFO 2025-08-19 16:30:23,657 basehttp 10228 13272 "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+INFO 2025-08-19 16:30:23,658 basehttp 10228 12404 "GET /static/admin/js/vendor/xregexp/xregexp.js HTTP/1.1" 304 0
+INFO 2025-08-19 16:30:23,659 basehttp 10228 7688 "GET /static/admin/js/core.js HTTP/1.1" 304 0
+INFO 2025-08-19 16:30:23,664 basehttp 10228 5844 "GET /static/admin/js/admin/RelatedObjectLookups.js HTTP/1.1" 304 0
+INFO 2025-08-19 16:30:23,664 basehttp 10228 876 "GET /static/admin/js/actions.js HTTP/1.1" 304 0
+INFO 2025-08-19 16:30:23,712 basehttp 10228 876 "GET /static/admin/img/search.svg HTTP/1.1" 304 0
+INFO 2025-08-19 16:30:23,731 basehttp 10228 876 "GET /static/admin/js/filters.js HTTP/1.1" 304 0
+INFO 2025-08-19 16:30:23,755 basehttp 10228 876 "GET /static/admin/img/tooltag-add.svg HTTP/1.1" 304 0
+INFO 2025-08-19 16:30:23,761 basehttp 10228 876 "GET /static/admin/img/sorting-icons.svg HTTP/1.1" 304 0
+INFO 2025-08-19 16:30:30,533 basehttp 10228 876 "GET /admin/bookings/booking/2/change/ HTTP/1.1" 200 33076
+INFO 2025-08-19 16:30:30,576 basehttp 10228 876 "GET /static/admin/css/forms.css HTTP/1.1" 304 0
+INFO 2025-08-19 16:30:30,594 basehttp 10228 12404 "GET /static/admin/css/widgets.css HTTP/1.1" 304 0
+INFO 2025-08-19 16:30:30,607 basehttp 10228 876 "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+INFO 2025-08-19 16:30:30,612 basehttp 10228 876 "GET /static/admin/js/prepopulate_init.js HTTP/1.1" 304 0
+INFO 2025-08-19 16:30:30,841 basehttp 10228 13272 "GET /static/admin/js/admin/DateTimeShortcuts.js HTTP/1.1" 200 19319
+INFO 2025-08-19 16:30:30,842 basehttp 10228 5844 "GET /static/admin/js/calendar.js HTTP/1.1" 200 8466
+INFO 2025-08-19 16:30:30,857 basehttp 10228 5844 "GET /static/admin/js/change_form.js HTTP/1.1" 304 0
+INFO 2025-08-19 16:30:30,920 basehttp 10228 5844 "GET /static/admin/img/tooltag-arrowright.svg HTTP/1.1" 200 280
+INFO 2025-08-19 16:30:31,078 basehttp 10228 13272 "GET /static/admin/img/icon-clock.svg HTTP/1.1" 200 677
+INFO 2025-08-19 16:30:31,085 basehttp 10228 5844 "GET /static/admin/img/icon-calendar.svg HTTP/1.1" 200 1086
+INFO 2025-08-19 16:30:55,432 basehttp 10228 5844 "POST /admin/bookings/booking/2/change/ HTTP/1.1" 302 0
+INFO 2025-08-19 16:30:55,532 basehttp 10228 5844 "GET /admin/bookings/booking/ HTTP/1.1" 200 24156
+INFO 2025-08-19 16:30:55,594 basehttp 10228 5844 "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+INFO 2025-08-19 16:30:55,626 basehttp 10228 5844 "GET /static/admin/img/icon-yes.svg HTTP/1.1" 304 0
+INFO 2025-08-19 16:30:58,989 basehttp 10228 5844 "GET / HTTP/1.1" 200 90062
+INFO 2025-08-19 16:31:02,623 basehttp 10228 5844 "GET /bookings/ HTTP/1.1" 200 61759
+INFO 2025-08-19 16:31:19,197 basehttp 10228 5844 "GET /bookings/TZD4E50BA7/ HTTP/1.1" 200 64109
+INFO 2025-08-19 16:31:26,837 basehttp 10228 5844 "GET /bookings/ HTTP/1.1" 200 61759
+INFO 2025-08-19 16:31:55,820 basehttp 10228 5844 "GET /bookings/TZD4E50BA7/ HTTP/1.1" 200 64109
+INFO 2025-08-19 16:32:16,301 basehttp 10228 5844 "GET /accounts/logout/ HTTP/1.1" 302 0
+INFO 2025-08-19 16:32:16,379 basehttp 10228 5844 "GET / HTTP/1.1" 200 89183
+INFO 2025-08-19 16:32:38,534 basehttp 10228 5844 "GET /accounts/register/ HTTP/1.1" 200 78400
+INFO 2025-08-19 16:32:38,617 basehttp 10228 5844 "GET /static/flags/__.gif HTTP/1.1" 200 53
+INFO 2025-08-19 16:35:05,336 basehttp 10228 5844 "POST /accounts/register/ HTTP/1.1" 302 0
+INFO 2025-08-19 16:35:05,392 basehttp 10228 5844 "GET / HTTP/1.1" 200 90871
+INFO 2025-08-19 16:35:13,699 basehttp 10228 5844 "GET /accounts/dashboard/ HTTP/1.1" 200 66392
+INFO 2025-08-19 16:35:22,556 basehttp 10228 5844 "GET /accounts/profile/ HTTP/1.1" 200 77173
+INFO 2025-08-19 16:35:22,609 basehttp 10228 5844 "GET /static/flags/tz.gif HTTP/1.1" 200 358
+INFO 2025-08-19 16:35:48,282 basehttp 10228 5844 "POST /accounts/profile/ HTTP/1.1" 302 0
+INFO 2025-08-19 16:35:48,317 basehttp 10228 5844 "GET /accounts/dashboard/ HTTP/1.1" 200 67169
+INFO 2025-08-19 16:35:58,498 basehttp 10228 5844 "GET /tours/ HTTP/1.1" 200 89527
+WARNING 2025-08-19 16:35:58,598 log 10228 9196 Not Found: /media/tours/main/saadani_4.jpg
+WARNING 2025-08-19 16:35:58,602 basehttp 10228 9196 "GET /media/tours/main/saadani_4.jpg HTTP/1.1" 404 5817
+WARNING 2025-08-19 16:35:58,613 log 10228 8704 Not Found: /media/tours/main/selous_5.jpg
+WARNING 2025-08-19 16:35:58,618 log 10228 5844 Not Found: /media/tours/main/udzungwa_3.jpg
+WARNING 2025-08-19 16:35:58,620 basehttp 10228 8704 "GET /media/tours/main/selous_5.jpg HTTP/1.1" 404 5813
+WARNING 2025-08-19 16:35:58,623 basehttp 10228 5844 "GET /media/tours/main/udzungwa_3.jpg HTTP/1.1" 404 5821
+INFO 2025-08-19 16:36:05,574 basehttp 10228 5844 "GET /tours/kilimanjaro-summit-trek-8-days-machame/ HTTP/1.1" 200 82842
+WARNING 2025-08-19 16:36:05,659 log 10228 8704 Not Found: /media/tours/itinerary/kili_summit.jpg
+WARNING 2025-08-19 16:36:05,662 basehttp 10228 8704 "GET /media/tours/itinerary/kili_summit.jpg HTTP/1.1" 404 5845
+WARNING 2025-08-19 16:36:05,673 log 10228 5844 Not Found: /media/tours/itinerary/kili_day1.jpg
+WARNING 2025-08-19 16:36:05,676 basehttp 10228 5844 "GET /media/tours/itinerary/kili_day1.jpg HTTP/1.1" 404 5837
+INFO 2025-08-19 16:36:14,015 basehttp 10228 5844 "GET /bookings/create/kilimanjaro-summit-trek-8-days-machame/ HTTP/1.1" 200 78606
+INFO 2025-08-19 16:37:21,517 basehttp 10228 5844 "POST /bookings/create/kilimanjaro-summit-trek-8-days-machame/ HTTP/1.1" 200 79479
+INFO 2025-08-19 16:37:46,335 basehttp 10228 5844 "POST /bookings/create/kilimanjaro-summit-trek-8-days-machame/ HTTP/1.1" 302 0
+INFO 2025-08-19 16:37:46,384 basehttp 10228 5844 "GET /bookings/TZ6E8BCC30/ HTTP/1.1" 200 64933
+INFO 2025-08-19 16:38:18,717 basehttp 10228 5844 "GET /admin/ HTTP/1.1" 302 0
+INFO 2025-08-19 16:38:18,813 basehttp 10228 5844 "GET /admin/login/?next=/admin/ HTTP/1.1" 200 3702
+INFO 2025-08-19 16:38:18,879 basehttp 10228 5844 "GET /static/admin/css/login.css HTTP/1.1" 200 958
+INFO 2025-08-19 16:38:50,419 basehttp 10228 5844 "POST /admin/login/?next=/admin/ HTTP/1.1" 302 0
+INFO 2025-08-19 16:38:50,467 basehttp 10228 5844 "GET /admin/ HTTP/1.1" 200 23230
+INFO 2025-08-19 16:38:52,981 basehttp 10228 5844 "GET /admin/bookings/booking/ HTTP/1.1" 200 24568
+INFO 2025-08-19 16:38:53,048 basehttp 10228 5844 "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+INFO 2025-08-19 16:38:57,662 basehttp 10228 5844 "GET /admin/bookings/booking/3/change/ HTTP/1.1" 200 33127
+INFO 2025-08-19 16:38:57,726 basehttp 10228 5844 "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+INFO 2025-08-19 16:39:29,156 basehttp 10228 5844 "POST /admin/bookings/booking/3/change/ HTTP/1.1" 302 0
+INFO 2025-08-19 16:39:29,271 basehttp 10228 5844 "GET /admin/bookings/booking/ HTTP/1.1" 200 24784
+INFO 2025-08-19 16:39:29,337 basehttp 10228 5844 "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+WARNING 2025-08-19 16:39:32,342 log 10228 5844 Not Found: /bookings/TZ6E8BCC30/
+WARNING 2025-08-19 16:39:32,343 basehttp 10228 5844 "GET /bookings/TZ6E8BCC30/ HTTP/1.1" 404 6317
+WARNING 2025-08-19 16:39:34,840 log 10228 5844 Not Found: /bookings/TZ6E8BCC30/
+WARNING 2025-08-19 16:39:34,841 basehttp 10228 5844 "GET /bookings/TZ6E8BCC30/ HTTP/1.1" 404 6317
+INFO 2025-08-19 16:39:50,660 basehttp 10228 5844 "GET / HTTP/1.1" 200 90062
+INFO 2025-08-19 16:39:54,731 basehttp 10228 5844 "GET /bookings/ HTTP/1.1" 200 61780
+INFO 2025-08-19 16:40:00,610 basehttp 10228 5844 "GET /bookings/TZ655D4118/ HTTP/1.1" 200 64147
+INFO 2025-08-19 16:40:06,892 basehttp 10228 5844 "GET /accounts/logout/ HTTP/1.1" 302 0
+INFO 2025-08-19 16:40:06,942 basehttp 10228 5844 "GET / HTTP/1.1" 200 89183
+INFO 2025-08-19 16:40:11,917 basehttp 10228 5844 "GET /accounts/login/ HTTP/1.1" 200 60286
+INFO 2025-08-19 16:40:31,524 basehttp 10228 5844 "POST /accounts/login/ HTTP/1.1" 302 0
+INFO 2025-08-19 16:40:31,570 basehttp 10228 5844 "GET / HTTP/1.1" 200 90828
+INFO 2025-08-19 16:40:36,818 basehttp 10228 5844 "GET /bookings/ HTTP/1.1" 200 61757
+INFO 2025-08-19 16:40:39,445 basehttp 10228 5844 "GET /bookings/TZ6E8BCC30/ HTTP/1.1" 200 64098
+INFO 2025-08-19 16:40:43,674 basehttp 10228 5844 "GET /bookings/TZ6E8BCC30/ HTTP/1.1" 200 64098
+INFO 2025-08-19 16:44:08,971 basehttp 10228 5844 "GET /admin/ HTTP/1.1" 302 0
+INFO 2025-08-19 16:44:09,005 basehttp 10228 5844 "GET /admin/login/?next=/admin/ HTTP/1.1" 200 3702
+INFO 2025-08-19 16:44:21,813 basehttp 10228 5844 "POST /admin/login/?next=/admin/ HTTP/1.1" 302 0
+INFO 2025-08-19 16:44:21,856 basehttp 10228 5844 "GET /admin/ HTTP/1.1" 200 23214
+INFO 2025-08-19 16:44:55,917 basehttp 10228 5844 "GET /admin/accounts/customuser/ HTTP/1.1" 200 41773
+INFO 2025-08-19 16:44:55,987 basehttp 10228 5844 "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+INFO 2025-08-19 16:45:08,142 basehttp 10228 5844 "GET /admin/sites/site/ HTTP/1.1" 200 19387
+INFO 2025-08-19 16:45:08,188 basehttp 10228 5844 "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+INFO 2025-08-19 16:45:13,646 basehttp 10228 5844 "GET /admin/core/sitesettings/ HTTP/1.1" 200 17749
+INFO 2025-08-19 16:45:15,458 basehttp 10228 5844 "GET /admin/core/sitesettings/1/change/ HTTP/1.1" 200 25272
+INFO 2025-08-19 16:45:15,528 basehttp 10228 5844 "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+INFO 2025-08-19 16:47:25,683 basehttp 10228 528 "POST /admin/core/sitesettings/1/change/ HTTP/1.1" 302 0
+INFO 2025-08-19 16:47:25,855 basehttp 10228 528 "GET /admin/core/sitesettings/ HTTP/1.1" 200 17980
+INFO 2025-08-19 16:47:47,359 basehttp 10228 528 "GET /admin/core/sitesettings/ HTTP/1.1" 200 17749
+INFO 2025-08-19 16:47:49,172 basehttp 10228 528 "GET / HTTP/1.1" 200 90062
+INFO 2025-08-19 16:50:40,574 basehttp 10228 528 "GET / HTTP/1.1" 200 88051
+INFO 2025-08-19 16:51:34,307 basehttp 10228 528 "GET / HTTP/1.1" 200 88363
+INFO 2025-08-19 16:52:10,461 basehttp 10228 528 "GET / HTTP/1.1" 200 88363
+INFO 2025-08-19 16:52:41,168 basehttp 10228 528 "GET / HTTP/1.1" 200 88363
+INFO 2025-08-19 16:52:51,953 basehttp 10228 528 "GET / HTTP/1.1" 200 88363
+INFO 2025-08-19 16:53:58,570 basehttp 10228 528 "GET / HTTP/1.1" 200 88363
+INFO 2025-08-19 16:54:15,199 basehttp 10228 528 "GET / HTTP/1.1" 200 88363
+INFO 2025-08-19 16:55:06,464 basehttp 10228 528 "GET / HTTP/1.1" 200 88411
+INFO 2025-08-19 16:59:58,960 basehttp 10228 528 "GET / HTTP/1.1" 200 88422
+INFO 2025-08-19 17:04:24,846 basehttp 10228 528 "GET / HTTP/1.1" 200 88422
+INFO 2025-08-19 17:08:33,563 basehttp 10228 528 "GET / HTTP/1.1" 200 88422
+INFO 2025-08-19 17:11:55,388 basehttp 10228 528 "GET /parks/ HTTP/1.1" 200 97674
+INFO 2025-08-19 17:11:58,197 basehttp 10228 528 "GET / HTTP/1.1" 200 88422
+INFO 2025-08-19 17:12:03,354 basehttp 10228 528 "GET /parks/ HTTP/1.1" 200 97674
+INFO 2025-08-19 17:12:07,754 basehttp 10228 528 "GET /parks/arusha-national-park/ HTTP/1.1" 200 65915
+INFO 2025-08-19 17:12:07,803 basehttp 10228 2256 "GET /media/destinations/mount_meru.jpg HTTP/1.1" 200 54707
+INFO 2025-08-19 17:12:07,804 basehttp 10228 528 "GET /media/wildlife/colobus-monkey-2-e1656590896831.jpg HTTP/1.1" 200 220608
+INFO 2025-08-19 17:16:52,627 basehttp 10228 8976 "GET /parks/arusha-national-park/ HTTP/1.1" 200 67360
+INFO 2025-08-19 17:17:48,544 basehttp 10228 8976 "GET /parks/arusha-national-park/ HTTP/1.1" 200 67360
+INFO 2025-08-19 17:20:56,204 basehttp 10228 8976 "GET /parks/arusha-national-park/ HTTP/1.1" 200 67480
+INFO 2025-08-19 17:22:35,835 basehttp 10228 8976 "GET /parks/wildlife/ HTTP/1.1" 200 88368
+INFO 2025-08-19 17:22:35,894 basehttp 10228 7280 "GET /media/wildlife/T5A3803-1024x683.webp HTTP/1.1" 200 123768
+INFO 2025-08-19 17:22:35,899 basehttp 10228 8976 "GET /media/wildlife/Cape-Bufallo-scaled.jpg HTTP/1.1" 200 548015
+INFO 2025-08-19 17:22:35,918 basehttp 10228 7280 "GET /media/wildlife/African_Wild_Dog_at_Working_with_Wildlife.jpg HTTP/1.1" 200 217477
+INFO 2025-08-19 17:22:35,926 basehttp 10228 8976 "GET /media/wildlife/Species-Black-Credit-Phill-Perry-768x511.jpg HTTP/1.1" 200 80956
+INFO 2025-08-19 17:22:36,002 basehttp 10228 7280 "GET /media/wildlife/_91357212_spl.jpg HTTP/1.1" 200 109221
+INFO 2025-08-19 17:22:36,010 basehttp 10228 8976 "GET /media/wildlife/leone-africano-2.jpg HTTP/1.1" 200 33864
+INFO 2025-08-19 17:22:36,047 basehttp 10228 7640 "GET /media/wildlife/flamingos-featured.jpg HTTP/1.1" 200 256069
+INFO 2025-08-19 17:22:36,047 basehttp 10228 7476 "GET /media/wildlife/Hippopotamus-open-mouth-teeth-Okavango-Delta-Botswana-Africa-hippos.webp HTTP/1.1" 200 305636
+INFO 2025-08-19 17:22:36,068 basehttp 10228 12340 "GET /media/wildlife/featured-16-9_masai-09-topaz.jpg HTTP/1.1" 200 137094
+INFO 2025-08-19 17:22:36,095 basehttp 10228 10012 "GET /media/wildlife/16503835324091123300_1200x630.jpg HTTP/1.1" 200 456067
+INFO 2025-08-19 17:28:25,900 basehttp 10228 12124 "GET /parks/wildlife/2/ HTTP/1.1" 200 79042
+INFO 2025-08-19 17:29:56,834 basehttp 10228 12124 "GET /parks/wildlife/2/ HTTP/1.1" 200 81773
+INFO 2025-08-19 17:32:00,614 basehttp 10228 12124 "GET /parks/destinations/?type=wildlife_area HTTP/1.1" 200 74875
+INFO 2025-08-19 17:33:08,901 basehttp 10228 12124 "GET /parks/destinations/?type=wildlife_area HTTP/1.1" 200 74875
+INFO 2025-08-19 17:33:12,353 basehttp 10228 12124 "GET /parks/destinations/katavi-seasonal-plains/ HTTP/1.1" 200 65210
+INFO 2025-08-19 17:33:29,907 basehttp 10228 12124 "GET /historical-sites/ HTTP/1.1" 200 70636
+INFO 2025-08-19 17:33:29,954 basehttp 10228 12124 "GET /media/historical_sites/Experience-Bagamoyo-Historical-City.webp HTTP/1.1" 200 54902
+INFO 2025-08-19 17:33:29,960 basehttp 10228 12628 "GET /media/historical_sites/Old_Fort_Gereza_12_Kilwa_Kisiwani.jpg HTTP/1.1" 200 471845
+INFO 2025-08-19 17:33:29,991 basehttp 10228 12628 "GET /media/historical_sites/iStock_TZ_LandscapeOlduvaiGorge2.jpg HTTP/1.1" 200 262102
+INFO 2025-08-19 17:33:29,994 basehttp 10228 12124 "GET /media/historical_sites/1-panorama07-cr-800x477-800x477.jpg HTTP/1.1" 200 109123
+INFO 2025-08-19 17:34:52,546 basehttp 10228 12124 "GET /historical-sites/ HTTP/1.1" 200 73248
+INFO 2025-08-19 17:35:16,866 basehttp 10228 12124 "GET /historical-sites/kilwa-kisiwani/ HTTP/1.1" 200 64353
+INFO 2025-08-19 17:40:14,224 basehttp 10228 12124 "GET /historical-sites/kilwa-kisiwani/ HTTP/1.1" 200 64422
+INFO 2025-08-19 17:42:46,501 basehttp 10228 12124 "GET /historical-sites/kilwa-kisiwani/ HTTP/1.1" 200 63846
+INFO 2025-08-19 17:52:33,790 autoreload 10472 11564 Watching for file changes with StatReloader
+INFO 2025-08-19 17:52:38,314 basehttp 10472 12632 "GET / HTTP/1.1" 200 88422
+INFO 2025-08-19 17:52:44,703 basehttp 10472 12632 "GET /about/ HTTP/1.1" 200 68311
+INFO 2025-08-19 17:57:59,048 basehttp 10472 7652 "GET /about/ HTTP/1.1" 200 70498
+INFO 2025-08-19 18:35:59,504 basehttp 10472 12036 "GET / HTTP/1.1" 200 86757
+INFO 2025-08-19 18:36:02,891 basehttp 10472 5736 "GET /media/parks/main/Gibbs-Farm-game-Drive-750x450.jpg HTTP/1.1" 200 67693
+INFO 2025-08-19 18:36:02,897 basehttp 10472 944 "GET /media/parks/main/kili-1.jpg.webp HTTP/1.1" 200 36412
+INFO 2025-08-19 18:36:02,907 basehttp 10472 944 "GET /media/tours/main/4-Days-Ngorongoro-Serengeti-Safari-2-750x325-1.jpg HTTP/1.1" 200 53254
+INFO 2025-08-19 18:36:02,912 basehttp 10472 5736 "GET /media/parks/main/Serengeti-National-Park-Africa-Kenya-Safaris2.jpg.webp HTTP/1.1" 200 176712
+WARNING 2025-08-19 18:36:07,468 log 10472 5736 Not Found: /favicon.ico
+WARNING 2025-08-19 18:36:07,469 basehttp 10472 5736 "GET /favicon.ico HTTP/1.1" 404 5789
+INFO 2025-08-19 18:36:43,301 basehttp 10472 1364 "GET /contact/ HTTP/1.1" 200 68477
+INFO 2025-08-19 18:39:29,615 basehttp 10472 3848 "GET /parks/ HTTP/1.1" 200 96009
+INFO 2025-08-19 18:39:29,670 basehttp 10472 7900 "GET /media/parks/main/burigi-chato-national-park-galry-1-1.jpg HTTP/1.1" 200 176215
+INFO 2025-08-19 18:39:29,673 basehttp 10472 3848 "GET /media/parks/main/arusha-welcome-1_GKeoGhz.jpg HTTP/1.1" 200 342815
+INFO 2025-08-19 18:39:29,695 basehttp 10472 7900 "GET /media/parks/main/Kitulo-National-park-1.jpg HTTP/1.1" 200 314403
+INFO 2025-08-19 18:39:29,696 basehttp 10472 3848 "GET /media/parks/main/lake-manyara-1.jpg HTTP/1.1" 200 308496
+INFO 2025-08-19 18:39:29,701 basehttp 10472 13292 "GET /media/parks/main/i4-p52nvzls707m1nj8ld4x5w2iue560urjvic0jkdmk4.jpg HTTP/1.1" 200 34844
+INFO 2025-08-19 18:39:29,705 basehttp 10472 1568 "GET /media/parks/main/gombe-4.webp HTTP/1.1" 200 184924
+INFO 2025-08-19 18:39:29,725 basehttp 10472 7900 "GET /media/parks/main/247205355_10157876049375044_3456436950874094026_n-1024x683.jpg HTTP/1.1" 200 78131
+INFO 2025-08-19 18:39:29,751 basehttp 10472 13272 "GET /media/parks/main/katavi-Hippo-pool.jpg HTTP/1.1" 200 134197
+INFO 2025-08-19 18:39:29,755 basehttp 10472 13292 "GET /media/parks/main/mahale.jpg HTTP/1.1" 200 410183
+INFO 2025-08-19 18:39:29,786 basehttp 10472 12380 "GET /media/parks/main/kubwafive-safaris.jpg HTTP/1.1" 200 99356
+INFO 2025-08-19 18:39:29,788 basehttp 10472 1568 "GET /media/parks/main/thumb_16057243_cover_header_g1vgUNu.jpg HTTP/1.1" 200 266767
+INFO 2025-08-19 18:44:03,386 basehttp 10472 1568 "GET /accounts/login/ HTTP/1.1" 200 58646
+INFO 2025-08-19 18:44:51,837 basehttp 10472 1568 "GET /accounts/login/ HTTP/1.1" 200 58859
+INFO 2025-08-19 18:45:32,577 basehttp 10472 1568 "GET /accounts/register/ HTTP/1.1" 200 76760
+INFO 2025-08-19 18:45:32,627 basehttp 10472 1568 "GET /static/flags/__.gif HTTP/1.1" 200 53
+INFO 2025-08-19 18:46:43,390 basehttp 10472 1568 "GET /accounts/register/ HTTP/1.1" 200 77081
+INFO 2025-08-19 18:48:32,280 basehttp 10472 1568 "GET /accounts/register/ HTTP/1.1" 200 77106
+INFO 2025-08-19 18:48:55,357 basehttp 10472 1568 "GET /accounts/login/ HTTP/1.1" 200 58859
+INFO 2025-08-19 18:49:16,793 basehttp 10472 1568 "POST /accounts/login/ HTTP/1.1" 302 0
+INFO 2025-08-19 18:49:16,836 basehttp 10472 1568 "GET / HTTP/1.1" 200 89192
+INFO 2025-08-19 18:49:25,762 basehttp 10472 1568 "GET /accounts/dashboard/ HTTP/1.1" 200 66502
+INFO 2025-08-19 18:49:32,762 basehttp 10472 1568 "GET /accounts/profile/ HTTP/1.1" 200 75621
+INFO 2025-08-19 18:49:32,802 basehttp 10472 1568 "GET /static/flags/tz.gif HTTP/1.1" 200 358
+INFO 2025-08-19 18:50:12,467 basehttp 10472 1568 "GET /accounts/profile/ HTTP/1.1" 200 75657
+INFO 2025-08-19 18:51:29,278 basehttp 10472 1568 "GET /bookings/ HTTP/1.1" 200 60140
+INFO 2025-08-19 18:52:40,623 basehttp 10472 1568 "GET /bookings/ HTTP/1.1" 200 60387
+INFO 2025-08-19 18:53:03,640 basehttp 10472 1568 "GET / HTTP/1.1" 200 88422
+INFO 2025-08-19 18:53:13,347 basehttp 10472 1568 "GET /parks/ HTTP/1.1" 200 97674
+INFO 2025-08-19 18:53:19,501 basehttp 10472 1568 "GET /parks/gombe-stream-national-park/ HTTP/1.1" 200 66543
+INFO 2025-08-19 18:53:19,556 basehttp 10472 1568 "GET /media/destinations/11-Day-SerengetiMasai-maraChimpanzee-Gorillas3.jpg HTTP/1.1" 200 124093
+INFO 2025-08-19 18:53:27,385 basehttp 10472 1568 "GET /contact/ HTTP/1.1" 200 70142
+INFO 2025-08-19 18:53:30,572 basehttp 10472 1568 "GET /accounts/dashboard/ HTTP/1.1" 200 66502
+INFO 2025-08-19 18:53:42,417 basehttp 10472 1568 "GET /accounts/profile/ HTTP/1.1" 200 75657
+INFO 2025-08-19 18:53:54,440 basehttp 10472 1568 "GET /parks/ HTTP/1.1" 200 97674
+INFO 2025-08-19 18:54:01,294 basehttp 10472 1568 "GET /parks/arusha-national-park/ HTTP/1.1" 200 67480
+INFO 2025-08-19 18:54:01,343 basehttp 10472 1568 "GET /media/wildlife/colobus-monkey-2-e1656590896831.jpg HTTP/1.1" 200 220608
+INFO 2025-08-19 18:54:01,349 basehttp 10472 12340 "GET /media/destinations/mount_meru.jpg HTTP/1.1" 200 54707
+INFO 2025-08-19 18:54:12,245 basehttp 10472 12340 "GET /reviews/park/arusha-national-park/create/ HTTP/1.1" 200 62551
+INFO 2025-08-19 19:16:55,733 basehttp 10472 10820 "GET /reviews/park/arusha-national-park/create/ HTTP/1.1" 200 62942
+INFO 2025-08-19 19:24:54,813 basehttp 10472 10592 "GET /reviews/park/arusha-national-park/create/ HTTP/1.1" 200 63806
+INFO 2025-08-19 19:25:19,147 basehttp 10472 10592 "GET /accounts/logout/ HTTP/1.1" 302 0
+INFO 2025-08-19 19:25:19,193 basehttp 10472 10592 "GET / HTTP/1.1" 200 87543
+INFO 2025-08-19 19:25:22,144 basehttp 10472 10592 "GET /accounts/login/ HTTP/1.1" 200 58859
+ERROR 2025-08-19 19:27:24,737 log 10472 10592 Internal Server Error: /accounts/login/
+Traceback (most recent call last):
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\projects\Tourism\project\accounts\views.py", line 107, in user_login
+    return render(request, 'accounts/login.html', {'form': form})
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\backends\django.py", line 61, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\base.py", line 175, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\test\utils.py", line 112, in instrumented_test_render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\loader_tags.py", line 157, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\test\utils.py", line 112, in instrumented_test_render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\loader_tags.py", line 63, in render
+    result = block.nodelist.render(context)
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\defaulttags.py", line 471, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\urls\base.py", line 88, in reverse
+    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\urls\resolvers.py", line 828, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'park_detail' with arguments '('',)' not found. 1 pattern(s) tried: ['parks/(?P<slug>[-a-zA-Z0-9_]+)/\\Z']
+ERROR 2025-08-19 19:27:24,757 basehttp 10472 10592 "GET /accounts/login/ HTTP/1.1" 500 175293
+ERROR 2025-08-19 19:27:33,964 log 10472 10592 Internal Server Error: /accounts/login/
+Traceback (most recent call last):
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\projects\Tourism\project\accounts\views.py", line 107, in user_login
+    return render(request, 'accounts/login.html', {'form': form})
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\backends\django.py", line 61, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\base.py", line 175, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\test\utils.py", line 112, in instrumented_test_render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\loader_tags.py", line 157, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\test\utils.py", line 112, in instrumented_test_render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\loader_tags.py", line 63, in render
+    result = block.nodelist.render(context)
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\defaulttags.py", line 471, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\urls\base.py", line 88, in reverse
+    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\urls\resolvers.py", line 828, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'park_detail' with arguments '('',)' not found. 1 pattern(s) tried: ['parks/(?P<slug>[-a-zA-Z0-9_]+)/\\Z']
+ERROR 2025-08-19 19:27:33,999 basehttp 10472 10592 "GET /accounts/login/ HTTP/1.1" 500 175278
+ERROR 2025-08-19 19:27:46,769 log 10472 10592 Internal Server Error: /accounts/login/
+Traceback (most recent call last):
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\projects\Tourism\project\accounts\views.py", line 107, in user_login
+    return render(request, 'accounts/login.html', {'form': form})
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\backends\django.py", line 61, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\base.py", line 175, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\test\utils.py", line 112, in instrumented_test_render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\loader_tags.py", line 157, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\test\utils.py", line 112, in instrumented_test_render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\loader_tags.py", line 63, in render
+    result = block.nodelist.render(context)
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\defaulttags.py", line 471, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\urls\base.py", line 88, in reverse
+    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\urls\resolvers.py", line 828, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'park_detail' with arguments '('',)' not found. 1 pattern(s) tried: ['parks/(?P<slug>[-a-zA-Z0-9_]+)/\\Z']
+ERROR 2025-08-19 19:27:46,818 basehttp 10472 10592 "GET /accounts/login/ HTTP/1.1" 500 175278
+INFO 2025-08-19 19:28:47,637 basehttp 10472 10592 "GET /accounts/login/ HTTP/1.1" 200 58859
+INFO 2025-08-19 19:28:51,951 basehttp 10472 10592 "POST /accounts/login/ HTTP/1.1" 302 0
+INFO 2025-08-19 19:28:51,989 basehttp 10472 10592 "GET / HTTP/1.1" 200 89192
+INFO 2025-08-19 19:28:59,542 basehttp 10472 10592 "GET /accounts/dashboard/ HTTP/1.1" 200 66502
+INFO 2025-08-19 19:29:06,604 basehttp 10472 10592 "GET /bookings/ HTTP/1.1" 200 60387
+INFO 2025-08-19 19:29:09,431 basehttp 10472 10592 "GET /bookings/TZ655D4118/ HTTP/1.1" 200 62507
+INFO 2025-08-19 19:29:19,243 basehttp 10472 10592 "GET /bookings/ HTTP/1.1" 200 60387
+INFO 2025-08-19 19:29:26,352 basehttp 10472 10592 "GET /bookings/TZ655D4118/ HTTP/1.1" 200 62507
+INFO 2025-08-19 19:33:57,852 basehttp 10472 10592 "GET /bookings/TZ655D4118/ HTTP/1.1" 200 63855
+INFO 2025-08-20 12:04:25,720 autoreload 4628 12612 Watching for file changes with StatReloader
+INFO 2025-08-20 12:04:40,797 basehttp 4628 12916 "GET / HTTP/1.1" 200 86757
+INFO 2025-08-20 12:05:02,785 basehttp 4628 13076 "GET /media/parks/main/Serengeti-National-Park-Africa-Kenya-Safaris2.jpg.webp HTTP/1.1" 200 176712
+INFO 2025-08-20 12:05:02,788 basehttp 4628 3824 "GET /media/parks/main/kili-1.jpg.webp HTTP/1.1" 200 36412
+INFO 2025-08-20 12:05:02,828 basehttp 4628 13020 "GET /media/parks/main/Gibbs-Farm-game-Drive-750x450.jpg HTTP/1.1" 200 67693
+INFO 2025-08-20 12:05:03,780 basehttp 4628 13020 "GET /media/tours/main/4-Days-Ngorongoro-Serengeti-Safari-2-750x325-1.jpg HTTP/1.1" 200 53254
+WARNING 2025-08-20 12:06:22,971 log 4628 5724 Not Found: /favicon.ico
+WARNING 2025-08-20 12:06:22,972 basehttp 4628 5724 "GET /favicon.ico HTTP/1.1" 404 5789
+INFO 2025-08-20 12:11:27,112 basehttp 4628 4852 "GET /parks/ HTTP/1.1" 200 96009
+INFO 2025-08-20 12:11:27,169 basehttp 4628 8940 "GET /media/parks/main/burigi-chato-national-park-galry-1-1.jpg HTTP/1.1" 200 176215
+INFO 2025-08-20 12:11:27,172 basehttp 4628 4852 "GET /media/parks/main/arusha-welcome-1_GKeoGhz.jpg HTTP/1.1" 200 342815
+INFO 2025-08-20 12:11:27,197 basehttp 4628 8940 "GET /media/parks/main/gombe-4.webp HTTP/1.1" 200 184924
+INFO 2025-08-20 12:11:27,208 basehttp 4628 4852 "GET /media/parks/main/i4-p52nvzls707m1nj8ld4x5w2iue560urjvic0jkdmk4.jpg HTTP/1.1" 200 34844
+INFO 2025-08-20 12:11:27,229 basehttp 4628 4852 "GET /media/parks/main/katavi-Hippo-pool.jpg HTTP/1.1" 200 134197
+INFO 2025-08-20 12:11:27,246 basehttp 4628 4852 "GET /media/parks/main/kubwafive-safaris.jpg HTTP/1.1" 200 99356
+INFO 2025-08-20 12:11:27,268 basehttp 4628 4852 "GET /media/parks/main/Kitulo-National-park-1.jpg HTTP/1.1" 200 314403
+INFO 2025-08-20 12:11:27,294 basehttp 4628 8940 "GET /media/parks/main/247205355_10157876049375044_3456436950874094026_n-1024x683.jpg HTTP/1.1" 200 78131
+INFO 2025-08-20 12:11:27,326 basehttp 4628 4852 "GET /media/parks/main/lake-manyara-1.jpg HTTP/1.1" 200 308496
+INFO 2025-08-20 12:11:27,444 basehttp 4628 4852 "GET /media/parks/main/mahale.jpg HTTP/1.1" 200 410183
+INFO 2025-08-20 12:11:27,446 basehttp 4628 8940 "GET /media/parks/main/thumb_16057243_cover_header_g1vgUNu.jpg HTTP/1.1" 200 266767
+INFO 2025-08-20 12:11:37,796 basehttp 4628 8940 "GET /tours/ HTTP/1.1" 200 86224
+INFO 2025-08-20 12:11:37,851 basehttp 4628 8940 "GET /media/tours/main/kili-1.jpg.webp HTTP/1.1" 200 36412
+WARNING 2025-08-20 12:11:37,922 log 4628 8940 Not Found: /media/tours/main/udzungwa_3.jpg
+WARNING 2025-08-20 12:11:37,925 basehttp 4628 8940 "GET /media/tours/main/udzungwa_3.jpg HTTP/1.1" 404 5821
+WARNING 2025-08-20 12:11:37,941 log 4628 4852 Not Found: /media/tours/main/saadani_4.jpg
+WARNING 2025-08-20 12:11:37,943 basehttp 4628 4852 "GET /media/tours/main/saadani_4.jpg HTTP/1.1" 404 5817
+WARNING 2025-08-20 12:11:37,971 log 4628 4728 Not Found: /media/tours/main/selous_5.jpg
+WARNING 2025-08-20 12:11:37,976 basehttp 4628 4728 "GET /media/tours/main/selous_5.jpg HTTP/1.1" 404 5813
+INFO 2025-08-20 12:11:46,322 basehttp 4628 4728 "GET /parks/ HTTP/1.1" 200 96009
+INFO 2025-08-20 12:11:50,163 basehttp 4628 4728 "GET /reviews/ HTTP/1.1" 200 59109
+INFO 2025-08-20 12:12:00,037 basehttp 4628 4728 "GET /parks/destinations/?type=wildlife_area HTTP/1.1" 200 73210
+INFO 2025-08-20 12:12:00,087 basehttp 4628 4728 "GET /media/destinations/Katavi-National-Park-Tanzania-1.jpg HTTP/1.1" 200 461678
+INFO 2025-08-20 12:12:00,112 basehttp 4628 4852 "GET /media/destinations/kigosi.jpg HTTP/1.1" 200 103347
+INFO 2025-08-20 12:12:00,128 basehttp 4628 5552 "GET /media/destinations/Mkomazi2.jpg HTTP/1.1" 200 232427
+INFO 2025-08-20 12:12:00,128 basehttp 4628 11408 "GET /media/destinations/boat-safaris-nyerere-national-park.jpg HTTP/1.1" 200 110480
+INFO 2025-08-20 12:12:00,163 basehttp 4628 11280 "GET /media/destinations/seronera-wildlife-lodge-view.jpg HTTP/1.1" 200 1270721
+INFO 2025-08-20 12:12:00,168 basehttp 4628 8940 "GET /media/destinations/mikumi.jpg HTTP/1.1" 200 598125
+INFO 2025-08-20 12:12:11,032 basehttp 4628 11280 "GET /parks/destinations/?type=viewpoint HTTP/1.1" 200 71354
+INFO 2025-08-20 12:12:11,077 basehttp 4628 11280 "GET /media/destinations/BruceByersConsulting-Great-Ruaha5.jpg HTTP/1.1" 200 153777
+INFO 2025-08-20 12:12:11,106 basehttp 4628 4728 "GET /media/destinations/Game-drive-in-Tarangire-National-Park.jpg HTTP/1.1" 200 93907
+INFO 2025-08-20 12:12:11,107 basehttp 4628 5552 "GET /media/destinations/3-Days-Lake-Manyara-Wildlife-Safaris-750x450.jpg HTTP/1.1" 200 103012
+INFO 2025-08-20 12:12:11,109 basehttp 4628 11408 "GET /media/destinations/Rumanyika-Karagwe-1.webp HTTP/1.1" 200 239454
+INFO 2025-08-20 12:12:11,290 basehttp 4628 8940 "GET /media/destinations/Kitulo_National_Park_Entry.jpeg HTTP/1.1" 200 7826003
+INFO 2025-08-20 12:12:50,699 basehttp 4628 11288 "GET /about/ HTTP/1.1" 200 68833
+INFO 2025-08-20 12:12:58,024 basehttp 4628 11288 "GET /reviews/ HTTP/1.1" 200 59109
+INFO 2025-08-20 12:13:06,312 basehttp 4628 11288 "GET /accounts/register/ HTTP/1.1" 200 77106
+INFO 2025-08-20 12:13:06,370 basehttp 4628 11288 "GET /static/flags/__.gif HTTP/1.1" 200 53
+INFO 2025-08-20 12:28:46,893 autoreload 4628 12612 C:\projects\Tourism\project\accounts\forms.py changed, reloading.
+INFO 2025-08-20 12:28:49,926 autoreload 952 12720 Watching for file changes with StatReloader
+INFO 2025-08-20 12:28:59,724 basehttp 952 11496 "GET /accounts/register/ HTTP/1.1" 200 77964
+INFO 2025-08-20 12:29:17,214 basehttp 952 11496 "GET /accounts/login/ HTTP/1.1" 200 59220
+INFO 2025-08-20 12:31:38,246 basehttp 952 11496 "GET /contact/ HTTP/1.1" 200 68477
+INFO 2025-08-20 12:33:01,227 basehttp 952 11496 "GET /contact/ HTTP/1.1" 200 69201
+INFO 2025-08-20 12:34:10,953 autoreload 952 12720 C:\projects\Tourism\project\core\forms.py changed, reloading.
+INFO 2025-08-20 12:34:14,171 autoreload 10868 10684 Watching for file changes with StatReloader
+INFO 2025-08-20 12:34:16,197 basehttp 10868 12792 "GET /contact/ HTTP/1.1" 200 69717
+WARNING 2025-08-20 12:35:00,054 log 10868 8512 Not Found: /tours/guides/
+WARNING 2025-08-20 12:35:00,055 basehttp 10868 8512 "GET /tours/guides/ HTTP/1.1" 404 5590
+WARNING 2025-08-20 12:35:20,480 log 10868 8512 Not Found: /tours/guides/
+WARNING 2025-08-20 12:35:20,481 basehttp 10868 8512 "GET /tours/guides/ HTTP/1.1" 404 5590
+WARNING 2025-08-20 12:36:49,868 log 10868 8512 Not Found: /tours/guides/
+WARNING 2025-08-20 12:36:49,870 basehttp 10868 8512 "GET /tours/guides/ HTTP/1.1" 404 5590
+INFO 2025-08-20 12:36:55,543 basehttp 10868 3032 "GET /contact/ HTTP/1.1" 200 68854
+INFO 2025-08-20 12:37:06,026 basehttp 10868 3032 "GET /accounts/login/ HTTP/1.1" 200 58357
+INFO 2025-08-20 12:37:23,667 basehttp 10868 1316 "POST /accounts/login/ HTTP/1.1" 302 0
+INFO 2025-08-20 12:37:23,743 basehttp 10868 1316 "GET / HTTP/1.1" 200 88329
+INFO 2025-08-20 12:37:31,420 basehttp 10868 8132 "GET /accounts/logout/ HTTP/1.1" 302 0
+INFO 2025-08-20 12:37:31,469 basehttp 10868 8132 "GET / HTTP/1.1" 200 86680
+INFO 2025-08-20 12:37:35,124 basehttp 10868 876 "GET /accounts/login/ HTTP/1.1" 200 58357
+INFO 2025-08-20 12:37:42,650 basehttp 10868 5076 "GET /accounts/register/ HTTP/1.1" 200 77101
+INFO 2025-08-20 12:38:12,766 basehttp 10868 10412 "POST /accounts/register/ HTTP/1.1" 200 77732
+INFO 2025-08-20 12:38:12,992 basehttp 10868 10412 "GET /static/flags/af.gif HTTP/1.1" 200 361
+INFO 2025-08-20 12:40:37,880 basehttp 10868 7016 "POST /accounts/register/ HTTP/1.1" 200 77732
+INFO 2025-08-20 12:40:41,195 basehttp 10868 7016 "GET /accounts/login/ HTTP/1.1" 200 58357
+INFO 2025-08-20 12:40:42,502 basehttp 10868 7016 "GET /accounts/register/ HTTP/1.1" 200 77101
+INFO 2025-08-20 12:43:56,725 basehttp 10868 2128 "GET /accounts/register/ HTTP/1.1" 200 77101
+INFO 2025-08-20 12:47:13,849 basehttp 10868 2128 "GET /accounts/register/ HTTP/1.1" 200 77101
+INFO 2025-08-20 12:49:48,229 basehttp 10868 2128 "GET /accounts/register/ HTTP/1.1" 200 77101
+INFO 2025-08-20 12:52:01,525 autoreload 10868 10684 C:\projects\Tourism\project\accounts\forms.py changed, reloading.
+INFO 2025-08-20 12:52:05,058 autoreload 2576 11488 Watching for file changes with StatReloader
+INFO 2025-08-20 12:54:14,798 autoreload 2576 11488 C:\projects\Tourism\project\accounts\forms.py changed, reloading.
+INFO 2025-08-20 12:54:17,080 autoreload 13160 12872 Watching for file changes with StatReloader
+INFO 2025-08-20 12:55:26,714 autoreload 13160 12872 C:\projects\Tourism\project\accounts\forms.py changed, reloading.
+INFO 2025-08-20 12:55:29,549 autoreload 940 2060 Watching for file changes with StatReloader
+INFO 2025-08-20 12:55:33,405 autoreload 940 2060 C:\projects\Tourism\project\accounts\forms.py changed, reloading.
+INFO 2025-08-20 12:55:38,000 autoreload 7760 13028 Watching for file changes with StatReloader
+INFO 2025-08-20 12:56:02,846 basehttp 7760 7420 "GET /accounts/register/ HTTP/1.1" 200 77101
+INFO 2025-08-20 12:56:21,367 basehttp 7760 7420 "GET / HTTP/1.1" 200 85894
+INFO 2025-08-20 12:57:28,515 autoreload 7760 13028 C:\projects\Tourism\project\reviews\forms.py changed, reloading.
+INFO 2025-08-20 12:57:31,560 autoreload 12868 11700 Watching for file changes with StatReloader
+INFO 2025-08-20 12:57:41,315 autoreload 12868 11700 C:\projects\Tourism\project\reviews\forms.py changed, reloading.
+INFO 2025-08-20 12:57:45,013 autoreload 13296 8476 Watching for file changes with StatReloader
+INFO 2025-08-20 12:57:55,866 autoreload 13296 8476 C:\projects\Tourism\project\reviews\forms.py changed, reloading.
+INFO 2025-08-20 12:57:59,633 autoreload 6712 9024 Watching for file changes with StatReloader
+INFO 2025-08-20 12:58:09,922 basehttp 6712 10508 "GET / HTTP/1.1" 200 85894
+INFO 2025-08-20 13:00:36,907 basehttp 6712 10508 "GET / HTTP/1.1" 200 86066
+INFO 2025-08-20 13:01:31,145 basehttp 6712 10508 "GET / HTTP/1.1" 200 86620
+INFO 2025-08-20 13:01:48,492 basehttp 6712 10508 "GET /parks/ HTTP/1.1" 200 95146
+INFO 2025-08-20 13:01:52,222 basehttp 6712 10508 "GET /parks/arusha-national-park/ HTTP/1.1" 200 64643
+INFO 2025-08-20 13:01:52,474 basehttp 6712 8048 "GET /media/destinations/mount_meru.jpg HTTP/1.1" 200 54707
+INFO 2025-08-20 13:01:52,502 basehttp 6712 10508 "GET /media/wildlife/colobus-monkey-2-e1656590896831.jpg HTTP/1.1" 200 220608
+INFO 2025-08-20 13:01:56,749 basehttp 6712 10508 "GET /contact/ HTTP/1.1" 200 68854
+INFO 2025-08-20 13:02:03,724 basehttp 6712 10508 "GET /about/ HTTP/1.1" 200 67970
+INFO 2025-08-20 13:02:10,719 basehttp 6712 10508 "GET /parks/destinations/ HTTP/1.1" 200 83534
+INFO 2025-08-20 13:02:10,770 basehttp 6712 8048 "GET /media/destinations/11-Day-SerengetiMasai-maraChimpanzee-Gorillas3.jpg HTTP/1.1" 200 124093
+INFO 2025-08-20 13:02:10,777 basehttp 6712 10508 "GET /media/destinations/Burigi-Chato-lake-Ariadne-v-Zandbergen.jpg HTTP/1.1" 200 707913
+INFO 2025-08-20 13:02:10,787 basehttp 6712 8048 "GET /media/destinations/Mount-Kilimanjaro-National-Park-view-from-Kenya-3.jpg HTTP/1.1" 200 135566
+INFO 2025-08-20 13:02:10,811 basehttp 6712 12176 "GET /media/destinations/Mafia-Island.webp HTTP/1.1" 200 37844
+INFO 2025-08-20 13:02:10,813 basehttp 6712 10508 "GET /media/destinations/mahale-Chimps-2-.jpg HTTP/1.1" 200 101286
+INFO 2025-08-20 13:02:10,816 basehttp 6712 10256 "GET /media/destinations/Ibanda_Kyerwa_National_Park_Impala_02.jpg HTTP/1.1" 200 434410
+INFO 2025-08-20 13:02:16,985 basehttp 6712 10256 "GET /reviews/ HTTP/1.1" 200 58246
+INFO 2025-08-20 13:03:27,621 basehttp 6712 10256 "GET /reviews/ HTTP/1.1" 200 58219
+INFO 2025-08-20 13:03:41,015 basehttp 6712 10256 "GET /tours/ HTTP/1.1" 200 85361
+WARNING 2025-08-20 13:03:41,104 log 6712 12176 Not Found: /media/tours/main/selous_5.jpg
+WARNING 2025-08-20 13:03:41,111 log 6712 10508 Not Found: /media/tours/main/saadani_4.jpg
+WARNING 2025-08-20 13:03:41,112 basehttp 6712 12176 "GET /media/tours/main/selous_5.jpg HTTP/1.1" 404 5813
+WARNING 2025-08-20 13:03:41,118 log 6712 10256 Not Found: /media/tours/main/udzungwa_3.jpg
+WARNING 2025-08-20 13:03:41,119 basehttp 6712 10508 "GET /media/tours/main/saadani_4.jpg HTTP/1.1" 404 5817
+WARNING 2025-08-20 13:03:41,132 basehttp 6712 10256 "GET /media/tours/main/udzungwa_3.jpg HTTP/1.1" 404 5821
+INFO 2025-08-20 13:03:53,604 basehttp 6712 10256 "GET /parks/destinations/?type=wildlife_area HTTP/1.1" 200 72347
+INFO 2025-08-20 13:03:56,668 basehttp 6712 10256 "GET /parks/destinations/katavi-seasonal-plains/ HTTP/1.1" 200 62682
+INFO 2025-08-20 13:04:03,644 basehttp 6712 10256 "GET /parks/destinations/?type=viewpoint HTTP/1.1" 200 70491
+INFO 2025-08-20 13:04:09,435 basehttp 6712 10256 "GET /parks/destinations/great-ruaha-river-view/ HTTP/1.1" 200 62649
+INFO 2025-08-20 13:05:26,614 basehttp 6712 6004 "GET /parks/destinations/great-ruaha-river-view/ HTTP/1.1" 200 62671
+INFO 2025-08-20 13:05:32,545 basehttp 6712 6004 "GET / HTTP/1.1" 200 86642
+INFO 2025-08-20 13:05:38,729 basehttp 6712 6004 "GET /tours/ HTTP/1.1" 200 85383
+WARNING 2025-08-20 13:05:38,802 log 6712 6004 Not Found: /media/tours/main/udzungwa_3.jpg
+WARNING 2025-08-20 13:05:38,807 basehttp 6712 6004 "GET /media/tours/main/udzungwa_3.jpg HTTP/1.1" 404 5821
+WARNING 2025-08-20 13:05:38,814 log 6712 11968 Not Found: /media/tours/main/saadani_4.jpg
+WARNING 2025-08-20 13:05:38,815 basehttp 6712 11968 "GET /media/tours/main/saadani_4.jpg HTTP/1.1" 404 5817
+WARNING 2025-08-20 13:05:38,828 log 6712 3056 Not Found: /media/tours/main/selous_5.jpg
+WARNING 2025-08-20 13:05:38,829 basehttp 6712 3056 "GET /media/tours/main/selous_5.jpg HTTP/1.1" 404 5813
+INFO 2025-08-20 13:05:53,615 basehttp 6712 3056 "GET /reviews/ HTTP/1.1" 200 58241
+INFO 2025-08-20 13:05:59,248 basehttp 6712 3056 "GET /historical-sites/ HTTP/1.1" 200 70742
+INFO 2025-08-20 13:05:59,288 basehttp 6712 3056 "GET /media/historical_sites/Experience-Bagamoyo-Historical-City.webp HTTP/1.1" 200 54902
+INFO 2025-08-20 13:05:59,308 basehttp 6712 6004 "GET /media/historical_sites/iStock_TZ_LandscapeOlduvaiGorge2.jpg HTTP/1.1" 200 262102
+INFO 2025-08-20 13:05:59,311 basehttp 6712 11968 "GET /media/historical_sites/Old_Fort_Gereza_12_Kilwa_Kisiwani.jpg HTTP/1.1" 200 471845
+INFO 2025-08-20 13:05:59,313 basehttp 6712 1292 "GET /media/historical_sites/1-panorama07-cr-800x477-800x477.jpg HTTP/1.1" 200 109123
+INFO 2025-08-20 13:10:49,660 basehttp 6712 11968 "GET /contact/ HTTP/1.1" 200 68876
+INFO 2025-08-20 13:10:53,388 basehttp 6712 11968 "GET /about/ HTTP/1.1" 200 67992
+INFO 2025-08-20 13:10:58,692 basehttp 6712 11968 "GET /faq/ HTTP/1.1" 200 59691
+INFO 2025-08-20 13:11:10,788 basehttp 6712 11968 "GET /privacy-policy/ HTTP/1.1" 200 57085
+INFO 2025-08-20 13:11:34,870 basehttp 6712 11968 "GET /terms-of-service/ HTTP/1.1" 200 57002
+INFO 2025-08-20 13:11:40,586 basehttp 6712 11968 "GET /parks/ HTTP/1.1" 200 95168
+INFO 2025-08-20 13:11:45,839 basehttp 6712 11968 "GET /historical-sites/ HTTP/1.1" 200 70742
+INFO 2025-08-20 13:11:50,542 basehttp 6712 11968 "GET /parks/wildlife/ HTTP/1.1" 200 85862
+INFO 2025-08-20 13:11:50,587 basehttp 6712 11968 "GET /media/wildlife/Cape-Bufallo-scaled.jpg HTTP/1.1" 200 548015
+INFO 2025-08-20 13:11:50,602 basehttp 6712 4204 "GET /media/wildlife/T5A3803-1024x683.webp HTTP/1.1" 200 123768
+INFO 2025-08-20 13:11:50,604 basehttp 6712 7024 "GET /media/wildlife/African_Wild_Dog_at_Working_with_Wildlife.jpg HTTP/1.1" 200 217477
+INFO 2025-08-20 13:11:50,635 basehttp 6712 11968 "GET /media/wildlife/flamingos-featured.jpg HTTP/1.1" 200 256069
+INFO 2025-08-20 13:11:50,637 basehttp 6712 4204 "GET /media/wildlife/Hippopotamus-open-mouth-teeth-Okavango-Delta-Botswana-Africa-hippos.webp HTTP/1.1" 200 305636
+INFO 2025-08-20 13:11:50,638 basehttp 6712 7024 "GET /media/wildlife/leone-africano-2.jpg HTTP/1.1" 200 33864
+INFO 2025-08-20 13:11:50,641 basehttp 6712 3440 "GET /media/wildlife/Species-Black-Credit-Phill-Perry-768x511.jpg HTTP/1.1" 200 80956
+INFO 2025-08-20 13:11:50,647 basehttp 6712 8576 "GET /media/wildlife/_91357212_spl.jpg HTTP/1.1" 200 109221
+INFO 2025-08-20 13:11:50,657 basehttp 6712 11968 "GET /media/wildlife/featured-16-9_masai-09-topaz.jpg HTTP/1.1" 200 137094
+INFO 2025-08-20 13:11:50,675 basehttp 6712 5040 "GET /media/wildlife/leopard-515509.jpg HTTP/1.1" 200 184907
+INFO 2025-08-20 13:11:50,686 basehttp 6712 7024 "GET /media/wildlife/16503835324091123300_1200x630.jpg HTTP/1.1" 200 456067
+INFO 2025-08-20 13:13:34,006 basehttp 6712 7024 "GET /parks/wildlife/ HTTP/1.1" 200 81312
+INFO 2025-08-20 13:13:45,592 basehttp 6712 7024 "GET /parks/destinations/?type=beach HTTP/1.1" 200 63920
+INFO 2025-08-20 13:13:45,630 basehttp 6712 7024 "GET /media/destinations/saadani-park-indian-ocean.gif HTTP/1.1" 200 188829
+INFO 2025-08-20 13:13:51,497 basehttp 6712 7024 "GET /accounts/register/ HTTP/1.1" 200 77123
+INFO 2025-08-20 13:15:48,638 basehttp 6712 7024 "GET /accounts/register/ HTTP/1.1" 200 79496
+INFO 2025-08-20 13:22:11,891 basehttp 6712 12804 "GET /accounts/register/ HTTP/1.1" 200 69806
+INFO 2025-08-20 13:22:11,930 basehttp 6712 12804 "GET /static/css/system.css HTTP/1.1" 200 7560
+INFO 2025-08-20 13:22:20,851 basehttp 6712 12804 "GET /accounts/register/ HTTP/1.1" 200 69806
+INFO 2025-08-20 13:22:20,883 basehttp 6712 12804 "GET /static/css/system.css HTTP/1.1" 304 0
+INFO 2025-08-20 13:22:24,695 basehttp 6712 12804 "GET / HTTP/1.1" 200 79325
+INFO 2025-08-20 13:36:51,535 basehttp 6712 1044 "GET / HTTP/1.1" 200 79325
+INFO 2025-08-20 13:36:51,570 basehttp 6712 1044 "GET /static/css/system.css HTTP/1.1" 304 0
+INFO 2025-08-20 13:39:03,520 basehttp 6712 1044 "GET /accounts/login/ HTTP/1.1" 200 51062
+INFO 2025-08-20 13:39:03,563 basehttp 6712 1044 "GET /static/css/system.css HTTP/1.1" 304 0
+INFO 2025-08-20 13:39:08,614 basehttp 6712 1044 "GET /accounts/register/ HTTP/1.1" 200 69806
+INFO 2025-08-20 13:39:41,920 basehttp 6712 1044 "GET /admin HTTP/1.1" 301 0
+INFO 2025-08-20 13:39:42,013 basehttp 6712 5220 "GET /admin/ HTTP/1.1" 302 0
+INFO 2025-08-20 13:39:42,182 basehttp 6712 5220 "GET /admin/login/?next=/admin/ HTTP/1.1" 200 4182
+INFO 2025-08-20 13:39:42,243 basehttp 6712 11068 "GET /static/admin/css/nav_sidebar.css HTTP/1.1" 200 2694
+INFO 2025-08-20 13:39:42,243 basehttp 6712 5220 "GET /static/admin/css/base.css HTTP/1.1" 200 21207
+INFO 2025-08-20 13:39:42,244 basehttp 6712 6148 "GET /static/admin/css/dark_mode.css HTTP/1.1" 200 2929
+INFO 2025-08-20 13:39:42,247 basehttp 6712 2548 "GET /static/admin/css/login.css HTTP/1.1" 200 958
+INFO 2025-08-20 13:39:42,248 basehttp 6712 7208 "GET /static/admin/css/responsive.css HTTP/1.1" 200 18533
+INFO 2025-08-20 13:39:42,305 basehttp 6712 2548 "GET /static/admin/js/theme.js HTTP/1.1" 200 1943
+INFO 2025-08-20 13:39:42,306 basehttp 6712 6148 "GET /static/admin/js/nav_sidebar.js HTTP/1.1" 200 3063
+INFO 2025-08-20 13:39:44,969 basehttp 6712 6148 "POST /admin/login/?next=/admin/ HTTP/1.1" 302 0
+INFO 2025-08-20 13:39:45,074 basehttp 6712 6148 "GET /admin/ HTTP/1.1" 200 23217
+INFO 2025-08-20 13:39:45,114 basehttp 6712 6148 "GET /static/admin/css/dashboard.css HTTP/1.1" 200 441
+INFO 2025-08-20 13:39:45,154 basehttp 6712 6148 "GET /static/admin/img/icon-addlink.svg HTTP/1.1" 200 331
+INFO 2025-08-20 13:39:45,154 basehttp 6712 2548 "GET /static/admin/img/icon-changelink.svg HTTP/1.1" 200 380
+INFO 2025-08-20 13:39:45,155 basehttp 6712 7208 "GET /static/admin/img/icon-viewlink.svg HTTP/1.1" 200 581
+INFO 2025-08-20 13:39:53,622 basehttp 6712 7208 "GET /admin/tours/tourpackage/ HTTP/1.1" 200 27186
+INFO 2025-08-20 13:39:53,669 basehttp 6712 7208 "GET /static/admin/css/changelists.css HTTP/1.1" 200 6566
+INFO 2025-08-20 13:39:53,720 basehttp 6712 2548 "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+INFO 2025-08-20 13:39:53,745 basehttp 6712 11068 "GET /static/admin/js/jquery.init.js HTTP/1.1" 200 347
+INFO 2025-08-20 13:39:53,756 basehttp 6712 5220 "GET /static/admin/js/core.js HTTP/1.1" 200 5682
+INFO 2025-08-20 13:39:53,757 basehttp 6712 7208 "GET /static/admin/js/actions.js HTTP/1.1" 200 7872
+INFO 2025-08-20 13:39:53,841 basehttp 6712 2548 "GET /static/admin/js/urlify.js HTTP/1.1" 200 7887
+INFO 2025-08-20 13:39:53,857 basehttp 6712 11068 "GET /static/admin/js/prepopulate.js HTTP/1.1" 200 1531
+INFO 2025-08-20 13:39:53,862 basehttp 6712 1212 "GET /static/admin/js/admin/RelatedObjectLookups.js HTTP/1.1" 200 8943
+INFO 2025-08-20 13:39:53,874 basehttp 6712 6148 "GET /static/admin/js/vendor/jquery/jquery.js HTTP/1.1" 200 292458
+INFO 2025-08-20 13:39:53,921 basehttp 6712 11068 "GET /static/admin/img/icon-yes.svg HTTP/1.1" 200 436
+INFO 2025-08-20 13:39:53,923 basehttp 6712 1212 "GET /static/admin/img/search.svg HTTP/1.1" 200 458
+INFO 2025-08-20 13:39:53,967 basehttp 6712 1212 "GET /static/admin/img/icon-no.svg HTTP/1.1" 200 560
+INFO 2025-08-20 13:39:54,008 basehttp 6712 1212 "GET /static/admin/js/filters.js HTTP/1.1" 200 978
+INFO 2025-08-20 13:39:54,108 basehttp 6712 5220 "GET /static/admin/js/vendor/xregexp/xregexp.js HTTP/1.1" 200 232381
+INFO 2025-08-20 13:39:54,161 basehttp 6712 5220 "GET /static/admin/img/tooltag-add.svg HTTP/1.1" 200 331
+INFO 2025-08-20 13:39:54,171 basehttp 6712 1212 "GET /static/admin/img/sorting-icons.svg HTTP/1.1" 200 1097
+INFO 2025-08-20 13:40:14,205 basehttp 6712 1212 "GET /admin/tours/touritineraryday/ HTTP/1.1" 200 22796
+INFO 2025-08-20 13:40:14,254 basehttp 6712 1212 "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+INFO 2025-08-20 13:40:24,578 basehttp 6712 1212 "GET /admin/tours/touravailability/ HTTP/1.1" 200 23691
+INFO 2025-08-20 13:40:24,642 basehttp 6712 1212 "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+ERROR 2025-08-20 13:40:31,866 log 6712 1212 Internal Server Error: /admin/tours/touravailability/add/
+Traceback (most recent call last):
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\db\models\options.py", line 681, in get_field
+    return self.fields_map[field_name]
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^
+KeyError: 'available_spots'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\contrib\admin\utils.py", line 272, in lookup_field
+    f = _get_non_gfk_field(opts, name)
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\contrib\admin\utils.py", line 303, in _get_non_gfk_field
+    field = opts.get_field(name)
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\db\models\options.py", line 683, in get_field
+    raise FieldDoesNotExist(
+        "%s has no field named '%s'" % (self.object_name, field_name)
+    )
+django.core.exceptions.FieldDoesNotExist: TourAvailability has no field named 'available_spots'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\core\handlers\base.py", line 220, in _get_response
+    response = response.render()
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\response.py", line 114, in render
+    self.content = self.rendered_content
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\response.py", line 92, in rendered_content
+    return template.render(context, self._request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\backends\django.py", line 61, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\base.py", line 175, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\test\utils.py", line 112, in instrumented_test_render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\loader_tags.py", line 157, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\test\utils.py", line 112, in instrumented_test_render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\loader_tags.py", line 157, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\test\utils.py", line 112, in instrumented_test_render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\loader_tags.py", line 63, in render
+    result = block.nodelist.render(context)
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\loader_tags.py", line 63, in render
+    result = block.nodelist.render(context)
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\defaulttags.py", line 238, in render
+    nodelist.append(node.render_annotated(context))
+                    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\loader_tags.py", line 208, in render
+    return template.render(context)
+           ~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\base.py", line 177, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\test\utils.py", line 112, in instrumented_test_render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\defaulttags.py", line 238, in render
+    nodelist.append(node.render_annotated(context))
+                    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\defaulttags.py", line 238, in render
+    nodelist.append(node.render_annotated(context))
+                    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\defaulttags.py", line 321, in render
+    return nodelist.render(context)
+           ~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\defaulttags.py", line 321, in render
+    return nodelist.render(context)
+           ~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\base.py", line 1064, in render
+    output = self.filter_expression.resolve(context)
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\base.py", line 715, in resolve
+    obj = self.var.resolve(context)
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\base.py", line 847, in resolve
+    value = self._resolve_lookup(context)
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\base.py", line 914, in _resolve_lookup
+    current = current()
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\contrib\admin\helpers.py", line 273, in contents
+    f, attr, value = lookup_field(field, obj, model_admin)
+                     ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\contrib\admin\utils.py", line 281, in lookup_field
+    value = attr(obj)
+  File "C:\projects\Tourism\project\tours\admin.py", line 236, in available_spots
+    val = getattr(obj, 'available_spots', None)
+  File "C:\projects\Tourism\project\tours\models.py", line 295, in available_spots
+    return max(0, self.max_participants - self.booked_participants)
+                  ~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~
+TypeError: unsupported operand type(s) for -: 'NoneType' and 'int'
+ERROR 2025-08-20 13:40:31,954 basehttp 6712 1212 "GET /admin/tours/touravailability/add/ HTTP/1.1" 500 605678
+INFO 2025-08-20 13:56:21,390 basehttp 6712 8412 "GET /search/?q= HTTP/1.1" 200 50762
+INFO 2025-08-20 13:56:21,445 basehttp 6712 8412 "GET /static/css/system.css HTTP/1.1" 304 0
+INFO 2025-08-20 13:56:43,968 basehttp 6712 8412 "GET /search/?q=efwe HTTP/1.1" 200 50382
+INFO 2025-08-20 13:59:48,770 autoreload 6712 9024 C:\projects\Tourism\project\tours\models.py changed, reloading.
+INFO 2025-08-20 13:59:52,348 autoreload 8616 7920 Watching for file changes with StatReloader
+INFO 2025-08-20 14:00:56,108 autoreload 8616 7920 C:\projects\Tourism\project\tours\admin.py changed, reloading.
+INFO 2025-08-20 14:00:59,712 autoreload 11568 8168 Watching for file changes with StatReloader
+INFO 2025-08-20 14:02:55,642 autoreload 11568 8168 C:\projects\Tourism\project\tours\admin.py changed, reloading.
+INFO 2025-08-20 14:02:58,779 autoreload 11640 10760 Watching for file changes with StatReloader
+INFO 2025-08-20 14:03:07,561 basehttp 11640 10156 "GET /admin/tours/touravailability/add/ HTTP/1.1" 200 29858
+INFO 2025-08-20 14:03:07,682 basehttp 11640 1740 "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+INFO 2025-08-20 14:03:07,855 basehttp 11640 10156 "GET /static/admin/css/forms.css HTTP/1.1" 200 9047
+INFO 2025-08-20 14:03:07,862 basehttp 11640 10156 "GET /static/admin/css/widgets.css HTTP/1.1" 200 11900
+INFO 2025-08-20 14:03:07,910 basehttp 11640 10156 "GET /static/admin/js/prepopulate_init.js HTTP/1.1" 200 586
+INFO 2025-08-20 14:03:07,958 basehttp 11640 11624 "GET /static/admin/js/calendar.js HTTP/1.1" 200 8466
+INFO 2025-08-20 14:03:07,960 basehttp 11640 9336 "GET /static/admin/js/admin/DateTimeShortcuts.js HTTP/1.1" 200 19319
+INFO 2025-08-20 14:03:08,007 basehttp 11640 9336 "GET /static/admin/img/icon-deletelink.svg HTTP/1.1" 200 392
+INFO 2025-08-20 14:03:08,026 basehttp 11640 11624 "GET /static/admin/js/change_form.js HTTP/1.1" 200 606
+INFO 2025-08-20 14:03:08,140 basehttp 11640 11624 "GET /static/admin/img/icon-calendar.svg HTTP/1.1" 200 1086
+INFO 2025-08-20 14:03:25,131 basehttp 11640 11624 "GET /admin/tours/touravailability/ HTTP/1.1" 200 24089
+INFO 2025-08-20 14:03:25,182 basehttp 11640 11624 "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+INFO 2025-08-20 14:03:26,617 basehttp 11640 11624 "GET /admin/tours/touravailability/2/change/ HTTP/1.1" 200 30343
+INFO 2025-08-20 14:03:26,677 basehttp 11640 11624 "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+INFO 2025-08-20 14:03:36,624 basehttp 11640 11624 "GET /admin/tours/touravailability/ HTTP/1.1" 200 24089
+INFO 2025-08-20 14:03:36,668 basehttp 11640 11624 "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+INFO 2025-08-20 14:03:38,016 basehttp 11640 11624 "GET /admin/tours/touravailability/3/change/ HTTP/1.1" 200 30356
+INFO 2025-08-20 14:03:38,069 basehttp 11640 11624 "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+INFO 2025-08-20 14:04:44,985 basehttp 11640 10052 "GET /admin/tours/touravailability/ HTTP/1.1" 200 24089
+INFO 2025-08-20 14:04:45,036 basehttp 11640 10052 "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+INFO 2025-08-20 14:04:46,826 basehttp 11640 10052 "GET /admin/tours/touravailability/2/change/ HTTP/1.1" 200 30343
+INFO 2025-08-20 14:04:46,879 basehttp 11640 10052 "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+ERROR 2025-08-20 14:04:58,957 log 11640 10052 Internal Server Error: /admin/tours/touravailability/2/change/
+Traceback (most recent call last):
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\db\backends\sqlite3\base.py", line 328, in execute
+    return super().execute(query, params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+sqlite3.IntegrityError: NOT NULL constraint failed: tours_touravailability.max_participants
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\contrib\admin\options.py", line 688, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\utils\decorators.py", line 134, in _wrapper_view
+    response = view_func(request, *args, **kwargs)
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\views\decorators\cache.py", line 62, in _wrapper_view_func
+    response = view_func(request, *args, **kwargs)
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\contrib\admin\sites.py", line 242, in inner
+    return view(request, *args, **kwargs)
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\contrib\admin\options.py", line 1889, in change_view
+    return self.changeform_view(request, object_id, form_url, extra_context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\utils\decorators.py", line 46, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\utils\decorators.py", line 134, in _wrapper_view
+    response = view_func(request, *args, **kwargs)
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\contrib\admin\options.py", line 1747, in changeform_view
+    return self._changeform_view(request, object_id, form_url, extra_context)
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\contrib\admin\options.py", line 1798, in _changeform_view
+    self.save_model(request, new_object, form, not add)
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\contrib\admin\options.py", line 1227, in save_model
+    obj.save()
+    ~~~~~~~~^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\db\models\base.py", line 814, in save
+    self.save_base(
+    ~~~~~~~~~~~~~~^
+        using=using,
+        ^^^^^^^^^^^^
+    ...<2 lines>...
+        update_fields=update_fields,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\db\models\base.py", line 877, in save_base
+    updated = self._save_table(
+        raw,
+    ...<4 lines>...
+        update_fields,
+    )
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\db\models\base.py", line 990, in _save_table
+    updated = self._do_update(
+        base_qs, using, pk_val, values, update_fields, forced_update
+    )
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\db\models\base.py", line 1054, in _do_update
+    return filtered._update(values) > 0
+           ~~~~~~~~~~~~~~~~^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\db\models\query.py", line 1231, in _update
+    return query.get_compiler(self.db).execute_sql(CURSOR)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\db\models\sql\compiler.py", line 1984, in execute_sql
+    cursor = super().execute_sql(result_type)
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\db\models\sql\compiler.py", line 1562, in execute_sql
+    cursor.execute(sql, params)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\db\backends\utils.py", line 102, in execute
+    return super().execute(sql, params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\db\backends\utils.py", line 67, in execute
+    return self._execute_with_wrappers(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        sql, params, many=False, executor=self._execute
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\db\backends\utils.py", line 80, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\db\backends\utils.py", line 84, in _execute
+    with self.db.wrap_database_errors:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\db\backends\sqlite3\base.py", line 328, in execute
+    return super().execute(query, params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+django.db.utils.IntegrityError: NOT NULL constraint failed: tours_touravailability.max_participants
+ERROR 2025-08-20 14:04:58,997 basehttp 11640 10052 "POST /admin/tours/touravailability/2/change/ HTTP/1.1" 500 215224
+INFO 2025-08-20 14:05:25,578 basehttp 11640 10052 "GET /admin/tours/touravailability/2/change/ HTTP/1.1" 200 30343
+ERROR 2025-08-20 14:06:22,231 log 11640 10052 Internal Server Error: /admin/tours/touravailability/2/change/
+Traceback (most recent call last):
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\db\backends\sqlite3\base.py", line 328, in execute
+    return super().execute(query, params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+sqlite3.IntegrityError: NOT NULL constraint failed: tours_touravailability.max_participants
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\contrib\admin\options.py", line 688, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\utils\decorators.py", line 134, in _wrapper_view
+    response = view_func(request, *args, **kwargs)
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\views\decorators\cache.py", line 62, in _wrapper_view_func
+    response = view_func(request, *args, **kwargs)
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\contrib\admin\sites.py", line 242, in inner
+    return view(request, *args, **kwargs)
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\contrib\admin\options.py", line 1889, in change_view
+    return self.changeform_view(request, object_id, form_url, extra_context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\utils\decorators.py", line 46, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\utils\decorators.py", line 134, in _wrapper_view
+    response = view_func(request, *args, **kwargs)
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\contrib\admin\options.py", line 1747, in changeform_view
+    return self._changeform_view(request, object_id, form_url, extra_context)
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\contrib\admin\options.py", line 1798, in _changeform_view
+    self.save_model(request, new_object, form, not add)
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\contrib\admin\options.py", line 1227, in save_model
+    obj.save()
+    ~~~~~~~~^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\db\models\base.py", line 814, in save
+    self.save_base(
+    ~~~~~~~~~~~~~~^
+        using=using,
+        ^^^^^^^^^^^^
+    ...<2 lines>...
+        update_fields=update_fields,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\db\models\base.py", line 877, in save_base
+    updated = self._save_table(
+        raw,
+    ...<4 lines>...
+        update_fields,
+    )
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\db\models\base.py", line 990, in _save_table
+    updated = self._do_update(
+        base_qs, using, pk_val, values, update_fields, forced_update
+    )
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\db\models\base.py", line 1054, in _do_update
+    return filtered._update(values) > 0
+           ~~~~~~~~~~~~~~~~^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\db\models\query.py", line 1231, in _update
+    return query.get_compiler(self.db).execute_sql(CURSOR)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\db\models\sql\compiler.py", line 1984, in execute_sql
+    cursor = super().execute_sql(result_type)
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\db\models\sql\compiler.py", line 1562, in execute_sql
+    cursor.execute(sql, params)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\db\backends\utils.py", line 102, in execute
+    return super().execute(sql, params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\db\backends\utils.py", line 67, in execute
+    return self._execute_with_wrappers(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        sql, params, many=False, executor=self._execute
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\db\backends\utils.py", line 80, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\db\backends\utils.py", line 84, in _execute
+    with self.db.wrap_database_errors:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\db\backends\sqlite3\base.py", line 328, in execute
+    return super().execute(query, params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+django.db.utils.IntegrityError: NOT NULL constraint failed: tours_touravailability.max_participants
+ERROR 2025-08-20 14:06:22,257 basehttp 11640 10052 "POST /admin/tours/touravailability/2/change/ HTTP/1.1" 500 215224
+INFO 2025-08-20 14:08:20,205 autoreload 6436 13024 Watching for file changes with StatReloader
+INFO 2025-08-20 14:08:31,774 basehttp 6436 1728 "POST /admin/tours/touravailability/2/change/ HTTP/1.1" 302 0
+INFO 2025-08-20 14:08:31,938 basehttp 6436 1728 "GET /admin/tours/touravailability/ HTTP/1.1" 200 24370
+INFO 2025-08-20 14:08:31,998 basehttp 6436 1728 "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+INFO 2025-08-20 14:08:34,712 basehttp 6436 1728 "GET /admin/tours/touravailability/1/change/ HTTP/1.1" 200 30303
+INFO 2025-08-20 14:08:34,771 basehttp 6436 1728 "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+INFO 2025-08-20 14:08:39,695 basehttp 6436 1728 "POST /admin/tours/touravailability/1/change/ HTTP/1.1" 302 0
+INFO 2025-08-20 14:08:39,767 basehttp 6436 1728 "GET /admin/tours/touravailability/ HTTP/1.1" 200 24371
+INFO 2025-08-20 14:08:39,826 basehttp 6436 1728 "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+INFO 2025-08-20 14:08:41,500 basehttp 6436 1728 "GET /admin/tours/touravailability/3/change/ HTTP/1.1" 200 30356
+INFO 2025-08-20 14:08:41,552 basehttp 6436 1728 "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+INFO 2025-08-20 14:08:48,179 basehttp 6436 1728 "POST /admin/tours/touravailability/3/change/ HTTP/1.1" 302 0
+INFO 2025-08-20 14:08:48,257 basehttp 6436 1728 "GET /admin/tours/touravailability/ HTTP/1.1" 200 24392
+INFO 2025-08-20 14:08:48,315 basehttp 6436 1728 "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+INFO 2025-08-20 14:08:50,485 basehttp 6436 1728 "GET /admin/tours/touravailability/3/change/ HTTP/1.1" 200 30360
+INFO 2025-08-20 14:08:50,540 basehttp 6436 1728 "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+INFO 2025-08-20 14:08:53,515 basehttp 6436 1728 "GET /admin/tours/touravailability/ HTTP/1.1" 200 24121
+INFO 2025-08-20 14:08:54,590 basehttp 6436 1728 "GET /admin/tours/touravailability/2/change/ HTTP/1.1" 200 30343
+INFO 2025-08-20 14:08:54,645 basehttp 6436 1728 "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+INFO 2025-08-20 14:08:56,835 basehttp 6436 1728 "GET /admin/tours/touravailability/ HTTP/1.1" 200 24121
+INFO 2025-08-20 14:08:58,111 basehttp 6436 1728 "GET /admin/tours/touravailability/1/change/ HTTP/1.1" 200 30307
+INFO 2025-08-20 14:08:58,166 basehttp 6436 1728 "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+INFO 2025-08-20 14:09:00,782 basehttp 6436 1728 "GET /admin/tours/touravailability/ HTTP/1.1" 200 24121
+INFO 2025-08-20 14:10:16,993 autoreload 6436 13024 C:\projects\Tourism\project\tours\views.py changed, reloading.
+INFO 2025-08-20 14:10:20,234 autoreload 2324 10412 Watching for file changes with StatReloader
+INFO 2025-08-20 14:16:45,219 basehttp 2324 11432 "GET / HTTP/1.1" 200 80990
+INFO 2025-08-20 14:16:45,271 basehttp 2324 11432 "GET /static/css/system.css HTTP/1.1" 304 0
+INFO 2025-08-20 14:17:14,310 basehttp 2324 11432 "GET /accounts/logout/ HTTP/1.1" 302 0
+INFO 2025-08-20 14:17:14,344 basehttp 2324 11432 "GET / HTTP/1.1" 200 80111
+INFO 2025-08-20 14:17:18,249 basehttp 2324 11432 "GET /accounts/login/ HTTP/1.1" 200 51062
+INFO 2025-08-20 14:17:28,979 basehttp 2324 11432 "GET /accounts/register/ HTTP/1.1" 200 69806
+INFO 2025-08-20 14:18:30,790 basehttp 2324 11432 "POST /accounts/register/ HTTP/1.1" 302 0
+INFO 2025-08-20 14:18:30,822 basehttp 2324 11432 "GET / HTTP/1.1" 200 81800
+INFO 2025-08-20 14:18:52,873 basehttp 2324 11432 "GET /accounts/profile/ HTTP/1.1" 200 69184
+INFO 2025-08-20 14:18:53,081 basehttp 2324 11432 "GET /static/flags/tz.gif HTTP/1.1" 200 358
+INFO 2025-08-20 14:19:23,501 basehttp 2324 11432 "POST /accounts/profile/ HTTP/1.1" 302 0
+INFO 2025-08-20 14:19:23,542 basehttp 2324 11432 "GET /accounts/dashboard/ HTTP/1.1" 200 58292
+INFO 2025-08-20 14:19:29,698 basehttp 2324 11432 "GET /tours/ HTTP/1.1" 200 79730
+WARNING 2025-08-20 14:19:29,799 log 2324 11432 Not Found: /media/tours/main/udzungwa_3.jpg
+WARNING 2025-08-20 14:19:29,804 log 2324 11424 Not Found: /media/tours/main/saadani_4.jpg
+WARNING 2025-08-20 14:19:29,807 basehttp 2324 11432 "GET /media/tours/main/udzungwa_3.jpg HTTP/1.1" 404 5821
+WARNING 2025-08-20 14:19:29,813 basehttp 2324 11424 "GET /media/tours/main/saadani_4.jpg HTTP/1.1" 404 5817
+WARNING 2025-08-20 14:19:29,820 log 2324 10696 Not Found: /media/tours/main/selous_5.jpg
+WARNING 2025-08-20 14:19:29,821 basehttp 2324 10696 "GET /media/tours/main/selous_5.jpg HTTP/1.1" 404 5813
+INFO 2025-08-20 14:19:32,452 basehttp 2324 10696 "GET /tours/classic-northern-safari-7-days/ HTTP/1.1" 200 78592
+INFO 2025-08-20 14:19:32,490 basehttp 2324 10696 "GET /media/parks/main/elephants-tarangire.jpg HTTP/1.1" 200 174271
+WARNING 2025-08-20 14:19:32,538 log 2324 11424 Not Found: /media/tours/itinerary/day1_tarangire.jpg
+WARNING 2025-08-20 14:19:32,543 log 2324 11432 Not Found: /media/tours/itinerary/day2_serengeti.jpg
+WARNING 2025-08-20 14:19:32,544 basehttp 2324 11424 "GET /media/tours/itinerary/day1_tarangire.jpg HTTP/1.1" 404 5857
+WARNING 2025-08-20 14:19:32,549 log 2324 8428 Not Found: /media/tours/main/selous_5.jpg
+WARNING 2025-08-20 14:19:32,550 basehttp 2324 11432 "GET /media/tours/itinerary/day2_serengeti.jpg HTTP/1.1" 404 5857
+WARNING 2025-08-20 14:19:32,557 basehttp 2324 8428 "GET /media/tours/main/selous_5.jpg HTTP/1.1" 404 5813
+INFO 2025-08-20 14:21:48,876 basehttp 2324 8428 "GET /parks/ HTTP/1.1" 200 89515
+INFO 2025-08-20 14:21:52,529 basehttp 2324 8428 "GET /parks/burigi-chato-national-park/ HTTP/1.1" 200 59621
+INFO 2025-08-20 14:21:58,618 basehttp 2324 8428 "GET /tours/ HTTP/1.1" 200 79730
+WARNING 2025-08-20 14:21:58,693 log 2324 11424 Not Found: /media/tours/main/selous_5.jpg
+WARNING 2025-08-20 14:21:58,698 log 2324 11432 Not Found: /media/tours/main/saadani_4.jpg
+WARNING 2025-08-20 14:21:58,701 log 2324 8428 Not Found: /media/tours/main/udzungwa_3.jpg
+WARNING 2025-08-20 14:21:58,702 basehttp 2324 11424 "GET /media/tours/main/selous_5.jpg HTTP/1.1" 404 5813
+WARNING 2025-08-20 14:21:58,703 basehttp 2324 11432 "GET /media/tours/main/saadani_4.jpg HTTP/1.1" 404 5817
+WARNING 2025-08-20 14:21:58,705 basehttp 2324 8428 "GET /media/tours/main/udzungwa_3.jpg HTTP/1.1" 404 5821
+INFO 2025-08-20 14:22:00,956 basehttp 2324 8428 "GET /tours/kilimanjaro-summit-trek-8-days-machame/ HTTP/1.1" 200 73536
+WARNING 2025-08-20 14:22:01,021 log 2324 8428 Not Found: /media/tours/itinerary/kili_day1.jpg
+WARNING 2025-08-20 14:22:01,026 basehttp 2324 8428 "GET /media/tours/itinerary/kili_day1.jpg HTTP/1.1" 404 5837
+WARNING 2025-08-20 14:22:01,036 log 2324 11432 Not Found: /media/tours/itinerary/kili_summit.jpg
+WARNING 2025-08-20 14:22:01,037 basehttp 2324 11432 "GET /media/tours/itinerary/kili_summit.jpg HTTP/1.1" 404 5845
+INFO 2025-08-20 14:23:52,057 basehttp 2324 11432 "GET /tours/kilimanjaro-summit-trek-8-days-machame/ HTTP/1.1" 200 76414
+INFO 2025-08-20 14:23:52,105 basehttp 2324 11432 "GET /static/css/system.css HTTP/1.1" 304 0
+WARNING 2025-08-20 14:23:52,120 log 2324 8428 Not Found: /media/tours/itinerary/kili_day1.jpg
+WARNING 2025-08-20 14:23:52,121 basehttp 2324 8428 "GET /media/tours/itinerary/kili_day1.jpg HTTP/1.1" 404 5837
+WARNING 2025-08-20 14:23:52,126 log 2324 11424 Not Found: /media/tours/itinerary/kili_summit.jpg
+WARNING 2025-08-20 14:23:52,128 basehttp 2324 11424 "GET /media/tours/itinerary/kili_summit.jpg HTTP/1.1" 404 5845
+INFO 2025-08-20 14:24:01,248 basehttp 2324 11424 "GET /bookings/create/kilimanjaro-summit-trek-8-days-machame/?availability=2 HTTP/1.1" 200 68824
+INFO 2025-08-20 14:25:58,333 basehttp 2324 11424 "GET /bookings/create/kilimanjaro-summit-trek-8-days-machame/?availability=2 HTTP/1.1" 200 71693
+ERROR 2025-08-20 14:28:09,876 log 2324 11424 Internal Server Error: /bookings/create/kilimanjaro-summit-trek-8-days-machame/
+Traceback (most recent call last):
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\contrib\auth\decorators.py", line 23, in _wrapper_view
+    return view_func(request, *args, **kwargs)
+  File "C:\projects\Tourism\project\bookings\views.py", line 63, in create_booking
+    if availability and availability.available_spots < num:
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: '<' not supported between instances of 'NoneType' and 'int'
+ERROR 2025-08-20 14:28:09,885 basehttp 2324 11424 "POST /bookings/create/kilimanjaro-summit-trek-8-days-machame/?availability=2 HTTP/1.1" 500 87129
+INFO 2025-08-20 14:30:25,960 autoreload 2324 10412 C:\projects\Tourism\project\tours\models.py changed, reloading.
+INFO 2025-08-20 14:30:28,986 autoreload 8908 5192 Watching for file changes with StatReloader
+INFO 2025-08-20 14:31:52,357 autoreload 8908 5192 C:\projects\Tourism\project\tours\views.py changed, reloading.
+INFO 2025-08-20 14:31:57,855 autoreload 3788 8660 Watching for file changes with StatReloader
+INFO 2025-08-20 14:33:40,544 autoreload 3788 8660 C:\projects\Tourism\project\bookings\views.py changed, reloading.
+INFO 2025-08-20 14:33:43,106 autoreload 12480 5984 Watching for file changes with StatReloader
+INFO 2025-08-20 14:33:50,095 basehttp 12480 2172 "POST /bookings/create/kilimanjaro-summit-trek-8-days-machame/?availability=2 HTTP/1.1" 302 0
+INFO 2025-08-20 14:33:50,162 basehttp 12480 2172 "GET /bookings/TZ1E912845/ HTTP/1.1" 200 57272
+INFO 2025-08-20 14:33:50,209 basehttp 12480 2172 "GET /static/css/system.css HTTP/1.1" 304 0
+ERROR 2025-08-20 14:34:38,830 log 12480 2172 Internal Server Error: /bookings/TZ1E912845/cancel/
+Traceback (most recent call last):
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\contrib\auth\decorators.py", line 23, in _wrapper_view
+    return view_func(request, *args, **kwargs)
+  File "C:\projects\Tourism\project\bookings\views.py", line 235, in cancel_booking
+    return render(request, 'bookings/cancel_booking.html', {'booking': booking})
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\projects\Tourism\project\venv\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: bookings/cancel_booking.html
+ERROR 2025-08-20 14:34:38,845 basehttp 12480 2172 "GET /bookings/TZ1E912845/cancel/ HTTP/1.1" 500 98714
+INFO 2025-08-20 14:37:10,840 basehttp 12480 7000 "GET /bookings/TZ1E912845/cancel/ HTTP/1.1" 200 52929
+INFO 2025-08-20 14:37:21,921 basehttp 12480 7000 "GET /bookings/TZ1E912845/ HTTP/1.1" 200 55662
+INFO 2025-08-20 14:37:24,891 basehttp 12480 7000 "GET /bookings/TZ1E912845/cancel/ HTTP/1.1" 200 52929
+INFO 2025-08-20 14:39:42,077 basehttp 12480 7000 "GET /bookings/TZ1E912845/cancel/ HTTP/1.1" 200 55406
+INFO 2025-08-20 14:51:25,919 autoreload 12480 5984 C:\projects\Tourism\project\tanzania_tourism\settings.py changed, reloading.
+INFO 2025-08-20 14:51:31,352 autoreload 1212 6920 Watching for file changes with StatReloader
+INFO 2025-08-20 14:51:52,399 basehttp 1212 5040 "POST /bookings/TZ1E912845/cancel/ HTTP/1.1" 302 0
+INFO 2025-08-20 14:51:52,586 basehttp 1212 5040 "GET /bookings/ HTTP/1.1" 200 52986
+INFO 2025-08-20 14:51:52,632 basehttp 1212 5040 "GET /static/css/system.css HTTP/1.1" 304 0
+INFO 2025-08-20 14:52:02,447 basehttp 1212 5040 "GET /bookings/TZ1E912845/ HTTP/1.1" 200 55348
+INFO 2025-08-20 14:52:09,944 basehttp 1212 5040 "GET /contact/ HTTP/1.1" 200 63223
+INFO 2025-08-20 14:52:19,506 basehttp 1212 5040 "GET /bookings/ HTTP/1.1" 200 52207
+INFO 2025-08-20 14:52:22,283 basehttp 1212 5040 "GET /tours/ HTTP/1.1" 200 79730
+WARNING 2025-08-20 14:52:22,600 log 1212 13200 Not Found: /media/tours/main/saadani_4.jpg
+WARNING 2025-08-20 14:52:22,603 basehttp 1212 13200 "GET /media/tours/main/saadani_4.jpg HTTP/1.1" 404 5817
+WARNING 2025-08-20 14:52:22,617 log 1212 5040 Not Found: /media/tours/main/udzungwa_3.jpg
+WARNING 2025-08-20 14:52:22,619 basehttp 1212 5040 "GET /media/tours/main/udzungwa_3.jpg HTTP/1.1" 404 5821
+WARNING 2025-08-20 14:52:22,624 log 1212 11816 Not Found: /media/tours/main/selous_5.jpg
+WARNING 2025-08-20 14:52:22,628 basehttp 1212 11816 "GET /media/tours/main/selous_5.jpg HTTP/1.1" 404 5813
+INFO 2025-08-20 14:52:27,710 basehttp 1212 11816 "GET /tours/classic-northern-safari-7-days/ HTTP/1.1" 200 81470
+WARNING 2025-08-20 14:52:27,816 log 1212 11816 Not Found: /media/tours/itinerary/day1_tarangire.jpg
+WARNING 2025-08-20 14:52:27,820 log 1212 13200 Not Found: /media/tours/main/selous_5.jpg
+WARNING 2025-08-20 14:52:27,827 log 1212 5040 Not Found: /media/tours/itinerary/day2_serengeti.jpg
+WARNING 2025-08-20 14:52:27,845 basehttp 1212 5040 "GET /media/tours/itinerary/day2_serengeti.jpg HTTP/1.1" 404 5857
+WARNING 2025-08-20 14:52:27,828 basehttp 1212 13200 "GET /media/tours/main/selous_5.jpg HTTP/1.1" 404 5813
+WARNING 2025-08-20 14:52:27,827 basehttp 1212 11816 "GET /media/tours/itinerary/day1_tarangire.jpg HTTP/1.1" 404 5857
+INFO 2025-08-20 14:52:30,325 basehttp 1212 5040 "GET /bookings/create/classic-northern-safari-7-days/ HTTP/1.1" 200 71673
+INFO 2025-08-20 14:52:54,433 basehttp 1212 5040 "POST /bookings/create/classic-northern-safari-7-days/ HTTP/1.1" 302 0
+INFO 2025-08-20 14:52:54,466 basehttp 1212 5040 "GET /bookings/TZ3B6F0F17/ HTTP/1.1" 200 57297
+INFO 2025-08-20 15:00:35,185 autoreload 1212 6920 C:\projects\Tourism\project\tanzania_tourism\settings.py changed, reloading.
+INFO 2025-08-20 15:00:39,269 autoreload 12132 124 Watching for file changes with StatReloader
+INFO 2025-08-20 15:01:05,260 autoreload 12132 124 C:\projects\Tourism\project\tanzania_tourism\settings.py changed, reloading.
+INFO 2025-08-20 15:01:08,020 autoreload 11924 4824 Watching for file changes with StatReloader
+INFO 2025-08-20 15:01:23,473 autoreload 11924 4824 C:\projects\Tourism\project\tanzania_tourism\settings.py changed, reloading.
+INFO 2025-08-20 15:01:25,960 autoreload 8404 12780 Watching for file changes with StatReloader
+INFO 2025-08-20 15:01:36,698 autoreload 8404 12780 C:\projects\Tourism\project\tanzania_tourism\settings.py changed, reloading.
+INFO 2025-08-20 15:01:39,638 autoreload 10276 2404 Watching for file changes with StatReloader
+INFO 2025-08-20 15:01:56,938 autoreload 10276 2404 C:\projects\Tourism\project\tanzania_tourism\settings.py changed, reloading.
+INFO 2025-08-20 15:02:00,303 autoreload 788 9884 Watching for file changes with StatReloader
+INFO 2025-08-20 15:02:04,661 autoreload 788 9884 C:\projects\Tourism\project\tanzania_tourism\settings.py changed, reloading.
+INFO 2025-08-20 15:02:07,153 autoreload 5680 12440 Watching for file changes with StatReloader
+INFO 2025-08-20 15:02:44,531 basehttp 5680 6300 "GET /bookings/ HTTP/1.1" 200 54368
+INFO 2025-08-20 15:02:44,574 basehttp 5680 6300 "GET /static/css/system.css HTTP/1.1" 304 0
+INFO 2025-08-20 15:02:50,208 basehttp 5680 6300 "GET /tours/ HTTP/1.1" 200 79730
+WARNING 2025-08-20 15:02:50,289 log 5680 3360 Not Found: /media/tours/main/saadani_4.jpg
+WARNING 2025-08-20 15:02:50,294 log 5680 6300 Not Found: /media/tours/main/udzungwa_3.jpg
+WARNING 2025-08-20 15:02:50,298 basehttp 5680 3360 "GET /media/tours/main/saadani_4.jpg HTTP/1.1" 404 5817
+WARNING 2025-08-20 15:02:50,309 log 5680 2092 Not Found: /media/tours/main/selous_5.jpg
+WARNING 2025-08-20 15:02:50,311 basehttp 5680 6300 "GET /media/tours/main/udzungwa_3.jpg HTTP/1.1" 404 5821
+WARNING 2025-08-20 15:02:50,320 basehttp 5680 2092 "GET /media/tours/main/selous_5.jpg HTTP/1.1" 404 5813
+INFO 2025-08-20 15:02:54,510 basehttp 5680 2092 "GET /tours/classic-northern-safari-7-days/ HTTP/1.1" 200 81470
+WARNING 2025-08-20 15:02:54,590 log 5680 2092 Not Found: /media/tours/itinerary/day1_tarangire.jpg
+WARNING 2025-08-20 15:02:54,598 log 5680 6300 Not Found: /media/tours/itinerary/day2_serengeti.jpg
+WARNING 2025-08-20 15:02:54,598 basehttp 5680 2092 "GET /media/tours/itinerary/day1_tarangire.jpg HTTP/1.1" 404 5857
+WARNING 2025-08-20 15:02:54,600 basehttp 5680 6300 "GET /media/tours/itinerary/day2_serengeti.jpg HTTP/1.1" 404 5857
+WARNING 2025-08-20 15:02:54,614 log 5680 3360 Not Found: /media/tours/main/selous_5.jpg
+WARNING 2025-08-20 15:02:54,617 basehttp 5680 3360 "GET /media/tours/main/selous_5.jpg HTTP/1.1" 404 5813
+INFO 2025-08-20 15:02:56,986 basehttp 5680 3360 "GET /bookings/create/classic-northern-safari-7-days/ HTTP/1.1" 200 71673
+INFO 2025-08-20 15:03:27,944 basehttp 5680 3360 "POST /bookings/create/classic-northern-safari-7-days/ HTTP/1.1" 302 0
+INFO 2025-08-20 15:03:27,984 basehttp 5680 3360 "GET /bookings/TZ65A3A881/ HTTP/1.1" 200 57302
+INFO 2025-08-20 15:04:37,656 basehttp 5680 3360 "GET /accounts/dashboard/ HTTP/1.1" 200 61879
+INFO 2025-08-20 15:04:41,006 basehttp 5680 3756 "GET /accounts/profile/ HTTP/1.1" 200 69204
+INFO 2025-08-20 15:04:53,919 basehttp 5680 3756 "POST /accounts/profile/ HTTP/1.1" 302 0
+INFO 2025-08-20 15:04:53,969 basehttp 5680 3756 "GET /accounts/dashboard/ HTTP/1.1" 200 62656
+INFO 2025-08-20 15:05:06,982 basehttp 5680 3756 "GET /accounts/dashboard/ HTTP/1.1" 200 61879
+INFO 2025-08-20 15:06:29,437 basehttp 5680 3756 "GET /accounts/dashboard/ HTTP/1.1" 200 61417
+INFO 2025-08-20 15:07:10,780 basehttp 5680 3756 "GET /historical-sites/ HTTP/1.1" 200 64961
+INFO 2025-08-20 15:07:39,572 basehttp 5680 3756 "GET /historical-sites/ HTTP/1.1" 200 64305
+INFO 2025-08-20 15:07:58,374 basehttp 5680 3756 "GET /historical-sites/ HTTP/1.1" 200 64305
+INFO 2025-08-20 15:08:21,154 basehttp 5680 3756 "GET /historical-sites/ HTTP/1.1" 200 64237
+INFO 2025-08-20 15:08:41,371 basehttp 5680 3756 "GET /bookings/ HTTP/1.1" 200 56530
+INFO 2025-08-20 15:08:43,621 basehttp 5680 3756 "GET /tours/ HTTP/1.1" 200 79730
+WARNING 2025-08-20 15:08:43,701 log 5680 3756 Not Found: /media/tours/main/udzungwa_3.jpg
+WARNING 2025-08-20 15:08:43,708 log 5680 7808 Not Found: /media/tours/main/saadani_4.jpg
+WARNING 2025-08-20 15:08:43,710 basehttp 5680 3756 "GET /media/tours/main/udzungwa_3.jpg HTTP/1.1" 404 5821
+WARNING 2025-08-20 15:08:43,711 basehttp 5680 7808 "GET /media/tours/main/saadani_4.jpg HTTP/1.1" 404 5817
+WARNING 2025-08-20 15:08:43,724 log 5680 9096 Not Found: /media/tours/main/selous_5.jpg
+WARNING 2025-08-20 15:08:43,729 basehttp 5680 9096 "GET /media/tours/main/selous_5.jpg HTTP/1.1" 404 5813
+INFO 2025-08-20 15:08:47,662 basehttp 5680 9096 "GET /tours/udzungwa-primate-waterfalls-3-days/ HTTP/1.1" 200 72793
+WARNING 2025-08-20 15:08:47,734 log 5680 7808 Not Found: /media/tours/itinerary/udzungwa_day2.jpg
+WARNING 2025-08-20 15:08:47,741 basehttp 5680 7808 "GET /media/tours/itinerary/udzungwa_day2.jpg HTTP/1.1" 404 5853
+INFO 2025-08-20 15:08:47,908 basehttp 5680 9096 "GET /media/parks/main/udzungwa-mountains-national.jpg HTTP/1.1" 200 465888
+WARNING 2025-08-20 15:08:48,035 log 5680 9096 Not Found: /media/tours/main/udzungwa_3.jpg
+WARNING 2025-08-20 15:08:48,036 basehttp 5680 9096 "GET /media/tours/main/udzungwa_3.jpg HTTP/1.1" 404 5821
+INFO 2025-08-20 15:08:50,833 basehttp 5680 9096 "GET /bookings/create/udzungwa-primate-waterfalls-3-days/ HTTP/1.1" 200 71672
+WARNING 2025-08-20 15:08:50,891 log 5680 9096 Not Found: /media/tours/main/udzungwa_3.jpg
+WARNING 2025-08-20 15:08:50,896 basehttp 5680 9096 "GET /media/tours/main/udzungwa_3.jpg HTTP/1.1" 404 5821
+INFO 2025-08-20 15:09:09,713 basehttp 5680 9096 "POST /bookings/create/udzungwa-primate-waterfalls-3-days/ HTTP/1.1" 302 0
+INFO 2025-08-20 15:09:09,748 basehttp 5680 9096 "GET /bookings/TZ9A68C42B/ HTTP/1.1" 200 57281
+WARNING 2025-08-20 15:09:09,819 log 5680 9096 Not Found: /media/tours/main/udzungwa_3.jpg
+WARNING 2025-08-20 15:09:09,821 basehttp 5680 9096 "GET /media/tours/main/udzungwa_3.jpg HTTP/1.1" 404 5821
+INFO 2025-08-20 15:17:15,361 basehttp 5680 3412 "GET /bookings/TZ9A68C42B/ HTTP/1.1" 200 55738
+INFO 2025-08-20 15:17:15,402 basehttp 5680 3412 "GET /static/css/system.css HTTP/1.1" 304 0
+WARNING 2025-08-20 15:17:15,426 log 5680 3412 Not Found: /media/tours/main/udzungwa_3.jpg
+WARNING 2025-08-20 15:17:15,427 basehttp 5680 3412 "GET /media/tours/main/udzungwa_3.jpg HTTP/1.1" 404 5821
+INFO 2025-08-20 15:17:18,284 basehttp 5680 3412 "GET /bookings/TZ9A68C42B/ HTTP/1.1" 200 55738
+WARNING 2025-08-20 15:17:18,338 log 5680 3412 Not Found: /media/tours/main/udzungwa_3.jpg
+WARNING 2025-08-20 15:17:18,339 basehttp 5680 3412 "GET /media/tours/main/udzungwa_3.jpg HTTP/1.1" 404 5821
+INFO 2025-08-20 15:20:08,243 basehttp 5680 3412 "GET /bookings/TZ9A68C42B/ HTTP/1.1" 200 56040
+WARNING 2025-08-20 15:20:08,311 basehttp 5680 3412 "GET /static/images/logo-light.png HTTP/1.1" 404 1923
+WARNING 2025-08-20 15:20:08,311 basehttp 5680 12260 "GET /static/images/logo-dark.png HTTP/1.1" 404 1920
+WARNING 2025-08-20 15:20:08,327 log 5680 1312 Not Found: /media/tours/main/udzungwa_3.jpg
+WARNING 2025-08-20 15:20:08,328 basehttp 5680 1312 "GET /media/tours/main/udzungwa_3.jpg HTTP/1.1" 404 5821
+INFO 2025-08-20 15:20:22,508 basehttp 5680 1312 "GET /bookings/TZ9A68C42B/ HTTP/1.1" 200 56029
+INFO 2025-08-20 15:20:22,587 basehttp 5680 1312 "GET /static/images/logo.png HTTP/1.1" 200 98216
+WARNING 2025-08-20 15:20:22,609 log 5680 5176 Not Found: /media/tours/main/udzungwa_3.jpg
+WARNING 2025-08-20 15:20:22,612 basehttp 5680 5176 "GET /media/tours/main/udzungwa_3.jpg HTTP/1.1" 404 5821
+INFO 2025-08-20 15:20:49,688 basehttp 5680 5176 "GET /bookings/TZ9A68C42B/ HTTP/1.1" 200 56031
+WARNING 2025-08-20 15:20:49,755 log 5680 5176 Not Found: /media/tours/main/udzungwa_3.jpg
+WARNING 2025-08-20 15:20:49,758 basehttp 5680 5176 "GET /media/tours/main/udzungwa_3.jpg HTTP/1.1" 404 5821
+INFO 2025-08-20 15:21:23,029 basehttp 5680 5176 "GET /bookings/TZ9A68C42B/ HTTP/1.1" 200 56031
+WARNING 2025-08-20 15:21:23,103 log 5680 5176 Not Found: /media/tours/main/udzungwa_3.jpg
+WARNING 2025-08-20 15:21:23,109 basehttp 5680 5176 "GET /media/tours/main/udzungwa_3.jpg HTTP/1.1" 404 5821
+WARNING 2025-08-20 15:21:30,027 log 5680 5176 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-20 15:21:30,028 basehttp 5680 5176 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 5900
+INFO 2025-08-20 15:23:05,351 autoreload 6308 5176 Watching for file changes with StatReloader
+INFO 2025-08-20 15:23:09,347 basehttp 6308 10288 "GET /admin/ HTTP/1.1" 302 0
+INFO 2025-08-20 15:23:09,433 basehttp 6308 10288 "GET /admin/login/?next=/admin/ HTTP/1.1" 200 3702
+INFO 2025-08-20 15:23:12,330 basehttp 6308 10288 "POST /admin/login/?next=/admin/ HTTP/1.1" 302 0
+INFO 2025-08-20 15:23:12,392 basehttp 6308 10288 "GET /admin/ HTTP/1.1" 200 23317
+INFO 2025-08-20 15:23:15,777 basehttp 6308 10288 "GET /admin/accounts/customuser/ HTTP/1.1" 200 42342
+INFO 2025-08-20 15:23:15,843 basehttp 6308 10288 "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+INFO 2025-08-20 15:23:52,035 basehttp 6308 10288 "POST /admin/accounts/customuser/ HTTP/1.1" 302 0
+INFO 2025-08-20 15:23:52,137 basehttp 6308 10288 "GET /admin/accounts/customuser/ HTTP/1.1" 200 42467
+INFO 2025-08-20 15:23:52,187 basehttp 6308 10288 "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+INFO 2025-08-20 15:23:52,372 basehttp 6308 10288 "GET /static/admin/img/icon-alert.svg HTTP/1.1" 200 504
+INFO 2025-08-20 15:24:03,561 basehttp 6308 10288 "POST /admin/accounts/customuser/ HTTP/1.1" 200 21848
+INFO 2025-08-20 15:24:03,641 basehttp 6308 10288 "GET /static/admin/js/cancel.js HTTP/1.1" 200 884
+INFO 2025-08-20 15:24:08,521 basehttp 6308 10288 "POST /admin/accounts/customuser/ HTTP/1.1" 302 0
+INFO 2025-08-20 15:24:08,600 basehttp 6308 10288 "GET /admin/accounts/customuser/ HTTP/1.1" 200 40755
+INFO 2025-08-20 15:24:08,650 basehttp 6308 10288 "GET /admin/jsi18n/ HTTP/1.1" 200 3343

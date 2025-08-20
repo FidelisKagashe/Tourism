@@ -5,9 +5,9 @@
 {% block title %}{% trans "Extended Profile" %} - Safari&nbsp;&amp;&nbsp;Bush Retreats{% endblock %}
 
 {% block content %}
-<div class="min-h-screen py-12 bg-gray-50">
+<div class="min-h-screen py-12 bg-gray-50 dark:bg-gray-900">
     <div class="max-w-4xl mx-auto px-4">
-        <div class="bg-white rounded-2xl shadow-xl overflow-hidden">
+        <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden">
             <!-- Card Header -->
             <div class="bg-[#C18D45] text-white p-6 md:p-8">
                 <div class="flex items-center">
@@ -19,10 +19,10 @@
             <!-- Card Body -->
             <div class="p-6 md:p-8">
                 <!-- Information Alert -->
-                <div class="bg-[#f5e9d8] border-l-4 border-[#C18D45] text-[#a97a3a] p-4 mb-8 rounded-r">
+                <div class="bg-[#f5e9d8] dark:bg-yellow-900 border-l-4 border-[#C18D45] dark:border-yellow-600 text-[#a97a3a] dark:text-yellow-200 p-4 mb-8 rounded-r">
                     <div class="flex items-start">
                         <i class="fas fa-info-circle mt-1 mr-3"></i>
-                        <div>
+                        <div class="text-gray-800 dark:text-gray-100">
                             {% trans "This information helps us provide better service and ensure your safety during tours." %}
                         </div>
                     </div>

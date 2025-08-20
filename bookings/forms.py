@@ -1,147 +1,134 @@
+# forms.py (Tailwind-ready)
 from django import forms
 from django.forms import inlineformset_factory
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Layout, Row, Column, Submit, HTML
-from .models import Booking, BookingParticipant, BookingPayment
+from .models import Booking, BookingParticipant
 
-class BookingForm(forms.ModelForm):
-    """Form for creating bookings."""
-    
+# common Tailwind classes for inputs
+BASE_INPUT_CLASSES = (
+    "w-full px-3 py-2 border border-gray-300 rounded-md "
+    "focus:outline-none focus:ring-2 focus:ring-[#C18D45]"
+)
+
+BASE_TEXTAREA_CLASSES = (
+    "w-full px-3 py-2 border border-gray-300 rounded-md "
+    "focus:outline-none focus:ring-2 focus:ring-[#C18D45] resize-none"
+)
+
+BASE_SELECT_CLASSES = BASE_INPUT_CLASSES
+
+class QuickBookingForm(forms.ModelForm):
+    """
+    Minimal booking form for fast bookings.
+    Contact name/email are prefilled from request.user in the view.
+    """
     class Meta:
         model = Booking
         fields = [
-            'tour_availability', 'number_of_participants', 'accommodation_type',
-            'special_requirements', 'dietary_requirements'
+            'tour_availability',
+            'number_of_participants',
+            'accommodation_type',
+            'contact_phone',
+            # special_requirements removed from strict requirement; keep short if needed
         ]
         widgets = {
-            'special_requirements': forms.Textarea(attrs={
-                'rows': 3,
-                'class': 'w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#C18D45]',
-                'autofocus': False
+            'tour_availability': forms.Select(attrs={
+                'class': BASE_SELECT_CLASSES,
             }),
-            'dietary_requirements': forms.Textarea(attrs={
-                'rows': 3,
-                'class': 'w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#C18D45]',
-                'autofocus': False
+            'number_of_participants': forms.NumberInput(attrs={
+                'min': 1,
+                'class': BASE_INPUT_CLASSES,
+            }),
+            'accommodation_type': forms.Select(attrs={
+                'class': BASE_SELECT_CLASSES,
+            }),
+            'contact_phone': forms.TextInput(attrs={
+                'placeholder': '+2557...',
+                'class': BASE_INPUT_CLASSES,
             }),
         }
-    
+
     def __init__(self, *args, **kwargs):
-        tour_package = kwargs.pop('tour_package', None)
         super().__init__(*args, **kwargs)
-        
-        if tour_package:
-            self.fields['tour_availability'].queryset = tour_package.availability.filter(
-                is_available=True,
-                available_spots__gt=0
-            )
-        
+
+        # Ensure no widget has autofocus enabled
+        for f in self.fields.values():
+            if 'autofocus' in f.widget.attrs:
+                f.widget.attrs.pop('autofocus', None)
+
+        # Ensure Tailwind classes exist for all fields (merge if template/field already set classes)
+        for name, field in self.fields.items():
+            default = BASE_INPUT_CLASSES
+            if isinstance(field.widget, forms.Textarea):
+                default = BASE_TEXTAREA_CLASSES
+            if isinstance(field.widget, (forms.Select, forms.NullBooleanSelect,
+                                         forms.SelectMultiple)):
+                default = BASE_SELECT_CLASSES
+
+            existing = field.widget.attrs.get('class', '')
+            # avoid duplicating classes
+            classes = (existing + ' ' + default).strip() if existing else default
+            field.widget.attrs['class'] = classes
+
+            # make sure autofocus is not present
+            field.widget.attrs['autofocus'] = False
+
+        # Simple Crispy layout for compact UI using Tailwind utility classes
         self.helper = FormHelper()
+        self.helper.form_tag = False  # we will render the form tag in template
         self.helper.layout = Layout(
             Row(
-                Column('tour_availability', css_class='w-full md:w-1/2 px-2 mb-4'),
-                Column('number_of_participants', css_class='w-full md:w-1/2 px-2 mb-4'),
+                Column('tour_availability', css_class='w-full md:w-1/2 px-2 mb-2'),
+                Column('number_of_participants', css_class='w-full md:w-1/2 px-2 mb-2'),
                 css_class='flex flex-wrap -mx-2'
             ),
             Row(
-                Column('accommodation_type', css_class='w-full px-2 mb-4'),
+                Column('accommodation_type', css_class='w-full md:w-1/2 px-2 mb-2'),
+                Column('contact_phone', css_class='w-full md:w-1/2 px-2 mb-2'),
             ),
-            Row(
-                Column('special_requirements', css_class='w-full px-2 mb-4'),
-            ),
-            Row(
-                Column('dietary_requirements', css_class='w-full px-2 mb-4'),
-            ),
-            Submit('submit', 'Submit Booking Request', css_class='w-full bg-[#C18D45] hover:bg-[#a5793a] text-white font-bold py-3 px-4 rounded-md shadow-md transition duration-300 cursor-pointer')
         )
-        
-        # Add Tailwind classes to all fields
-        for field_name, field in self.fields.items():
-            base_classes = 'w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#C18D45]'
-            if field.widget.attrs.get('class'):
-                field.widget.attrs['class'] += ' ' + base_classes
-            else:
-                field.widget.attrs['class'] = base_classes
-            
-            # Remove autofocus
-            if 'autofocus' in field.widget.attrs:
-                field.widget.attrs.pop('autofocus')
-            field.widget.attrs['autofocus'] = False
 
-class BookingParticipantForm(forms.ModelForm):
-    """Form for booking participants."""
-    
+
+class SimpleParticipantForm(forms.ModelForm):
+    """Only first_name, last_name and optional date_of_birth for speed."""
     class Meta:
         model = BookingParticipant
-        fields = [
-            'first_name', 'last_name', 'date_of_birth', 'nationality',
-            'passport_number', 'dietary_requirements', 'medical_conditions'
-        ]
+        fields = ['first_name', 'last_name', 'date_of_birth']
         widgets = {
+            'first_name': forms.TextInput(attrs={'class': BASE_INPUT_CLASSES}),
+            'last_name': forms.TextInput(attrs={'class': BASE_INPUT_CLASSES}),
             'date_of_birth': forms.DateInput(attrs={
                 'type': 'date',
-                'class': 'w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#C18D45]',
-                'autofocus': False
-            }),
-            'dietary_requirements': forms.Textarea(attrs={
-                'rows': 2,
-                'class': 'w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#C18D45]',
-                'autofocus': False
-            }),
-            'medical_conditions': forms.Textarea(attrs={
-                'rows': 2,
-                'class': 'w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#C18D45]',
-                'autofocus': False
+                'class': BASE_INPUT_CLASSES,
             }),
         }
-    
+
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        # Add Tailwind classes to all fields
+
+        # Add Tailwind classes to all fields, merging with any existing classes
         for field_name, field in self.fields.items():
-            base_classes = 'w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#C18D45]'
-            if field.widget.attrs.get('class'):
-                field.widget.attrs['class'] += ' ' + base_classes
-            else:
-                field.widget.attrs['class'] = base_classes
-            
-            # Remove autofocus
+            existing = field.widget.attrs.get('class', '')
+            default = BASE_INPUT_CLASSES
+            if isinstance(field.widget, forms.Textarea):
+                default = BASE_TEXTAREA_CLASSES
+            classes = (existing + ' ' + default).strip() if existing else default
+            field.widget.attrs['class'] = classes
+
+            # Remove autofocus if present
             if 'autofocus' in field.widget.attrs:
                 field.widget.attrs.pop('autofocus')
             field.widget.attrs['autofocus'] = False
 
-# Create formset for participants
-BookingParticipantFormSet = inlineformset_factory(
+
+# Participant formset: optional (extra 0 default)
+SimpleParticipantFormSet = inlineformset_factory(
     Booking,
     BookingParticipant,
-    form=BookingParticipantForm,
-    extra=1,
+    form=SimpleParticipantForm,
+    extra=0,
     can_delete=True,
-    min_num=1,
-    validate_min=True
+    min_num=0,
+    validate_min=False
 )
-
-class PaymentForm(forms.ModelForm):
-    """Form for processing payments."""
-    
-    class Meta:
-        model = BookingPayment
-        fields = ['payment_method']
-    
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        self.helper = FormHelper()
-        self.helper.layout = Layout(
-            'payment_method',
-            HTML('<div class="mt-4 p-4 bg-green-100 border border-green-300 rounded-md text-green-700">'
-                 '<strong>Note:</strong> This is a demo payment system. '
-                 'No actual charges will be made.'
-                 '</div>'),
-            Submit('submit', 'Process Payment', css_class='w-full mt-4 bg-[#C18D45] hover:bg-[#a5793a] text-white font-bold py-3 px-4 rounded-md shadow-md transition duration-300 cursor-pointer')
-        )
-        
-        # Add Tailwind classes to payment method field
-        self.fields['payment_method'].widget.attrs.update({
-            'class': 'w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#C18D45]',
-            'autofocus': False
-        })

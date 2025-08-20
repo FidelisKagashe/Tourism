@@ -1,31 +1,50 @@
 {% extends 'base/base.html' %}
 
-{% block title %}Welcome to Tanzania Safari Adventures - Discover Wildlife & National Parks{% endblock %}
+{% block title %}Welcome to {{ site_settings.site_name|default:"Safari & Bush Retreats" }} - Discover Wildlife & National Parks{% endblock %}
 
 {% block extra_css %}
 <style>
     /* (kept your custom CSS for hero, cards, animations, etc.) */
     :root {
-        --primary-color: #c18d45;
-        --secondary-color: #715f3c;
+        /* light theme values (match Tailwind config in base.html) */
+        --primary-color: #C18D45;
+        --primary-rgb: 193,141,69;
+        --primary-dark-color: #E4B366; /* fallback reference */
+        --secondary-color: #715F3C;
+        --secondary-rgb: 113,95,60;
         --card-bg: #ffffff;
         --bg-body: #f8fafc;
         --light-color: #ffffff;
         --text-white: #ffffff;
-        --accent-color: #ffd89b;
+        --text-primary: #111827; /* gray-900 */
+        --accent-color: #FFD89B;
         --border-color: rgba(0,0,0,0.06);
+    }
+
+    /* dark theme overrides (activated when .dark is present on <html>) */
+    .dark :root,
+    :root.dark {
+        --primary-color: #E4B366;
+        --primary-rgb: 228,179,102;
+        --secondary-color: #B8986F;
+        --secondary-rgb: 184,152,111;
+        --card-bg: #374151;       /* gray-700 */
+        --bg-body: #0f172a;       /* gray-900 */
+        --light-color: #111827;   /* gray-900 */
+        --text-primary: #f3f4f6;  /* gray-100 */
+        --border-color: rgba(255,255,255,0.06);
     }
 
     /* Enhanced Hero Section */
     .hero-section {
-        background: linear-gradient(135deg, rgba(0,0,0,0.5), rgba(193,141,69,0.3)), url('https://images.pexels.com/photos/631317/pexels-photo-631317.jpeg');
+        background: linear-gradient(135deg, rgba(0,0,0,0.5), rgba(var(--primary-rgb),0.3)), url('https://images.pexels.com/photos/631317/pexels-photo-631317.jpeg');
         background-size: cover;
         background-position: center;
         background-attachment: fixed;
         min-height: 80vh;
         display: flex;
         align-items: center;
-        color: white;
+        color: var(--text-white);
         position: relative;
         overflow: hidden;
     }
@@ -37,7 +56,7 @@
         left: 0;
         right: 0;
         bottom: 0;
-        background: linear-gradient(45deg, rgba(193,141,69,0.1), rgba(113,95,60,0.1));
+        background: linear-gradient(45deg, rgba(var(--primary-rgb),0.08), rgba(var(--secondary-rgb),0.08));
         animation: heroOverlay 20s ease-in-out infinite;
     }
 
@@ -107,7 +126,7 @@
         left: -100%;
         width: 100%;
         height: 100%;
-        background: linear-gradient(90deg, transparent, rgba(193,141,69,0.1), transparent);
+        background: linear-gradient(90deg, transparent, rgba(var(--primary-rgb),0.1), transparent);
         transition: left 0.6s ease;
     }
 
@@ -187,12 +206,13 @@
         position: absolute;
         top: 15px;
         right: 15px;
-        background: rgba(193,141,69,0.9);
+        background: rgba(var(--primary-rgb),0.9);
         backdrop-filter: blur(10px);
         border: none;
         padding: 0.5rem 1rem;
         border-radius: 25px;
         font-weight: 500;
+        color: var(--text-white);
     }
 
     /* Tour, review, newsletter styles kept (unchanged) */
@@ -213,7 +233,7 @@
         left: 0;
         right: 0;
         bottom: 0;
-        background: linear-gradient(135deg, rgba(193,141,69,0.05), rgba(113,95,60,0.05));
+        background: linear-gradient(135deg, rgba(var(--primary-rgb),0.05), rgba(var(--secondary-rgb),0.05));
         opacity: 0;
         transition: opacity 0.3s ease;
         pointer-events: none;
@@ -293,7 +313,7 @@
                 <h1 class="text-3xl md:text-5xl font-extrabold leading-tight mb-4">Discover the Magic of Tanzania</h1>
                 <p class="text-lg md:text-xl text-gray-100 mb-6">Experience breathtaking wildlife, stunning landscapes, and rich culture with our expertly guided safari tours across Tanzania's most spectacular national parks.</p>
                 <div class="flex flex-wrap gap-3">
-                    <a href="{% url 'tours:tour_list' %}" class="inline-flex items-center px-6 py-3 rounded-full bg-amber-600 text-white font-semibold btn-enhanced shadow hover:shadow-lg transition">
+                    <a href="{% url 'tours:tour_list' %}" class="inline-flex items-center px-6 py-3 rounded-full bg-primary dark:bg-primary-dark text-white font-semibold btn-enhanced shadow hover:shadow-lg transition">
                         <i class="fas fa-binoculars mr-2"></i>Explore Tours
                     </a>
                     <a href="{% url 'parks:park_list' %}" class="inline-flex items-center px-6 py-3 rounded-full bg-white/20 text-white font-semibold border border-white/30 btn-enhanced hover:bg-white/30 transition">
@@ -310,27 +330,27 @@
     <div class="container max-w-7xl mx-auto px-4">
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 text-center">
             <div class="stats-card fade-in">
-                <i class="fas fa-mountain text-4xl text-amber-600 mb-3"></i>
+                <i class="fas fa-mountain text-4xl" style="color:var(--primary-color); margin-bottom:0.75rem;"></i>
                 <h3 class="text-3xl font-bold">{{ stats.total_parks }}+</h3>
-                <p class="text-sm text-gray-500">National Parks</p>
+                <p class="text-sm" style="color:var(--text-primary);">National Parks</p>
             </div>
 
             <div class="stats-card fade-in">
-                <i class="fas fa-route text-4xl text-amber-600 mb-3"></i>
+                <i class="fas fa-route text-4xl" style="color:var(--primary-color); margin-bottom:0.75rem;"></i>
                 <h3 class="text-3xl font-bold">{{ stats.total_tours }}+</h3>
-                <p class="text-sm text-gray-500">Safari Tours</p>
+                <p class="text-sm" style="color:var(--text-primary);">Safari Tours</p>
             </div>
 
             <div class="stats-card fade-in">
-                <i class="fas fa-users text-4xl text-amber-600 mb-3"></i>
+                <i class="fas fa-users text-4xl" style="color:var(--primary-color); margin-bottom:0.75rem;"></i>
                 <h3 class="text-3xl font-bold">5000+</h3>
-                <p class="text-sm text-gray-500">Happy Travelers</p>
+                <p class="text-sm" style="color:var(--text-primary);">Happy Travelers</p>
             </div>
 
             <div class="stats-card fade-in">
-                <i class="fas fa-star text-4xl text-amber-600 mb-3"></i>
+                <i class="fas fa-star text-4xl" style="color:var(--primary-color); margin-bottom:0.75rem;"></i>
                 <h3 class="text-3xl font-bold">{{ stats.average_rating|floatformat:1 }}</h3>
-                <p class="text-sm text-gray-500">Average Rating</p>
+                <p class="text-sm" style="color:var(--text-primary);">Average Rating</p>
             </div>
         </div>
     </div>
@@ -350,19 +370,19 @@
                 <div class="relative">
                     <img src="{% if park.main_image %}{{ park.main_image.url }}{% else %}https://images.pexels.com/photos/631317/pexels-photo-631317.jpeg{% endif %}" loading="lazy"
                          alt="{{ park.name }}" class="w-full h-64 object-cover">
-                    <span class="absolute top-4 right-4 inline-block bg-amber-600 text-white text-sm font-medium px-3 py-1 rounded-full">
+                    <span class="absolute top-4 right-4 inline-block" style="background:var(--primary-color); color:var(--text-white); font-size:.875rem; padding:.25rem .75rem; border-radius:9999px;">
                         {{ park.get_park_type_display }}
                     </span>
                 </div>
                 <div class="p-6 flex flex-col h-full">
                     <h5 class="text-lg font-bold">{{ park.name }}</h5>
-                    <p class="text-sm text-gray-500 mt-2">
-                        <i class="fas fa-map-marker-alt mr-1"></i>{{ park.location }}, {{ park.region }}
+                    <p class="text-sm" style="color:var(--text-primary); margin-top:.5rem;">
+                        <i class="fas fa-map-marker-alt mr-1" style="color:var(--primary-color)"></i>{{ park.location }}, {{ park.region }}
                     </p>
-                    <p class="text-gray-700 mt-3 flex-grow">{{ park.short_description }}</p>
+                    <p class="text-gray-700 mt-3 flex-grow" style="color:var(--text-primary)">{{ park.short_description }}</p>
                     <div class="flex items-center justify-between mt-4">
-                        <small class="text-sm text-gray-500 font-semibold">{{ park.area_km2|floatformat:0 }} km²</small>
-                        <a href="{% url 'parks:park_detail' park.slug %}" class="inline-flex items-center px-4 py-2 rounded-full bg-amber-600 text-white text-sm font-medium btn-enhanced">
+                        <small class="text-sm" style="color:var(--text-primary); font-weight:600;">{{ park.area_km2|floatformat:0 }} km²</small>
+                        <a href="{% url 'parks:park_detail' park.slug %}" class="inline-flex items-center px-4 py-2 rounded-full" style="background:var(--primary-color); color:var(--text-white); font-size:.875rem;">
                             Explore Park
                         </a>
                     </div>
@@ -378,7 +398,7 @@
         </div>
 
         <div class="text-center mt-8">
-            <a href="{% url 'parks:park_list' %}" class="inline-flex items-center px-6 py-3 rounded-full border border-amber-600 text-amber-600 btn-enhanced">
+            <a href="{% url 'parks:park_list' %}" class="inline-flex items-center px-6 py-3 rounded-full" style="border:1px solid var(--primary-color); color:var(--primary-color);">
                 View All Parks <i class="fas fa-arrow-right ml-2"></i>
             </a>
         </div>
@@ -403,18 +423,18 @@
                     </div>
                     <div class="md:w-1/2 p-6 flex flex-col">
                         <div class="flex justify-between items-start mb-3">
-                            <span class="inline-block bg-gray-200 text-gray-700 px-3 py-1 rounded-full text-sm">{{ tour.get_category_display }}</span>
-                            <span class="inline-block bg-amber-600 text-white px-3 py-1 rounded-full text-sm">{{ tour.get_difficulty_level_display }}</span>
+                            <span class="inline-block" style="background:var(--card-bg); color:var(--text-primary); padding:.25rem .75rem; border-radius:9999px; font-size:.875rem;">{{ tour.get_category_display }}</span>
+                            <span class="inline-block" style="background:var(--primary-color); color:var(--text-white); padding:.25rem .75rem; border-radius:9999px; font-size:.875rem;">{{ tour.get_difficulty_level_display }}</span>
                         </div>
 
                         <h3 class="text-xl font-bold mb-2">{{ tour.title }}</h3>
 
-                        <p class="text-sm text-gray-500 mb-3">
+                        <p class="text-sm" style="color:var(--text-primary); margin-bottom:.75rem;">
                             <i class="fas fa-clock mr-2"></i>{{ tour.get_duration_display }}
                             <span class="ml-4"><i class="fas fa-users mr-2"></i>{{ tour.min_participants }}-{{ tour.max_participants }} people</span>
                         </p>
 
-                        <p class="text-gray-700 flex-grow mb-4">{{ tour.short_description|truncatewords:15 }}</p>
+                        <p class="text-gray-700 flex-grow mb-4" style="color:var(--text-primary);">{{ tour.short_description|truncatewords:15 }}</p>
 
                         <div class="flex items-center justify-between mt-auto">
                             <div class="star-rating flex items-center">
@@ -427,10 +447,10 @@
                                         {% endif %}
                                     {% endfor %}
                                 {% endwith %}
-                                <small class="text-gray-500 ml-2">({{ tour.total_reviews }} reviews)</small>
+                                <small class="text-gray-500 ml-2" style="color:var(--text-primary);">({{ tour.total_reviews }} reviews)</small>
                             </div>
 
-                            <a href="{% url 'tours:tour_detail' tour.slug %}" class="inline-flex items-center px-4 py-2 rounded-full bg-amber-600 text-white btn-enhanced">
+                            <a href="{% url 'tours:tour_detail' tour.slug %}" class="inline-flex items-center px-4 py-2 rounded-full" style="background:var(--primary-color); color:var(--text-white);">
                                 View Details <i class="fas fa-arrow-right ml-2"></i>
                             </a>
                         </div>
@@ -447,7 +467,7 @@
         </div>
 
         <div class="text-center mt-8">
-            <a href="{% url 'tours:tour_list' %}" class="inline-flex items-center px-6 py-3 rounded-full border border-amber-600 text-amber-600 btn-enhanced">
+            <a href="{% url 'tours:tour_list' %}" class="inline-flex items-center px-6 py-3 rounded-full" style="border:1px solid var(--primary-color); color:var(--primary-color);">
                 View All Tours <i class="fas fa-arrow-right ml-2"></i>
             </a>
         </div>
@@ -456,86 +476,102 @@
 
 <!-- Enhanced Recent Reviews -->
 <section class="py-12">
-    <div class="container max-w-7xl mx-auto px-4">
-        <div class="text-center mb-10">
-            <h2 class="section-title text-2xl md:text-3xl">What Our Travelers Say</h2>
-            <p class="text-gray-500">Real experiences from real adventurers</p>
-        </div>
-
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {% for review in recent_reviews %}
-            <div class="review-card fade-in p-6 flex flex-col">
-                <div class="flex items-center mb-4">
-                    <div class="review-avatar flex-shrink-0">
-                        <i class="fas fa-user"></i>
-                    </div>
-                    <div class="flex-1 ml-3">
-                        <h6 class="font-bold">{{ review.user.get_display_name }}</h6>
-                        <div class="star-rating">
-                            {% for i in "12345" %}
-                                {% if forloop.counter <= review.rating %}
-                                    <i class="fas fa-star mr-1"></i>
-                                {% else %}
-                                    <i class="far fa-star mr-1"></i>
-                                {% endif %}
-                            {% endfor %}
-                        </div>
-                    </div>
-                </div>
-
-                <h6 class="font-semibold mb-3">{{ review.title }}</h6>
-                <p class="text-gray-700 mb-4">{{ review.content|truncatewords:20 }}</p>
-
-                <div class="mt-auto">
-                    <small class="text-gray-500 font-semibold">
-                        <i class="fas fa-map-marker-alt mr-1"></i>
-                        {% if review.tour_package %}
-                            {{ review.tour_package.title }}
-                        {% elif review.national_park %}
-                            {{ review.national_park.name }}
-                        {% endif %}
-                    </small>
-                </div>
-            </div>
-            {% empty %}
-            <div class="col-span-3 text-center">
-                <div class="p-6 bg-blue-50 rounded-md">
-                    <i class="fas fa-info-circle mr-2"></i>No reviews available yet. Be the first to share your experience!
-                </div>
-            </div>
-            {% endfor %}
-        </div>
-
-        <div class="text-center mt-8">
-            <a href="{% url 'reviews:review_list' %}" class="inline-flex items-center px-6 py-3 rounded-full border border-amber-600 text-amber-600 btn-enhanced">
-                Read All Reviews <i class="fas fa-arrow-right ml-2"></i>
-            </a>
-        </div>
+  <div class="container max-w-7xl mx-auto px-4">
+    <div class="text-center mb-10">
+      <h2 class="section-title text-2xl md:text-3xl text-gray-900 dark:text-gray-100">What Our Travelers Say</h2>
+      <p class="text-gray-500 dark:text-gray-400">Real experiences from real adventurers</p>
     </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      {% for review in recent_reviews %}
+      <div class="review-card p-6 flex flex-col bg-white dark:bg-gray-800 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-200">
+        <div class="flex items-center mb-4">
+          <div class="review-avatar flex-shrink-0 w-12 h-12 rounded-full bg-gray-100 dark:bg-gray-700 flex items-center justify-center">
+            <i class="fas fa-user text-gray-500 dark:text-gray-200" aria-hidden="true"></i>
+          </div>
+          <div class="flex-1 ml-3">
+            <h6 class="font-bold text-gray-900 dark:text-gray-100">{{ review.user.get_display_name }}</h6>
+            <div class="star-rating mt-1" aria-hidden="true">
+              {% for i in "12345" %}
+                {% if forloop.counter <= review.rating %}
+                  <i class="fas fa-star mr-1 text-yellow-400 dark:text-yellow-300"></i>
+                {% else %}
+                  <i class="far fa-star mr-1 text-yellow-400/60 dark:text-yellow-300/60"></i>
+                {% endif %}
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+
+        <h6 class="font-semibold mb-3 text-gray-800 dark:text-gray-100">{{ review.title }}</h6>
+        <p class="text-gray-700 dark:text-gray-300 mb-4">{{ review.content|truncatewords:20 }}</p>
+
+        <div class="mt-auto">
+          <small class="text-gray-500 dark:text-gray-400 font-semibold flex items-center">
+            <i class="fas fa-map-marker-alt mr-1 text-gray-500 dark:text-gray-400" aria-hidden="true"></i>
+            {% if review.tour_package %}
+              {{ review.tour_package.title }}
+            {% elif review.national_park %}
+              {{ review.national_park.name }}
+            {% endif %}
+          </small>
+        </div>
+      </div>
+      {% empty %}
+      <div class="col-span-3 text-center">
+        <div class="p-6 bg-blue-50 dark:bg-blue-900 text-gray-700 dark:text-gray-100 rounded-md inline-block">
+          <i class="fas fa-info-circle mr-2" aria-hidden="true"></i>No reviews available yet. Be the first to share your experience!
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+
+    <div class="text-center mt-8">
+      <a href="{% url 'reviews:review_list' %}"
+         class="inline-flex items-center px-6 py-3 rounded-full border border-[#C18D45] text-[#C18D45] hover:bg-[#C18D45] hover:text-white transition-colors duration-200 dark:border-[#b7894a] dark:text-[#b7894a] dark:hover:bg-[#b7894a] dark:hover:text-white">
+        Read All Reviews <i class="fas fa-arrow-right ml-2" aria-hidden="true"></i>
+      </a>
+    </div>
+  </div>
 </section>
 
 <!-- Enhanced Newsletter Signup -->
-<section class="py-12 newsletter-section text-white">
-    <div class="container max-w-7xl mx-auto px-4">
-        <div class="md:flex md:items-center md:justify-between">
-            <div class="md:w-1/2 mb-6 md:mb-0 text-center md:text-left">
-                <h3 class="font-extrabold text-2xl md:text-3xl mb-2">Stay Updated with Our Adventures</h3>
-                <p class="text-sm md:text-base mb-0">Get the latest safari deals, travel tips, and wildlife updates delivered to your inbox.</p>
-            </div>
+<section class="py-12 newsletter-section bg-[#0f1724] text-white dark:bg-gray-900">
+  <div class="container max-w-7xl mx-auto px-4">
+    <div class="md:flex md:items-center md:justify-between">
+      <div class="md:w-1/2 mb-6 md:mb-0 text-center md:text-left">
+        <h3 class="font-extrabold text-2xl md:text-3xl mb-2 text-white dark:text-white">Stay Updated with Our Adventures</h3>
+        <p class="text-sm md:text-base mb-0 text-gray-100/90 dark:text-gray-300">
+          Get the latest safari deals, travel tips, and wildlife updates delivered to your inbox.
+        </p>
+      </div>
 
-            <div class="md:w-1/2">
-                <div class="newsletter-input-group flex items-center justify-center md:justify-end gap-3">
-                    <input type="email" id="newsletter-email" class="form-control rounded-full px-4 py-3 w-full md:w-80" placeholder="Enter your email address" aria-label="Email address" />
-                    <button id="newsletter-submit" class="inline-flex items-center rounded-full px-5 py-3 font-semibold shadow btn-enhanced" type="button" onclick="subscribeNewsletter()">
-                        <i class="fas fa-paper-plane mr-2"></i>Subscribe
-                    </button>
-                </div>
+      <div class="md:w-1/2">
+        <div class="newsletter-input-group flex items-center justify-center md:justify-end gap-3">
+          <input
+            type="email"
+            id="newsletter-email"
+            class="rounded-full px-4 py-3 w-full md:w-80 bg-white text-gray-900 placeholder-gray-500 border border-transparent focus:outline-none focus:ring-2 focus:ring-[#C18D45] focus:border-transparent dark:bg-gray-700 dark:text-gray-100 dark:placeholder-gray-400 dark:focus:ring-[#C18D45]/80 transition"
+            placeholder="Enter your email address"
+            aria-label="Email address"
+          />
 
-                <!-- screen-reader live status for announcements -->
-                <div id="newsletter-status" class="sr-only" role="status" aria-live="polite"></div>
-            </div>
+          <button
+            id="newsletter-submit"
+            class="inline-flex items-center rounded-full px-5 py-3 font-semibold shadow-md bg-[#C18D45] hover:bg-[#a6783a] text-white transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#C18D45]/60 dark:focus:ring-[#C18D45]/80"
+            type="button"
+            onclick="subscribeNewsletter()"
+          >
+            <i class="fas fa-paper-plane mr-2" aria-hidden="true"></i>
+            Subscribe
+          </button>
         </div>
+
+        <!-- screen-reader live status for announcements -->
+        <div id="newsletter-status" class="sr-only" role="status" aria-live="polite"></div>
+      </div>
     </div>
+  </div>
 </section>
 
 <script>

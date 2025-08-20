@@ -4,6 +4,86 @@
 {% block title %}{{ wildlife.common_name }} - {% trans "Wildlife" %} - Safari&nbsp;&amp;&nbsp;Bush Retreats{% endblock %}
 
 {% block content %}
+<!-- Scoped dark-mode overrides for this page ONLY when the global dark class is active -->
+<style>
+/* Apply overrides only when global theme is dark (html.dark) */
+html.dark .local-dark-mode { background-color: #071028; color: #e6eef8; }
+
+/* Card / background overrides */
+html.dark .local-dark-mode .bg-white { background-color: #0f1724; color: #e6eef8; }
+html.dark .local-dark-mode .bg-gray-50 { background-color: #071026; color: #cbd5e1; }
+html.dark .local-dark-mode .bg-gray-200 { background-color: #111827; color: #cbd5e1; }
+
+/* Blue info block */
+html.dark .local-dark-mode .bg-blue-50 { background-color: rgba(10,25,40,0.6); color: #bfe0ff; }
+html.dark .local-dark-mode .text-blue-800 { color: #9fd0ff; }
+
+/* Text color overrides */
+html.dark .local-dark-mode .text-gray-900,
+html.dark .local-dark-mode .text-gray-800,
+html.dark .local-dark-mode .text-gray-700,
+html.dark .local-dark-mode .text-gray-600,
+html.dark .local-dark-mode .text-gray-500,
+html.dark .local-dark-mode .text-gray-400 {
+    color: #cbd5e1;
+}
+
+/* Ensure headings are brighter */
+html.dark .local-dark-mode h1,
+html.dark .local-dark-mode h2,
+html.dark .local-dark-mode h3,
+html.dark .local-dark-mode h4,
+html.dark .local-dark-mode h5,
+html.dark .local-dark-mode h6 {
+    color: #e6eef8;
+}
+
+/* Prose */
+html.dark .local-dark-mode .prose,
+html.dark .local-dark-mode .prose p,
+html.dark .local-dark-mode p {
+    color: #cbd5e1;
+}
+
+/* Borders */
+html.dark .local-dark-mode .border,
+html.dark .local-dark-mode .border-gray-200,
+html.dark .local-dark-mode .border-gray-100 {
+    border-color: rgba(255,255,255,0.06);
+}
+
+/* Small text / meta */
+html.dark .local-dark-mode .text-sm,
+html.dark .local-dark-mode .text-xs {
+    color: #cbd5e1;
+}
+
+/* Links inside prose */
+html.dark .local-dark-mode .prose a,
+html.dark .local-dark-mode a {
+    color: #E4B366;
+}
+
+/* Status badges — keep their semantic colors but increase contrast on dark bg */
+html.dark .local-dark-mode .bg-green-100 { background-color: rgba(34,197,94,0.12); color: #9be6a1; }
+html.dark .local-dark-mode .bg-yellow-100 { background-color: rgba(250,204,21,0.10); color: #fde68a; }
+html.dark .local-dark-mode .bg-red-100 { background-color: rgba(239,68,68,0.10); color: #fda4a4; }
+html.dark .local-dark-mode .bg-gray-100 { background-color: rgba(148,163,184,0.06); color: #cbd5e1; }
+
+/* Card shadows slightly darkened */
+html.dark .local-dark-mode .shadow-md,
+html.dark .local-dark-mode .shadow-sm,
+html.dark .local-dark-mode .shadow-lg {
+    box-shadow: 0 6px 18px rgba(2,6,23,0.6);
+}
+
+/* Keep brand accents (#C18D45) and icon colors untouched for contrast/readability */
+
+/* Avoid using !important so global theme toggling works as expected */
+</style>
+
+<div class="local-dark-mode">
+
 <!-- Hero Section -->
 <section class="relative bg-cover bg-center" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('{% if wildlife.main_image %}{{ wildlife.main_image.url }}{% else %}https://images.pexels.com/photos/631317/pexels-photo-631317.jpeg{% endif %}'); min-height: 70vh;">
     <div class="container mx-auto px-4 flex items-center h-full">
@@ -223,4 +303,5 @@
         </div>
     </section>
 {% endif %}
+</div> {# end .local-dark-mode #}
 {% endblock %}

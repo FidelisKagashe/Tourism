@@ -21,9 +21,9 @@
         <div class="flex flex-col lg:flex-row gap-8">
             <!-- Contact Form -->
             <div class="lg:w-8/12">
-                <div class="bg-white rounded-xl shadow-md overflow-hidden">
+                <div class="bg-white dark:bg-gray-800 rounded-xl shadow-md overflow-hidden">
                     <div class="px-6 py-8 sm:p-10">
-                        <h3 class="text-2xl font-bold text-gray-900 mb-6">{% trans "Send us a Message" %}</h3>
+                        <h3 class="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-6">{% trans "Send us a Message" %}</h3>
                         {% crispy form %}
                     </div>
                 </div>
@@ -32,8 +32,8 @@
             <!-- Contact Information -->
             <div class="lg:w-4/12 space-y-6">
                 <!-- Contact Info Card -->
-                <div class="bg-white rounded-xl shadow-md p-6">
-                    <h3 class="text-xl font-bold text-gray-900 mb-4">{% trans "Contact Information" %}</h3>
+                <div class="bg-white dark:bg-gray-800 rounded-xl shadow-md p-6">
+                    <h3 class="text-xl font-bold text-gray-900 dark:text-gray-100 mb-4">{% trans "Contact Information" %}</h3>
                     
                     <div class="space-y-4">
                         <div class="flex">
@@ -43,8 +43,8 @@
                                 </div>
                             </div>
                             <div class="ml-4">
-                                <h4 class="font-medium text-gray-900">{% trans "Address" %}</h4>
-                                <p class="text-gray-600">Arusha, Tanzania<br>East Africa</p>
+                                <h4 class="font-medium text-gray-900 dark:text-gray-100">{% trans "Address" %}</h4>
+                                <p class="text-gray-600 dark:text-gray-300">Arusha, Tanzania<br>East Africa</p>
                             </div>
                         </div>
                         
@@ -55,8 +55,8 @@
                                 </div>
                             </div>
                             <div class="ml-4">
-                                <h4 class="font-medium text-gray-900">{% trans "Phone" %}</h4>
-                                <p class="text-gray-600">+255 123 456 789</p>
+                                <h4 class="font-medium text-gray-900 dark:text-gray-100">{% trans "Phone" %}</h4>
+                                <p class="text-gray-600 dark:text-gray-300">+255 123 456 789</p>
                             </div>
                         </div>
                         
@@ -67,8 +67,8 @@
                                 </div>
                             </div>
                             <div class="ml-4">
-                                <h4 class="font-medium text-gray-900">{% trans "Email" %}</h4>
-                                <p class="text-gray-600">info@tanzaniasafari.com</p>
+                                <h4 class="font-medium text-gray-900 dark:text-gray-100">{% trans "Email" %}</h4>
+                                <p class="text-gray-600 dark:text-gray-300">info@tanzaniasafari.com</p>
                             </div>
                         </div>
                         
@@ -79,8 +79,8 @@
                                 </div>
                             </div>
                             <div class="ml-4">
-                                <h4 class="font-medium text-gray-900">{% trans "Business Hours" %}</h4>
-                                <p class="text-gray-600">
+                                <h4 class="font-medium text-gray-900 dark:text-gray-100">{% trans "Business Hours" %}</h4>
+                                <p class="text-gray-600 dark:text-gray-300">
                                     {% trans "Mon - Fri: 8:00 AM - 6:00 PM" %}<br>
                                     {% trans "Sat: 9:00 AM - 4:00 PM" %}<br>
                                     {% trans "Sun: Closed" %}
@@ -91,20 +91,20 @@
                 </div>
                 
                 <!-- Emergency Contact Card -->
-                <div class="bg-white rounded-xl shadow-md p-6">
-                    <h3 class="text-xl font-bold text-gray-900 mb-4">{% trans "Emergency Contact" %}</h3>
-                    <div class="bg-yellow-50 border-l-4 border-yellow-400 p-4 mb-4">
+                <div class="bg-white dark:bg-gray-800 rounded-xl shadow-md p-6">
+                    <h3 class="text-xl font-bold text-gray-900 dark:text-gray-100 mb-4">{% trans "Emergency Contact" %}</h3>
+                    <div class="bg-yellow-50 dark:bg-yellow-900 border-l-4 border-yellow-400 dark:border-yellow-600 p-4 mb-4">
                         <div class="flex">
                             <div class="flex-shrink-0">
-                                <i class="fas fa-exclamation-triangle text-yellow-400"></i>
+                                <i class="fas fa-exclamation-triangle text-yellow-400 dark:text-yellow-300"></i>
                             </div>
                             <div class="ml-3">
-                                <p class="font-medium text-yellow-800">{% trans "24/7 Emergency Line" %}</p>
-                                <p class="text-yellow-700">+255 987 654 321</p>
+                                <p class="font-medium text-yellow-800 dark:text-yellow-200">{% trans "24/7 Emergency Line" %}</p>
+                                <p class="text-yellow-700 dark:text-yellow-300">+255 987 654 321</p>
                             </div>
                         </div>
                     </div>
-                    <p class="text-gray-600 text-sm">{% trans "For emergencies during your safari, please call our 24/7 emergency line." %}</p>
+                    <p class="text-gray-600 dark:text-gray-300 text-sm">{% trans "For emergencies during your safari, please call our 24/7 emergency line." %}</p>
                 </div>
             </div>
         </div>
@@ -112,78 +112,78 @@
 </section>
 
 <!-- FAQ Section -->
-<section class="py-12 bg-gray-50">
+<section class="py-12 bg-gray-50 dark:bg-gray-900">
     <div class="container mx-auto px-4">
         <div class="text-center mb-12">
-            <h2 class="text-3xl font-bold text-gray-900 mb-4">{% trans "Frequently Asked Questions" %}</h2>
+            <h2 class="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-4">{% trans "Frequently Asked Questions" %}</h2>
             <div class="w-24 h-1 bg-[#C18D45] mx-auto"></div>
         </div>
         
         <div class="max-w-4xl mx-auto">
             <div class="space-y-4">
                 <!-- FAQ Item 1 -->
-                <details class="group bg-white rounded-xl shadow-md overflow-hidden" open>
+                <details class="group bg-white dark:bg-gray-800 rounded-xl shadow-md overflow-hidden" open>
                     <summary class="list-none cursor-pointer">
                         <div class="flex justify-between items-center px-6 py-4">
-                            <h3 class="text-lg font-medium text-gray-900">{% trans "What is the best time to visit Tanzania?" %}</h3>
+                            <h3 class="text-lg font-medium text-gray-900 dark:text-gray-100">{% trans "What is the best time to visit Tanzania?" %}</h3>
                             <div class="transform group-open:rotate-180 transition-transform">
                                 <i class="fas fa-chevron-down text-[#C18D45]"></i>
                             </div>
                         </div>
                     </summary>
-                    <div class="px-6 pb-4 pt-2 border-t border-gray-200">
-                        <p class="text-gray-600">
+                    <div class="px-6 pb-4 pt-2 border-t border-gray-200 dark:border-gray-700">
+                        <p class="text-gray-600 dark:text-gray-300">
                             {% trans "The best time to visit Tanzania depends on what you want to see. For the Great Migration, visit from June to October. For fewer crowds and green landscapes, visit during the short rains (November-December) or long rains (March-May)." %}
                         </p>
                     </div>
                 </details>
                 
                 <!-- FAQ Item 2 -->
-                <details class="group bg-white rounded-xl shadow-md overflow-hidden">
+                <details class="group bg-white dark:bg-gray-800 rounded-xl shadow-md overflow-hidden">
                     <summary class="list-none cursor-pointer">
                         <div class="flex justify-between items-center px-6 py-4">
-                            <h3 class="text-lg font-medium text-gray-900">{% trans "Do I need a visa to visit Tanzania?" %}</h3>
+                            <h3 class="text-lg font-medium text-gray-900 dark:text-gray-100">{% trans "Do I need a visa to visit Tanzania?" %}</h3>
                             <div class="transform group-open:rotate-180 transition-transform">
                                 <i class="fas fa-chevron-down text-[#C18D45]"></i>
                             </div>
                         </div>
                     </summary>
-                    <div class="px-6 pb-4 pt-2 border-t border-gray-200">
-                        <p class="text-gray-600">
+                    <div class="px-6 pb-4 pt-2 border-t border-gray-200 dark:border-gray-700">
+                        <p class="text-gray-600 dark:text-gray-300">
                             {% trans "Most visitors need a visa to enter Tanzania. You can obtain a visa on arrival at the airport or apply online in advance. US citizens pay $100, while most other nationalities pay $50." %}
                         </p>
                     </div>
                 </details>
                 
                 <!-- FAQ Item 3 -->
-                <details class="group bg-white rounded-xl shadow-md overflow-hidden">
+                <details class="group bg-white dark:bg-gray-800 rounded-xl shadow-md overflow-hidden">
                     <summary class="list-none cursor-pointer">
                         <div class="flex justify-between items-center px-6 py-4">
-                            <h3 class="text-lg font-medium text-gray-900">{% trans "What vaccinations do I need?" %}</h3>
+                            <h3 class="text-lg font-medium text-gray-900 dark:text-gray-100">{% trans "What vaccinations do I need?" %}</h3>
                             <div class="transform group-open:rotate-180 transition-transform">
                                 <i class="fas fa-chevron-down text-[#C18D45]"></i>
                             </div>
                         </div>
                     </summary>
-                    <div class="px-6 pb-4 pt-2 border-t border-gray-200">
-                        <p class="text-gray-600">
+                    <div class="px-6 pb-4 pt-2 border-t border-gray-200 dark:border-gray-700">
+                        <p class="text-gray-600 dark:text-gray-300">
                             {% trans "Yellow fever vaccination is required if coming from a yellow fever endemic area. We recommend consulting with a travel medicine specialist for malaria prophylaxis and other recommended vaccinations." %}
                         </p>
                     </div>
                 </details>
                 
                 <!-- FAQ Item 4 -->
-                <details class="group bg-white rounded-xl shadow-md overflow-hidden">
+                <details class="group bg-white dark:bg-gray-800 rounded-xl shadow-md overflow-hidden">
                     <summary class="list-none cursor-pointer">
                         <div class="flex justify-between items-center px-6 py-4">
-                            <h3 class="text-lg font-medium text-gray-900">{% trans "What should I pack for a safari?" %}</h3>
+                            <h3 class="text-lg font-medium text-gray-900 dark:text-gray-100">{% trans "What should I pack for a safari?" %}</h3>
                             <div class="transform group-open:rotate-180 transition-transform">
                                 <i class="fas fa-chevron-down text-[#C18D45]"></i>
                             </div>
                         </div>
                     </summary>
-                    <div class="px-6 pb-4 pt-2 border-t border-gray-200">
-                        <p class="text-gray-600">
+                    <div class="px-6 pb-4 pt-2 border-t border-gray-200 dark:border-gray-700">
+                        <p class="text-gray-600 dark:text-gray-300">
                             {% trans "Pack neutral-colored clothing, a hat, sunglasses, sunscreen, insect repellent, comfortable walking shoes, and a good camera with extra batteries. We'll provide a detailed packing list upon booking." %}
                         </p>
                     </div>

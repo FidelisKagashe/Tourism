@@ -4,31 +4,54 @@
 {% block title %}{% trans "Privacy Policy" %} - Safari&nbsp;&amp;&nbsp;Bush Retreats{% endblock %}
 
 {% block content %}
-<div class="container py-5">
-    <div class="row">
-        <div class="col-lg-8 mx-auto">
-            <h1 class="mb-4">{% trans "Privacy Policy" %}</h1>
-            <p class="text-muted mb-4">{% trans "Last updated: January 2024" %}</p>
-            
-            <div class="card border-0 shadow">
-                <div class="card-body p-5">
-                    <h3>{% trans "Information We Collect" %}</h3>
-                    <p>{% trans "We collect information you provide directly to us, such as when you create an account, make a booking, or contact us." %}</p>
-                    
-                    <h3>{% trans "How We Use Your Information" %}</h3>
-                    <p>{% trans "We use the information we collect to provide, maintain, and improve our services, process bookings, and communicate with you." %}</p>
-                    
-                    <h3>{% trans "Information Sharing" %}</h3>
-                    <p>{% trans "We do not sell, trade, or otherwise transfer your personal information to third parties without your consent, except as described in this policy." %}</p>
-                    
-                    <h3>{% trans "Data Security" %}</h3>
-                    <p>{% trans "We implement appropriate security measures to protect your personal information against unauthorized access, alteration, disclosure, or destruction." %}</p>
-                    
-                    <h3>{% trans "Contact Us" %}</h3>
-                    <p>{% trans "If you have any questions about this Privacy Policy, please contact us at privacy@tanzaniasafari.com" %}</p>
-                </div>
-            </div>
-        </div>
-    </div>
+<div class="container mx-auto px-4 py-12">
+  <div class="max-w-3xl mx-auto">
+    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-gray-100 mb-2">
+      {% trans "Privacy Policy" %}
+    </h1>
+    <p class="text-sm text-gray-600 dark:text-gray-400 mb-6">
+      {% trans "Last updated: January 2024" %}
+    </p>
+
+    <article class="bg-white dark:bg-gray-800 rounded-lg shadow-md border border-gray-200 dark:border-gray-700">
+      <div class="p-6 md:p-8 prose max-w-none prose-lg text-gray-700 dark:prose-invert dark:text-gray-300">
+        <section>
+          <h3 class="text-lg font-semibold text-gray-900 dark:text-gray-100">{% trans "Information We Collect" %}</h3>
+          <p>
+            {% trans "We collect information you provide directly to us, such as when you create an account, make a booking, or contact us." %}
+          </p>
+        </section>
+
+        <section>
+          <h3 class="text-lg font-semibold text-gray-900 dark:text-gray-100">{% trans "How We Use Your Information" %}</h3>
+          <p>
+            {% trans "We use the information we collect to provide, maintain, and improve our services, process bookings, and communicate with you." %}
+          </p>
+        </section>
+
+        <section>
+          <h3 class="text-lg font-semibold text-gray-900 dark:text-gray-100">{% trans "Information Sharing" %}</h3>
+          <p>
+            {% trans "We do not sell, trade, or otherwise transfer your personal information to third parties without your consent, except as described in this policy." %}
+          </p>
+        </section>
+
+        <section>
+          <h3 class="text-lg font-semibold text-gray-900 dark:text-gray-100">{% trans "Data Security" %}</h3>
+          <p>
+            {% trans "We implement appropriate security measures to protect your personal information against unauthorized access, alteration, disclosure, or destruction." %}
+          </p>
+        </section>
+
+        <section>
+          <h3 class="text-lg font-semibold text-gray-900 dark:text-gray-100">{% trans "Contact Us" %}</h3>
+          <p>
+            {% trans "If you have any questions about this Privacy Policy, please contact us at" %}
+            <a href="mailto:privacy@tanzaniasafari.com" class="text-[#C18D45] hover:underline">privacy@tanzaniasafari.com</a>
+          </p>
+        </section>
+      </div>
+    </article>
+  </div>
 </div>
 {% endblock %}

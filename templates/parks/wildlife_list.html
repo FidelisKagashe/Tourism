@@ -4,149 +4,163 @@
 {% block title %}{% trans "Wildlife" %} - Safari&nbsp;&amp;&nbsp;Bush Retreats{% endblock %}
 
 {% block content %}
-<!-- Hero Section -->
-<section class="relative bg-cover bg-center" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.pexels.com/photos/631317/pexels-photo-631317.jpeg'); min-height: 50vh;">
-    <div class="container mx-auto px-4 py-24 relative z-10">
-        <div class="max-w-3xl">
-            <h1 class="text-4xl md:text-5xl font-bold text-white mb-6">{% trans "Tanzania Wildlife" %}</h1>
-            <p class="text-xl text-white opacity-90">{% trans "Discover the incredible wildlife of Tanzania" %}</p>
-        </div>
+<!-- Hero Section (background-image kept inline; overlay handles dark mode) -->
+<section class="relative bg-cover bg-center" style="background-image: url('https://images.pexels.com/photos/631317/pexels-photo-631317.jpeg'); min-height: 50vh;">
+  <div class="absolute inset-0 bg-black/40 dark:bg-black/60"></div>
+  <div class="container mx-auto px-4 py-24 relative z-10">
+    <div class="max-w-3xl">
+      <h1 class="text-4xl md:text-5xl font-bold text-white mb-6">{% trans "Tanzania Wildlife" %}</h1>
+      <p class="text-xl text-white/90">{% trans "Discover the incredible wildlife of Tanzania" %}</p>
     </div>
+  </div>
 </section>
 
 <!-- Filters -->
-<section class="py-8 bg-gray-50">
-    <div class="container mx-auto px-4">
-        <form method="GET" class="grid grid-cols-1 md:grid-cols-12 gap-4 items-end">
-            <div class="md:col-span-2">
-                <label class="block text-gray-700 mb-2">{% trans "Category" %}</label>
-                <select name="category" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-[#C18D45]">
-                    <option value="">{% trans "All Categories" %}</option>
-                    <option value="mammal" {% if current_category == 'mammal' %}selected{% endif %}>{% trans "Mammals" %}</option>
-                    <option value="bird" {% if current_category == 'bird' %}selected{% endif %}>{% trans "Birds" %}</option>
-                    <option value="reptile" {% if current_category == 'reptile' %}selected{% endif %}>{% trans "Reptiles" %}</option>
-                </select>
-            </div>
-            <div class="md:col-span-2">
-                <label class="block text-gray-700 mb-2">{% trans "Status" %}</label>
-                <select name="status" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-[#C18D45]">
-                    <option value="">{% trans "All Status" %}</option>
-                    <option value="LC" {% if current_status == 'LC' %}selected{% endif %}>{% trans "Least Concern" %}</option>
-                    <option value="VU" {% if current_status == 'VU' %}selected{% endif %}>{% trans "Vulnerable" %}</option>
-                    <option value="EN" {% if current_status == 'EN' %}selected{% endif %}>{% trans "Endangered" %}</option>
-                </select>
-            </div>
-            <div class="md:col-span-2 flex items-center">
-                <div class="flex items-center h-5">
-                    <input id="big-five" name="big_five" type="checkbox" value="true" {% if big_five_filter == 'true' %}checked{% endif %} class="w-4 h-4 text-[#C18D45] border-gray-300 rounded focus:ring-[#C18D45]">
-                </div>
-                <div class="ml-3 text-sm">
-                    <label for="big-five" class="font-medium text-gray-700">{% trans "Big Five Only" %}</label>
-                </div>
-            </div>
-            <div class="md:col-span-4">
-                <label class="block text-gray-700 mb-2">{% trans "Search" %}</label>
-                <input type="text" name="search" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-[#C18D45]" placeholder="{% trans 'Search wildlife...' %}" value="{{ search_query }}">
-            </div>
-            <div class="md:col-span-2">
-                <button type="submit" class="w-full bg-[#C18D45] hover:bg-[#a97a3a] text-white font-medium py-2 px-4 rounded-md transition duration-300">
-                    {% trans "Filter" %}
-                </button>
-            </div>
-        </form>
-    </div>
+<section class="py-8 bg-gray-50 dark:bg-gray-900">
+  <div class="container mx-auto px-4">
+    <form method="GET" class="grid grid-cols-1 md:grid-cols-12 gap-4 items-end">
+      <div class="md:col-span-2">
+        <label class="block text-gray-700 dark:text-gray-300 mb-2">{% trans "Category" %}</label>
+        <select name="category" class="w-full px-4 py-2 rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-800 dark:text-gray-200 focus:outline-none focus:ring-2 focus:ring-[#C18D45]">
+          <option value="">{% trans "All Categories" %}</option>
+          <option value="mammal" {% if current_category == 'mammal' %}selected{% endif %}>{% trans "Mammals" %}</option>
+          <option value="bird" {% if current_category == 'bird' %}selected{% endif %}>{% trans "Birds" %}</option>
+          <option value="reptile" {% if current_category == 'reptile' %}selected{% endif %}>{% trans "Reptiles" %}</option>
+        </select>
+      </div>
+
+      <div class="md:col-span-2">
+        <label class="block text-gray-700 dark:text-gray-300 mb-2">{% trans "Status" %}</label>
+        <select name="status" class="w-full px-4 py-2 rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-800 dark:text-gray-200 focus:outline-none focus:ring-2 focus:ring-[#C18D45]">
+          <option value="">{% trans "All Status" %}</option>
+          <option value="LC" {% if current_status == 'LC' %}selected{% endif %}>{% trans "Least Concern" %}</option>
+          <option value="VU" {% if current_status == 'VU' %}selected{% endif %}>{% trans "Vulnerable" %}</option>
+          <option value="EN" {% if current_status == 'EN' %}selected{% endif %}>{% trans "Endangered" %}</option>
+        </select>
+      </div>
+
+      <div class="md:col-span-2 flex items-center">
+        <div class="flex items-center h-5">
+          <input id="big-five" name="big_five" type="checkbox" value="true" {% if big_five_filter == 'true' %}checked{% endif %}
+                 class="w-4 h-4 text-[#C18D45] border-gray-300 rounded focus:ring-[#C18D45] bg-white dark:bg-gray-700 dark:border-gray-600" />
+        </div>
+        <div class="ml-3 text-sm">
+          <label for="big-five" class="font-medium text-gray-700 dark:text-gray-300">{% trans "Big Five Only" %}</label>
+        </div>
+      </div>
+
+      <div class="md:col-span-4">
+        <label class="block text-gray-700 dark:text-gray-300 mb-2">{% trans "Search" %}</label>
+        <input type="text" name="search" value="{{ search_query }}" placeholder="{% trans 'Search wildlife...' %}"
+               class="w-full px-4 py-2 rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-800 dark:text-gray-200 focus:outline-none focus:ring-2 focus:ring-[#C18D45]" />
+      </div>
+
+      <div class="md:col-span-2">
+        <button type="submit" class="w-full bg-[#C18D45] hover:bg-[#a97a3a] text-white font-medium py-2 px-4 rounded-md transition duration-300">
+          {% trans "Filter" %}
+        </button>
+      </div>
+    </form>
+  </div>
 </section>
 
 <!-- Wildlife Grid -->
-<section class="py-12">
-    <div class="container mx-auto px-4">
-        {% if page_obj %}
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {% for animal in page_obj %}
-                    <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 flex flex-col h-full">
-                        <img src="{% if animal.main_image %}{{ animal.main_image.url }}{% else %}https://images.pexels.com/photos/631317/pexels-photo-631317.jpeg{% endif %}" 
-                             class="w-full h-64 object-cover" alt="{{ animal.common_name }}">
-                        <div class="p-6 flex flex-col flex-grow">
-                            <div class="flex justify-between items-start mb-3">
-                                <span class="bg-[#C18D45] text-white text-sm font-semibold px-3 py-1 rounded-full">
-                                    {{ animal.get_category_display }}
-                                </span>
-                                {% if animal.is_big_five %}
-                                    <span class="bg-yellow-400 text-gray-900 text-sm font-semibold px-3 py-1 rounded-full flex items-center">
-                                        <i class="fas fa-crown mr-1"></i>{% trans "Big Five" %}
-                                    </span>
-                                {% endif %}
-                            </div>
-                            <h5 class="text-xl font-bold text-gray-900 mb-2">{{ animal.common_name }}</h5>
-                            {% if animal.scientific_name %}
-                                <p class="text-gray-600 italic mb-4">{{ animal.scientific_name }}</p>
-                            {% endif %}
-                            <p class="text-gray-700 mb-6 flex-grow">{{ animal.description|truncatewords:20 }}</p>
-                            <div class="flex justify-between items-center mt-auto">
-                                <span class="px-3 py-1 rounded-full text-xs font-medium
-                                    {% if animal.conservation_status == 'LC' %}bg-green-100 text-green-800
-                                    {% elif animal.conservation_status == 'VU' %}bg-yellow-100 text-yellow-800
-                                    {% elif animal.conservation_status == 'EN' %}bg-red-100 text-red-800
-                                    {% else %}bg-gray-100 text-gray-800{% endif %}">
-                                    {{ animal.get_conservation_status_display }}
-                                </span>
-                                <a href="{% url 'parks:wildlife_detail' animal.pk %}" class="bg-[#C18D45] hover:bg-[#a97a3a] text-white font-medium py-2 px-4 rounded-md transition duration-300 text-sm">
-                                    {% trans "Learn More" %}
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                {% endfor %}
+<section class="py-12 bg-white dark:bg-gray-900">
+  <div class="container mx-auto px-4">
+    {% if page_obj %}
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {% for animal in page_obj %}
+          <article class="bg-white dark:bg-gray-800 rounded-xl shadow-md dark:shadow-none overflow-hidden hover:shadow-lg transition-shadow duration-300 flex flex-col h-full border border-transparent dark:border-gray-700">
+            <img src="{% if animal.main_image %}{{ animal.main_image.url }}{% else %}https://images.pexels.com/photos/631317/pexels-photo-631317.jpeg{% endif %}"
+                 alt="{{ animal.common_name }}"
+                 class="w-full h-64 object-cover" />
+            <div class="p-6 flex flex-col flex-grow">
+              <div class="flex justify-between items-start mb-3">
+                <span class="inline-block bg-[#C18D45] text-white text-sm font-semibold px-3 py-1 rounded-full">
+                  {{ animal.get_category_display }}
+                </span>
+
+                {% if animal.is_big_five %}
+                  <span class="inline-flex items-center bg-yellow-400 text-gray-900 text-sm font-semibold px-3 py-1 rounded-full">
+                    <i class="fas fa-crown mr-1" aria-hidden="true"></i>{% trans "Big Five" %}
+                  </span>
+                {% endif %}
+              </div>
+
+              <h3 class="text-xl font-bold text-gray-900 dark:text-gray-100 mb-2">{{ animal.common_name }}</h3>
+
+              {% if animal.scientific_name %}
+                <p class="text-gray-600 dark:text-gray-300 italic mb-4">{{ animal.scientific_name }}</p>
+              {% endif %}
+
+              <p class="text-gray-700 dark:text-gray-300 mb-6 flex-grow">{{ animal.description|truncatewords:20 }}</p>
+
+              <div class="flex justify-between items-center mt-auto">
+                <span class="px-3 py-1 rounded-full text-xs font-medium
+                     {% if animal.conservation_status == 'LC' %}bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200
+                     {% elif animal.conservation_status == 'VU' %}bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200
+                     {% elif animal.conservation_status == 'EN' %}bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200
+                     {% else %}bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-200{% endif %}">
+                  {{ animal.get_conservation_status_display }}
+                </span>
+
+                <a href="{% url 'parks:wildlife_detail' animal.pk %}"
+                   class="bg-[#C18D45] hover:bg-[#a97a3a] text-white font-medium py-2 px-4 rounded-md transition duration-300 text-sm">
+                  {% trans "Learn More" %}
+                </a>
+              </div>
             </div>
-            
-            <!-- Pagination -->
-            {% if page_obj.has_other_pages %}
-                <nav class="mt-12 flex justify-center">
-                    <ul class="flex items-center space-x-2">
-                        {% if page_obj.has_previous %}
-                            <li>
-                                <a href="?page={{ page_obj.previous_page_number }}{% if current_category %}&category={{ current_category }}{% endif %}{% if current_status %}&status={{ current_status }}{% endif %}{% if big_five_filter %}&big_five={{ big_five_filter }}{% endif %}{% if search_query %}&search={{ search_query }}{% endif %}" 
-                                   class="px-4 py-2 border rounded-md text-[#C18D45] hover:bg-[#f5e9d8] transition duration-300">
-                                    {% trans "Previous" %}
-                                </a>
-                            </li>
-                        {% endif %}
-                        
-                        {% for num in page_obj.paginator.page_range %}
-                            {% if page_obj.number == num %}
-                                <li>
-                                    <span class="px-4 py-2 bg-[#C18D45] text-white rounded-md">{{ num }}</span>
-                                </li>
-                            {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
-                                <li>
-                                    <a href="?page={{ num }}{% if current_category %}&category={{ current_category }}{% endif %}{% if current_status %}&status={{ current_status }}{% endif %}{% if big_five_filter %}&big_five={{ big_five_filter }}{% endif %}{% if search_query %}&search={{ search_query }}{% endif %}" 
-                                       class="px-4 py-2 border rounded-md text-gray-700 hover:bg-gray-50 transition duration-300">
-                                        {{ num }}
-                                    </a>
-                                </li>
-                            {% endif %}
-                        {% endfor %}
-                        
-                        {% if page_obj.has_next %}
-                            <li>
-                                <a href="?page={{ page_obj.next_page_number }}{% if current_category %}&category={{ current_category }}{% endif %}{% if current_status %}&status={{ current_status }}{% endif %}{% if big_five_filter %}&big_five={{ big_five_filter }}{% endif %}{% if search_query %}&search={{ search_query }}{% endif %}" 
-                                   class="px-4 py-2 border rounded-md text-[#C18D45] hover:bg-[#f5e9d8] transition duration-300">
-                                    {% trans "Next" %}
-                                </a>
-                            </li>
-                        {% endif %}
-                    </ul>
-                </nav>
+          </article>
+        {% endfor %}
+      </div>
+
+      <!-- Pagination -->
+      {% if page_obj.has_other_pages %}
+        <nav class="mt-12 flex justify-center">
+          <ul class="flex items-center space-x-2">
+            {% if page_obj.has_previous %}
+              <li>
+                <a href="?page={{ page_obj.previous_page_number }}{% if current_category %}&category={{ current_category }}{% endif %}{% if current_status %}&status={{ current_status }}{% endif %}{% if big_five_filter %}&big_five={{ big_five_filter }}{% endif %}{% if search_query %}&search={{ search_query }}{% endif %}"
+                   class="px-4 py-2 border rounded-md text-[#C18D45] hover:bg-[#f5e9d8] dark:hover:bg-gray-700 transition duration-300">
+                  {% trans "Previous" %}
+                </a>
+              </li>
             {% endif %}
-        {% else %}
-            <div class="text-center py-16">
-                <div class="w-24 h-24 mx-auto bg-gray-200 rounded-full flex items-center justify-center mb-6">
-                    <i class="fas fa-paw text-3xl text-gray-500"></i>
-                </div>
-                <h3 class="text-2xl font-bold text-gray-800 mb-3">{% trans "No wildlife found" %}</h3>
-                <p class="text-gray-600">{% trans "Try adjusting your search criteria" %}</p>
-            </div>
-        {% endif %}
-    </div>
+
+            {% for num in page_obj.paginator.page_range %}
+              {% if page_obj.number == num %}
+                <li><span class="px-4 py-2 bg-[#C18D45] text-white rounded-md">{{ num }}</span></li>
+              {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+                <li>
+                  <a href="?page={{ num }}{% if current_category %}&category={{ current_category }}{% endif %}{% if current_status %}&status={{ current_status }}{% endif %}{% if big_five_filter %}&big_five={{ big_five_filter }}{% endif %}{% if search_query %}&search={{ search_query }}{% endif %}"
+                     class="px-4 py-2 border rounded-md text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-800 transition duration-300">
+                    {{ num }}
+                  </a>
+                </li>
+              {% endif %}
+            {% endfor %}
+
+            {% if page_obj.has_next %}
+              <li>
+                <a href="?page={{ page_obj.next_page_number }}{% if current_category %}&category={{ current_category }}{% endif %}{% if current_status %}&status={{ current_status }}{% endif %}{% if big_five_filter %}&big_five={{ big_five_filter }}{% endif %}{% if search_query %}&search={{ search_query }}{% endif %}"
+                   class="px-4 py-2 border rounded-md text-[#C18D45] hover:bg-[#f5e9d8] dark:hover:bg-gray-700 transition duration-300">
+                  {% trans "Next" %}
+                </a>
+              </li>
+            {% endif %}
+          </ul>
+        </nav>
+      {% endif %}
+
+    {% else %}
+      <div class="text-center py-16">
+        <div class="w-24 h-24 mx-auto bg-gray-200 dark:bg-gray-700 rounded-full flex items-center justify-center mb-6">
+          <i class="fas fa-paw text-3xl text-gray-500 dark:text-gray-300"></i>
+        </div>
+        <h3 class="text-2xl font-bold text-gray-800 dark:text-gray-100 mb-3">{% trans "No wildlife found" %}</h3>
+        <p class="text-gray-600 dark:text-gray-300">{% trans "Try adjusting your search criteria" %}</p>
+      </div>
+    {% endif %}
+  </div>
 </section>
 {% endblock %}

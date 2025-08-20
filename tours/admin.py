@@ -228,24 +228,51 @@ class TourAvailabilityAdmin(admin.ModelAdmin):
     readonly_fields = ['available_spots', 'created_at', 'updated_at']
 
     def available_spots(self, obj):
-        # If obj is None (very rarely) or property can't be computed yet, show blank.
+        """
+        Compute and display availability **without** attempting arithmetic
+        when max_participants is None (avoids NoneType - int errors).
+
+        - If obj is None: blank
+        - If not is_available: closed badge
+        - If max_participants is None: show "Open — N booked" (do NOT subtract)
+        - If max_participants present: show "X left" or "Full"
+        """
         if obj is None:
             return ''
 
-        # Preferred: use the model property if it already returns a safe value (None or int)
-        val = getattr(obj, 'available_spots', None)
-        if val is not None:
-            return val
+        # defensive: booked count (treat None as 0)
+        booked = getattr(obj, 'booked_participants', 0) or 0
 
-        # Fallback: compute safely from fields (treat None booked as 0; if max is None -> blank)
+        # If availability explicitly closed, show Closed
+        if getattr(obj, 'is_available', True) is False:
+            return format_html(
+                '<span style="display:inline-block;padding:3px 8px;border-radius:6px;background:#6b7280;color:#fff;font-weight:600">Closed</span>'
+            )
+
+        # If max_participants is not set, do NOT attempt subtraction — show booked count
         max_p = getattr(obj, 'max_participants', None)
         if max_p is None:
-            return ''
+            return format_html(
+                '<span style="display:inline-block;padding:3px 8px;border-radius:6px;background:#10b981;color:#fff;font-weight:600">Open — {} booked</span>',
+                int(booked)
+            )
 
-        booked = getattr(obj, 'booked_participants', 0) or 0
+        # Otherwise compute remaining safely
         try:
-            return max(0, int(max_p) - int(booked))
+            remaining = int(max_p) - int(booked)
         except (TypeError, ValueError):
-            return ''
+            return format_html('<span>-</span>')
 
+        if remaining <= 0:
+            return format_html(
+                '<span style="display:inline-block;padding:3px 8px;border-radius:6px;background:#ef4444;color:#fff;font-weight:700">Full</span>'
+            )
+
+        return format_html(
+            '<span style="display:inline-block;padding:3px 8px;border-radius:6px;background:#10b981;color:#fff;font-weight:700">{} left</span>',
+            remaining
+        )
+
+    # allow ordering by booked_participants as a best-effort
+    available_spots.admin_order_field = 'booked_participants'
     available_spots.short_description = 'Available Spots'

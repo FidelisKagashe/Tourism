@@ -4,6 +4,76 @@
 {% block title %}{% trans "Destinations" %} - Safari&nbsp;&amp;&nbsp;Bush Retreats{% endblock %}
 
 {% block content %}
+<!-- Scoped dark-mode overrides for this page ONLY when the global dark class is active -->
+<style>
+/* Apply overrides only when the global theme is dark (html.dark) */
+html.dark .local-dark-mode { background-color: #071028; color: #e6eef8; }
+
+/* Card / background overrides */
+html.dark .local-dark-mode .bg-white { background-color: #0f1724; color: #e6eef8; }
+html.dark .local-dark-mode .bg-gray-50 { background-color: #071026; color: #cbd5e1; }
+html.dark .local-dark-mode .bg-gray-200 { background-color: #111827; color: #cbd5e1; }
+
+/* Text color overrides */
+html.dark .local-dark-mode .text-gray-700,
+html.dark .local-dark-mode .text-gray-600,
+html.dark .local-dark-mode .text-gray-800,
+html.dark .local-dark-mode .text-gray-500,
+html.dark .local-dark-mode .text-gray-400,
+html.dark .local-dark-mode .text-gray-900 {
+    color: #cbd5e1;
+}
+
+/* Ensure headings are brighter */
+html.dark .local-dark-mode h1,
+html.dark .local-dark-mode h2,
+html.dark .local-dark-mode h3,
+html.dark .local-dark-mode h4,
+html.dark .local-dark-mode h5,
+html.dark .local-dark-mode h6 {
+    color: #e6eef8;
+}
+
+/* Form controls */
+html.dark .local-dark-mode input,
+html.dark .local-dark-mode select,
+html.dark .local-dark-mode textarea {
+    background-color: #0b1522;
+    color: #e6eef8;
+    border-color: rgba(255,255,255,0.06);
+}
+
+/* Borders */
+html.dark .local-dark-mode .border,
+html.dark .local-dark-mode .border-gray-200,
+html.dark .local-dark-mode .border-gray-300 {
+    border-color: rgba(255,255,255,0.06);
+}
+
+/* Links and accents */
+html.dark .local-dark-mode a { color: #E4B366; }
+html.dark .local-dark-mode .text-[#C18D45] { color: #C18D45; }
+
+/* Pagination / small text */
+html.dark .local-dark-mode .text-sm,
+html.dark .local-dark-mode .text-xs {
+    color: #cbd5e1;
+}
+
+/* Card shadows slightly darkened */
+html.dark .local-dark-mode .shadow-md,
+html.dark .local-dark-mode .shadow-sm,
+html.dark .local-dark-mode .shadow-lg {
+    box-shadow: 0 6px 18px rgba(2,6,23,0.6);
+}
+
+/* Keep brand accents (#C18D45) and status badge colors untouched for contrast/readability */
+
+/* Avoid using !important so global theme toggling works as expected */
+</style>
+
+<div class="local-dark-mode">
+
 <!-- Hero Section -->
 <section class="relative bg-cover bg-center" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.pexels.com/photos/1170986/pexels-photo-1170986.jpeg'); min-height: 50vh;">
     <div class="container mx-auto px-4 py-24 relative z-10">
@@ -136,4 +206,6 @@
         {% endif %}
     </div>
 </section>
+
+</div> {# end .local-dark-mode #}
 {% endblock %}

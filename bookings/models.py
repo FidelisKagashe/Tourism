@@ -1,9 +1,8 @@
-from django.db import models
+from django.db import models, transaction
 from django.urls import reverse
-from django.core.validators import MinValueValidator, MaxValueValidator
+from django.core.validators import MinValueValidator
 from django.contrib.auth import get_user_model
 from tours.models import TourPackage, TourAvailability
-from decimal import Decimal
 
 User = get_user_model()
 
@@ -39,14 +38,14 @@ class Booking(models.Model):
     # Status
     booking_status = models.CharField(max_length=15, choices=BOOKING_STATUS, default='pending')
     
-    # Special Requirements
+    # Special Requirements (optional short note)
     special_requirements = models.TextField(blank=True)
     dietary_requirements = models.TextField(blank=True)
     
-    # Contact Information
-    contact_name = models.CharField(max_length=100)
-    contact_email = models.EmailField()
-    contact_phone = models.CharField(max_length=20)
+    # Contact Information (optional to allow quick booking)
+    contact_name = models.CharField(max_length=100, blank=True)
+    contact_email = models.EmailField(blank=True)
+    contact_phone = models.CharField(max_length=20, blank=True, null=True)
     
     # Timestamps
     created_at = models.DateTimeField(auto_now_add=True)
@@ -60,7 +59,13 @@ class Booking(models.Model):
         ordering = ['-created_at']
     
     def __str__(self):
-        return f"{self.booking_reference} - {self.user.get_full_name()}"
+        # safe fallback if user has no full name
+        name = getattr(self.user, 'get_full_name', None)
+        try:
+            fullname = self.user.get_full_name() if callable(self.user.get_full_name) else str(self.user)
+        except Exception:
+            fullname = str(self.user)
+        return f"{self.booking_reference} - {fullname}"
     
     def get_absolute_url(self):
         return reverse('bookings:booking_detail', kwargs={'booking_reference': self.booking_reference})
@@ -71,14 +76,54 @@ class Booking(models.Model):
             self.booking_reference = f"TZ{uuid.uuid4().hex[:8].upper()}"
         super().save(*args, **kwargs)
 
+    # -----------------------
+    # helper methods
+    # -----------------------
+    def reserve_spots(self):
+        """
+        Atomically update the related tour_availability to reserve spots.
+        Returns True on success, False if not enough spots.
+        """
+        availability = self.tour_availability
+        if not availability:
+            return False
+        with transaction.atomic():
+            availability.refresh_from_db()
+            if getattr(availability, 'available_spots', None) is not None:
+                if availability.available_spots < self.number_of_participants:
+                    return False
+                availability.available_spots = max(0, availability.available_spots - self.number_of_participants)
+            # keep booked_participants if present
+            if hasattr(availability, 'booked_participants'):
+                availability.booked_participants = (availability.booked_participants or 0) + self.number_of_participants
+            availability.save()
+        return True
+
+    def release_spots(self):
+        """Release previously reserved spots (used on cancel)."""
+        availability = self.tour_availability
+        if not availability:
+            return False
+        with transaction.atomic():
+            availability.refresh_from_db()
+            if hasattr(availability, 'booked_participants'):
+                availability.booked_participants = max(0, (availability.booked_participants or 0) - self.number_of_participants)
+            if getattr(availability, 'available_spots', None) is not None:
+                availability.available_spots = (availability.available_spots or 0) + self.number_of_participants
+            availability.save()
+        return True
+
+
 class BookingParticipant(models.Model):
     """Individual participants in a booking."""
     
     booking = models.ForeignKey(Booking, on_delete=models.CASCADE, related_name='participants')
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
-    date_of_birth = models.DateField()
-    nationality = models.CharField(max_length=50)
+    # make DOB optional for faster bookings
+    date_of_birth = models.DateField(null=True, blank=True)
+    # optional fields to be collected later
+    nationality = models.CharField(max_length=50, blank=True)
     passport_number = models.CharField(max_length=20, blank=True)
     dietary_requirements = models.TextField(blank=True)
     medical_conditions = models.TextField(blank=True)
@@ -95,6 +140,7 @@ class BookingParticipant(models.Model):
     
     def get_full_name(self):
         return f"{self.first_name} {self.last_name}"
+
 
 class BookingPayment(models.Model):
     """Payment records for bookings."""
@@ -146,6 +192,7 @@ class BookingPayment(models.Model):
             import uuid
             self.payment_reference = f"PAY{uuid.uuid4().hex[:10].upper()}"
         super().save(*args, **kwargs)
+
 
 class BookingExtra(models.Model):
     """Additional services/extras added to bookings."""

@@ -30,25 +30,25 @@
 </section>
 
 <!-- Site Info -->
-<section class="py-12">
+<section class="py-12 bg-white dark:bg-gray-900">
     <div class="container mx-auto px-4">
         <div class="flex flex-col lg:flex-row gap-8">
             <!-- Main Content -->
             <div class="lg:w-8/12">
                 <div class="mb-10">
-                    <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-6">
+                    <h2 class="text-2xl md:text-3xl font-bold text-gray-900 dark:text-gray-100 mb-6">
                         {% trans "About" %} {{ site.name }}
                     </h2>
-                    <p class="text-lg text-gray-700 mb-6">{{ site.short_description }}</p>
-                    <div class="prose max-w-none text-gray-600">
+                    <p class="text-lg text-gray-700 dark:text-gray-300 mb-6">{{ site.short_description }}</p>
+                    <div class="prose max-w-none text-gray-600 dark:prose-invert dark:text-gray-300">
                         {{ site.description|linebreaks }}
                     </div>
                 </div>
                 
                 <div class="mb-10">
-                    <h3 class="text-2xl font-bold text-gray-900 mb-4">{% trans "Historical Significance" %}</h3>
-                    <div class="bg-gray-50 p-6 rounded-lg border border-gray-200">
-                        <div class="prose max-w-none text-gray-600">
+                    <h3 class="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-4">{% trans "Historical Significance" %}</h3>
+                    <div class="bg-gray-50 dark:bg-gray-800 p-6 rounded-lg border border-gray-200 dark:border-gray-700">
+                        <div class="prose max-w-none text-gray-600 dark:prose-invert dark:text-gray-300">
                             {{ site.historical_significance|linebreaks }}
                         </div>
                     </div>
@@ -56,10 +56,10 @@
                 
                 {% if site.best_time_to_visit %}
                     <div class="mb-10">
-                        <h3 class="text-2xl font-bold text-gray-900 mb-4">{% trans "Best Time to Visit" %}</h3>
-                        <div class="bg-blue-50 p-4 rounded-lg border border-blue-100 flex items-start">
+                        <h3 class="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-4">{% trans "Best Time to Visit" %}</h3>
+                        <div class="bg-blue-50 dark:bg-blue-900 p-4 rounded-lg border border-blue-100 dark:border-blue-800 flex items-start">
                             <i class="fas fa-calendar text-blue-500 text-xl mr-3 mt-1"></i>
-                            <p class="text-blue-800">{{ site.best_time_to_visit }}</p>
+                            <p class="text-blue-800 dark:text-blue-200">{{ site.best_time_to_visit }}</p>
                         </div>
                     </div>
                 {% endif %}
@@ -67,39 +67,39 @@
             
             <!-- Sidebar -->
             <div class="lg:w-4/12">
-                <div class="bg-white rounded-xl shadow-md p-6 mb-8">
-                    <h3 class="text-xl font-bold text-gray-900 mb-4">{% trans "Visitor Information" %}</h3>
+                <div class="bg-white dark:bg-gray-800 rounded-xl shadow-md p-6 mb-8 border border-transparent dark:border-gray-700">
+                    <h3 class="text-xl font-bold text-gray-900 dark:text-gray-100 mb-4">{% trans "Visitor Information" %}</h3>
                     
-                    <div class="space-y-3">
+                    <div class="space-y-3 text-gray-700 dark:text-gray-300">
                         <div class="flex justify-between">
-                            <span class="text-gray-600">{% trans "Type" %}:</span>
+                            <span class="text-gray-600 dark:text-gray-400">{% trans "Type" %}:</span>
                             <span class="font-medium">{{ site.get_site_type_display }}</span>
                         </div>
                         
                         <div class="flex justify-between">
-                            <span class="text-gray-600">{% trans "Entry Fee" %}:</span>
+                            <span class="text-gray-600 dark:text-gray-400">{% trans "Entry Fee" %}:</span>
                             <span class="font-medium">${{ site.entry_fee|floatformat:0 }}</span>
                         </div>
                         
                         {% if site.visiting_hours %}
                             <div class="flex justify-between">
-                                <span class="text-gray-600">{% trans "Hours" %}:</span>
+                                <span class="text-gray-600 dark:text-gray-400">{% trans "Hours" %}:</span>
                                 <span class="font-medium">{{ site.visiting_hours }}</span>
                             </div>
                         {% endif %}
                         
                         <div class="flex justify-between">
-                            <span class="text-gray-600">{% trans "Location" %}:</span>
+                            <span class="text-gray-600 dark:text-gray-400">{% trans "Location" %}:</span>
                             <span class="font-medium">{{ site.region }}</span>
                         </div>
                     </div>
                 </div>
                 
-                <div class="bg-white rounded-xl shadow-md p-6">
-                    <h3 class="text-xl font-bold text-gray-900 mb-3">{% trans "Plan Your Visit" %}</h3>
-                    <p class="text-gray-600 mb-4">{% trans "Contact us to include this site in your Tanzania tour" %}</p>
+                <div class="bg-white dark:bg-gray-800 rounded-xl shadow-md p-6 border border-transparent dark:border-gray-700">
+                    <h3 class="text-xl font-bold text-gray-900 dark:text-gray-100 mb-3">{% trans "Plan Your Visit" %}</h3>
+                    <p class="text-gray-600 dark:text-gray-300 mb-4">{% trans "Contact us to include this site in your Tanzania tour" %}</p>
                     <a href="{% url 'core:contact' %}" 
-                       class="w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-[#C18D45] hover:bg-[#a6793a] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#C18D45] transition duration-300">
+                       class="w-full flex justify-center py-2 px-4 text-sm font-medium rounded-md text-white bg-[#C18D45] hover:bg-[#a6793a] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#C18D45] transition duration-300">
                         <i class="fas fa-phone mr-2"></i>{% trans "Contact Us" %}
                     </a>
                 </div>
@@ -110,24 +110,24 @@
 
 <!-- Related Sites -->
 {% if related_sites %}
-    <section class="py-12 bg-gray-50">
+    <section class="py-12 bg-gray-50 dark:bg-gray-900">
         <div class="container mx-auto px-4">
             <div class="text-center mb-10">
-                <h2 class="text-3xl font-bold text-gray-900">{% trans "Related Historical Sites" %}</h2>
+                <h2 class="text-3xl font-bold text-gray-900 dark:text-gray-100">{% trans "Related Historical Sites" %}</h2>
                 <div class="w-24 h-1 bg-[#C18D45] mx-auto mt-4"></div>
             </div>
             
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                 {% for related in related_sites %}
-                    <div class="bg-white rounded-lg shadow-md overflow-hidden transition-transform duration-300 hover:shadow-lg hover:-translate-y-1">
+                    <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden transition-transform duration-300 hover:shadow-lg hover:-translate-y-1 border border-transparent dark:border-gray-700">
                         <img src="{% if related.main_image %}{{ related.main_image.url }}{% else %}https://images.pexels.com/photos/1170986/pexels-photo-1170986.jpeg{% endif %}" 
                              class="w-full h-48 object-cover" alt="{{ related.name }}">
                         <div class="p-5">
-                            <h3 class="text-lg font-bold text-gray-900 mb-2">{{ related.name }}</h3>
-                            <span class="inline-block bg-gray-200 text-gray-800 px-2 py-1 rounded text-xs mb-3">
+                            <h3 class="text-lg font-bold text-gray-900 dark:text-gray-100 mb-2">{{ related.name }}</h3>
+                            <span class="inline-block bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 px-2 py-1 rounded text-xs mb-3">
                                 {{ related.get_site_type_display }}
                             </span>
-                            <p class="text-gray-600 mb-4 text-sm">
+                            <p class="text-gray-600 dark:text-gray-300 mb-4 text-sm">
                                 {{ related.short_description|truncatewords:10 }}
                             </p>
                             <a href="{% url 'core:historical_site_detail' related.slug %}" 

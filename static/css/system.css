@@ -1,0 +1,313 @@
+/* Password inputs — minimal, only targets the two ids you listed */
+#id_password1,
+#id_password2 {
+    display: block;                 /* ensure block-level so width works predictably */
+    width: 100% !important;         /* fill the available column width */
+    min-width: 0;                   /* helps in flex/grid containers */
+    box-sizing: border-box;
+    padding: 0.55rem 0.9rem;        /* comfortable padding */
+    height: 2.25rem;                /* consistent height */
+    font-size: 0.95rem;
+    border-radius: 0.375rem;        /* 6px */
+    border: 1px solid #374151;      /* default subtle border (works in dark & light) */
+    background: #ffffff;            /* light background by default */
+    color: #0f172a;                 /* dark text */
+    outline: none;
+    -webkit-appearance: none;
+    transition: box-shadow .12s ease, border-color .12s ease, background .12s ease;
+}
+
+/* Placeholder color */
+#id_password1::placeholder,
+#id_password2::placeholder {
+    color: #9ca3af;                 /* gray-400 */
+    opacity: 1;
+}
+
+/* Focus state (brand color ring) */
+#id_password1:focus,
+#id_password2:focus {
+    border-color: #C18D45;
+    box-shadow: 0 0 0 4px rgba(193,141,69,0.09);
+}
+
+/* Dark-mode overrides — works when <html> has .dark */
+.dark #id_password1,
+.dark #id_password2 {
+    background: #0b1220;            /* deep-ish dark bg to match your screenshot */
+    border: 1px solid #334155;      /* gray-700 */
+    color: #e6eef6;                 /* light text for contrast */
+    box-shadow: none;
+}
+
+/* Dark placeholder */
+.dark #id_password1::placeholder,
+.dark #id_password2::placeholder {
+    color: #94a3b8;                 /* lighter placeholder in dark mode */
+}
+
+/* optional: subtle inset to match surrounding inputs */
+#id_password1, #id_password2 {
+    box-shadow: inset 0 -1px 0 rgba(0,0,0,0.04);
+}
+.dark #id_password1, .dark #id_password2 {
+    box-shadow: inset 0 -1px 0 rgba(255,255,255,0.02);
+}
+
+/* Custom styles for complex animations and effects */
+.nav-link-underline::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background-color: #C18D45;
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+}
+
+.nav-link-underline:hover::after,
+.nav-link-underline.active::after {
+    width: 80%;
+}
+
+.nav-link-underline.active {
+    color: #C18D45;
+    font-weight: 600;
+}
+
+.dark .nav-link-underline::after {
+    background-color: #E4B366;
+}
+
+.dark .nav-link-underline.active {
+    color: #E4B366;
+}
+
+.hero-bg {
+    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.pexels.com/photos/631317/pexels-photo-631317.jpeg');
+    background-size: cover;
+    background-position: center;
+}
+
+.hero-bg::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(193, 141, 69, 0.1), rgba(113, 95, 60, 0.1));
+    transition: background 0.3s ease;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background-color: #C18D45;
+    border-radius: 2px;
+}
+
+.dark .section-title::after {
+    background-color: #E4B366;
+}
+
+.card-hover-effect {
+    transition: all 0.3s ease;
+}
+
+.card-hover-effect:hover {
+    transform: translateY(-5px);
+}
+
+.card-hover-effect:hover .card-image {
+    transform: scale(1.05);
+}
+
+.card-image {
+    transition: transform 0.3s ease;
+}
+
+.social-link {
+    transition: all 0.3s ease;
+}
+
+.social-link:hover {
+    transform: translateY(-3px);
+}
+
+/* FIXED: Header scroll behavior - don't hide header when scrolling */
+.header-scrolled .secondary-row {
+    transform: translateY(-120%);
+    opacity: 0;
+    pointer-events: none; /* prevents hidden element from blocking */
+}
+        
+/* keep primary row above secondary when animations happen */
+.primary-row {
+    position: relative;
+    z-index: 10005;
+}
+
+/* secondary row sits under primary but still above content */
+.secondary-row {
+    position: relative;
+    z-index: 10000;
+    transition: transform 0.28s ease, opacity 0.28s ease;
+    will-change: transform, opacity;
+    pointer-events: auto;
+}
+
+/* FIXED: Ensure header stays clickable */
+.header {
+    position: sticky;
+    top: 0;
+    z-index: 10000; /* very high to avoid being covered */
+    background: transparent; /* preserve existing look */
+}
+
+.header:not(.header-scrolled) .secondary-row {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* Custom focus styles */
+.focus-primary:focus {
+    outline: 2px solid #C18D45;
+    outline-offset: 2px;
+}
+
+.dark .focus-primary:focus {
+    outline-color: #E4B366;
+}
+
+/* Alert animations */
+.alert-enter {
+    animation: slideInDown 0.3s ease-out;
+}
+
+.alert-exit {
+    animation: slideOutUp 0.3s ease-in;
+}
+
+@keyframes slideInDown {
+    from {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideOutUp {
+    from {
+        transform: translateY(0);
+        opacity: 1;
+    }
+    to {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+}
+
+/* Smooth scrolling */
+html {
+    scroll-behavior: smooth;
+}
+
+/* FIXED: Mobile menu animation with proper height */
+.mobile-menu {
+    transition: all 0.3s ease;
+    max-height: 85vh;
+    overflow-y: auto;
+    /* Ensure it's above everything */
+    z-index: 10050;
+}
+.mobile-menu.hidden {
+    display: none !important;
+    pointer-events: none;
+}
+
+/* FIXED: Mobile Dropdown Styles with better height management */
+.mobile-dropdown-menu {
+    max-height: 0;
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow: hidden;
+}
+
+.mobile-dropdown-menu.show {
+    /* FIXED: Increased max-height to show all links */
+    max-height: 800px;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.mobile-dropdown-icon {
+    transition: transform 0.3s ease;
+}
+
+.mobile-dropdown-toggle[aria-expanded="true"] .mobile-dropdown-icon {
+    transform: rotate(180deg);
+}
+
+/* Touch-friendly mobile dropdown items */
+.mobile-dropdown-item {
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
+}
+
+.mobile-dropdown-item:active {
+    transform: scale(0.98);
+}
+
+/* FIXED: Active state styling for current page */
+.mobile-dropdown-item.active {
+    background-color: rgba(193, 141, 69, 0.15);
+    color: #C18D45;
+    font-weight: 600;
+}
+
+.dark .mobile-dropdown-item.active {
+    background-color: rgba(228, 179, 102, 0.15);
+    color: #E4B366;
+}
+
+/* Active state for main mobile links */
+.mobile-nav-link.active {
+    background-color: rgba(193, 141, 69, 0.15);
+    color: #C18D45;
+    font-weight: 600;
+}
+
+.dark .mobile-nav-link.active {
+    background-color: rgba(228, 179, 102, 0.15);
+    color: #E4B366;
+}
+
+/* Smooth animation for dropdown toggle */
+.mobile-dropdown-toggle:active {
+    transform: scale(0.98);
+}
+
+/* Enhanced focus states for accessibility */
+.mobile-dropdown-toggle:focus,
+.mobile-dropdown-item:focus {
+    outline: 2px solid #C18D45;
+    outline-offset: 2px;
+}
+
+.dark .mobile-dropdown-toggle:focus,
+.dark .mobile-dropdown-item:focus {
+    outline-color: #E4B366;
+}

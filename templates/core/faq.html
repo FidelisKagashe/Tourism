@@ -4,78 +4,83 @@
 {% block title %}{% trans "Frequently Asked Questions" %} - Safari&nbsp;&amp;&nbsp;Bush Retreats{% endblock %}
 
 {% block content %}
-<div class="container py-5">
-    <div class="row">
-        <div class="col-lg-8 mx-auto">
-            <h1 class="text-center mb-5">{% trans "Frequently Asked Questions" %}</h1>
-            
-            <div class="accordion" id="faqAccordion">
-                <div class="accordion-item">
-                    <h2 class="accordion-header" id="faq1">
-                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse1">
-                            {% trans "What is the best time to visit Tanzania?" %}
-                        </button>
-                    </h2>
-                    <div id="collapse1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
-                        <div class="accordion-body">
-                            {% trans "The best time depends on what you want to see. For the Great Migration, visit June-October. For fewer crowds and green landscapes, visit during short rains (November-December) or long rains (March-May)." %}
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="accordion-item">
-                    <h2 class="accordion-header" id="faq2">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse2">
-                            {% trans "Do I need a visa for Tanzania?" %}
-                        </button>
-                    </h2>
-                    <div id="collapse2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-                        <div class="accordion-body">
-                            {% trans "Most visitors need a visa. You can get a visa on arrival at the airport or apply online. US citizens pay $100, most other nationalities pay $50." %}
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="accordion-item">
-                    <h2 class="accordion-header" id="faq3">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse3">
-                            {% trans "What vaccinations do I need?" %}
-                        </button>
-                    </h2>
-                    <div id="collapse3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-                        <div class="accordion-body">
-                            {% trans "Yellow fever vaccination is required if coming from endemic areas. Consult a travel medicine specialist for malaria prophylaxis and other recommended vaccinations." %}
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="accordion-item">
-                    <h2 class="accordion-header" id="faq4">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse4">
-                            {% trans "What should I pack for safari?" %}
-                        </button>
-                    </h2>
-                    <div id="collapse4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-                        <div class="accordion-body">
-                            {% trans "Pack neutral-colored clothing, hat, sunglasses, sunscreen, insect repellent, comfortable shoes, and a good camera. We provide a detailed packing list upon booking." %}
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="accordion-item">
-                    <h2 class="accordion-header" id="faq5">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse5">
-                            {% trans "How safe is Tanzania for tourists?" %}
-                        </button>
-                    </h2>
-                    <div id="collapse5" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-                        <div class="accordion-body">
-                            {% trans "Tanzania is generally safe for tourists. We provide 24/7 support and work with experienced guides. Follow standard travel precautions and stay with your group." %}
-                        </div>
-                    </div>
-                </div>
-            </div>
+<div class="container mx-auto px-4 py-12">
+  <div class="max-w-3xl mx-auto">
+    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-gray-100 text-center mb-8">
+      {% trans "Frequently Asked Questions" %}
+    </h1>
+
+    <div class="space-y-4">
+      <details class="group bg-white dark:bg-gray-800 rounded-xl shadow-sm dark:shadow-none overflow-hidden" open>
+        <summary class="list-none cursor-pointer px-5 py-4 flex items-center justify-between">
+          <span class="text-left text-gray-900 dark:text-gray-100 font-medium">{% trans "What is the best time to visit Tanzania?" %}</span>
+          <span class="ml-4 transform transition-transform duration-200 group-open:rotate-180 text-gray-500 dark:text-gray-300">
+            <i class="fas fa-chevron-down"></i>
+          </span>
+        </summary>
+        <div class="px-5 pb-4 pt-0 border-t border-gray-100 dark:border-gray-700">
+          <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+            {% trans "The best time depends on what you want to see. For the Great Migration, visit June-October. For fewer crowds and green landscapes, visit during short rains (November-December) or long rains (March-May)." %}
+          </p>
         </div>
+      </details>
+
+      <details class="group bg-white dark:bg-gray-800 rounded-xl shadow-sm overflow-hidden">
+        <summary class="list-none cursor-pointer px-5 py-4 flex items-center justify-between">
+          <span class="text-left text-gray-900 dark:text-gray-100 font-medium">{% trans "Do I need a visa for Tanzania?" %}</span>
+          <span class="ml-4 transform transition-transform duration-200 group-open:rotate-180 text-gray-500 dark:text-gray-300">
+            <i class="fas fa-chevron-down"></i>
+          </span>
+        </summary>
+        <div class="px-5 pb-4 pt-0 border-t border-gray-100 dark:border-gray-700">
+          <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+            {% trans "Most visitors need a visa. You can get a visa on arrival at the airport or apply online. US citizens pay $100, most other nationalities pay $50." %}
+          </p>
+        </div>
+      </details>
+
+      <details class="group bg-white dark:bg-gray-800 rounded-xl shadow-sm overflow-hidden">
+        <summary class="list-none cursor-pointer px-5 py-4 flex items-center justify-between">
+          <span class="text-left text-gray-900 dark:text-gray-100 font-medium">{% trans "What vaccinations do I need?" %}</span>
+          <span class="ml-4 transform transition-transform duration-200 group-open:rotate-180 text-gray-500 dark:text-gray-300">
+            <i class="fas fa-chevron-down"></i>
+          </span>
+        </summary>
+        <div class="px-5 pb-4 pt-0 border-t border-gray-100 dark:border-gray-700">
+          <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+            {% trans "Yellow fever vaccination is required if coming from endemic areas. Consult a travel medicine specialist for malaria prophylaxis and other recommended vaccinations." %}
+          </p>
+        </div>
+      </details>
+
+      <details class="group bg-white dark:bg-gray-800 rounded-xl shadow-sm overflow-hidden">
+        <summary class="list-none cursor-pointer px-5 py-4 flex items-center justify-between">
+          <span class="text-left text-gray-900 dark:text-gray-100 font-medium">{% trans "What should I pack for safari?" %}</span>
+          <span class="ml-4 transform transition-transform duration-200 group-open:rotate-180 text-gray-500 dark:text-gray-300">
+            <i class="fas fa-chevron-down"></i>
+          </span>
+        </summary>
+        <div class="px-5 pb-4 pt-0 border-t border-gray-100 dark:border-gray-700">
+          <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+            {% trans "Pack neutral-colored clothing, hat, sunglasses, sunscreen, insect repellent, comfortable shoes, and a good camera. We provide a detailed packing list upon booking." %}
+          </p>
+        </div>
+      </details>
+
+      <details class="group bg-white dark:bg-gray-800 rounded-xl shadow-sm overflow-hidden">
+        <summary class="list-none cursor-pointer px-5 py-4 flex items-center justify-between">
+          <span class="text-left text-gray-900 dark:text-gray-100 font-medium">{% trans "How safe is Tanzania for tourists?" %}</span>
+          <span class="ml-4 transform transition-transform duration-200 group-open:rotate-180 text-gray-500 dark:text-gray-300">
+            <i class="fas fa-chevron-down"></i>
+          </span>
+        </summary>
+        <div class="px-5 pb-4 pt-0 border-t border-gray-100 dark:border-gray-700">
+          <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+            {% trans "Tanzania is generally safe for tourists. We provide 24/7 support and work with experienced guides. Follow standard travel precautions and stay with your group." %}
+          </p>
+        </div>
+      </details>
     </div>
+  </div>
 </div>
 {% endblock %}
