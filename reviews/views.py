@@ -10,41 +10,112 @@ from .models import Review, ReviewHelpful
 from .forms import ReviewForm
 from tours.models import TourPackage
 from parks.models import NationalPark
+from django.db.models import Q, Count
+from django.utils.decorators import method_decorator
+from django.views.generic import ListView, View
+from django.db import transaction, IntegrityError
 
 class ReviewListView(ListView):
-    """List all reviews."""
+    """
+    ListView for reviews with search & filters.
+    Supported GET params: type, rating, search, page
+    """
     model = Review
     template_name = 'reviews/review_list.html'
     context_object_name = 'reviews'
     paginate_by = 12
-    
+
     def get_queryset(self):
-        queryset = Review.objects.filter(is_approved=True).select_related(
-            'user', 'tour_package', 'national_park'
-        ).prefetch_related('images')
-        
-        # Filter by type
-        review_type = self.request.GET.get('type')
-        if review_type in ['tour', 'park']:
-            queryset = queryset.filter(review_type=review_type)
-        
-        # Filter by rating
-        rating = self.request.GET.get('rating')
+        """
+        Build queryset without relying on a custom manager method.
+        """
+        qs = (
+            Review.objects
+            .filter(is_approved=True)  # <-- explicit filter so no custom manager required
+            .select_related('user', 'tour_package', 'national_park')
+            .prefetch_related('images')
+        )
+
+        review_type = (self.request.GET.get('type') or '').strip()
+        rating = (self.request.GET.get('rating') or '').strip()
+        search = (self.request.GET.get('search') or '').strip()
+
+        # Validate review_type against choices
+        valid_types = {choice[0] for choice in Review.REVIEW_TYPES}
+        if review_type in valid_types:
+            qs = qs.filter(review_type=review_type)
+
+        # rating filter
         if rating:
             try:
-                rating = int(rating)
-                if 1 <= rating <= 5:
-                    queryset = queryset.filter(rating=rating)
+                r = int(rating)
             except ValueError:
-                pass
-        
-        return queryset.order_by('-created_at')
-    
+                r = None
+            if r and 1 <= r <= 5:
+                qs = qs.filter(rating=r)
+
+        # multi-field search
+        if search:
+            qs = qs.filter(
+                Q(title__icontains=search) |
+                Q(content__icontains=search) |
+                Q(user__first_name__icontains=search) |
+                Q(user__last_name__icontains=search) |
+                Q(user__username__icontains=search) |
+                Q(tour_package__title__icontains=search) |
+                Q(national_park__name__icontains=search)
+            ).distinct()
+
+        # annotate helpful_count for display (uses ReviewHelpful related_name)
+        qs = qs.annotate(helpful_count=Count('helpful_votes_detail'))
+
+        return qs.order_by('-created_at')
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['current_type'] = self.request.GET.get('type', '')
         context['current_rating'] = self.request.GET.get('rating', '')
+        context['search_query'] = self.request.GET.get('search', '')
+
+        # keep existing query params (except page) to reuse in pagination links if needed
+        query = self.request.GET.copy()
+        if 'page' in query:
+            query.pop('page')
+        context['querystring'] = query.urlencode()
         return context
+
+
+@method_decorator(login_required, name='dispatch')
+class MarkHelpfulView(View):
+    """
+    Toggle helpful vote for authenticated users.
+    POST /reviews/<pk>/helpful/
+    Response JSON: { success: True, helpful_count: <int>, action: 'added'|'removed' }
+    """
+    def post(self, request, pk, *args, **kwargs):
+        review = get_object_or_404(Review, pk=pk, is_approved=True)
+
+        # optional: prevent voting on your own review
+        if review.user_id == request.user.id:
+            return JsonResponse({'success': False, 'error': 'cannot_vote_own_review'}, status=403)
+
+        try:
+            with transaction.atomic():
+                obj, created = ReviewHelpful.objects.get_or_create(review=review, user=request.user)
+                if created:
+                    action = 'added'
+                else:
+                    # toggle: remove existing vote
+                    obj.delete()
+                    action = 'removed'
+
+                # recompute fresh count and update denormalized field
+                fresh_count = ReviewHelpful.objects.filter(review=review).count()
+                Review.objects.filter(pk=review.pk).update(helpful_votes=fresh_count)
+        except IntegrityError:
+            return JsonResponse({'success': False, 'error': 'db_error'}, status=500)
+
+        return JsonResponse({'success': True, 'helpful_count': fresh_count, 'action': action})
 
 class ReviewDetailView(DetailView):
     """Review detail view."""

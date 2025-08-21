@@ -5,76 +5,81 @@ from django.db.models import ExpressionWrapper, IntegerField
 from django.contrib.auth.decorators import login_required
 from .models import TourPackage, TourGuide, TourAvailability
 
-
 def tour_list(request):
-    """List all tour packages."""
-    tours = TourPackage.objects.filter(is_active=True).select_related().prefetch_related('parks_visited')
+    """
+    Tour list with filters, search, sorting and pagination.
+    Price-related behaviour intentionally removed.
+    """
+    qs = TourPackage.objects.filter(is_active=True).prefetch_related('parks_visited')
+
+    # sanitize params
+    category = (request.GET.get('category') or '').strip()
+    difficulty = (request.GET.get('difficulty') or '').strip()
+    duration = (request.GET.get('duration') or '').strip()
+    search = (request.GET.get('search') or '').strip()
+    sort_by = (request.GET.get('sort') or 'featured').strip()
 
     # Filtering
-    category = request.GET.get('category')
-    difficulty = request.GET.get('difficulty')
-    duration = request.GET.get('duration')
-    price_range = request.GET.get('price')
-    search = request.GET.get('search')
-
     if category:
-        tours = tours.filter(category=category)
+        qs = qs.filter(category=category)
 
     if difficulty:
-        tours = tours.filter(difficulty_level=difficulty)
+        qs = qs.filter(difficulty_level=difficulty)
 
     if duration:
         if duration == 'short':
-            tours = tours.filter(duration_days__lte=3)
+            qs = qs.filter(duration_days__lte=3)
         elif duration == 'medium':
-            tours = tours.filter(duration_days__range=(4, 7))
+            qs = qs.filter(duration_days__range=(4, 7))
         elif duration == 'long':
-            tours = tours.filter(duration_days__gte=8)
-
-    if price_range:
-        if price_range == 'budget':
-            tours = tours.filter(price_budget__isnull=False)
-        elif price_range == 'standard':
-            tours = tours.filter(price_standard__isnull=False)
-        elif price_range == 'luxury':
-            tours = tours.filter(price_luxury__isnull=False)
+            qs = qs.filter(duration_days__gte=8)
 
     if search:
-        tours = tours.filter(
+        qs = qs.filter(
             Q(title__icontains=search) |
             Q(description__icontains=search) |
-            Q(short_description__icontains=search)
+            Q(short_description__icontains=search) |
+            Q(highlights__icontains=search)
         )
 
-    # Sorting
-    sort_by = request.GET.get('sort', 'featured')
-    if sort_by == 'price_low':
-        tours = tours.order_by('price_budget')
-    elif sort_by == 'price_high':
-        tours = tours.order_by('-price_luxury')
-    elif sort_by == 'duration':
-        tours = tours.order_by('duration_days')
+    # Sorting (validate against allowed options)
+    if sort_by == 'duration':
+        qs = qs.order_by('duration_days', 'title')
     elif sort_by == 'rating':
-        tours = tours.order_by('-average_rating')
+        qs = qs.order_by('-average_rating', '-total_reviews', 'title')
     else:
-        tours = tours.order_by('-is_featured', '-is_popular', '-created_at')
+        # featured default: featured -> popular -> newest
+        qs = qs.order_by('-is_featured', '-is_popular', '-created_at')
+
+    qs = qs.distinct()
 
     # Pagination
-    paginator = Paginator(tours, 12)
+    paginator = Paginator(qs, 12)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
+
+    # Provide choice lists for template selects
+    categories = getattr(TourPackage, 'TOUR_CATEGORIES', [])
+    difficulties = getattr(TourPackage, 'DIFFICULTY_LEVELS', [])
+    sort_options = [
+        ('featured', 'Featured'),
+        ('duration', 'Duration'),
+        ('rating', 'Rating'),
+    ]
 
     context = {
         'page_obj': page_obj,
         'current_category': category,
         'current_difficulty': difficulty,
         'current_duration': duration,
-        'current_price': price_range,
         'current_sort': sort_by,
         'search_query': search,
+
+        'categories': categories,
+        'difficulties': difficulties,
+        'sort_options': sort_options,
     }
     return render(request, 'tours/tour_list.html', context)
-
 
 def tour_detail(request, slug):
     """Tour package detail view."""

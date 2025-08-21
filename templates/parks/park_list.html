@@ -1,153 +1,191 @@
 {% extends 'base/base.html' %}
-{% load i18n %}
-
-{% block title %}{% trans "National Parks" %} - {{ site_settings.site_name|default:"Safari & Bush Retreats" }}{% endblock %}
+{% load i18n query_transform %}
+{% block title %}{% trans "National Parks" %}{% endblock %}
 
 {% block content %}
-<!-- Hero Section -->
-<section class="relative bg-cover bg-center" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.pexels.com/photos/631317/pexels-photo-631317.jpeg'); min-height: 60vh;">
-    <div class="container mx-auto px-4 py-24 relative z-10">
-        <div class="max-w-3xl">
-            <h1 class="text-4xl md:text-5xl font-bold text-white mb-6">{% trans "Tanzania National Parks" %}</h1>
-            <p class="text-xl text-white opacity-90">{% trans "Discover the incredible biodiversity of Tanzania's protected areas" %}</p>
-        </div>
-    </div>
+<!-- Hero -->
+<section class="relative bg-cover bg-center" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.pexels.com/photos/631317/pexels-photo-631317.jpeg'); min-height: 40vh;">
+  <div class="container mx-auto px-4 py-20">
+    <h1 class="text-4xl md:text-5xl font-bold text-white">{% trans "Tanzania National Parks" %}</h1>
+    <p class="text-lg text-white opacity-90 mt-3">{% trans "Discover the incredible biodiversity of Tanzania's protected areas" %}</p>
+  </div>
 </section>
 
-<!-- Filters Section -->
+<!-- Filters -->
 <section class="py-8 bg-gray-50 dark:bg-gray-800">
-    <div class="container mx-auto px-4">
-        <form method="GET" class="grid grid-cols-1 md:grid-cols-12 gap-4 items-end">
-            <div class="md:col-span-3">
-                <label class="block text-gray-700 dark:text-gray-300 mb-2">{% trans "Park Type" %}</label>
-                <select name="type" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-primary dark:focus:ring-primary-dark bg-white dark:bg-gray-700 border-gray-300 dark:border-gray-600 text-gray-800 dark:text-gray-200">
-                    <option value="">{% trans "All Types" %}</option>
-                    <option value="national_park" {% if current_type == 'national_park' %}selected{% endif %}>{% trans "National Park" %}</option>
-                    <option value="game_reserve" {% if current_type == 'game_reserve' %}selected{% endif %}>{% trans "Game Reserve" %}</option>
-                    <option value="conservation_area" {% if current_type == 'conservation_area' %}selected{% endif %}>{% trans "Conservation Area" %}</option>
-                    <option value="marine_park" {% if current_type == 'marine_park' %}selected{% endif %}>{% trans "Marine Park" %}</option>
-                </select>
-            </div>
-            <div class="md:col-span-3">
-                <label class="block text-gray-700 dark:text-gray-300 mb-2">{% trans "Region" %}</label>
-                <select name="region" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-primary dark:focus:ring-primary-dark bg-white dark:bg-gray-700 border-gray-300 dark:border-gray-600 text-gray-800 dark:text-gray-200">
-                    <option value="">{% trans "All Regions" %}</option>
-                    {% for region in regions %}
-                        <option value="{{ region }}" {% if current_region == region %}selected{% endif %}>{{ region }}</option>
-                    {% endfor %}
-                </select>
-            </div>
-            <div class="md:col-span-4">
-                <label class="block text-gray-700 dark:text-gray-300 mb-2">{% trans "Search" %}</label>
-                <input type="text" name="search" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-primary dark:focus:ring-primary-dark bg-white dark:bg-gray-700 border-gray-300 dark:border-gray-600 text-gray-800 dark:text-gray-200 placeholder-gray-500 dark:placeholder-gray-400" placeholder="{% trans 'Search parks...' %}" value="{{ search_query }}">
-            </div>
-            <div class="md:col-span-2">
-                <button type="submit" class="w-full bg-primary dark:bg-primary-dark hover:bg-secondary dark:hover:bg-secondary-dark text-white font-medium py-2 px-4 rounded-md transition duration-300">{% trans "Filter" %}</button>
-            </div>
-        </form>
-    </div>
+  <div class="container mx-auto px-4">
+    <form method="GET" action="" class="grid grid-cols-1 md:grid-cols-12 gap-4 items-end">
+      <div class="md:col-span-3">
+        <label class="block text-gray-700 dark:text-gray-300 mb-2">{% trans "Park Type" %}</label>
+        <select
+          name="type"
+          class="w-full px-4 py-2 border rounded-md bg-white dark:bg-gray-700 border-gray-300 dark:border-gray-600 text-gray-800 dark:text-gray-200 placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary dark:focus:ring-primary-dark"
+          aria-label="{% trans 'Park type' %}"
+        >
+          <option value="">{% trans "All Types" %}</option>
+          {% for val,label in park_types %}
+            <option value="{{ val }}" {% if current_type == val %}selected{% endif %}>{{ label }}</option>
+          {% endfor %}
+        </select>
+      </div>
+
+      <div class="md:col-span-3">
+        <label class="block text-gray-700 dark:text-gray-300 mb-2">{% trans "Region" %}</label>
+        <select
+          name="region"
+          class="w-full px-4 py-2 border rounded-md bg-white dark:bg-gray-700 border-gray-300 dark:border-gray-600 text-gray-800 dark:text-gray-200 placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary dark:focus:ring-primary-dark"
+          aria-label="{% trans 'Region' %}"
+        >
+          <option value="">{% trans "All Regions" %}</option>
+          {% for r in regions %}
+            <option value="{{ r }}" {% if current_region == r %}selected{% endif %}>{{ r }}</option>
+          {% endfor %}
+        </select>
+      </div>
+
+      <div class="md:col-span-4">
+        <label class="block text-gray-700 dark:text-gray-300 mb-2">{% trans "Search" %}</label>
+        <input
+          type="text"
+          name="search"
+          class="w-full px-4 py-2 border rounded-md bg-white dark:bg-gray-700 border-gray-300 dark:border-gray-600 text-gray-800 dark:text-gray-200 placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary dark:focus:ring-primary-dark"
+          placeholder="{% trans 'Search parks...' %}"
+          value="{{ search_query }}"
+          aria-label="{% trans 'Search parks' %}"
+        >
+      </div>
+
+      <div class="md:col-span-2">
+        <button type="submit" class="w-full py-2 rounded-md bg-primary dark:bg-primary-dark hover:bg-secondary dark:hover:bg-secondary-dark text-white font-medium">
+          {% trans "Filter" %}
+        </button>
+      </div>
+    </form>
+  </div>
 </section>
 
 <!-- Parks Grid -->
 <section class="py-12 bg-white dark:bg-gray-900">
-    <div class="container mx-auto px-4">
-        {% if page_obj %}
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {% for park in page_obj %}
-                    <div class="bg-white dark:bg-gray-700 rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 flex flex-col h-full">
-                        <div class="relative">
-                            <img src="{% if park.main_image %}{{ park.main_image.url }}{% else %}https://images.pexels.com/photos/631317/pexels-photo-631317.jpeg{% endif %}" 
-                                 class="w-full h-64 object-cover" alt="{{ park.name }}">
-                            <div class="absolute top-3 right-3">
-                                <span class="bg-green-600 text-white text-xs font-semibold px-3 py-1 rounded-full">{{ park.get_park_type_display }}</span>
-                            </div>
-                            {% if park.featured %}
-                                <div class="absolute top-3 left-3">
-                                    <span class="bg-yellow-400 text-gray-900 dark:text-gray-900 text-xs font-semibold px-3 py-1 rounded-full flex items-center">
-                                        <i class="fas fa-star mr-1"></i>{% trans "Featured" %}
-                                    </span>
-                                </div>
-                            {% endif %}
-                        </div>
-                        <div class="p-6 flex flex-col flex-grow">
-                            <h5 class="text-xl font-bold text-gray-900 dark:text-gray-100 mb-2">{{ park.name }}</h5>
-                            <p class="text-gray-600 dark:text-gray-300 mb-4 flex items-center">
-                                <i class="fas fa-map-marker-alt mr-2 text-primary dark:text-primary-dark"></i>{{ park.location }}, {{ park.region }}
-                            </p>
-                            <p class="text-gray-700 dark:text-gray-200 mb-6 flex-grow">{{ park.short_description }}</p>
-                            
-                            <div class="grid grid-cols-3 gap-2 text-center mb-6">
-                                <div>
-                                    <p class="text-xs text-gray-500 dark:text-gray-400">{% trans "Area" %}</p>
-                                    <p class="font-semibold text-gray-900 dark:text-gray-100">{{ park.area_km2|floatformat:0 }} km²</p>
-                                </div>
-                                <div>
-                                    <p class="text-xs text-gray-500 dark:text-gray-400">{% trans "Established" %}</p>
-                                    <p class="font-semibold text-gray-900 dark:text-gray-100">{{ park.established_year }}</p>
-                                </div>
-                                <div>
-                                    <p class="text-xs text-gray-500 dark:text-gray-400">{% trans "Type" %}</p>
-                                    <p class="font-semibold text-gray-900 dark:text-gray-100">{{ park.get_park_type_display }}</p>
-                                </div>
-                            </div>
-                            
-                            <a href="{% url 'parks:park_detail' park.slug %}" class="mt-auto bg-primary dark:bg-primary-dark hover:bg-secondary dark:hover:bg-secondary-dark text-white font-medium py-2 px-4 rounded-md text-center transition duration-300">
-                                {% trans "Explore Park" %}
-                            </a>
-                        </div>
-                    </div>
-                {% endfor %}
+  <div class="container mx-auto px-4">
+    {% if page_obj and page_obj.object_list %}
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {% for park in page_obj %}
+          <div class="bg-white dark:bg-gray-700 rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 flex flex-col h-full">
+            <div class="relative">
+              <img src="{{ park.get_main_image_url }}" alt="{{ park.name }}" class="w-full h-64 object-cover">
+              <div class="absolute top-3 right-3">
+                <span class="bg-green-600 text-white text-xs font-semibold px-3 py-1 rounded-full">{{ park.get_park_type_display }}</span>
+              </div>
+              {% if park.featured %}
+                <div class="absolute top-3 left-3">
+                  <span class="bg-yellow-400 text-gray-900 text-xs font-semibold px-3 py-1 rounded-full flex items-center">
+                    <i class="fas fa-star mr-1"></i>{% trans "Featured" %}
+                  </span>
+                </div>
+              {% endif %}
             </div>
-            
-            <!-- Pagination -->
-            {% if page_obj.has_other_pages %}
-                <nav class="mt-12 flex justify-center">
-                    <ul class="flex items-center space-x-2">
-                        {% if page_obj.has_previous %}
-                            <li>
-                                <a href="?page={{ page_obj.previous_page_number }}{% if current_type %}&type={{ current_type }}{% endif %}{% if current_region %}&region={{ current_region }}{% endif %}{% if search_query %}&search={{ search_query }}{% endif %}" 
-                                   class="px-4 py-2 border rounded-md text-primary dark:text-primary-dark hover:bg-gray-100 dark:hover:bg-gray-800 transition duration-300">
-                                    {% trans "Previous" %}
-                                </a>
-                            </li>
-                        {% endif %}
-                        
-                        {% for num in page_obj.paginator.page_range %}
-                            {% if page_obj.number == num %}
-                                <li>
-                                    <span class="px-4 py-2 bg-primary dark:bg-primary-dark text-white rounded-md">{{ num }}</span>
-                                </li>
-                            {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
-                                <li>
-                                    <a href="?page={{ num }}{% if current_type %}&type={{ current_type }}{% endif %}{% if current_region %}&region={{ current_region }}{% endif %}{% if search_query %}&search={{ search_query }}{% endif %}" 
-                                       class="px-4 py-2 border rounded-md text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-800 transition duration-300">
-                                        {{ num }}
-                                    </a>
-                                </li>
-                            {% endif %}
-                        {% endfor %}
-                        
-                        {% if page_obj.has_next %}
-                            <li>
-                                <a href="?page={{ page_obj.next_page_number }}{% if current_type %}&type={{ current_type }}{% endif %}{% if current_region %}&region={{ current_region }}{% endif %}{% if search_query %}&search={{ search_query }}{% endif %}" 
-                                   class="px-4 py-2 border rounded-md text-primary dark:text-primary-dark hover:bg-gray-100 dark:hover:bg-gray-800 transition duration-300">
-                                    {% trans "Next" %}
-                                </a>
-                            </li>
-                        {% endif %}
-                    </ul>
-                </nav>
-            {% endif %}
-        {% else %}
-            <div class="text-center py-16">
-                <i class="fas fa-mountain text-gray-300 dark:text-gray-500 text-6xl mb-6"></i>
-                <h3 class="text-2xl font-bold text-gray-800 dark:text-gray-100 mb-3">{% trans "No parks found" %}</h3>
-                <p class="text-gray-600 dark:text-gray-300 mb-8">{% trans "Try adjusting your search criteria" %}</p>
-                <a href="{% url 'parks:park_list' %}" class="inline-block bg-primary dark:bg-primary-dark hover:bg-secondary dark:hover:bg-secondary-dark text-white font-medium py-2 px-6 rounded-md transition duration-300">
-                    {% trans "View All Parks" %}
+
+            <div class="p-6 flex flex-col flex-grow">
+              <h5 class="text-xl font-bold text-gray-900 dark:text-gray-100 mb-2">{{ park.name }}</h5>
+              <p class="text-gray-600 dark:text-gray-300 mb-4 flex items-center">
+                <i class="fas fa-map-marker-alt mr-2 text-primary dark:text-primary-dark"></i>{{ park.location }}, {{ park.region }}
+              </p>
+              <p class="text-gray-700 dark:text-gray-200 mb-6 flex-grow">{{ park.short_description }}</p>
+
+              <div class="grid grid-cols-3 gap-2 text-center mb-6">
+                <div>
+                  <p class="text-xs text-gray-500 dark:text-gray-400">{% trans "Area" %}</p>
+                  <p class="font-semibold text-gray-900 dark:text-gray-100">{{ park.area_km2|floatformat:0 }} km²</p>
+                </div>
+                <div>
+                  <p class="text-xs text-gray-500 dark:text-gray-400">{% trans "Established" %}</p>
+                  <p class="font-semibold text-gray-900 dark:text-gray-100">{{ park.established_year }}</p>
+                </div>
+                <div>
+                  <p class="text-xs text-gray-500 dark:text-gray-400">{% trans "Type" %}</p>
+                  <p class="font-semibold text-gray-900 dark:text-gray-100">{{ park.get_park_type_display }}</p>
+                </div>
+              </div>
+
+              <a href="{{ park.get_absolute_url }}" class="mt-auto bg-primary dark:bg-primary-dark hover:bg-secondary dark:hover:bg-secondary-dark text-white font-medium py-2 px-4 rounded-md text-center transition duration-300">
+                {% trans "Explore Park" %}
+              </a>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+
+      <!-- Pagination -->
+      {% if page_obj.has_other_pages %}
+        <nav class="mt-12 flex justify-center" aria-label="Pagination">
+          <ul class="flex items-center space-x-2">
+            {% if page_obj.has_previous %}
+              <li>
+                <a href="?{% url_replace request page=page_obj.previous_page_number %}" class="px-4 py-2 border rounded-md text-primary dark:text-primary-dark hover:bg-gray-100 dark:hover:bg-gray-800 transition duration-300">
+                  {% trans "Previous" %}
                 </a>
-            </div>
-        {% endif %}
-    </div>
+              </li>
+            {% endif %}
+
+            {% for num in page_obj.paginator.page_range %}
+              {% if page_obj.number == num %}
+                <li><span class="px-4 py-2 bg-primary dark:bg-primary-dark text-white rounded-md">{{ num }}</span></li>
+              {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+                <li>
+                  <a href="?{% url_replace request page=num %}" class="px-4 py-2 border rounded-md text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-800 transition duration-300">
+                    {{ num }}
+                  </a>
+                </li>
+              {% endif %}
+            {% endfor %}
+
+            {% if page_obj.has_next %}
+              <li>
+                <a href="?{% url_replace request page=page_obj.next_page_number %}" class="px-4 py-2 border rounded-md text-primary dark:text-primary-dark hover:bg-gray-100 dark:hover:bg-gray-800 transition duration-300">
+                  {% trans "Next" %}
+                </a>
+              </li>
+            {% endif %}
+          </ul>
+        </nav>
+      {% endif %}
+    {% else %}
+      <div class="text-center py-16">
+        <i class="fas fa-mountain text-gray-300 dark:text-gray-500 text-6xl mb-6"></i>
+        <h3 class="text-2xl font-bold text-gray-800 dark:text-gray-100 mb-3">{% trans "No parks found" %}</h3>
+        <p class="text-gray-600 dark:text-gray-300 mb-8">{% trans "Try adjusting your search criteria" %}</p>
+        <a href="{% url 'parks:park_list' %}" class="inline-block bg-primary dark:bg-primary-dark hover:bg-secondary dark:hover:bg-secondary-dark text-white font-medium py-2 px-6 rounded-md transition duration-300">
+          {% trans "View All Parks" %}
+        </a>
+      </div>
+    {% endif %}
+  </div>
 </section>
+
+<!-- JS: auto-submit for selects + debounce for search -->
+<script>
+  (function(){
+    // Auto-submit for selects
+    document.querySelectorAll('select[name="type"], select[name="region"]').forEach(el=>{
+      el.addEventListener('change', ()=> el.form.submit());
+    });
+
+    // Debounce helper
+    function debounce(fn, delay){
+      let t;
+      return function(...args){
+        clearTimeout(t);
+        t = setTimeout(()=> fn.apply(this, args), delay);
+      };
+    }
+
+    // Debounced search submit (optional behavior)
+    const searchInput = document.querySelector('input[name="search"]');
+    if (searchInput) {
+      const form = searchInput.form;
+      const debounced = debounce(()=> form.submit(), 600);
+      searchInput.addEventListener('keyup', debounced);
+    }
+  })();
+</script>
 {% endblock %}

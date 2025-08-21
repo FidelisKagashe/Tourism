@@ -1,5 +1,5 @@
 {% extends 'base/base.html' %}
-{% load i18n %}
+{% load i18n query_transform %}
 
 {% block title %}{% trans "Reviews" %} - Safari&nbsp;&amp;&nbsp;Bush Retreats{% endblock %}
 
@@ -17,13 +17,14 @@
 <!-- Filters -->
 <section class="py-8 bg-gray-50 dark:bg-gray-900">
   <div class="container mx-auto px-4">
-    <form method="GET" class="grid grid-cols-1 md:grid-cols-12 gap-4 items-end">
+    <form method="GET" class="grid grid-cols-1 md:grid-cols-12 gap-4 items-end" id="reviews-filter-form">
       <div class="md:col-span-3">
         <label class="block text-gray-700 dark:text-gray-300 mb-2">{% trans "Type" %}</label>
         <select name="type" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-[#C18D45] bg-white text-gray-800 border-gray-300 dark:bg-gray-700 dark:text-gray-200 dark:border-gray-600">
           <option value="">{% trans "All Reviews" %}</option>
           <option value="tour" {% if current_type == 'tour' %}selected{% endif %}>{% trans "Tour Reviews" %}</option>
           <option value="park" {% if current_type == 'park' %}selected{% endif %}>{% trans "Park Reviews" %}</option>
+          <option value="guide" {% if current_type == 'guide' %}selected{% endif %}>{% trans "Guide Reviews" %}</option>
         </select>
       </div>
 
@@ -39,7 +40,20 @@
         </select>
       </div>
 
-      <div class="md:col-span-6">
+      <div class="md:col-span-4">
+        <label class="block text-gray-700 dark:text-gray-300 mb-2">{% trans "Search" %}</label>
+        <input
+          type="text"
+          name="search"
+          id="reviews-search"
+          class="w-full px-4 py-2 border rounded-md bg-white dark:bg-gray-700 border-gray-300 dark:border-gray-600 text-gray-800 dark:text-gray-200 placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#C18D45]"
+          placeholder="{% trans 'Search reviews, users, tours or parks...' %}"
+          value="{{ search_query|default:'' }}"
+          aria-label="{% trans 'Search reviews' %}"
+        />
+      </div>
+
+      <div class="md:col-span-2">
         <button type="submit" class="w-full bg-[#C18D45] hover:bg-[#a97a3a] text-white font-medium py-2 px-4 rounded-md transition duration-300">
           {% trans "Filter Reviews" %}
         </button>
@@ -54,7 +68,7 @@
     {% if reviews %}
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
         {% for review in reviews %}
-          <div class="bg-white dark:bg-gray-800 rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
+          <article class="bg-white dark:bg-gray-800 rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300" id="review-{{ review.id }}">
             <div class="p-6">
               <div class="flex items-center mb-4">
                 <div class="bg-[#C18D45] rounded-full w-12 h-12 flex items-center justify-center text-white mr-4" aria-hidden="true">
@@ -64,8 +78,8 @@
                 <div class="flex-grow">
                   <h6 class="font-bold text-gray-900 dark:text-gray-100">{{ review.user.get_display_name }}</h6>
                   <div class="flex items-center mb-1" aria-hidden="true">
-                    {% for i in "12345" %}
-                      {% if forloop.counter <= review.rating %}
+                    {% for i in review.get_star_range %}
+                      {% if i <= review.rating %}
                         <i class="fas fa-star text-yellow-400 mr-1"></i>
                       {% else %}
                         <i class="far fa-star text-yellow-400 mr-1 opacity-70"></i>
@@ -104,9 +118,16 @@
               </div>
 
               <div class="flex justify-between items-center">
-                <button onclick="markHelpful({{ review.id }})" class="bg-gray-100 hover:bg-gray-200 dark:bg-gray-700 dark:hover:bg-gray-600 text-gray-800 dark:text-gray-200 font-medium py-2 px-4 rounded-md transition duration-300 flex items-center">
+                <button
+                  class="helpful-btn bg-gray-100 hover:bg-gray-200 dark:bg-gray-700 dark:hover:bg-gray-600 text-gray-800 dark:text-gray-200 font-medium py-2 px-4 rounded-md transition duration-300 flex items-center"
+                  data-review-id="{{ review.id }}"
+                  aria-pressed="false"
+                >
                   <i class="fas fa-thumbs-up mr-2"></i>
-                  {% trans "Helpful" %} ({{ review.helpful_votes }})
+                  <span class="helpful-text">{% trans "Helpful" %}</span>
+                  &nbsp;(<span class="helpful-count">
+                    {% if review.helpful_count is not None %}{{ review.helpful_count }}{% else %}{{ review.helpful_votes|default:0 }}{% endif %}
+                  </span>)
                 </button>
 
                 <a href="{% url 'reviews:review_detail' review.pk %}" class="bg-[#C18D45] hover:bg-[#a97a3a] text-white font-medium py-2 px-4 rounded-md transition duration-300">
@@ -114,18 +135,17 @@
                 </a>
               </div>
             </div>
-          </div>
+          </article>
         {% endfor %}
       </div>
 
       <!-- Pagination -->
       {% if reviews.has_other_pages %}
-        <nav class="mt-12 flex justify-center">
+        <nav class="mt-12 flex justify-center" aria-label="Pagination">
           <ul class="flex items-center space-x-2">
             {% if reviews.has_previous %}
               <li>
-                <a href="?page={{ reviews.previous_page_number }}{% if current_type %}&type={{ current_type }}{% endif %}{% if current_rating %}&rating={{ current_rating }}{% endif %}"
-                   class="px-4 py-2 border rounded-md text-[#C18D45] hover:bg-[#f5e9d8] dark:hover:bg-gray-700 transition duration-300">
+                <a href="?{% url_replace request page=reviews.previous_page_number %}" class="px-4 py-2 border rounded-md text-[#C18D45] hover:bg-[#f5e9d8] dark:hover:bg-gray-700 transition duration-300">
                   {% trans "Previous" %}
                 </a>
               </li>
@@ -133,13 +153,10 @@
 
             {% for num in reviews.paginator.page_range %}
               {% if reviews.number == num %}
-                <li>
-                  <span class="px-4 py-2 bg-[#C18D45] text-white rounded-md">{{ num }}</span>
-                </li>
+                <li><span class="px-4 py-2 bg-[#C18D45] text-white rounded-md">{{ num }}</span></li>
               {% elif num > reviews.number|add:'-3' and num < reviews.number|add:'3' %}
                 <li>
-                  <a href="?page={{ num }}{% if current_type %}&type={{ current_type }}{% endif %}{% if current_rating %}&rating={{ current_rating }}{% endif %}"
-                     class="px-4 py-2 border rounded-md text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-800 transition duration-300">
+                  <a href="?{% url_replace request page=num %}" class="px-4 py-2 border rounded-md text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-800 transition duration-300">
                     {{ num }}
                   </a>
                 </li>
@@ -148,8 +165,7 @@
 
             {% if reviews.has_next %}
               <li>
-                <a href="?page={{ reviews.next_page_number }}{% if current_type %}&type={{ current_type }}{% endif %}{% if current_rating %}&rating={{ current_rating }}{% endif %}"
-                   class="px-4 py-2 border rounded-md text-[#C18D45] hover:bg-[#f5e9d8] dark:hover:bg-gray-700 transition duration-300">
+                <a href="?{% url_replace request page=reviews.next_page_number %}" class="px-4 py-2 border rounded-md text-[#C18D45] hover:bg-[#f5e9d8] dark:hover:bg-gray-700 transition duration-300">
                   {% trans "Next" %}
                 </a>
               </li>
@@ -176,20 +192,79 @@
 
 {% block extra_js %}
 <script>
-function markHelpful(reviewId) {
-  fetch(`/reviews/${reviewId}/helpful/`, {
-    method: 'POST',
-    headers: {
-      'X-CSRFToken': '{{ csrf_token }}',
-      'Content-Type': 'application/json',
-    },
-  })
-  .then(response => response.json())
-  .then(data => {
-    if (data.success) {
-      location.reload();
-    }
+(function() {
+  // Auto-submit selects when changed
+  document.querySelectorAll('select[name="type"], select[name="rating"]').forEach(el => {
+    el.addEventListener('change', () => el.form.submit());
   });
-}
+
+  // Debounce helper
+  function debounce(fn, delay) {
+    let t;
+    return function(...args) {
+      clearTimeout(t);
+      t = setTimeout(() => fn.apply(this, args), delay);
+    };
+  }
+
+  // Debounced search submit
+  const searchInput = document.getElementById('reviews-search');
+  if (searchInput) {
+    const form = searchInput.form;
+    const debounced = debounce(() => form.submit(), 600);
+    searchInput.addEventListener('keyup', debounced);
+    searchInput.addEventListener('change', debounced);
+  }
+
+  // CSRF token helper (cookie fallback)
+  function getCSRFToken() {
+    const name = 'csrftoken=';
+    const decoded = document.cookie ? document.cookie.split(';').map(c => c.trim()) : [];
+    for (let c of decoded) {
+      if (c.indexOf(name) === 0) return decodeURIComponent(c.substring(name.length));
+    }
+    // fallback to template token if cookies disabled (rendered by Django)
+    return '{{ csrf_token }}';
+  }
+
+  // Helpful button AJAX (toggle)
+  document.querySelectorAll('.helpful-btn').forEach(btn => {
+    btn.addEventListener('click', function(e) {
+      e.preventDefault();
+      const reviewId = this.dataset.reviewId;
+      if (!reviewId) return;
+      const url = `/reviews/${reviewId}/helpful/`;
+      const countEl = this.querySelector('.helpful-count');
+
+      fetch(url, {
+        method: 'POST',
+        headers: {
+          'X-CSRFToken': getCSRFToken(),
+          'Content-Type': 'application/json',
+          'X-Requested-With': 'XMLHttpRequest'
+        },
+        body: JSON.stringify({}) // no payload required
+      })
+      .then(res => {
+        if (!res.ok) return res.json().then(err => Promise.reject(err));
+        return res.json();
+      })
+      .then(data => {
+        if (data && data.success) {
+          if (countEl) countEl.textContent = data.helpful_count;
+          const pressed = this.getAttribute('aria-pressed') === 'true';
+          this.setAttribute('aria-pressed', (!pressed).toString());
+        } else {
+          console.warn('Helpful vote failed', data);
+        }
+      })
+      .catch(err => {
+        console.error('Helpful vote error', err);
+        // optionally: show inline toast / UI feedback
+      });
+
+    });
+  });
+})();
 </script>
 {% endblock %}

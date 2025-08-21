@@ -1,5 +1,5 @@
 {% extends 'base/base.html' %}
-{% load i18n %}
+{% load i18n query_transform %}
 
 {% block title %}{% trans "Wildlife" %} - Safari&nbsp;&amp;&nbsp;Bush Retreats{% endblock %}
 
@@ -18,7 +18,7 @@
 <!-- Filters -->
 <section class="py-8 bg-gray-50 dark:bg-gray-900">
   <div class="container mx-auto px-4">
-    <form method="GET" class="grid grid-cols-1 md:grid-cols-12 gap-4 items-end">
+    <form method="GET" id="wildlife-filters" class="grid grid-cols-1 md:grid-cols-12 gap-4 items-end">
       <div class="md:col-span-2">
         <label class="block text-gray-700 dark:text-gray-300 mb-2">{% trans "Category" %}</label>
         <select name="category" class="w-full px-4 py-2 rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-800 dark:text-gray-200 focus:outline-none focus:ring-2 focus:ring-[#C18D45]">
@@ -41,7 +41,8 @@
 
       <div class="md:col-span-2 flex items-center">
         <div class="flex items-center h-5">
-          <input id="big-five" name="big_five" type="checkbox" value="true" {% if big_five_filter == 'true' %}checked{% endif %}
+          <input id="big-five" name="big_five" type="checkbox" value="true"
+                 {% if big_five_filter == '1' or big_five_filter == 'true' or big_five_filter == 'on' %}checked{% endif %}
                  class="w-4 h-4 text-[#C18D45] border-gray-300 rounded focus:ring-[#C18D45] bg-white dark:bg-gray-700 dark:border-gray-600" />
         </div>
         <div class="ml-3 text-sm">
@@ -51,7 +52,7 @@
 
       <div class="md:col-span-4">
         <label class="block text-gray-700 dark:text-gray-300 mb-2">{% trans "Search" %}</label>
-        <input type="text" name="search" value="{{ search_query }}" placeholder="{% trans 'Search wildlife...' %}"
+        <input type="text" name="search" id="wildlife-search" value="{{ search_query }}" placeholder="{% trans 'Search wildlife...' %}"
                class="w-full px-4 py-2 rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-800 dark:text-gray-200 focus:outline-none focus:ring-2 focus:ring-[#C18D45]" />
       </div>
 
@@ -120,8 +121,7 @@
           <ul class="flex items-center space-x-2">
             {% if page_obj.has_previous %}
               <li>
-                <a href="?page={{ page_obj.previous_page_number }}{% if current_category %}&category={{ current_category }}{% endif %}{% if current_status %}&status={{ current_status }}{% endif %}{% if big_five_filter %}&big_five={{ big_five_filter }}{% endif %}{% if search_query %}&search={{ search_query }}{% endif %}"
-                   class="px-4 py-2 border rounded-md text-[#C18D45] hover:bg-[#f5e9d8] dark:hover:bg-gray-700 transition duration-300">
+                <a href="?{% url_replace request page=page_obj.previous_page_number %}" class="px-4 py-2 border rounded-md text-[#C18D45] hover:bg-[#f5e9d8] dark:hover:bg-gray-700 transition duration-300">
                   {% trans "Previous" %}
                 </a>
               </li>
@@ -132,8 +132,7 @@
                 <li><span class="px-4 py-2 bg-[#C18D45] text-white rounded-md">{{ num }}</span></li>
               {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
                 <li>
-                  <a href="?page={{ num }}{% if current_category %}&category={{ current_category }}{% endif %}{% if current_status %}&status={{ current_status }}{% endif %}{% if big_five_filter %}&big_five={{ big_five_filter }}{% endif %}{% if search_query %}&search={{ search_query }}{% endif %}"
-                     class="px-4 py-2 border rounded-md text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-800 transition duration-300">
+                  <a href="?{% url_replace request page=num %}" class="px-4 py-2 border rounded-md text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-800 transition duration-300">
                     {{ num }}
                   </a>
                 </li>
@@ -142,8 +141,7 @@
 
             {% if page_obj.has_next %}
               <li>
-                <a href="?page={{ page_obj.next_page_number }}{% if current_category %}&category={{ current_category }}{% endif %}{% if current_status %}&status={{ current_status }}{% endif %}{% if big_five_filter %}&big_five={{ big_five_filter }}{% endif %}{% if search_query %}&search={{ search_query }}{% endif %}"
-                   class="px-4 py-2 border rounded-md text-[#C18D45] hover:bg-[#f5e9d8] dark:hover:bg-gray-700 transition duration-300">
+                <a href="?{% url_replace request page=page_obj.next_page_number %}" class="px-4 py-2 border rounded-md text-[#C18D45] hover:bg-[#f5e9d8] dark:hover:bg-gray-700 transition duration-300">
                   {% trans "Next" %}
                 </a>
               </li>
@@ -163,4 +161,47 @@
     {% endif %}
   </div>
 </section>
+
+<!-- JS: auto-submit for selects & checkbox + debounce for search -->
+<script>
+(function(){
+  // Auto-submit when selects change
+  document.querySelectorAll('#wildlife-filters select[name="category"], #wildlife-filters select[name="status"]').forEach(el=>{
+    el.addEventListener('change', ()=> el.form.submit());
+  });
+
+  // Auto-submit on checkbox change (unchecked not submitted, which removes filter)
+  const bigFive = document.querySelector('#wildlife-filters input[name="big_five"]');
+  if (bigFive) {
+    bigFive.addEventListener('change', function(){
+      this.form.submit();
+    });
+  }
+
+  // Debounce helper
+  function debounce(fn, delay){
+    let t;
+    return function(...args){
+      clearTimeout(t);
+      t = setTimeout(()=> fn.apply(this, args), delay);
+    };
+  }
+
+  // Debounced search submit (600ms)
+  const searchInput = document.getElementById('wildlife-search');
+  if (searchInput) {
+    const form = searchInput.form;
+    const debounced = debounce(()=> form.submit(), 600);
+    searchInput.addEventListener('keyup', debounced);
+    searchInput.addEventListener('search', debounced);
+    searchInput.addEventListener('keydown', function(e){
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        form.submit();
+      }
+    });
+  }
+})();
+</script>
+
 {% endblock %}

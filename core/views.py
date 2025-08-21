@@ -151,38 +151,56 @@ def faq(request):
     return render(request, 'core/faq.html')
 
 def historical_sites_list(request):
-    """Historical sites list view."""
+    """
+    List historical sites with filters: type, region, search, page.
+    """
+    # sanitize GET params (keep as strings for template comparisons)
+    site_type = (request.GET.get('type') or '').strip()
+    region = (request.GET.get('region') or '').strip()
+    search = (request.GET.get('search') or '').strip()
+    page_number = request.GET.get('page')
+
+    # Base queryset
     sites = HistoricalSite.objects.filter(is_active=True).order_by('name')
-    
-    # Filtering
-    site_type = request.GET.get('type')
-    region = request.GET.get('region')
-    search = request.GET.get('search')
-    
+
+    # Apply filters
     if site_type:
         sites = sites.filter(site_type=site_type)
-    
+
     if region:
-        sites = sites.filter(region__icontains=region)
-    
+        # match region exactly (case-insensitive)
+        sites = sites.filter(region__iexact=region)
+
     if search:
         sites = sites.filter(
             Q(name__icontains=search) |
+            Q(short_description__icontains=search) |
             Q(description__icontains=search) |
             Q(location__icontains=search)
-        )
-    
+        ).distinct()
+
     # Pagination
     paginator = Paginator(sites, 12)
-    page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
-    
-    # Get unique regions for filter
-    regions = HistoricalSite.objects.filter(is_active=True).values_list('region', flat=True).distinct()
-    
+
+    # Unique regions for filter (exclude blank/null, ordered)
+    regions = (
+        HistoricalSite.objects
+        .filter(is_active=True)
+        .exclude(region__isnull=True)
+        .exclude(region__exact='')
+        .values_list('region', flat=True)
+        .distinct()
+        .order_by('region')
+    )
+
+    # Site types from model choices so template values always match DB
+    site_types = HistoricalSite.SITE_TYPES
+
     context = {
         'page_obj': page_obj,
         'regions': regions,
+        'site_types': site_types,
         'current_type': site_type,
         'current_region': region,
         'search_query': search,

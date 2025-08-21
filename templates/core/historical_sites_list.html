@@ -1,5 +1,6 @@
+{# templates/core/historical_sites_list.html #}
 {% extends 'base/base.html' %}
-{% load i18n %}
+{% load i18n query_transform %}
 
 {% block title %}{% trans "Historical Sites" %} - Safari&nbsp;&amp;&nbsp;Bush Retreats{% endblock %}
 
@@ -97,31 +98,32 @@ html.dark .local-dark-mode .shadow-lg {
 <!-- Filters -->
 <section class="py-8 bg-gray-50">
     <div class="container mx-auto px-4">
-        <form method="GET" class="grid grid-cols-1 md:grid-cols-12 gap-4 items-end">
+        <form method="GET" id="historical-filters" class="grid grid-cols-1 md:grid-cols-12 gap-4 items-end">
             <div class="md:col-span-3">
                 <label class="block text-gray-700 mb-2">{% trans "Site Type" %}</label>
                 <select name="type" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-[#C18D45]">
                     <option value="">{% trans "All Types" %}</option>
-                    <option value="archaeological" {% if current_type == 'archaeological' %}selected{% endif %}>{% trans "Archaeological Site" %}</option>
-                    <option value="cultural" {% if current_type == 'cultural' %}selected{% endif %}>{% trans "Cultural Heritage" %}</option>
-                    <option value="colonial" {% if current_type == 'colonial' %}selected{% endif %}>{% trans "Colonial Heritage" %}</option>
-                    <option value="religious" {% if current_type == 'religious' %}selected{% endif %}>{% trans "Religious Site" %}</option>
-                    <option value="museum" {% if current_type == 'museum' %}selected{% endif %}>{% trans "Museum" %}</option>
+                    {% for val,label in site_types %}
+                        <option value="{{ val }}" {% if current_type == val %}selected{% endif %}>{{ label }}</option>
+                    {% endfor %}
                 </select>
             </div>
+
             <div class="md:col-span-3">
                 <label class="block text-gray-700 mb-2">{% trans "Region" %}</label>
                 <select name="region" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-[#C18D45]">
                     <option value="">{% trans "All Regions" %}</option>
-                    {% for region in regions %}
-                        <option value="{{ region }}" {% if current_region == region %}selected{% endif %}>{{ region }}</option>
+                    {% for r in regions %}
+                        <option value="{{ r }}" {% if current_region == r %}selected{% endif %}>{{ r }}</option>
                     {% endfor %}
                 </select>
             </div>
+
             <div class="md:col-span-4">
                 <label class="block text-gray-700 mb-2">{% trans "Search" %}</label>
-                <input type="text" name="search" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-[#C18D45]" placeholder="{% trans 'Search historical sites...' %}" value="{{ search_query }}">
+                <input type="text" name="search" id="historical-search" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-[#C18D45]" placeholder="{% trans 'Search historical sites...' %}" value="{{ search_query }}">
             </div>
+
             <div class="md:col-span-2">
                 <button type="submit" class="w-full bg-[#C18D45] hover:bg-[#a97a3a] text-white font-medium py-2 px-4 rounded-md transition duration-300">
                     {% trans "Filter" %}
@@ -134,11 +136,11 @@ html.dark .local-dark-mode .shadow-lg {
 <!-- Sites Grid -->
 <section class="py-12">
     <div class="container mx-auto px-4">
-        {% if page_obj %}
+        {% if page_obj and page_obj.object_list %}
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {% for site in page_obj %}
                     <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 flex flex-col h-full">
-                        <img src="{% if site.main_image %}{{ site.main_image.url }}{% else %}https://images.pexels.com/photos/1170986/pexels-photo-1170986.jpeg{% endif %}" 
+                        <img src="{% if site.main_image %}{{ site.main_image.url }}{% else %}https://images.pexels.com/photos/1170986/pexels-photo-1170986.jpeg{% endif %}"
                              class="w-full h-64 object-cover" alt="{{ site.name }}">
                         <div class="p-6 flex flex-col flex-grow">
                             <div class="flex justify-between items-start mb-3">
@@ -156,18 +158,14 @@ html.dark .local-dark-mode .shadow-lg {
                                 <i class="fas fa-map-marker-alt mr-2 text-[#C18D45]"></i>{{ site.location }}, {{ site.region }}
                             </p>
                             <p class="text-gray-700 mb-6 flex-grow">{{ site.short_description }}</p>
-                            
+
                             <div class="gap-4 text-center mb-6">
-                                {% comment %} <div>
-                                    <p class="text-sm text-gray-500">{% trans "Entry Fee" %}</p>
-                                    <p class="font-semibold">${{ site.entry_fee|floatformat:0 }}</p>
-                                </div> {% endcomment %}
                                 <div>
                                     <p class="text-sm text-gray-500">{% trans "Type" %}</p>
                                     <p class="font-semibold">{{ site.get_site_type_display }}</p>
                                 </div>
                             </div>
-                            
+
                             <a href="{% url 'core:historical_site_detail' site.slug %}" class="bg-[#C18D45] hover:bg-[#a97a3a] text-white font-medium py-2 px-4 rounded-md text-center transition duration-300">
                                 {% trans "Explore Site" %}
                             </a>
@@ -175,39 +173,34 @@ html.dark .local-dark-mode .shadow-lg {
                     </div>
                 {% endfor %}
             </div>
-            
-            <!-- Pagination -->
+
+            <!-- Pagination (keeps current query params) -->
             {% if page_obj.has_other_pages %}
-                <nav class="mt-12 flex justify-center">
+                <nav class="mt-12 flex justify-center" aria-label="Pagination">
                     <ul class="flex items-center space-x-2">
                         {% if page_obj.has_previous %}
                             <li>
-                                <a href="?page={{ page_obj.previous_page_number }}{% if current_type %}&type={{ current_type }}{% endif %}{% if current_region %}&region={{ current_region }}{% endif %}{% if search_query %}&search={{ search_query }}{% endif %}" 
-                                   class="px-4 py-2 border rounded-md text-[#C18D45] hover:bg-[#f5e9d8] transition duration-300">
+                                <a href="?{% url_replace request page=page_obj.previous_page_number %}" class="px-4 py-2 border rounded-md text-[#C18D45] hover:bg-[#f5e9d8] transition duration-300">
                                     {% trans "Previous" %}
                                 </a>
                             </li>
                         {% endif %}
-                        
+
                         {% for num in page_obj.paginator.page_range %}
                             {% if page_obj.number == num %}
-                                <li>
-                                    <span class="px-4 py-2 bg-[#C18D45] text-white rounded-md">{{ num }}</span>
-                                </li>
+                                <li><span class="px-4 py-2 bg-[#C18D45] text-white rounded-md">{{ num }}</span></li>
                             {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
                                 <li>
-                                    <a href="?page={{ num }}{% if current_type %}&type={{ current_type }}{% endif %}{% if current_region %}&region={{ current_region }}{% endif %}{% if search_query %}&search={{ search_query }}{% endif %}" 
-                                       class="px-4 py-2 border rounded-md text-gray-700 hover:bg-gray-50 transition duration-300">
+                                    <a href="?{% url_replace request page=num %}" class="px-4 py-2 border rounded-md text-gray-700 hover:bg-gray-50 transition duration-300">
                                         {{ num }}
                                     </a>
                                 </li>
                             {% endif %}
                         {% endfor %}
-                        
+
                         {% if page_obj.has_next %}
                             <li>
-                                <a href="?page={{ page_obj.next_page_number }}{% if current_type %}&type={{ current_type }}{% endif %}{% if current_region %}&region={{ current_region }}{% endif %}{% if search_query %}&search={{ search_query }}{% endif %}" 
-                                   class="px-4 py-2 border rounded-md text-[#C18D45] hover:bg-[#f5e9d8] transition duration-300">
+                                <a href="?{% url_replace request page=page_obj.next_page_number %}" class="px-4 py-2 border rounded-md text-[#C18D45] hover:bg-[#f5e9d8] transition duration-300">
                                     {% trans "Next" %}
                                 </a>
                             </li>
@@ -215,6 +208,7 @@ html.dark .local-dark-mode .shadow-lg {
                     </ul>
                 </nav>
             {% endif %}
+
         {% else %}
             <div class="text-center py-16">
                 <div class="w-24 h-24 mx-auto bg-gray-200 rounded-full flex items-center justify-center mb-6">
@@ -228,4 +222,39 @@ html.dark .local-dark-mode .shadow-lg {
 </section>
 
 </div> {# end .local-dark-mode #}
+
+<!-- JS: auto-submit for selects + debounce for search -->
+<script>
+(function(){
+  // Auto-submit for selects in the filters form
+  document.querySelectorAll('#historical-filters select[name="type"], #historical-filters select[name="region"]').forEach(el=>{
+    el.addEventListener('change', ()=> el.form.submit());
+  });
+
+  // Debounce helper
+  function debounce(fn, delay){
+    let t;
+    return function(...args){
+      clearTimeout(t);
+      t = setTimeout(()=> fn.apply(this, args), delay);
+    };
+  }
+
+  // Debounced search submit
+  const searchInput = document.getElementById('historical-search');
+  if (searchInput) {
+    const form = searchInput.form;
+    const debounced = debounce(()=> form.submit(), 600);
+    searchInput.addEventListener('keyup', debounced);
+    searchInput.addEventListener('search', debounced);
+    searchInput.addEventListener('keydown', function(e){
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        form.submit();
+      }
+    });
+  }
+})();
+</script>
+
 {% endblock %}
