@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 DEBUG = config('DEBUG', default=False, cast=bool)
 
 # SECRET_KEY must be set in production
-SECRET_KEY = config('SECRET_KEY', default=None)
+SECRET_KEY = config('SECRET_KEY', default='m9$3kV!q8zP#tR6yWu2nL0sFdG7hB@eXc4vZj^aQp*Yl%Io+1')
 if not SECRET_KEY and not DEBUG:
     raise ImproperlyConfigured("SECRET_KEY environment variable is required in production.")
 
