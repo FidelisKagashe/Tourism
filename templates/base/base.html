@@ -139,11 +139,11 @@
                 <div class="flex items-center justify-between h-12 md:h-16">
                     <a class="flex items-center md:text-xl font-bold text-primary dark:text-primary-dark hover:text-secondary dark:hover:text-secondary-dark transition-colors duration-300"
                         href="{% url 'core:home' %}">
-                        <img src="{% static 'images/logo.png' %}"
+                        <img src="{% static 'images/outline.png' %}"
                             alt="{{ site_settings.site_name|default:'Logo' }}"
                             class="h-10 md:h-12 w-auto mr-2 block dark:hidden object-contain" />
 
-                        <img src="{% static 'images/logo.png' %}"
+                        <img src="{% static 'images/outline.png' %}"
                             alt="{{ site_settings.site_name|default:'Logo (dark)' }}"
                             class="h-10 md:h-12 w-auto mr-2 hidden dark:block object-contain" />
 
@@ -230,7 +230,7 @@
                 </div>
 
                 <!-- FIXED: Mobile Navigation Menu with proper z-index and scrolling -->
-                <div class="lg:hidden mobile-menu hidden bg-white dark:bg-gray-700 rounded-lg mt-4 p-4 shadow-2xl border border-gray-200 dark:border-gray-600 fixed left-4 right-4 top-14" id="mobile-menu">
+                <div class="lg:hidden mobile-menu hidden bg-white dark:bg-gray-700 rounded-lg mt-4 p-4 shadow-2xl border border-gray-200 dark:border-gray-600 fixed left-4 right-4 top-8" id="mobile-menu">
                     <ul class="space-y-2">
                         <li><a class="mobile-nav-link block px-4 py-3 text-gray-800 dark:text-gray-200 hover:bg-primary hover:text-white dark:hover:bg-primary-dark rounded-md transition-colors duration-300 {% if request.resolver_match.url_name == 'home' %}active{% endif %}" href="{% url 'core:home' %}">Home</a></li>
                         <li><a class="mobile-nav-link block px-4 py-3 text-gray-800 dark:text-gray-200 hover:bg-primary hover:text-white dark:hover:bg-primary-dark rounded-md transition-colors duration-300 {% if request.resolver_match.url_name == 'park_list' %}active{% endif %}" href="{% url 'parks:park_list' %}">National Parks</a></li>
