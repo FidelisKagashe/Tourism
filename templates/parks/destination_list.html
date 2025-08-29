@@ -1,6 +1,101 @@
 {% extends 'base/base.html' %}
 {% load i18n query_transform %}
 
+{# ---------- EXTRA: fonts + hero CSS (page-scoped) ---------- #}
+{% block extra_css %}
+<!-- Preconnect & Google Fonts (trimmed to the weights used: 400,600,700) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+<!-- Optional: preload a critical woff2 for faster text rendering.
+     Replace the href below with the exact fonts.gstatic.com *.woff2 URL found in the Google Fonts stylesheet / network panel -->
+<link rel="preload" href="https://fonts.gstatic.com/s/poppins/vXX/REPLACE-WITH-EXACT-WOFF2.woff2" as="font" type="font/woff2" crossorigin>
+
+<style>
+/* Page-scoped typography (uses Poppins via Google Fonts above) */
+.local-dark-mode {
+  font-family: 'Poppins', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  --fs-xxl: clamp(1.6rem, 4.0vw, 3.2rem);
+  --fs-xl:  clamp(1.25rem, 2.6vw, 2.25rem);
+  --fs-lg:  clamp(1.05rem, 1.9vw, 1.5rem);
+  --fs-base:clamp(0.95rem, 1.0vw, 1.06rem);
+  --fs-sm:  clamp(0.82rem, 0.8vw, 0.95rem);
+  --fs-xs:  clamp(0.72rem, 0.7vw, 0.82rem);
+  --lh-tight: 1.08;
+  --lh-heading: 1.15;
+  --lh-base: 1.42;
+  --lh-small: 1.3;
+  color-scheme: light dark;
+}
+
+/* Base sizing inside scope */
+.local-dark-mode,
+.local-dark-mode p,
+.local-dark-mode .text-base,
+.local-dark-mode .prose,
+.local-dark-mode .article-body {
+  font-size: var(--fs-base);
+  line-height: var(--lh-base);
+}
+
+/* Headings */
+.local-dark-mode h1 { font-size: var(--fs-xxl); line-height: var(--lh-tight); font-weight: 700; }
+.local-dark-mode h2 { font-size: var(--fs-xl);  line-height: var(--lh-heading); font-weight: 700; }
+.local-dark-mode h3 { font-size: var(--fs-lg);  line-height: var(--lh-heading); font-weight: 700; }
+
+/* Small text, buttons & inputs */
+.local-dark-mode small,
+.local-dark-mode .text-muted,
+.local-dark-mode .meta { font-size: var(--fs-sm); line-height: var(--lh-small); }
+.local-dark-mode button,
+.local-dark-mode .btn,
+.local-dark-mode .inline-flex,
+.local-dark-mode input[type="email"],
+.local-dark-mode .dest-seemore { font-size: var(--fs-sm); line-height: 1.2; }
+
+/* Focus visible */
+.local-dark-mode a:focus-visible,
+.local-dark-mode button:focus-visible {
+  outline: 3px solid rgba(193,141,69,0.18);
+  outline-offset: 4px;
+}
+
+/* ---------- Hero: responsive <picture> pattern with overlay ---------- */
+.hero {
+  position: relative;
+  overflow: hidden;
+  min-height: 40vh;
+  display: flex;
+  align-items: center;
+}
+.hero-media { position: absolute; inset: 0; z-index: 0; }
+.hero-media img.hero-img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.hero-overlay { position: absolute; inset: 0; z-index: 1;
+  background: linear-gradient(180deg, rgba(0,0,0,0.50) 0%, rgba(0,0,0,0.35) 40%, rgba(0,0,0,0.55) 100%);
+  pointer-events: none;
+}
+.hero-content { position: relative; z-index: 2; padding: 4.5rem 0; color: #fff; }
+
+/* Hero text tuning */
+.hero-title { font-weight: 700; line-height: 1.02; font-size: clamp(1.6rem, 5.6vw, 3.4rem); color: #fff; text-shadow: 0 8px 30px rgba(0,0,0,0.6); margin:0 0 0.5rem 0; }
+.hero-subtitle { font-weight: 500; font-size: clamp(1rem, 2.2vw, 1.25rem); color: rgba(255,255,255,0.95); text-shadow: 0 4px 18px rgba(0,0,0,0.45); margin:0; }
+
+/* Small-screen tweaks */
+@media (max-width:640px) {
+  .hero-content { padding: 2.5rem 0; }
+  .hero-title { font-size: 1.6rem; }
+  .hero-subtitle { font-size: 0.98rem; }
+}
+
+/* Keep existing dark-mode local overrides (these are merged with your page CSS below) */
+</style>
+{% endblock extra_css %}
+
+
 {% block title %}{% trans "Destinations" %} - Safari&nbsp;&amp;&nbsp;Bush Retreats{% endblock %}
 
 {% block content %}
@@ -74,14 +169,25 @@ html.dark .local-dark-mode .shadow-lg {
 
 <div class="local-dark-mode">
 
-<!-- Hero Section -->
-<section class="relative bg-cover bg-center" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.pexels.com/photos/1170986/pexels-photo-1170986.jpeg'); min-height: 50vh;">
-    <div class="container mx-auto px-4 py-24 relative z-10">
-        <div class="max-w-3xl">
-            <h1 class="text-4xl md:text-5xl font-bold text-white mb-6">{% trans "Tanzania Destinations" %}</h1>
-            <p class="text-xl text-white opacity-90">{% trans "Discover amazing destinations across Tanzania" %}</p>
-        </div>
-    </div>
+<!-- Hero Section: responsive picture + overlay, text remains in DOM for a11y -->
+<section class="hero" aria-label="{% trans 'Hero banner' %}">
+  <div class="hero-media" aria-hidden="true">
+    <picture>
+      <!-- optional context variables for responsive images; fallback to the original Pexels photo -->
+      <source media="(max-width: 640px)" srcset="{{ hero_image_mobile_url|default:'https://images.pexels.com/photos/1170986/pexels-photo-1170986.jpeg' }}">
+      <source media="(max-width: 1024px)" srcset="{{ hero_image_tablet_url|default:'https://images.pexels.com/photos/1170986/pexels-photo-1170986.jpeg' }}">
+      <img class="hero-img" src="{{ hero_image_url|default:'https://images.pexels.com/photos/1170986/pexels-photo-1170986.jpeg' }}" 
+           alt="{% trans 'Tanzania destinations landscape' %}" loading="eager">
+    </picture>
+    <div class="hero-overlay" aria-hidden="true"></div>
+  </div>
+
+  <div class="container mx-auto px-4 hero-content">
+      <div class="max-w-3xl">
+          <h1 class="hero-title">{% trans "Tanzania Destinations" %}</h1>
+          <p class="hero-subtitle">{% trans "Discover amazing destinations across Tanzania" %}</p>
+      </div>
+  </div>
 </section>
 
 <!-- Filters -->
@@ -90,7 +196,7 @@ html.dark .local-dark-mode .shadow-lg {
         <form method="GET" class="grid grid-cols-1 md:grid-cols-12 gap-4 items-end" id="filters-form">
             <div class="md:col-span-3">
                 <label class="block text-gray-700 mb-2">{% trans "Type" %}</label>
-                <select name="type" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-[#C18D45]">
+                <select name="type" class="w-full bg-white px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-[#C18D45]">
                     <option value="">{% trans "All Types" %}</option>
                     {% for val,label in dest_types %}
                         <option value="{{ val }}" {% if current_type == val %}selected{% endif %}>{{ label }}</option>
@@ -99,7 +205,7 @@ html.dark .local-dark-mode .shadow-lg {
             </div>
             <div class="md:col-span-3">
                 <label class="block text-gray-700 mb-2">{% trans "Park" %}</label>
-                <select name="park" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-[#C18D45]">
+                <select name="park" class="w-full bg-white px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-[#C18D45]">
                     <option value="">{% trans "All Parks" %}</option>
                     {% for park in parks %}
                         <option value="{{ park.id }}" {% if current_park == park.id|stringformat:"s" %}selected{% endif %}>{{ park.name }}</option>
@@ -108,7 +214,7 @@ html.dark .local-dark-mode .shadow-lg {
             </div>
             <div class="md:col-span-4">
                 <label class="block text-gray-700 mb-2">{% trans "Search" %}</label>
-                <input type="text" name="search" id="search-input" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-[#C18D45]" placeholder="{% trans 'Search destinations...' %}" value="{{ search_query }}">
+                <input type="text" name="search" id="search-input" class="w-full bg-white px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-[#C18D45]" placeholder="{% trans 'Search destinations...' %}" value="{{ search_query }}">
             </div>
             <div class="md:col-span-2">
                 <button type="submit" class="w-full bg-[#C18D45] hover:bg-[#a97a3a] text-white font-medium py-2 px-4 rounded-md transition duration-300">

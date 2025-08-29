@@ -3,6 +3,126 @@
 
 {% block title %}{{ destination.name }} - {% trans "Destination" %} - Safari&nbsp;&amp;&nbsp;Bush Retreats{% endblock %}
 
+{# ---------- Fonts + improved hero styles (scoped to this page) ---------- #}
+{% block extra_css %}
+  <!-- Preconnect + Poppins -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    /* PAGE-SCOPED: fonts + variables */
+    .local-dark-mode {
+      font-family: 'Poppins', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      --hero-min: 2.6rem;
+      --hero-fluid: 6.5vw;
+      --hero-max: 6.4rem;
+
+      --h1: clamp(1.8rem, 4.6vw, 3.6rem);
+      --h2: clamp(1.25rem, 2.6vw, 2.25rem);
+      --body: clamp(0.95rem, 1.0vw, 1.12rem);
+
+      --hero-badge-padding: .45rem .9rem;
+      --container-gutter: 1rem;
+    }
+
+    /* HERO: layout & responsiveness */
+    .local-dark-mode .hero-bg {
+      position: relative;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      min-height: 30vh;
+      display: flex;
+      align-items: center;
+      color: var(--hero-text, #fff); /* fallback */
+    }
+
+    /* Theme-aware overlay strengths (light vs dark) */
+    html:not(.dark) .local-dark-mode .hero-bg::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(0,0,0,0.44) 0%, rgba(0,0,0,0.28) 40%, rgba(0,0,0,0.44) 100%);
+      z-index: 1;
+      pointer-events: none;
+    }
+    html.dark .local-dark-mode .hero-bg::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(0,0,0,0.66) 0%, rgba(0,0,0,0.38) 40%, rgba(0,0,0,0.66) 100%);
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    /* Hero content above overlay */
+    .local-dark-mode .hero-content { position: relative; z-index: 2; padding: 4rem 0; }
+
+    /* Badges */
+    .local-dark-mode .hero-badges { display:flex; gap:.5rem; flex-wrap:wrap; align-items:center; margin-bottom:.75rem; }
+    .local-dark-mode .hero-badges .badge {
+      padding: var(--hero-badge-padding);
+      border-radius: 999px;
+      font-weight: 600;
+      font-size: clamp(.78rem, 0.9vw, .95rem);
+      display:inline-flex;
+      align-items:center;
+      gap:.5rem;
+      white-space: nowrap;
+    }
+
+    /* Hero title: large, fluid, responsive, wraps nicely */
+    .local-dark-mode .hero-title {
+      font-size: clamp(var(--hero-min), var(--hero-fluid), var(--hero-max));
+      line-height: 1.02;
+      font-weight: 700;
+      margin: 0 0 0.6rem 0;
+      color: var(--hero-text, #fff);
+
+      /* allow long names to break across lines gracefully */
+      white-space: normal;
+      word-break: break-word;
+      -webkit-hyphens: auto;
+      -ms-hyphens: auto;
+      hyphens: auto;
+
+      text-shadow: 0 6px 18px rgba(0,0,0,0.55);
+      letter-spacing: -0.01em;
+    }
+
+    /* Hero subtitle */
+    .local-dark-mode .hero-sub {
+      font-size: clamp(.98rem, 2.2vw, 1.25rem);
+      line-height: 1.25;
+      font-weight: 500;
+      margin: 0 0 1rem 0;
+      color: var(--hero-text, rgba(255,255,255,0.95));
+      text-shadow: 0 4px 12px rgba(0,0,0,0.45);
+    }
+
+    /* Accessibility: prefer reduced motion */
+    @media (prefers-reduced-motion: reduce) {
+      .local-dark-mode .hero-bg,
+      .local-dark-mode .hero-content { transition: none !important; }
+    }
+
+    /* Small screens: keep hero compact */
+    @media (max-width: 420px) {
+      .local-dark-mode .hero-content { padding: 2rem 0; }
+      .local-dark-mode .hero-title { font-size: clamp(2.2rem, 8.5vw, 3.0rem); }
+      .local-dark-mode .hero-badges .badge { padding: .35rem .7rem; font-size:.78rem; }
+    }
+
+    /* Fallback color when image fails (theme-aware) */
+    html:not(.dark) .local-dark-mode .hero-bg[data-bg-fallback] { background-color: #f3f4f6; }
+    html.dark .local-dark-mode .hero-bg[data-bg-fallback] { background-color: #071028; }
+
+    /* Keep other typography rules minimal and scoped */
+    .local-dark-mode h1, .local-dark-mode h2, .local-dark-mode p { margin: 0 0 .6rem 0; }
+  </style>
+{% endblock %}
+
 {% block content %}
 <!-- Scoped dark-mode overrides for this page ONLY when the global dark class is active -->
 <style>
@@ -84,32 +204,61 @@ html.dark .local-dark-mode .shadow-lg {
 
 <div class="local-dark-mode">
 
-<!-- Hero Section -->
-<section class="relative bg-cover bg-center" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('{% if destination.main_image %}{{ destination.main_image.url }}{% else %}https://images.pexels.com/photos/1170986/pexels-photo-1170986.jpeg{% endif %}'); min-height: 70vh;">
-    <div class="container mx-auto px-4 flex items-center h-full">
-        <div class="max-w-3xl py-20">
-            <div class="flex flex-wrap gap-2 mb-4">
-                <span class="bg-[#C18D45] text-white px-4 py-2 rounded-full text-sm">
-                    {{ destination.get_destination_type_display }}
-                </span>
+<!-- Improved Hero Section -->
+<section id="destination-hero" class="hero-bg" style="background-image: url('{% if destination.main_image %}{{ destination.main_image.url }}{% else %}https://images.pexels.com/photos/1170986/pexels-photo-1170986.jpeg{% endif %}');" aria-label="{{ destination.name }} hero" role="region">
+    <div class="container mx-auto px-4 hero-content">
+        <div class="max-w-3xl pl-5 py-20">
+            <div class="hero-badges mb-4">
+                <span class="badge bg-[#C18D45] text-white" aria-hidden="true">{{ destination.get_destination_type_display }}</span>
                 {% if destination.featured %}
-                    <span class="bg-green-500 text-white px-4 py-2 rounded-full text-sm flex items-center">
-                        <i class="fas fa-star mr-2"></i>{% trans "Featured" %}
+                    <span class="badge bg-green-500 text-white flex items-center" aria-hidden="true">
+                        <i class="fas fa-star mr-2" aria-hidden="true"></i>{% trans "Featured" %}
                     </span>
                 {% endif %}
             </div>
-            
-            <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">{{ destination.name }}</h1>
-            
+
+            <!-- LARGER, fluid hero title -->
+            <h1 class="hero-title text-white">{{ destination.name }}</h1>
+
             {% if destination.park %}
-                <div class="flex items-center text-xl text-white">
-                    <i class="fas fa-map-marker-alt mr-3"></i>
+                <p class="hero-sub text-white">
+                    <i class="fas fa-map-marker-alt mr-3" aria-hidden="true"></i>
                     <span>{{ destination.park.name }}</span>
-                </div>
+                </p>
             {% endif %}
         </div>
     </div>
 </section>
+
+<!-- Tiny progressive enhancement: check hero image load and set data-bg-fallback if it fails -->
+<script>
+  (function(){
+    try {
+      const sec = document.getElementById('destination-hero');
+      if (!sec) return;
+      // extract URL from background-image style (supports url("...") and url('...'))
+      const bg = sec.style.backgroundImage || '';
+      const m = bg.match(/url\((['"]?)(.*?)\1\)/);
+      if (!m) return;
+      const url = m[2];
+      // Preload image to detect failure
+      const img = new Image();
+      img.onload = () => {
+        // image ok — remove fallback flag if present
+        sec.removeAttribute('data-bg-fallback');
+      };
+      img.onerror = () => {
+        // set fallback attribute to allow CSS fallback
+        sec.setAttribute('data-bg-fallback', 'true');
+      };
+      // Start load (use same URL)
+      img.src = url;
+    } catch(e) {
+      // silent fail — do not break page
+      console.warn('Hero image check failed', e);
+    }
+  })();
+</script>
 
 <!-- Destination Info -->
 <section class="py-12">
@@ -126,7 +275,7 @@ html.dark .local-dark-mode .shadow-lg {
                         {{ destination.description|linebreaks }}
                     </div>
                 </div>
-                
+
                 {% if destination.activities %}
                     <div class="mb-10">
                         <h3 class="text-2xl font-bold text-gray-900 mb-4">{% trans "Activities" %}</h3>
@@ -137,7 +286,7 @@ html.dark .local-dark-mode .shadow-lg {
                         </div>
                     </div>
                 {% endif %}
-                
+
                 {% if destination.best_time_to_visit %}
                     <div class="mb-10">
                         <h3 class="text-2xl font-bold text-gray-900 mb-4">{% trans "Best Time to Visit" %}</h3>
@@ -148,32 +297,32 @@ html.dark .local-dark-mode .shadow-lg {
                     </div>
                 {% endif %}
             </div>
-            
+
             <!-- Sidebar -->
             <div class="lg:w-4/12">
                 <div class="bg-white rounded-xl shadow-md p-6 mb-8">
                     <h3 class="text-xl font-bold text-gray-900 mb-4">{% trans "Quick Info" %}</h3>
-                    
+
                     <div class="space-y-3">
                         <div class="flex justify-between">
                             <span class="text-gray-600">{% trans "Type" %}:</span>
                             <span class="font-medium">{{ destination.get_destination_type_display }}</span>
                         </div>
-                        
+
                         {% if destination.park %}
                             <div class="flex justify-between">
                                 <span class="text-gray-600">{% trans "Park" %}:</span>
                                 <span class="font-medium">{{ destination.park.name }}</span>
                             </div>
                         {% endif %}
-                        
+
                         {% if destination.elevation %}
                             <div class="flex justify-between">
                                 <span class="text-gray-600">{% trans "Elevation" %}:</span>
                                 <span class="font-medium">{{ destination.elevation }}m</span>
                             </div>
                         {% endif %}
-                        
+
                         <div class="flex justify-between">
                             <span class="text-gray-600">{% trans "Difficulty" %}:</span>
                             <span class="bg-gray-200 text-gray-800 px-2 py-1 rounded text-sm">
@@ -182,7 +331,7 @@ html.dark .local-dark-mode .shadow-lg {
                         </div>
                     </div>
                 </div>
-                
+
                 {% if destination.accessibility %}
                     <div class="bg-white rounded-xl shadow-md p-6">
                         <h3 class="text-xl font-bold text-gray-900 mb-3">{% trans "Access Information" %}</h3>
@@ -202,11 +351,11 @@ html.dark .local-dark-mode .shadow-lg {
                 <h2 class="text-3xl font-bold text-gray-900">{% trans "Related Destinations" %}</h2>
                 <div class="w-24 h-1 bg-[#C18D45] mx-auto mt-4"></div>
             </div>
-            
+
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                 {% for related in related_destinations %}
                     <div class="bg-white rounded-lg shadow-md overflow-hidden transition-transform duration-300 hover:shadow-lg hover:-translate-y-1">
-                        <img src="{% if related.main_image %}{{ related.main_image.url }}{% else %}https://images.pexels.com/photos/1170986/pexels-photo-1170986.jpeg{% endif %}" 
+                        <img src="{% if related.main_image %}{{ related.main_image.url }}{% else %}https://images.pexels.com/photos/1170986/pexels-photo-1170986.jpeg{% endif %}"
                              class="w-full h-48 object-cover" alt="{{ related.name }}">
                         <div class="p-5">
                             <div class="flex justify-between items-start mb-2">
@@ -218,7 +367,7 @@ html.dark .local-dark-mode .shadow-lg {
                             <p class="text-gray-600 mb-4 text-sm">
                                 {{ related.short_description|truncatewords:10 }}
                             </p>
-                            <a href="{% url 'parks:destination_detail' related.slug %}" 
+                            <a href="{% url 'parks:destination_detail' related.slug %}"
                                class="inline-flex items-center text-[#C18D45] hover:text-[#a6793a] font-medium">
                                 {% trans "Explore" %}
                                 <i class="fas fa-arrow-right ml-2 text-sm"></i>

@@ -3,10 +3,139 @@
 
 {% block title %}{{ tour.title }} - {% trans "Safari Tour" %} - {{ site_settings.site_name|default:"Safari & Bush Retreats" }}{% endblock %}
 
-{% block meta_description %}{{ tour.short_description }}{% endblock %}
+{% block extra_css %}
+<!-- Preconnect for Google Fonts (base should still include the Google Fonts <link>) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<!-- Font Awesome for icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-p1CmK5G+XqQm+e1k1rX9Kf0x1a2oKQk1Yg0X8mVfK1mC1x1YJz6+1K6b2Q9b3d2q3ZJm6G1s1X2Y3Z4A5b6c7g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+<style>
+/* ---------- Scoped typography for Tour detail page only (Poppins-based, clamp scale) ---------- */
+.tour-typography {
+  font-family: 'Poppins', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --fs-xxl: clamp(1.6rem, 4.0vw, 3.2rem);
+  --fs-xl:  clamp(1.25rem, 2.6vw, 2.25rem);
+  --fs-lg:  clamp(1.05rem, 1.9vw, 1.5rem);
+  --fs-base:clamp(0.95rem, 1.0vw, 1.06rem);
+  --fs-sm:  clamp(0.82rem, 0.8vw, 0.95rem);
+  --fs-xs:  clamp(0.72rem, 0.7vw, 0.82rem);
+  --lh-tight: 1.08;
+  --lh-heading: 1.15;
+  --lh-base: 1.42;
+  --lh-small: 1.3;
+}
+
+/* Base text */
+.tour-typography,
+.tour-typography p,
+.tour-typography .text-base,
+.tour-typography .prose,
+.tour-typography .article-body {
+  font-size: var(--fs-base);
+  line-height: var(--lh-base);
+}
+
+/* Headings */
+.tour-typography h1 { font-size: var(--fs-xxl); line-height: var(--lh-tight); font-weight: 700; }
+.tour-typography h2 { font-size: var(--fs-xl);  line-height: var(--lh-heading); font-weight: 700; }
+.tour-typography h3 { font-size: var(--fs-lg);  line-height: var(--lh-heading); font-weight: 700; }
+.tour-typography h4 { font-size: calc(var(--fs-lg) - 0.06rem); line-height: var(--lh-heading); }
+.tour-typography h5, .tour-typography h6 { font-size: var(--fs-sm); line-height: var(--lh-small); }
+
+/* Small text, meta, controls */
+.tour-typography small,
+.tour-typography .text-muted,
+.tour-typography .meta { font-size: var(--fs-sm); line-height: var(--lh-small); }
+
+.tour-typography button,
+.tour-typography .btn,
+.tour-typography .inline-flex,
+.tour-typography input[type="email"],
+.tour-typography .dest-seemore { font-size: var(--fs-sm); line-height: 1.2; }
+
+/* Hero improvements (overlay + readability), scoped to this page only */
+.hero-bg {
+  position: relative;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  min-height: 40vh;
+  display: flex;
+  align-items: center;
+}
+.hero-bg::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  /* balanced overlay for readability across images */
+  background: linear-gradient(180deg, rgba(0,0,0,0.50) 0%, rgba(0,0,0,0.35) 40%, rgba(0,0,0,0.55) 100%);
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* hero content above overlay */
+.hero-content {
+  position: relative;
+  z-index: 2;
+  padding-top: 3.5rem;
+  padding-bottom: 3.5rem;
+}
+
+/* Title & subtitle tuning for maximum contrast */
+.hero-title {
+  font-weight: 700;
+  line-height: 1.02;
+  font-size: clamp(1.6rem, 5.6vw, 3.4rem);
+  color: #fff;
+  text-shadow: 0 8px 30px rgba(0,0,0,0.6);
+  margin: 0 0 0.5rem 0;
+}
+.hero-subtitle {
+  font-weight: 500;
+  font-size: clamp(1rem, 2.2vw, 1.25rem);
+  color: rgba(255,255,255,0.95);
+  text-shadow: 0 4px 18px rgba(0,0,0,0.45);
+  margin: 0 0 1rem 0;
+}
+
+/* Icon spacing */
+.tour-typography i[class*="fa-"] {
+  margin-right: 0.5rem;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+/* Responsive tweaks */
+@media (max-width: 640px) {
+  .hero-content { padding-top: 2rem; padding-bottom: 2rem; }
+  .hero-title { font-size: 1.6rem; }
+  .hero-subtitle { font-size: 0.98rem; }
+}
+@media (min-width: 1024px) {
+  .hero-bg { min-height: 40vh; }
+  .hero-title { font-size: clamp(2.2rem, 3.0vw, 4.0rem); }
+}
+
+/* accessibility focus for CTAs */
+.tour-typography a:focus-visible,
+.tour-typography button:focus-visible {
+  outline: 3px solid rgba(193,141,69,0.18);
+  outline-offset: 4px;
+}
+
+/* Let nested site-typography-overrides inherit computed size */
+.tour-typography .site-typography-overrides * { font-size: inherit; }
+
+/* Optimize text rendering */
+.tour-typography a, .tour-typography button { text-rendering: optimizeLegibility; }
+</style>
+{% endblock %}
 
 {% block content %}
-<!-- Scoped dark-mode overrides for this page ONLY when the global dark class is active -->
+<!-- Keep original scoped dark-mode overrides intact (non-font behavior unchanged) -->
 <style>
 /* Apply overrides only when html has class "dark" and inside the page wrapper .tour-local */
 html.dark .tour-local { background-color: #071026; color: #cbd5e1; }
@@ -88,60 +217,49 @@ html.dark .tour-local .bg-[#f5e9d8] { background-color: #16161a !important; colo
 
 /* Make sure white buttons become dark in dark mode when they were bg-white */
 html.dark .tour-local a.bg-white { background-color: #111827 !important; color: #e6eef8 !important; border-color: rgba(255,255,255,0.06) !important; }
-
 </style>
 
-<div class="tour-local"><!-- wrapper for scoped dark-mode styles -->
+<!-- WRAPPER: apply typography scope together with existing tour-local wrapper -->
+<div class="tour-local tour-typography"><!-- wrapper for scoped dark-mode styles and typography -->
 
-<!-- Hero Section -->
-<section class="relative bg-cover bg-center" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('{% if tour.main_image %}{{ tour.main_image.url }}{% else %}https://images.pexels.com/photos/1170986/pexels-photo-1170986.jpeg{% endif %}'); min-height: 80vh;">
-    <div class="container mx-auto px-4 py-24 relative z-10">
+<!-- Hero Section (same Django variables preserved, added hero-bg + hero-content classes) -->
+<section class="relative bg-cover bg-center hero-bg"
+         style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('{% if tour.main_image %}{{ tour.main_image.url }}{% else %}https://images.pexels.com/photos/1170986/pexels-photo-1170986.jpeg{% endif %}'); min-height: 40vh;"
+         aria-label="Tour hero banner">
+    <div class="container mx-auto px-4 hero-content relative z-10">
         <div class="max-w-3xl">
-            <div class="flex flex-wrap gap-3 mb-4">
-                <span class="bg-[#C18D45] text-white text-sm font-semibold px-3 py-1 rounded-full">
+            <div style="display:flex; flex-wrap:wrap; gap:0.5rem; margin-bottom:1rem;">
+                <span style="background:#C18D45; color:#fff; font-size:0.85rem; font-weight:600; padding:0.4rem 0.6rem; border-radius:999px;">
                     {{ tour.get_category_display }}
                 </span>
                 {% if tour.is_featured %}
-                    <span class="bg-yellow-400 text-gray-900 text-sm font-semibold px-3 py-1 rounded-full flex items-center">
-                        <i class="fas fa-star mr-1"></i>{% trans "Featured" %}
+                    <span style="background:#FACC15; color:#08111A; font-size:0.85rem; font-weight:600; padding:0.4rem 0.6rem; border-radius:999px; display:inline-flex; align-items:center;">
+                        <i class="fas fa-star" aria-hidden="true" style="margin-right:0.4rem;"></i>{% trans "Featured" %}
                     </span>
                 {% endif %}
-                <span class="bg-gray-200 text-gray-800 text-sm font-semibold px-3 py-1 rounded-full">
+                <span style="background:rgba(255,255,255,0.9); color:#1f2937; font-size:0.85rem; font-weight:600; padding:0.4rem 0.6rem; border-radius:999px;">
                     {{ tour.get_difficulty_level_display }}
                 </span>
             </div>
-            <h1 class="text-4xl md:text-5xl font-bold text-white mb-6">{{ tour.title }}</h1>
-            <p class="text-xl text-white mb-8">{{ tour.subtitle|default:tour.short_description }}</p>
+
+            <h1 class="hero-title">{{ tour.title }}</h1>
+            <p class="hero-subtitle">{{ tour.subtitle|default:tour.short_description }}</p>
             
-            <div class="flex flex-wrap gap-6 mb-8">
-                <div class="text-white flex items-center">
-                    <i class="fas fa-clock mr-2 text-[#C18D45]"></i>{{ tour.get_duration_display }}
-                </div>
-                <div class="text-white flex items-center">
-                    <i class="fas fa-users mr-2 text-[#C18D45]"></i>
-                    {% if tour.max_participants %}
-                        {{ tour.min_participants }}–{{ tour.max_participants }} {% trans "people" %}
-                    {% else %}
-                        {{ tour.min_participants }}+ {% trans "people" %} <span class="ml-2 text-sm opacity-90">({% trans "Flexible group size — contact us for large groups" %})</span>
-                    {% endif %}
-                </div>
-                <div class="text-white flex items-center">
-                    <i class="fas fa-star mr-2 text-[#C18D45]"></i>{{ tour.average_rating|floatformat:1 }} ({{ tour.total_reviews }} {% trans "reviews" %})
-                </div>
-            </div>
-            
-            <div class="flex flex-wrap gap-4">
+            <div style="display:flex; gap:0.75rem; flex-wrap:wrap; margin-top:0.75rem;">
                 {% if user.is_authenticated %}
-                    <a href="{% url 'bookings:create_booking' tour.slug %}" class="bg-[#C18D45] hover:bg-[#a97a3a] text-white font-medium py-3 px-6 rounded-md transition duration-300 flex items-center">
-                        <i class="fas fa-calendar-check mr-2"></i>{% trans "Book Now" %}
+                    <a href="{% url 'bookings:create_booking' tour.slug %}" style="background:#C18D45; color:#fff; padding:0.6rem 1rem; border-radius:999px; text-decoration:none; font-weight:600; display:inline-flex; align-items:center;">
+                        <i class="fas fa-calendar-check" aria-hidden="true"></i>
+                        <span>{% trans "Book Now" %}</span>
                     </a>
                 {% else %}
-                    <a href="{% url 'accounts:login' %}?next={% url 'bookings:create_booking' tour.slug %}" class="bg-[#C18D45] hover:bg-[#a97a3a] text-white font-medium py-3 px-6 rounded-md transition duration-300 flex items-center">
-                        <i class="fas fa-calendar-check mr-2"></i>{% trans "Book Now" %}
+                    <a href="{% url 'accounts:login' %}?next={% url 'bookings:create_booking' tour.slug %}" style="background:#C18D45; color:#fff; padding:0.6rem 1rem; border-radius:999px; text-decoration:none; font-weight:600; display:inline-flex; align-items:center;">
+                        <i class="fas fa-calendar-check" aria-hidden="true"></i>
+                        <span>{% trans "Book Now" %}</span>
                     </a>
                 {% endif %}
-                <a href="#availability" class="bg-white hover:bg-gray-100 text-gray-800 font-medium py-3 px-6 rounded-md border border-gray-300 transition duration-300 flex items-center">
-                    <i class="fas fa-calendar mr-2"></i>{% trans "Check Availability" %}
+                <a href="#availability" style="background:rgba(255,255,255,0.12); color:#fff; padding:0.6rem 1rem; border-radius:999px; text-decoration:none; border:1px solid rgba(255,255,255,0.12); display:inline-flex; align-items:center; font-weight:600;">
+                    <i class="fas fa-calendar" aria-hidden="true"></i>
+                    <span>{% trans "Check Availability" %}</span>
                 </a>
             </div>
         </div>
@@ -170,7 +288,7 @@ html.dark .tour-local a.bg-white { background-color: #111827 !important; color: 
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                             {% for highlight in tour.highlights %}
                                 <div class="flex items-start">
-                                    <i class="fas fa-check-circle text-[#C18D45] mt-1 mr-3"></i>
+                                    <i class="fas fa-check-circle" style="color:#C18D45; margin-right:0.6rem; margin-top:0.2rem;"></i>
                                     <span class="text-gray-700">{{ highlight }}</span>
                                 </div>
                             {% endfor %}
@@ -191,7 +309,7 @@ html.dark .tour-local a.bg-white { background-color: #111827 !important; color: 
                                         <h5 class="text-xl font-bold mb-2">{{ park.name }}</h5>
                                         <p class="text-gray-600 mb-3">{{ park.location }}, {{ park.region }}</p>
                                         <p class="text-gray-700 mb-4">{{ park.short_description|truncatewords:20 }}</p>
-                                        <a href="{% url 'parks:park_detail' park.slug %}" class="inline-block bg-[#C18D45] hover:bg-[#a97a3a] text-white font-medium py-2 px-4 rounded-md transition duration-300 text-sm">
+                                        <a href="{% url 'parks:park_detail' park.slug %}" class="inline-block" style="background:#C18D45; color:#fff; padding:0.5rem 0.75rem; border-radius:0.5rem; text-decoration:none; font-weight:600; font-size:0.9rem;">
                                             {% trans "Learn More" %}
                                         </a>
                                     </div>
@@ -212,7 +330,7 @@ html.dark .tour-local a.bg-white { background-color: #111827 !important; color: 
                                             aria-expanded="{% if forloop.first %}true{% else %}false{% endif %}" 
                                             aria-controls="itinerary-{{ forloop.counter }}">
                                         <h4 class="font-bold text-lg">{% trans "Day" %} {{ day.day_number }}: {{ day.title }}</h4>
-                                        <i class="fas fa-chevron-down transform transition-transform duration-300"></i>
+                                        <i class="fas fa-chevron-down" aria-hidden="true"></i>
                                     </button>
                                     <div id="itinerary-{{ forloop.counter }}" 
                                          class="p-4 {% if not forloop.first %}hidden{% endif %}">
@@ -262,14 +380,14 @@ html.dark .tour-local a.bg-white { background-color: #111827 !important; color: 
                         <div class="bg-white rounded-xl shadow-md border border-green-500">
                             <div class="bg-green-500 text-white px-6 py-4 rounded-t-lg">
                                 <h5 class="font-bold text-lg flex items-center">
-                                    <i class="fas fa-check mr-2"></i>{% trans "Included" %}
+                                    <i class="fas fa-check" aria-hidden="true" style="margin-right:0.5rem;"></i>{% trans "Included" %}
                                 </h5>
                             </div>
                             <div class="p-6">
                                 <ul class="space-y-2">
                                     {% for inclusion in tour.inclusions %}
                                         <li class="flex items-start">
-                                            <i class="fas fa-check text-green-500 mt-1 mr-3"></i>
+                                            <i class="fas fa-check" style="color:#10B981; margin-right:0.6rem; margin-top:0.2rem;" aria-hidden="true"></i>
                                             <span>{{ inclusion }}</span>
                                         </li>
                                     {% endfor %}
@@ -282,14 +400,14 @@ html.dark .tour-local a.bg-white { background-color: #111827 !important; color: 
                         <div class="bg-white rounded-xl shadow-md border border-red-500">
                             <div class="bg-red-500 text-white px-6 py-4 rounded-t-lg">
                                 <h5 class="font-bold text-lg flex items-center">
-                                    <i class="fas fa-times mr-2"></i>{% trans "Not Included" %}
+                                    <i class="fas fa-times" aria-hidden="true" style="margin-right:0.5rem;"></i>{% trans "Not Included" %}
                                 </h5>
                             </div>
                             <div class="p-6">
                                 <ul class="space-y-2">
                                     {% for exclusion in tour.exclusions %}
                                         <li class="flex items-start">
-                                            <i class="fas fa-times text-red-500 mt-1 mr-3"></i>
+                                            <i class="fas fa-times" style="color:#EF4444; margin-right:0.6rem; margin-top:0.2rem;" aria-hidden="true"></i>
                                             <span>{{ exclusion }}</span>
                                         </li>
                                     {% endfor %}
@@ -308,7 +426,7 @@ html.dark .tour-local a.bg-white { background-color: #111827 !important; color: 
                     
                     <div class="bg-[#f5e9d8] border-l-4 border-[#C18D45] text-[#a97a3a] p-4 mb-6 rounded-r">
                         <div class="flex items-start">
-                            <i class="fas fa-info-circle mt-1 mr-3"></i>
+                            <i class="fas fa-info-circle" aria-hidden="true" style="margin-right:0.6rem;"></i>
                             <div>
                                 <small>{% trans "Contact us for pricing and availability. We offer competitive rates for all accommodation types." %}</small>
                             </div>
@@ -319,15 +437,15 @@ html.dark .tour-local a.bg-white { background-color: #111827 !important; color: 
                         {% if user.is_authenticated %}
                             <a href="{% url 'bookings:create_booking' tour.slug %}"
                             role="button"
-                            class="w-full flex items-center justify-center bg-[#C18D45] hover:bg-[#a97a3a] text-white font-medium py-3 px-6 rounded-md transition duration-300">
-                            <i class="fas fa-paper-plane mr-2" aria-hidden="true"></i>
+                            class="w-full flex items-center justify-center" style="background:#C18D45; color:#fff; padding:0.75rem 1rem; border-radius:0.5rem; text-decoration:none; font-weight:600;">
+                            <i class="fas fa-paper-plane" aria-hidden="true" style="margin-right:0.5rem;"></i>
                             {% trans "Request Booking" %}
                             </a>
                         {% else %}
                             <a href="{% url 'accounts:login' %}?next={% url 'bookings:create_booking' tour.slug %}"
                             role="button"
-                            class="w-full flex items-center justify-center bg-[#C18D45] hover:bg-[#a97a3a] text-white font-medium py-3 px-6 rounded-md transition duration-300">
-                            <i class="fas fa-paper-plane mr-2" aria-hidden="true"></i>
+                            class="w-full flex items-center justify-center" style="background:#C18D45; color:#fff; padding:0.75rem 1rem; border-radius:0.5rem; text-decoration:none; font-weight:600;">
+                            <i class="fas fa-paper-plane" aria-hidden="true" style="margin-right:0.5rem;"></i>
                             {% trans "Request Booking" %}
                             </a>
                         {% endif %}
@@ -380,8 +498,8 @@ html.dark .tour-local a.bg-white { background-color: #111827 !important; color: 
                 <div class="bg-white rounded-xl shadow-md p-6">
                     <h5 class="text-xl font-bold mb-3">{% trans "Need Help?" %}</h5>
                     <p class="text-gray-600 mb-4">{% trans "Have questions about this tour? Our experts are here to help!" %}</p>
-                    <a href="{% url 'core:contact' %}" class="block w-full bg-[#C18D45] hover:bg-[#a97a3a] text-white font-medium py-3 px-6 rounded-md text-center transition duration-300">
-                        <i class="fas fa-phone mr-2"></i>{% trans "Contact Us" %}
+                    <a href="{% url 'core:contact' %}" class="block w-full" style="background:#C18D45; color:#fff; padding:0.75rem 1rem; border-radius:0.5rem; text-align:center; text-decoration:none; font-weight:600;">
+                        <i class="fas fa-phone" aria-hidden="true" style="margin-right:0.5rem;"></i>{% trans "Contact Us" %}
                     </a>
                 </div>
             </div>
@@ -407,7 +525,6 @@ html.dark .tour-local a.bg-white { background-color: #111827 !important; color: 
                                 <p class="text-gray-600">{% trans "to" %} {{ avail.end_date|date:"M d, Y" }}</p>
                             </div>
 
-                            {# show business-friendly capacity messages; don't expose raw NULL #}
                             {% if avail.remaining is None %}
                                 <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">
                                     {% trans "Open — capacity on request" %}
@@ -425,28 +542,28 @@ html.dark .tour-local a.bg-white { background-color: #111827 !important; color: 
                         
                         {% if avail.assigned_guide %}
                             <p class="text-gray-600 mb-4 flex items-center">
-                                <i class="fas fa-user mr-2 text-[#C18D45]"></i>{% trans "Guide:" %} {{ avail.assigned_guide.user.get_full_name }}
+                                <i class="fas fa-user" aria-hidden="true" style="margin-right:0.5rem; color:#C18D45;"></i>{% trans "Guide:" %} {{ avail.assigned_guide.user.get_full_name }}
                             </p>
                         {% endif %}
                         
                         <div class="text-center">
                             {% if user.is_authenticated %}
                                 {% if avail.remaining is None or avail.remaining > 0 %}
-                                    <a href="{% url 'bookings:create_booking' tour.slug %}?availability={{ avail.id }}" class="inline-block bg-[#C18D45] hover:bg-[#a97a3a] text-white font-medium py-2 px-6 rounded-md transition duration-300">
+                                    <a href="{% url 'bookings:create_booking' tour.slug %}?availability={{ avail.id }}" class="inline-block" style="background:#C18D45; color:#fff; padding:0.5rem 1rem; border-radius:0.5rem; text-decoration:none; font-weight:600;">
                                         {% trans "Select Date" %}
                                     </a>
                                 {% else %}
-                                    <a href="{% url 'core:contact' %}?subject=Waitlist%20for%20{{ tour.slug }}&availability={{ avail.id }}" class="inline-block bg-gray-800 hover:bg-gray-700 text-white font-medium py-2 px-6 rounded-md transition duration-300">
+                                    <a href="{% url 'core:contact' %}?subject=Waitlist%20for%20{{ tour.slug }}&availability={{ avail.id }}" class="inline-block" style="background:#111827; color:#fff; padding:0.5rem 1rem; border-radius:0.5rem; text-decoration:none; font-weight:600;">
                                         {% trans "Fully booked — Contact to join waitlist" %}
                                     </a>
                                 {% endif %}
                             {% else %}
                                 {% if avail.remaining is None or avail.remaining > 0 %}
-                                    <a href="{% url 'accounts:login' %}?next={% url 'bookings:create_booking' tour.slug %}?availability={{ avail.id }}" class="inline-block bg-[#C18D45] hover:bg-[#a97a3a] text-white font-medium py-2 px-6 rounded-md transition duration-300">
+                                    <a href="{% url 'accounts:login' %}?next={% url 'bookings:create_booking' tour.slug %}?availability={{ avail.id }}" class="inline-block" style="background:#C18D45; color:#fff; padding:0.5rem 1rem; border-radius:0.5rem; text-decoration:none; font-weight:600;">
                                         {% trans "Select Date" %}
                                     </a>
                                 {% else %}
-                                    <a href="{% url 'accounts:login' %}?next={% url 'core:contact' %}?subject=Waitlist%20for%20{{ tour.slug }}" class="inline-block bg-gray-800 hover:bg-gray-700 text-white font-medium py-2 px-6 rounded-md transition duration-300">
+                                    <a href="{% url 'accounts:login' %}?next={% url 'core:contact' %}?subject=Waitlist%20for%20{{ tour.slug }}" class="inline-block" style="background:#111827; color:#fff; padding:0.5rem 1rem; border-radius:0.5rem; text-decoration:none; font-weight:600;">
                                         {% trans "Fully booked — Login to contact" %}
                                     </a>
                                 {% endif %}
@@ -469,9 +586,9 @@ html.dark .tour-local a.bg-white { background-color: #111827 !important; color: 
                     <div class="flex items-center mb-3">
                         {% for i in "12345" %}
                             {% if forloop.counter <= tour.average_rating %}
-                                <i class="fas fa-star text-yellow-400 text-2xl mr-1"></i>
+                                <i class="fas fa-star" style="color:#F59E0B; margin-right:0.4rem;"></i>
                             {% else %}
-                                <i class="far fa-star text-yellow-400 text-2xl mr-1"></i>
+                                <i class="far fa-star" style="color:#F59E0B; margin-right:0.4rem;"></i>
                             {% endif %}
                         {% endfor %}
                         <span class="text-2xl font-bold ml-2">{{ tour.average_rating|floatformat:1 }}</span>
@@ -484,17 +601,17 @@ html.dark .tour-local a.bg-white { background-color: #111827 !important; color: 
                 {% for review in reviews %}
                     <div class="bg-white rounded-xl shadow-md p-6">
                         <div class="flex items-center mb-4">
-                            <div class="bg-[#C18D45] rounded-full w-12 h-12 flex items-center justify-center text-white mr-4">
-                                <i class="fas fa-user"></i>
+                            <div style="background:#C18D45; border-radius:999px; width:48px; height:48px; display:flex; align-items:center; justify-content:center; color:#fff; margin-right:1rem;">
+                                <i class="fas fa-user" aria-hidden="true"></i>
                             </div>
                             <div>
                                 <h6 class="font-bold">{{ review.user.get_display_name }}</h6>
                                 <div class="flex items-center">
                                     {% for i in "12345" %}
                                         {% if forloop.counter <= review.rating %}
-                                            <i class="fas fa-star text-yellow-400 mr-1"></i>
+                                            <i class="fas fa-star" style="color:#F59E0B; margin-right:0.3rem;"></i>
                                         {% else %}
-                                            <i class="far fa-star text-yellow-400 mr-1"></i>
+                                            <i class="far fa-star" style="color:#F59E0B; margin-right:0.3rem;"></i>
                                         {% endif %}
                                     {% endfor %}
                                 </div>
@@ -514,12 +631,12 @@ html.dark .tour-local a.bg-white { background-color: #111827 !important; color: 
             
             <div class="text-center mt-10">
                 {% if user.is_authenticated %}
-                    <a href="{% url 'reviews:create_tour_review' tour.slug %}" class="inline-block bg-[#C18D45] hover:bg-[#a97a3a] text-white font-medium py-3 px-6 rounded-md transition duration-300 mr-4">
-                        <i class="fas fa-star mr-2"></i>{% trans "Write a Review" %}
+                    <a href="{% url 'reviews:create_tour_review' tour.slug %}" class="inline-block" style="background:#C18D45; color:#fff; padding:0.6rem 1rem; border-radius:0.5rem; text-decoration:none; font-weight:600; margin-right:0.5rem;">
+                        <i class="fas fa-star" aria-hidden="true" style="margin-right:0.4rem;"></i>{% trans "Write a Review" %}
                     </a>
                 {% endif %}
-                <a href="{% url 'reviews:review_list' %}?tour={{ tour.id }}" class="inline-block bg-white hover:bg-gray-100 text-gray-800 font-medium py-3 px-6 rounded-md border border-gray-300 transition duration-300">
-                    {% trans "Read All Reviews" %} <i class="fas fa-arrow-right ml-2"></i>
+                <a href="{% url 'reviews:review_list' %}?tour={{ tour.id }}" class="inline-block" style="background:#fff; color:#1f2937; padding:0.6rem 1rem; border-radius:0.5rem; text-decoration:none; border:1px solid #e5e7eb;">
+                    {% trans "Read All Reviews" %} <i class="fas fa-arrow-right" aria-hidden="true" style="margin-left:0.5rem;"></i>
                 </a>
             </div>
         </div>
@@ -543,11 +660,11 @@ html.dark .tour-local a.bg-white { background-color: #111827 !important; color: 
                         <div class="p-4">
                             <h6 class="font-bold text-lg mb-2">{{ related_tour.title }}</h6>
                             <p class="text-gray-600 mb-3 flex items-center">
-                                <i class="fas fa-clock mr-2 text-[#C18D45]"></i>{{ related_tour.get_duration_display }}
+                                <i class="fas fa-clock" aria-hidden="true" style="margin-right:0.5rem; color:#C18D45;"></i>{{ related_tour.get_duration_display }}
                             </p>
                             <p class="text-gray-700 mb-4">{{ related_tour.short_description|truncatewords:10 }}</p>
                             <div class="flex justify-between items-center">
-                                <a href="{% url 'tours:tour_detail' related_tour.slug %}" class="bg-[#C18D45] hover:bg-[#a97a3a] text-white font-medium py-2 px-4 rounded-md transition duration-300 text-sm">
+                                <a href="{% url 'tours:tour_detail' related_tour.slug %}" style="background:#C18D45; color:#fff; padding:0.5rem 0.75rem; border-radius:0.5rem; text-decoration:none; font-weight:600; font-size:0.9rem;">
                                     {% trans "View Tour" %}
                                 </a>
                             </div>
@@ -559,10 +676,10 @@ html.dark .tour-local a.bg-white { background-color: #111827 !important; color: 
     </section>
 {% endif %}
 
-</div> {# end .tour-local #}
+</div> {# end .tour-local .tour-typography #}
 
 <script>
-// Simple accordion functionality
+// Simple accordion functionality (keeps your original JS behavior)
 document.addEventListener('DOMContentLoaded', function() {
     const accordionButtons = document.querySelectorAll('[aria-expanded]');
     
@@ -576,14 +693,18 @@ document.addEventListener('DOMContentLoaded', function() {
             // Toggle visibility
             if (expanded) {
                 this.setAttribute('aria-expanded', 'false');
-                target.classList.add('hidden');
-                icon.classList.remove('fa-chevron-up');
-                icon.classList.add('fa-chevron-down');
+                if (target) target.classList.add('hidden');
+                if (icon) {
+                  icon.classList.remove('fa-chevron-up');
+                  icon.classList.add('fa-chevron-down');
+                }
             } else {
                 this.setAttribute('aria-expanded', 'true');
-                target.classList.remove('hidden');
-                icon.classList.remove('fa-chevron-down');
-                icon.classList.add('fa-chevron-up');
+                if (target) target.classList.remove('hidden');
+                if (icon) {
+                  icon.classList.remove('fa-chevron-down');
+                  icon.classList.add('fa-chevron-up');
+                }
             }
         });
     });

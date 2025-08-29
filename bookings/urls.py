@@ -8,12 +8,10 @@ urlpatterns = [
     # List the user's bookings
     path('', views.BookingListView.as_view(), name='booking_list'),
 
-    # Standard (simplified) booking page.
-    # This should point to the simplified `create_booking` view (the fast "shap-shap" flow).
+    # Create a new booking
     path('create/<slug:tour_slug>/', views.create_booking, name='create_booking'),
 
-    # Optional: explicit quick / one-click endpoint if you later add a one-click flow.
-    # You can remove this if you don't plan to use it.
+    # Quick booking
     path('create/quick/<slug:tour_slug>/', views.create_booking_quick, name='create_booking_quick'),
 
     # Booking detail & cancel

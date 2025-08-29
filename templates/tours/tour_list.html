@@ -3,17 +3,169 @@
 
 {% block title %}{% trans "Safari Tours" %} - {{ site_settings.site_name|default:"Safari & Bush Retreats" }}{% endblock %}
 
+{% block extra_css %}
+<!-- Preconnect to speed up Google Fonts (base should still include the Google Fonts <link>) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<!-- Font Awesome (icons) -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-p1CmK5G+XqQm+e1k1rX9Kf0x1a2oKQk1Yg0X8mVfK1mC1x1YJz6+1K6b2Q9b3d2q3ZJm6G1s1X2Y3Z4A5b6c7g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+<style>
+/* ---------- Scoped typography for Tours page only (Poppins-based, clamp scale) ---------- */
+.tours-typography {
+  font-family: 'Poppins', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --fs-xxl: clamp(1.6rem, 4.0vw, 3.2rem);
+  --fs-xl:  clamp(1.25rem, 2.6vw, 2.25rem);
+  --fs-lg:  clamp(1.05rem, 1.9vw, 1.5rem);
+  --fs-base:clamp(0.95rem, 1.0vw, 1.06rem);
+  --fs-sm:  clamp(0.82rem, 0.8vw, 0.95rem);
+  --fs-xs:  clamp(0.72rem, 0.7vw, 0.82rem);
+  --lh-tight: 1.08;
+  --lh-heading: 1.15;
+  --lh-base: 1.42;
+  --lh-small: 1.3;
+}
+
+/* Base sizing inside scope */
+.tours-typography,
+.tours-typography p,
+.tours-typography .text-base,
+.tours-typography .prose,
+.tours-typography .article-body {
+  font-size: var(--fs-base);
+  line-height: var(--lh-base);
+}
+
+/* headings */
+.tours-typography h1 { font-size: var(--fs-xxl); line-height: var(--lh-tight); font-weight: 600; }
+.tours-typography h2 { font-size: var(--fs-xl);  line-height: var(--lh-heading); font-weight: 600; }
+.tours-typography h3 { font-size: var(--fs-lg);  line-height: var(--lh-heading); font-weight: 600; }
+.tours-typography h4 { font-size: calc(var(--fs-lg) - 0.06rem); line-height: var(--lh-heading); }
+.tours-typography h5,
+.tours-typography h6 { font-size: var(--fs-sm); line-height: var(--lh-small); }
+
+/* small text, buttons & inputs */
+.tours-typography small,
+.tours-typography .text-muted,
+.tours-typography .meta { font-size: var(--fs-sm); line-height: var(--lh-small); }
+.tours-typography button,
+.tours-typography .btn,
+.tours-typography .inline-flex,
+.tours-typography input[type="email"],
+.tours-typography .dest-seemore { font-size: var(--fs-sm); line-height: 1.2; }
+.tours-typography .dest-title { font-size: var(--fs-sm); line-height: 1.06; font-weight: 500; }
+
+/* hero special sizing (and improved layout & contrast) */
+.hero-bg {
+  position: relative;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  min-height: 56vh;
+  display: flex;
+  align-items: center;
+}
+.hero-bg::before {
+  /* dark gradient overlay for consistent contrast */
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,0.48) 0%, rgba(0,0,0,0.28) 40%, rgba(0,0,0,0.48) 100%);
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* hero content sits above overlay */
+.hero-content {
+  position: relative;
+  z-index: 2;
+  padding: 3.5rem 0;
+}
+
+/* text shadow + color for readability */
+.hero-title {
+  font-weight: 700;
+  line-height: 1.02;
+  font-size: clamp(1.6rem, 6vw, 3.2rem);
+  color: #fff;
+  text-shadow: 0 6px 18px rgba(0,0,0,0.55);
+  margin: 0 0 0.5rem 0;
+}
+.hero-subtitle {
+  font-weight: 500;
+  font-size: clamp(1rem, 2.2vw, 1.25rem);
+  color: rgba(255,255,255,0.95);
+  text-shadow: 0 4px 12px rgba(0,0,0,0.45);
+  margin: 0 0 1rem 0;
+}
+
+/* button icon spacing and vertical alignment */
+.btn i,
+a.btn i,
+button i {
+  margin-right: 0.5rem;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+/* ensure hero CTA buttons are readable on small screens */
+@media (max-width: 640px) {
+  .hero-content { padding: 2rem 0; }
+  .hero-title { font-size: 1.6rem; }
+  .hero-subtitle { font-size: 0.98rem; }
+}
+
+/* helpful fallback when background image fails - show a subtle solid color */
+.hero-bg[data-bg-fallback] { background-color: #0f1724; }
+
+/* small accessibility tweak for focus */
+.tours-typography a:focus-visible,
+.tours-typography button:focus-visible {
+  outline: 3px solid rgba(193,141,69,0.18);
+  outline-offset: 4px;
+}
+
+/* desktop boost for hero */
+@media (min-width: 1024px) {
+  .hero-bg { min-height: 40vh; }
+  .hero-title { font-size: clamp(2.2rem, 3.0vw, 3.8rem); }
+}
+
+/* helper to let nested components inherit calculated font-size */
+.tours-typography .site-typography-overrides * { font-size: inherit; }
+
+/* Accessibility */
+.tours-typography a, .tours-typography button { text-rendering: optimizeLegibility; }
+</style>
+{% endblock %}
+
 {% block content %}
-<!-- Hero Section -->
-<section class="relative bg-cover bg-center" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.pexels.com/photos/1170986/pexels-photo-1170986.jpeg');">
-    <div class="container mx-auto px-4 py-32">
-        <div class="max-w-2xl">
-            <h1 class="text-4xl md:text-5xl font-bold text-white mb-6">{% trans "Safari Tours" %}</h1>
-            <p class="text-xl text-white">{% trans "Discover Tanzania's wildlife with our expertly crafted safari experiences" %}</p>
-        </div>
+<div class="tours-typography">
+<!-- HERO -->
+<section class="hero-bg" style="background-image: linear-gradient(135deg, rgba(0,0,0,0.12), rgba(0,0,0,0)), url('https://images.pexels.com/photos/1170986/pexels-photo-1170986.jpeg');" aria-label="Hero banner">
+  <div class="container mx-auto px-4 hero-content">
+    <div class="max-w-3xl">
+      <h1 class="hero-title">{% trans "Safari Tours" %}</h1>
+      <p class="hero-subtitle">{% trans "Discover Tanzania's wildlife with our expertly crafted safari experiences" %}</p>
+
+      <div style="display:flex; gap:0.75rem; flex-wrap:wrap; margin-top:0.75rem;">
+        <a href="{% url 'tours:tour_list' %}" class="btn" aria-label="Explore tours" style="background:#C18D45; color:#fff; padding:0.6rem 1rem; border-radius:999px; text-decoration:none; font-weight:600;">
+          <i class="fas fa-binoculars" aria-hidden="true"></i>
+          <span>{% trans "Explore Tours" %}</span>
+        </a>
+
+        <a href="{% url 'parks:park_list' %}" class="btn" aria-label="National parks" style="background:rgba(255,255,255,0.12); color:#fff; padding:0.6rem 1rem; border-radius:999px; text-decoration:none; border:1px solid rgba(255,255,255,0.12); font-weight:600;">
+          <i class="fas fa-mountain" aria-hidden="true"></i>
+          <span>{% trans "National Parks" %}</span>
+        </a>
+      </div>
     </div>
+  </div>
 </section>
 
+<!-- (rest of the page remains unchanged; layout/filters/tours grid preserved) -->
 <!-- Filters Section -->
 <section class="py-6 bg-gray-50 dark:bg-gray-800">
     <div class="container mx-auto px-4">
@@ -210,6 +362,8 @@
         {% endif %}
     </div>
 </section>
+
+</div> {# /.tours-typography #}
 {% endblock %}
 
 {% block scripts %}

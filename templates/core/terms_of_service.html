@@ -3,52 +3,166 @@
 
 {% block title %}{% trans "Terms of Service" %} - Safari&nbsp;&amp;&nbsp;Bush Retreats{% endblock %}
 
+{% block extra_css %}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+/* Scoped typography scale — matches the FAQ / Privacy templates */
+:root{
+  --fs-xxl: clamp(1.6rem, 4.0vw, 3.2rem);
+  --fs-xl:  clamp(1.25rem, 2.6vw, 2.25rem);
+  --fs-lg:  clamp(1.05rem, 1.9vw, 1.5rem);
+  --fs-base:clamp(0.95rem, 1.0vw, 1.06rem);
+  --fs-sm:  clamp(0.82rem, 0.8vw, 0.95rem);
+  --lh-tight: 1.08;
+  --lh-heading: 1.15;
+  --lh-base: 1.42;
+}
+
+/* Keep the same font-family as other templates and scope to .terms-local */
+body, .terms-local {
+  font-family: 'Poppins', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  font-size: var(--fs-base) !important;
+  line-height: var(--lh-base) !important;
+}
+
+/* Page title sizing */
+.terms-local .terms-title {
+  font-size: clamp(2.0rem, 5.2vw, 3.2rem) !important;
+  line-height: 1.04 !important;
+  font-weight: 700 !important;
+}
+
+/* Headings */
+h2 { font-size: var(--fs-xl) !important; line-height: var(--lh-heading) !important; font-weight: 600 !important; }
+h3 { font-size: var(--fs-lg) !important; line-height: var(--lh-heading) !important; font-weight: 600 !important; }
+
+/* details styling, animation and spacing */
+.terms-local details[open] summary ~ div { animation: fadeIn .18s ease-in; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
+
+.terms-local details summary { cursor: pointer; padding: 1rem 1.25rem; }
+.terms-local details div { padding: 0 1.25rem 1rem; }
+
+/* Panel look */
+.terms-local .panel {
+  background: var(--bg, #fff);
+  border-radius: 0.75rem;
+  box-shadow: 0 1px 2px rgba(16,24,40,0.04);
+  overflow: hidden;
+}
+.dark .terms-local .panel,
+.terms-local .panel.dark { background: #1f2937; }
+
+/* chevron rotate */
+.terms-local .chev {
+  margin-left: 0.75rem;
+  transform-origin: center;
+  transition: transform .18s ease;
+}
+.terms-local details[open] .chev { transform: rotate(180deg); }
+
+/* minor spacing between panels */
+.terms-local .panel > details + details { margin-top: 0.75rem; }
+
+/* Preserve site colors — do not override theme palette */
+.terms-local a { color: #C18D45; text-decoration: underline; text-underline-offset: 2px; }
+
+/* Responsive tweak for title */
+@media (min-width: 1024px) {
+  .terms-local .terms-title {
+    font-size: clamp(2.4rem, 3.2vw, 3.6rem) !important;
+    line-height: 1.02 !important;
+  }
+}
+</style>
+{% endblock %}
+
 {% block content %}
-<div class="container mx-auto px-4 py-12">
+<div class="terms-local container mx-auto px-4 py-12">
   <div class="max-w-3xl mx-auto">
-    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-gray-100 mb-2">
+    <h1 class="terms-title text-center text-gray-900 dark:text-gray-100 mb-4">
       {% trans "Terms of Service" %}
     </h1>
-    <p class="text-sm text-gray-600 dark:text-gray-400 mb-6">{% trans "Last updated: January 2024" %}</p>
 
-    <article class="bg-white dark:bg-gray-800 rounded-lg shadow-md border border-gray-200 dark:border-gray-700">
-      <div class="p-6 md:p-8 prose max-w-none prose-lg text-gray-700 dark:prose-invert dark:text-gray-300">
-        <section>
-          <h3 class="text-lg font-semibold text-gray-900 dark:text-gray-100">{% trans "Acceptance of Terms" %}</h3>
-          <p>
-            {% trans "By accessing and using this website, you accept and agree to be bound by the terms and provision of this agreement." %}
-          </p>
-        </section>
+    <p class="text-sm text-gray-600 dark:text-gray-400 mb-6 text-center">
+      {% trans "Last updated:" %} {% trans "January 2024" %}
+    </p>
 
-        <section>
-          <h3 class="text-lg font-semibold text-gray-900 dark:text-gray-100">{% trans "Booking Terms" %}</h3>
-          <p>
-            {% trans "All bookings are subject to availability and confirmation. Payment is required to secure your booking." %}
+    <div class="space-y-4 panel">
+      <details class="group bg-white dark:bg-gray-800 rounded-xl shadow-sm overflow-hidden" open>
+        <summary class="list-none px-5 py-4 flex items-center justify-between">
+          <span class="text-left text-gray-900 dark:text-gray-100">{% trans "Acceptance of Terms" %}</span>
+          <span class="ml-4 chev text-gray-500 dark:text-gray-300" aria-hidden="true">
+            <i class="fas fa-chevron-down"></i>
+          </span>
+        </summary>
+        <div class="px-5 pb-4 pt-0 border-t border-gray-100 dark:border-gray-700">
+          <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+            {% trans "Welcome — please read these Terms of Service carefully. By accessing and using this website, you kindly agree to abide by these terms. If you do not agree, please refrain from using our services and contact us for assistance." %}
           </p>
-        </section>
+        </div>
+      </details>
 
-        <section>
-          <h3 class="text-lg font-semibold text-gray-900 dark:text-gray-100">{% trans "Cancellation Policy" %}</h3>
-          <p>
-            {% trans "Cancellations made 30 days or more before departure: Full refund minus processing fee. Cancellations made 15-29 days before departure: 50% refund. Cancellations made less than 15 days before departure: No refund." %}
+      <details class="group bg-white dark:bg-gray-800 rounded-xl shadow-sm overflow-hidden">
+        <summary class="list-none px-5 py-4 flex items-center justify-between">
+          <span class="text-left text-gray-900 dark:text-gray-100">{% trans "Booking Terms" %}</span>
+          <span class="ml-4 chev text-gray-500 dark:text-gray-300" aria-hidden="true">
+            <i class="fas fa-chevron-down"></i>
+          </span>
+        </summary>
+        <div class="px-5 pb-4 pt-0 border-t border-gray-100 dark:border-gray-700">
+          <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+            {% trans "To secure a booking, we kindly request full payment as specified at the time of reservation. Please note that, for now, payment is accepted in cash only. We apologise for any inconvenience and are working to add additional payment methods in the near future." %}
           </p>
-        </section>
+        </div>
+      </details>
 
-        <section>
-          <h3 class="text-lg font-semibold text-gray-900 dark:text-gray-100">{% trans "Liability" %}</h3>
-          <p>
-            {% trans "Safari&nbsp;&amp;&nbsp;Bush Retreats acts as an agent for tour operators and is not liable for any loss, damage, or injury during tours." %}
+      <details class="group bg-white dark:bg-gray-800 rounded-xl shadow-sm overflow-hidden">
+        <summary class="list-none px-5 py-4 flex items-center justify-between">
+          <span class="text-left text-gray-900 dark:text-gray-100">{% trans "Cancellation Policy" %}</span>
+          <span class="ml-4 chev text-gray-500 dark:text-gray-300" aria-hidden="true">
+            <i class="fas fa-chevron-down"></i>
+          </span>
+        </summary>
+        <div class="px-5 pb-4 pt-0 border-t border-gray-100 dark:border-gray-700">
+          <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+            {% trans "All cancellation terms and related arrangements will be discussed and agreed upon in our office at the time of booking. If you require assistance, please contact our team and we will do our utmost to help." %}
           </p>
-        </section>
+        </div>
+      </details>
 
-        <section>
-          <h3 class="text-lg font-semibold text-gray-900 dark:text-gray-100">{% trans "Changes to Terms" %}</h3>
-          <p>
-            {% trans "We reserve the right to modify these terms at any time. Changes will be effective immediately upon posting." %}
+      <details class="group bg-white dark:bg-gray-800 rounded-xl shadow-sm overflow-hidden">
+        <summary class="list-none px-5 py-4 flex items-center justify-between">
+          <span class="text-left text-gray-900 dark:text-gray-100">{% trans "Liability" %}</span>
+          <span class="ml-4 chev text-gray-500 dark:text-gray-300" aria-hidden="true">
+            <i class="fas fa-chevron-down"></i>
+          </span>
+        </summary>
+        <div class="px-5 pb-4 pt-0 border-t border-gray-100 dark:border-gray-700">
+          <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+            {% trans "We strive to provide safe, high-quality experiences. Please note that Safari &amp; Bush Retreats acts as an agent for local tour operators and cannot be held responsible for events beyond our reasonable control. We kindly ask guests to follow all guide instructions and health & safety guidance while on tour." %}
           </p>
-        </section>
-      </div>
-    </article>
+        </div>
+      </details>
+
+      <details class="group bg-white dark:bg-gray-800 rounded-xl shadow-sm overflow-hidden">
+        <summary class="list-none px-5 py-4 flex items-center justify-between">
+          <span class="text-left text-gray-900 dark:text-gray-100">{% trans "Changes to Terms" %}</span>
+          <span class="ml-4 chev text-gray-500 dark:text-gray-300" aria-hidden="true">
+            <i class="fas fa-chevron-down"></i>
+          </span>
+        </summary>
+        <div class="px-5 pb-4 pt-0 border-t border-gray-100 dark:border-gray-700">
+          <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+            {% trans "We may update these terms occasionally. We will post any changes here and encourage you to review them. If you have any questions or concerns about a change, please contact us and we will be happy to help." %}
+          </p>
+        </div>
+      </details>
+
+    </div>
   </div>
 </div>
 {% endblock %}

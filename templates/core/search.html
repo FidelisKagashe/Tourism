@@ -3,8 +3,112 @@
 
 {% block title %}{% trans "Search Results" %} - Safari&nbsp;&amp;&nbsp;Bush Retreats{% endblock %}
 
+{% block extra_css %}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+/* Scoped typography scale — consistent with FAQ/Privacy/Terms */
+:root{
+  --fs-xxl: clamp(1.6rem, 4.0vw, 3.2rem);
+  --fs-xl:  clamp(1.25rem, 2.6vw, 2.25rem);
+  --fs-lg:  clamp(1.05rem, 1.9vw, 1.5rem);
+  --fs-base:clamp(0.95rem, 1.0vw, 1.06rem);
+  --fs-sm:  clamp(0.82rem, 0.8vw, 0.95rem);
+  --lh-tight: 1.08;
+  --lh-heading: 1.15;
+  --lh-base: 1.42;
+}
+
+/* Scope everything to .search-local to avoid leaking styles */
+body, .search-local {
+  font-family: 'Poppins', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  font-size: var(--fs-base) !important;
+  line-height: var(--lh-base) !important;
+}
+
+/* Page title sizing */
+.search-local h1 {
+  font-size: clamp(1.6rem, 3.8vw, 2.6rem);
+  line-height: 1.04;
+  font-weight: 700;
+}
+
+/* Section headings */
+.search-local h2 { font-size: var(--fs-xl) !important; line-height: var(--lh-heading) !important; font-weight: 600 !important; }
+
+/* Result card styles */
+.search-local .result-card {
+  background: var(--card-bg, #fff);
+  border-radius: 0.75rem;
+  box-shadow: 0 1px 2px rgba(16,24,40,0.04);
+  overflow: hidden;
+  border: 1px solid transparent;
+}
+.dark .search-local .result-card,
+.search-local .result-card.dark { background: #1f2937; }
+
+/* Image behavior */
+.search-local .result-card img { width: 100%; height: 12rem; object-fit: cover; }
+
+/* Card content */
+.search-local .result-card .card-body { padding: 1.25rem; display: flex; flex-direction: column; height: 100%; }
+
+/* Utility: truncate text lines if needed */
+.search-local .truncate-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Pagination */
+.search-local .pagination a,
+.search-local .pagination span {
+  padding: 0.45rem 0.75rem;
+  border-radius: 0.375rem;
+  display: inline-block;
+  text-decoration: none;
+}
+.search-local .pagination .active {
+  background: #C18D45;
+  color: #fff;
+}
+.search-local .pagination a:hover { background: rgba(193,141,69,0.06); }
+
+/* Empty state */
+.search-local .empty-state i { font-size: 3.5rem; }
+
+/* Search box (centered card) */
+.search-local .search-box input[type="text"] {
+  width: 100%;
+  padding: 0.85rem 1rem;
+  border-radius: 9999px;
+  border: 1px solid #D1D5DB;
+  background: #fff;
+  outline: none;
+}
+.search-local .search-box button {
+  padding: 0.75rem 1rem;
+  border-radius: 9999px;
+  background: #C18D45;
+  color: #fff;
+  border: none;
+}
+
+/* Small responsive tweaks */
+@media (min-width: 768px) {
+  .search-local .result-card img { height: 14rem; }
+}
+@media (min-width: 1024px) {
+  .search-local h1 { font-size: clamp(2.0rem, 3.2vw, 3.2rem); }
+}
+</style>
+{% endblock %}
+
 {% block content %}
-<div class="container max-w-7xl mx-auto px-4 py-12">
+<div class="search-local container max-w-7xl mx-auto px-4 py-12">
   <div class="mb-8">
     <h1 class="text-2xl md:text-3xl font-bold text-gray-900 dark:text-gray-100 mb-3">
       {% if query %}
@@ -33,18 +137,17 @@
 
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {% for park in parks %}
-            <article class="bg-white dark:bg-gray-800 rounded-xl shadow-md border border-transparent dark:border-gray-700 overflow-hidden">
+            <article class="result-card bg-white dark:bg-gray-800 rounded-xl shadow-md overflow-hidden">
               <img
                 src="{% if park.main_image %}{{ park.main_image.url }}{% else %}https://images.pexels.com/photos/631317/pexels-photo-631317.jpeg{% endif %}"
                 alt="{{ park.name }}"
-                class="w-full h-48 object-cover"
               />
-              <div class="p-5 flex flex-col h-56">
+              <div class="card-body p-5 flex flex-col">
                 <h3 class="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-2">{{ park.name }}</h3>
                 <p class="text-sm text-gray-600 dark:text-gray-300 mb-3">
-                  <i class="fas fa-map-marker-alt mr-1"></i>{{ park.location }}, {{ park.region }}
+                  <span aria-hidden="true">📍</span> {{ park.location }}, {{ park.region }}
                 </p>
-                <p class="text-gray-700 dark:text-gray-300 text-sm flex-grow">{{ park.short_description|truncatewords:15 }}</p>
+                <p class="text-gray-700 dark:text-gray-300 text-sm flex-grow truncate-3">{{ park.short_description|truncatewords:18 }}</p>
 
                 <div class="mt-4 flex items-center justify-between">
                   <small class="text-xs text-gray-500 dark:text-gray-400">{{ park.area_km2|floatformat:0 }} km²</small>
@@ -61,11 +164,11 @@
         {# Parks Pagination #}
         {% if parks.has_other_pages %}
           <nav class="mt-8 flex justify-center" aria-label="Parks pagination">
-            <ul class="inline-flex items-center space-x-2">
+            <ul class="inline-flex items-center space-x-2 pagination">
               {% if parks.has_previous %}
                 <li>
                   <a href="?q={{ query }}&parks_page={{ parks.previous_page_number }}"
-                     class="px-3 py-1.5 border rounded-md text-[#C18D45] hover:bg-[#f5e9d8] dark:hover:bg-gray-700 transition">
+                     class="text-[#C18D45] hover:bg-[#f5e9d8] dark:hover:bg-gray-700 transition">
                     {% trans "Previous" %}
                   </a>
                 </li>
@@ -73,20 +176,16 @@
 
               {% for num in parks.paginator.page_range %}
                 {% if parks.number == num %}
-                  <li><span class="px-3 py-1.5 bg-[#C18D45] text-white rounded-md">{{ num }}</span></li>
+                  <li><span class="active px-3 py-1.5">{{ num }}</span></li>
                 {% else %}
-                  <li>
-                    <a href="?q={{ query }}&parks_page={{ num }}" class="px-3 py-1.5 border rounded-md text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-800 transition">
-                      {{ num }}
-                    </a>
-                  </li>
+                  <li><a href="?q={{ query }}&parks_page={{ num }}" class="text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-800 transition">{{ num }}</a></li>
                 {% endif %}
               {% endfor %}
 
               {% if parks.has_next %}
                 <li>
                   <a href="?q={{ query }}&parks_page={{ parks.next_page_number }}"
-                     class="px-3 py-1.5 border rounded-md text-[#C18D45] hover:bg-[#f5e9d8] dark:hover:bg-gray-700 transition">
+                     class="text-[#C18D45] hover:bg-[#f5e9d8] dark:hover:bg-gray-700 transition">
                     {% trans "Next" %}
                   </a>
                 </li>
@@ -104,7 +203,7 @@
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
           {% for tour in tours %}
-            <article class="bg-white dark:bg-gray-800 rounded-xl shadow-md overflow-hidden border border-transparent dark:border-gray-700">
+            <article class="result-card bg-white dark:bg-gray-800 rounded-xl shadow-md overflow-hidden">
               <div class="md:flex h-full">
                 <div class="md:w-1/3">
                   <img
@@ -119,23 +218,20 @@
                     <span class="inline-block bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200 px-2 py-1 rounded text-xs font-medium">
                       {{ tour.get_category_display }}
                     </span>
-                    {% comment %} <div class="text-sm text-gray-600 dark:text-gray-300">
-                      {% trans "From" %} ${{ tour.price_budget|default:tour.price_standard|floatformat:0 }}
-                    </div> {% endcomment %}
                   </div>
 
                   <h3 class="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-1">{{ tour.title }}</h3>
-                  <p class="text-sm text-gray-600 dark:text-gray-400 mb-3"><i class="fas fa-clock mr-1"></i>{{ tour.get_duration_display }}</p>
-                  <p class="text-gray-700 dark:text-gray-300 text-sm flex-grow">{{ tour.short_description|truncatewords:15 }}</p>
+                  <p class="text-sm text-gray-600 dark:text-gray-400 mb-3">⏱ {{ tour.get_duration_display }}</p>
+                  <p class="text-gray-700 dark:text-gray-300 text-sm flex-grow truncate-3">{{ tour.short_description|truncatewords:18 }}</p>
 
                   <div class="mt-4 flex items-center justify-between">
                     <div class="flex items-center text-sm text-gray-600 dark:text-gray-300">
                       <div class="flex items-center mr-2" aria-hidden="true">
                         {% for i in "12345" %}
                           {% if forloop.counter <= tour.average_rating %}
-                            <i class="fas fa-star text-yellow-400 mr-1"></i>
+                            <span aria-hidden="true">★</span>
                           {% else %}
-                            <i class="far fa-star text-yellow-400/60 mr-1"></i>
+                            <span aria-hidden="true">☆</span>
                           {% endif %}
                         {% endfor %}
                       </div>
@@ -155,10 +251,10 @@
         {# Tours Pagination #}
         {% if tours.has_other_pages %}
           <nav class="mt-8 flex justify-center" aria-label="Tours pagination">
-            <ul class="inline-flex items-center space-x-2">
+            <ul class="inline-flex items-center space-x-2 pagination">
               {% if tours.has_previous %}
                 <li>
-                  <a href="?q={{ query }}&tours_page={{ tours.previous_page_number }}" class="px-3 py-1.5 border rounded-md text-[#C18D45] hover:bg-[#f5e9d8] dark:hover:bg-gray-700 transition">
+                  <a href="?q={{ query }}&tours_page={{ tours.previous_page_number }}" class="text-[#C18D45] hover:bg-[#f5e9d8] dark:hover:bg-gray-700 transition">
                     {% trans "Previous" %}
                   </a>
                 </li>
@@ -166,15 +262,15 @@
 
               {% for num in tours.paginator.page_range %}
                 {% if tours.number == num %}
-                  <li><span class="px-3 py-1.5 bg-[#C18D45] text-white rounded-md">{{ num }}</span></li>
+                  <li><span class="active px-3 py-1.5">{{ num }}</span></li>
                 {% else %}
-                  <li><a href="?q={{ query }}&tours_page={{ num }}" class="px-3 py-1.5 border rounded-md text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-800 transition">{{ num }}</a></li>
+                  <li><a href="?q={{ query }}&tours_page={{ num }}" class="text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-800 transition">{{ num }}</a></li>
                 {% endif %}
               {% endfor %}
 
               {% if tours.has_next %}
                 <li>
-                  <a href="?q={{ query }}&tours_page={{ tours.next_page_number }}" class="px-3 py-1.5 border rounded-md text-[#C18D45] hover:bg-[#f5e9d8] dark:hover:bg-gray-700 transition">
+                  <a href="?q={{ query }}&tours_page={{ tours.next_page_number }}" class="text-[#C18D45] hover:bg-[#f5e9d8] dark:hover:bg-gray-700 transition">
                     {% trans "Next" %}
                   </a>
                 </li>
@@ -187,7 +283,7 @@
 
     {% if not parks and not tours %}
       <div class="text-center py-16">
-        <i class="fas fa-search fa-4x text-gray-400 dark:text-gray-500 mb-4" aria-hidden="true"></i>
+        <i class="fas fa-search fa-4x text-gray-400 dark:text-gray-500 mb-4 empty-state" aria-hidden="true"></i>
         <h3 class="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-2">{% trans "No results found" %}</h3>
         <p class="text-gray-600 dark:text-gray-300 mb-6">{% trans "Try adjusting your search terms or browse our featured content below." %}</p>
 
@@ -201,8 +297,8 @@
   {% else %}
     {# --- Search Form (no query) --- #}
     <div class="max-w-xl mx-auto">
-      <div class="bg-white dark:bg-gray-800 rounded-xl shadow-md overflow-hidden">
-        <div class="p-8 text-center">
+      <div class="result-card bg-white dark:bg-gray-800 rounded-xl shadow-md overflow-hidden">
+        <div class="p-8 text-center search-box">
           <i class="fas fa-search fa-4x text-[#C18D45] mb-4" aria-hidden="true"></i>
           <h3 class="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-4">{% trans "Search Our Content" %}</h3>
 
@@ -212,7 +308,7 @@
                      class="flex-1 px-4 py-3 rounded-full border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-800 dark:text-gray-200 placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#C18D45]"
                      placeholder="{% trans 'Search parks, tours, destinations...' %}" />
               <button type="submit" class="inline-flex items-center px-5 py-3 rounded-full bg-[#C18D45] hover:bg-[#a6793a] text-white font-medium transition">
-                <i class="fas fa-search mr-2" aria-hidden="true"></i>{% trans "Search" %}
+                <span aria-hidden="true">🔍</span> <span class="sr-only">{% trans "Search" %}</span>
               </button>
             </div>
           </form>

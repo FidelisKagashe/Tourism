@@ -1,499 +1,474 @@
 {% extends 'base/base.html' %}
+{% load static %}
 
 {% block title %}Welcome to {{ site_settings.site_name|default:"Safari & Bush Retreats" }} - Discover Wildlife & National Parks{% endblock %}
 
 {% block extra_css %}
 <style>
-    /* (kept your custom CSS for hero, cards, animations, etc.) */
-    :root {
-        /* light theme values (match Tailwind config in base.html) */
-        --primary-color: #C18D45;
-        --primary-rgb: 193,141,69;
-        --primary-dark-color: #E4B366; /* fallback reference */
-        --secondary-color: #715F3C;
-        --secondary-rgb: 113,95,60;
-        --card-bg: #ffffff;
-        --bg-body: #f8fafc;
-        --light-color: #ffffff;
-        --text-white: #ffffff;
-        --text-primary: #111827; /* gray-900 */
-        --accent-color: #FFD89B;
-        --border-color: rgba(0,0,0,0.06);
-    }
+/* ---------- Instagram-style global typography (font-size only) ----------
+   Inserted to match the base template font adjustments. Only changes font-size & line-height.
+*/
+:root{
+  --fs-xxl: clamp(1.6rem, 4.0vw, 3.2rem);
+  --fs-xl:  clamp(1.25rem, 2.6vw, 2.25rem);
+  --fs-lg:  clamp(1.05rem, 1.9vw, 1.5rem);
+  --fs-base:clamp(0.95rem, 1.0vw, 1.06rem);
+  --fs-sm:  clamp(0.82rem, 0.8vw, 0.95rem);
+  --fs-xs:  clamp(0.72rem, 0.7vw, 0.82rem);
+  --lh-tight: 1.08;
+  --lh-heading: 1.15;
+  --lh-base: 1.42;
+  --lh-small: 1.3;
+}
+html { font-size: 16px; }
+body { font-family: 'Poppins', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; font-size: var(--fs-base) !important; line-height: var(--lh-base) !important; }
+h1 { font-size: var(--fs-xxl) !important; line-height: var(--lh-tight) !important; font-weight: 600 !important; }
+h2 { font-size: var(--fs-xl) !important; line-height: var(--lh-heading) !important; font-weight: 600 !important; }
+h3 { font-size: var(--fs-lg) !important; line-height: var(--lh-heading) !important; font-weight: 600 !important; }
+h4 { font-size: calc(var(--fs-lg) - 0.06rem) !important; line-height: var(--lh-heading) !important; }
+h5 { font-size: var(--fs-sm) !important; line-height: var(--lh-small) !important; }
+h6 { font-size: var(--fs-sm) !important; line-height: var(--lh-small) !important; }
+p, .text-base, .prose, .article-body { font-size: var(--fs-base) !important; line-height: var(--lh-base) !important; }
+small, .text-muted, .text-gray-500, .meta { font-size: var(--fs-sm) !important; line-height: var(--lh-small) !important; }
+button, .btn, .inline-flex, input[type="email"], .dest-seemore { font-size: var(--fs-sm) !important; line-height: 1.2 !important; }
+.dest-title { font-size: var(--fs-sm) !important; line-height: 1.06 !important; font-weight: 500 !important; }
+.hero-content h1, .hero-main-title, .hero .text-5xl { font-size: clamp(1.25rem, 5.2vw, 2.8rem) !important; line-height: 1.02 !important; }
+@media (max-width: 420px){
+  :root{
+    --fs-xxl: clamp(1.25rem, 6.2vw, 1.8rem);
+    --fs-xl:  clamp(1.0rem, 4.2vw, 1.25rem);
+    --fs-lg:  clamp(0.95rem, 2.8vw, 1.125rem);
+    --fs-base:clamp(0.88rem, 2.2vw, 0.98rem);
+    --fs-sm:  clamp(0.68rem, 1.8vw, 0.82rem);
+    --fs-xs:  clamp(0.62rem, 1.6vw, 0.72rem);
+  }
+  body, p, a, li { letter-spacing: -0.01em !important; }
+}
+.site-typography-overrides * { font-size: inherit !important; }
 
-    /* dark theme overrides (activated when .dark is present on <html>) */
-    .dark :root,
-    :root.dark {
-        --primary-color: #E4B366;
-        --primary-rgb: 228,179,102;
-        --secondary-color: #B8986F;
-        --secondary-rgb: 184,152,111;
-        --card-bg: #374151;       /* gray-700 */
-        --bg-body: #0f172a;       /* gray-900 */
-        --light-color: #111827;   /* gray-900 */
-        --text-primary: #f3f4f6;  /* gray-100 */
-        --border-color: rgba(255,255,255,0.06);
-    }
 
-    /* Enhanced Hero Section */
-    .hero-section {
-        background: linear-gradient(135deg, rgba(0,0,0,0.5), rgba(var(--primary-rgb),0.3)), url('https://images.pexels.com/photos/631317/pexels-photo-631317.jpeg');
-        background-size: cover;
-        background-position: center;
-        background-attachment: fixed;
-        min-height: 80vh;
-        display: flex;
-        align-items: center;
-        color: var(--text-white);
-        position: relative;
-        overflow: hidden;
-    }
+/* Desktop-specific scale: increase heading sizes for larger screens (desktop) */
+@media (min-width: 1024px) {
+  :root{
+    --fs-xxl: clamp(2.25rem, 2.6vw, 3.5rem);
+    --fs-xl:  clamp(1.5rem, 1.8vw, 2.25rem);
+    --fs-lg:  clamp(1.125rem, 1.4vw, 1.5rem);
+    --fs-base:clamp(1.0rem, 1.0vw, 1.125rem);
+    --fs-sm:  clamp(0.88rem, 0.8vw, 0.98rem);
+  }
 
-    .hero-section::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: linear-gradient(45deg, rgba(var(--primary-rgb),0.08), rgba(var(--secondary-rgb),0.08));
-        animation: heroOverlay 20s ease-in-out infinite;
-    }
+  /* stronger hero heading on desktop */
+  .hero-content h1, .hero-main-title, .hero .text-5xl {
+    font-size: clamp(2.2rem, 3.0vw, 3.8rem) !important;
+    line-height: 1.02 !important;
+  }
 
-    @keyframes heroOverlay {
-        0%, 100% { opacity: 0.3; }
-        50% { opacity: 0.6; }
-    }
+  /* global headings tweak for desktop */
+  h1 { font-size: var(--fs-xxl) !important; }
+  h2 { font-size: var(--fs-xl) !important; }
+  h3 { font-size: var(--fs-lg) !important; }
+}
+/* Section headings (Destinations, Featured Parks, Featured Tours) — make larger on desktop while keeping mobile tight */
+/* Targets h2 inside content containers but excludes hero h1 in .hero-content */
+.container > .text-center h2,
+.container h2,
+section.py-8 h2,
+section.py-12 h2 {
+  font-size: clamp(1.5rem, 1.9vw, 2.2rem) !important;
+  line-height: 1.12 !important;
+  font-weight: 700 !important;
+}
 
-    .hero-section .container {
-        position: relative;
-        z-index: 2;
-    }
+@media (min-width: 1024px) {
+  .container > .text-center h2,
+  .container h2,
+  section.py-8 h2,
+  section.py-12 h2 {
+    font-size: clamp(1.9rem, 1.6vw, 2.6rem) !important;
+    line-height: 1.08 !important;
+  }
+}
 
-    .hero-section h1 {
-        text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-        animation: fadeInUp 1s ease-out;
-    }
+/* ---------- Existing page-specific styles (unchanged) ---------- */
+  /* Tailwind handles most styling. Small custom rules for hero, destinations, arrows and accessibility. */
+  .hero-bg { position: relative; overflow: hidden; }
+  .hero-img-layer { position: absolute; inset: 0; background-position: center; background-size: cover; z-index: 0; transform-origin: center center; will-change: transform; pointer-events: none; }
+  .hero-bg::before { content: ''; position: absolute; inset: 0; pointer-events: none; background: linear-gradient(135deg, rgba(0,0,0,0.48), rgba(0,0,0,0.08)); z-index: 1; }
+  .hero-content { position: relative; z-index: 2; }
 
-    .hero-section p {
-        text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
-        animation: fadeInUp 1s ease-out 0.3s both;
-    }
+  @media (prefers-reduced-motion: no-preference) {
+    .hero-img-layer.hero-zoom { animation: heroZoom 12s ease-in-out infinite; }
+    @keyframes heroZoom { 0%{transform:scale(1) translateY(0)} 50%{transform:scale(1.06) translateY(-1.6%)} 100%{transform:scale(1) translateY(0)} }
+  }
+  .dark .hero-bg::before { background: linear-gradient(135deg, rgba(0,0,0,0.64), rgba(0,0,0,0.28)); }
 
-    .hero-section .btn {
-        animation: fadeInUp 1s ease-out 0.6s both;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-        transition: all 0.3s ease;
-    }
+  /* ---- DESTINATIONS: remove any "haze" overlays and edge fades ---- */
 
-    .hero-section .btn:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 8px 25px rgba(0,0,0,0.4);
-    }
+  /* base scroller */
+  .dest-row {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    position: relative;
+    padding-bottom: 6px;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    touch-action: pan-x;
+    overscroll-behavior-x: contain;
+  }
+  .dest-row::-webkit-scrollbar { height: 0; display: none; }
 
-    @keyframes fadeInUp {
-        from {
-            opacity: 0;
-            transform: translateY(30px);
-        }
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    }
+  /* completely remove the left/right pseudo fades (the 'haze' hint) */
+  .dest-row::before,
+  .dest-row::after {
+    display: none !important;
+    content: none !important;
+  }
 
-    /* Enhanced Stats Section */
-    .stats-section {
-        background: linear-gradient(135deg, var(--bg-body), var(--light-color));
-        position: relative;
-    }
+  /* card styles - ensure no overlay pseudo element */
+  .dest-card {
+    position: relative;
+    border-radius: 14px;
+    overflow: hidden;
+    flex: 0 0 auto;
+    scroll-snap-align: start;
+    /* remove any box-shadow or overlay on these cards */
+    box-shadow: none !important;
+    -webkit-box-shadow: none !important;
+    -moz-box-shadow: none !important;
+    background: transparent;
+  }
 
-    .stats-card {
-        background: var(--card-bg);
-        border: 1px solid var(--border-color);
-        border-radius: 15px;
-        padding: 2rem;
-        text-align: center;
-        transition: all 0.4s ease;
-        position: relative;
-        overflow: hidden;
-    }
+  /* if some other stylesheet adds a ::before overlay on cards, force it off */
+  .dest-card::before {
+    display: none !important;
+    content: none !important;
+    background: transparent !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+  }
 
-    .stats-card::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: -100%;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(90deg, transparent, rgba(var(--primary-rgb),0.1), transparent);
-        transition: left 0.6s ease;
-    }
+  /* image and hover */
+  .dest-card img {
+    width: 100%;
+    display: block;
+    object-fit: cover;
+    transition: transform .45s ease, filter .28s ease;
+  }
+  .dest-card:hover img {
+    transform: scale(1.04) translateY(-4px);
+    filter: saturate(1.02) brightness(0.98);
+  }
 
-    .stats-card:hover::before {
-        left: 100%;
-    }
+  /* keep headline visible but reduce any heavy text-glow if desired */
+  .dest-title {
+    position: absolute;
+    left: 12px;
+    right: 12px;
+    bottom: 48px;
+    z-index: 22;
+    color: #fff;
+    font-weight: 800;
+    /* reduce exaggerated blur which can look like haze on some images */
+    text-shadow: 0 6px 12px rgba(0,0,0,0.55);
+    line-height: 1.05;
+  }
 
-    .stats-card:hover {
-        transform: translateY(-10px) scale(1.02);
-        box-shadow: 0 15px 35px rgba(0,0,0,0.15);
-        border-color: var(--primary-color);
-    }
+  /* "See more" pill - keep but subtle */
+  .dest-seemore {
+    display: inline-flex;
+    align-items: center;
+    gap: .5rem;
+    background: rgba(255,255,255,0.12);
+    color: #fff;
+    padding: 6px 10px;
+    border-radius: 999px;
+    font-weight: 700;
+    text-decoration: none;
+    z-index: 22;
+    backdrop-filter: blur(6px);
+  }
 
-    .stats-card i {
-        transition: all 0.3s ease;
-    }
+  /* focus ring for accessibility */
+  .focus-ring:focus-visible { outline: 3px solid rgba(193,141,69,0.18); outline-offset: 4px; }
 
-    .stats-card:hover i {
-        transform: scale(1.2) rotate(5deg);
-        color: var(--primary-color);
-    }
+  /* Arrows: remove shadow so they don't create dark/white artifacts in dark mode */
+  .dest-arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 30;
+    background: rgba(255,255,255,0.92);
+    color: #0f1724;
+    border-radius: 999px;
+    /* remove box-shadow to avoid circle/black artifact */
+    box-shadow: none !important;
+    -webkit-box-shadow: none !important;
+    -moz-box-shadow: none !important;
+    transition: opacity .18s ease, transform .18s ease;
+    cursor: pointer;
+    backdrop-filter: blur(4px);
+    border: 1px solid rgba(0,0,0,0.06);
+  }
+  .dark .dest-arrow { background: rgba(31,41,55,0.78); color: #f3f4f6; border: 1px solid rgba(255,255,255,0.04); }
+  .dest-arrow.left { left: 0.5rem; }
+  .dest-arrow.right { right: 0.5rem; }
+  .dest-arrow i { font-size: 0.9rem; }
+  @media (max-width: 767px) { .dest-arrow { display: none !important; } }
 
-    .stats-card h3 {
-        font-size: 2.5rem;
-        font-weight: 700;
-        color: var(--primary-color);
-        margin: 1rem 0 0.5rem;
-        transition: all 0.3s ease;
-    }
+  /* mobile typography reductions (you asked earlier to shrink mobile fonts) */
+  @media (max-width: 767px) {
+    .dest-title { font-size: 0.86rem; }
+    .dest-seemore { font-size: 0.78rem; padding: 5px 9px; }
+    h1 { font-size: 1.4rem !important; }
+    h2 { font-size: 1.05rem !important; }
+    p { font-size: 0.92rem !important; }
+  }
 
-    .stats-card:hover h3 {
-        transform: scale(1.1);
-    }
-
-    /* Enhanced Card Designs (kept) */
-    .feature-card {
-        border: none;
-        border-radius: 20px;
-        overflow: hidden;
-        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        background: var(--card-bg);
-        box-shadow: 0 5px 20px rgba(0,0,0,0.08);
-        position: relative;
-    }
-
-    .feature-card::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 4px;
-        background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
-        transform: scaleX(0);
-        transition: transform 0.3s ease;
-    }
-
-    .feature-card:hover::before {
-        transform: scaleX(1);
-    }
-
-    .feature-card:hover {
-        transform: translateY(-15px);
-        box-shadow: 0 20px 40px rgba(0,0,0,0.15);
-    }
-
-    .feature-card .card-img-top {
-        transition: all 0.4s ease;
-        position: relative;
-    }
-
-    .feature-card:hover .card-img-top {
-        transform: scale(1.05);
-    }
-
-    .feature-card .badge {
-        position: absolute;
-        top: 15px;
-        right: 15px;
-        background: rgba(var(--primary-rgb),0.9);
-        backdrop-filter: blur(10px);
-        border: none;
-        padding: 0.5rem 1rem;
-        border-radius: 25px;
-        font-weight: 500;
-        color: var(--text-white);
-    }
-
-    /* Tour, review, newsletter styles kept (unchanged) */
-    .tour-card {
-        border: none;
-        border-radius: 20px;
-        overflow: hidden;
-        background: var(--card-bg);
-        box-shadow: 0 8px 25px rgba(0,0,0,0.1);
-        transition: all 0.4s ease;
-        position: relative;
-    }
-
-    .tour-card::after {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: linear-gradient(135deg, rgba(var(--primary-rgb),0.05), rgba(var(--secondary-rgb),0.05));
-        opacity: 0;
-        transition: opacity 0.3s ease;
-        pointer-events: none;
-    }
-
-    .tour-card:hover::after { opacity: 1; }
-    .tour-card:hover { transform: translateY(-8px); box-shadow: 0 15px 40px rgba(0,0,0,0.15); }
-    .tour-card img { transition: all 0.4s ease; height: 300px; object-fit: cover; }
-    .tour-card:hover img { transform: scale(1.03); }
-
-    .review-card { border: none; border-radius: 15px; background: var(--card-bg); box-shadow: 0 5px 20px rgba(0,0,0,0.08); transition: all 0.3s ease; position: relative; overflow: hidden; }
-    .review-card::before { content: '"'; position: absolute; top: -10px; left: 20px; font-size: 4rem; color: var(--primary-color); opacity: 0.1; font-family: serif; }
-    .review-card:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0,0,0,0.12); }
-    .review-avatar { width: 60px; height: 60px; background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem; transition: all 0.3s ease; }
-    .review-card:hover .review-avatar { transform: scale(1.1) rotate(5deg); }
-
-    .newsletter-section { background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); position: relative; overflow: hidden; }
-    .newsletter-section::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="white" opacity="0.1"/><circle cx="75" cy="75" r="1" fill="white" opacity="0.1"/><circle cx="50" cy="10" r="1" fill="white" opacity="0.1"/><circle cx="10" cy="90" r="1" fill="white" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>'); opacity: 0.3; }
-    .newsletter-section .container { position: relative; z-index: 2; }
-    .newsletter-input-group { max-width: 500px; margin: 0 auto; position: relative; }
-    .newsletter-input-group .form-control { border: none; border-radius: 50px; padding: 1rem 1.5rem; font-size: 1.1rem; box-shadow: 0 5px 20px rgba(0,0,0,0.1); background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); }
-    .newsletter-input-group .btn { border-radius: 50px; padding: 1rem 2rem; font-weight: 600; background: var(--text-white); color: var(--primary-color); border: none; transition: all 0.3s ease; }
-    .newsletter-input-group .btn:hover { transform: translateX(-3px); box-shadow: 0 5px 15px rgba(0,0,0,0.2); background: var(--light-color); }
-
-    /* Section Titles Enhancement */
-    .section-title { position: relative; display: inline-block; margin-bottom: 3rem; font-weight: 700; color: var(--text-primary); }
-    .section-title::after { content: ''; position: absolute; bottom: -15px; left: 50%; transform: translateX(-50%); width: 80px; height: 4px; background: linear-gradient(90deg, var(--primary-color), var(--secondary-color)); border-radius: 2px; }
-    .section-title::before { content: ''; position: absolute; bottom: -10px; left: 50%; transform: translateX(-50%); width: 40px; height: 4px; background: var(--accent-color); border-radius: 2px; }
-
-    /* Enhanced Buttons */
-    .btn-enhanced { position: relative; overflow: hidden; transition: all 0.3s ease; }
-    .btn-enhanced::before { content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent); transition: left 0.5s ease; }
-    .btn-enhanced:hover::before { left: 100%; }
-
-    /* Responsive Enhancements */
-    @media (max-width: 768px) {
-        .hero-section { min-height: 60vh; background-attachment: scroll; }
-        .hero-section h1 { font-size: 2.5rem; }
-        .stats-card { padding: 1.5rem; margin-bottom: 2rem; }
-        .tour-card .row { flex-direction: column; }
-        .tour-card img { height: 200px; }
-        .newsletter-input-group { flex-direction: column; gap: 1rem; }
-        .newsletter-input-group .btn { width: 100%; }
-    }
-
-    /* Loading Animation */
-    .fade-in { opacity: 0; transform: translateY(30px); transition: all 0.6s ease; }
-    .fade-in.visible { opacity: 1; transform: translateY(0); }
-
-    /* Enhanced Star Rating */
-    .star-rating { color: #ffc107; font-size: 1.1rem; }
-    .star-rating i { transition: all 0.2s ease; }
-    .star-rating:hover i { transform: scale(1.1); }
-
-    /* Price Tag Enhancement */
-    .price-tag {
-        background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-        color: white;
-        padding: 0.5rem 1.2rem;
-        border-radius: 25px;
-        font-weight: 600;
-        font-size: 1.1rem;
-        box-shadow: 0 3px 10px rgba(193,141,69,0.3);
-        transition: all 0.3s ease;
-    }
-    .price-tag:hover { transform: scale(1.05); box-shadow: 0 5px 15px rgba(193,141,69,0.4); }
-    
+  /* very small screens */
+  @media (max-width: 420px) {
+    .dest-title { font-size: .74rem; }
+    .dest-seemore { font-size:.72rem; padding:4px 8px; }
+  }
 </style>
+
 {% endblock %}
 
 {% block content %}
-<!-- Enhanced Hero Section -->
-<section class="hero-section">
-    <div class="container max-w-7xl mx-auto px-4">
-        <div class="flex items-center">
-            <div class="w-full lg:w-2/3">
-                <h1 class="text-3xl md:text-5xl font-extrabold leading-tight mb-4">Discover the Magic of Tanzania</h1>
-                <p class="text-lg md:text-xl text-gray-100 mb-6">Experience breathtaking wildlife, stunning landscapes, and rich culture with our expertly guided safari tours across Tanzania's most spectacular national parks.</p>
-                <div class="flex flex-wrap gap-3">
-                    <a href="{% url 'tours:tour_list' %}" class="inline-flex items-center px-6 py-3 rounded-full bg-primary dark:bg-primary-dark text-white font-semibold btn-enhanced shadow hover:shadow-lg transition">
-                        <i class="fas fa-binoculars mr-2"></i>Explore Tours
-                    </a>
-                    <a href="{% url 'parks:park_list' %}" class="inline-flex items-center px-6 py-3 rounded-full bg-white/20 text-white font-semibold border border-white/30 btn-enhanced hover:bg-white/30 transition">
-                        <i class="fas fa-mountain mr-2"></i>National Parks
-                    </a>
-                </div>
-            </div>
+
+<!-- HERO -->
+<section class="relative">
+  <div class="hero-bg h-[56vh] min-h-[300px]">
+    <!-- image layer: animates independently, only the background image moves -->
+    <div class="hero-img-layer hero-zoom" style="background-image: linear-gradient(135deg, rgba(0,0,0,0.12), rgba(0,0,0,0)), url('{% if featured_parks.0.main_image %}{{ featured_parks.0.main_image.url }}{% else %}{% static 'images/hero-default.jpg' %}{% endif %}');"></div>
+
+    <!-- overlay + content (text stays fixed) -->
+    <div class="hero-content container mx-auto px-4 flex items-center h-full">
+      <div class="max-w-3xl lg:max-w-2xl py-12">
+        <h1 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-white leading-tight mb-4">Discover the Magic of Tanzania</h1>
+        <p class="text-sm sm:text-base md:text-lg text-white/90 mb-6">Experience breathtaking wildlife, stunning landscapes, and rich culture with our expertly guided safari tours across Tanzania's most spectacular national parks.</p>
+
+        <div class="flex flex-wrap gap-3">
+          <a href="{% url 'tours:tour_list' %}" class="inline-flex items-center px-5 py-2.5 rounded-full bg-[#C18D45] text-white font-semibold shadow-md hover:shadow-lg transition-transform transform-gpu hover:-translate-y-1 focus-ring" aria-label="Explore tours">
+            <i class="fas fa-binoculars mr-2" aria-hidden="true"></i> Explore Tours
+          </a>
+
+          <a href="{% url 'parks:park_list' %}" class="inline-flex items-center px-5 py-2.5 rounded-full bg-white/20 text-white font-semibold border border-white/30 hover:bg-white/30 transition focus-ring" aria-label="National parks">
+            <i class="fas fa-mountain mr-2" aria-hidden="true"></i> National Parks
+          </a>
         </div>
+      </div>
     </div>
+  </div>
 </section>
 
-<!-- Enhanced Quick Stats -->
-<section class="py-12 stats-section">
-    <div class="container max-w-7xl mx-auto px-4">
-        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 text-center">
-            <div class="stats-card fade-in">
-                <i class="fas fa-mountain text-4xl" style="color:var(--primary-color); margin-bottom:0.75rem;"></i>
-                <h3 class="text-3xl font-bold">{{ stats.total_parks }}+</h3>
-                <p class="text-sm" style="color:var(--text-primary);">National Parks</p>
-            </div>
+<!-- ===== Destinations ===== -->
+<section class="py-8">
+  <div class="container mx-auto px-4">
+    <div class="flex items-center justify-between mb-4">
+      <div>
+        <h2 class="text-xl sm:text-2xl font-semibold">Destinations</h2>
+        <p class="text-xs text-gray-500">Tap an image to view that category</p>
+      </div>
 
-            <div class="stats-card fade-in">
-                <i class="fas fa-route text-4xl" style="color:var(--primary-color); margin-bottom:0.75rem;"></i>
-                <h3 class="text-3xl font-bold">{{ stats.total_tours }}+</h3>
-                <p class="text-sm" style="color:var(--text-primary);">Safari Tours</p>
-            </div>
-
-            <div class="stats-card fade-in">
-                <i class="fas fa-users text-4xl" style="color:var(--primary-color); margin-bottom:0.75rem;"></i>
-                <h3 class="text-3xl font-bold">5000+</h3>
-                <p class="text-sm" style="color:var(--text-primary);">Happy Travelers</p>
-            </div>
-
-            <div class="stats-card fade-in">
-                <i class="fas fa-star text-4xl" style="color:var(--primary-color); margin-bottom:0.75rem;"></i>
-                <h3 class="text-3xl font-bold">{{ stats.average_rating|floatformat:1 }}</h3>
-                <p class="text-sm" style="color:var(--text-primary);">Average Rating</p>
-            </div>
+      <div class="text-right">
+        <div class="font-bold text-[#C18D45]">
+          <span aria-hidden="true">📍</span>
+          <span class="dest-total">{{ featured_destinations|length }}</span>
+          <span class="text-xs text-gray-600"> Destinations</span>
         </div>
+      </div>
     </div>
+
+    <div class="relative">
+      <!-- left arrow -->
+      <button id="dest-prev" aria-label="Scroll destinations left" class="dest-arrow left focus-ring" type="button">
+        <i class="fas fa-chevron-left" aria-hidden="true"></i>
+      </button>
+
+      <!-- horizontal scroller -->
+      <div id="destRow" class="dest-row flex gap-4 overflow-x-auto py-2 -mx-1 px-1 scroll-smooth" role="list" aria-label="Featured destinations" tabindex="0">
+        {% for d in featured_destinations %}
+        <article class="dest-card flex-shrink-0 w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/5 rounded-xl overflow-hidden shadow relative" role="listitem" aria-label="{{ d.name }}">
+          <a href="{% url 'parks:destination_list' %}?type={{ d.destination_type }}" title="{{ d.get_destination_type_display }}" class="block focus-ring">
+            <div class="relative">
+              <img src="{% if d.main_image %}{{ d.main_image.url }}{% else %}{% static 'images/dests/mama-sawa.png' %}{% endif %}" alt="{{ d.name|default:'Destination' }}" loading="lazy" class="w-full h-40 sm:h-44 object-cover">
+              <div class="absolute right-3 top-3 z-10 bg-emerald-600 bg-opacity-95 text-white px-3 py-1 rounded-full font-bold text-xs">{{ d.get_destination_type_display }}</div>
+              <h3 class="dest-title absolute left-3 right-3 bottom-14 z-10">{{ d.name }}</h3>
+              <div class="absolute left-3 right-3 bottom-3 flex justify-between items-center z-10">
+                <a href="{% url 'parks:destination_detail' d.slug %}" class="dest-seemore" aria-label="See more {{ d.name }}">See more <i class="fas fa-arrow-right ml-2" aria-hidden="true"></i></a>
+              </div>
+            </div>
+          </a>
+        </article>
+        {% empty %}
+        <div class="p-4">No destinations available.</div>
+        {% endfor %}
+      </div>
+
+      <!-- right arrow -->
+      <button id="dest-next" aria-label="Scroll destinations right" class="dest-arrow right focus-ring" type="button">
+        <i class="fas fa-chevron-right" aria-hidden="true"></i>
+      </button>
+    </div>
+  </div>
 </section>
 
-<!-- Enhanced Featured National Parks -->
+<!-- ===== Featured Parks ===== -->
 <section class="py-12">
-    <div class="container max-w-7xl mx-auto px-4">
-        <div class="text-center mb-10">
-            <h2 class="section-title text-2xl md:text-3xl">Featured National Parks</h2>
-            <p class="text-gray-500">Explore Tanzania's most iconic wildlife destinations</p>
-        </div>
-
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {% for park in featured_parks %}
-            <div class="feature-card fade-in">
-                <div class="relative">
-                    <img src="{% if park.main_image %}{{ park.main_image.url }}{% else %}https://images.pexels.com/photos/631317/pexels-photo-631317.jpeg{% endif %}" loading="lazy"
-                         alt="{{ park.name }}" class="w-full h-64 object-cover">
-                    <span class="absolute top-4 right-4 inline-block" style="background:var(--primary-color); color:var(--text-white); font-size:.875rem; padding:.25rem .75rem; border-radius:9999px;">
-                        {{ park.get_park_type_display }}
-                    </span>
-                </div>
-                <div class="p-6 flex flex-col h-full">
-                    <h5 class="text-lg font-bold">{{ park.name }}</h5>
-                    <p class="text-sm" style="color:var(--text-primary); margin-top:.5rem;">
-                        <i class="fas fa-map-marker-alt mr-1" style="color:var(--primary-color)"></i>{{ park.location }}, {{ park.region }}
-                    </p>
-                    <p class="text-gray-700 mt-3 flex-grow" style="color:var(--text-primary)">{{ park.short_description }}</p>
-                    <div class="flex items-center justify-between mt-4">
-                        <small class="text-sm" style="color:var(--text-primary); font-weight:600;">{{ park.area_km2|floatformat:0 }} km²</small>
-                        <a href="{% url 'parks:park_detail' park.slug %}" class="inline-flex items-center px-4 py-2 rounded-full" style="background:var(--primary-color); color:var(--text-white); font-size:.875rem;">
-                            Explore Park
-                        </a>
-                    </div>
-                </div>
-            </div>
-            {% empty %}
-            <div class="col-span-3 text-center">
-                <div class="p-6 bg-blue-50 rounded-md">
-                    <i class="fas fa-info-circle mr-2"></i>No featured parks available at the moment.
-                </div>
-            </div>
-            {% endfor %}
-        </div>
-
-        <div class="text-center mt-8">
-            <a href="{% url 'parks:park_list' %}" class="inline-flex items-center px-6 py-3 rounded-full" style="border:1px solid var(--primary-color); color:var(--primary-color);">
-                View All Parks <i class="fas fa-arrow-right ml-2"></i>
-            </a>
-        </div>
-    </div>
-</section>
-
-<!-- Enhanced Featured Tours -->
-<section class="py-12 stats-section">
-    <div class="container max-w-7xl mx-auto px-4">
-        <div class="text-center mb-10">
-            <h2 class="section-title text-2xl md:text-3xl">Featured Safari Tours</h2>
-            <p class="text-gray-500">Handpicked adventures for unforgettable experiences</p>
-        </div>
-
-        <div class="space-y-6">
-            {% for tour in featured_tours %}
-            <article class="tour-card fade-in overflow-hidden">
-                <div class="md:flex md:items-stretch">
-                    <div class="md:w-1/2">
-                        <img src="{% if tour.main_image %}{{ tour.main_image.url }}{% else %}https://images.pexels.com/photos/1170986/pexels-photo-1170986.jpeg{% endif %}" loading="lazy"
-                             alt="{{ tour.title }}" class="w-full h-64 md:h-full object-cover">
-                    </div>
-                    <div class="md:w-1/2 p-6 flex flex-col">
-                        <div class="flex justify-between items-start mb-3">
-                            <span class="inline-block" style="background:var(--card-bg); color:var(--text-primary); padding:.25rem .75rem; border-radius:9999px; font-size:.875rem;">{{ tour.get_category_display }}</span>
-                            <span class="inline-block" style="background:var(--primary-color); color:var(--text-white); padding:.25rem .75rem; border-radius:9999px; font-size:.875rem;">{{ tour.get_difficulty_level_display }}</span>
-                        </div>
-
-                        <h3 class="text-xl font-bold mb-2">{{ tour.title }}</h3>
-
-                        <p class="text-sm" style="color:var(--text-primary); margin-bottom:.75rem;">
-                            <i class="fas fa-clock mr-2"></i>{{ tour.get_duration_display }}
-                            <span class="ml-4"><i class="fas fa-users mr-2"></i>{{ tour.min_participants }}-{{ tour.max_participants }} people</span>
-                        </p>
-
-                        <p class="text-gray-700 flex-grow mb-4" style="color:var(--text-primary);">{{ tour.short_description|truncatewords:15 }}</p>
-
-                        <div class="flex items-center justify-between mt-auto">
-                            <div class="star-rating flex items-center">
-                                {% with rating=tour.average_rating|floatformat:0 %}
-                                    {% for i in "12345" %}
-                                        {% if forloop.counter <= rating %}
-                                            <i class="fas fa-star mr-1"></i>
-                                        {% else %}
-                                            <i class="far fa-star mr-1"></i>
-                                        {% endif %}
-                                    {% endfor %}
-                                {% endwith %}
-                                <small class="text-gray-500 ml-2" style="color:var(--text-primary);">({{ tour.total_reviews }} reviews)</small>
-                            </div>
-
-                            <a href="{% url 'tours:tour_detail' tour.slug %}" class="inline-flex items-center px-4 py-2 rounded-full" style="background:var(--primary-color); color:var(--text-white);">
-                                View Details <i class="fas fa-arrow-right ml-2"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </article>
-            {% empty %}
-            <div class="text-center">
-                <div class="p-6 bg-blue-50 rounded-md">
-                    <i class="fas fa-info-circle mr-2"></i>No featured tours available at the moment.
-                </div>
-            </div>
-            {% endfor %}
-        </div>
-
-        <div class="text-center mt-8">
-            <a href="{% url 'tours:tour_list' %}" class="inline-flex items-center px-6 py-3 rounded-full" style="border:1px solid var(--primary-color); color:var(--primary-color);">
-                View All Tours <i class="fas fa-arrow-right ml-2"></i>
-            </a>
-        </div>
-    </div>
-</section>
-
-<!-- Enhanced Recent Reviews -->
-<section class="py-12">
-  <div class="container max-w-7xl mx-auto px-4">
+  <div class="container mx-auto px-4">
     <div class="text-center mb-10">
-      <h2 class="section-title text-2xl md:text-3xl text-gray-900 dark:text-gray-100">What Our Travelers Say</h2>
+      <h2 class="text-2xl sm:text-3xl font-semibold">Featured National Parks</h2>
+      <p class="text-gray-500">Explore Tanzania's most iconic wildlife destinations</p>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      {% for park in featured_parks %}
+      <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-lg overflow-hidden transform transition-transform hover:-translate-y-2">
+
+        <div class="relative h-60 w-full">
+          <img src="{% if park.main_image %}{{ park.main_image.url }}{% else %}{% static 'images/parks/default.jpg' %}{% endif %}" loading="lazy" alt="{{ park.name|default:'Park' }}" class="w-full h-full object-cover">
+          <span class="absolute top-4 right-4 z-20 bg-emerald-600 bg-opacity-90 text-white px-3 py-1 rounded-full font-bold text-sm shadow-md backdrop-blur">{{ park.get_park_type_display|default:"Park" }}</span>
+        </div>
+
+        <div class="p-4 flex flex-col gap-3">
+          <h5 class="text-lg font-bold text-gray-900 dark:text-gray-100">{{ park.name|default:"Unnamed Park" }}</h5>
+
+          <p class="text-sm text-gray-600 dark:text-gray-400" aria-label="location"><i class="fas fa-map-marker-alt mr-1" style="color:#C18D45"></i>{{ park.location|default:"Location unknown" }}, {{ park.region|default:"Region unknown" }}</p>
+
+          <p class="text-gray-700 dark:text-gray-300 mt-2 flex-grow">{{ park.short_description|default:"No description available for this park." }}</p>
+
+          <div class="flex items-center justify-between mt-3">
+            <small class="text-sm font-semibold text-gray-700 dark:text-gray-300">{{ park.area_km2|default:"—"|floatformat:0 }} km²</small>
+
+            <a href="{% url 'parks:park_detail' park.slug %}" class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#C18D45] text-white font-semibold focus-ring" aria-label="Explore {{ park.name|default:'park' }}">
+              <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
+              Explore Park
+            </a>
+          </div>
+        </div>
+      </div>
+      {% empty %}
+      <div class="col-span-3 text-center">
+        <div class="p-6 bg-blue-50 rounded-md">
+          <i class="fas fa-info-circle mr-2"></i>No featured parks available at the moment.
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+
+    <div class="text-center mt-8">
+      <a href="{% url 'parks:park_list' %}" class="inline-flex items-center px-6 py-3 rounded-full border border-[#C18D45] text-[#C18D45]">View All Parks <i class="fas fa-arrow-right ml-2"></i></a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Featured Tours ===== -->
+<section class="py-12">
+  <div class="container mx-auto px-4">
+    <div class="text-center mb-10">
+      <h2 class="text-2xl sm:text-3xl font-semibold">Featured Safari Tours</h2>
+      <p class="text-gray-500">Handpicked adventures for unforgettable experiences</p>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      {% for tour in featured_tours %}
+      <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-lg overflow-hidden transform transition-transform hover:-translate-y-2">
+
+        <div class="relative h-56 w-full">
+          <img src="{% if tour.main_image %}{{ tour.main_image.url }}{% else %}{% static 'images/tours/default.jpg' %}{% endif %}" loading="lazy" alt="{{ tour.title|default:'Tour' }}" class="w-full h-full object-cover">
+          <span class="absolute top-4 right-4 z-20 bg-emerald-600 bg-opacity-90 text-white px-3 py-1 rounded-full font-bold text-sm shadow-md">{{ tour.get_category_display|default:"Tour" }}</span>
+        </div>
+
+        <div class="p-4 flex flex-col gap-3">
+          <h5 class="text-sm sm:text-lg font-bold text-gray-900 dark:text-gray-100">{{ tour.title|default:"Untitled Tour" }}</h5>
+
+          <p class="text-sm text-gray-600 dark:text-gray-400" aria-label="tour-meta"><i class="fas fa-clock mr-1" style="color:#C18D45"></i>
+            {{ tour.get_duration_display|default:"Duration N/A" }}
+            <span class="ml-3"><i class="fas fa-users mr-1"></i>{{ tour.min_participants|default:1 }}-{{ tour.max_participants|default:1 }} people</span>
+          </p>
+
+          <p class="text-gray-700 dark:text-gray-300 mt-2 flex-grow">{{ tour.short_description|truncatewords:18|default:"No description." }}</p>
+
+          <div class="flex items-center justify-between mt-3">
+            <small class="text-sm font-semibold">{{ tour.get_difficulty_level_display|default:"Level" }}</small>
+
+            <a href="{% url 'tours:tour_detail' tour.slug %}" class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#C18D45] text-white font-semibold focus-ring" aria-label="View {{ tour.title|default:'tour' }}">
+              <i class="fas fa-arrow-right" aria-hidden="true"></i>
+              View Details
+            </a>
+          </div>
+        </div>
+      </div>
+      {% empty %}
+      <div class="col-span-3 text-center">
+        <div class="p-6 bg-blue-50 rounded-md">
+          <i class="fas fa-info-circle mr-2"></i>No featured tours available at the moment.
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+
+    <div class="text-center mt-8">
+      <a href="{% url 'tours:tour_list' %}" class="inline-flex items-center px-6 py-3 rounded-full border border-[#C18D45] text-[#C18D45]">View All Tours <i class="fas fa-arrow-right ml-2"></i></a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== STATS / REVIEWS / NEWSLETTER (kept concise) ===== -->
+<section class="py-12">
+  <div class="container mx-auto px-4">
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 text-center">
+
+      <div class="p-6 bg-white dark:bg-gray-800 rounded-xl shadow-md">
+        <i class="fas fa-mountain text-4xl" style="color:#C18D45; margin-bottom:.75rem"></i>
+        <h3 class="text-3xl font-bold">{{ stats.total_parks|default:0 }}+</h3>
+        <p class="text-sm text-gray-500 dark:text-gray-300">National Parks</p>
+      </div>
+
+      <div class="p-6 bg-white dark:bg-gray-800 rounded-xl shadow-md">
+        <i class="fas fa-route text-4xl" style="color:#C18D45; margin-bottom:.75rem"></i>
+        <h3 class="text-3xl font-bold">{{ stats.total_tours|default:0 }}+</h3>
+        <p class="text-sm text-gray-500 dark:text-gray-300">Safari Tours</p>
+      </div>
+
+      <div class="p-6 bg-white dark:bg-gray-800 rounded-xl shadow-md">
+        <i class="fas fa-users text-4xl" style="color:#C18D45; margin-bottom:.75rem"></i>
+        <h3 class="text-3xl font-bold">500+</h3>
+        <p class="text-sm text-gray-500 dark:text-gray-300">Happy Travelers</p>
+      </div>
+
+      <div class="p-6 bg-white dark:bg-gray-800 rounded-xl shadow-md">
+        <i class="fas fa-star text-4xl" style="color:#C18D45; margin-bottom:.75rem"></i>
+        <h3 class="text-3xl font-bold">{{ stats.average_rating|default:"0.0"|floatformat:1 }}</h3>
+        <p class="text-sm text-gray-500 dark:text-gray-300">Average Rating</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="py-12">
+  <div class="container mx-auto px-4">
+    <div class="text-center mb-10">
+      <h2 class="text-2xl sm:text-3xl font-semibold text-gray-900 dark:text-gray-100">What Our Travelers Say</h2>
       <p class="text-gray-500 dark:text-gray-400">Real experiences from real adventurers</p>
     </div>
 
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
       {% for review in recent_reviews %}
-      <div class="review-card p-6 flex flex-col bg-white dark:bg-gray-800 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-200">
+      <div class="p-6 flex flex-col bg-white dark:bg-gray-800 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-200">
         <div class="flex items-center mb-4">
-          <div class="review-avatar flex-shrink-0 w-12 h-12 rounded-full bg-gray-100 dark:bg-gray-700 flex items-center justify-center">
-            <i class="fas fa-user text-gray-500 dark:text-gray-200" aria-hidden="true"></i>
-          </div>
+          <div class="flex-shrink-0 w-12 h-12 rounded-full bg-gray-100 dark:bg-gray-700 flex items-center justify-center"><i class="fas fa-user text-gray-500 dark:text-gray-200" aria-hidden="true"></i></div>
           <div class="flex-1 ml-3">
-            <h6 class="font-bold text-gray-900 dark:text-gray-100">{{ review.user.get_display_name }}</h6>
-            <div class="star-rating mt-1" aria-hidden="true">
+            <h6 class="font-bold text-gray-900 dark:text-gray-100">{{ review.user.get_display_name|default:"Guest" }}</h6>
+            <div class="mt-1" aria-hidden="true">
               {% for i in "12345" %}
-                {% if forloop.counter <= review.rating %}
+                {% if forloop.counter <= review.rating|default:0 %}
                   <i class="fas fa-star mr-1 text-yellow-400 dark:text-yellow-300"></i>
                 {% else %}
                   <i class="far fa-star mr-1 text-yellow-400/60 dark:text-yellow-300/60"></i>
@@ -503,193 +478,113 @@
           </div>
         </div>
 
-        <h6 class="font-semibold mb-3 text-gray-800 dark:text-gray-100">{{ review.title }}</h6>
-        <p class="text-gray-700 dark:text-gray-300 mb-4">{{ review.content|truncatewords:20 }}</p>
+        <h6 class="font-semibold mb-3 text-gray-800 dark:text-gray-100">{{ review.title|default:"No title" }}</h6>
+        <p class="text-gray-700 dark:text-gray-300 mb-4">{{ review.content|truncatewords:20|default:"No content." }}</p>
 
-        <div class="mt-auto">
-          <small class="text-gray-500 dark:text-gray-400 font-semibold flex items-center">
-            <i class="fas fa-map-marker-alt mr-1 text-gray-500 dark:text-gray-400" aria-hidden="true"></i>
-            {% if review.tour_package %}
-              {{ review.tour_package.title }}
-            {% elif review.national_park %}
-              {{ review.national_park.name }}
-            {% endif %}
-          </small>
-        </div>
+        <div class="mt-auto"><small class="text-gray-500 dark:text-gray-400 font-semibold flex items-center"><i class="fas fa-map-marker-alt mr-1" aria-hidden="true"></i>{% if review.tour_package %}{{ review.tour_package.title }}{% elif review.national_park %}{{ review.national_park.name }}{% else %}—{% endif %}</small></div>
       </div>
       {% empty %}
-      <div class="col-span-3 text-center">
-        <div class="p-6 bg-blue-50 dark:bg-blue-900 text-gray-700 dark:text-gray-100 rounded-md inline-block">
-          <i class="fas fa-info-circle mr-2" aria-hidden="true"></i>No reviews available yet. Be the first to share your experience!
-        </div>
-      </div>
+      <div class="col-span-3 text-center"><div class="p-6 bg-blue-50 dark:bg-blue-900 text-gray-700 dark:text-gray-100 rounded-md inline-block"><i class="fas fa-info-circle mr-2" aria-hidden="true"></i>No reviews available yet. Be the first to share your experience!</div></div>
       {% endfor %}
     </div>
 
-    <div class="text-center mt-8">
-      <a href="{% url 'reviews:review_list' %}"
-         class="inline-flex items-center px-6 py-3 rounded-full border border-[#C18D45] text-[#C18D45] hover:bg-[#C18D45] hover:text-white transition-colors duration-200 dark:border-[#b7894a] dark:text-[#b7894a] dark:hover:bg-[#b7894a] dark:hover:text-white">
-        Read All Reviews <i class="fas fa-arrow-right ml-2" aria-hidden="true"></i>
-      </a>
-    </div>
+    <div class="text-center mt-8"><a href="{% url 'reviews:review_list' %}" class="inline-flex items-center px-6 py-3 rounded-full border border-[#C18D45] text-[#C18D45] hover:bg-[#C18D45] hover:text-white transition-colors duration-200 dark:border-[#b7894a] dark:text-[#b7894a] dark:hover:bg-[#b7894a] dark:hover:text-white">Read All Reviews <i class="fas fa-arrow-right ml-2"></i></a></div>
   </div>
 </section>
 
-<!-- Enhanced Newsletter Signup -->
-<section class="py-12 newsletter-section bg-[#0f1724] text-white dark:bg-gray-900">
-  <div class="container max-w-7xl mx-auto px-4">
+<!-- NEWSLETTER -->
+<section class="py-12 bg-[#0f1724] text-white dark:bg-gray-900">
+  <div class="container mx-auto px-4">
     <div class="md:flex md:items-center md:justify-between">
       <div class="md:w-1/2 mb-6 md:mb-0 text-center md:text-left">
-        <h3 class="font-extrabold text-2xl md:text-3xl mb-2 text-white dark:text-white">Stay Updated with Our Adventures</h3>
-        <p class="text-sm md:text-base mb-0 text-gray-100/90 dark:text-gray-300">
-          Get the latest safari deals, travel tips, and wildlife updates delivered to your inbox.
-        </p>
+        <h3 class="font-extrabold text-2xl sm:text-3xl mb-2 text-white">Stay Updated with Our Adventures</h3>
+        <p class="text-sm sm:text-base mb-0 text-gray-100/90">Get the latest safari deals, travel tips, and wildlife updates delivered to your inbox.</p>
       </div>
 
       <div class="md:w-1/2">
-        <div class="newsletter-input-group flex items-center justify-center md:justify-end gap-3">
-          <input
-            type="email"
-            id="newsletter-email"
-            class="rounded-full px-4 py-3 w-full md:w-80 bg-white text-gray-900 placeholder-gray-500 border border-transparent focus:outline-none focus:ring-2 focus:ring-[#C18D45] focus:border-transparent dark:bg-gray-700 dark:text-gray-100 dark:placeholder-gray-400 dark:focus:ring-[#C18D45]/80 transition"
-            placeholder="Enter your email address"
-            aria-label="Email address"
-          />
-
-          <button
-            id="newsletter-submit"
-            class="inline-flex items-center rounded-full px-5 py-3 font-semibold shadow-md bg-[#C18D45] hover:bg-[#a6783a] text-white transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#C18D45]/60 dark:focus:ring-[#C18D45]/80"
-            type="button"
-            onclick="subscribeNewsletter()"
-          >
-            <i class="fas fa-paper-plane mr-2" aria-hidden="true"></i>
-            Subscribe
-          </button>
+        <div class="flex items-center justify-center md:justify-end gap-3">
+          <input type="email" id="newsletter-email" class="rounded-full px-4 py-3 w-full md:w-80 bg-white text-gray-900 placeholder-gray-500 border border-transparent focus:outline-none focus:ring-2 focus:ring-[#C18D45] focus:border-transparent dark:bg-gray-700 dark:text-gray-100 dark:placeholder-gray-400 dark:focus:ring-[#C18D45]/80 transition" placeholder="Enter your email address" aria-label="Email address">
+          <button id="newsletter-submit" class="inline-flex items-center rounded-full px-5 py-3 font-semibold shadow-md bg-[#C18D45] hover:bg-[#a6783a] text-white transition-colors duration-200 focus:ring-2 focus:ring-offset-2 focus:ring-[#C18D45]/60 dark:focus:ring-[#C18D45]/80" type="button" onclick="subscribeNewsletter()"><i class="fas fa-paper-plane mr-2" aria-hidden="true"></i>Subscribe</button>
         </div>
-
-        <!-- screen-reader live status for announcements -->
         <div id="newsletter-status" class="sr-only" role="status" aria-live="polite"></div>
       </div>
     </div>
   </div>
 </section>
 
+{% endblock %}
+
+{% block extra_js %}
 <script>
+// Theme init: dark mode via localStorage or OS preference
+(function(){
+  try{
+    const stored = localStorage.getItem('theme');
+    if(stored === 'dark') document.documentElement.classList.add('dark');
+    else if(stored === 'light') document.documentElement.classList.remove('dark');
+    else if(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) document.documentElement.classList.add('dark');
+  }catch(e){console.warn(e)}
+})();
+
 document.addEventListener('DOMContentLoaded', function() {
-    // Intersection Observer for fade-in animations
-    const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-    };
-    const observer = new IntersectionObserver(function(entries) {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) entry.target.classList.add('visible');
-        });
-    }, observerOptions);
-    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+  // Intersection fade-in observer (if used elsewhere)
+  const observer = new IntersectionObserver((entries)=>{ entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('visible'); }); }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+  document.querySelectorAll('.fade-in').forEach(el=>observer.observe(el));
 
-    // Helper to get cookie (for CSRF)
-    function getCookie(name) {
-        let cookieValue = null;
-        if (document.cookie && document.cookie !== '') {
-            document.cookie.split(';').forEach(c => {
-                const cookie = c.trim();
-                if (cookie.startsWith(name + '=')) cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-            });
-        }
-        return cookieValue;
-    }
+  // destinations scroller: toggle fades at edges + arrows wiring
+  const destRow = document.getElementById('destRow');
+  const prevBtn = document.getElementById('dest-prev');
+  const nextBtn = document.getElementById('dest-next');
 
-    // Improved newsletter subscription function
-    window.subscribeNewsletter = function() {
-        const emailInput = document.getElementById('newsletter-email');
-        const button = document.getElementById('newsletter-submit');
-        const statusEl = document.getElementById('newsletter-status');
-        const email = emailInput.value.trim();
+  function updateDestFades(row){
+    if(!row) return;
+    const atStart = row.scrollLeft <= 6;
+    const atEnd = row.scrollLeft + row.clientWidth >= row.scrollWidth - 6;
+    row.classList.toggle('at-start', atStart);
+    row.classList.toggle('at-end', atEnd);
+    if(prevBtn) prevBtn.disabled = atStart;
+    if(nextBtn) nextBtn.disabled = atEnd;
+    if(prevBtn) prevBtn.style.opacity = atStart ? '0.4' : '1';
+    if(nextBtn) nextBtn.style.opacity = atEnd ? '0.4' : '1';
+  }
+  function debounce(fn, wait=80){ let t; return function(...a){ clearTimeout(t); t = setTimeout(()=>fn.apply(this,a), wait); }; }
 
-        // reset status for screen readers
-        statusEl.textContent = '';
+  if(destRow){ updateDestFades(destRow); destRow.addEventListener('scroll', debounce(()=>updateDestFades(destRow), 60)); window.addEventListener('resize', debounce(()=>updateDestFades(destRow), 120)); }
 
-        if (!email) {
-            emailInput.classList.add('is-invalid');
-            emailInput.setAttribute('aria-invalid', 'true');
-            emailInput.focus();
-            statusEl.textContent = 'Please enter your email address.';
-            return;
-        }
+  // arrows functionality
+  function getStep(){ if(!destRow) return 300; return Math.max(240, Math.round(destRow.clientWidth * 0.6)); }
+  if(prevBtn) prevBtn.addEventListener('click', (e)=>{ e.preventDefault(); if(!destRow) return; destRow.scrollBy({ left: -getStep(), behavior: 'smooth' }); setTimeout(()=>updateDestFades(destRow), 350); });
+  if(nextBtn) nextBtn.addEventListener('click', (e)=>{ e.preventDefault(); if(!destRow) return; destRow.scrollBy({ left: getStep(), behavior: 'smooth' }); setTimeout(()=>updateDestFades(destRow), 350); });
 
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!emailRegex.test(email)) {
-            emailInput.classList.add('is-invalid');
-            emailInput.setAttribute('aria-invalid', 'true');
-            emailInput.focus();
-            statusEl.textContent = 'Please enter a valid email address.';
-            return;
-        }
+  // keyboard navigation when scroller focused
+  if(destRow){ destRow.addEventListener('keydown', function(e){ if(e.key === 'ArrowLeft'){ e.preventDefault(); destRow.scrollBy({ left: -120, behavior:'smooth' }); } if(e.key === 'ArrowRight'){ e.preventDefault(); destRow.scrollBy({ left: 120, behavior:'smooth' }); } }); }
 
-        emailInput.classList.remove('is-invalid');
-        emailInput.removeAttribute('aria-invalid');
+  // helper for csrftoken
+  function getCookie(name) { let cookieValue = null; if (document.cookie && document.cookie !== '') { document.cookie.split(';').forEach(c => { const cookie = c.trim(); if (cookie.startsWith(name + '=')) cookieValue = decodeURIComponent(cookie.substring(name.length + 1)); }); } return cookieValue; }
 
-        const originalText = button.innerHTML;
-        button.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Subscribing...';
-        button.disabled = true;
+  // newsletter subscribe
+  window.subscribeNewsletter = function(){
+    const emailInput = document.getElementById('newsletter-email');
+    const button = document.getElementById('newsletter-submit');
+    const statusEl = document.getElementById('newsletter-status');
+    if (!emailInput || !button) return;
+    const email = emailInput.value.trim();
+    statusEl.textContent = '';
 
-        const csrftoken = getCookie('csrftoken');
+    if (!email) { emailInput.classList.add('is-invalid'); emailInput.setAttribute('aria-invalid','true'); emailInput.focus(); statusEl.textContent = 'Please enter your email address.'; return; }
+    if (email.indexOf('@') === -1 || email.indexOf('.') === -1) { emailInput.classList.add('is-invalid'); emailInput.setAttribute('aria-invalid','true'); emailInput.focus(); statusEl.textContent = 'Please enter a valid email address.'; return; }
 
-        fetch('{% url "core:newsletter_signup" %}', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded',
-                'X-CSRFToken': csrftoken
-            },
-            body: new URLSearchParams({ email })
-        })
-        .then(response => {
-            if (!response.ok) return response.json().then(j => { throw j; });
-            return response.json();
-        })
-        .then(data => {
-            if (data.success) {
-                emailInput.value = '';
-                emailInput.classList.add('is-valid');
-                statusEl.textContent = 'Subscribed successfully!';
-                button.innerHTML = '<i class="fas fa-check mr-2"></i>Subscribed!';
-                button.classList.add('bg-green-500', 'text-white');
-                setTimeout(() => {
-                    button.innerHTML = originalText;
-                    button.classList.remove('bg-green-500', 'text-white');
-                    button.disabled = false;
-                    emailInput.classList.remove('is-valid');
-                    statusEl.textContent = '';
-                }, 3000);
-            } else {
-                throw new Error(data.message || 'Subscription failed');
-            }
-        })
-        .catch(error => {
-            console.error('Error:', error);
-            statusEl.textContent = error.message || 'Subscription failed. Please try again.';
-            button.innerHTML = '<i class="fas fa-exclamation-triangle mr-2"></i>Try Again';
-            button.classList.add('bg-yellow-400');
-            setTimeout(() => {
-                button.innerHTML = originalText;
-                button.classList.remove('bg-yellow-400');
-                button.disabled = false;
-                statusEl.textContent = '';
-            }, 3000);
-        });
-    };
+    emailInput.classList.remove('is-invalid');
+    button.disabled = true; const orig = button.innerHTML; button.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Subscribing...';
 
-    // keyboard submit
-    const newsletterInput = document.getElementById('newsletter-email');
-    if (newsletterInput) {
-        newsletterInput.addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') subscribeNewsletter();
-        });
-        newsletterInput.addEventListener('input', function() {
-            this.classList.remove('is-invalid', 'is-valid');
-        });
-    }
+    fetch("{% url 'core:newsletter_signup' %}", { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded', 'X-CSRFToken': getCookie('csrftoken') }, body: new URLSearchParams({ email }) })
+    .then(resp => { if (!resp.ok) return resp.json().then(j=>{ throw j; }); return resp.json(); })
+    .then(data => { if (data.success) { emailInput.value = ''; statusEl.textContent = 'Subscribed successfully!'; button.innerHTML = '<i class="fas fa-check mr-2"></i>Subscribed!'; setTimeout(()=>{ button.innerHTML = orig; button.disabled = false; statusEl.textContent=''; }, 3000); } else { throw new Error(data.message || 'Subscription failed'); } })
+    .catch(err=>{ console.error('Newsletter error', err); statusEl.textContent = err.message || 'Subscription failed. Please try again.'; button.innerHTML = '<i class="fas fa-exclamation-triangle mr-2"></i>Try Again'; button.disabled = false; setTimeout(()=>{ button.innerHTML = orig; }, 3000); });
+  };
+
+  const newsletterInput = document.getElementById('newsletter-email');
+  if (newsletterInput) { newsletterInput.addEventListener('keypress', function(e){ if (e.key === 'Enter') subscribeNewsletter(); }); newsletterInput.addEventListener('input', function(){ this.classList.remove('is-invalid','is-valid'); }); }
 });
 </script>
 {% endblock %}

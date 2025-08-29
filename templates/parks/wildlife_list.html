@@ -3,14 +3,70 @@
 
 {% block title %}{% trans "Wildlife" %} - Safari&nbsp;&amp;&nbsp;Bush Retreats{% endblock %}
 
+{% block extra_css %}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+/* Scope fonts and light/dark support only for the Wildlife hero/typography */
+.wildlife-typography {
+  font-family: "Poppins", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  color-scheme: light dark;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Hero tweaks (scoped, minimal — overlay kept as-is in markup) */
+.hero-bg {
+  position: relative;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  min-height: 40vh;
+  display: flex;
+  align-items: center;
+}
+
+/* ensure the existing overlay div sits under content */
+.hero-bg > .absolute.inset-0 {
+  z-index: 1;
+}
+
+/* hero content above overlay */
+.hero-content {
+  position: relative;
+  z-index: 2;
+  padding-top: 6rem;
+  padding-bottom: 6rem;
+}
+
+/* improve readability on images */
+.hero-title {
+  text-shadow: 0 6px 18px rgba(0,0,0,0.55);
+}
+
+.hero-subtitle {
+  text-shadow: 0 4px 12px rgba(0,0,0,0.40);
+}
+
+/* small screens */
+@media (max-width: 640px) {
+  .hero-content { padding-top: 3rem; padding-bottom: 3rem; }
+  .hero-title { font-size: 1.6rem; }
+  .hero-subtitle { font-size: 0.98rem; }
+}
+</style>
+{% endblock %}
+
 {% block content %}
 <!-- Hero Section (background-image kept inline; overlay handles dark mode) -->
-<section class="relative bg-cover bg-center" style="background-image: url('https://images.pexels.com/photos/631317/pexels-photo-631317.jpeg'); min-height: 50vh;">
+<section class="relative bg-cover bg-center wildlife-typography hero-bg" style="background-image: url('https://images.pexels.com/photos/631317/pexels-photo-631317.jpeg'); min-height: 40vh;">
   <div class="absolute inset-0 bg-black/40 dark:bg-black/60"></div>
-  <div class="container mx-auto px-4 py-24 relative z-10">
+  <div class="container mx-auto px-4 py-24 relative z-10 hero-content">
     <div class="max-w-3xl">
-      <h1 class="text-4xl md:text-5xl font-bold text-white mb-6">{% trans "Tanzania Wildlife" %}</h1>
-      <p class="text-xl text-white/90">{% trans "Discover the incredible wildlife of Tanzania" %}</p>
+      <h1 class="text-4xl md:text-5xl font-bold text-white mb-6 hero-title">{% trans "Tanzania Wildlife" %}</h1>
+      <p class="text-xl text-white/90 hero-subtitle">{% trans "Discover the incredible wildlife of Tanzania" %}</p>
     </div>
   </div>
 </section>

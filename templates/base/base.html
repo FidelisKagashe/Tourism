@@ -55,24 +55,97 @@
             }
         }
     </script>
+    <style>
+        /* ---------- Instagram-style global typography (font-size only) ----------
+           Goal: override Tailwind utility sizes and provide a compact, polished
+           typographic scale similar to Instagram's look on desktop & mobile.
+           This file only changes font sizes and line-heights — no layout changes.
+        */
+
+        :root{
+            /* responsive typographic scale using CSS variables */
+            --fs-xxl: clamp(1.6rem, 4.0vw, 3.2rem);  /* very large headings (hero) */
+            --fs-xl:  clamp(1.25rem, 2.6vw, 2.25rem); /* large headings */
+            --fs-lg:  clamp(1.05rem, 1.9vw, 1.5rem);  /* section headings */
+            --fs-base:clamp(0.95rem, 1.0vw, 1.06rem);/* body / paragraphs */
+            --fs-sm:  clamp(0.82rem, 0.8vw, 0.95rem); /* small buttons / labels */
+            --fs-xs:  clamp(0.72rem, 0.7vw, 0.82rem); /* fine print */
+
+            /* line-height presets tuned for a tight, modern feel */
+            --lh-tight: 1.08;
+            --lh-heading: 1.15;
+            --lh-base: 1.42;
+            --lh-small: 1.3;
+        }
+
+        /* base */
+        html { font-size: 16px; }
+        body { font-family: 'Poppins', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; font-size: var(--fs-base) !important; line-height: var(--lh-base) !important; }
+
+        /* headings — tight and compact like IG */
+        h1 { font-size: var(--fs-xxl) !important; line-height: var(--lh-tight) !important; font-weight: 600 !important; }
+        h2 { font-size: var(--fs-xl) !important; line-height: var(--lh-heading) !important; font-weight: 600 !important; }
+        h3 { font-size: var(--fs-lg) !important; line-height: var(--lh-heading) !important; font-weight: 600 !important; }
+        h4 { font-size: calc(var(--fs-lg) - 0.06rem) !important; line-height: var(--lh-heading) !important; }
+        h5 { font-size: var(--fs-sm) !important; line-height: var(--lh-small) !important; }
+        h6 { font-size: var(--fs-sm) !important; line-height: var(--lh-small) !important; }
+
+        /* paragraphs and common text utilities */
+        p, .text-base, .prose, .article-body { font-size: var(--fs-base) !important; line-height: var(--lh-base) !important; }
+
+        /* small text and muted labels */
+        small, .text-muted, .text-gray-500, .meta { font-size: var(--fs-sm) !important; line-height: var(--lh-small) !important; }
+
+        /* buttons, pills, inputs — slightly smaller for compact look */
+        button, .btn, .inline-flex, input[type="email"], .dest-seemore { font-size: var(--fs-sm) !important; line-height: 1.2 !important; }
+
+        /* destination card title (compact, readable) */
+        .dest-title { font-size: var(--fs-sm) !important; line-height: 1.06 !important; font-weight: 500 !important; }
+
+        /* hero special sizing (keeps hero large but not oversized on phones) */
+        .hero-content h1, .hero-main-title, .hero .text-5xl { font-size: clamp(1.25rem, 5.2vw, 2.8rem) !important; line-height: 1.02 !important; }
+
+        /* mobile tweaks: make very small screens a bit tighter */
+        @media (max-width: 420px){
+            :root{
+                --fs-xxl: clamp(1.25rem, 6.2vw, 1.8rem);
+                --fs-xl:  clamp(1.0rem, 4.2vw, 1.25rem);
+                --fs-lg:  clamp(0.95rem, 2.8vw, 1.125rem);
+                --fs-base:clamp(0.88rem, 2.2vw, 0.98rem);
+                --fs-sm:  clamp(0.68rem, 1.8vw, 0.82rem);
+                --fs-xs:  clamp(0.62rem, 1.6vw, 0.72rem);
+            }
+
+            /* reduce letter-spacing slightly for compactness on phones */
+            body, p, a, li { letter-spacing: -0.01em !important; }
+        }
+
+        /* accessibility: ensure contrast isn't affected by font-size overrides */
+        a, button { text-rendering: optimizeLegibility; }
+
+        /* small helper to override utilities that may be more specific */
+        .site-typography-overrides * { font-size: inherit !important; }
+
+        /* End of font-only adjustments */
+    </style>
     {% block extra_css %}{% endblock %}
 </head>
-<body class="font-poppins leading-relaxed text-gray-800 bg-white dark:text-gray-200 dark:bg-gray-900 transition-all duration-300">
+<body class="font-poppins leading-relaxed text-gray-800 bg-white dark:text-gray-200 dark:bg-gray-900 transition-all duration-300 site-typography-overrides">
     <!-- Header with two rows -->
     <header class="header sticky top-0 z-50 transition-all duration-300">
         <!-- Primary Row: Logo, Brand, Links -->
         <nav class="bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 primary-row">
             <div class="container mx-auto px-4">
-                <div class="flex items-center justify-between h-16">
-                    <a class="flex items-center text-xl font-bold text-primary dark:text-primary-dark hover:text-secondary dark:hover:text-secondary-dark transition-colors duration-300"
+                <div class="flex items-center justify-between h-12 md:h-16">
+                    <a class="flex items-center md:text-xl font-bold text-primary dark:text-primary-dark hover:text-secondary dark:hover:text-secondary-dark transition-colors duration-300"
                         href="{% url 'core:home' %}">
                         <img src="{% static 'images/logo.png' %}"
                             alt="{{ site_settings.site_name|default:'Logo' }}"
-                            class="h-12 w-auto mr-2 block dark:hidden object-contain" />
+                            class="h-10 md:h-12 w-auto mr-2 block dark:hidden object-contain" />
 
                         <img src="{% static 'images/logo.png' %}"
                             alt="{{ site_settings.site_name|default:'Logo (dark)' }}"
-                            class="h-12 w-auto mr-2 hidden dark:block object-contain" />
+                            class="h-10 md:h-12 w-auto mr-2 hidden dark:block object-contain" />
 
                         <span>{{ site_settings.site_name|default:"Safari & Bush Retreats" }}</span>
                     </a>
@@ -380,89 +453,7 @@
     <!-- Main Content -->
     <main>
         {% block content %}
-        <!-- Demo Hero Section -->
-        <section class="hero-bg relative min-h-[70vh] flex items-center text-white">
-            <div class="container mx-auto px-4 relative z-10">
-                <div class="max-w-4xl mx-auto text-center">
-                    <h1 class="text-4xl md:text-6xl font-bold mb-6" style="text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);">Discover Tanzania's Wildlife</h1>
-                    <p class="text-xl md:text-2xl mb-8 leading-relaxed" style="text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);">Experience the magic of Tanzania's national parks and wildlife with our expert-guided safari tours.</p>
-                    <div class="flex gap-4 justify-center flex-wrap">
-                        <a href="#" class="inline-flex items-center px-8 py-4 bg-primary dark:bg-primary-dark text-white rounded-lg hover:bg-secondary dark:hover:bg-secondary-dark focus:outline-none focus:ring-2 focus:ring-primary dark:focus:ring-primary-dark transition-all duration-300 hover:-translate-y-1 hover:shadow-lg text-lg font-medium">
-                            <i class="fas fa-binoculars mr-3"></i>Explore Tours
-                        </a>
-                        <a href="#" class="inline-flex items-center px-8 py-4 bg-transparent border-2 border-white text-white rounded-lg hover:bg-white hover:text-gray-800 focus:outline-none focus:ring-2 focus:ring-white transition-all duration-300 hover:-translate-y-1 hover:shadow-lg text-lg font-medium">
-                            <i class="fas fa-play-circle mr-3"></i>Watch Video
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Demo Content Section -->
-        <section class="py-20 bg-gray-50 dark:bg-gray-800">
-            <div class="container mx-auto px-4">
-                <h2 class="section-title relative text-4xl font-semibold text-gray-800 dark:text-gray-200 text-center mb-12">Featured Safari Tours</h2>
-                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <div class="card-hover-effect bg-white dark:bg-gray-700 rounded-xl shadow-sm hover:shadow-xl border border-gray-200 dark:border-gray-600 overflow-hidden">
-                        <div class="overflow-hidden">
-                            <img src="https://images.pexels.com/photos/133435/pexels-photo-133435.jpeg" class="card-image w-full h-48 object-cover" alt="Serengeti Safari" loading="lazy">
-                        </div>
-                        <div class="p-6">
-                            <h5 class="text-xl font-semibold text-gray-800 dark:text-gray-200 mb-3 group-hover:text-primary dark:group-hover:text-primary-dark transition-colors duration-300">Serengeti Adventure</h5>
-                            <p class="text-gray-600 dark:text-gray-400 mb-4">Experience the Great Migration and witness millions of wildebeest crossing the plains.</p>
-                            <div class="flex justify-between items-center">
-                                <span class="inline-block bg-primary dark:bg-primary-dark text-white px-4 py-2 rounded-full font-semibold">$1,299</span>
-                                <div class="text-yellow-400">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card-hover-effect bg-white dark:bg-gray-700 rounded-xl shadow-sm hover:shadow-xl border border-gray-200 dark:border-gray-600 overflow-hidden">
-                        <div class="overflow-hidden">
-                            <img src="https://images.pexels.com/photos/1619317/pexels-photo-1619317.jpeg" class="card-image w-full h-48 object-cover" alt="Ngorongoro Crater" loading="lazy">
-                        </div>
-                        <div class="p-6">
-                            <h5 class="text-xl font-semibold text-gray-800 dark:text-gray-200 mb-3 group-hover:text-primary dark:group-hover:text-primary-dark transition-colors duration-300">Ngorongoro Crater</h5>
-                            <p class="text-gray-600 dark:text-gray-400 mb-4">Explore the world's largest inactive volcanic caldera and its incredible wildlife.</p>
-                            <div class="flex justify-between items-center">
-                                <span class="inline-block bg-primary dark:bg-primary-dark text-white px-4 py-2 rounded-full font-semibold">$899</span>
-                                <div class="text-yellow-400">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="far fa-star"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card-hover-effect bg-white dark:bg-gray-700 rounded-xl shadow-sm hover:shadow-xl border border-gray-200 dark:border-gray-600 overflow-hidden">
-                        <div class="overflow-hidden">
-                            <img src="https://images.pexels.com/photos/1661179/pexels-photo-1661179.jpeg" class="card-image w-full h-48 object-cover" alt="Kilimanjaro Trek" loading="lazy">
-                        </div>
-                        <div class="p-6">
-                            <h5 class="text-xl font-semibold text-gray-800 dark:text-gray-200 mb-3 group-hover:text-primary dark:group-hover:text-primary-dark transition-colors duration-300">Kilimanjaro Trek</h5>
-                            <p class="text-gray-600 dark:text-gray-400 mb-4">Conquer Africa's highest peak and enjoy breathtaking views from the summit.</p>
-                            <div class="flex justify-between items-center">
-                                <span class="inline-block bg-primary dark:bg-primary-dark text-white px-4 py-2 rounded-full font-semibold">$2,199</span>
-                                <div class="text-yellow-400">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+        
         {% endblock %}
     </main>
 
@@ -798,14 +789,19 @@
 
             animateToggler(isOpen) {
                 const spans = this.menuToggle.querySelectorAll('span');
+
                 if (isOpen) {
-                    spans[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
+                    spans[0].style.transformOrigin = "center";
+                    spans[2].style.transformOrigin = "center";
+
+                    // Adjust the translateY to exactly meet in center
+                    spans[0].style.transform = 'translateY(6px) rotate(45deg)';
                     spans[1].style.opacity = '0';
-                    spans[2].style.transform = 'rotate(-45deg) translate(7px, -6px)';
+                    spans[2].style.transform = 'translateY(-6px) rotate(-45deg)';
                 } else {
-                    spans[0].style.transform = 'none';
+                    spans[0].style.transform = 'translateY(0) rotate(0)';
                     spans[1].style.opacity = '1';
-                    spans[2].style.transform = 'none';
+                    spans[2].style.transform = 'translateY(0) rotate(0)';
                 }
             }
             

@@ -3,83 +3,179 @@
 
 {% block title %}{% trans "Frequently Asked Questions" %} - Safari&nbsp;&amp;&nbsp;Bush Retreats{% endblock %}
 
+{% block extra_css %}
+<style>
+/* Scoped typography scale — matches the site's global font system.
+   ONLY affects font-size & line-height so we do not change colors or layout.
+*/
+:root{
+  --fs-xxl: clamp(1.6rem, 4.0vw, 3.2rem);
+  --fs-xl:  clamp(1.25rem, 2.6vw, 2.25rem);
+  --fs-lg:  clamp(1.05rem, 1.9vw, 1.5rem);
+  --fs-base:clamp(0.95rem, 1.0vw, 1.06rem);
+  --fs-sm:  clamp(0.82rem, 0.8vw, 0.95rem);
+  --lh-tight: 1.08;
+  --lh-heading: 1.15;
+  --lh-base: 1.42;
+}
+
+/* Keep the same font-family as other templates */
+body, .faq-local {
+  font-family: 'Poppins', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  font-size: var(--fs-base) !important;
+  line-height: var(--lh-base) !important;
+}
+
+/* Headings scale */
+h1 { font-size: var(--fs-xxl) !important; line-height: var(--lh-tight) !important; font-weight: 600 !important; }
+h2 { font-size: var(--fs-xl) !important; line-height: var(--lh-heading) !important; font-weight: 600 !important; }
+h3 { font-size: var(--fs-lg) !important; line-height: var(--lh-heading) !important; font-weight: 600 !important; }
+
+/* Paragraphs & small text */
+p, .text-base, .prose, .faq-local p { font-size: var(--fs-base) !important; line-height: var(--lh-base) !important; }
+small, .text-muted, .meta { font-size: var(--fs-sm) !important; line-height: 1.3 !important; }
+
+/* Make the page H1 larger while staying within the site's scale */
+.faq-local .faq-title {
+  font-size: clamp(2.0rem, 5.2vw, 3.2rem) !important;
+  line-height: 1.04 !important;
+  font-weight: 700 !important;
+}
+
+/* Slightly stronger question headings */
+.faq-local details summary span {
+  font-size: var(--fs-lg) !important;
+  font-weight: 600;
+}
+
+/* Responsive adjustments */
+@media (min-width: 1024px) {
+  .faq-local .faq-title {
+    font-size: clamp(2.4rem, 3.2vw, 3.6rem) !important;
+    line-height: 1.02 !important;
+  }
+}
+
+/* keep everything scoped to .faq-local so we don't leak styles */
+.faq-local details summary { cursor: pointer; }
+.faq-local details[open] summary ~ div { animation: fadeIn .18s ease-in; }
+
+@keyframes fadeIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
+
+/* minor spacing/touch improvements */
+.faq-local details summary { padding: 1rem 1.25rem; }
+.faq-local details div { padding: 0 1.25rem 1rem; }
+
+/* Preserve colors and accessibility from site theme; no color overrides here. */
+</style>
+{% endblock %}
+
 {% block content %}
-<div class="container mx-auto px-4 py-12">
+<div class="faq-local container mx-auto px-4 py-12">
   <div class="max-w-3xl mx-auto">
-    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-gray-100 text-center mb-8">
+    <h1 class="faq-title text-center text-gray-900 dark:text-gray-100 mb-8">
       {% trans "Frequently Asked Questions" %}
     </h1>
 
     <div class="space-y-4">
-      <details class="group bg-white dark:bg-gray-800 rounded-xl shadow-sm dark:shadow-none overflow-hidden" open>
-        <summary class="list-none cursor-pointer px-5 py-4 flex items-center justify-between">
-          <span class="text-left text-gray-900 dark:text-gray-100 font-medium">{% trans "What is the best time to visit Tanzania?" %}</span>
-          <span class="ml-4 transform transition-transform duration-200 group-open:rotate-180 text-gray-500 dark:text-gray-300">
+      <details class="group bg-white dark:bg-gray-800 rounded-xl shadow-sm overflow-hidden" open>
+        <summary class="list-none px-5 py-4 flex items-center justify-between">
+          <span class="text-left text-gray-900 dark:text-gray-100">{% trans "What is the best time to visit Tanzania?" %}</span>
+          <span class="ml-4 transform transition-transform duration-200 group-open:rotate-180 text-gray-500 dark:text-gray-300" aria-hidden="true">
             <i class="fas fa-chevron-down"></i>
           </span>
         </summary>
         <div class="px-5 pb-4 pt-0 border-t border-gray-100 dark:border-gray-700">
           <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
-            {% trans "The best time depends on what you want to see. For the Great Migration, visit June-October. For fewer crowds and green landscapes, visit during short rains (November-December) or long rains (March-May)." %}
+            {% trans "The best time depends on what you want to see. For the Great Migration, visit June–October. For fewer crowds and greener landscapes visit during the short rains (November–December) or the long rains (March–May)." %}
           </p>
         </div>
       </details>
 
       <details class="group bg-white dark:bg-gray-800 rounded-xl shadow-sm overflow-hidden">
-        <summary class="list-none cursor-pointer px-5 py-4 flex items-center justify-between">
-          <span class="text-left text-gray-900 dark:text-gray-100 font-medium">{% trans "Do I need a visa for Tanzania?" %}</span>
-          <span class="ml-4 transform transition-transform duration-200 group-open:rotate-180 text-gray-500 dark:text-gray-300">
+        <summary class="list-none px-5 py-4 flex items-center justify-between">
+          <span class="text-left text-gray-900 dark:text-gray-100">{% trans "Do I need a visa for Tanzania?" %}</span>
+          <span class="ml-4 transform transition-transform duration-200 group-open:rotate-180 text-gray-500 dark:text-gray-300" aria-hidden="true">
             <i class="fas fa-chevron-down"></i>
           </span>
         </summary>
         <div class="px-5 pb-4 pt-0 border-t border-gray-100 dark:border-gray-700">
           <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
-            {% trans "Most visitors need a visa. You can get a visa on arrival at the airport or apply online. US citizens pay $100, most other nationalities pay $50." %}
+            {% trans "Most visitors need a visa. You can obtain a visa on arrival at major entry points or apply online in advance where available. Visa fees and rules vary by nationality—check the official Tanzanian government or your embassy website for current details." %}
           </p>
         </div>
       </details>
 
       <details class="group bg-white dark:bg-gray-800 rounded-xl shadow-sm overflow-hidden">
-        <summary class="list-none cursor-pointer px-5 py-4 flex items-center justify-between">
-          <span class="text-left text-gray-900 dark:text-gray-100 font-medium">{% trans "What vaccinations do I need?" %}</span>
-          <span class="ml-4 transform transition-transform duration-200 group-open:rotate-180 text-gray-500 dark:text-gray-300">
+        <summary class="list-none px-5 py-4 flex items-center justify-between">
+          <span class="text-left text-gray-900 dark:text-gray-100">{% trans "What vaccinations do I need?" %}</span>
+          <span class="ml-4 transform transition-transform duration-200 group-open:rotate-180 text-gray-500 dark:text-gray-300" aria-hidden="true">
             <i class="fas fa-chevron-down"></i>
           </span>
         </summary>
         <div class="px-5 pb-4 pt-0 border-t border-gray-100 dark:border-gray-700">
           <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
-            {% trans "Yellow fever vaccination is required if coming from endemic areas. Consult a travel medicine specialist for malaria prophylaxis and other recommended vaccinations." %}
+            {% trans "Yellow fever vaccination is required for travelers arriving from countries with risk of yellow fever transmission. We also recommend consulting a travel health clinic for malaria prophylaxis and routine vaccines (e.g., tetanus, hepatitis A). Requirements can change, so check with your healthcare provider before travel." %}
           </p>
         </div>
       </details>
 
       <details class="group bg-white dark:bg-gray-800 rounded-xl shadow-sm overflow-hidden">
-        <summary class="list-none cursor-pointer px-5 py-4 flex items-center justify-between">
-          <span class="text-left text-gray-900 dark:text-gray-100 font-medium">{% trans "What should I pack for safari?" %}</span>
-          <span class="ml-4 transform transition-transform duration-200 group-open:rotate-180 text-gray-500 dark:text-gray-300">
+        <summary class="list-none px-5 py-4 flex items-center justify-between">
+          <span class="text-left text-gray-900 dark:text-gray-100">{% trans "What should I pack for a safari?" %}</span>
+          <span class="ml-4 transform transition-transform duration-200 group-open:rotate-180 text-gray-500 dark:text-gray-300" aria-hidden="true">
             <i class="fas fa-chevron-down"></i>
           </span>
         </summary>
         <div class="px-5 pb-4 pt-0 border-t border-gray-100 dark:border-gray-700">
           <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
-            {% trans "Pack neutral-colored clothing, hat, sunglasses, sunscreen, insect repellent, comfortable shoes, and a good camera. We provide a detailed packing list upon booking." %}
+            {% trans "Pack neutral-colored clothing (beige, olive, khaki), lightweight layers for warm days and cool mornings, a wide-brim hat, sunglasses, sunscreen, insect repellent, comfortable walking shoes, and a good camera with extra batteries. We provide a detailed packing list when you book." %}
           </p>
         </div>
       </details>
 
       <details class="group bg-white dark:bg-gray-800 rounded-xl shadow-sm overflow-hidden">
-        <summary class="list-none cursor-pointer px-5 py-4 flex items-center justify-between">
-          <span class="text-left text-gray-900 dark:text-gray-100 font-medium">{% trans "How safe is Tanzania for tourists?" %}</span>
-          <span class="ml-4 transform transition-transform duration-200 group-open:rotate-180 text-gray-500 dark:text-gray-300">
+        <summary class="list-none px-5 py-4 flex items-center justify-between">
+          <span class="text-left text-gray-900 dark:text-gray-100">{% trans "How safe is Tanzania for tourists?" %}</span>
+          <span class="ml-4 transform transition-transform duration-200 group-open:rotate-180 text-gray-500 dark:text-gray-300" aria-hidden="true">
             <i class="fas fa-chevron-down"></i>
           </span>
         </summary>
         <div class="px-5 pb-4 pt-0 border-t border-gray-100 dark:border-gray-700">
           <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
-            {% trans "Tanzania is generally safe for tourists. We provide 24/7 support and work with experienced guides. Follow standard travel precautions and stay with your group." %}
+            {% trans "Tanzania is generally safe for tourists. We work with experienced local guides, provide 24/7 support during safaris, and follow strict safety protocols. Standard travel precautions apply: keep valuables secure, follow guide instructions, and avoid isolated areas at night." %}
           </p>
         </div>
       </details>
+
+      <details class="group bg-white dark:bg-gray-800 rounded-xl shadow-sm overflow-hidden">
+        <summary class="list-none px-5 py-4 flex items-center justify-between">
+          <span class="text-left text-gray-900 dark:text-gray-100">{% trans "Can I use my credit card in Tanzania?" %}</span>
+          <span class="ml-4 transform transition-transform duration-200 group-open:rotate-180 text-gray-500 dark:text-gray-300" aria-hidden="true">
+            <i class="fas fa-chevron-down"></i>
+          </span>
+        </summary>
+        <div class="px-5 pb-4 pt-0 border-t border-gray-100 dark:border-gray-700">
+          <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+            {% trans "Major hotels, lodges and some tour operators accept international credit cards (Visa/Mastercard). In remote areas and local markets cash (Tanzanian shillings or USD) is preferred. Notify your bank before travel to avoid card blocks." %}
+          </p>
+        </div>
+      </details>
+
+      <details class="group bg-white dark:bg-gray-800 rounded-xl shadow-sm overflow-hidden">
+        <summary class="list-none px-5 py-4 flex items-center justify-between">
+          <span class="text-left text-gray-900 dark:text-gray-100">{% trans "What is your cancellation policy?" %}</span>
+          <span class="ml-4 transform transition-transform duration-200 group-open:rotate-180 text-gray-500 dark:text-gray-300" aria-hidden="true">
+            <i class="fas fa-chevron-down"></i>
+          </span>
+        </summary>
+        <div class="px-5 pb-4 pt-0 border-t border-gray-100 dark:border-gray-700">
+          <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+            {% trans "Cancellation terms vary by tour/package. Please check the specific booking confirmation or our terms page for details. If you need assistance, contact our support team and we'll do our best to help." %}
+          </p>
+        </div>
+      </details>
+
     </div>
   </div>
 </div>

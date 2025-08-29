@@ -3,116 +3,275 @@
 
 {% block title %}{% trans "Compare Tours" %} - {{ site_settings.site_name|default:"Safari & Bush Retreats" }}{% endblock %}
 
+{% block extra_css %}
+<!-- Preconnect for Google Fonts (base should still include the Google Fonts <link>) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- Font Awesome for icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+<style>
+/* Scoped typography and table styles for Compare Tours page only */
+.compare-typography {
+  font-family: 'Poppins', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --fs-base: clamp(0.95rem, 1.0vw, 1.02rem);
+  color: #1f2937;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Layout helpers (do not override site global layout, only small tweaks) */
+.compare-typography .container { max-width: 1100px; }
+
+/* Table responsive wrapper: horizontal scroll on small screens */
+.compare-table-wrap {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  background: transparent;
+  border-radius: 8px;
+}
+
+/* Table visual polish */
+.compare-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  min-width: 720px; /* forces horizontal scroll on small viewports */
+  font-size: var(--fs-base);
+}
+.compare-table thead th {
+  position: sticky;
+  top: 0;
+  background: #111827; /* dark header for contrast */
+  color: #fff;
+  z-index: 2;
+  padding: 0.75rem 0.9rem;
+  text-align: left;
+  font-weight: 600;
+  border-bottom: 2px solid rgba(255,255,255,0.06);
+}
+.compare-table thead th:first-child {
+  background: #0f1724; /* left header slightly darker for the Feature column */
+}
+
+.compare-table tbody td {
+  padding: 0.75rem 0.9rem;
+  vertical-align: middle;
+  border-bottom: 1px solid #e6e9ee;
+  text-align: center;
+  color: #273144;
+}
+
+/* First column (feature names) */
+.compare-table tbody td:first-child {
+  text-align: left;
+  font-weight: 600;
+  background: #fafafa;
+  color: #111827;
+  width: 220px;
+}
+
+/* Zebra rows for readability */
+.compare-table tbody tr:nth-child(even) td:first-child { background:#f7f7f9; }
+.compare-table tbody tr:nth-child(odd) td:first-child { background:#ffffff; }
+
+/* Image sizing */
+.compare-thumb {
+  width: 150px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 6px;
+  display: inline-block;
+  box-shadow: 0 6px 18px rgba(15,23,42,0.06);
+}
+
+/* Badges */
+.compare-badge {
+  display:inline-block;
+  padding:0.25rem 0.5rem;
+  border-radius: 999px;
+  font-size: 0.82rem;
+  background:#eef2ff;
+  color:#3730a3;
+  margin:0.15rem;
+}
+
+/* Star rating */
+.compare-star { color: #F59E0B; margin-right: 0.18rem; font-size: 0.95rem; }
+.compare-star.empty { color:#d1d5db; }
+
+/* Action button tweaks (non-invasive) */
+.compare-typography .btn {
+  display:inline-flex;
+  align-items:center;
+  gap:0.45rem;
+}
+.compare-typography .btn:focus-visible {
+  outline: 3px solid rgba(193,141,69,0.18);
+  outline-offset: 3px;
+}
+
+/* Fallback when no tours: center and icon */
+.compare-empty {
+  text-align:center;
+  padding:3.5rem 1rem;
+  color:#6b7280;
+}
+
+/* Make header responsive: on very small screens reduce padding & font-size */
+@media (max-width: 640px) {
+  .compare-table thead th, .compare-table tbody td { padding: 0.5rem 0.6rem; }
+  .compare-table { min-width: 620px; }
+  .compare-thumb { width:120px; height:80px; }
+}
+
+/* High-contrast / dark mode friendly tweaks (works if site uses .dark on html) */
+html.dark .compare-table thead th { background: #0b1220; color: #e6eef8; border-bottom-color: rgba(255,255,255,0.04); }
+html.dark .compare-table tbody td { border-bottom-color: rgba(255,255,255,0.03); color: #cbd5e1; }
+html.dark .compare-table tbody td:first-child { background: #071026; color: #e6eef8; }
+
+/* Small helper for stacks of parks (vertical spacing) */
+.compare-parks { display:block; margin-bottom:0.25rem; }
+
+</style>
+{% endblock %}
+
 {% block content %}
-<div class="container py-5">
-    <div class="row">
-        <div class="col-12">
-            <h1 class="mb-4">{% trans "Compare Safari Tours" %}</h1>
-            
-            {% if tours %}
-                <div class="table-responsive">
-                    <table class="table table-bordered">
-                        <thead class="table-dark">
-                            <tr>
-                                <th>{% trans "Feature" %}</th>
-                                {% for tour in tours %}
-                                    <th class="text-center">{{ tour.title|truncatechars:20 }}</th>
-                                {% endfor %}
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><strong>{% trans "Image" %}</strong></td>
-                                {% for tour in tours %}
-                                    <td class="text-center">
-                                        <img src="{% if tour.main_image %}{{ tour.main_image.url }}{% else %}https://images.pexels.com/photos/1170986/pexels-photo-1170986.jpeg{% endif %}" 
-                                             class="img-fluid rounded" style="height: 100px; width: 150px; object-fit: cover;" alt="{{ tour.title }}">
-                                    </td>
-                                {% endfor %}
-                            </tr>
-                            <tr>
-                                <td><strong>{% trans "Duration" %}</strong></td>
-                                {% for tour in tours %}
-                                    <td class="text-center">{{ tour.get_duration_display }}</td>
-                                {% endfor %}
-                            </tr>
-                            <tr>
-                                <td><strong>{% trans "Difficulty" %}</strong></td>
-                                {% for tour in tours %}
-                                    <td class="text-center">
-                                        <span class="badge bg-secondary">{{ tour.get_difficulty_level_display }}</span>
-                                    </td>
-                                {% endfor %}
-                            </tr>
-                            <tr>
-                                <td><strong>{% trans "Group Size" %}</strong></td>
-                                {% for tour in tours %}
-                                    <td class="text-center">{{ tour.min_participants }}-{{ tour.max_participants }} {% trans "people" %}</td>
-                                {% endfor %}
-                            </tr>
-                            <tr>
-                                <td><strong>{% trans "Category" %}</strong></td>
-                                {% for tour in tours %}
-                                    <td class="text-center">{{ tour.get_category_display }}</td>
-                                {% endfor %}
-                            </tr>
-                            <tr>
-                                <td><strong>{% trans "Accommodation" %}</strong></td>
-                                {% for tour in tours %}
-                                    <td class="text-center">{{ tour.get_accommodation_type_display }}</td>
-                                {% endfor %}
-                            </tr>
-                            <tr>
-                                <td><strong>{% trans "Rating" %}</strong></td>
-                                {% for tour in tours %}
-                                    <td class="text-center">
-                                        <div class="star-rating">
-                                            {% for i in "12345" %}
-                                                {% if forloop.counter <= tour.average_rating %}
-                                                    <i class="fas fa-star"></i>
-                                                {% else %}
-                                                    <i class="far fa-star"></i>
-                                                {% endif %}
-                                            {% endfor %}
-                                        </div>
-                                        <small>({{ tour.total_reviews }})</small>
-                                    </td>
-                                {% endfor %}
-                            </tr>
-                            <tr>
-                                <td><strong>{% trans "Parks Visited" %}</strong></td>
-                                {% for tour in tours %}
-                                    <td class="text-center">
-                                        {% for park in tour.parks_visited.all %}
-                                            <span class="badge bg-light text-dark mb-1">{{ park.name }}</span><br>
-                                        {% endfor %}
-                                    </td>
-                                {% endfor %}
-                            </tr>
-                            <tr>
-                                <td><strong>{% trans "Action" %}</strong></td>
-                                {% for tour in tours %}
-                                    <td class="text-center">
-                                        <a href="{% url 'tours:tour_detail' tour.slug %}" class="btn btn-primary btn-sm">
-                                            {% trans "View Details" %}
-                                        </a>
-                                    </td>
-                                {% endfor %}
-                            </tr>
-                        </tbody>
-                    </table>
+<div class="compare-typography">
+  <div class="container py-5">
+      <div class="row">
+          <div class="col-12">
+              <h1 class="mb-4">{% trans "Compare Safari Tours" %}</h1>
+
+              {% if tours %}
+                <div class="compare-table-wrap" role="region" aria-label="{% trans "Comparison table" %}">
+                  <table class="compare-table" role="table" aria-describedby="compare-desc">
+                      <caption id="compare-desc" class="visually-hidden">{% trans "Feature-by-feature comparison of selected safari tours" %}</caption>
+                      <thead>
+                          <tr>
+                              <th scope="col">{% trans "Feature" %}</th>
+                              {% for tour in tours %}
+                                  <th scope="col">{{ tour.title|truncatechars:20 }}</th>
+                              {% endfor %}
+                          </tr>
+                      </thead>
+
+                      <tbody>
+                          <tr>
+                              <td><strong>{% trans "Image" %}</strong></td>
+                              {% for tour in tours %}
+                                  <td>
+                                      <img src="{% if tour.main_image %}{{ tour.main_image.url }}{% else %}https://images.pexels.com/photos/1170986/pexels-photo-1170986.jpeg{% endif %}" 
+                                           class="compare-thumb" alt="{{ tour.title }}">
+                                  </td>
+                              {% endfor %}
+                          </tr>
+
+                          <tr>
+                              <td><strong>{% trans "Duration" %}</strong></td>
+                              {% for tour in tours %}
+                                  <td>{{ tour.get_duration_display }}</td>
+                              {% endfor %}
+                          </tr>
+
+                          <tr>
+                              <td><strong>{% trans "Difficulty" %}</strong></td>
+                              {% for tour in tours %}
+                                  <td>
+                                      <span class="compare-badge">{{ tour.get_difficulty_level_display }}</span>
+                                  </td>
+                              {% endfor %}
+                          </tr>
+
+                          <tr>
+                              <td><strong>{% trans "Group Size" %}</strong></td>
+                              {% for tour in tours %}
+                                  <td>
+                                    {% if tour.max_participants %}
+                                      {{ tour.min_participants }}–{{ tour.max_participants }} {% trans "people" %}
+                                    {% else %}
+                                      {{ tour.min_participants }}+ {% trans "people" %}
+                                    {% endif %}
+                                  </td>
+                              {% endfor %}
+                          </tr>
+
+                          <tr>
+                              <td><strong>{% trans "Category" %}</strong></td>
+                              {% for tour in tours %}
+                                  <td>{{ tour.get_category_display }}</td>
+                              {% endfor %}
+                          </tr>
+
+                          <tr>
+                              <td><strong>{% trans "Accommodation" %}</strong></td>
+                              {% for tour in tours %}
+                                  <td>{{ tour.get_accommodation_type_display }}</td>
+                              {% endfor %}
+                          </tr>
+
+                          <tr>
+                              <td><strong>{% trans "Rating" %}</strong></td>
+                              {% for tour in tours %}
+                                  <td>
+                                      <div aria-hidden="true">
+                                          {% for i in "12345" %}
+                                              {% if forloop.counter <= tour.average_rating|floatformat:0 %}
+                                                  <i class="fas fa-star compare-star" aria-hidden="true"></i>
+                                              {% else %}
+                                                  <i class="far fa-star compare-star empty" aria-hidden="true"></i>
+                                              {% endif %}
+                                          {% endfor %}
+                                      </div>
+                                      <small>({{ tour.total_reviews }})</small>
+                                  </td>
+                              {% endfor %}
+                          </tr>
+
+                          <tr>
+                              <td><strong>{% trans "Parks Visited" %}</strong></td>
+                              {% for tour in tours %}
+                                  <td>
+                                      {% for park in tour.parks_visited.all %}
+                                          <span class="compare-parks" aria-label="{% trans "Park" %} {{ park.name }}">
+                                            <span class="compare-badge">{{ park.name }}</span>
+                                          </span>
+                                      {% empty %}
+                                        <span class="text-muted">{% trans "None listed" %}</span>
+                                      {% endfor %}
+                                  </td>
+                              {% endfor %}
+                          </tr>
+
+                          <tr>
+                              <td><strong>{% trans "Action" %}</strong></td>
+                              {% for tour in tours %}
+                                  <td>
+                                      <a href="{% url 'tours:tour_detail' tour.slug %}" class="btn btn-primary btn-sm" role="button" aria-label="{% trans "View details for" %} {{ tour.title }}">
+                                          <i class="fas fa-eye" aria-hidden="true"></i> {% trans "View Details" %}
+                                      </a>
+                                  </td>
+                              {% endfor %}
+                          </tr>
+                      </tbody>
+                  </table>
                 </div>
-            {% else %}
-                <div class="text-center py-5">
-                    <i class="fas fa-balance-scale fa-4x text-muted mb-4"></i>
+
+              {% else %}
+                <div class="compare-empty">
+                    <i class="fas fa-balance-scale fa-4x" aria-hidden="true" style="color:#9CA3AF; margin-bottom:1rem;"></i>
                     <h3>{% trans "No tours to compare" %}</h3>
                     <p class="text-muted">{% trans "Select tours from the tour list to compare them here" %}</p>
-                    <a href="{% url 'tours:tour_list' %}" class="btn btn-primary">
-                        {% trans "Browse Tours" %}
+                    <a href="{% url 'tours:tour_list' %}" class="btn btn-primary" role="button">
+                        <i class="fas fa-route" aria-hidden="true"></i> {% trans "Browse Tours" %}
                     </a>
                 </div>
-            {% endif %}
-        </div>
-    </div>
+              {% endif %}
+          </div>
+      </div>
+  </div>
 </div>
 {% endblock %}

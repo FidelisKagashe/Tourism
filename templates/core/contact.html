@@ -4,9 +4,87 @@
 {% load static %}
 {% block title %}{% trans "Contact Us" %} - Safari&nbsp;&amp;&nbsp;Bush Retreats{% endblock %}
 
+{% block extra_css %}
+<style>
+/* Font-scale / typographic tokens — KEEP IN SYNC with site-wide templates (Home/Parks) */
+/* Only changes font-family, sizes and line-heights to match the existing site scale. */
+/* Do not change colours, layout or spacing here — fonts only. */
+
+:root{
+  --fs-xxl: clamp(1.6rem, 4.0vw, 3.2rem);
+  --fs-xl:  clamp(1.25rem, 2.6vw, 2.25rem);
+  --fs-lg:  clamp(1.05rem, 1.9vw, 1.5rem);
+  --fs-base:clamp(0.95rem, 1.0vw, 1.06rem);
+  --fs-sm:  clamp(0.82rem, 0.8vw, 0.95rem);
+  --fs-xs:  clamp(0.72rem, 0.7vw, 0.82rem);
+  --lh-tight: 1.08;
+  --lh-heading: 1.15;
+  --lh-base: 1.42;
+  --lh-small: 1.3;
+}
+
+/* Base font family + global sizes (font-only adjustments) */
+html { font-size: 16px; }
+body {
+  font-family: 'Poppins', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  font-size: var(--fs-base) !important;
+  line-height: var(--lh-base) !important;
+}
+
+/* Headings (respect site-wide scale) */
+h1 { font-size: var(--fs-xxl) !important; line-height: var(--lh-tight) !important; font-weight: 600 !important; }
+h2 { font-size: var(--fs-xl) !important; line-height: var(--lh-heading) !important; font-weight: 600 !important; }
+h3 { font-size: var(--fs-lg) !important; line-height: var(--lh-heading) !important; font-weight: 600 !important; }
+h4 { font-size: calc(var(--fs-lg) - 0.06rem) !important; line-height: var(--lh-heading) !important; }
+h5, h6 { font-size: var(--fs-sm) !important; line-height: var(--lh-small) !important; }
+
+/* Paragraphs and small text */
+p, .text-base, .prose, .article-body { font-size: var(--fs-base) !important; line-height: var(--lh-base) !important; }
+small, .text-muted, .meta { font-size: var(--fs-sm) !important; line-height: var(--lh-small) !important; }
+
+/* Buttons, inputs and controls should follow the small size token */
+button, .btn, .inline-flex, input, textarea, select { font-size: var(--fs-sm) !important; line-height: 1.2 !important; }
+
+/* Stronger hero heading behavior (keeps hero titles consistent with other pages) */
+.hero h1, .hero-content h1, .hero .text-4xl, .hero .text-5xl {
+  font-size: clamp(1.6rem, 4.4vw, 3.6rem) !important;
+  line-height: 1.02 !important;
+}
+
+/* Desktop tweaks: slightly larger headings on wide screens */
+@media (min-width: 1024px) {
+  :root{
+    --fs-xxl: clamp(2.25rem, 2.6vw, 3.5rem);
+    --fs-xl:  clamp(1.5rem, 1.8vw, 2.25rem);
+    --fs-lg:  clamp(1.125rem, 1.4vw, 1.5rem);
+    --fs-base:clamp(1.0rem, 1.0vw, 1.125rem);
+    --fs-sm:  clamp(0.88rem, 0.8vw, 0.98rem);
+  }
+  h1 { font-size: var(--fs-xxl) !important; }
+  h2 { font-size: var(--fs-xl) !important; }
+  h3 { font-size: var(--fs-lg) !important; }
+  .hero h1, .hero-content h1, .hero .text-5xl { font-size: clamp(2.2rem, 3.0vw, 3.8rem) !important; line-height: 1.02 !important; }
+}
+
+/* Mobile reductions to keep layout compact */
+@media (max-width: 420px){
+  :root{
+    --fs-xxl: clamp(1.25rem, 6.2vw, 1.8rem);
+    --fs-xl:  clamp(1.0rem, 4.2vw, 1.25rem);
+    --fs-lg:  clamp(0.95rem, 2.8vw, 1.125rem);
+    --fs-base:clamp(0.88rem, 2.2vw, 0.98rem);
+    --fs-sm:  clamp(0.68rem, 1.8vw, 0.82rem);
+  }
+  body, p, a, li { letter-spacing: -0.01em !important; }
+}
+
+/* Ensure any page-local dark-mode color work stays unchanged; we're only adjusting fonts here */
+</style>
+{% endblock %}
+
 {% block content %}
 <!-- Hero Section -->
-<section class="relative bg-cover bg-center" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.pexels.com/photos/1170986/pexels-photo-1170986.jpeg'); min-height: 50vh;">
+<section class="relative bg-cover bg-center hero" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.pexels.com/photos/1170986/pexels-photo-1170986.jpeg'); min-height: 50vh;">
     <div class="container mx-auto px-4 flex items-center h-full">
         <div class="max-w-3xl py-12">
             <h1 class="text-4xl md:text-5xl font-bold text-white mb-4">{% trans "Contact Us" %}</h1>
@@ -102,11 +180,7 @@
                                     aria-label="WhatsApp"
                                     class="flex items-center space-x-3 group">
                                     <div class="w-10 h-10 rounded-full bg-[#25D366] flex items-center justify-center group-hover:scale-105 transition-transform">
-                                        <!-- remote SVG (example) -->
-                                        <img src="{% static 'images/WhatsApp.svg' %}"
-                                            alt="WhatsApp"
-                                            class="w-8 h-8 block"
-                                            aria-hidden="true" />
+                                        <img src="{% static 'images/WhatsApp.svg' %}" alt="WhatsApp" class="w-8 h-8 block" aria-hidden="true" />
                                     </div>
                                     <span class="text-sm text-gray-600 dark:text-gray-300">
                                         {{ site_settings.whatsapp_label|default:"+255 768 373 033 (WhatsApp)" }}
@@ -116,7 +190,6 @@
                                 <!-- LinkedIn -->
                                 <a href="https://www.linkedin.com/in/ally-shebe-b8269223a/?originalSubdomain=tz" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" class="flex items-center space-x-3 group">
                                     <div class="w-10 h-10 rounded-full bg-[#0077B5] flex items-center justify-center group-hover:scale-105 transition-transform">
-                                        <!-- LinkedIn SVG -->
                                         <svg class="w-5 h-5 text-white" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                                             <path d="M4.98 3.5C4.98 4.88 3.86 6 2.48 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.5 8h4v13h-4V8zM9 8h3.78v1.76h.05c.53-.9 1.82-1.85 3.75-1.85C20.9 7.91 22 9.78 22 12.62V21h-4v-7.08c0-1.69-.03-3.86-2.35-3.86-2.35 0-2.71 1.84-2.71 3.73V21H9V8z" fill="white"/>
                                         </svg>
@@ -130,13 +203,7 @@
                                     aria-label="X (formerly Twitter)"
                                     class="flex items-center space-x-3 group">
                                     <div class="w-10 h-10 rounded-full bg-gray-300 flex items-center justify-center group-hover:scale-105 transition-transform">
-                                        <!-- use Wikimedia-hosted SVG -->
-                                        <img
-                                        src="{% static 'images/X_logo_2023_original.svg'%}"
-                                        alt="X logo"
-                                        class="w-5 h-5"
-                                        aria-hidden="true"
-                                        />
+                                        <img src="{% static 'images/X_logo_2023_original.svg'%}" alt="X logo" class="w-5 h-5" aria-hidden="true" />
                                     </div>
 
                                     <span class="text-sm text-gray-600 dark:text-gray-300">X (Twitter)</span>

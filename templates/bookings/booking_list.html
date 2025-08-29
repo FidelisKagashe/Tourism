@@ -1,16 +1,75 @@
 {% extends 'base/base.html' %}
 {% load i18n %}
 
-{% block title %}{% trans "My Bookings" %} - Safari&nbsp;&amp;&nbsp;Bush Retreats{% endblock %}
+{% block title %}{% trans "My Bookings" %} - {{ site_settings.site_name|default:"Safari & Bush Retreats" }}{% endblock %}
+
+{% block extra_css %}
+<style>
+/* Typography scale copied from other templates — affects only font-size & line-height for consistent headings */
+:root{
+  --fs-xxl: clamp(1.6rem, 4.0vw, 3.2rem);
+  --fs-xl:  clamp(1.25rem, 2.6vw, 2.25rem);
+  --fs-lg:  clamp(1.05rem, 1.9vw, 1.5rem);
+  --fs-base:clamp(0.95rem, 1.0vw, 1.06rem);
+  --fs-sm:  clamp(0.82rem, 0.8vw, 0.95rem);
+  --lh-tight: 1.08;
+  --lh-heading: 1.15;
+  --lh-base: 1.42;
+}
+html { font-size: 16px; }
+body { font-family: 'Poppins', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; font-size: var(--fs-base) !important; line-height: var(--lh-base) !important; }
+h1 { font-size: var(--fs-xxl) !important; line-height: var(--lh-tight) !important; font-weight: 600 !important; }
+h2 { font-size: var(--fs-xl) !important; line-height: var(--lh-heading) !important; font-weight: 600 !important; }
+h3 { font-size: var(--fs-lg) !important; line-height: var(--lh-heading) !important; font-weight: 600 !important; }
+p, .text-base { font-size: var(--fs-base) !important; line-height: var(--lh-base) !important; }
+small, .text-muted { font-size: var(--fs-sm) !important; }
+
+/* Desktop scaling for stronger headings */
+@media (min-width: 1024px) {
+  :root{
+    --fs-xxl: clamp(2.25rem, 2.6vw, 3.5rem);
+    --fs-xl:  clamp(1.5rem, 1.8vw, 2.25rem);
+    --fs-lg:  clamp(1.125rem, 1.4vw, 1.5rem);
+    --fs-base:clamp(1.0rem, 1.0vw, 1.125rem);
+    --fs-sm:  clamp(0.88rem, 0.8vw, 0.98rem);
+  }
+  h1 { font-size: var(--fs-xxl) !important; }
+  h2 { font-size: var(--fs-xl) !important; }
+  h3 { font-size: var(--fs-lg) !important; }
+}
+
+/* Specific: target the bookings page header which used Tailwind classes (text-3xl). 
+   This selector is intentionally specific and uses !important so it overrides utility classes. */
+.container .bookings-page-title, .container h1.bookings-page-title, .page-bookings .bookings-page-title {
+  font-size: clamp(1.6rem, 3.2vw, 2.6rem) !important;
+  line-height: 1.06 !important;
+  font-weight: 700 !important;
+}
+@media (min-width: 1024px) {
+  .container .bookings-page-title, .page-bookings .bookings-page-title {
+    font-size: clamp(1.9rem, 2.4vw, 3.1rem) !important;
+    line-height: 1.04 !important;
+  }
+}
+
+/* Also slightly increase the subtitle under the heading */
+.container .bookings-subtitle { font-size: clamp(0.95rem, 1.1vw, 1.12rem) !important; color: #6b7280 !important; }
+
+/* Make sure card titles remain compact */
+.booking-card h6, .card h6 { font-size: var(--fs-lg) !important; }
+
+</style>
+{% endblock %}
 
 {% block content %}
-<div class="container mx-auto px-4 py-5">
+<div class="container mx-auto px-4 py-5 page-bookings">
   <div class="flex flex-col">
     <div class="w-full">
       <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-4">
         <div class="mb-4 md:mb-0">
-          <h1 class="text-3xl font-bold text-gray-800 dark:text-gray-100">{% trans "My Bookings" %}</h1>
-          <p class="text-gray-500 dark:text-gray-300 mt-1">{% trans "Manage your safari bookings" %}</p>
+          <!-- added bookings-page-title class -->
+          <h1 class="text-3xl font-bold text-gray-800 dark:text-gray-100 bookings-page-title">{% trans "My Bookings" %}</h1>
+          <p class="text-gray-500 dark:text-gray-300 mt-1 bookings-subtitle">{% trans "Manage your safari bookings" %}</p>
         </div>
 
         <div>
@@ -26,7 +85,7 @@
   {% if bookings %}
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
       {% for booking in bookings %}
-        <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden border border-gray-200 dark:border-gray-700">
+        <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden border border-gray-200 dark:border-gray-700 booking-card">
           <div class="flex justify-between items-center p-4 border-b border-gray-200 dark:border-gray-700">
             <h6 class="font-semibold text-gray-700 dark:text-gray-100">{{ booking.booking_reference }}</h6>
             <span class="px-3 py-1 rounded-full text-xs font-semibold

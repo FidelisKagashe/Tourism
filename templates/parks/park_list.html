@@ -2,9 +2,102 @@
 {% load i18n query_transform %}
 {% block title %}{% trans "National Parks" %}{% endblock %}
 
+{% block extra_css %}
+<style>
+/* ---------- Instagram-style global typography (font-size only) ----------
+   Matches the Home Template Font Adjusted settings. Only changes font-size & line-height.
+*/
+:root{
+  --fs-xxl: clamp(1.6rem, 4.0vw, 3.2rem);
+  --fs-xl:  clamp(1.25rem, 2.6vw, 2.25rem);
+  --fs-lg:  clamp(1.05rem, 1.9vw, 1.5rem);
+  --fs-base:clamp(0.95rem, 1.0vw, 1.06rem);
+  --fs-sm:  clamp(0.82rem, 0.8vw, 0.95rem);
+  --fs-xs:  clamp(0.72rem, 0.7vw, 0.82rem);
+  --lh-tight: 1.08;
+  --lh-heading: 1.15;
+  --lh-base: 1.42;
+  --lh-small: 1.3;
+}
+html { font-size: 16px; }
+body { font-family: 'Poppins', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; font-size: var(--fs-base) !important; line-height: var(--lh-base) !important; }
+h1 { font-size: var(--fs-xxl) !important; line-height: var(--lh-tight) !important; font-weight: 600 !important; }
+h2 { font-size: var(--fs-xl) !important; line-height: var(--lh-heading) !important; font-weight: 600 !important; }
+h3 { font-size: var(--fs-lg) !important; line-height: var(--lh-heading) !important; font-weight: 600 !important; }
+h4 { font-size: calc(var(--fs-lg) - 0.06rem) !important; line-height: var(--lh-heading) !important; }
+h5 { font-size: var(--fs-sm) !important; line-height: var(--lh-small) !important; }
+h6 { font-size: var(--fs-sm) !important; line-height: var(--lh-small) !important; }
+p, .text-base, .prose, .article-body { font-size: var(--fs-base) !important; line-height: var(--lh-base) !important; }
+small, .text-muted, .text-gray-500, .meta { font-size: var(--fs-sm) !important; line-height: var(--lh-small) !important; }
+button, .btn, .inline-flex, input[type="email"], .dest-seemore { font-size: var(--fs-sm) !important; line-height: 1.2 !important; }
+
+/* Section headings (Hero + section h1/h2) - stronger on desktop */
+.hero h1, .hero-content h1, .hero .text-4xl, .hero .text-5xl { font-size: clamp(1.6rem, 4.4vw, 3.6rem) !important; line-height: 1.02 !important; }
+.container > .text-center h2,
+.container h2,
+section.py-8 h2,
+section.py-12 h2 {
+  font-size: clamp(1.5rem, 1.9vw, 2.2rem) !important;
+  line-height: 1.12 !important;
+  font-weight: 700 !important;
+}
+
+@media (max-width: 420px){
+  :root{
+    --fs-xxl: clamp(1.25rem, 6.2vw, 1.8rem);
+    --fs-xl:  clamp(1.0rem, 4.2vw, 1.25rem);
+    --fs-lg:  clamp(0.95rem, 2.8vw, 1.125rem);
+    --fs-base:clamp(0.88rem, 2.2vw, 0.98rem);
+    --fs-sm:  clamp(0.68rem, 1.8vw, 0.82rem);
+    --fs-xs:  clamp(0.62rem, 1.6vw, 0.72rem);
+  }
+  body, p, a, li { letter-spacing: -0.01em !important; }
+}
+
+/* Desktop-specific scale: increase heading sizes for larger screens (desktop) */
+@media (min-width: 1024px) {
+  :root{
+    --fs-xxl: clamp(2.25rem, 2.6vw, 3.5rem);
+    --fs-xl:  clamp(1.5rem, 1.8vw, 2.25rem);
+    --fs-lg:  clamp(1.125rem, 1.4vw, 1.5rem);
+    --fs-base:clamp(1.0rem, 1.0vw, 1.125rem);
+    --fs-sm:  clamp(0.88rem, 0.8vw, 0.98rem);
+  }
+
+  /* stronger hero heading on desktop */
+  .hero h1, .hero-content h1, .hero .text-5xl {
+    font-size: clamp(2.2rem, 3.0vw, 3.8rem) !important;
+    line-height: 1.02 !important;
+  }
+
+  /* global headings tweak for desktop */
+  h1 { font-size: var(--fs-xxl) !important; }
+  h2 { font-size: var(--fs-xl) !important; }
+  h3 { font-size: var(--fs-lg) !important; }
+
+  .container > .text-center h2,
+  .container h2,
+  section.py-8 h2,
+  section.py-12 h2 {
+    font-size: clamp(1.9rem, 1.6vw, 2.6rem) !important;
+    line-height: 1.08 !important;
+  }
+}
+
+/* make card titles (park list cards) slightly larger on desktop */
+@media (min-width: 1024px) {
+  .p-6 h5, .card-title, .park-card h5 { font-size: 1.15rem !important; }
+}
+
+/* small tweaks to ensure buttons/labels remain legible */
+.btn, .focus-ring, .inline-flex { font-size: var(--fs-sm) !important; }
+
+</style>
+{% endblock %}
+
 {% block content %}
 <!-- Hero -->
-<section class="relative bg-cover bg-center" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.pexels.com/photos/631317/pexels-photo-631317.jpeg'); min-height: 40vh;">
+<section class="relative bg-cover bg-center hero" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.pexels.com/photos/631317/pexels-photo-631317.jpeg'); min-height: 40vh;">
   <div class="container mx-auto px-4 py-20">
     <h1 class="text-4xl md:text-5xl font-bold text-white">{% trans "Tanzania National Parks" %}</h1>
     <p class="text-lg text-white opacity-90 mt-3">{% trans "Discover the incredible biodiversity of Tanzania's protected areas" %}</p>
@@ -70,7 +163,7 @@
     {% if page_obj and page_obj.object_list %}
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {% for park in page_obj %}
-          <div class="bg-white dark:bg-gray-700 rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 flex flex-col h-full">
+          <div class="bg-white dark:bg-gray-700 rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 flex flex-col h-full park-card">
             <div class="relative">
               <img src="{{ park.get_main_image_url }}" alt="{{ park.name }}" class="w-full h-64 object-cover">
               <div class="absolute top-3 right-3">

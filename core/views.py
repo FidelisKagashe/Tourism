@@ -3,7 +3,7 @@ from django.contrib import messages
 from django.db.models import Q, Count, Avg
 from django.core.paginator import Paginator
 from django.http import JsonResponse
-from parks.models import NationalPark
+from parks.models import NationalPark, Destination
 from tours.models import TourPackage
 from reviews.models import Review
 from .models import ContactMessage, Newsletter, HistoricalSite
@@ -20,6 +20,11 @@ def home(request):
         is_active=True, is_featured=True
     ).select_related().order_by('?')[:6]
     
+    # NEW: featured destinations for the homepage marquee
+    featured_destinations = Destination.objects.filter(
+        is_active=True
+    ).select_related('park').order_by('?')[:12]
+
     # Recent reviews
     recent_reviews = Review.objects.filter(
         is_approved=True
@@ -38,6 +43,7 @@ def home(request):
     context = {
         'featured_parks': featured_parks,
         'featured_tours': featured_tours,
+        'featured_destinations': featured_destinations,
         'recent_reviews': recent_reviews,
         'stats': stats,
     }

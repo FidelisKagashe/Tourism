@@ -3,6 +3,47 @@
 
 {% block title %}{% trans "My Bookings" %} - {{ site_settings.site_name|default:"Safari & Bush Retreats" }}{% endblock %}
 
+{% block extra_css %}
+<style>
+/* Typography overrides to match other pages (font-size & line-height only) */
+:root{
+  --fs-xxl: clamp(1.6rem, 4.0vw, 3.2rem);
+  --fs-xl:  clamp(1.25rem, 2.6vw, 2.25rem);
+  --fs-lg:  clamp(1.05rem, 1.9vw, 1.5rem);
+  --fs-base:clamp(0.95rem, 1.0vw, 1.06rem);
+  --fs-sm:  clamp(0.82rem, 0.8vw, 0.95rem);
+  --lh-tight: 1.08;
+  --lh-heading: 1.15;
+  --lh-base: 1.42;
+}
+html { font-size: 16px; }
+body { font-family: 'Poppins', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; font-size: var(--fs-base) !important; line-height: var(--lh-base) !important; }
+h1 { font-size: var(--fs-xxl) !important; line-height: var(--lh-tight) !important; font-weight: 600 !important; }
+h2 { font-size: var(--fs-xl) !important; line-height: var(--lh-heading) !important; font-weight: 600 !important; }
+h3 { font-size: var(--fs-lg) !important; line-height: var(--lh-heading) !important; font-weight: 600 !important; }
+p, .text-muted, small { font-size: var(--fs-base) !important; line-height: var(--lh-base) !important; }
+.btn, .badge, .card h6, .card-title { font-size: var(--fs-sm) !important; }
+
+/* Section heading emphasis (desktop) */
+@media (min-width: 1024px) {
+  :root{ --fs-xxl: clamp(2.25rem, 2.6vw, 3.5rem); --fs-xl: clamp(1.5rem, 1.8vw, 2.25rem); --fs-lg: clamp(1.125rem, 1.4vw, 1.5rem); }
+  h1 { font-size: var(--fs-xxl) !important; }
+  h2 { font-size: var(--fs-xl) !important; }
+}
+
+/* Small-screen tuning */
+@media (max-width: 420px){
+  :root{ --fs-base:clamp(0.88rem, 2.2vw, 0.98rem); --fs-sm: clamp(0.68rem, 1.8vw, 0.82rem); }
+  body, p, a, li { letter-spacing: -0.01em !important; }
+}
+
+/* Ensure card titles and badges remain legible */
+.card h6 { font-size: var(--fs-lg) !important; }
+.badge { font-weight: 700; }
+
+</style>
+{% endblock %}
+
 {% block content %}
 <div class="container py-5">
     <div class="row">

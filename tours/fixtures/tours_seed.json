@@ -1,5 +1,4 @@
 [
-
   {
     "model": "tours.tourguide",
     "pk": 1,
@@ -8,15 +7,25 @@
       "license_number": "TG-ZA-001",
       "certification_level": "master",
       "years_of_experience": 12,
-      "languages": ["en", "sw", "fr"],
+      "languages": [
+        "en",
+        "sw",
+        "fr"
+      ],
       "specializations": "Big Five safaris, photographic guiding, cultural tours",
-      "parks_covered": [1,2,3,4,5],
+      "parks_covered": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
       "bio": "Master guide with over a decade guiding in northern Tanzania. Passionate about wildlife photography and natural history interpretation.",
       "qualifications": "National Guide Certificate, Wilderness First Aid",
       "certifications": "Advanced guiding, conservation training",
       "phone_number": "+255 712 000001",
       "emergency_contact": "+255 78 000 0011",
-      "profile_photo": "guides/profiles/guide1.jpg",
+      "profile_photo": "https://randomuser.me/api/portraits/men/32.jpg",
       "average_rating": "4.95",
       "total_reviews": 234,
       "is_available": true,
@@ -34,15 +43,23 @@
       "license_number": "TG-ZA-002",
       "certification_level": "specialist",
       "years_of_experience": 7,
-      "languages": ["en", "sw", "de"],
+      "languages": [
+        "en",
+        "sw",
+        "de"
+      ],
       "specializations": "Birding, primate tracking, botany",
-      "parks_covered": [11,12,21],
+      "parks_covered": [
+        11,
+        12,
+        21
+      ],
       "bio": "Specialist guide focusing on birds and primates. Excellent at spotting and identifying cryptic species.",
       "qualifications": "Bird identification diploma, primate tracking course",
       "certifications": "Bird guiding certification",
       "phone_number": "+255 712 000002",
       "emergency_contact": "+255 78 000 0022",
-      "profile_photo": "guides/profiles/guide2.jpg",
+      "profile_photo": "https://randomuser.me/api/portraits/women/44.jpg",
       "average_rating": "4.78",
       "total_reviews": 87,
       "is_available": true,
@@ -60,15 +77,23 @@
       "license_number": "TG-ZA-003",
       "certification_level": "advanced",
       "years_of_experience": 4,
-      "languages": ["en", "sw", "es"],
+      "languages": [
+        "en",
+        "sw",
+        "es"
+      ],
       "specializations": "Kilimanjaro trekking, cultural experiences",
-      "parks_covered": [6,5,22],
+      "parks_covered": [
+        6,
+        5,
+        22
+      ],
       "bio": "Experienced trekking guide and cultural interpreter, focused on safe mountain ascents and community-led experiences.",
       "qualifications": "Mountain leader certificate, first aid",
       "certifications": "Kilimanjaro route leader",
       "phone_number": "+255 712 000003",
       "emergency_contact": "+255 78 000 0033",
-      "profile_photo": "guides/profiles/guide3.jpg",
+      "profile_photo": "https://randomuser.me/api/portraits/men/65.jpg",
       "average_rating": "4.60",
       "total_reviews": 45,
       "is_available": true,
@@ -78,7 +103,41 @@
       "updated_at": "2025-08-17T10:00:00Z"
     }
   },
-
+  {
+    "model": "tours.tourguide",
+    "pk": 4,
+    "fields": {
+      "user": 4,
+      "license_number": "TG-ZA-004",
+      "certification_level": "specialist",
+      "years_of_experience": 6,
+      "languages": [
+        "en",
+        "sw",
+        "de"
+      ],
+      "specializations": "Cultural tours, coastal wildlife",
+      "parks_covered": [
+        4,
+        5,
+        17,
+        22
+      ],
+      "bio": "Coastal and cultural specialist guiding tours in Zanzibar and northern Tanzania.",
+      "qualifications": "Cultural Tourism Certificate, First Aid",
+      "certifications": "Archaeology guiding, marine guiding",
+      "phone_number": "+255 712 000004",
+      "emergency_contact": "+255 78 000 0044",
+      "profile_photo": "https://randomuser.me/api/portraits/women/50.jpg",
+      "average_rating": "4.80",
+      "total_reviews": 50,
+      "is_available": true,
+      "max_group_size": 10,
+      "daily_rate_usd": "200.00",
+      "created_at": "2025-08-17T10:00:00Z",
+      "updated_at": "2025-08-17T10:00:00Z"
+    }
+  },
   {
     "model": "tours.tourpackage",
     "pk": 1,
@@ -96,21 +155,45 @@
       "max_age": 80,
       "description": "A classic northern circuit safari covering Serengeti, Ngorongoro Crater and Tarangire with game drives and cultural visits.",
       "short_description": "7-day classic northern safari visiting Serengeti, Ngorongoro and Tarangire.",
-      "highlights": ["Great Wildebeest Migration (seasonal)", "Ngorongoro Crater wildlife", "Tarangire elephants"],
+      "highlights": [
+        "Great Wildebeest Migration (seasonal)",
+        "Ngorongoro Crater wildlife",
+        "Tarangire elephants"
+      ],
       "detailed_itinerary": "Day 1: Arrival and transfer to Arusha. Day 2: Tarangire. Day 3–5: Serengeti. Day 6: Ngorongoro Crater. Day 7: Return to Arusha.",
-      "inclusions": ["Park fees", "Accommodation", "Meals as specified", "English-speaking guide", "Transport"],
-      "exclusions": ["International flights", "Visa fees", "Personal expenses", "Gratuities"],
-      "parks_visited": [1,3,2],
+      "inclusions": [
+        "Park fees",
+        "Accommodation",
+        "Meals as specified",
+        "English-speaking guide",
+        "Transport"
+      ],
+      "exclusions": [
+        "International flights",
+        "Visa fees",
+        "Personal expenses",
+        "Gratuities"
+      ],
+      "parks_visited": [
+        1,
+        3,
+        2
+      ],
       "accommodation_type": "lodge",
       "accommodation_details": "Mid-range lodges and tented camps inclusive of breakfast and dinner.",
       "transportation_details": "4x4 safari vehicle with pop-up roof; transfers included",
       "available_year_round": true,
-      "best_months": ["June", "July", "August", "September"],
+      "best_months": [
+        "June",
+        "July",
+        "August",
+        "September"
+      ],
       "fitness_requirements": "Light walking; suitable for most fitness levels.",
       "equipment_needed": "Binoculars, camera, sunhat",
       "vaccination_requirements": "Yellow fever if arriving from endemic country; up-to-date routine vaccines",
       "visa_requirements": "Tourist visa for Tanzania (check nationality requirements)",
-      "main_image": "tours/main/classic_northern_7.jpg",
+      "main_image": "https://images.pexels.com/photos/6808656/pexels-photo-6808656.jpeg",
       "meta_title": "Classic Northern Safari — 7 Days",
       "meta_description": "Serengeti, Ngorongoro and Tarangire 7-day safari — wildlife highlights and cultural experiences.",
       "is_active": true,
@@ -123,7 +206,6 @@
       "updated_at": "2025-08-17T10:00:00Z"
     }
   },
-
   {
     "model": "tours.tourpackage",
     "pk": 2,
@@ -141,21 +223,43 @@
       "max_age": 65,
       "description": "8-day guided ascent of Kilimanjaro via the scenic Machame route with acclimatization and support crew.",
       "short_description": "Machame route 8-day Kilimanjaro trek to Uhuru Peak.",
-      "highlights": ["Lemosho/Machame scenic sections", "Summit at sunrise", "Professional guides and support crew"],
+      "highlights": [
+        "Lemosho/Machame scenic sections",
+        "Summit at sunrise",
+        "Professional guides and support crew"
+      ],
       "detailed_itinerary": "Day-by-day trekking itinerary including acclimatization and summit push.",
-      "inclusions": ["Park & rescue fees", "Guide and crew", "All meals on trek", "Camping equipment"],
-      "exclusions": ["Tips for crew", "Personal clothing and equipment", "Travel to Moshi"],
-      "parks_visited": [6],
+      "inclusions": [
+        "Park & rescue fees",
+        "Guide and crew",
+        "All meals on trek",
+        "Camping equipment"
+      ],
+      "exclusions": [
+        "Tips for crew",
+        "Personal clothing and equipment",
+        "Travel to Moshi"
+      ],
+      "parks_visited": [
+        6
+      ],
       "accommodation_type": "camping",
       "accommodation_details": "Tented camping on the mountain with sleeping mats and dining tent",
       "transportation_details": "Airport transfers to Moshi and trailhead transfers included",
       "available_year_round": true,
-      "best_months": ["January", "February", "June", "July", "August", "September"],
+      "best_months": [
+        "January",
+        "February",
+        "June",
+        "July",
+        "August",
+        "September"
+      ],
       "fitness_requirements": "High — good fitness and recent trekking experience recommended.",
       "equipment_needed": "Warm layers, sleeping bag rated to -10°C, trekking boots",
       "vaccination_requirements": "Routine vaccines",
       "visa_requirements": "Tanzania tourist visa where applicable",
-      "main_image": "tours/main/kilimanjaro_8.jpg",
+      "main_image": "https://images.pexels.com/photos/213334/pexels-photo-213334.jpeg",
       "meta_title": "Kilimanjaro 8-Day Machame Trek",
       "meta_description": "Guided Machame route ascent of Kilimanjaro with experienced crew and acclimatization plan.",
       "is_active": true,
@@ -168,7 +272,6 @@
       "updated_at": "2025-08-17T10:00:00Z"
     }
   },
-
   {
     "model": "tours.tourpackage",
     "pk": 3,
@@ -186,21 +289,39 @@
       "max_age": 80,
       "description": "Short forest-based trip focusing on endemic primates and Sanje Waterfalls with guided forest walks.",
       "short_description": "3-day Udzungwa rainforest trip for primate enthusiasts and hikers.",
-      "highlights": ["Sanje Mangabey", "Udzungwa red colobus", "Sanje Waterfalls"],
+      "highlights": [
+        "Sanje Mangabey",
+        "Udzungwa red colobus",
+        "Sanje Waterfalls"
+      ],
       "detailed_itinerary": "Day 1: Transfer and short walk. Day 2: Full-day primate hike. Day 3: Return.",
-      "inclusions": ["Park fees", "Guided walks", "Meals and accommodation (basic lodge)"],
-      "exclusions": ["Transport to Iringa/starting point", "Personal gear"],
-      "parks_visited": [21],
+      "inclusions": [
+        "Park fees",
+        "Guided walks",
+        "Meals and accommodation (basic lodge)"
+      ],
+      "exclusions": [
+        "Transport to Iringa/starting point",
+        "Personal gear"
+      ],
+      "parks_visited": [
+        21
+      ],
       "accommodation_type": "lodge",
       "accommodation_details": "Basic lodge accommodation close to park entrance",
       "transportation_details": "4x4 transfers included from Iringa",
       "available_year_round": true,
-      "best_months": ["June", "July", "August", "September"],
+      "best_months": [
+        "June",
+        "July",
+        "August",
+        "September"
+      ],
       "fitness_requirements": "Moderate fitness for forest hikes and stairs to waterfall.",
       "equipment_needed": "Hiking shoes, rain jacket, insect repellent",
       "vaccination_requirements": "Routine vaccines",
       "visa_requirements": "Standard tourist visa",
-      "main_image": "tours/main/udzungwa_3.jpg",
+      "main_image": "https://images.pexels.com/photos/12392924405/pexels-photo-12392924405.jpeg",
       "meta_title": "Udzungwa Primate & Waterfalls — 3 Days",
       "meta_description": "3-day guided tour to see endemic primates and Sanje Waterfalls in Udzungwa Mountains NP.",
       "is_active": true,
@@ -213,7 +334,6 @@
       "updated_at": "2025-08-17T10:00:00Z"
     }
   },
-
   {
     "model": "tours.tourpackage",
     "pk": 4,
@@ -231,21 +351,40 @@
       "max_age": 80,
       "description": "Combine a short safari in Saadani National Park with beach time on the Indian Ocean coast.",
       "short_description": "4-day mix of coastal safari and beach time in Saadani NP.",
-      "highlights": ["Boat safaris", "Mangrove walks", "Beach relaxation"],
+      "highlights": [
+        "Boat safaris",
+        "Mangrove walks",
+        "Beach relaxation"
+      ],
       "detailed_itinerary": "Day 1: Transfer to Saadani. Day 2: Game drives and boat safari. Day 3: Beach day. Day 4: Return.",
-      "inclusions": ["Park fees", "Boat safari", "Accommodation and meals as specified"],
-      "exclusions": ["International flights", "Gratuities", "Alcoholic drinks"],
-      "parks_visited": [22],
+      "inclusions": [
+        "Park fees",
+        "Boat safari",
+        "Accommodation and meals as specified"
+      ],
+      "exclusions": [
+        "International flights",
+        "Gratuities",
+        "Alcoholic drinks"
+      ],
+      "parks_visited": [
+        22
+      ],
       "accommodation_type": "lodge",
       "accommodation_details": "Coastal lodges with beach access",
       "transportation_details": "Road transfers included",
       "available_year_round": true,
-      "best_months": ["June", "July", "August", "September"],
+      "best_months": [
+        "June",
+        "July",
+        "August",
+        "September"
+      ],
       "fitness_requirements": "Low — suitable for most travellers.",
       "equipment_needed": "Swimwear, sun protection, binoculars",
       "vaccination_requirements": "Routine vaccines",
       "visa_requirements": "Tourist visa where applicable",
-      "main_image": "tours/main/saadani_4.jpg",
+      "main_image": "https://images.pexels.com/photos/12382966/pexels-photo-12382966.jpeg",
       "meta_title": "Saadani Beach & Safari — 4 Days",
       "meta_description": "Short beach and safari combination in Saadani National Park and the Indian Ocean coast.",
       "is_active": true,
@@ -258,7 +397,6 @@
       "updated_at": "2025-08-17T10:00:00Z"
     }
   },
-
   {
     "model": "tours.tourpackage",
     "pk": 5,
@@ -276,21 +414,39 @@
       "max_age": 75,
       "description": "Remote river-based safari in Nyerere National Park (Selous) with boat safaris and walking options.",
       "short_description": "5-day Rufiji river safari with boat trips and remote camp stays.",
-      "highlights": ["Boat safaris", "Hippo and crocodile sightings", "Remote lodge experience"],
+      "highlights": [
+        "Boat safaris",
+        "Hippo and crocodile sightings",
+        "Remote lodge experience"
+      ],
       "detailed_itinerary": "Itinerary focused on river trips along the Rufiji, game drives and guided walks.",
-      "inclusions": ["Park and boat fees", "Accommodation and meals", "Transfers to airstrip where applicable"],
-      "exclusions": ["Charter flights to airstrip (if required)", "Tips"],
-      "parks_visited": [10],
+      "inclusions": [
+        "Park and boat fees",
+        "Accommodation and meals",
+        "Transfers to airstrip where applicable"
+      ],
+      "exclusions": [
+        "Charter flights to airstrip (if required)",
+        "Tips"
+      ],
+      "parks_visited": [
+        10
+      ],
       "accommodation_type": "lodge",
       "accommodation_details": "Riverine lodges and camps with boat access",
       "transportation_details": "Charter flights optional; road transfers included where applicable",
       "available_year_round": true,
-      "best_months": ["June", "July", "August", "September"],
+      "best_months": [
+        "June",
+        "July",
+        "August",
+        "September"
+      ],
       "fitness_requirements": "Moderate — some walking and boat transfers.",
       "equipment_needed": "Light layers, waterproof bag, camera",
       "vaccination_requirements": "Routine vaccines",
       "visa_requirements": "Standard tourist visa",
-      "main_image": "tours/main/selous_5.jpg",
+      "main_image": "https://images.pexels.com/photos/160227/dog-nature-grassoutdoors-water-160227.jpeg",
       "meta_title": "Nyerere (Selous) River Safari — 5 Days",
       "meta_description": "Boat safaris and remote lodge stays in Selous (Nyerere) National Park.",
       "is_active": true,
@@ -303,7 +459,452 @@
       "updated_at": "2025-08-17T10:00:00Z"
     }
   },
-
+  {
+    "model": "tours.tourpackage",
+    "pk": 6,
+    "fields": {
+      "title": "Serengeti & Manyara Safari — 6 Days",
+      "slug": "serengeti-manyara-safari-6-days",
+      "subtitle": "Northern parks wildlife tour",
+      "category": "safari",
+      "duration_days": 6,
+      "duration_nights": 5,
+      "difficulty_level": "easy",
+      "min_participants": 2,
+      "max_participants": 8,
+      "min_age": 6,
+      "max_age": 75,
+      "description": "Wildlife safari covering Serengeti National Park and Lake Manyara, including game drives and bird watching.",
+      "short_description": "6-day safari visiting Serengeti and Lake Manyara.",
+      "highlights": [
+        "Serengeti wildlife",
+        "Lake Manyara flamingos",
+        "Big Cats"
+      ],
+      "detailed_itinerary": "Day 1: Transfer to Manyara. Day 2: Morning game drive at Manyara; drive to Serengeti. Day 3–4: Serengeti game drives. Day 5: Morning game drive, return to Manyara. Day 6: Return to Arusha.",
+      "inclusions": [
+        "Park fees",
+        "Accommodation",
+        "Meals",
+        "Guided game drives"
+      ],
+      "exclusions": [
+        "Tips",
+        "Personal expenses",
+        "Flights"
+      ],
+      "parks_visited": [
+        1,
+        4
+      ],
+      "accommodation_type": "lodge",
+      "accommodation_details": "Safari lodges with views over the parks",
+      "transportation_details": "4x4 safari vehicle with expert guide",
+      "available_year_round": true,
+      "best_months": [
+        "June",
+        "July",
+        "August",
+        "September"
+      ],
+      "fitness_requirements": "Light walking; suitable for all fitness levels.",
+      "equipment_needed": "Camera, binoculars",
+      "vaccination_requirements": "Yellow fever if needed; routine vaccines",
+      "visa_requirements": "Tanzania tourist visa if required",
+      "main_image": "https://images.pexels.com/photos/129755/pexels-photo-129755.jpeg",
+      "meta_title": "Serengeti & Manyara Safari — 6 Days",
+      "meta_description": "Wildlife safari in Serengeti and Lake Manyara National Parks.",
+      "is_active": true,
+      "is_featured": true,
+      "is_popular": true,
+      "total_bookings": 45,
+      "average_rating": "4.89",
+      "total_reviews": 30,
+      "created_at": "2025-08-17T10:00:00Z",
+      "updated_at": "2025-08-17T10:00:00Z"
+    }
+  },
+  {
+    "model": "tours.tourpackage",
+    "pk": 7,
+    "fields": {
+      "title": "Ruaha & Mikumi Safari — 5 Days",
+      "slug": "ruaha-mikumi-safari-5-days",
+      "subtitle": "Southern parks adventure",
+      "category": "safari",
+      "duration_days": 5,
+      "duration_nights": 4,
+      "difficulty_level": "moderate",
+      "min_participants": 2,
+      "max_participants": 8,
+      "min_age": 6,
+      "max_age": 70,
+      "description": "Safari focusing on Ruaha and Mikumi National Parks in southern Tanzania, renowned for elephants and predators.",
+      "short_description": "5-day safari in Ruaha and Mikumi.",
+      "highlights": [
+        "Big herds of elephants",
+        "Lion prides",
+        "Scenic landscapes"
+      ],
+      "detailed_itinerary": "Day 1: Fly to Iringa, drive to Ruaha. Day 2–3: Game drives in Ruaha. Day 4: Transfer to Mikumi, evening drive. Day 5: Morning game drive, fly back to Dar es Salaam.",
+      "inclusions": [
+        "Park fees",
+        "Accommodation",
+        "All meals",
+        "Domestic flights (where applicable)"
+      ],
+      "exclusions": [
+        "International flights",
+        "Tips",
+        "Personal expenses"
+      ],
+      "parks_visited": [
+        7,
+        9
+      ],
+      "accommodation_type": "camping",
+      "accommodation_details": "Tented camps in the wilderness",
+      "transportation_details": "4x4 vehicle; charter flights optional",
+      "available_year_round": false,
+      "best_months": [
+        "June",
+        "July",
+        "August",
+        "September"
+      ],
+      "fitness_requirements": "Moderate; some walking on bush paths.",
+      "equipment_needed": "Safari clothing, strong camera",
+      "vaccination_requirements": "Yellow fever, routine vaccines",
+      "visa_requirements": "Tanzania tourist visa",
+      "main_image": "https://images.pexels.com/photos/270328/pexels-photo-270328.jpeg",
+      "meta_title": "Ruaha & Mikumi Safari — 5 Days",
+      "meta_description": "Safari through Ruaha and Mikumi National Parks.",
+      "is_active": true,
+      "is_featured": false,
+      "is_popular": false,
+      "total_bookings": 12,
+      "average_rating": "4.72",
+      "total_reviews": 8,
+      "created_at": "2025-08-17T10:00:00Z",
+      "updated_at": "2025-08-17T10:00:00Z"
+    }
+  },
+  {
+    "model": "tours.tourpackage",
+    "pk": 8,
+    "fields": {
+      "title": "Katavi Wilderness Safari — 5 Days",
+      "slug": "katavi-wilderness-safari-5-days",
+      "subtitle": "Remote wildlife adventure in Katavi",
+      "category": "safari",
+      "duration_days": 5,
+      "duration_nights": 4,
+      "difficulty_level": "moderate",
+      "min_participants": 2,
+      "max_participants": 6,
+      "min_age": 8,
+      "max_age": 70,
+      "description": "Off-the-beaten-path safari in Katavi National Park, known for large herds of game in a remote wilderness.",
+      "short_description": "5-day Katavi NP safari exploring pristine wilderness.",
+      "highlights": [
+        "Untouched wilderness",
+        "Big herds of buffalo and elephants",
+        "Walking safaris"
+      ],
+      "detailed_itinerary": "Day 1: Flight to Katavi, camp. Day 2: Full-day game drives. Day 3: Game drives, walking safari. Day 4: Boat trip on Lake Chada. Day 5: Departure.",
+      "inclusions": [
+        "Park and boat fees",
+        "Accommodation",
+        "Meals",
+        "Guided game drives and walks"
+      ],
+      "exclusions": [
+        "International flights",
+        "Gratuities",
+        "Personal gear"
+      ],
+      "parks_visited": [
+        11
+      ],
+      "accommodation_type": "camping",
+      "accommodation_details": "Tented camps in wilderness setting",
+      "transportation_details": "Charter flight to Katavi; 4x4 vehicle",
+      "available_year_round": false,
+      "best_months": [
+        "July",
+        "August",
+        "September"
+      ],
+      "fitness_requirements": "Moderate walking; comfortable for active travelers.",
+      "equipment_needed": "Safari hat, binoculars, camera",
+      "vaccination_requirements": "Yellow fever, routine vaccines",
+      "visa_requirements": "Tanzania tourist visa",
+      "main_image": "https://images.pexels.com/photos/257360/pexels-photo-257360.jpeg",
+      "meta_title": "Katavi Wilderness Safari — 5 Days",
+      "meta_description": "Remote wildlife safari in Katavi NP with game drives and walking.",
+      "is_active": true,
+      "is_featured": false,
+      "is_popular": false,
+      "total_bookings": 5,
+      "average_rating": "4.85",
+      "total_reviews": 15,
+      "created_at": "2025-08-17T10:00:00Z",
+      "updated_at": "2025-08-17T10:00:00Z"
+    }
+  },
+  {
+    "model": "tours.tourpackage",
+    "pk": 9,
+    "fields": {
+      "title": "Gombe & Mahale Chimp Trek — 6 Days",
+      "slug": "gombe-mahale-chimp-trek-6-days",
+      "subtitle": "Tracking chimpanzees in their forest habitat",
+      "category": "wildlife",
+      "duration_days": 6,
+      "duration_nights": 5,
+      "difficulty_level": "challenging",
+      "min_participants": 1,
+      "max_participants": 8,
+      "min_age": 10,
+      "max_age": 65,
+      "description": "Trek through the forests of Gombe Stream and Mahale Mountains National Parks to observe wild chimpanzee communities.",
+      "short_description": "6-day primate trekking adventure in Gombe and Mahale.",
+      "highlights": [
+        "Wild chimpanzee tracking",
+        "Scenic lake views",
+        "Forest walks"
+      ],
+      "detailed_itinerary": "Day 1: Fly to Kigoma, transfer to Gombe. Day 2: Chimp trekking in Gombe. Day 3: Boat to Mahale. Day 4–5: Chimp trekking in Mahale. Day 6: Return to Kigoma.",
+      "inclusions": [
+        "Park fees",
+        "Accommodation",
+        "Meals",
+        "Guides and porters"
+      ],
+      "exclusions": [
+        "Tips",
+        "Drinks",
+        "Travel to Kigoma"
+      ],
+      "parks_visited": [
+        13,
+        12
+      ],
+      "accommodation_type": "camping",
+      "accommodation_details": "Beachfront tented camps",
+      "transportation_details": "Domestic flight to Kigoma; boat transfers",
+      "available_year_round": false,
+      "best_months": [
+        "July",
+        "August",
+        "September"
+      ],
+      "fitness_requirements": "High — steep trails and forest terrain.",
+      "equipment_needed": "Hiking boots, long-sleeve shirt, rain gear",
+      "vaccination_requirements": "Yellow fever, routine vaccines",
+      "visa_requirements": "Tanzania tourist visa",
+      "main_image": "https://images.pexels.com/photos/1648383/pexels-photo-1648383.jpeg",
+      "meta_title": "Gombe & Mahale Chimp Trek — 6 Days",
+      "meta_description": "Chimpanzee trekking experience in Gombe Stream and Mahale Mountains National Parks.",
+      "is_active": true,
+      "is_featured": false,
+      "is_popular": false,
+      "total_bookings": 7,
+      "average_rating": "4.90",
+      "total_reviews": 20,
+      "created_at": "2025-08-17T10:00:00Z",
+      "updated_at": "2025-08-17T10:00:00Z"
+    }
+  },
+  {
+    "model": "tours.tourpackage",
+    "pk": 10,
+    "fields": {
+      "title": "Zanzibar Spice & Stone Town Tour — 4 Days",
+      "slug": "zanzibar-spice-stone-town-tour-4-days",
+      "subtitle": "History, spices and culture of Unguja Island",
+      "category": "cultural",
+      "duration_days": 4,
+      "duration_nights": 3,
+      "difficulty_level": "easy",
+      "min_participants": 1,
+      "max_participants": 12,
+      "min_age": 6,
+      "max_age": 75,
+      "description": "Experience the spice plantations, historic Stone Town, and beaches of Zanzibar on this cultural tour.",
+      "short_description": "4-day Zanzibar cultural and spice tour including Stone Town.",
+      "highlights": [
+        "Spice plantation tour",
+        "Stone Town UNESCO site",
+        "Relaxing beach time"
+      ],
+      "detailed_itinerary": "Day 1: Arrival in Stone Town, evening tour. Day 2: Spice plantation visit. Day 3: Guided Stone Town walking tour. Day 4: Beach and departure.",
+      "inclusions": [
+        "Accommodation",
+        "Meals (B&B)",
+        "Guided tours",
+        "Transport on island"
+      ],
+      "exclusions": [
+        "Flights to Zanzibar",
+        "Beach activities",
+        "Tips"
+      ],
+      "parks_visited": [
+        17,
+        20
+      ],
+      "accommodation_type": "lodge",
+      "accommodation_details": "Stone Town hotel and coastal lodge",
+      "transportation_details": "Road transfers, walking tours",
+      "available_year_round": true,
+      "best_months": [
+        "June",
+        "July",
+        "August",
+        "September"
+      ],
+      "fitness_requirements": "Light walking in town and plantation.",
+      "equipment_needed": "Sun protection, camera",
+      "vaccination_requirements": "Routine vaccines",
+      "visa_requirements": "Tanzania visa if needed",
+      "main_image": "https://images.pexels.com/photos/346695/pexels-photo-346695.jpeg",
+      "meta_title": "Zanzibar Spice & Stone Town Tour — 4 Days",
+      "meta_description": "Explore Zanzibar's spice farms, cultural Stone Town and beaches.",
+      "is_active": true,
+      "is_featured": true,
+      "is_popular": true,
+      "total_bookings": 25,
+      "average_rating": "4.88",
+      "total_reviews": 40,
+      "created_at": "2025-08-17T10:00:00Z",
+      "updated_at": "2025-08-17T10:00:00Z"
+    }
+  },
+  {
+    "model": "tours.tourpackage",
+    "pk": 11,
+    "fields": {
+      "title": "Kitulo Flower Safari — 3 Days",
+      "slug": "kitulo-flower-safari-3-days",
+      "subtitle": "Wildflowers of the Southern Highlands",
+      "category": "photography",
+      "duration_days": 3,
+      "duration_nights": 2,
+      "difficulty_level": "easy",
+      "min_participants": 1,
+      "max_participants": 6,
+      "min_age": 8,
+      "max_age": 80,
+      "description": "Short excursion to Kitulo National Park, famous for its colorful wildflower displays.",
+      "short_description": "3-day Kitulo Plateau wildflower tour in Tanzania's southern highlands.",
+      "highlights": [
+        "Seasonal wildflower blooms",
+        "Montane grasslands",
+        "Panoramic views"
+      ],
+      "detailed_itinerary": "Day 1: Travel to Kitulo, afternoon walk. Day 2: Full-day flower viewing hike. Day 3: Morning hike, return to Mbeya.",
+      "inclusions": [
+        "Park fees",
+        "Guided walks",
+        "Meals (full board)",
+        "Transport from Mbeya"
+      ],
+      "exclusions": [
+        "Transport to Mbeya",
+        "Personal gear"
+      ],
+      "parks_visited": [
+        15
+      ],
+      "accommodation_type": "lodge",
+      "accommodation_details": "Mountain lodge with full board",
+      "transportation_details": "4x4 vehicle from Mbeya",
+      "available_year_round": false,
+      "best_months": [
+        "February",
+        "March"
+      ],
+      "fitness_requirements": "Moderate walking; mostly on grassy trails.",
+      "equipment_needed": "Hiking shoes, hat, camera",
+      "vaccination_requirements": "Routine vaccines",
+      "visa_requirements": "Tanzania tourist visa if required",
+      "main_image": "https://images.pexels.com/photos/1754519/pexels-photo-1754519.jpeg",
+      "meta_title": "Kitulo Flower Safari — 3 Days",
+      "meta_description": "Guided tour to Kitulo National Park to see seasonal wildflowers and highland scenery.",
+      "is_active": true,
+      "is_featured": false,
+      "is_popular": false,
+      "total_bookings": 8,
+      "average_rating": "4.75",
+      "total_reviews": 10,
+      "created_at": "2025-08-17T10:00:00Z",
+      "updated_at": "2025-08-17T10:00:00Z"
+    }
+  },
+  {
+    "model": "tours.tourpackage",
+    "pk": 12,
+    "fields": {
+      "title": "Mafia Island Dive & Safari — 4 Days",
+      "slug": "mafia-island-dive-safari-4-days",
+      "subtitle": "Beach, boat safari and marine park",
+      "category": "beach",
+      "duration_days": 4,
+      "duration_nights": 3,
+      "difficulty_level": "easy",
+      "min_participants": 1,
+      "max_participants": 8,
+      "min_age": 6,
+      "max_age": 70,
+      "description": "Experience the coastal wildlife of Mafia Island Marine Park with boat trips and beach relaxation.",
+      "short_description": "4-day Mafia Island tour with snorkeling and village visits.",
+      "highlights": [
+        "Snorkeling with whale sharks (seasonal)",
+        "Mangrove and sea grass boat safari",
+        "Tropical beach time"
+      ],
+      "detailed_itinerary": "Day 1: Arrival in Dar, transfer to Mafia. Day 2: Snorkeling/whale sharks, mangrove boat safari. Day 3: Jahazi reef snorkeling, beach. Day 4: Return to Dar.",
+      "inclusions": [
+        "Marine park fees",
+        "Accommodation",
+        "Meals",
+        "Boat transfers"
+      ],
+      "exclusions": [
+        "Flight to Mafia",
+        "Diving equipment",
+        "Tips"
+      ],
+      "parks_visited": [
+        16
+      ],
+      "accommodation_type": "lodge",
+      "accommodation_details": "Beachfront eco-lodge accommodation",
+      "transportation_details": "Charter boat transfers, local vehicle",
+      "available_year_round": false,
+      "best_months": [
+        "October",
+        "November",
+        "December"
+      ],
+      "fitness_requirements": "Light — snorkeling and short walks on beaches.",
+      "equipment_needed": "Snorkel gear, swimwear, reef shoes",
+      "vaccination_requirements": "Routine vaccines",
+      "visa_requirements": "Tanzania visa if required",
+      "main_image": "https://images.pexels.com/photos/14424467/pexels-photo-14424467.jpeg",
+      "meta_title": "Mafia Island Dive & Safari — 4 Days",
+      "meta_description": "Beach and marine safari in Mafia Island Marine Park with snorkeling and wildlife.",
+      "is_active": true,
+      "is_featured": false,
+      "is_popular": false,
+      "total_bookings": 4,
+      "average_rating": "4.78",
+      "total_reviews": 9,
+      "created_at": "2025-08-17T10:00:00Z",
+      "updated_at": "2025-08-17T10:00:00Z"
+    }
+  },
   {
     "model": "tours.touritineraryday",
     "pk": 1,
@@ -312,12 +913,17 @@
       "day_number": 1,
       "title": "Arrival & Tarangire",
       "description": "Arrival in Arusha then transfer to Tarangire for afternoon game drive.",
-      "activities": ["Transfer", "Afternoon game drive"],
+      "activities": [
+        "Transfer",
+        "Afternoon game drive"
+      ],
       "overnight_location": "Tarangire lodge",
-      "meals_included": ["Dinner"],
+      "meals_included": [
+        "Dinner"
+      ],
       "travel_distance": "130km, 3 hours",
       "travel_method": "4x4 safari vehicle",
-      "day_image": "tours/itinerary/day1_tarangire.jpg"
+      "day_image": "https://upload.wikimedia.org/wikipedia/commons/2/26/Tarangire_2012_05_27_2058_%28%E2%80%A8).jpg"
     }
   },
   {
@@ -328,12 +934,19 @@
       "day_number": 2,
       "title": "Serengeti Transfer & Game Drive",
       "description": "Drive to Serengeti with en route game viewing and afternoon drives in Seronera.",
-      "activities": ["Drive", "Full day game driving"],
+      "activities": [
+        "Drive",
+        "Full day game driving"
+      ],
       "overnight_location": "Serengeti lodge/camp",
-      "meals_included": ["Breakfast", "Lunch", "Dinner"],
+      "meals_included": [
+        "Breakfast",
+        "Lunch",
+        "Dinner"
+      ],
       "travel_distance": "250km, 5 hours",
       "travel_method": "4x4 safari vehicle",
-      "day_image": "tours/itinerary/day2_serengeti.jpg"
+      "day_image": "https://upload.wikimedia.org/wikipedia/commons/5/51/Serengeti_Sunrise%2C_Tanzania_%2810721420736%29.jpg"
     }
   },
   {
@@ -344,12 +957,17 @@
       "day_number": 1,
       "title": "Moshi Arrival & Trek Prep",
       "description": "Arrival to Moshi, kit check and briefing with guide and crew.",
-      "activities": ["Briefing", "Equipment check"],
+      "activities": [
+        "Briefing",
+        "Equipment check"
+      ],
       "overnight_location": "Moshi lodge",
-      "meals_included": ["Dinner"],
-      "travel_distance": "Transfer to Moshi 45km, 1 hour",
+      "meals_included": [
+        "Dinner"
+      ],
+      "travel_distance": "45km, 1 hour",
       "travel_method": "Road transfer",
-      "day_image": "tours/itinerary/kili_day1.jpg"
+      "day_image": "https://upload.wikimedia.org/wikipedia/commons/e/e5/Mt._Kilimanjaro_%E2%80%93_Karanga_Camp%2C_shimmering_ice.jpg"
     }
   },
   {
@@ -360,12 +978,18 @@
       "day_number": 8,
       "title": "Summit & Descent",
       "description": "Pre-dawn summit push to Uhuru Peak, then descent to Mweka and transfer to Moshi.",
-      "activities": ["Summit push", "Descent", "Celebration"],
+      "activities": [
+        "Summit push",
+        "Descent",
+        "Celebration"
+      ],
       "overnight_location": "Moshi lodge",
-      "meals_included": ["Breakfast"],
+      "meals_included": [
+        "Breakfast"
+      ],
       "travel_distance": "Varies (trekking)",
       "travel_method": "Walking/Trekking",
-      "day_image": "tours/itinerary/kili_summit.jpg"
+      "day_image": "https://upload.wikimedia.org/wikipedia/commons/e/e5/Mt._Kilimanjaro_%E2%80%93_Karanga_Camp%2C_shimmering_ice.jpg"
     }
   },
   {
@@ -376,21 +1000,642 @@
       "day_number": 2,
       "title": "Full-Day Primate Hike",
       "description": "Guided forest walk to see Sanje Mangabey and Udzungwa red colobus plus waterfalls.",
-      "activities": ["Guided hike", "Wildlife viewing", "Photography"],
+      "activities": [
+        "Guided hike",
+        "Wildlife viewing",
+        "Photography"
+      ],
       "overnight_location": "Udzungwa lodge",
-      "meals_included": ["Breakfast", "Lunch", "Dinner"],
+      "meals_included": [
+        "Breakfast",
+        "Lunch",
+        "Dinner"
+      ],
       "travel_distance": "Short hikes (up to 8 km)",
       "travel_method": "Walking",
-      "day_image": "tours/itinerary/udzungwa_day2.jpg"
+      "day_image": "https://upload.wikimedia.org/wikipedia/commons/2/2f/Udzungwa_red_colobus_%28Piliocolobus_gordonorum%29.jpg"
     }
   },
-
+  {
+    "model": "tours.touritineraryday",
+    "pk": 6,
+    "fields": {
+      "tour_package": 6,
+      "day_number": 1,
+      "title": "Arrival",
+      "description": "Arrival at Manyara, evening rest.",
+      "activities": [
+        "Arrival"
+      ],
+      "overnight_location": "Lake Manyara lodge",
+      "meals_included": [
+        "Dinner"
+      ],
+      "travel_distance": "",
+      "travel_method": "",
+      "day_image": "https://upload.wikimedia.org/wikipedia/commons/5/5a/Lesser_Flamingo_at_Lake_Manyara.jpg"
+    }
+  },
+  {
+    "model": "tours.touritineraryday",
+    "pk": 7,
+    "fields": {
+      "tour_package": 6,
+      "day_number": 2,
+      "title": "Game Drive - Manyara",
+      "description": "Full day game drive in Lake Manyara NP.",
+      "activities": [
+        "Game drive",
+        "Wildlife viewing"
+      ],
+      "overnight_location": "Serengeti lodge",
+      "meals_included": [
+        "Breakfast",
+        "Lunch",
+        "Dinner"
+      ],
+      "travel_distance": "120km, 2.5 hours",
+      "travel_method": "4x4 safari vehicle",
+      "day_image": "https://upload.wikimedia.org/wikipedia/commons/5/5a/Lesser_Flamingo_at_Lake_Manyara.jpg"
+    }
+  },
+  {
+    "model": "tours.touritineraryday",
+    "pk": 8,
+    "fields": {
+      "tour_package": 6,
+      "day_number": 6,
+      "title": "Return to Arusha",
+      "description": "Morning game drive and return to Arusha.",
+      "activities": [
+        "Game drive",
+        "Return transfer"
+      ],
+      "overnight_location": "",
+      "meals_included": [
+        "Breakfast"
+      ],
+      "travel_distance": "180km, 3 hours",
+      "travel_method": "4x4 safari vehicle",
+      "day_image": "https://upload.wikimedia.org/wikipedia/commons/5/51/Serengeti_Sunrise%2C_Tanzania_%2810721420736%29.jpg"
+    }
+  },
+  {
+    "model": "tours.touritineraryday",
+    "pk": 9,
+    "fields": {
+      "tour_package": 7,
+      "day_number": 1,
+      "title": "Arrival & Ruaha",
+      "description": "Fly to Iringa and transfer to Ruaha NP.",
+      "activities": [
+        "Transfer",
+        "Orientation"
+      ],
+      "overnight_location": "Ruaha camp",
+      "meals_included": [
+        "Dinner"
+      ],
+      "travel_distance": "",
+      "travel_method": "Charter flight + 4x4",
+      "day_image": "https://upload.wikimedia.org/wikipedia/commons/7/74/Elephants_At_Sunset%2C_Ruaha_National_Park.jpg"
+    }
+  },
+  {
+    "model": "tours.touritineraryday",
+    "pk": 10,
+    "fields": {
+      "tour_package": 7,
+      "day_number": 2,
+      "title": "Game Drive - Ruaha",
+      "description": "Full day game drives in Ruaha NP.",
+      "activities": [
+        "Game drive",
+        "Wildlife viewing"
+      ],
+      "overnight_location": "Ruaha camp",
+      "meals_included": [
+        "Breakfast",
+        "Lunch",
+        "Dinner"
+      ],
+      "travel_distance": "",
+      "travel_method": "4x4 safari vehicle",
+      "day_image": "https://upload.wikimedia.org/wikipedia/commons/7/74/Elephants_At_Sunset%2C_Ruaha_National_Park.jpg"
+    }
+  },
+  {
+    "model": "tours.touritineraryday",
+    "pk": 11,
+    "fields": {
+      "tour_package": 7,
+      "day_number": 5,
+      "title": "Return to Dar",
+      "description": "Morning game drive, then fly back to Dar es Salaam.",
+      "activities": [
+        "Game drive",
+        "Flight"
+      ],
+      "overnight_location": "",
+      "meals_included": [
+        "Breakfast"
+      ],
+      "travel_distance": "",
+      "travel_method": "Charter flight",
+      "day_image": "https://upload.wikimedia.org/wikipedia/commons/6/6c/Mikumi_National_Park_(3325383191).jpg"
+    }
+  },
+  {
+    "model": "tours.touritineraryday",
+    "pk": 12,
+    "fields": {
+      "tour_package": 8,
+      "day_number": 1,
+      "title": "Arrival & Camp Setup",
+      "description": "Fly into Katavi airstrip, meet your guide and set up camp near Lake Chada.",
+      "activities": [
+        "Charter flight",
+        "Camp setup"
+      ],
+      "overnight_location": "Katavi camp",
+      "meals_included": [
+        "Dinner"
+      ],
+      "travel_distance": "",
+      "travel_method": "Charter flight",
+      "day_image": "https://upload.wikimedia.org/wikipedia/commons/3/3e/Walking_Safari_in_Katavi_National_Park.jpg"
+    }
+  },
+  {
+    "model": "tours.touritineraryday",
+    "pk": 13,
+    "fields": {
+      "tour_package": 8,
+      "day_number": 2,
+      "title": "Game Drives",
+      "description": "Full day game drives through Katavi's plains and riverbeds.",
+      "activities": [
+        "Game drives",
+        "Wildlife photography"
+      ],
+      "overnight_location": "Katavi camp",
+      "meals_included": [
+        "Breakfast",
+        "Lunch",
+        "Dinner"
+      ],
+      "travel_distance": "",
+      "travel_method": "4x4 safari vehicle",
+      "day_image": "https://upload.wikimedia.org/wikipedia/commons/3/3e/Walking_Safari_in_Katavi_National_Park.jpg"
+    }
+  },
+  {
+    "model": "tours.touritineraryday",
+    "pk": 14,
+    "fields": {
+      "tour_package": 8,
+      "day_number": 3,
+      "title": "Walking Safari",
+      "description": "Guided walking safari in the afternoon to see smaller fauna up close.",
+      "activities": [
+        "Walking safari",
+        "Bird watching"
+      ],
+      "overnight_location": "Katavi camp",
+      "meals_included": [
+        "Breakfast",
+        "Lunch",
+        "Dinner"
+      ],
+      "travel_distance": "",
+      "travel_method": "Walking",
+      "day_image": "https://upload.wikimedia.org/wikipedia/commons/3/3e/Walking_Safari_in_Katavi_National_Park.jpg"
+    }
+  },
+  {
+    "model": "tours.touritineraryday",
+    "pk": 15,
+    "fields": {
+      "tour_package": 8,
+      "day_number": 4,
+      "title": "Boat Trip on Lake Chada",
+      "description": "Morning boat safari on Lake Chada to see hippos, crocodiles and waterbirds.",
+      "activities": [
+        "Boat safari",
+        "Wildlife viewing"
+      ],
+      "overnight_location": "Katavi camp",
+      "meals_included": [
+        "Breakfast",
+        "Lunch",
+        "Dinner"
+      ],
+      "travel_distance": "",
+      "travel_method": "Boat",
+      "day_image": "https://upload.wikimedia.org/wikipedia/commons/3/3e/Walking_Safari_in_Katavi_National_Park.jpg"
+    }
+  },
+  {
+    "model": "tours.touritineraryday",
+    "pk": 16,
+    "fields": {
+      "tour_package": 8,
+      "day_number": 5,
+      "title": "Departure",
+      "description": "Morning game drive, then return charter flight to Dar es Salaam.",
+      "activities": [
+        "Game drive",
+        "Charter flight"
+      ],
+      "overnight_location": "",
+      "meals_included": [
+        "Breakfast"
+      ],
+      "travel_distance": "",
+      "travel_method": "Charter flight",
+      "day_image": "https://upload.wikimedia.org/wikipedia/commons/3/3e/Walking_Safari_in_Katavi_National_Park.jpg"
+    }
+  },
+  {
+    "model": "tours.touritineraryday",
+    "pk": 17,
+    "fields": {
+      "tour_package": 9,
+      "day_number": 1,
+      "title": "Arrival at Gombe",
+      "description": "Fly to Kigoma, boat transfer and short walk to Gombe camp.",
+      "activities": [
+        "Flight",
+        "Boat transfer",
+        "Camp orientation"
+      ],
+      "overnight_location": "Gombe camp",
+      "meals_included": [
+        "Dinner"
+      ],
+      "travel_distance": "",
+      "travel_method": "Plane + boat",
+      "day_image": "https://upload.wikimedia.org/wikipedia/commons/5/54/Adult_male_chimps_in_mahale.jpg"
+    }
+  },
+  {
+    "model": "tours.touritineraryday",
+    "pk": 18,
+    "fields": {
+      "tour_package": 9,
+      "day_number": 2,
+      "title": "Chimp Trekking in Gombe",
+      "description": "Track wild chimpanzees in Gombe's forest with an experienced tracker.",
+      "activities": [
+        "Guided chimp tracking",
+        "Photography"
+      ],
+      "overnight_location": "Gombe camp",
+      "meals_included": [
+        "Breakfast",
+        "Lunch",
+        "Dinner"
+      ],
+      "travel_distance": "",
+      "travel_method": "Walking",
+      "day_image": "https://upload.wikimedia.org/wikipedia/commons/5/54/Adult_male_chimps_in_mahale.jpg"
+    }
+  },
+  {
+    "model": "tours.touritineraryday",
+    "pk": 19,
+    "fields": {
+      "tour_package": 9,
+      "day_number": 3,
+      "title": "Transfer to Mahale",
+      "description": "Boat transfer to Mahale; afternoon at leisure on the beach.",
+      "activities": [
+        "Boat transfer",
+        "Relaxation"
+      ],
+      "overnight_location": "Mahale camp",
+      "meals_included": [
+        "Breakfast",
+        "Lunch",
+        "Dinner"
+      ],
+      "travel_distance": "",
+      "travel_method": "Boat",
+      "day_image": "https://upload.wikimedia.org/wikipedia/commons/5/54/Adult_male_chimps_in_mahale.jpg"
+    }
+  },
+  {
+    "model": "tours.touritineraryday",
+    "pk": 20,
+    "fields": {
+      "tour_package": 9,
+      "day_number": 4,
+      "title": "Chimp Trekking in Mahale",
+      "description": "Morning and afternoon chimp trekking in the Mahale forest.",
+      "activities": [
+        "Guided chimp tracking",
+        "Wildlife viewing"
+      ],
+      "overnight_location": "Mahale camp",
+      "meals_included": [
+        "Breakfast",
+        "Lunch",
+        "Dinner"
+      ],
+      "travel_distance": "",
+      "travel_method": "Walking",
+      "day_image": "https://upload.wikimedia.org/wikipedia/commons/5/54/Adult_male_chimps_in_mahale.jpg"
+    }
+  },
+  {
+    "model": "tours.touritineraryday",
+    "pk": 21,
+    "fields": {
+      "tour_package": 9,
+      "day_number": 5,
+      "title": "Lake Walk & Relax",
+      "description": "Optional morning hike to chimp sleeping trees, then afternoon leisure.",
+      "activities": [
+        "Guided forest walk",
+        "Relaxation"
+      ],
+      "overnight_location": "Mahale camp",
+      "meals_included": [
+        "Breakfast",
+        "Lunch",
+        "Dinner"
+      ],
+      "travel_distance": "",
+      "travel_method": "Walking",
+      "day_image": "https://upload.wikimedia.org/wikipedia/commons/5/54/Adult_male_chimps_in_mahale.jpg"
+    }
+  },
+  {
+    "model": "tours.touritineraryday",
+    "pk": 22,
+    "fields": {
+      "tour_package": 9,
+      "day_number": 6,
+      "title": "Return to Dar",
+      "description": "Morning at leisure, afternoon boat and flight back to Dar es Salaam.",
+      "activities": [
+        "Boat transfer",
+        "Flight"
+      ],
+      "overnight_location": "",
+      "meals_included": [
+        "Breakfast"
+      ],
+      "travel_distance": "",
+      "travel_method": "Boat + plane",
+      "day_image": "https://upload.wikimedia.org/wikipedia/commons/5/54/Adult_male_chimps_in_mahale.jpg"
+    }
+  },
+  {
+    "model": "tours.touritineraryday",
+    "pk": 23,
+    "fields": {
+      "tour_package": 10,
+      "day_number": 1,
+      "title": "Arrival & Stone Town Walk",
+      "description": "Arrival in Zanzibar, guided evening walk through historic Stone Town.",
+      "activities": [
+        "Cultural tour",
+        "Local cuisine"
+      ],
+      "overnight_location": "Stone Town hotel",
+      "meals_included": [
+        "Dinner"
+      ],
+      "travel_distance": "",
+      "travel_method": "Walking",
+      "day_image": "https://upload.wikimedia.org/wikipedia/commons/b/b9/Stone_Town%2C_Zanzibar.jpg"
+    }
+  },
+  {
+    "model": "tours.touritineraryday",
+    "pk": 24,
+    "fields": {
+      "tour_package": 10,
+      "day_number": 2,
+      "title": "Spice Plantation",
+      "description": "Visit a working spice farm, learn about spices and tropical fruits with tastings.",
+      "activities": [
+        "Spice farm tour",
+        "Fruit tasting"
+      ],
+      "overnight_location": "Stone Town hotel",
+      "meals_included": [
+        "Breakfast",
+        "Lunch"
+      ],
+      "travel_distance": "20km, 0.5 hours",
+      "travel_method": "Road transfer",
+      "day_image": "https://upload.wikimedia.org/wikipedia/commons/b/b9/Stone_Town%2C_Zanzibar.jpg"
+    }
+  },
+  {
+    "model": "tours.touritineraryday",
+    "pk": 25,
+    "fields": {
+      "tour_package": 10,
+      "day_number": 3,
+      "title": "Stone Town Exploration",
+      "description": "Guided walking tour of Stone Town's markets, architecture and old fort.",
+      "activities": [
+        "Walking tour",
+        "Market visits"
+      ],
+      "overnight_location": "Beach lodge",
+      "meals_included": [
+        "Breakfast",
+        "Lunch",
+        "Dinner"
+      ],
+      "travel_distance": "15km, 0.5 hours",
+      "travel_method": "Road transfer",
+      "day_image": "https://upload.wikimedia.org/wikipedia/commons/b/b9/Stone_Town%2C_Zanzibar.jpg"
+    }
+  },
+  {
+    "model": "tours.touritineraryday",
+    "pk": 26,
+    "fields": {
+      "tour_package": 10,
+      "day_number": 4,
+      "title": "Beach & Departure",
+      "description": "Relax on the beach in the morning, transfer to airport for departure.",
+      "activities": [
+        "Beach time",
+        "Departure"
+      ],
+      "overnight_location": "",
+      "meals_included": [
+        "Breakfast"
+      ],
+      "travel_distance": "",
+      "travel_method": "Road transfer",
+      "day_image": "https://upload.wikimedia.org/wikipedia/commons/b/b9/Stone_Town%2C_Zanzibar.jpg"
+    }
+  },
+  {
+    "model": "tours.touritineraryday",
+    "pk": 27,
+    "fields": {
+      "tour_package": 11,
+      "day_number": 1,
+      "title": "Travel to Kitulo",
+      "description": "Drive from Mbeya to Kitulo National Park, afternoon acclimatization walk.",
+      "activities": [
+        "Road transfer",
+        "Short hike"
+      ],
+      "overnight_location": "Kitulo lodge",
+      "meals_included": [
+        "Dinner"
+      ],
+      "travel_distance": "120km, 3 hours",
+      "travel_method": "4x4 vehicle",
+      "day_image": "https://upload.wikimedia.org/wikipedia/commons/a/af/Kitulo_National_Park_11.jpg"
+    }
+  },
+  {
+    "model": "tours.touritineraryday",
+    "pk": 28,
+    "fields": {
+      "tour_package": 11,
+      "day_number": 2,
+      "title": "Wildflower Viewing",
+      "description": "Full-day hike across meadows to see the highland blooms and scenery.",
+      "activities": [
+        "Guided hike",
+        "Photography"
+      ],
+      "overnight_location": "Kitulo lodge",
+      "meals_included": [
+        "Breakfast",
+        "Lunch",
+        "Dinner"
+      ],
+      "travel_distance": "",
+      "travel_method": "Walking",
+      "day_image": "https://upload.wikimedia.org/wikipedia/commons/a/af/Kitulo_National_Park_11.jpg"
+    }
+  },
+  {
+    "model": "tours.touritineraryday",
+    "pk": 29,
+    "fields": {
+      "tour_package": 11,
+      "day_number": 3,
+      "title": "Return to Mbeya",
+      "description": "Morning hike to a viewpoint, then drive back to Mbeya.",
+      "activities": [
+        "Morning hike",
+        "Road transfer"
+      ],
+      "overnight_location": "",
+      "meals_included": [
+        "Breakfast"
+      ],
+      "travel_distance": "120km, 3 hours",
+      "travel_method": "4x4 vehicle",
+      "day_image": "https://upload.wikimedia.org/wikipedia/commons/a/af/Kitulo_National_Park_11.jpg"
+    }
+  },
+  {
+    "model": "tours.touritineraryday",
+    "pk": 30,
+    "fields": {
+      "tour_package": 12,
+      "day_number": 1,
+      "title": "Arrival in Mafia",
+      "description": "Fly to Mafia Island, afternoon at leisure on the beach.",
+      "activities": [
+        "Flight",
+        "Beach time"
+      ],
+      "overnight_location": "Mafia lodge",
+      "meals_included": [
+        "Dinner"
+      ],
+      "travel_distance": "",
+      "travel_method": "Flight",
+      "day_image": "https://upload.wikimedia.org/wikipedia/commons/2/2e/Mafia_Island_%2851554991378%29.jpg"
+    }
+  },
+  {
+    "model": "tours.touritineraryday",
+    "pk": 31,
+    "fields": {
+      "tour_package": 12,
+      "day_number": 2,
+      "title": "Marine Park Safari",
+      "description": "Morning snorkeling or whale shark boat trip, afternoon mangrove boat safari.",
+      "activities": [
+        "Snorkeling",
+        "Boat safari"
+      ],
+      "overnight_location": "Mafia lodge",
+      "meals_included": [
+        "Breakfast",
+        "Lunch",
+        "Dinner"
+      ],
+      "travel_distance": "",
+      "travel_method": "Boat",
+      "day_image": "https://upload.wikimedia.org/wikipedia/commons/2/2e/Mafia_Island_%2851554991378%29.jpg"
+    }
+  },
+  {
+    "model": "tours.touritineraryday",
+    "pk": 32,
+    "fields": {
+      "tour_package": 12,
+      "day_number": 3,
+      "title": "Jahazi Reef",
+      "description": "Full day trip to Jahazi reef for snorkeling and fish feeding demonstration.",
+      "activities": [
+        "Snorkeling",
+        "Marine life observation"
+      ],
+      "overnight_location": "Mafia lodge",
+      "meals_included": [
+        "Breakfast",
+        "Lunch"
+      ],
+      "travel_distance": "",
+      "travel_method": "Boat",
+      "day_image": "https://upload.wikimedia.org/wikipedia/commons/2/2e/Mafia_Island_%2851554991378%29.jpg"
+    }
+  },
+  {
+    "model": "tours.touritineraryday",
+    "pk": 33,
+    "fields": {
+      "tour_package": 12,
+      "day_number": 4,
+      "title": "Return to Dar",
+      "description": "Morning relax on the beach, afternoon flight back to Dar es Salaam.",
+      "activities": [
+        "Beach time",
+        "Flight"
+      ],
+      "overnight_location": "",
+      "meals_included": [
+        "Breakfast"
+      ],
+      "travel_distance": "",
+      "travel_method": "Flight",
+      "day_image": "https://upload.wikimedia.org/wikipedia/commons/2/2e/Mafia_Island_%2851554991378%29.jpg"
+    }
+  },
   {
     "model": "tours.tourimage",
     "pk": 1,
     "fields": {
       "tour_package": 1,
-      "image": "tours/gallery/classic1.jpg",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/5/51/Serengeti_Sunrise%2C_Tanzania_%2810721420736%29.jpg",
       "caption": "Serengeti plains at sunrise",
       "alt_text": "Serengeti sunrise",
       "is_featured": true,
@@ -403,7 +1648,7 @@
     "pk": 2,
     "fields": {
       "tour_package": 2,
-      "image": "tours/gallery/kili1.jpg",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/e/e5/Mt._Kilimanjaro_%E2%80%93_Karanga_Camp%2C_shimmering_ice.jpg",
       "caption": "Kilimanjaro basecamp",
       "alt_text": "Kilimanjaro camp",
       "is_featured": true,
@@ -416,7 +1661,7 @@
     "pk": 3,
     "fields": {
       "tour_package": 3,
-      "image": "tours/gallery/udzungwa1.jpg",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/e/ec/Sanje_Waterfalls_Udzungwa_Mountains_%2812392924405%29.jpg",
       "caption": "Sanje Waterfalls",
       "alt_text": "Sanje Waterfalls Udzungwa",
       "is_featured": true,
@@ -424,7 +1669,123 @@
       "created_at": "2025-08-17T10:00:00Z"
     }
   },
-
+  {
+    "model": "tours.tourimage",
+    "pk": 4,
+    "fields": {
+      "tour_package": 4,
+      "image": "https://upload.wikimedia.org/wikipedia/commons/4/42/Saadani_Beach.jpg",
+      "caption": "Saadani coastal scenery",
+      "alt_text": "Saadani beach",
+      "is_featured": true,
+      "order": 0,
+      "created_at": "2025-08-17T10:00:00Z"
+    }
+  },
+  {
+    "model": "tours.tourimage",
+    "pk": 5,
+    "fields": {
+      "tour_package": 5,
+      "image": "https://upload.wikimedia.org/wikipedia/commons/8/8b/Boat_Safari_Selous.jpg",
+      "caption": "Rufiji River boat safari",
+      "alt_text": "Selous boat safari",
+      "is_featured": true,
+      "order": 0,
+      "created_at": "2025-08-17T10:00:00Z"
+    }
+  },
+  {
+    "model": "tours.tourimage",
+    "pk": 6,
+    "fields": {
+      "tour_package": 6,
+      "image": "https://upload.wikimedia.org/wikipedia/commons/5/5a/Lesser_Flamingo_at_Lake_Manyara.jpg",
+      "caption": "Lesser flamingos at Manyara",
+      "alt_text": "Lake Manyara flamingos",
+      "is_featured": true,
+      "order": 0,
+      "created_at": "2025-08-17T10:00:00Z"
+    }
+  },
+  {
+    "model": "tours.tourimage",
+    "pk": 7,
+    "fields": {
+      "tour_package": 7,
+      "image": "https://upload.wikimedia.org/wikipedia/commons/7/74/Elephants_At_Sunset%2C_Ruaha_National_Park.jpg",
+      "caption": "Elephants at sunset in Ruaha",
+      "alt_text": "Ruaha elephants",
+      "is_featured": true,
+      "order": 0,
+      "created_at": "2025-08-17T10:00:00Z"
+    }
+  },
+  {
+    "model": "tours.tourimage",
+    "pk": 8,
+    "fields": {
+      "tour_package": 8,
+      "image": "https://upload.wikimedia.org/wikipedia/commons/a/a3/Katavi_NP_Lake.jpg",
+      "caption": "Lake Chada in Katavi National Park",
+      "alt_text": "Katavi lake and bush",
+      "is_featured": false,
+      "order": 0,
+      "created_at": "2025-08-17T10:00:00Z"
+    }
+  },
+  {
+    "model": "tours.tourimage",
+    "pk": 9,
+    "fields": {
+      "tour_package": 9,
+      "image": "https://upload.wikimedia.org/wikipedia/commons/5/54/Adult_male_chimps_in_mahale.jpg",
+      "caption": "Wild chimpanzees in Mahale",
+      "alt_text": "Chimpanzees in tree",
+      "is_featured": false,
+      "order": 0,
+      "created_at": "2025-08-17T10:00:00Z"
+    }
+  },
+  {
+    "model": "tours.tourimage",
+    "pk": 10,
+    "fields": {
+      "tour_package": 10,
+      "image": "https://upload.wikimedia.org/wikipedia/commons/b/b9/Stone_Town%2C_Zanzibar.jpg",
+      "caption": "The Old Fort in Stone Town",
+      "alt_text": "Stone Town Zanzibar",
+      "is_featured": false,
+      "order": 0,
+      "created_at": "2025-08-17T10:00:00Z"
+    }
+  },
+  {
+    "model": "tours.tourimage",
+    "pk": 11,
+    "fields": {
+      "tour_package": 11,
+      "image": "https://upload.wikimedia.org/wikipedia/commons/a/af/Kitulo_National_Park_11.jpg",
+      "caption": "Kitulo National Park landscape",
+      "alt_text": "Kitulo highland grasses",
+      "is_featured": false,
+      "order": 0,
+      "created_at": "2025-08-17T10:00:00Z"
+    }
+  },
+  {
+    "model": "tours.tourimage",
+    "pk": 12,
+    "fields": {
+      "tour_package": 12,
+      "image": "https://upload.wikimedia.org/wikipedia/commons/2/2e/Mafia_Island_%2851554991378%29.jpg",
+      "caption": "Sunset beach at Mafia Island",
+      "alt_text": "Mafia Island beach",
+      "is_featured": false,
+      "order": 0,
+      "created_at": "2025-08-17T10:00:00Z"
+    }
+  },
   {
     "model": "tours.touravailability",
     "pk": 1,
@@ -482,7 +1843,82 @@
       "updated_at": "2025-08-17T10:00:00Z"
     }
   },
-
+  {
+    "model": "tours.touravailability",
+    "pk": 4,
+    "fields": {
+      "tour_package": 8,
+      "start_date": "2025-07-15",
+      "end_date": "2025-07-19",
+      "price_modifier_budget": "1.00",
+      "price_modifier_standard": "1.10",
+      "price_modifier_luxury": "1.30",
+      "max_participants": 6,
+      "booked_participants": 1,
+      "assigned_guide": 1,
+      "is_available": true,
+      "notes": "Best time for game viewing as vegetation is low.",
+      "created_at": "2025-08-17T10:00:00Z",
+      "updated_at": "2025-08-17T10:00:00Z"
+    }
+  },
+  {
+    "model": "tours.touravailability",
+    "pk": 5,
+    "fields": {
+      "tour_package": 9,
+      "start_date": "2025-08-01",
+      "end_date": "2025-08-06",
+      "price_modifier_budget": "1.00",
+      "price_modifier_standard": "1.00",
+      "price_modifier_luxury": "1.00",
+      "max_participants": 5,
+      "booked_participants": 0,
+      "assigned_guide": 2,
+      "is_available": true,
+      "notes": "Ideal for primate activity; check boat schedules.",
+      "created_at": "2025-08-17T10:00:00Z",
+      "updated_at": "2025-08-17T10:00:00Z"
+    }
+  },
+  {
+    "model": "tours.touravailability",
+    "pk": 6,
+    "fields": {
+      "tour_package": 10,
+      "start_date": "2025-11-05",
+      "end_date": "2025-11-08",
+      "price_modifier_budget": "0.95",
+      "price_modifier_standard": "1.00",
+      "price_modifier_luxury": "1.10",
+      "max_participants": 10,
+      "booked_participants": 2,
+      "assigned_guide": 4,
+      "is_available": true,
+      "notes": "Peak season for Zanzibar beach; book early.",
+      "created_at": "2025-08-17T10:00:00Z",
+      "updated_at": "2025-08-17T10:00:00Z"
+    }
+  },
+  {
+    "model": "tours.touravailability",
+    "pk": 7,
+    "fields": {
+      "tour_package": 11,
+      "start_date": "2025-02-10",
+      "end_date": "2025-02-12",
+      "price_modifier_budget": "1.00",
+      "price_modifier_standard": "1.00",
+      "price_modifier_luxury": "1.00",
+      "max_participants": 6,
+      "booked_participants": 0,
+      "assigned_guide": 2,
+      "is_available": true,
+      "notes": "Flower season starts January; ideal flowering in Feb-Mar.",
+      "created_at": "2025-08-17T10:00:00Z",
+      "updated_at": "2025-08-17T10:00:00Z"
+    }
+  },
   {
     "model": "tours.tourpackageextra",
     "pk": 1,
@@ -545,6 +1981,74 @@
       "price_usd": "35.00",
       "is_available": true,
       "max_quantity_per_booking": 5,
+      "requires_advance_booking": false,
+      "advance_booking_days": 0,
+      "created_at": "2025-08-17T10:00:00Z",
+      "updated_at": "2025-08-17T10:00:00Z"
+    }
+  },
+  {
+    "model": "tours.tourpackageextra",
+    "pk": 5,
+    "fields": {
+      "tour_package": 8,
+      "extra_type": "activity",
+      "name": "Guided Boating Safari",
+      "description": "Private boat safari on Lake Chada for up to 4 guests.",
+      "price_usd": "100.00",
+      "is_available": true,
+      "max_quantity_per_booking": 2,
+      "requires_advance_booking": true,
+      "advance_booking_days": 7,
+      "created_at": "2025-08-17T10:00:00Z",
+      "updated_at": "2025-08-17T10:00:00Z"
+    }
+  },
+  {
+    "model": "tours.tourpackageextra",
+    "pk": 6,
+    "fields": {
+      "tour_package": 9,
+      "extra_type": "activity",
+      "name": "Canoe Safari",
+      "description": "Canoe trip on the lake in Mahale to watch chimp families (per person).",
+      "price_usd": "80.00",
+      "is_available": true,
+      "max_quantity_per_booking": 4,
+      "requires_advance_booking": false,
+      "advance_booking_days": 0,
+      "created_at": "2025-08-17T10:00:00Z",
+      "updated_at": "2025-08-17T10:00:00Z"
+    }
+  },
+  {
+    "model": "tours.tourpackageextra",
+    "pk": 7,
+    "fields": {
+      "tour_package": 10,
+      "extra_type": "activity",
+      "name": "Spice Cooking Class",
+      "description": "Learn to cook traditional Zanzibari dishes with local chefs.",
+      "price_usd": "50.00",
+      "is_available": true,
+      "max_quantity_per_booking": 5,
+      "requires_advance_booking": true,
+      "advance_booking_days": 3,
+      "created_at": "2025-08-17T10:00:00Z",
+      "updated_at": "2025-08-17T10:00:00Z"
+    }
+  },
+  {
+    "model": "tours.tourpackageextra",
+    "pk": 8,
+    "fields": {
+      "tour_package": 12,
+      "extra_type": "equipment",
+      "name": "Scuba Diving Gear Rental",
+      "description": "Full scuba diving gear rental for one dive (certified divers only).",
+      "price_usd": "30.00",
+      "is_available": true,
+      "max_quantity_per_booking": 1,
       "requires_advance_booking": false,
       "advance_booking_days": 0,
       "created_at": "2025-08-17T10:00:00Z",

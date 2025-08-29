@@ -3,55 +3,173 @@
 
 {% block title %}{% trans "Privacy Policy" %} - Safari&nbsp;&amp;&nbsp;Bush Retreats{% endblock %}
 
+{% block extra_css %}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+/* Scoped typography scale — matching the FAQ / site scale */
+:root{
+  --fs-xxl: clamp(1.6rem, 4.0vw, 3.2rem);
+  --fs-xl:  clamp(1.25rem, 2.6vw, 2.25rem);
+  --fs-lg:  clamp(1.05rem, 1.9vw, 1.5rem);
+  --fs-base:clamp(0.95rem, 1.0vw, 1.06rem);
+  --fs-sm:  clamp(0.82rem, 0.8vw, 0.95rem);
+  --lh-tight: 1.08;
+  --lh-heading: 1.15;
+  --lh-base: 1.42;
+}
+
+/* Keep same font-family as the site and scope to .privacy-local */
+body, .privacy-local {
+  font-family: 'Poppins', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  font-size: var(--fs-base) !important;
+  line-height: var(--lh-base) !important;
+}
+
+/* Headings */
+.privacy-local .policy-title {
+  font-size: clamp(2.0rem, 5.2vw, 3.2rem) !important;
+  line-height: 1.04 !important;
+  font-weight: 700 !important;
+}
+h2 { font-size: var(--fs-xl) !important; line-height: var(--lh-heading) !important; font-weight: 600 !important; }
+h3 { font-size: var(--fs-lg) !important; line-height: var(--lh-heading) !important; font-weight: 600 !important; }
+
+/* Summary/question style */
+.privacy-local details summary span {
+  font-size: var(--fs-lg) !important;
+  font-weight: 600;
+}
+
+/* Details animation & spacing */
+.privacy-local details[open] summary ~ div { animation: fadeIn .18s ease-in; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
+
+.privacy-local details summary { cursor: pointer; }
+.privacy-local details summary { padding: 1rem 1.25rem; }
+.privacy-local details div { padding: 0 1.25rem 1rem; }
+
+/* Panels */
+.privacy-local .panel {
+  background: var(--bg, #fff);
+  border-radius: 0.75rem;
+  box-shadow: 0 1px 2px rgba(16,24,40,0.04);
+  overflow: hidden;
+}
+.dark .privacy-local .panel,
+.privacy-local .panel.dark {
+  background: #1f2937;
+}
+
+/* Divider */
+.privacy-local .panel > details + details { margin-top: 0.75rem; }
+
+/* chevron (keeps markup minimal; requires your icon set or replace with SVG) */
+.privacy-local .chev {
+  margin-left: 0.75rem;
+  transform-origin: center;
+  transition: transform .18s ease;
+}
+.privacy-local details[open] .chev { transform: rotate(180deg); }
+
+/* Preserve site colors (do not override theme) */
+.privacy-local a { color: #C18D45; text-decoration: underline; text-underline-offset: 2px; }
+
+/* Responsive tweak */
+@media (min-width: 1024px) {
+  .privacy-local .policy-title {
+    font-size: clamp(2.4rem, 3.2vw, 3.6rem) !important;
+    line-height: 1.02 !important;
+  }
+}
+</style>
+{% endblock %}
+
 {% block content %}
-<div class="container mx-auto px-4 py-12">
+<div class="privacy-local container mx-auto px-4 py-12">
   <div class="max-w-3xl mx-auto">
-    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-gray-100 mb-2">
+    <h1 class="policy-title text-center text-gray-900 dark:text-gray-100 mb-6">
       {% trans "Privacy Policy" %}
     </h1>
-    <p class="text-sm text-gray-600 dark:text-gray-400 mb-6">
-      {% trans "Last updated: January 2024" %}
+
+    <p class="text-sm text-gray-600 dark:text-gray-400 text-center mb-8">
+      {% trans "Last updated:" %} {% trans "January 2024" %}
     </p>
 
-    <article class="bg-white dark:bg-gray-800 rounded-lg shadow-md border border-gray-200 dark:border-gray-700">
-      <div class="p-6 md:p-8 prose max-w-none prose-lg text-gray-700 dark:prose-invert dark:text-gray-300">
-        <section>
-          <h3 class="text-lg font-semibold text-gray-900 dark:text-gray-100">{% trans "Information We Collect" %}</h3>
-          <p>
+    <div class="space-y-4 panel">
+      <details class="group bg-white dark:bg-gray-800 rounded-xl shadow-sm overflow-hidden" open>
+        <summary class="list-none px-5 py-4 flex items-center justify-between">
+          <span class="text-left text-gray-900 dark:text-gray-100">{% trans "Information We Collect" %}</span>
+          <span class="ml-4 chev text-gray-500 dark:text-gray-300" aria-hidden="true">
+            <i class="fas fa-chevron-down"></i>
+          </span>
+        </summary>
+        <div class="px-5 pb-4 pt-0 border-t border-gray-100 dark:border-gray-700">
+          <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
             {% trans "We collect information you provide directly to us, such as when you create an account, make a booking, or contact us." %}
           </p>
-        </section>
+        </div>
+      </details>
 
-        <section>
-          <h3 class="text-lg font-semibold text-gray-900 dark:text-gray-100">{% trans "How We Use Your Information" %}</h3>
-          <p>
+      <details class="group bg-white dark:bg-gray-800 rounded-xl shadow-sm overflow-hidden">
+        <summary class="list-none px-5 py-4 flex items-center justify-between">
+          <span class="text-left text-gray-900 dark:text-gray-100">{% trans "How We Use Your Information" %}</span>
+          <span class="ml-4 chev text-gray-500 dark:text-gray-300" aria-hidden="true">
+            <i class="fas fa-chevron-down"></i>
+          </span>
+        </summary>
+        <div class="px-5 pb-4 pt-0 border-t border-gray-100 dark:border-gray-700">
+          <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
             {% trans "We use the information we collect to provide, maintain, and improve our services, process bookings, and communicate with you." %}
           </p>
-        </section>
+        </div>
+      </details>
 
-        <section>
-          <h3 class="text-lg font-semibold text-gray-900 dark:text-gray-100">{% trans "Information Sharing" %}</h3>
-          <p>
+      <details class="group bg-white dark:bg-gray-800 rounded-xl shadow-sm overflow-hidden">
+        <summary class="list-none px-5 py-4 flex items-center justify-between">
+          <span class="text-left text-gray-900 dark:text-gray-100">{% trans "Information Sharing" %}</span>
+          <span class="ml-4 chev text-gray-500 dark:text-gray-300" aria-hidden="true">
+            <i class="fas fa-chevron-down"></i>
+          </span>
+        </summary>
+        <div class="px-5 pb-4 pt-0 border-t border-gray-100 dark:border-gray-700">
+          <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
             {% trans "We do not sell, trade, or otherwise transfer your personal information to third parties without your consent, except as described in this policy." %}
           </p>
-        </section>
+        </div>
+      </details>
 
-        <section>
-          <h3 class="text-lg font-semibold text-gray-900 dark:text-gray-100">{% trans "Data Security" %}</h3>
-          <p>
+      <details class="group bg-white dark:bg-gray-800 rounded-xl shadow-sm overflow-hidden">
+        <summary class="list-none px-5 py-4 flex items-center justify-between">
+          <span class="text-left text-gray-900 dark:text-gray-100">{% trans "Data Security" %}</span>
+          <span class="ml-4 chev text-gray-500 dark:text-gray-300" aria-hidden="true">
+            <i class="fas fa-chevron-down"></i>
+          </span>
+        </summary>
+        <div class="px-5 pb-4 pt-0 border-t border-gray-100 dark:border-gray-700">
+          <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
             {% trans "We implement appropriate security measures to protect your personal information against unauthorized access, alteration, disclosure, or destruction." %}
           </p>
-        </section>
+        </div>
+      </details>
 
-        <section>
-          <h3 class="text-lg font-semibold text-gray-900 dark:text-gray-100">{% trans "Contact Us" %}</h3>
-          <p>
+      <details class="group bg-white dark:bg-gray-800 rounded-xl shadow-sm overflow-hidden">
+        <summary class="list-none px-5 py-4 flex items-center justify-between">
+          <span class="text-left text-gray-900 dark:text-gray-100">{% trans "Contact Us" %}</span>
+          <span class="ml-4 chev text-gray-500 dark:text-gray-300" aria-hidden="true">
+            <i class="fas fa-chevron-down"></i>
+          </span>
+        </summary>
+        <div class="px-5 pb-4 pt-0 border-t border-gray-100 dark:border-gray-700">
+          <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
             {% trans "If you have any questions about this Privacy Policy, please contact us at" %}
-            <a href="mailto:privacy@tanzaniasafari.com" class="text-[#C18D45] hover:underline">privacy@tanzaniasafari.com</a>
+            <a href="mailto:privacy@tanzaniasafari.com">privacy@tanzaniasafari.com</a>.
           </p>
-        </section>
-      </div>
-    </article>
+        </div>
+      </details>
+    </div>
   </div>
 </div>
 {% endblock %}
