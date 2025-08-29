@@ -11457,3 +11457,16 @@ WARNING 2025-08-29 16:24:31,243 basehttp 880 9664 "GET /media/wildlife/main/blue
 WARNING 2025-08-29 16:24:31,248 basehttp 880 14232 "GET /media/wildlife/main/eland.jpg HTTP/1.1" 404 5813
 WARNING 2025-08-29 16:24:31,259 log 880 1388 Not Found: /media/wildlife/main/grants_gazelle.jpg
 WARNING 2025-08-29 16:24:31,265 basehttp 880 1388 "GET /media/wildlife/main/grants_gazelle.jpg HTTP/1.1" 404 5849
+INFO 2025-08-29 16:29:41,616 autoreload 5832 14056 Watching for file changes with StatReloader
+INFO 2025-08-29 16:29:50,827 basehttp 5832 13720 "GET /parks/wildlife/ HTTP/1.1" 200 83678
+WARNING 2025-08-29 16:29:50,926 log 5832 11308 Not Found: /media/wildlife/main/african_wild_cat.jpg
+WARNING 2025-08-29 16:29:50,928 basehttp 5832 11308 "GET /media/wildlife/main/african_wild_cat.jpg HTTP/1.1" 404 5857
+WARNING 2025-08-29 16:29:51,029 log 5832 11308 Not Found: /media/wildlife/main/blue_monkey.jpg
+WARNING 2025-08-29 16:29:51,045 basehttp 5832 11308 "GET /media/wildlife/main/blue_monkey.jpg HTTP/1.1" 404 5837
+WARNING 2025-08-29 16:29:51,142 log 5832 12092 Not Found: /media/wildlife/main/chimpanzee.jpg
+WARNING 2025-08-29 16:29:51,154 basehttp 5832 12092 "GET /media/wildlife/main/chimpanzee.jpg HTTP/1.1" 404 5833
+WARNING 2025-08-29 16:29:51,166 log 5832 9920 Not Found: /media/wildlife/main/eland.jpg
+WARNING 2025-08-29 16:29:51,173 log 5832 12212 Not Found: /media/wildlife/main/grants_gazelle.jpg
+WARNING 2025-08-29 16:29:51,193 basehttp 5832 9920 "GET /media/wildlife/main/eland.jpg HTTP/1.1" 404 5813
+WARNING 2025-08-29 16:29:51,204 basehttp 5832 12212 "GET /media/wildlife/main/grants_gazelle.jpg HTTP/1.1" 404 5849
+INFO 2025-08-29 16:29:51,310 basehttp 5832 13720 "GET /static/images/online.png HTTP/1.1" 200 101495
