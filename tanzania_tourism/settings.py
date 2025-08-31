@@ -29,7 +29,7 @@ if not SECRET_KEY and not DEBUG:
 def _split_csv(value: str):
     return [s.strip() for s in (value or '').split(',') if s.strip()]
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', '82.29.168.120']
 
 # For Django >= 4.0: scheme://host entries
 CSRF_TRUSTED_ORIGINS = ['http://localhost:8000', 'http://127.0.0.1:8000']
