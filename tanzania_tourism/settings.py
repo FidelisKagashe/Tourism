@@ -16,7 +16,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # Basic flags (hard-coded)
 # -----------------------
 # Set DEBUG to True for local development, False for production
-DEBUG = True
+DEBUG = False
 
 # SECRET_KEY (hard-coded — replace with your own long random string)
 SECRET_KEY = 'm9$3kV!q8zP#tR6yWu2nL0sFdG7hB@eXc4vZj^aQp*Yl%Io+1'
@@ -29,10 +29,10 @@ if not SECRET_KEY and not DEBUG:
 def _split_csv(value: str):
     return [s.strip() for s in (value or '').split(',') if s.strip()]
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', '82.29.168.120']
+ALLOWED_HOSTS = ['82.29.168.120', '127.0.0.1']
 
 # For Django >= 4.0: scheme://host entries
-CSRF_TRUSTED_ORIGINS = ['http://localhost:8000', 'http://127.0.0.1:8000']
+CSRF_TRUSTED_ORIGINS = ['http://82.29.168.120:8000/']
 
 # -----------------------
 # Apps and middleware
