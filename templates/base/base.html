@@ -15,7 +15,16 @@
     <meta property="og:description" content="{% block og_description %}{{ site_settings.site_description|default:'Discover Tanzania\'s wildlife' }}{% endblock %}">
     <meta property="og:type" content="website">
     <meta property="og:url" content="{{ request.build_absolute_uri }}">
+
     {% load static %}
+
+    <link rel="icon" type="image/png" sizes="96x96" href="{% static 'images/favicon-96x96.png' %}">
+    <link rel="icon" type="image/svg+xml" href="{% static 'images/favicon.svg' %}">
+    <link rel="shortcut icon" href="{% static 'images/favicon.ico' %}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'images/apple-touch-icon.png' %}">
+    <meta name="apple-mobile-web-app-title" content="safari&bushretreats">
+    <link rel="manifest" href="{% static 'images/site.webmanifest' %}">
+    
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Font Awesome -->
