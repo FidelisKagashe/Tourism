@@ -76,6 +76,25 @@
   .park-typography .hero-subtitle { font-size: 0.98rem; }
 }
 
+.hero-title {
+  font-weight: 700;
+  line-height: 1.02;
+  font-size: clamp(1.6rem, 5.6vw, 3.4rem);
+  color: #fff;
+  text-shadow: 0 8px 30px rgba(0,0,0,0.6);
+  margin: 0 0 0.5rem 0;
+}
+/* Responsive tweaks */
+@media (max-width: 640px) {
+  .hero-content { padding-top: 2rem; padding-bottom: 2rem; }
+  .hero-title { font-size: 1.6rem; }
+  .hero-subtitle { font-size: 0.98rem; }
+}
+@media (min-width: 1024px) {
+  .hero-bg { min-height: 40vh; }
+  .hero-title { font-size: clamp(2.2rem, 3.0vw, 4.0rem); }
+}
+
 /* desktop boost for hero */
 @media (min-width: 1024px) {
   .park-typography .hero-title { font-size: clamp(2.2rem, 3.0vw, 3.8rem); }
@@ -126,7 +145,7 @@ html.dark .local-dark-mode .shadow-lg {
 <div class="local-dark-mode">
 
 <!-- Hero Section -->
-<section class="relative bg-cover bg-center" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('{% if park.main_image %}{{ park.main_image.url }}{% else %}https://images.pexels.com/photos/631317/pexels-photo-631317.jpeg{% endif %}'); min-height: 70vh;">
+<section class="relative bg-cover bg-center" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('{% if park.main_image %}{{ park.main_image.url }}{% else %}https://images.pexels.com/photos/631317/pexels-photo-631317.jpeg{% endif %}'); min-height: 40vh;">
     <div class="container mx-auto px-4 py-24 relative z-10">
         <div class="max-w-3xl">
             <div class="flex items-center mb-4">
@@ -139,8 +158,8 @@ html.dark .local-dark-mode .shadow-lg {
                     </span>
                 {% endif %}
             </div>
-            <h1 class="hero-title text-white mb-6">{{ park.name }}</h1>
-            <p class="hero-subtitle text-white mb-8 flex items-center">
+            <h1 class="hero-title">{{ park.name }}</h1>
+            <p class="hero-subtitle flex items-center">
                 <i class="fas fa-map-marker-alt mr-3 text-[#C18D45]"></i>{{ park.location }}, {{ park.region }}
             </p>
             <div class="flex flex-wrap gap-4">
