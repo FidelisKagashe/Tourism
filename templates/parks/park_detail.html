@@ -145,38 +145,81 @@ html.dark .local-dark-mode .shadow-lg {
 <div class="local-dark-mode">
 
 <!-- Hero Section -->
-<section class="relative bg-cover bg-center" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('{% if park.main_image %}{{ park.main_image.url }}{% else %}https://images.pexels.com/photos/631317/pexels-photo-631317.jpeg{% endif %}'); min-height: 40vh;">
-    <div class="container mx-auto px-4 py-24 relative z-10">
-        <div class="max-w-3xl">
-            <div class="flex items-center mb-4">
-                <span class="bg-[#C18D45] text-white text-sm font-semibold px-3 py-1 rounded-full mr-3">
-                    {{ park.get_park_type_display }}
-                </span>
-                {% if park.featured %}
-                    <span class="bg-yellow-400 text-gray-900 text-sm font-semibold px-3 py-1 rounded-full flex items-center">
-                        <i class="fas fa-star mr-1"></i>{% trans "Featured" %}
-                    </span>
-                {% endif %}
-            </div>
-            <h1 class="" style="font-size: clamp(2.2rem, 3.0vw, 4.0rem);">
-            {{ park.name }}
-            </h1>
-            <p class="flex items-center" style="font-size: 0.98rem;">
-            <i class="fas fa-map-marker-alt mr-3 text-[#C18D45]" aria-hidden="true"></i>
-            {{ park.location }}, {{ park.region }}
-            </p>
-            <div class="flex flex-wrap gap-4">
-                <a href="#tours" class="bg-[#C18D45] hover:bg-[#a97a3a] text-white font-medium py-3 px-6 rounded-md transition duration-300 flex items-center">
-                    <i class="fas fa-binoculars mr-2"></i>{% trans "View Tours" %}
-                </a>
-                {% if user.is_authenticated %}
-                    <a href="{% url 'reviews:create_park_review' park.slug %}" class="bg-white hover:bg-gray-100 text-gray-800 font-medium py-3 px-6 rounded-md transition duration-300 flex items-center">
-                        <i class="fas fa-star mr-2"></i>{% trans "Write Review" %}
-                    </a>
-                {% endif %}
-            </div>
-        </div>
+<section
+  class="park-typography relative bg-cover bg-center hero-bg"
+  style="background-image: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)), url('{% if park.main_image %}{{ park.main_image.url }}{% else %}https://images.pexels.com/photos/631317/pexels-photo-631317.jpeg{% endif %}'); min-height: 50vh; background-position: center; background-size: cover;"
+>
+  <div class="container mx-auto px-4 py-28 relative z-10">
+    <div class="max-w-3xl">
+      <div class="flex items-center mb-4">
+        <span class="bg-[#C18D45] text-white text-sm font-semibold px-3 py-1 rounded-full mr-3">
+          {{ park.get_park_type_display }}
+        </span>
+        {% if park.featured %}
+          <span class="bg-yellow-400 text-gray-900 text-sm font-semibold px-3 py-1 rounded-full flex items-center">
+            <i class="fas fa-star mr-1"></i>{% trans "Featured" %}
+          </span>
+        {% endif %}
+      </div>
+
+      <!-- Big hero title (inline styles to force size) -->
+      <h1
+        class="hero-title leading-tight"
+        style="
+          font-weight: 800;
+          color: #ffffff;
+          margin: 0 0 0.5rem 0;
+          line-height: 1.02;
+          /* big, responsive clamp that definitely makes it large on desktop */
+          font-size: clamp(2.8rem, 6.5vw, 5.2rem);
+          text-shadow: 0 10px 30px rgba(0,0,0,0.6);
+        "
+      >
+        {{ park.name }}
+      </h1>
+
+      <!-- Subtitle with bigger icon -->
+      <p
+        class="hero-subtitle flex items-center"
+        style="
+          margin: 0 0 1.25rem 0;
+          font-weight: 600;
+          /* subtitle scale */
+          font-size: clamp(1.05rem, 2.4vw, 1.6rem);
+          color: rgba(255,255,255,0.95);
+        "
+      >
+        <i
+          class="fas fa-map-marker-alt mr-3"
+          aria-hidden="true"
+          style="font-size: 1.25em; color: #C18D45; line-height: 1;"
+        ></i>
+        {{ park.location }}, {{ park.region }}
+      </p>
+
+      <div class="flex flex-wrap gap-4">
+        <a
+          href="#tours"
+          class="inline-flex items-center"
+          style="background:#C18D45; color:#fff; font-weight:600; padding:0.85rem 1.25rem; border-radius:0.5rem; text-decoration:none; transition:transform .18s ease;"
+        >
+          <i class="fas fa-binoculars mr-2" style="font-size:1.05rem;"></i>
+          {% trans "View Tours" %}
+        </a>
+
+        {% if user.is_authenticated %}
+          <a
+            href="{% url 'reviews:create_park_review' park.slug %}"
+            class="inline-flex items-center"
+            style="background:#ffffff; color:#111827; font-weight:600; padding:0.85rem 1.25rem; border-radius:0.5rem; text-decoration:none; transition:transform .18s ease;"
+          >
+            <i class="fas fa-star mr-2" style="font-size:1.05rem; color:#C18D45;"></i>
+            {% trans "Write Review" %}
+          </a>
+        {% endif %}
+      </div>
     </div>
+  </div>
 </section>
 
 <!-- Park Info -->
