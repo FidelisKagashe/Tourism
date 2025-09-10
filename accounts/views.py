@@ -12,9 +12,10 @@ import logging
 from django.core.mail import send_mail
 from django.conf import settings
 from .models import CustomUser, UserProfile, UserActivityLog
-from .forms import CustomUserRegistrationForm, CustomAuthenticationForm, UserProfileForm, ExtendedProfileForm
+from .forms import CustomUserRegistrationForm, CustomAuthenticationForm, UserProfileForm, ExtendedProfileForm, CustomPasswordResetForm
 from bookings.models import Booking
 from reviews.models import Review
+from django.utils.translation import gettext as _
 from django.contrib.auth.views import (
     PasswordResetView, PasswordResetDoneView,
     PasswordResetConfirmView, PasswordResetCompleteView
@@ -239,11 +240,19 @@ def user_documents(request):
 
 # ---- Password reset CBVs ----
 class CustomPasswordResetView(PasswordResetView):
-    template_name = 'accounts/password_reset.html'                # <- your current file
+    template_name = 'accounts/password_reset.html'
     email_template_name = 'accounts/password_reset_email.html'
     subject_template_name = 'accounts/password_reset_subject.txt'
-    form_class = PasswordResetForm
+    form_class = CustomPasswordResetForm
     success_url = reverse_lazy('accounts:password_reset_done')
+
+    def form_valid(self, form):
+        # At this point, clean_email has guaranteed the address exists.
+        messages.success(
+            self.request,
+            _("We've sent a password reset link to %(email)s.") % {"email": form.cleaned_data["email"]}
+        )
+        return super().form_valid(form)
 
 class CustomPasswordResetDoneView(PasswordResetDoneView):
     template_name = 'accounts/password_reset_done.html'

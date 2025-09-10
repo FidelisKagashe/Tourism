@@ -2,8 +2,11 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth import authenticate
 from crispy_forms.helper import FormHelper
+from django.utils.translation import gettext_lazy as _
 from crispy_forms.layout import Layout, Row, Column, Submit, HTML
 from .models import CustomUser, UserProfile
+from django.contrib.auth.forms import PasswordResetForm
+from django.contrib.auth import get_user_model
 from django_countries import countries
 from phonenumber_field.formfields import PhoneNumberField as PhoneFormField
 from phonenumber_field.widgets import PhoneNumberPrefixWidget
@@ -362,4 +365,28 @@ class ExtendedProfileForm(forms.ModelForm):
             ),
             Submit('submit', 'Update Extended Profile', 
                    css_class='w-full md:w-auto bg-[#C18D45] hover:bg-[#a6783a] text-white font-bold py-2 px-6 rounded-md transition-colors cursor-pointer')
+        )
+
+User = get_user_model()
+
+class CustomPasswordResetForm(PasswordResetForm):
+    """
+    Validate that the email exists before proceeding. If it doesn't,
+    raise a form error (shown inline in your template).
+    """
+
+    def clean_email(self):
+        email = (self.cleaned_data.get("email") or "").strip()
+        if not User.objects.filter(email__iexact=email).exists():
+            raise forms.ValidationError(
+                _("We couldn't find an account with that email address.")
+            )
+        return email
+
+    def get_users(self, email):
+        """
+        Keep Django's behavior, but ensure case-insensitive match and active users only.
+        """
+        return User._default_manager.filter(
+            email__iexact=email, is_active=True
         )
