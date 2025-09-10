@@ -131,7 +131,7 @@
 
       <!-- CTAs -->
       <div class="hero-cta flex flex-wrap gap-3">
-        <a href="#tours" class="bg-[#C18D45] text-white">
+        <a href="{% url 'tours:tour_list' %}" class="bg-[#C18D45] text-white">
           <i class="fas fa-binoculars" aria-hidden="true"></i>{% trans "View Tours" %}
         </a>
         {% if user.is_authenticated %}

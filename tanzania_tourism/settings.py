@@ -182,7 +182,7 @@ EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'hazinayavitabu@gmail.com'
 EMAIL_HOST_PASSWORD = 'ntdq dsqp jwti niks'  # <-- Replace with your real password
 
-DEFAULT_FROM_EMAIL = "Safari & Bush Retreats <hazinayavitabu@gmail.com>"
+DEFAULT_FROM_EMAIL = "Safari & Bush Retreats"
 SITE_URL = 'https://tourismproject.pythonanywhere.com'
 SITE_NAME = 'Safari & Bush Retreats'
 
