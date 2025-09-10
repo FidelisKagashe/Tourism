@@ -4,13 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}{{ site_settings.site_name|default:"Safari & Bush Retreats" }}{% endblock %}</title>
+
+    <!-- PREBOOT THEME (apply mapema bila FOUC) -->
+    <script>
+      (function(){
+        try{
+          var override = localStorage.getItem('theme_override'); // 'light'|'dark'|null
+          var h = new Date().getHours();
+          var auto = (h >= 18 || h < 6) ? 'dark' : 'light';
+          var theme = override || auto;
+          if(theme === 'dark'){ document.documentElement.classList.add('dark'); }
+          else { document.documentElement.classList.remove('dark'); }
+        }catch(e){}
+      })();
+    </script>
     
     <!-- Meta Tags -->
     <meta name="keywords" content="Tanzania, Safari, National Parks, Wildlife, Tours, Serengeti, Ngorongoro, Kilimanjaro">
     <meta name="description" content="{% block meta_description %}{{ site_settings.site_description|default:'Discover the beauty of Tanzania\'s national parks and wildlife with our expert-guided safari tours.' }}{% endblock %}">
     <meta name="keywords" content="{% block meta_keywords %}Tanzania, Safari, National Parks, Wildlife, Tours, Serengeti, Ngorongoro, Kilimanjaro{% endblock %}">
     <meta name="author" content="{{ site_settings.site_name|default:"Safari & Bush Retreats" }}">
-    
+
     <!-- Open Graph -->
     <meta property="og:title" content="{% block og_title %}{{ site_settings.site_name|default:"Safari & Bush Retreats" }}{% endblock %}">
     <meta property="og:description" content="{% block og_description %}{{ site_settings.site_description|default:'Discover Tanzania\'s wildlife' }}{% endblock %}">
@@ -19,12 +33,15 @@
 
     {% load static %}
 
+    <!-- Favicons -->
     <link rel="icon" type="image/png" sizes="96x96" href="{% static 'images/favicon-96x96.png' %}">
     <link rel="icon" type="image/svg+xml" href="{% static 'images/favicon.svg' %}">
     <link rel="shortcut icon" href="{% static 'images/favicon.ico' %}">
     <link rel="apple-touch-icon" sizes="180x180" href="{% static 'images/apple-touch-icon.png' %}">
     <meta name="apple-mobile-web-app-title" content="safari&bushretreats">
     <link rel="manifest" href="{% static 'images/site.webmanifest' %}">
+    <!-- Preload logo for loader -->
+    <link rel="preload" as="image" href="{% static 'images/favicon-96x96.png' %}">
 
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -66,81 +83,154 @@
         }
     </script>
     <style>
-        /* ---------- Instagram-style global typography (font-size only) ----------
-           Goal: override Tailwind utility sizes and provide a compact, polished
-           typographic scale similar to Instagram's look on desktop & mobile.
-           This file only changes font sizes and line-heights — no layout changes.
-        */
-
+        /* ---------- Instagram-style global typography (font-size only) ---------- */
         :root{
-            /* responsive typographic scale using CSS variables */
-            --fs-xxl: clamp(1.6rem, 4.0vw, 3.2rem);  /* very large headings (hero) */
-            --fs-xl:  clamp(1.25rem, 2.6vw, 2.25rem); /* large headings */
-            --fs-lg:  clamp(1.05rem, 1.9vw, 1.5rem);  /* section headings */
-            --fs-base:clamp(0.95rem, 1.0vw, 1.06rem);/* body / paragraphs */
-            --fs-sm:  clamp(0.82rem, 0.8vw, 0.95rem); /* small buttons / labels */
-            --fs-xs:  clamp(0.72rem, 0.7vw, 0.82rem); /* fine print */
+            --fs-xxl: clamp(1.6rem, 4.0vw, 3.2rem);
+            --fs-xl:  clamp(1.25rem, 2.6vw, 2.25rem);
+            --fs-lg:  clamp(1.05rem, 1.9vw, 1.5rem);
+            --fs-base:clamp(0.95rem, 1.0vw, 1.06rem);
+            --fs-sm:  clamp(0.82rem, 0.8vw, 0.95rem);
+            --fs-xs:  clamp(0.72rem, 0.7vw, 0.82rem);
 
-            /* line-height presets tuned for a tight, modern feel */
             --lh-tight: 1.08;
             --lh-heading: 1.15;
             --lh-base: 1.42;
             --lh-small: 1.3;
         }
 
-        /* base */
         html { font-size: 16px; }
         body { font-family: 'Poppins', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; font-size: var(--fs-base) !important; line-height: var(--lh-base) !important; }
-
-        /* headings — tight and compact like IG */
         h1 { font-size: var(--fs-xxl) !important; line-height: var(--lh-tight) !important; font-weight: 600 !important; }
         h2 { font-size: var(--fs-xl) !important; line-height: var(--lh-heading) !important; font-weight: 600 !important; }
         h3 { font-size: var(--fs-lg) !important; line-height: var(--lh-heading) !important; font-weight: 600 !important; }
         h4 { font-size: calc(var(--fs-lg) - 0.06rem) !important; line-height: var(--lh-heading) !important; }
         h5 { font-size: var(--fs-sm) !important; line-height: var(--lh-small) !important; }
         h6 { font-size: var(--fs-sm) !important; line-height: var(--lh-small) !important; }
-
-        /* paragraphs and common text utilities */
         p, .text-base, .prose, .article-body { font-size: var(--fs-base) !important; line-height: var(--lh-base) !important; }
-
-        /* small text and muted labels */
         small, .text-muted, .text-gray-500, .meta { font-size: var(--fs-sm) !important; line-height: var(--lh-small) !important; }
-
-        /* buttons, pills, inputs — slightly smaller for compact look */
         button, .btn, .inline-flex, input[type="email"], .dest-seemore { font-size: var(--fs-sm) !important; line-height: 1.2 !important; }
-
-        /* destination card title (compact, readable) */
         .dest-title { font-size: var(--fs-sm) !important; line-height: 1.06 !important; font-weight: 500 !important; }
-
-        /* hero special sizing (keeps hero large but not oversized on phones) */
         .hero-content h1, .hero-main-title, .hero .text-5xl { font-size: clamp(1.25rem, 5.2vw, 2.8rem) !important; line-height: 1.02 !important; }
 
-        /* mobile tweaks: make very small screens a bit tighter */
         @media (max-width: 420px){
             :root{
-                --fs-xxl: clamp(1.25rem, 6.2vw, 1.8rem);
-                --fs-xl:  clamp(1.0rem, 4.2vw, 1.25rem);
-                --fs-lg:  clamp(0.95rem, 2.8vw, 1.125rem);
-                --fs-base:clamp(0.88rem, 2.2vw, 0.98rem);
-                --fs-sm:  clamp(0.68rem, 1.8vw, 0.82rem);
-                --fs-xs:  clamp(0.62rem, 1.6vw, 0.72rem);
+            --fs-xxl: clamp(1.25rem, 6.2vw, 1.8rem);
+            --fs-xl:  clamp(1.0rem, 4.2vw, 1.25rem);
+            --fs-lg:  clamp(0.95rem, 2.8vw, 1.125rem);
+            --fs-base:clamp(0.88rem, 2.2vw, 0.98rem);
+            --fs-sm:  clamp(0.68rem, 1.8vw, 0.82rem);
+            --fs-xs:  clamp(0.62rem, 1.6vw, 0.72rem);
             }
-
-            /* reduce letter-spacing slightly for compactness on phones */
             body, p, a, li { letter-spacing: -0.01em !important; }
         }
-
-        /* accessibility: ensure contrast isn't affected by font-size overrides */
         a, button { text-rendering: optimizeLegibility; }
-
-        /* small helper to override utilities that may be more specific */
         .site-typography-overrides * { font-size: inherit !important; }
 
-        /* End of font-only adjustments */
+        /* ---------- Page Loader (logo + two-color ring) ---------- */
+        :root{
+            --brand-c1:#C18D45; /* primary */
+            --brand-c2:#715F3C; /* secondary */
+            --loader-bg-light:#ffffff;
+            --loader-bg-dark:#111827;     /* gray-900 */
+            --ring-track-light:#e5e7eb;   /* gray-200 */
+            --ring-track-dark:#374151;    /* gray-700 */
+        }
+
+        .loader-overlay{
+            position: fixed; inset: 0; z-index: 9999;
+            display: grid; place-items: center;
+            background: var(--loader-bg-light);
+            transition: opacity .35s ease, visibility .35s ease;
+        }
+        @media (prefers-color-scheme: dark){
+            .loader-overlay{ background: var(--loader-bg-dark); }
+        }
+        .dark .loader-overlay{ background: var(--loader-bg-dark); }
+
+        .loader-overlay.loaded{ opacity: 0; visibility: hidden; }
+
+        /* square wrapper to prevent “egg/horse-shoe” */
+        .loader-wrap{
+        position: relative;
+        width: 104px;
+        aspect-ratio: 1 / 1;      /* keeps the ring perfectly round */
+        display: grid;
+        place-items: center;      /* center things in the cell */
+        }
+
+        /* Duara nyembamba rangi mbili (nusu-nusu) */
+        .loader-ring{
+            --ring-w: 6px;
+            width: 100%; height: 100%;
+            aspect-ratio: 1 / 1;
+            border-radius: 50%;
+            position: relative;
+            z-index: 1;
+            background: conic-gradient(
+                from 0deg,
+                var(--brand-c1) 0 50%,
+                var(--brand-c2) 50% 100%
+            );
+            -webkit-mask: radial-gradient(farthest-side,
+                            transparent calc(100% - var(--ring-w)),
+                            #000 calc(100% - var(--ring-w)));
+                    mask: radial-gradient(farthest-side,
+                            transparent calc(100% - var(--ring-w)),
+                            #000 calc(100% - var(--ring-w)));
+            animation: loader-spin 1s linear infinite;
+            will-change: transform;
+        }
+
+        /* track laini nyuma ya ring (hufuata light/dark) */
+        .loader-ring::before{
+            content:none; position:absolute; inset:0; border-radius:inherit;
+            background: var(--ring-track-light);
+            -webkit-mask: radial-gradient(farthest-side,
+                        transparent calc(100% - var(--ring-w)),
+                        #000 calc(100% - var(--ring-w)));
+                    mask: radial-gradient(farthest-side,
+                        transparent calc(100% - var(--ring-w)),
+                        #000 calc(100% - var(--ring-w)));
+            z-index:-1;
+        }
+        .loader-ring,
+            .loader-icon{
+            grid-area: 1 / 1;
+        }
+
+        @media (prefers-color-scheme: dark){
+            .loader-ring::before{ background: var(--ring-track-dark); }
+        }
+        .dark .loader-ring::before{ background: var(--ring-track-dark); }
+
+        /* logo katikati */
+        .loader-icon{
+            width: 48px; height: 48px;
+            object-fit: contain;
+            z-index: 2;
+            pointer-events: none;
+            filter: drop-shadow(0 2px 6px rgba(0,0,0,.15));
+        }
+
+        @keyframes loader-spin { to { transform: rotate(360deg); } }
+
+        @media (prefers-reduced-motion: reduce){
+            .loader-ring{ animation: none; }
+        }
     </style>
+
     {% block extra_css %}{% endblock %}
 </head>
 <body class="font-poppins leading-relaxed text-gray-800 bg-white dark:text-gray-200 dark:bg-gray-900 transition-all duration-300 site-typography-overrides">
+    <!-- Page Loader -->
+    <div id="page-loader" class="loader-overlay" role="status" aria-live="polite" aria-busy="true">
+    <div class="loader-wrap">
+        <div class="loader-ring" aria-hidden="true"></div>
+        <img class="loader-icon" src="{% static 'images/favicon-96x96.png' %}" alt="{{ site_settings.site_name|default:'Logo' }}">
+    </div>
+    <span class="sr-only">Loading…</span>
+    </div>
+
     <!-- Header with two rows -->
     <header class="header sticky top-0 z-50 transition-all duration-300">
         <!-- Primary Row: Logo, Brand, Links -->
@@ -239,7 +329,7 @@
                     </div>
                 </div>
 
-                <!-- FIXED: Mobile Navigation Menu with proper z-index and scrolling -->
+                <!-- Mobile Navigation Menu -->
                 <div class="lg:hidden mobile-menu hidden bg-white dark:bg-gray-700 rounded-lg mt-4 p-4 shadow-2xl border border-gray-200 dark:border-gray-600 fixed left-4 right-4 top-8" id="mobile-menu">
                     <ul class="space-y-2">
                         <li><a class="mobile-nav-link block px-4 py-3 text-gray-800 dark:text-gray-200 hover:bg-primary hover:text-white dark:hover:bg-primary-dark rounded-md transition-colors duration-300 {% if request.resolver_match.url_name == 'home' %}active{% endif %}" href="{% url 'core:home' %}">Home</a></li>
@@ -256,7 +346,6 @@
                                 <i class="fas fa-chevron-down mobile-dropdown-icon transition-transform duration-300 text-sm"></i>
                             </button>
                             
-                            <!-- FIXED: Mobile Destinations Submenu with better spacing -->
                             <div class="mobile-dropdown-menu hidden mt-2 ml-4 space-y-1 overflow-hidden transition-all duration-300" id="mobile-destinations-menu">
                                 <a class="mobile-dropdown-item flex items-center px-4 py-3 text-gray-700 dark:text-gray-300 hover:bg-primary hover:text-white dark:hover:bg-primary-dark rounded-md transition-all duration-300 touch-manipulation min-h-[48px] {% if request.resolver_match.url_name == 'destination_list' and not request.GET.type %}active{% endif %}" 
                                    href="{% url 'parks:destination_list' %}">
@@ -267,7 +356,6 @@
                                     {% endif %}
                                 </a>
                                 
-                                <!-- Category Divider -->
                                 <div class="px-4 py-2">
                                     <hr class="border-gray-300 dark:border-gray-600">
                                     <h6 class="text-primary dark:text-primary-dark font-semibold text-sm mt-2 mb-1">By Category</h6>
@@ -327,7 +415,6 @@
                                     {% endif %}
                                 </a>
                                 
-                                <!-- Special Collections Divider -->
                                 <div class="px-4 py-2">
                                     <hr class="border-gray-300 dark:border-gray-600">
                                     <h6 class="text-primary dark:text-primary-dark font-semibold text-sm mt-2 mb-1">Special Collections</h6>
@@ -359,15 +446,6 @@
                                         <i class="fas fa-check ml-auto text-primary dark:text-primary-dark"></i>
                                     {% endif %}
                                 </a>
-                                
-                                {% comment %} <a class="mobile-dropdown-item flex items-center px-4 py-3 text-gray-700 dark:text-gray-300 hover:bg-primary hover:text-white dark:hover:bg-primary-dark rounded-md transition-all duration-300 touch-manipulation min-h-[48px] {% if request.resolver_match.url_name == 'guide_list' %}active{% endif %}" 
-                                   href="{% url 'tours:guide_list' %}">
-                                    <i class="fas fa-user-tie mr-3 w-4 text-center"></i>
-                                    <span>Tour Guides</span>
-                                    {% if request.resolver_match.url_name == 'guide_list' %}
-                                        <i class="fas fa-check ml-auto text-primary dark:text-primary-dark"></i>
-                                    {% endif %}
-                                </a> {% endcomment %}
                             </div>
                         </li>
                         <li><a class="mobile-nav-link block px-4 py-3 text-gray-800 dark:text-gray-200 hover:bg-primary hover:text-white dark:hover:bg-primary-dark rounded-md transition-colors duration-300 {% if request.resolver_match.url_name == 'about' %}active{% endif %}" href="{% url 'core:about' %}">About</a></li>
@@ -581,167 +659,156 @@
 
     <!-- ENHANCED JavaScript with all fixes -->
     <script>
-        // FIXED: Theme Management System with better persistence
+        // ---------- THEME MANAGER (Auto day/night + manual override) ----------
         class ThemeManager {
-            constructor() {
+            constructor({ dayStart = 6, nightStart = 18 } = {}) {
                 this.themeToggle = document.getElementById('theme-toggle');
-                this.themeIcon = document.getElementById('theme-icon');
-                // FIXED: Better theme detection and persistence
-                this.currentTheme = this.getInitialTheme();
-                
+                this.themeIcon   = document.getElementById('theme-icon');
+
+                this.dayStart = dayStart;
+                this.nightStart = nightStart;
+                this.currentTheme = 'light';
+                this.autoTimer = null;
+
+                const legacy = localStorage.getItem('theme');
+                if (legacy && !localStorage.getItem('theme_override')) {
+                    localStorage.setItem('theme_override', legacy);
+                    localStorage.removeItem('theme');
+                }
+
                 this.init();
             }
 
-            getInitialTheme() {
-                // Check localStorage first
-                const savedTheme = localStorage.getItem('theme');
-                if (savedTheme) {
-                    return savedTheme;
-                }
-                
-                // Check system preference
-                if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-                    return 'dark';
-                }
-                
-                return 'light';
-            }
-
             init() {
-                // Set initial theme immediately
-                this.setTheme(this.currentTheme);
-                
-                // Add event listener
-                this.themeToggle.addEventListener('click', () => this.toggleTheme());
-                
-                // Listen for system theme changes
-                window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
-                    // Only follow system if user hasn't manually set theme
-                    if (!localStorage.getItem('theme')) {
-                        this.setTheme(e.matches ? 'dark' : 'light');
-                    }
-                });
+                this.refreshTheme();
+                if (this.themeToggle) {
+                    this.themeToggle.addEventListener('click', (e) => {
+                        if (e.shiftKey) {
+                            this.clearUserOverride();
+                            this.refreshTheme();
+                            this.pulseButton();
+                            return;
+                        }
+                        this.toggleTheme();
+                    });
+                    this.themeToggle.title = 'Click: Light/Dark • Shift+Click: Auto';
+                }
+                this.scheduleNextAutoCheck();
             }
 
-            setTheme(theme) {
+            getUserOverride() { return localStorage.getItem('theme_override'); }
+            setUserOverride(theme) { localStorage.setItem('theme_override', theme); }
+            clearUserOverride() { localStorage.removeItem('theme_override'); }
+
+            computeAutoTheme(now = new Date()) {
+                const h = now.getHours();
+                const isNight = (h >= this.nightStart) || (h < this.dayStart);
+                return isNight ? 'dark' : 'light';
+            }
+
+            applyTheme(theme) {
                 this.currentTheme = theme;
-                // Apply theme immediately
-                if (theme === 'dark') {
-                    document.documentElement.classList.add('dark');
-                } else {
-                    document.documentElement.classList.remove('dark');
-                }
-                // Save to localStorage for persistence across pages
-                localStorage.setItem('theme', theme);
+                if (theme === 'dark') { document.documentElement.classList.add('dark'); }
+                else { document.documentElement.classList.remove('dark'); }
                 this.updateThemeIcon();
             }
 
+            refreshTheme() {
+                const override = this.getUserOverride();
+                const themeToApply = override || this.computeAutoTheme();
+                this.applyTheme(themeToApply);
+                this.scheduleNextAutoCheck();
+            }
+
             toggleTheme() {
-                const newTheme = this.currentTheme === 'light' ? 'dark' : 'light';
-                this.setTheme(newTheme);
-                
-                // Add click animation
-                this.themeToggle.style.transform = 'scale(0.9)';
-                setTimeout(() => {
-                    this.themeToggle.style.transform = 'scale(1)';
-                }, 150);
+                const next = this.currentTheme === 'light' ? 'dark' : 'light';
+                this.applyTheme(next);
+                this.setUserOverride(next);
+                this.pulseButton();
             }
 
             updateThemeIcon() {
-                const icon = this.currentTheme === 'light' ? 'fa-moon' : 'fa-sun';
-                this.themeIcon.className = `fas ${icon} text-lg`;
-                
-                // Update tooltip
-                this.themeToggle.title = this.currentTheme === 'light' ? 'Switch to dark mode' : 'Switch to light mode';
-            }
-        }
-
-        // FIXED: Header Scroll Behavior - less aggressive hiding
-        class HeaderManager {
-            constructor({
-                scrollThreshold = 150, // px to start hiding when scrolling down
-                delta = 10             // minimum change to consider (prevents jitter)
-            } = {}) {
-                this.header = document.querySelector('.header');
-                if (!this.header) return;
-
-                this.scrollThreshold = scrollThreshold;
-                this.delta = delta;
-
-                // initialize to current scroll position (handles page loads not at top)
-                this.lastScrollTop = window.pageYOffset || document.documentElement.scrollTop || 0;
-                this.latestScroll = this.lastScrollTop;
-                this.ticking = false;
-
-                this.init();
-            }
-
-            init() {
-                // Use passive listener for best performance
-                window.addEventListener('scroll', () => this.onScroll(), { passive: true });
-
-                // Also reveal header when user moves mouse near top (useful on desktop)
-                window.addEventListener('mousemove', (e) => {
-                    if (e.clientY < 80) {
-                        this.showHeader();
-                    }
-                }, { passive: true });
-
-                // Optional: reveal when user uses keyboard (PageUp, ArrowUp, Home)
-                window.addEventListener('keydown', (e) => {
-                    if (['ArrowUp', 'PageUp', 'Home'].includes(e.key)) {
-                        this.showHeader();
-                    }
-                });
-            }
-
-            onScroll() {
-                this.latestScroll = window.pageYOffset || document.documentElement.scrollTop || 0;
-                if (!this.ticking) {
-                    this.ticking = true;
-                    requestAnimationFrame(() => this.handleScroll());
+                const isDark = this.currentTheme === 'dark';
+                const icon = isDark ? 'fa-sun' : 'fa-moon';
+                if (this.themeIcon) {
+                    this.themeIcon.className = `fas ${icon} text-lg`;
+                }
+                if (this.themeToggle) {
+                    const mode = this.getUserOverride() ? 'Manual' : 'Auto';
+                    this.themeToggle.title = `${mode}: ${this.currentTheme.toUpperCase()} • Click: Light/Dark • Shift+Click: Auto`;
                 }
             }
 
-            handleScroll() {
-                const scrollTop = this.latestScroll;
+            pulseButton() {
+                if (!this.themeToggle) return;
+                this.themeToggle.style.transform = 'scale(0.9)';
+                setTimeout(() => { this.themeToggle.style.transform = 'scale(1)'; }, 150);
+            }
 
-                // ignore very small movements
-                if (Math.abs(scrollTop - this.lastScrollTop) <= this.delta) {
-                    this.ticking = false;
+            scheduleNextAutoCheck() {
+                if (this.getUserOverride()) {
+                    if (this.autoTimer) clearTimeout(this.autoTimer);
+                    this.autoTimer = null;
                     return;
                 }
 
-                const isScrollingDown = scrollTop > this.lastScrollTop;
-
-                if (isScrollingDown && scrollTop > this.scrollThreshold) {
-                    // hide secondary row when scrolling down past threshold
-                    if (!this.header.classList.contains('header-scrolled')) {
-                        this.header.classList.add('header-scrolled');
-                    }
+                const now = new Date();
+                const h = now.getHours();
+                let next = new Date(now);
+                if (h >= this.nightStart || h < this.dayStart) {
+                    next.setHours(this.dayStart, 0, 0, 0);
+                    if (now >= next) next.setDate(next.getDate() + 1);
                 } else {
-                    // reveal when scrolling up (or near top)
-                    if (this.header.classList.contains('header-scrolled')) {
-                        this.header.classList.remove('header-scrolled');
-                    }
+                    next.setHours(this.nightStart, 0, 0, 0);
+                    if (now >= next) next.setDate(next.getDate() + 1);
                 }
 
-                // store for next tick
+                const ms = next - now;
+                if (this.autoTimer) clearTimeout(this.autoTimer);
+                this.autoTimer = setTimeout(() => { this.refreshTheme(); }, ms);
+            }
+        }
+        // ---------- /THEME MANAGER ----------
+
+        // Header Scroll Behavior
+        class HeaderManager {
+            constructor({ scrollThreshold = 150, delta = 10 } = {}) {
+                this.header = document.querySelector('.header');
+                if (!this.header) return;
+                this.scrollThreshold = scrollThreshold;
+                this.delta = delta;
+                this.lastScrollTop = window.pageYOffset || document.documentElement.scrollTop || 0;
+                this.latestScroll = this.lastScrollTop;
+                this.ticking = false;
+                this.init();
+            }
+            init() {
+                window.addEventListener('scroll', () => this.onScroll(), { passive: true });
+                window.addEventListener('mousemove', (e) => { if (e.clientY < 80) this.showHeader(); }, { passive: true });
+                window.addEventListener('keydown', (e) => { if (['ArrowUp','PageUp','Home'].includes(e.key)) this.showHeader(); });
+            }
+            onScroll() {
+                this.latestScroll = window.pageYOffset || document.documentElement.scrollTop || 0;
+                if (!this.ticking) { this.ticking = true; requestAnimationFrame(() => this.handleScroll()); }
+            }
+            handleScroll() {
+                const scrollTop = this.latestScroll;
+                if (Math.abs(scrollTop - this.lastScrollTop) <= this.delta) { this.ticking = false; return; }
+                const isDown = scrollTop > this.lastScrollTop;
+                if (isDown && scrollTop > this.scrollThreshold) { this.header.classList.add('header-scrolled'); }
+                else { this.header.classList.remove('header-scrolled'); }
                 this.lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
                 this.ticking = false;
             }
-
-            // helper to force-show header (used by mouse/keyboard handlers)
             showHeader() {
                 if (this.header && this.header.classList.contains('header-scrolled')) {
                     this.header.classList.remove('header-scrolled');
-                    // update lastScrollTop so the next scroll direction check is correct
                     this.lastScrollTop = window.pageYOffset || document.documentElement.scrollTop || 0;
                 }
             }
         }
 
-        // FIXED: Mobile Menu Manager with better dropdown handling
+        // Mobile Menu Manager
         class MobileMenuManager {
             constructor() {
                 this.menuToggle = document.getElementById('mobile-menu-toggle');
@@ -750,70 +817,35 @@
                 this.destinationsMenu = document.getElementById('mobile-destinations-menu');
                 this.isOpen = false;
                 this.isDestinationsOpen = false;
-                
                 this.init();
             }
-
             init() {
                 this.menuToggle.addEventListener('click', () => this.toggleMenu());
-                
-                // Initialize destinations dropdown
                 if (this.destinationsToggle && this.destinationsMenu) {
-                    this.destinationsToggle.addEventListener('click', (e) => {
-                        e.preventDefault();
-                        e.stopPropagation();
-                        this.toggleDestinations();
-                    });
+                    this.destinationsToggle.addEventListener('click', (e) => { e.preventDefault(); e.stopPropagation(); this.toggleDestinations(); });
                 }
-                
-                // FIXED: Better click outside handling
                 document.addEventListener('click', (e) => {
-                    if (this.isOpen && 
-                        !this.menuToggle.contains(e.target) && 
-                        !this.mobileMenu.contains(e.target)) {
-                        this.closeMenu();
-                    }
+                    if (this.isOpen && !this.menuToggle.contains(e.target) && !this.mobileMenu.contains(e.target)) { this.closeMenu(); }
                 });
-                
-                // Handle touch events for better mobile experience
                 this.setupTouchEvents();
             }
-
-            toggleMenu() {
-                if (this.isOpen) {
-                    this.closeMenu();
-                } else {
-                    this.openMenu();
-                }
-            }
-
+            toggleMenu() { this.isOpen ? this.closeMenu() : this.openMenu(); }
             openMenu() {
                 this.mobileMenu.classList.remove('hidden');
                 this.isOpen = true;
                 this.animateToggler(true);
-                
-                // FIXED: Don't lock scroll, just ensure menu is visible
             }
-
             closeMenu() {
                 this.mobileMenu.classList.add('hidden');
                 this.isOpen = false;
                 this.animateToggler(false);
-                
-                // Close destinations dropdown if open
-                if (this.isDestinationsOpen) {
-                    this.closeDestinations();
-                }
+                if (this.isDestinationsOpen) { this.closeDestinations(); }
             }
-
             animateToggler(isOpen) {
                 const spans = this.menuToggle.querySelectorAll('span');
-
                 if (isOpen) {
                     spans[0].style.transformOrigin = "center";
                     spans[2].style.transformOrigin = "center";
-
-                    // Adjust the translateY to exactly meet in center
                     spans[0].style.transform = 'translateY(6px) rotate(45deg)';
                     spans[1].style.opacity = '0';
                     spans[2].style.transform = 'translateY(-6px) rotate(-45deg)';
@@ -823,91 +855,47 @@
                     spans[2].style.transform = 'translateY(0) rotate(0)';
                 }
             }
-            
-            toggleDestinations() {
-                if (this.isDestinationsOpen) {
-                    this.closeDestinations();
-                } else {
-                    this.openDestinations();
-                }
-            }
-            
+            toggleDestinations() { this.isDestinationsOpen ? this.closeDestinations() : this.openDestinations(); }
             openDestinations() {
                 this.destinationsMenu.classList.remove('hidden');
                 this.destinationsMenu.classList.add('show');
                 this.destinationsToggle.setAttribute('aria-expanded', 'true');
                 this.isDestinationsOpen = true;
-                
-                // Add haptic feedback on supported devices
-                if (navigator.vibrate) {
-                    navigator.vibrate(10);
-                }
+                if (navigator.vibrate) { navigator.vibrate(10); }
             }
-            
             closeDestinations() {
                 this.destinationsMenu.classList.remove('show');
                 this.destinationsToggle.setAttribute('aria-expanded', 'false');
                 this.isDestinationsOpen = false;
-                
-                // Hide after animation completes
-                setTimeout(() => {
-                    if (!this.isDestinationsOpen) {
-                        this.destinationsMenu.classList.add('hidden');
-                    }
-                }, 400); // FIXED: Increased timeout to match CSS transition
+                setTimeout(() => { if (!this.isDestinationsOpen) this.destinationsMenu.classList.add('hidden'); }, 400);
             }
-            
             setupTouchEvents() {
-                // Add touch feedback for dropdown items
                 const dropdownItems = document.querySelectorAll('.mobile-dropdown-item');
-                
                 dropdownItems.forEach(item => {
-                    let touchStartTime;
-                    let touchStartY;
-                    
+                    let touchStartTime, touchStartY;
                     item.addEventListener('touchstart', (e) => {
                         touchStartTime = Date.now();
                         touchStartY = e.touches[0].clientY;
                         item.style.backgroundColor = 'rgba(193, 141, 69, 0.1)';
                     }, { passive: true });
-                    
                     item.addEventListener('touchend', (e) => {
                         const touchDuration = Date.now() - touchStartTime;
                         const touchEndY = e.changedTouches[0].clientY;
                         const touchDistance = Math.abs(touchEndY - touchStartY);
-                        
-                        // Reset background after a short delay
-                        setTimeout(() => {
-                            item.style.backgroundColor = '';
-                        }, 150);
-                        
-                        // FIXED: Better tap detection - check both duration and distance
+                        setTimeout(() => { item.style.backgroundColor = ''; }, 150);
                         if (touchDuration < 300 && touchDistance < 10) {
                             const href = item.getAttribute('href');
-                            if (href && href !== '#') {
-                                // Add small delay for visual feedback
-                                setTimeout(() => {
-                                    window.location.href = href;
-                                }, 100);
-                            }
+                            if (href && href !== '#') { setTimeout(() => { window.location.href = href; }, 100); }
                         }
                     }, { passive: true });
-                    
-                    item.addEventListener('touchcancel', () => {
-                        item.style.backgroundColor = '';
-                    }, { passive: true });
+                    item.addEventListener('touchcancel', () => { item.style.backgroundColor = ''; }, { passive: true });
                 });
-                
-                // Add touch feedback for main toggle
                 if (this.destinationsToggle) {
                     this.destinationsToggle.addEventListener('touchstart', () => {
                         this.destinationsToggle.style.backgroundColor = 'rgba(193, 141, 69, 0.1)';
                     }, { passive: true });
-                    
                     this.destinationsToggle.addEventListener('touchend', () => {
-                        setTimeout(() => {
-                            this.destinationsToggle.style.backgroundColor = '';
-                        }, 150);
+                        setTimeout(() => { this.destinationsToggle.style.backgroundColor = ''; }, 150);
                     }, { passive: true });
                 }
             }
@@ -915,15 +903,8 @@
 
         // Alert Management
         class AlertManager {
-            constructor() {
-                this.init();
-            }
-
-            init() {
-                // Auto-hide alerts after 5 seconds
-                this.autoHideAlerts();
-            }
-
+            constructor() { this.init(); }
+            init() { this.autoHideAlerts(); }
             autoHideAlerts() {
                 setTimeout(() => {
                     const alerts = document.querySelectorAll('.alert-enter:not(.alert-permanent)');
@@ -937,91 +918,89 @@
 
         // Search Enhancement
         class SearchManager {
-            constructor() {
-                this.searchInput = document.querySelector('input[name="q"]');
-                this.init();
-            }
-
+            constructor() { this.searchInput = document.querySelector('input[name="q"]'); this.init(); }
             init() {
                 if (this.searchInput) {
                     this.searchInput.addEventListener('keypress', (e) => {
-                        if (e.key === 'Enter') {
-                            this.searchInput.closest('form').submit();
-                        }
+                        if (e.key === 'Enter') { this.searchInput.closest('form').submit(); }
                     });
                 }
             }
         }
 
-        // FIXED: Initialize all managers when DOM is loaded with proper error handling
+        // Initialize managers when DOM is ready
         document.addEventListener('DOMContentLoaded', () => {
             try {
-                // Initialize theme first for immediate application
                 new ThemeManager();
                 new HeaderManager();
                 new MobileMenuManager();
                 new AlertManager();
                 new SearchManager();
 
-                // Smooth scroll for anchor links
                 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                     anchor.addEventListener('click', function (e) {
                         e.preventDefault();
                         const target = document.querySelector(this.getAttribute('href'));
                         if (target) {
-                            target.scrollIntoView({
-                                behavior: 'smooth',
-                                block: 'start'
-                            });
+                            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
                         }
                     });
                 });
-            } catch (error) {
-                console.error('Error initializing page components:', error);
-            }
+            } catch (error) { console.error('Error initializing page components:', error); }
         });
 
-        // FIXED: Newsletter function with better error handling
+        // Newsletter
         function subscribeNewsletter() {
             const emailInput = document.getElementById('newsletter-email');
-            if (!emailInput) {
-                console.error('Newsletter email input not found');
-                return;
-            }
-            
+            if (!emailInput) { console.error('Newsletter email input not found'); return; }
             const email = emailInput.value.trim();
-            if (!email) {
-                alert('Please enter your email address');
-                return;
-            }
-            
-            if (!email.includes('@')) {
-                alert('Please enter a valid email address');
-                return;
-            }
-            
+            if (!email) { alert('Please enter your email address'); return; }
+            if (!email.includes('@')) { alert('Please enter a valid email address'); return; }
             fetch('{% url "core:newsletter_signup" %}', {
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded',
-                    'X-CSRFToken': '{{ csrf_token }}'
-                },
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded', 'X-CSRFToken': '{{ csrf_token }}' },
                 body: 'email=' + encodeURIComponent(email)
             })
-            .then(response => response.json())
-            .then(data => {
-                if (data.success) {
-                    alert(data.message);
-                    emailInput.value = '';
-                } else {
-                    alert(data.message);
-                }
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                alert('An error occurred. Please try again.');
-            });
+            .then(r => r.json())
+            .then(data => { alert(data.message); if (data.success) emailInput.value = ''; })
+            .catch(err => { console.error('Error:', err); alert('An error occurred. Please try again.'); });
         }
+        
+        // ---------- PAGE LOADER (hide early like Google) ----------
+        (function(){
+          const overlay = document.getElementById('page-loader');
+          if(!overlay) return;
+
+          const start = performance.now();
+          const MIN_MS = 120;   // kuepuka flicker
+          const KILL_MS = 8000; // fallback usalama
+
+          function reallyHide(){
+            if(!overlay || overlay.classList.contains('loaded')) return;
+            overlay.classList.add('loaded');
+            setTimeout(()=> overlay.remove(), 300);
+          }
+
+          function hide(){
+            const elapsed = performance.now() - start;
+            const delay = Math.max(0, MIN_MS - elapsed);
+            setTimeout(reallyHide, delay);
+          }
+
+          // Hide mapema mara DOM ikiwekwa tayari
+          if (document.readyState === 'interactive' || document.readyState === 'complete') {
+            hide();
+          } else {
+            document.addEventListener('DOMContentLoaded', hide, { once: true });
+          }
+
+          // Backup on window load
+          window.addEventListener('load', hide, { once: true });
+
+          // Safety kill
+          setTimeout(reallyHide, KILL_MS);
+        })();
+        
     </script>
     
     {% block extra_js %}{% endblock %}

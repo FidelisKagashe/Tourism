@@ -4,205 +4,218 @@
 {% block title %}{{ review.title }} - {% trans "Review" %} - {{ site_settings.site_name|default:"Safari & Bush Retreats" }}{% endblock %}
 
 {% block content %}
-<div class="container py-5">
-    <div class="row">
-        <div class="col-lg-8 mx-auto">
-            <div class="card border-0 shadow">
-                <div class="card-body p-5">
-                    <!-- Review Header -->
-                    <div class="d-flex align-items-center mb-4">
-                        <div class="flex-shrink-0">
-                            <div class="bg-primary rounded-circle d-flex align-items-center justify-content-center" 
-                                 style="width: 60px; height: 60px;">
-                                <i class="fas fa-user text-white fa-lg"></i>
-                            </div>
-                        </div>
-                        <div class="flex-grow-1 ms-3">
-                            <h5 class="mb-1">{{ review.user.get_display_name }}</h5>
-                            <div class="star-rating mb-1">
-                                {% for i in "12345" %}
-                                    {% if forloop.counter <= review.rating %}
-                                        <i class="fas fa-star"></i>
-                                    {% else %}
-                                        <i class="far fa-star"></i>
-                                    {% endif %}
-                                {% endfor %}
-                            </div>
-                            <small class="text-muted">{{ review.created_at|date:"F d, Y" }}</small>
-                        </div>
-                        {% if review.is_verified %}
-                            <span class="badge bg-success">
-                                <i class="fas fa-check me-1"></i>{% trans "Verified" %}
-                            </span>
-                        {% endif %}
-                    </div>
-                    
-                    <!-- Review Title -->
-                    <h2 class="mb-4">{{ review.title }}</h2>
-                    
-                    <!-- Subject -->
-                    <div class="mb-4">
-                        {% if review.tour_package %}
-                            <div class="alert alert-primary">
-                                <i class="fas fa-route me-2"></i>
-                                <strong>{% trans "Tour:" %}</strong> 
-                                <a href="{% url 'tours:tour_detail' review.tour_package.slug %}" class="text-decoration-none">
-                                    {{ review.tour_package.title }}
-                                </a>
-                            </div>
-                        {% elif review.national_park %}
-                            <div class="alert alert-success">
-                                <i class="fas fa-mountain me-2"></i>
-                                <strong>{% trans "Park:" %}</strong> 
-                                <a href="{% url 'parks:park_detail' review.national_park.slug %}" class="text-decoration-none">
-                                    {{ review.national_park.name }}
-                                </a>
-                            </div>
-                        {% endif %}
-                    </div>
-                    
-                    <!-- Review Content -->
-                    <div class="mb-4">
-                        <p class="lead">{{ review.content|linebreaks }}</p>
-                    </div>
-                    
-                    <!-- Additional Ratings -->
-                    {% if review.value_for_money or review.service_quality or review.cleanliness %}
-                        <div class="row mb-4">
-                            <div class="col-12">
-                                <h5>{% trans "Detailed Ratings" %}</h5>
-                            </div>
-                            {% if review.value_for_money %}
-                                <div class="col-md-4 mb-3">
-                                    <div class="text-center">
-                                        <h6>{% trans "Value for Money" %}</h6>
-                                        <div class="star-rating">
-                                            {% for i in "12345" %}
-                                                {% if forloop.counter <= review.value_for_money %}
-                                                    <i class="fas fa-star"></i>
-                                                {% else %}
-                                                    <i class="far fa-star"></i>
-                                                {% endif %}
-                                            {% endfor %}
-                                        </div>
-                                    </div>
-                                </div>
-                            {% endif %}
-                            {% if review.service_quality %}
-                                <div class="col-md-4 mb-3">
-                                    <div class="text-center">
-                                        <h6>{% trans "Service Quality" %}</h6>
-                                        <div class="star-rating">
-                                            {% for i in "12345" %}
-                                                {% if forloop.counter <= review.service_quality %}
-                                                    <i class="fas fa-star"></i>
-                                                {% else %}
-                                                    <i class="far fa-star"></i>
-                                                {% endif %}
-                                            {% endfor %}
-                                        </div>
-                                    </div>
-                                </div>
-                            {% endif %}
-                            {% if review.cleanliness %}
-                                <div class="col-md-4 mb-3">
-                                    <div class="text-center">
-                                        <h6>{% trans "Cleanliness" %}</h6>
-                                        <div class="star-rating">
-                                            {% for i in "12345" %}
-                                                {% if forloop.counter <= review.cleanliness %}
-                                                    <i class="fas fa-star"></i>
-                                                {% else %}
-                                                    <i class="far fa-star"></i>
-                                                {% endif %}
-                                            {% endfor %}
-                                        </div>
-                                    </div>
-                                </div>
-                            {% endif %}
-                        </div>
-                    {% endif %}
-                    
-                    <!-- Travel Information -->
-                    {% if review.travel_date or review.travel_type %}
-                        <div class="row mb-4">
-                            <div class="col-12">
-                                <h5>{% trans "Travel Information" %}</h5>
-                            </div>
-                            {% if review.travel_date %}
-                                <div class="col-md-6">
-                                    <p><i class="fas fa-calendar me-2"></i><strong>{% trans "Travel Date:" %}</strong> {{ review.travel_date|date:"F Y" }}</p>
-                                </div>
-                            {% endif %}
-                            {% if review.travel_type %}
-                                <div class="col-md-6">
-                                    <p><i class="fas fa-users me-2"></i><strong>{% trans "Travel Type:" %}</strong> {{ review.get_travel_type_display }}</p>
-                                </div>
-                            {% endif %}
-                        </div>
-                    {% endif %}
-                    
-                    <!-- Review Images -->
-                    {% if review.images.all %}
-                        <div class="mb-4">
-                            <h5>{% trans "Photos" %}</h5>
-                            <div class="row">
-                                {% for image in review.images.all %}
-                                    <div class="col-md-4 mb-3">
-                                        <img src="{{ image.image.url }}" class="img-fluid rounded" alt="{{ image.caption }}">
-                                        {% if image.caption %}
-                                            <small class="text-muted d-block mt-1">{{ image.caption }}</small>
-                                        {% endif %}
-                                    </div>
-                                {% endfor %}
-                            </div>
-                        </div>
-                    {% endif %}
-                    
-                    <!-- Helpful Votes -->
-                    <div class="d-flex justify-content-between align-items-center">
-                        <div>
-                            {% if user.is_authenticated %}
-                                <button class="btn btn-outline-primary" onclick="markHelpful({{ review.id }})">
-                                    <i class="fas fa-thumbs-up me-1"></i>
-                                    {% trans "Helpful" %} ({{ review.helpful_votes }})
-                                </button>
-                            {% else %}
-                                <span class="text-muted">
-                                    <i class="fas fa-thumbs-up me-1"></i>
-                                    {% trans "Helpful" %} ({{ review.helpful_votes }})
-                                </span>
-                            {% endif %}
-                        </div>
-                        <div>
-                            <a href="{% url 'reviews:review_list' %}" class="btn btn-secondary">
-                                <i class="fas fa-arrow-left me-2"></i>{% trans "Back to Reviews" %}
-                            </a>
-                        </div>
-                    </div>
-                </div>
+<div class="container mx-auto px-4 py-10">
+  <div class="max-w-3xl mx-auto">
+    <article class="bg-white dark:bg-gray-900 rounded-2xl shadow-lg ring-1 ring-gray-200/60 dark:ring-white/10 overflow-hidden">
+
+      <!-- Header -->
+      <header class="p-6 sm:p-8 border-b border-gray-200/70 dark:border-white/10">
+        <div class="flex items-center gap-4">
+          <div class="shrink-0 w-14 h-14 rounded-full bg-primary dark:bg-primary-dark text-white grid place-items-center shadow-sm">
+            <i class="fas fa-user text-xl" aria-hidden="true"></i>
+            <span class="sr-only">{{ review.user.get_display_name }}</span>
+          </div>
+
+          <div class="min-w-0 flex-1">
+            <h5 class="text-gray-900 dark:text-gray-100 font-semibold truncate">
+              {{ review.user.get_display_name }}
+            </h5>
+
+            <div class="flex items-center gap-2">
+              <div class="flex">
+                {% for i in "12345" %}
+                  {% if forloop.counter <= review.rating %}
+                    <i class="fas fa-star text-yellow-400" aria-hidden="true"></i>
+                  {% else %}
+                    <i class="far fa-star text-gray-300 dark:text-gray-600" aria-hidden="true"></i>
+                  {% endif %}
+                {% endfor %}
+              </div>
+              <span class="text-sm text-gray-500 dark:text-gray-400">· {{ review.created_at|date:"F d, Y" }}</span>
             </div>
+          </div>
+
+          {% if review.is_verified %}
+            <span class="inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-semibold
+                         bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200">
+              <i class="fas fa-check" aria-hidden="true"></i> {% trans "Verified" %}
+            </span>
+          {% endif %}
         </div>
-    </div>
+
+        <h1 class="mt-5 text-2xl sm:text-3xl font-extrabold tracking-tight text-gray-900 dark:text-gray-100">
+          {{ review.title }}
+        </h1>
+      </header>
+
+      <!-- Subject -->
+      {% if review.tour_package or review.national_park %}
+      <section class="px-6 sm:px-8 pt-6">
+        {% if review.tour_package %}
+          <div class="rounded-xl border border-blue-200/60 dark:border-blue-900/40 bg-blue-50 dark:bg-blue-950/40 p-4">
+            <p class="text-sm font-semibold text-blue-800 dark:text-blue-200 flex items-center gap-2">
+              <i class="fas fa-route" aria-hidden="true"></i> {% trans "Tour:" %}
+              <a href="{% url 'tours:tour_detail' review.tour_package.slug %}" class="underline hover:no-underline">
+                {{ review.tour_package.title }}
+              </a>
+            </p>
+          </div>
+        {% elif review.national_park %}
+          <div class="rounded-xl border border-green-200/60 dark:border-green-900/40 bg-green-50 dark:bg-green-950/40 p-4">
+            <p class="text-sm font-semibold text-green-800 dark:text-green-200 flex items-center gap-2">
+              <i class="fas fa-mountain" aria-hidden="true"></i> {% trans "Park:" %}
+              <a href="{% url 'parks:park_detail' review.national_park.slug %}" class="underline hover:no-underline">
+                {{ review.national_park.name }}
+              </a>
+            </p>
+          </div>
+        {% endif %}
+      </section>
+      {% endif %}
+
+      <!-- Body -->
+      <section class="px-6 sm:px-8 py-6">
+        <div class="prose dark:prose-invert max-w-none">
+          {{ review.content|linebreaks }}
+        </div>
+      </section>
+
+      <!-- Detailed Ratings -->
+      {% if review.value_for_money or review.service_quality or review.cleanliness %}
+      <section class="px-6 sm:px-8 pb-2">
+        <h5 class="text-sm tracking-wide text-gray-500 dark:text-gray-400 font-semibold mb-3">{% trans "Detailed Ratings" %}</h5>
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          {% if review.value_for_money %}
+          <div class="rounded-lg bg-gray-50 dark:bg-gray-800/60 p-4">
+            <p class="text-sm font-semibold text-gray-700 dark:text-gray-200 mb-1">{% trans "Value for Money" %}</p>
+            <div class="flex">
+              {% for i in "12345" %}
+                {% if forloop.counter <= review.value_for_money %}
+                  <i class="fas fa-star text-yellow-400" aria-hidden="true"></i>
+                {% else %}
+                  <i class="far fa-star text-gray-300 dark:text-gray-600" aria-hidden="true"></i>
+                {% endif %}
+              {% endfor %}
+            </div>
+          </div>
+          {% endif %}
+
+          {% if review.service_quality %}
+          <div class="rounded-lg bg-gray-50 dark:bg-gray-800/60 p-4">
+            <p class="text-sm font-semibold text-gray-700 dark:text-gray-200 mb-1">{% trans "Service Quality" %}</p>
+            <div class="flex">
+              {% for i in "12345" %}
+                {% if forloop.counter <= review.service_quality %}
+                  <i class="fas fa-star text-yellow-400" aria-hidden="true"></i>
+                {% else %}
+                  <i class="far fa-star text-gray-300 dark:text-gray-600" aria-hidden="true"></i>
+                {% endif %}
+              {% endfor %}
+            </div>
+          </div>
+          {% endif %}
+
+          {% if review.cleanliness %}
+          <div class="rounded-lg bg-gray-50 dark:bg-gray-800/60 p-4">
+            <p class="text-sm font-semibold text-gray-700 dark:text-gray-200 mb-1">{% trans "Cleanliness" %}</p>
+            <div class="flex">
+              {% for i in "12345" %}
+                {% if forloop.counter <= review.cleanliness %}
+                  <i class="fas fa-star text-yellow-400" aria-hidden="true"></i>
+                {% else %}
+                  <i class="far fa-star text-gray-300 dark:text-gray-600" aria-hidden="true"></i>
+                {% endif %}
+              {% endfor %}
+            </div>
+          </div>
+          {% endif %}
+        </div>
+      </section>
+      {% endif %}
+
+      <!-- Travel Info -->
+      {% if review.travel_date or review.travel_type %}
+      <section class="px-6 sm:px-8 py-6">
+        <h5 class="text-sm tracking-wide text-gray-500 dark:text-gray-400 font-semibold mb-3">{% trans "Travel Information" %}</h5>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          {% if review.travel_date %}
+          <p class="flex items-center gap-2 text-gray-700 dark:text-gray-200">
+            <i class="fas fa-calendar text-primary" aria-hidden="true"></i>
+            <span><strong>{% trans "Travel Date:" %}</strong> {{ review.travel_date|date:"F Y" }}</span>
+          </p>
+          {% endif %}
+          {% if review.travel_type %}
+          <p class="flex items-center gap-2 text-gray-700 dark:text-gray-200">
+            <i class="fas fa-users text-primary" aria-hidden="true"></i>
+            <span><strong>{% trans "Travel Type:" %}</strong> {{ review.get_travel_type_display }}</span>
+          </p>
+          {% endif %}
+        </div>
+      </section>
+      {% endif %}
+
+      <!-- Photos -->
+      {% if review.images.all %}
+      <section class="px-6 sm:px-8 py-6">
+        <h5 class="text-sm tracking-wide text-gray-500 dark:text-gray-400 font-semibold mb-3">{% trans "Photos" %}</h5>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          {% for image in review.images.all %}
+          <figure class="overflow-hidden rounded-xl ring-1 ring-gray-200/70 dark:ring-white/10 bg-gray-50 dark:bg-gray-800">
+            <img src="{{ image.image.url }}" alt="{{ image.caption }}" class="w-full h-48 object-cover transition-transform duration-300 hover:scale-105" loading="lazy">
+            {% if image.caption %}
+              <figcaption class="px-3 py-2 text-xs text-gray-500 dark:text-gray-400">{{ image.caption }}</figcaption>
+            {% endif %}
+          </figure>
+          {% endfor %}
+        </div>
+      </section>
+      {% endif %}
+
+      <!-- Footer actions -->
+      <footer class="px-6 sm:px-8 py-6 border-t border-gray-200/70 dark:border-white/10 flex items-center justify-between">
+        <div>
+          {% if user.is_authenticated %}
+            <button class="inline-flex items-center gap-2 px-4 py-2 rounded-md border border-gray-300 dark:border-gray-700
+                           bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-700
+                           transition" onclick="markHelpful({{ review.id }})">
+              <i class="fas fa-thumbs-up" aria-hidden="true"></i>
+              {% trans "Helpful" %} ({{ review.helpful_votes }})
+            </button>
+          {% else %}
+            <span class="inline-flex items-center gap-2 text-gray-500 dark:text-gray-400">
+              <i class="fas fa-thumbs-up" aria-hidden="true"></i>
+              {% trans "Helpful" %} ({{ review.helpful_votes }})
+            </span>
+          {% endif %}
+        </div>
+
+        <a href="{% url 'reviews:review_list' %}"
+           class="inline-flex items-center gap-2 px-4 py-2 rounded-md
+                  bg-primary dark:bg-primary-dark hover:bg-secondary dark:hover:bg-secondary-dark
+                  text-white font-medium transition">
+          <i class="fas fa-arrow-left" aria-hidden="true"></i> {% trans "Back to Reviews" %}
+        </a>
+      </footer>
+
+    </article>
+  </div>
 </div>
 {% endblock %}
 
 {% block extra_js %}
 <script>
 function markHelpful(reviewId) {
-    fetch(`/reviews/${reviewId}/helpful/`, {
-        method: 'POST',
-        headers: {
-            'X-CSRFToken': '{{ csrf_token }}',
-            'Content-Type': 'application/json',
-        },
-    })
-    .then(response => response.json())
-    .then(data => {
-        if (data.success) {
-            location.reload();
-        }
-    });
+  fetch(`/reviews/${reviewId}/helpful/`, {
+    method: 'POST',
+    headers: {
+      'X-CSRFToken': '{{ csrf_token }}',
+      'Content-Type': 'application/json',
+      'X-Requested-With': 'XMLHttpRequest',
+    },
+  })
+  .then(r => r.ok ? r.json() : Promise.reject(r))
+  .then(data => { if (data && data.success) location.reload(); })
+  .catch(() => {});
 }
 </script>
 {% endblock %}

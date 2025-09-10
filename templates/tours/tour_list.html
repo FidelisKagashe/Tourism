@@ -1,6 +1,6 @@
 {% extends 'base/base.html' %}
 {% load i18n query_transform %}
-
+{% load static%}
 {% block title %}{% trans "Safari Tours" %} - {{ site_settings.site_name|default:"Safari & Bush Retreats" }}{% endblock %}
 
 {% block extra_css %}
@@ -144,7 +144,7 @@ button i {
 {% block content %}
 <div class="tours-typography">
 <!-- HERO -->
-<section class="hero-bg" style="background-image: linear-gradient(135deg, rgba(0,0,0,0.12), rgba(0,0,0,0)), url('https://images.pexels.com/photos/1170986/pexels-photo-1170986.jpeg');" aria-label="Hero banner">
+<section class="hero-bg" style="background-image: linear-gradient(135deg, rgba(0,0,0,0.12), rgba(0,0,0,0)), url('{% static "images/serengetisunset.jpg" %}');" aria-label="Hero banner">
   <div class="container mx-auto px-4 hero-content">
     <div class="max-w-3xl">
       <h1 class="hero-title">{% trans "Safari Tours" %}</h1>

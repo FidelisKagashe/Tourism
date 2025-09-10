@@ -1,15 +1,55 @@
 {% extends 'base/base.html' %}
 {% load i18n query_transform %}
-
+{% load static %}
 {% block title %}{% trans "Reviews" %} - Safari&nbsp;&amp;&nbsp;Bush Retreats{% endblock %}
+{% block extra_css %}
+  <style>
+    /* ---------- Reviews HERO (v3, consistent with Tours/Park) ---------- */
+    .reviews-hero{
+      --hero-img:none;               /* set background via inline style */
+      position:relative;
+      min-height:clamp(35vh,45vh,55vh);
+      background: var(--hero-img) center/cover no-repeat;
+      display:flex; align-items:center;
+    }
+    .reviews-hero::before{
+      content:""; position:absolute; inset:0; z-index:1; pointer-events:none;
+      background:
+        radial-gradient(72% 62% at 28% 42%, rgba(0,0,0,.35) 0%, rgba(0,0,0,0) 60%),
+        linear-gradient(180deg, rgba(0,0,0,.55) 0%, rgba(0,0,0,.36) 40%, rgba(0,0,0,.55) 100%);
+    }
+    .reviews-hero .hero-content{ position:relative; z-index:2; padding:3rem 0; }
+    .reviews-hero .hero-title{
+      margin:0 0 .5rem; font-weight:800; line-height:1.02;
+      font-size: clamp(2rem,6.2vw,5rem);
+      color:#fff; text-shadow:0 12px 34px rgba(0,0,0,.62);
+    }
+    .reviews-hero .hero-subtitle{
+      display:flex; align-items:center; gap:.6rem;
+      margin:0 0 1.1rem; font-weight:600;
+      font-size:clamp(1.02rem,2.4vw,1.45rem);
+      color:rgba(255,255,255,.96); text-shadow:0 6px 18px rgba(0,0,0,.45);
+    }
+    .reviews-hero .hero-subtitle i{ color:#C18D45; font-size:1.2em; line-height:1; }
+
+    @media (max-width:640px){
+      .reviews-hero .hero-content{ padding:2rem 0; }
+      .reviews-hero .hero-title{ font-size:1.85rem; }
+      .reviews-hero .hero-subtitle{ font-size:.98rem; }
+    }
+  </style>
+{% endblock %}
 
 {% block content %}
 <!-- Hero Section -->
-<section class="relative bg-cover bg-center" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.pexels.com/photos/1170986/pexels-photo-1170986.jpeg'); min-height: 50vh;">
-  <div class="container mx-auto px-4 py-24 relative z-10">
+<section class="reviews-hero" style="--hero-img: linear-gradient(135deg, rgba(0,0,0,.08), rgba(0,0,0,0)), url('{% static "images/serengetisunset.jpg" %}');">
+  <div class="container mx-auto px-4 hero-content">
     <div class="max-w-3xl">
-      <h1 class="text-4xl md:text-5xl font-bold text-white mb-6">{% trans "Traveler Reviews" %}</h1>
-      <p class="text-xl text-white opacity-90">{% trans "Real experiences from real adventurers" %}</p>
+      <h1 class="hero-title">{% trans "Traveler Reviews" %}</h1>
+      <p class="hero-subtitle">
+        <i class="fas fa-quote-left" aria-hidden="true"></i>
+        {% trans "Real experiences from real adventurers" %}
+      </p>
     </div>
   </div>
 </section>

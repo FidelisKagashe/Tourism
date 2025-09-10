@@ -87,6 +87,10 @@ class TourPackageInline(admin.TabularInline):
     fields = ['title', 'category', 'is_active', 'is_featured']
     readonly_fields = ['title']
 
+admin.site.site_header = "Safari & Bush Retreats Admin"
+admin.site.site_title = "Safari & Bush Retreats Portal"
+admin.site.index_title = "Welcome to Safari & Bush Retreats Administration"
+
 # Register additional models for homepage content management
 #admin.site.register(NationalPark)
 # admin.site.register(Destination)

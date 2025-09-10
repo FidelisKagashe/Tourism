@@ -15,6 +15,11 @@ from .models import CustomUser, UserProfile, UserActivityLog
 from .forms import CustomUserRegistrationForm, CustomAuthenticationForm, UserProfileForm, ExtendedProfileForm
 from bookings.models import Booking
 from reviews.models import Review
+from django.contrib.auth.views import (
+    PasswordResetView, PasswordResetDoneView,
+    PasswordResetConfirmView, PasswordResetCompleteView
+)
+from django.contrib.auth.forms import PasswordResetForm
 
 logger = logging.getLogger(__name__)
 
@@ -231,3 +236,21 @@ def user_documents(request):
     """User travel documents view."""
     documents = request.user.travel_documents.all().order_by('-created_at')
     return render(request, 'accounts/user_documents.html', {'documents': documents})
+
+# ---- Password reset CBVs ----
+class CustomPasswordResetView(PasswordResetView):
+    template_name = 'accounts/password_reset.html'                # <- your current file
+    email_template_name = 'accounts/password_reset_email.html'
+    subject_template_name = 'accounts/password_reset_subject.txt'
+    form_class = PasswordResetForm
+    success_url = reverse_lazy('accounts:password_reset_done')
+
+class CustomPasswordResetDoneView(PasswordResetDoneView):
+    template_name = 'accounts/password_reset_done.html'
+
+class CustomPasswordResetConfirmView(PasswordResetConfirmView):
+    template_name = 'accounts/password_reset_confirm.html'
+    success_url = reverse_lazy('accounts:password_reset_complete')
+
+class CustomPasswordResetCompleteView(PasswordResetCompleteView):
+    template_name = 'accounts/password_reset_complete.html'

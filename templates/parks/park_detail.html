@@ -12,132 +12,90 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
 <style>
-/* ---------- Scoped typography for Park page only (Poppins-based, clamp scale) ---------- */
-.park-typography {
-  font-family: 'Poppins', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  --fs-xxl: clamp(1.6rem, 4.0vw, 3.2rem);
-  --fs-xl:  clamp(1.25rem, 2.6vw, 2.25rem);
-  --fs-lg:  clamp(1.05rem, 1.9vw, 1.5rem);
-  --fs-base:clamp(0.95rem, 1.0vw, 1.06rem);
-  --fs-sm:  clamp(0.82rem, 0.8vw, 0.95rem);
-  --fs-xs:  clamp(0.72rem, 0.7vw, 0.82rem);
-  --lh-tight: 1.08;
-  --lh-heading: 1.15;
-  --lh-base: 1.42;
-  --lh-small: 1.3;
-}
+    /* ---------- Park page typography (inaachwa kama msingi) ---------- */
+    .park-typography{
+    font-family:'Poppins',system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;
+    --fs-xxl: clamp(1.6rem,4vw,3.2rem);
+    --fs-xl:  clamp(1.25rem,2.6vw,2.25rem);
+    --fs-lg:  clamp(1.05rem,1.9vw,1.5rem);
+    --fs-base:clamp(0.95rem,1vw,1.06rem);
+    --fs-sm:  clamp(0.82rem,0.8vw,0.95rem);
+    --lh-tight:1.08; --lh-heading:1.15; --lh-base:1.42; --lh-small:1.3;
+    }
+    .park-typography,
+    .park-typography p,
+    .park-typography .prose,
+    .park-typography .article-body{ font-size:var(--fs-base); line-height:var(--lh-base); }
+    .park-typography h1{ font-size:var(--fs-xxl); line-height:var(--lh-tight); font-weight:600; }
+    .park-typography h2{ font-size:var(--fs-xl);  line-height:var(--lh-heading); font-weight:600; }
+    .park-typography h3{ font-size:var(--fs-lg);  line-height:var(--lh-heading); font-weight:600; }
 
-/* Base sizing inside scope */
-.park-typography,
-.park-typography p,
-.park-typography .text-base,
-.park-typography .prose,
-.park-typography .article-body {
-  font-size: var(--fs-base);
-  line-height: var(--lh-base);
-}
+    /* ---------- HERO v3 (mpya) ---------- */
+    .hero-bg{
+    /* tumia CSS var kuset picha bila kurudia background rules */
+    --hero-img:none;
+    position:relative;
+    min-height:clamp(46vh,58vh,66vh);
+    background: var(--hero-img) center/cover no-repeat;
+    display:flex; align-items:center;
+    }
+    .hero-bg::before{
+    /* overlay yenye contrast nzuri + feather edges */
+    content:""; position:absolute; inset:0; z-index:1; pointer-events:none;
+    background:
+        radial-gradient(72% 62% at 28% 42%, rgba(0,0,0,.35) 0%, rgba(0,0,0,0) 60%),
+        linear-gradient(180deg, rgba(0,0,0,.55) 0%, rgba(0,0,0,.36) 40%, rgba(0,0,0,.55) 100%);
+    }
+    .hero-content{ position:relative; z-index:2; padding:3rem 0; }
 
-/* headings */
-.park-typography h1 { font-size: var(--fs-xxl); line-height: var(--lh-tight); font-weight: 600; }
-.park-typography h2 { font-size: var(--fs-xl);  line-height: var(--lh-heading); font-weight: 600; }
-.park-typography h3 { font-size: var(--fs-lg);  line-height: var(--lh-heading); font-weight: 600; }
-.park-typography h4 { font-size: calc(var(--fs-lg) - 0.06rem); line-height: var(--lh-heading); }
-.park-typography h5,
-.park-typography h6 { font-size: var(--fs-sm); line-height: var(--lh-small); }
+    /* maandishi juu ya hero */
+    .hero-title{
+    margin:0 0 .5rem; font-weight:800; line-height:1.02;
+    font-size: clamp(2rem,6.2vw,5rem);
+    color:#fff; text-shadow:0 12px 34px rgba(0,0,0,.62);
+    }
+    .hero-subtitle{
+    display:flex; align-items:center; gap:.6rem;
+    margin:0 0 1.1rem; font-weight:600;
+    font-size:clamp(1.02rem,2.4vw,1.45rem);
+    color:rgba(255,255,255,.96); text-shadow:0 6px 18px rgba(0,0,0,.45);
+    }
+    .hero-subtitle i{ color:#C18D45; font-size:1.2em; line-height:1; }
 
-/* small text, buttons & inputs */
-.park-typography small,
-.park-typography .text-muted,
-.park-typography .meta { font-size: var(--fs-sm); line-height: var(--lh-small); }
-.park-typography button,
-.park-typography .btn,
-.park-typography .inline-flex,
-.park-typography input[type="email"],
-.park-typography .dest-seemore { font-size: var(--fs-sm); line-height: 1.2; }
-.park-typography .dest-title { font-size: var(--fs-sm); line-height: 1.06; font-weight: 500; }
+    /* CTA buttons */
+    .hero-cta a{
+    display:inline-flex; align-items:center; gap:.55rem;
+    padding:.9rem 1.2rem; border-radius:.6rem; font-weight:700; text-decoration:none;
+    transition: transform .15s ease, background-color .2s ease, opacity .15s ease;
+    }
+    .hero-cta a:hover{ transform:translateY(-1px); }
 
-/* hero special sizing */
-.park-typography .hero-title {
-  font-weight: 700;
-  line-height: 1.02;
-  font-size: clamp(1.6rem, 6vw, 3.2rem);
-  margin: 0 0 0.5rem 0;
-}
+    @media (max-width:640px){
+    .hero-content{ padding:2rem 0; }
+    .hero-title{ font-size:1.85rem; }
+    .hero-subtitle{ font-size:.98rem; }
+    }
 
-.park-typography .hero-subtitle {
-  font-weight: 500;
-  font-size: clamp(1rem, 2.2vw, 1.25rem);
-  margin: 0 0 1rem 0;
-}
-
-/* ensure hero text is readable on small screens */
-@media (max-width: 640px) {
-  .park-typography .hero-title { font-size: 1.6rem; }
-  .park-typography .hero-subtitle { font-size: 0.98rem; }
-}
-
-.hero-title {
-  font-weight: 700;
-  line-height: 1.02;
-  font-size: clamp(1.6rem, 5.6vw, 3.4rem);
-  color: #fff;
-  text-shadow: 0 8px 30px rgba(0,0,0,0.6);
-  margin: 0 0 0.5rem 0;
-}
-/* Responsive tweaks */
-@media (max-width: 640px) {
-  .hero-content { padding-top: 2rem; padding-bottom: 2rem; }
-  .hero-title { font-size: 1.6rem; }
-  .hero-subtitle { font-size: 0.98rem; }
-}
-@media (min-width: 1024px) {
-  .hero-bg { min-height: 40vh; }
-  .hero-title { font-size: clamp(2.2rem, 3.0vw, 4.0rem); }
-}
-
-/* desktop boost for hero */
-@media (min-width: 1024px) {
-  .park-typography .hero-title { font-size: clamp(2.2rem, 3.0vw, 3.8rem); }
-}
-
-/* Scoped dark-mode overrides for this page ONLY when the global dark class is active */
-/* Only apply these overrides when the global theme is dark (document.documentElement.classList contains 'dark') */
-html.dark .local-dark-mode { background-color: #071028; color: #e6eef8; }
-
-/* Background overrides (only under html.dark) */
-html.dark .local-dark-mode .bg-white { background-color: #0f1724; color: #e6eef8; }
-html.dark .local-dark-mode .bg-gray-50 { background-color: #071026; }
-html.dark .local-dark-mode .bg-gray-200 { background-color: #111827; }
-
-/* Text color overrides */
-html.dark .local-dark-mode .text-gray-700,
-html.dark .local-dark-mode .text-gray-600,
-html.dark .local-dark-mode .text-gray-800,
-html.dark .local-dark-mode .text-gray-500,
-html.dark .local-dark-mode .text-gray-400 {
-    color: #cbd5e1;
-}
-
-html.dark .local-dark-mode .text-gray-900 { color: #e6eef8; }
-html.dark .local-dark-mode .text-white { color: #ffffff; }
-
-/* Borders */
-html.dark .local-dark-mode .border-gray-200,
-html.dark .local-dark-mode .border-gray-300 { border-color: rgba(255,255,255,0.06); }
-
-/* Prose content */
-html.dark .local-dark-mode .prose { color: #cbd5e1; }
-html.dark .local-dark-mode .prose a { color: #E4B366; }
-
-/* Card shadows slightly darkened */
-html.dark .local-dark-mode .shadow-md,
-html.dark .local-dark-mode .shadow-sm,
-html.dark .local-dark-mode .shadow-lg {
-    box-shadow: 0 6px 18px rgba(2,6,23,0.6);
-}
-
-/* Keep branded colors (e.g. #C18D45) as-is to preserve contrast/readability */
+    /* ---------- Local dark-mode helpers (baki kama ulivyozitumia) ---------- */
+    html.dark .local-dark-mode{ background:#071028; color:#e6eef8; }
+    html.dark .local-dark-mode .bg-white{ background:#0f1724; color:#e6eef8; }
+    html.dark .local-dark-mode .bg-gray-50{ background:#071026; }
+    html.dark .local-dark-mode .bg-gray-200{ background:#111827; }
+    html.dark .local-dark-mode .text-gray-700,
+    html.dark .local-dark-mode .text-gray-600,
+    html.dark .local-dark-mode .text-gray-800,
+    html.dark .local-dark-mode .text-gray-500,
+    html.dark .local-dark-mode .text-gray-400{ color:#cbd5e1; }
+    html.dark .local-dark-mode .text-gray-900{ color:#e6eef8; }
+    html.dark .local-dark-mode .border-gray-200,
+    html.dark .local-dark-mode .border-gray-300{ border-color:rgba(255,255,255,.06); }
+    html.dark .local-dark-mode .prose{ color:#cbd5e1; }
+    html.dark .local-dark-mode .prose a{ color:#E4B366; }
+    html.dark .local-dark-mode .shadow-md,
+    html.dark .local-dark-mode .shadow-sm,
+    html.dark .local-dark-mode .shadow-lg{ box-shadow:0 6px 18px rgba(2,6,23,.6); }
 </style>
+
 {% endblock %}
 
 {% block content %}
@@ -145,79 +103,44 @@ html.dark .local-dark-mode .shadow-lg {
 <div class="local-dark-mode">
 
 <!-- Hero Section -->
-<section
-  class="park-typography relative bg-cover bg-center hero-bg"
-  style="background-image: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)), url('{% if park.main_image %}{{ park.main_image.url }}{% else %}https://images.pexels.com/photos/631317/pexels-photo-631317.jpeg{% endif %}'); min-height: 50vh; background-position: center; background-size: cover;"
->
-  <div class="container mx-auto px-4 py-28 relative z-10">
+<section class="park-typography relative hero-bg"
+         style="--hero-img: linear-gradient(135deg, rgba(0,0,0,.08), rgba(0,0,0,0)), url('{% if park.main_image %}{{ park.main_image.url }}{% else %}https://images.pexels.com/photos/631317/pexels-photo-631317.jpeg{% endif %}');">
+  <div class="container mx-auto px-4 hero-content">
     <div class="max-w-3xl">
-      <div class="flex items-center mb-4">
-        <span class="bg-[#C18D45] text-white text-sm font-semibold px-3 py-1 rounded-full mr-3">
+
+      <!-- Badges -->
+      <div class="flex items-center mb-4 gap-2">
+        <span class="bg-[#C18D45] text-white text-sm font-semibold px-3 py-1 rounded-full">
           {{ park.get_park_type_display }}
         </span>
         {% if park.featured %}
           <span class="bg-yellow-400 text-gray-900 text-sm font-semibold px-3 py-1 rounded-full flex items-center">
-            <i class="fas fa-star mr-1"></i>{% trans "Featured" %}
+            <i class="fas fa-star mr-1" aria-hidden="true"></i>{% trans "Featured" %}
           </span>
         {% endif %}
       </div>
 
-      <!-- Big hero title (inline styles to force size) -->
-      <h1
-        class="hero-title leading-tight"
-        style="
-          font-weight: 800;
-          color: #ffffff;
-          margin: 0 0 0.5rem 0;
-          line-height: 1.02;
-          /* big, responsive clamp that definitely makes it large on desktop */
-          font-size: clamp(2.8rem, 6.5vw, 5.2rem);
-          text-shadow: 0 10px 30px rgba(0,0,0,0.6);
-        "
-      >
-        {{ park.name }}
-      </h1>
+      <!-- Title -->
+      <h1 class="hero-title">{{ park.name }}</h1>
 
-      <!-- Subtitle with bigger icon -->
-      <p
-        class="hero-subtitle flex items-center"
-        style="
-          margin: 0 0 1.25rem 0;
-          font-weight: 600;
-          /* subtitle scale */
-          font-size: clamp(1.05rem, 2.4vw, 1.6rem);
-          color: rgba(255,255,255,0.95);
-        "
-      >
-        <i
-          class="fas fa-map-marker-alt mr-3"
-          aria-hidden="true"
-          style="font-size: 1.25em; color: #C18D45; line-height: 1;"
-        ></i>
-        {{ park.location }}, {{ park.region }}
+      <!-- Subtitle -->
+      <p class="hero-subtitle">
+        <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
+        {{ park.location }}{% if park.region %}, {{ park.region }}{% endif %}
       </p>
 
-      <div class="flex flex-wrap gap-4">
-        <a
-          href="#tours"
-          class="inline-flex items-center"
-          style="background:#C18D45; color:#fff; font-weight:600; padding:0.85rem 1.25rem; border-radius:0.5rem; text-decoration:none; transition:transform .18s ease;"
-        >
-          <i class="fas fa-binoculars mr-2" style="font-size:1.05rem;"></i>
-          {% trans "View Tours" %}
+      <!-- CTAs -->
+      <div class="hero-cta flex flex-wrap gap-3">
+        <a href="#tours" class="bg-[#C18D45] text-white">
+          <i class="fas fa-binoculars" aria-hidden="true"></i>{% trans "View Tours" %}
         </a>
-
         {% if user.is_authenticated %}
-          <a
-            href="{% url 'reviews:create_park_review' park.slug %}"
-            class="inline-flex items-center"
-            style="background:#ffffff; color:#111827; font-weight:600; padding:0.85rem 1.25rem; border-radius:0.5rem; text-decoration:none; transition:transform .18s ease;"
-          >
-            <i class="fas fa-star mr-2" style="font-size:1.05rem; color:#C18D45;"></i>
-            {% trans "Write Review" %}
-          </a>
+        <a href="{% url 'reviews:create_park_review' park.slug %}" class="bg-white text-gray-900 border border-white/70">
+          <i class="fas fa-star text-[#C18D45]" aria-hidden="true"></i>{% trans "Write Review" %}
+        </a>
         {% endif %}
       </div>
+
     </div>
   </div>
 </section>

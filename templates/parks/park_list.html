@@ -1,7 +1,7 @@
 {% extends 'base/base.html' %}
 {% load i18n query_transform %}
 {% block title %}{% trans "National Parks" %}{% endblock %}
-
+{% load static%}
 {% block extra_css %}
 <style>
 /* ---------- Instagram-style global typography (font-size only) ----------
@@ -97,7 +97,7 @@ section.py-12 h2 {
 
 {% block content %}
 <!-- Hero -->
-<section class="relative bg-cover bg-center hero" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.pexels.com/photos/631317/pexels-photo-631317.jpeg'); min-height: 40vh;">
+<section class="relative bg-cover bg-center hero" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('{% static "images/serengetisunset.jpg" %}'); min-height: 40vh;">
   <div class="container mx-auto px-4 py-20">
     <h1 class="text-4xl md:text-5xl font-bold text-white">{% trans "Tanzania National Parks" %}</h1>
     <p class="text-lg text-white opacity-90 mt-3">{% trans "Discover the incredible biodiversity of Tanzania's protected areas" %}</p>

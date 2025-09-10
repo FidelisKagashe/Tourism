@@ -1,6 +1,6 @@
 {% extends 'base/base.html' %}
 {% load i18n query_transform %}
-
+{% load static %}
 {# ---------- EXTRA: fonts + hero CSS (page-scoped) ---------- #}
 {% block extra_css %}
 <!-- Preconnect & Google Fonts (trimmed to the weights used: 400,600,700) -->
@@ -174,9 +174,9 @@ html.dark .local-dark-mode .shadow-lg {
   <div class="hero-media" aria-hidden="true">
     <picture>
       <!-- optional context variables for responsive images; fallback to the original Pexels photo -->
-      <source media="(max-width: 640px)" srcset="{{ hero_image_mobile_url|default:'https://images.pexels.com/photos/1170986/pexels-photo-1170986.jpeg' }}">
-      <source media="(max-width: 1024px)" srcset="{{ hero_image_tablet_url|default:'https://images.pexels.com/photos/1170986/pexels-photo-1170986.jpeg' }}">
-      <img class="hero-img" src="{{ hero_image_url|default:'https://images.pexels.com/photos/1170986/pexels-photo-1170986.jpeg' }}" 
+      <source media="(max-width: 640px)" srcset="{% static "images/serengetisunset.jpg" %}">
+      <source media="(max-width: 1024px)" srcset="{% static "images/serengetisunset.jpg" %}">
+      <img class="hero-img" src="{% static "images/serengetisunset.jpg" %}" 
            alt="{% trans 'Tanzania destinations landscape' %}" loading="eager">
     </picture>
     <div class="hero-overlay" aria-hidden="true"></div>

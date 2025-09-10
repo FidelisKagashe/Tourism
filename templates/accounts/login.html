@@ -37,6 +37,17 @@ h3 { font-size: var(--fs-lg);  font-weight: 600; line-height: 1.2; }
   font-size: 4rem; /* ~64px */
 }
 
+/* ensure focus outline visible for keyboard users */
+button:focus,
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(193,141,69,0.15);
+  border-radius: 0.5rem;
+}
+
 /* responsive adjustments */
 @media (max-width: 480px){
   :root{
@@ -52,39 +63,94 @@ h3 { font-size: var(--fs-lg);  font-weight: 600; line-height: 1.2; }
 
 {% block content %}
 <div class="min-h-screen flex items-center justify-center bg-gray-50 dark:bg-gray-900 py-12 px-4 sm:px-6 lg:px-8">
-    <div class="max-w-md w-full space-y-8">
-        <div class="text-center">
-            <div class="mx-auto flex justify-center">
-                <div class="bg-gray-200 dark:bg-gray-700 border-2 border-dashed dark:border-gray-600 rounded-xl w-20 h-20 flex items-center justify-center">
-                    <i class="fas fa-user-circle text-[#C18D45] login-icon"></i>
-                </div>
-            </div>
-            <h2 class="mt-6 font-bold text-gray-900 dark:text-gray-100">
-                {% trans "Welcome Back" %}
-            </h2>
-            <p class="mt-2 text-gray-600 dark:text-gray-300">
-                {% trans "Sign in to your account" %}
-            </p>
+  <div class="max-w-md w-full space-y-8">
+    <div class="text-center">
+      <div class="mx-auto flex justify-center">
+        <div class="bg-gray-200 dark:bg-gray-700 border-2 border-dashed dark:border-gray-600 rounded-xl w-20 h-20 flex items-center justify-center">
+            <!-- Inline SVG (decorative) -->
+            <svg class="w-16 h-16 text-[#C18D45] login-icon" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+                <!-- outer circle -->
+                <circle cx="32" cy="32" r="30" fill="currentColor" opacity="0.1" />
+                <!-- user silhouette (head + shoulders), filled with currentColor -->
+                <g fill="currentColor">
+                <circle cx="32" cy="22" r="8" />
+                <path d="M16 46c0-7.732 6.268-14 14-14s14 6.268 14 14v2H16v-2z"/>
+                </g>
+                <!-- subtle outline for contrast (optional) -->
+                <circle cx="32" cy="32" r="30" fill="none" stroke="currentColor" stroke-width="0.6" opacity="0.08"/>
+            </svg>
+        </div>
+      </div>
+      <h2 class="mt-6 font-bold text-gray-900 dark:text-gray-100">
+        {% trans "Welcome Back" %}
+      </h2>
+      <p class="mt-2 text-gray-600 dark:text-gray-300">
+        {% trans "Sign in to your account" %}
+      </p>
+    </div>
+
+    <div class="bg-white dark:bg-gray-800 py-8 px-4 shadow rounded-lg sm:px-10 border border-gray-200 dark:border-gray-700 dark:text-gray-200">
+      {# Make sure to include the form tag + csrf_token. Remove the outer <form> if your crispy form already renders it. #}
+      <form method="post" action="" novalidate aria-describedby="form-errors" class="space-y-6">
+        {% csrf_token %}
+
+        {% crispy form %}
+
+        <div class="mt-6 text-center">
+          <p class="text-sm text-gray-600 dark:text-gray-300">
+            {% trans "Don't have an account?" %}
+            <a href="{% url 'accounts:register' %}" class="font-medium text-[#C18D45] hover:text-[#a6793a] focus:outline-none focus:underline">
+              {% trans "Sign up here" %}
+            </a>
+          </p>
         </div>
 
-        <div class="bg-white dark:bg-gray-800 py-8 px-4 shadow rounded-lg sm:px-10 border border-gray-200 dark:border-gray-700 dark:text-gray-200">
-            {% crispy form %}
-            
-            <div class="mt-6 text-center">
-                <p class="text-gray-600 dark:text-gray-300">
-                    {% trans "Don't have an account?" %}
-                    <a href="{% url 'accounts:register' %}" class="font-medium text-[#C18D45] hover:text-[#a6793a]">
-                        {% trans "Sign up here" %}
-                    </a>
-                </p>
-            </div>
-            
-            <div class="mt-4 text-center">
-                <a href="#" class="text-sm text-gray-500 dark:text-gray-300 hover:text-gray-700 dark:hover:text-gray-100">
-                    {% trans "Forgot your password?" %}
-                </a>
-            </div>
+        <div class="text-center mt-3">
+          <a href="{% url 'accounts:password_reset' %}" class="text-sm text-gray-500 dark:text-gray-400 hover:underline focus:outline-none">
+            {% trans "Forgot your password?" %}
+          </a>
         </div>
+      </form>
     </div>
+  </div>
 </div>
+<script>
+  (function() {
+    // target after login: ?next=... else core:home
+    var redirectUrl = "{% if request.GET.next %}{{ request.GET.next }}{% else %}{% url 'core:home' %}{% endif %}";
+
+    // If server-side knows user is authenticated, immediately replace so this
+    // page is not kept in history/cache.
+    {% if request.user.is_authenticated %}
+      try { window.location.replace(redirectUrl); } catch (e) { /* ignore */ }
+      return;
+    {% endif %}
+
+    // Replace current history entry so the login page isn't an easy back target.
+    if (window.history && window.history.replaceState) {
+      try { window.history.replaceState(null, document.title, window.location.href); } catch(e) { /* ignore */ }
+    }
+
+    // If the page is restored from bfcache (pageshow with persisted=true),
+    // force navigation forward to the redirectUrl.
+    window.addEventListener('pageshow', function(ev) {
+      if (ev.persisted) {
+        try { window.location.replace(redirectUrl); } catch(e) { /* ignore */ }
+      }
+    });
+
+    // If user tries to go Back to this page, immediately forward them to redirectUrl.
+    // This is more aggressive than pushState-only approaches and ensures the user
+    // ends up on the post-login page.
+    window.addEventListener('popstate', function(event) {
+      try {
+        window.location.replace(redirectUrl);
+      } catch(e) {
+        // fallback: push state to keep page in forward history
+        try { history.pushState(null, null, window.location.href); } catch(_) {}
+      }
+    }, { passive: true });
+  })();
+</script>
+
 {% endblock %}
