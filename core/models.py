@@ -39,7 +39,7 @@ class Newsletter(models.Model):
 
 class SiteSettings(models.Model):
     """Site-wide settings."""
-    site_name = models.CharField(max_length=100, default="Tanzania Safari Adventures")
+    site_name = models.CharField(max_length=100, default="Safari & Bush Retreats")
     site_description = models.TextField(default="Discover Tanzania's wildlife and national parks")
     contact_email = models.EmailField(default="info@tanzaniasafari.com")
     contact_phone = models.CharField(max_length=20, default="+255 123 456 789")

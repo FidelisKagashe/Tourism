@@ -54,10 +54,10 @@ class UserRegistrationView(CreateView):
         if user.email:
             try:
                 send_mail(
-                    subject='Welcome to Tanzania Safari Adventures!',
+                    subject='Welcome to Safari & Bush Retreats!',
                     message=(
                         f'Hello {user.first_name or user.username},\n\n'
-                        "Welcome to Tanzania Safari Adventures! We're excited to help you "
+                        "Welcome to Safari & Bush Retreats! We're excited to help you "
                         "plan your dream safari experience."
                     ),
                     from_email=getattr(settings, 'DEFAULT_FROM_EMAIL', None),
@@ -70,7 +70,7 @@ class UserRegistrationView(CreateView):
         # Log the user in (creates session)
         login(self.request, user)
 
-        messages.success(self.request, 'Registration successful! Welcome to Tanzania Safari Adventures!')
+        messages.success(self.request, 'Registration successful! Welcome to Safari & Bush Retreats!')
 
         # Redirect to the success URL — safe now because self.object is set
         return redirect(self.get_success_url())

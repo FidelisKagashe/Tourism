@@ -10,7 +10,7 @@ def global_context(request):
     
     return {
         'site_settings': site_settings,
-        'SITE_NAME': getattr(settings, 'SITE_NAME', 'Tanzania Safari Adventures'),
+        'SITE_NAME': getattr(settings, 'SITE_NAME', 'Safari & Bush Retreats'),
         'SUPPORTED_CURRENCIES': getattr(settings, 'SUPPORTED_CURRENCIES', ['USD', 'EUR', 'TZS']),
         'DEFAULT_CURRENCY': getattr(settings, 'DEFAULT_CURRENCY', 'USD'),
     }

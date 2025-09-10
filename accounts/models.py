@@ -11,7 +11,7 @@ from phonenumber_field.modelfields import PhoneNumberField
 
 class CustomUser(AbstractUser):
     """
-    Custom User model for Tanzania Safari Adventures.
+    Custom User model for Safari & Bush Retreats.
     - Extends AbstractUser with phone, nationality, profile, preferences and small helpers.
     - Note: email is unique by default here — see migration caution below.
     """

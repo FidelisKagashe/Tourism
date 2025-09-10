@@ -119,7 +119,7 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='sitesettings',
             name='site_name',
-            field=models.CharField(default='Tanzania Safari Adventures', max_length=100),
+            field=models.CharField(default='Safari & Bush Retreats', max_length=100),
         ),
         migrations.AlterModelTable(
             name='contactmessage',
