@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from django.core.paginator import Paginator
 from django.db.models import Q, Avg, Count
+from django.db.models import F, Q
 from django.contrib.auth.decorators import login_required
 from .models import TourPackage, TourGuide, TourAvailability
 
@@ -72,7 +73,6 @@ def tour_list(request):
     return render(request, 'tours/tour_list.html', context)
 
 def tour_detail(request, slug):
-    """Tour package detail view."""
     tour = get_object_or_404(
         TourPackage.objects.select_related().prefetch_related(
             'parks_visited', 'itinerary_days', 'images', 'reviews__user', 'extras'
@@ -80,28 +80,24 @@ def tour_detail(request, slug):
         slug=slug,
         is_active=True
     )
-    
-    # Get availability
-    availability = tour.availability.filter(
-        is_available=True,
-        available_spots__gt=0
-    ).order_by('start_date')[:10]
-    
-    # Get reviews
+
+    availability = (
+        tour.availability
+            .filter(is_available=True)
+            .filter(
+                Q(max_participants__isnull=True) |  # unlimited -> keep
+                Q(booked_participants__lt=F('max_participants'))  # spots left
+            )
+            .order_by('start_date')[:10]
+    )
+
     reviews = tour.reviews.filter(is_approved=True).select_related('user')[:10]
-    
-    # Get related tours
     related_tours = TourPackage.objects.filter(
-        category=tour.category,
-        is_active=True
+        category=tour.category, is_active=True
     ).exclude(id=tour.id)[:4]
-    
-    context = {
-        'tour': tour,
-        'availability': availability,
-        'reviews': reviews,
-        'related_tours': related_tours,
-    }
+
+    context = {'tour': tour, 'availability': availability,
+               'reviews': reviews, 'related_tours': related_tours}
     return render(request, 'tours/tour_detail.html', context)
 
 def guide_list(request):

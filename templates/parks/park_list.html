@@ -163,11 +163,21 @@ section.py-12 h2 {
     {% if page_obj and page_obj.object_list %}
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {% for park in page_obj %}
-          <div class="bg-white dark:bg-gray-700 rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 flex flex-col h-full park-card">
+          <div class="relative bg-white dark:bg-gray-700 rounded-xl shadow-md overflow-hidden hover:shadow-xl transform transition
+            hover:-translate-y-1 focus-within:ring-2 focus-within:ring-[#C18D45] focus-within:ring-offset-2
+            focus-within:ring-offset-white dark:focus-within:ring-offset-gray-900 flex flex-col h-full park-card">
+
+            {# Full-card clickable overlay #}
+            <a href="{{ park.get_absolute_url }}"
+              class="absolute inset-0 z-10"
+              aria-label="{% trans 'Explore' %} {{ park.name }}"></a>
+
             <div class="relative">
-              <img src="{{ park.get_main_image_url }}" alt="{{ park.name }}" class="w-full h-64 object-cover">
+              <img src="{{ park.get_main_image_url }}" alt="{{ park.name|default:'Park' }}" class="w-full h-64 object-cover">
               <div class="absolute top-3 right-3">
-                <span class="bg-green-600 text-white text-xs font-semibold px-3 py-1 rounded-full">{{ park.get_park_type_display }}</span>
+                <span class="bg-green-600 text-white text-xs font-semibold px-3 py-1 rounded-full">
+                  {{ park.get_park_type_display }}
+                </span>
               </div>
               {% if park.featured %}
                 <div class="absolute top-3 left-3">
@@ -181,7 +191,8 @@ section.py-12 h2 {
             <div class="p-6 flex flex-col flex-grow">
               <h5 class="text-xl font-bold text-gray-900 dark:text-gray-100 mb-2">{{ park.name }}</h5>
               <p class="text-gray-600 dark:text-gray-300 mb-4 flex items-center">
-                <i class="fas fa-map-marker-alt mr-2 text-primary dark:text-primary-dark"></i>{{ park.location }}, {{ park.region }}
+                <i class="fas fa-map-marker-alt mr-2 text-primary dark:text-primary-dark"></i>
+                {{ park.location }}, {{ park.region }}
               </p>
               <p class="text-gray-700 dark:text-gray-200 mb-6 flex-grow">{{ park.short_description }}</p>
 
@@ -200,11 +211,14 @@ section.py-12 h2 {
                 </div>
               </div>
 
-              <a href="{{ park.get_absolute_url }}" class="mt-auto bg-primary dark:bg-primary-dark hover:bg-secondary dark:hover:bg-secondary-dark text-white font-medium py-2 px-4 rounded-md text-center transition duration-300">
+              {# Visual CTA only; real link is the full-card overlay above #}
+              <span class="pointer-events-none mt-auto bg-primary dark:bg-primary-dark text-white font-medium py-2 px-4 rounded-md text-center inline-flex items-center justify-center gap-2">
                 {% trans "Explore Park" %}
-              </a>
+                <i class="fas fa-arrow-right"></i>
+              </span>
             </div>
           </div>
+
         {% endfor %}
       </div>
 

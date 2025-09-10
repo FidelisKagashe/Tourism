@@ -328,30 +328,51 @@ section.py-12 h2 {
 
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
       {% for park in featured_parks %}
-      <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-lg overflow-hidden transform transition-transform hover:-translate-y-2">
-
+      <div class="relative bg-white dark:bg-gray-800 rounded-2xl shadow-lg overflow-hidden transform transition-transform hover:-translate-y-2 hover:shadow-xl focus-within:ring-2 focus-within:ring-[#C18D45] focus-within:ring-offset-2 focus-within:ring-offset-white dark:focus-within:ring-offset-gray-900">
+        {# Absolute overlay makes the entire card clickable #}
+        <a href="{% url 'parks:park_detail' park.slug %}"
+          class="absolute inset-0 z-10"
+          aria-label="Explore {{ park.name|default:'park' }}"></a>
+      
         <div class="relative h-60 w-full">
-          <img src="{% if park.main_image %}{{ park.main_image.url }}{% else %}{% static 'images/parks/default.jpg' %}{% endif %}" loading="lazy" alt="{{ park.name|default:'Park' }}" class="w-full h-full object-cover">
-          <span class="absolute top-4 right-4 z-20 bg-emerald-600 bg-opacity-90 text-white px-3 py-1 rounded-full font-bold text-sm shadow-md backdrop-blur">{{ park.get_park_type_display|default:"Park" }}</span>
+          <img
+            src="{% if park.main_image %}{{ park.main_image.url }}{% else %}{% static 'images/parks/default.jpg' %}{% endif %}"
+            loading="lazy"
+            alt="{{ park.name|default:'Park' }}"
+            class="w-full h-full object-cover">
+          <span class="absolute top-4 right-4 z-20 bg-emerald-600/90 text-white px-3 py-1 rounded-full font-bold text-sm shadow-md backdrop-blur">
+            {{ park.get_park_type_display|default:"Park" }}
+          </span>
         </div>
-
+      
         <div class="p-4 flex flex-col gap-3">
-          <h5 class="text-lg font-bold text-gray-900 dark:text-gray-100">{{ park.name|default:"Unnamed Park" }}</h5>
-
-          <p class="text-sm text-gray-600 dark:text-gray-400" aria-label="location"><i class="fas fa-map-marker-alt mr-1" style="color:#C18D45"></i>{{ park.location|default:"Location unknown" }}, {{ park.region|default:"Region unknown" }}</p>
-
-          <p class="text-gray-700 dark:text-gray-300 mt-2 flex-grow">{{ park.short_description|default:"No description available for this park." }}</p>
-
+          <h5 class="text-lg font-bold text-gray-900 dark:text-gray-100">
+            {{ park.name|default:"Unnamed Park" }}
+          </h5>
+      
+          <p class="text-sm text-gray-600 dark:text-gray-400" aria-label="location">
+            <i class="fas fa-map-marker-alt mr-1" style="color:#C18D45"></i>
+            {{ park.location|default:"Location unknown" }}, {{ park.region|default:"Region unknown" }}
+          </p>
+      
+          <p class="text-gray-700 dark:text-gray-300 mt-2 flex-grow">
+            {{ park.short_description|default:"No description available for this park." }}
+          </p>
+      
           <div class="flex items-center justify-between mt-3">
-            <small class="text-sm font-semibold text-gray-700 dark:text-gray-300">{{ park.area_km2|default:"—"|floatformat:0 }} km²</small>
-
-            <a href="{% url 'parks:park_detail' park.slug %}" class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#C18D45] text-white font-semibold focus-ring" aria-label="Explore {{ park.name|default:'park' }}">
+            <small class="text-sm font-semibold text-gray-700 dark:text-gray-300">
+              {{ park.area_km2|default:"—"|floatformat:0 }} km²
+            </small>
+      
+            {# Visual CTA (not a link, to avoid nested anchors). The real link is the overlay. #}
+            <span class="pointer-events-none inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#C18D45] text-white font-semibold">
               <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
               Explore Park
-            </a>
+            </span>
           </div>
         </div>
       </div>
+
       {% empty %}
       <div class="col-span-3 text-center">
         <div class="p-6 bg-blue-50 rounded-md">
@@ -377,33 +398,54 @@ section.py-12 h2 {
 
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
       {% for tour in featured_tours %}
-      <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-lg overflow-hidden transform transition-transform hover:-translate-y-2">
-
+      <div class="relative group bg-white dark:bg-gray-800 rounded-2xl shadow-lg overflow-hidden transform transition-transform hover:-translate-y-2 focus-within:ring-2 focus-within:ring-[#C18D45] focus-within:ring-offset-2 dark:focus-within:ring-offset-gray-900">
         <div class="relative h-56 w-full">
-          <img src="{% if tour.main_image %}{{ tour.main_image.url }}{% else %}{% static 'images/tours/default.jpg' %}{% endif %}" loading="lazy" alt="{{ tour.title|default:'Tour' }}" class="w-full h-full object-cover">
-          <span class="absolute top-4 right-4 z-20 bg-emerald-600 bg-opacity-90 text-white px-3 py-1 rounded-full font-bold text-sm shadow-md">{{ tour.get_category_display|default:"Tour" }}</span>
+          <img src="{% if tour.main_image %}{{ tour.main_image.url }}{% else %}{% static 'images/tours/default.jpg' %}{% endif %}"
+               loading="lazy"
+               alt="{{ tour.title|default:'Tour' }}"
+               class="w-full h-full object-cover">
+          <span class="absolute top-4 right-4 z-20 bg-emerald-600 bg-opacity-90 text-white px-3 py-1 rounded-full font-bold text-sm shadow-md">
+            {{ tour.get_category_display|default:"Tour" }}
+          </span>
         </div>
-
-        <div class="p-4 flex flex-col gap-3">
-          <h5 class="text-sm sm:text-lg font-bold text-gray-900 dark:text-gray-100">{{ tour.title|default:"Untitled Tour" }}</h5>
-
-          <p class="text-sm text-gray-600 dark:text-gray-400" aria-label="tour-meta"><i class="fas fa-clock mr-1" style="color:#C18D45"></i>
+      
+        <div class="relative z-10 p-4 flex flex-col gap-3">
+          <h5 class="text-sm sm:text-lg font-bold text-gray-900 dark:text-gray-100">
+            {{ tour.title|default:"Untitled Tour" }}
+          </h5>
+      
+          <p class="text-sm text-gray-600 dark:text-gray-400" aria-label="tour-meta">
+            <i class="fas fa-clock mr-1" style="color:#C18D45"></i>
             {{ tour.get_duration_display|default:"Duration N/A" }}
             <span class="ml-3"><i class="fas fa-users mr-1"></i>{{ tour.min_participants|default:1 }}-{{ tour.max_participants|default:1 }} people</span>
           </p>
-
-          <p class="text-gray-700 dark:text-gray-300 mt-2 flex-grow">{{ tour.short_description|truncatewords:18|default:"No description." }}</p>
-
+      
+          <p class="text-gray-700 dark:text-gray-300 mt-2 flex-grow">
+            {{ tour.short_description|truncatewords:18|default:"No description." }}
+          </p>
+      
           <div class="flex items-center justify-between mt-3">
-            <small class="text-sm font-semibold">{{ tour.get_difficulty_level_display|default:"Level" }}</small>
-
-            <a href="{% url 'tours:tour_detail' tour.slug %}" class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#C18D45] text-white font-semibold focus-ring" aria-label="View {{ tour.title|default:'tour' }}">
+            <small class="text-sm font-semibold">
+              {{ tour.get_difficulty_level_display|default:"Level" }}
+            </small>
+      
+            {# CTA stays above the stretched link #}
+            <a href="{% url 'tours:tour_detail' tour.slug %}"
+               class="relative z-20 inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#C18D45] text-white font-semibold focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#C18D45]">
               <i class="fas fa-arrow-right" aria-hidden="true"></i>
               View Details
             </a>
           </div>
         </div>
+      
+        {# Stretched link overlay (covers the whole card) #}
+        <a href="{% url 'tours:tour_detail' tour.slug %}"
+           class="absolute inset-0 z-10"
+           aria-label="Open {{ tour.title|default:'tour' }} details">
+          <span class="sr-only">Open {{ tour.title|default:'tour' }}</span>
+        </a>
       </div>
+
       {% empty %}
       <div class="col-span-3 text-center">
         <div class="p-6 bg-blue-50 rounded-md">

@@ -318,25 +318,44 @@ html.dark .local-dark-mode .shadow-lg {
             
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 {% for park in parks %}
-                    <div class="bg-white rounded-lg shadow-md overflow-hidden transition-transform duration-300 hover:shadow-lg hover:-translate-y-1">
-                        <img src="{% if park.main_image %}{{ park.main_image.url }}{% else %}https://images.pexels.com/photos/631317/pexels-photo-631317.jpeg{% endif %}" 
-                             class="w-full h-48 object-cover" alt="{{ park.name }}">
-                        <div class="p-5">
-                            <h3 class="text-lg font-bold text-gray-900 mb-2">{{ park.name }}</h3>
+                    <div
+                    class="relative bg-white rounded-lg shadow-md overflow-hidden transition-transform duration-300
+                            hover:shadow-lg hover:-translate-y-1 group
+                            focus-within:ring-2 focus-within:ring-[#C18D45] focus-within:ring-offset-2 focus-within:ring-offset-white"
+                    >
+                        {# Full-card overlay link #}
+                        <a href="{% url 'parks:park_detail' park.slug %}"
+                            class="absolute inset-0 z-10"
+                            aria-label="{% trans 'Visit' %} {{ park.name }}"></a>
+
+                        <img
+                            src="{% if park.main_image %}{{ park.main_image.url }}{% else %}https://images.pexels.com/photos/631317/pexels-photo-631317.jpeg{% endif %}"
+                            alt="{{ park.name }}"
+                            class="w-full h-48 object-cover"
+                        />
+
+                        <div class="p-5 relative z-0">
+                            <h3 class="text-lg font-bold text-gray-900 mb-2 transition-colors group-hover:text-[#C18D45]">
+                            {{ park.name }}
+                            </h3>
+
                             <p class="text-gray-600 mb-2 text-sm">
-                                <i class="fas fa-map-marker-alt mr-2 text-[#C18D45]"></i>
-                                {{ park.location }}, {{ park.region }}
+                            <i class="fas fa-map-marker-alt mr-2 text-[#C18D45]"></i>
+                            {{ park.location }}, {{ park.region }}
                             </p>
+
                             <p class="text-gray-600 mb-4 text-sm">
-                                {{ park.short_description|truncatewords:15 }}
+                            {{ park.short_description|truncatewords:15 }}
                             </p>
-                            <a href="{% url 'parks:park_detail' park.slug %}" 
-                               class="inline-flex items-center text-[#C18D45] hover:text-[#a6793a] font-medium">
-                                {% trans "Visit Park" %}
-                                <i class="fas fa-arrow-right ml-2 text-sm"></i>
-                            </a>
+
+                            {# Visual CTA only; real click handled by stretched link above #}
+                            <span class="inline-flex items-center text-[#C18D45] group-hover:text-[#a6793a] font-medium pointer-events-none">
+                            {% trans "Visit Park" %}
+                            <i class="fas fa-arrow-right ml-2 text-sm"></i>
+                            </span>
                         </div>
                     </div>
+
                 {% endfor %}
             </div>
         </div>
@@ -354,22 +373,40 @@ html.dark .local-dark-mode .shadow-lg {
             
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                 {% for related in related_wildlife %}
-                    <div class="bg-white rounded-lg shadow-md overflow-hidden transition-transform duration-300 hover:shadow-lg hover:-translate-y-1">
-                        <img src="{% if related.main_image %}{{ related.main_image.url }}{% else %}https://images.pexels.com/photos/631317/pexels-photo-631317.jpeg{% endif %}" 
-                             class="w-full h-48 object-cover" alt="{{ related.common_name }}">
-                        <div class="p-5">
-                            <h3 class="text-lg font-bold text-gray-900 mb-2">{{ related.common_name }}</h3>
+                    <div
+                    class="relative bg-white rounded-lg shadow-md overflow-hidden transition-transform duration-300
+                            hover:shadow-lg hover:-translate-y-1 group
+                            focus-within:ring-2 focus-within:ring-[#C18D45] focus-within:ring-offset-2 focus-within:ring-offset-white"
+                    >
+                        {# Stretched link covers the whole card #}
+                        <a href="{% url 'parks:wildlife_detail' related.pk %}"
+                            class="absolute inset-0 z-10"
+                            aria-label="{% trans 'Learn more about' %} {{ related.common_name }}"></a>
+
+                        <img
+                            src="{% if related.main_image %}{{ related.main_image.url }}{% else %}https://images.pexels.com/photos/631317/pexels-photo-631317.jpeg{% endif %}"
+                            alt="{{ related.common_name }}"
+                            class="w-full h-48 object-cover"
+                        />
+
+                        <div class="p-5 relative z-0">
+                            <h3 class="text-lg font-bold text-gray-900 mb-2 transition-colors group-hover:text-[#C18D45]">
+                            {{ related.common_name }}
+                            </h3>
+
                             <span class="inline-block bg-gray-200 text-gray-800 px-2 py-1 rounded text-xs mb-3">
-                                {{ related.get_category_display }}
+                            {{ related.get_category_display }}
                             </span>
+
                             <p class="text-gray-600 mb-4 text-sm">
-                                {{ related.description|truncatewords:10 }}
+                            {{ related.description|truncatewords:10 }}
                             </p>
-                            <a href="{% url 'parks:wildlife_detail' related.pk %}" 
-                               class="inline-flex items-center text-[#C18D45] hover:text-[#a6793a] font-medium">
-                                {% trans "Learn More" %}
-                                <i class="fas fa-arrow-right ml-2 text-sm"></i>
-                            </a>
+
+                            {# Visual CTA only; real click handled by the stretched link above #}
+                            <span class="inline-flex items-center text-[#C18D45] group-hover:text-[#a6793a] font-medium pointer-events-none">
+                            {% trans "Learn More" %}
+                            <i class="fas fa-arrow-right ml-2 text-sm" aria-hidden="true"></i>
+                            </span>
                         </div>
                     </div>
                 {% endfor %}
