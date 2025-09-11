@@ -7,7 +7,6 @@ from parks.models import NationalPark
 
 User = get_user_model()
 
-
 class TourGuide(models.Model):
     """Professional tour guides."""
 
