@@ -1,6 +1,6 @@
 {% extends 'base/base.html' %}
 {% load i18n %}
-
+{% load static %}
 {% block title %}{% trans "About Us" %} - Safari&nbsp;&amp;&nbsp;Bush Retreats{% endblock %}
 
 {% block extra_css %}
@@ -125,7 +125,7 @@ html.dark .local-dark-mode .shadow-lg {
 <div class="local-dark-mode">
 
 <!-- Hero Section -->
-<section class="relative bg-cover bg-center hero" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.pexels.com/photos/1170986/pexels-photo-1170986.jpeg');">
+<section class="relative bg-cover bg-center hero" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('{% static "images/serengetisunset.jpg" %}');">
     <div class="container mx-auto px-4 flex items-center h-full">
         <div class="max-w-3xl py-20">
             <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
