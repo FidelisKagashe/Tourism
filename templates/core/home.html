@@ -543,14 +543,20 @@ section.py-12 h2 {
       </h2>
     </div>
 
-    <!-- Single Partner Logo -->
-    <div class="flex justify-center">
-      <div class="bg-white dark:bg-gray-800 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-200">
-        <div class="w-full h-full bg-gray-50 dark:bg-gray-700 rounded-md overflow-hidden flex items-center justify-center">
-          <img src="{% static 'images/partner1.jpeg' %}" alt="Our Partner" class="max-w-full max-h-full object-contain" />
+    <!-- Single Partner Logo (clickable) -->
+    <a href="https://www.safaribookings.com/tanzania"
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="Visit our partner SafariBookings Tanzania"
+      class="block">
+      <div class="flex justify-center">
+        <div class="bg-white dark:bg-gray-800 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-200 cursor-pointer">
+          <div class="w-full h-full bg-gray-50 dark:bg-gray-700 rounded-md overflow-hidden flex items-center justify-center">
+            <img src="{% static 'images/partner1.jpeg' %}" alt="Our Partner" class="max-w-full max-h-full object-contain" />
+          </div>
         </div>
       </div>
-    </div>
+    </a>
   </div>
 </section>
 
